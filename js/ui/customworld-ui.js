@@ -10,7 +10,7 @@ import { POSTURES, FAMILIES, famOfProfile, ideoRel } from '../sim/ideofam.js';
 import { relRecord } from '../sim/world.js';
 import { regionalFlags, historicalFlags, hasIsoFlag, defaultFlag } from './flag.js';
 import { regionalBest } from '../sim/regflags.js';
-import { personName, cultureOf } from '../sim/names.js';
+import { personName, cultureOf, leaderName } from '../sim/names.js';
 
 const COLORS = ['#e4572e', '#17bebb', '#ffc914', '#76b041', '#9b5de5', '#f15bb5', '#2e86ab', '#f4a259', '#5b8e7d', '#bc4b51', '#8d99ae', '#a3b18a'];
 
@@ -54,6 +54,7 @@ export function openEditor(data, def, { onUse, onSave }) {
     if (cover >= 0.9 && reg) { name = reg.name; flag = isoFlag || (ident ? { reg: ident.key } : null); }            // país inteiro
     else if (ident) { name = ident.name; flag = { reg: ident.key }; region = ident.key; }                         // região com bandeira
     else { name = prov[top].n; const rb = regionalBest(data, n.provs, 0); flag = rb ? { reg: rb.key } : autoFlag(n.id, cultureOf(data, dom), dom); }                                                                  // província sem bandeira: nome dela e bandeira do país
+    if (!n.manualLeader && (n.autoLeader || !n.leader)) { n.leader = leaderName(cultureOf(data, dom)); n.autoLeader = true; }
     if (!n.manualName) { n.name = name; n.formal = (n.provs.length > 1 && cover < 0.9 ? 'República Federal de ' : 'República de ') + name; }
     if (!n.manualFlag) n.flagSpec = flag || (n.flagSpec?.layout ? n.flagSpec : autoFlag(n.id, cultureOf(data, dom), dom));
     n.region = region;
@@ -196,7 +197,7 @@ export function openEditor(data, def, { onUse, onSave }) {
     if (e.target.closest('[data-frand]')) { const fe = byId(E.flagFor); fe.flagSpec = autoFlag(fe.id + Math.random(), cultureOf(data, fe.parent || 'BRA'), Math.random() < 0.6 ? fe.parent : null); fe.manualFlag = true; draw(); return; }
     if (e.target.closest('[data-pick]') && n) { select(n.id); return; }
     if (card && !e.target.closest('input,select,button,label')) { select(n.id); return; }
-    if (e.target.closest('[data-auto]') && n) { const par = n.parent || 'BRA', cult = cultureOf(data, par), keys = Object.keys(REGIMES); n.leader = personName(cult); n.regime = keys[Math.floor(Math.random() * keys.length)]; n.manualName = false; n.manualFlag = false; autoIdentity(n); if (!n.region) n.flagSpec = autoFlag(n.id + Math.random(), cult, Math.random() < 0.6 ? par : null); saveDraft(); renderList(false); return; }
+    if (e.target.closest('[data-auto]') && n) { const par = n.parent || 'BRA', cult = cultureOf(data, par), keys = Object.keys(REGIMES); n.leader = leaderName(cult); n.manualLeader = false; n.autoLeader = true; n.regime = keys[Math.floor(Math.random() * keys.length)]; n.manualName = false; n.manualFlag = false; autoIdentity(n); if (!n.region) n.flagSpec = autoFlag(n.id + Math.random(), cult, Math.random() < 0.6 ? par : null); saveDraft(); renderList(false); return; }
     if (e.target.closest('[data-del]') && n) { if (!confirm(`Excluir ${n.name}?`)) return; E.def.nations = E.def.nations.filter(x => x !== n); E.sel = E.def.nations[0]?.id || null; A = assign(); map.recolor(); saveDraft(); renderList(false); return; }
     if (e.target.closest('[data-flagedit]') && n) { E.flagFor = n.id; E.sel = n.id; draw(); return; }
     if (e.target.closest('[data-fr]')) {
@@ -205,7 +206,7 @@ export function openEditor(data, def, { onUse, onSave }) {
       E.def.nations = E.def.nations.filter(x => x.parent !== c);
       const add = fracture(data, c, k, String(Date.now() % 997)); E.def.nations.push(...add); autoRoles(E.def.nations); E.sel = add[0]?.id; E.first = true; E.q = ''; E.cont = ''; draw(); return;
     }
-    if (e.target.closest('[data-addn]')) { const id = 'CW_X' + (Date.now() % 100000); E.def.nations.unshift({ id, parent: null, name: 'Nova nação', formal: 'Nova nação', leader: personName('en'), regime: 'hybrid', role: 'neutral', provs: [], flagSpec: autoFlag(id) }); E.sel = id; E.q = ''; E.cont = ''; draw(); root.querySelector('[data-list]')?.scrollTo(0, 0); return; }
+    if (e.target.closest('[data-addn]')) { const id = 'CW_X' + (Date.now() % 100000); E.def.nations.unshift({ id, parent: null, name: 'Nova nação', formal: 'Nova nação', leader: '', autoLeader: true, regime: 'hybrid', role: 'neutral', provs: [], flagSpec: autoFlag(id) }); E.sel = id; E.q = ''; E.cont = ''; draw(); root.querySelector('[data-list]')?.scrollTo(0, 0); return; }
     if (e.target.closest('[data-export]')) { E.def.name = root.querySelector('[data-wname]')?.value || E.def.name || 'Meu mundo'; exportWorld(clean()); return; }
     if (e.target.closest('[data-save]')) { E.def.name = root.querySelector('[data-wname]').value || 'Meu mundo'; onSave(clean()); clearDraft(); toast('Mundo salvo.', 'good'); return; }
     if (e.target.closest('[data-use]')) { E.def.name = root.querySelector('[data-wname]')?.value || E.def.name || 'Meu mundo'; const d = clean(); if (!d.nations.length) return toast('Crie ao menos uma nação com províncias.', 'warn'); clearDraft(); m.close(); onUse(d); }
@@ -221,7 +222,7 @@ export function openEditor(data, def, { onUse, onSave }) {
     const card = e.target.closest('[data-nid]'), n = card && byId(card.dataset.nid);
     if (e.target.matches('[data-rel]') && n) { (n.rels ||= {})[e.target.dataset.rel] = +e.target.value; saveDraft(); renderList(false); return; }
     const f = e.target.dataset.f;
-    if (f && n) { n[f] = e.target.value || (f === 'posture' ? null : ''); if (f === 'name') { n.formal = e.target.value; n.manualName = true; } saveDraft(); if (f === 'regime' || f === 'posture' || f === 'role') renderList(false); }
+    if (f && n) { n[f] = e.target.value || (f === 'posture' ? null : ''); if (f === 'name') { n.formal = e.target.value; n.manualName = true; } if (f === 'leader') n.manualLeader = true; saveDraft(); if (f === 'regime' || f === 'posture' || f === 'role') renderList(false); }
   };
   const clean = () => ({ ...E.def, id: 'custom', nations: E.def.nations.filter(n => n.provs.length).map(n => ({ ...n, parent: n.parent || prov[n.provs[0]]?.a3 })) });
   draw();

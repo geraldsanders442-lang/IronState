@@ -235,15 +235,21 @@ export function computeMeters(s, data) {
   const wars = W.wars.filter(w => w.active).length + (s.spectator ? 0 : s.wars.filter(w => w.active).length);
   const recent = (W.regimeLog || []).filter(x => d - x.day < 120 && x.kind !== 'election').length;
   const newS = (W.newStates || []).filter(x => d - x.day < 365).length;
-  let pop = 0, natW = 0, dem = 0, fams = {};
-  for (const id of ids) { const c = W.c[id], f = famOf(s, data, id); fams[f] = (fams[f] || 0) + 1; pop += c.pop; natW += nationalismOf(s, data, id) * c.pop; if (f === 'liberal' || f === 'socdem') dem++; }
+  let pop = 0, natW = 0, dem = 0, fams = {}, hdiW = 0, povW = 0, libW = 0;
+  const warSet = new Set(W.wars.filter(w => w.active).flatMap(w => [...w.a, ...w.b]));
+  for (const id of ids) {
+    const c = W.c[id], f = famOf(s, data, id); fams[f] = (fams[f] || 0) + 1; pop += c.pop; natW += nationalismOf(s, data, id) * c.pop; if (f === 'liberal' || f === 'socdem') dem++;
+    const sd = socialOf(c, warSet.has(id)); hdiW += sd.hdi * c.pop; povW += sd.poverty * c.pop; libW += (entOf(s, data, id)?.profile?.liberty ?? 50) * c.pop;
+  }
   const top = ids.sort((a, b) => aiPower(W.c[b]) - aiPower(W.c[a])).slice(0, 30);
   let hostile = 0, pairs = 0;
   for (let i = 0; i < top.length; i++) for (let j = i + 1; j < top.length; j++) { pairs++; if (compat(famOf(s, data, top[i]), famOf(s, data, top[j])) <= -0.35) hostile++; }
   const tension = W.tension ?? 30;
   const chaos = clamp(wars * 3.5 + recent * 3 + newS * 3 + tension * 0.3 + (W.crisis ? 8 : 0) + (W.lab?.chaos ?? 35) * 0.12, 0, 100);
-  const M = W.meters = { chaos, tension, wars, nationalism: pop ? natW / pop : 50, polarization: pairs ? hostile / pairs * 100 : 0, democracy: ids.length ? dem / ids.length * 100 : 0, countries: ids.length, alliances: (W.alliances || []).length, newStates: (W.newStates || []).length, fams };
-  (W.meterHist ||= []).push([d, Math.round(M.chaos), Math.round(M.tension), M.wars, Math.round(M.nationalism), Math.round(M.polarization), Math.round(M.democracy)]);
+  const M = W.meters = { chaos, tension, wars, nationalism: pop ? natW / pop : 50, polarization: pairs ? hostile / pairs * 100 : 0, democracy: ids.length ? dem / ids.length * 100 : 0, hdi: pop ? hdiW / pop : 0.7, poverty: pop ? povW / pop : 15, freedom: pop ? libW / pop : 50, countries: ids.length, alliances: (W.alliances || []).length, newStates: (W.newStates || []).length, fams };
+  M.era = classifyWorld(M, fams, ids.length);
+  if (W.eraNow !== M.era.id) { if (W.eraNow) (W.eraLog ||= []).unshift({ day: d, id: M.era.id, name: M.era.name }); W.eraNow = M.era.id; }
+  (W.meterHist ||= []).push([d, Math.round(M.chaos), Math.round(M.tension), M.wars, Math.round(M.nationalism), Math.round(M.polarization), Math.round(M.democracy), Math.round(M.hdi * 1000) / 10, Math.round(M.poverty * 10) / 10, Math.round(M.freedom)]);
   if (W.meterHist.length > 260) W.meterHist.shift();
   // Observatório: série mensal por país (PIB, estabilidade, poder, população, províncias) e das famílias ideológicas.
   if (s.spectator && (!W.obsHist || d - (W.obsHist.days.at(-1) ?? -99) >= 28)) {
@@ -254,6 +260,48 @@ export function computeMeters(s, data) {
     if (H.days.length > 120) { H.days.shift(); H.fams.shift(); }
   }
   return M;
+}
+
+// ---------- Indicadores sociais estimados (IDH e pobreza) ----------
+// IDH aproximado pela renda per capita (escala logarítmica), com perdas por guerra e instabilidade.
+export function socialOf(c, atWar) {
+  const pc = Math.max(150, c.gdp * 1e3 / Math.max(0.01, c.pop));
+  const hdi = clamp(0.25 + 0.25 * Math.log10(pc / 100) - (atWar ? 0.04 : 0) - Math.max(0, 40 - c.stab) * 0.002, 0.25, 0.97);
+  const poverty = clamp(90 - 23 * Math.log10(pc) + (atWar ? 7 : 0) + Math.max(0, 40 - c.stab) * 0.25, 0.5, 85);
+  return { hdi, poverty, gdppc: pc };
+}
+
+// ---------- Classificação do mundo ----------
+export const ERAS = {
+  worldwar: { name: 'Guerra mundial', color: '#7a1d12', desc: 'Conflitos simultâneos em vários continentes e tensão máxima entre as potências.' },
+  chaos: { name: 'Anarquia global', color: '#a93226', desc: 'Estados se desfazendo, golpes e secessões em série: a ordem internacional colapsou.' },
+  orwell: { name: 'Distopia orwelliana ("1984")', color: '#2c2c2c', desc: 'Regimes totalitários dominam o planeta; quase não há liberdade e os blocos vivem em guerra permanente.' },
+  dystopia: { name: 'Distopia', color: '#5b2c6f', desc: 'Pobreza em massa, regimes fechados e instabilidade em toda parte.' },
+  nationalist: { name: 'Era dos nacionalismos', color: '#3b3f8f', desc: 'Fronteiras contestadas, irredentismo e governos nacionalistas em alta.' },
+  red: { name: 'Mundo vermelho', color: '#c0261d', desc: 'O socialismo é a força dominante do planeta.' },
+  theocratic: { name: 'Era teocrática', color: '#2e7d4f', desc: 'A religião governa boa parte dos Estados.' },
+  coldwar: { name: 'Guerra fria', color: '#566573', desc: 'Blocos ideológicos rivais, tensão alta e guerras por procuração — mas sem confronto direto.' },
+  multipolar: { name: 'Multipolaridade instável', color: '#ca6f1e', desc: 'Várias potências disputam influência; crises frequentes.' },
+  fragile: { name: 'Equilíbrio frágil', color: '#b7950b', desc: 'Paz relativa, mas com focos de tensão e conflitos regionais.' },
+  liberal: { name: 'Paz liberal', color: '#2f6db5', desc: 'Democracias prevalecem, guerras são raras e o comércio floresce.' },
+  utopia: { name: 'Utopia', color: '#1e8449', desc: 'Paz, prosperidade, liberdade e quase nenhuma pobreza.' },
+};
+export function classifyWorld(M, fams = {}, n = 1) {
+  const share = k => (fams[k] || 0) / Math.max(1, n);
+  let id;
+  if (M.wars >= 10 || (M.tension >= 85 && M.wars >= 5)) id = 'worldwar';
+  else if (M.chaos >= 80) id = 'chaos';
+  else if (M.freedom < 32 && M.democracy < 25 && (M.polarization > 35 || M.wars >= 3)) id = 'orwell';
+  else if (M.poverty > 30 || (M.hdi < 0.55 && M.chaos > 50)) id = 'dystopia';
+  else if (share('socialist') > 0.35) id = 'red';
+  else if (share('theocratic') > 0.25) id = 'theocratic';
+  else if (M.nationalism > 60) id = 'nationalist';
+  else if (M.wars === 0 && M.hdi > 0.8 && M.democracy > 60 && M.tension < 25 && M.poverty < 8) id = 'utopia';
+  else if (M.polarization > 45 && M.tension >= 45 && M.wars < 5) id = 'coldwar';
+  else if (M.democracy > 50 && M.wars <= 1 && M.tension < 35) id = 'liberal';
+  else if (M.tension > 50 || M.wars >= 4) id = 'multipolar';
+  else id = 'fragile';
+  return { id, ...ERAS[id] };
 }
 
 // ---------- Rodada semanal ----------

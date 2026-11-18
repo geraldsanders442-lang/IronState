@@ -4,14 +4,15 @@
 // clássico não é alterado.
 import { $, esc, num, money, modal, toast, ICONS } from './dom.js';
 import { WorldMap } from './worldmap.js';
-import { entityFlag, flagHTML } from './flag.js';
+import { entityFlag, flagHTML, mountFlagEditor, regionalFlags, historicalFlags, hasIsoFlag, defaultFlag } from './flag.js';
+import { pagedGrid } from './paginate.js';
 import { tintOf } from './mapviews.js';
 import { mountLine, barsHTML, pieSVG, PALETTE } from './charts.js';
 import { fmtDate, dateOf, fmtMonth } from '../sim/util.js';
 import { PLY, ownerOf, aiPower, relAI, provincesOf, RANK_INFO } from '../sim/world.js';
 import { entName } from '../sim/war.js';
 import { leaderOf } from '../sim/worldlife.js';
-import { FAMILIES, POSTURES, famOf, postureOf, nationalismOf, ethnicIndex, compat } from '../sim/geopol.js';
+import { FAMILIES, POSTURES, famOf, postureOf, nationalismOf, ethnicIndex, compat, socialOf, ERAS } from '../sim/geopol.js';
 
 const SPEEDS = [[30, '1 mês / 30 s'], [15, '1 mês / 15 s'], [6, '1 mês / 6 s'], [2, 'Turbo (2 s)']];
 const MAPMODES = [['political', 'Político'], ['ideology', 'Ideologias'], ['posture', 'Política externa'], ['wars', 'Guerras'], ['alliances', 'Alianças'], ['ethnic', 'Etnias e tensões'], ['relations', 'Relações'], ['before', 'Mapa inicial']];
@@ -20,7 +21,7 @@ const ALC = ['#2e86ab', '#e4572e', '#76b041', '#9b5de5', '#f4a259', '#17bebb', '
 const NAV = [
   ['Observatório', [['painel', 'Painel', 'overview'], ['mapa', 'Mapa-múndi', 'map'], ['jornal', 'Jornal', 'reports'], ['graficos', 'Gráficos e dados', 'stats']]],
   ['Mundo', [['paises', 'Países', 'encyclopedia'], ['guerras', 'Guerras', 'military'], ['diplomacia', 'Diplomacia e alianças', 'diplomacy'], ['ideologias', 'Ideologias', 'politics'], ['etnias', 'Etnias e tensões', 'regions'], ['rankings', 'Rankings', 'rankings']]],
-  ['Laboratório', [['lab', 'Regras e intervenções', 'research'], ['comparar', 'Antes × depois', 'analysis'], ['config', 'Configurações', 'options']]],
+  ['Laboratório', [['relatorio', 'Relatório do experimento', 'reports'], ['lab', 'Regras e intervenções', 'research'], ['comparar', 'Antes × depois', 'analysis'], ['config', 'Configurações', 'options']]],
 ];
 const mix = (hex, f) => { const n = parseInt(String(hex || '#cccccc').slice(1), 16); return '#' + [n >> 16, (n >> 8) & 255, n & 255].map(v => Math.round(v + (255 - v) * f).toString(16).padStart(2, '0')).join(''); };
 const DEF_CFG = { speed: 30, pauseWar: false, pauseState: true, pauseRegime: false, paperMonthly: false, ticker: true, mapMode: 'political', labels: true };
@@ -40,6 +41,8 @@ export function mountObservatory(game, { onExit }) {
     const s = S(), M = W().meters || {}, d = game.day;
     const months = Math.round((d - (W().obsStart?.day || 0)) / 30.4);
     const chips = [];
+    if (M.era) chips.push([`<span style="background:${M.era.color};color:#fff;padding:1px 6px;border-radius:9px" data-tip="${esc(M.era.desc)}">${esc(M.era.name)}</span>`, 'era']);
+    if (W().obsEnded) chips.push(['EXPERIMENTO ENCERRADO', 'warn']);
     if (M.wars) chips.push([`${M.wars} GUERRA(S)`, M.wars >= 6 ? '' : 'warn']);
     if (W().crisis) chips.push(['CRISE GLOBAL', '']);
     if ((M.tension ?? 0) > 70) chips.push(['TENSÃO EXTREMA', '']); else if ((M.tension ?? 0) > 50) chips.push(['Tensão alta', 'warn']);
@@ -51,8 +54,8 @@ export function mountObservatory(game, { onExit }) {
         <button class="endturn" data-oplay data-tip="Avanço rápido (barra de espaço)">${O.playing ? '❚❚ Pausar' : '▶ Avançar'}</button>
         <select data-ospeed>${SPEEDS.map(([v, n]) => `<option value="${v}" ${cfg().speed === v ? 'selected' : ''}>${n}</option>`).join('')}</select>
         <button data-ostep="week" data-tip="Avança uma semana (Enter)">+1 sem.</button><button data-ostep="month" data-tip="Avança um mês">+1 mês</button></div>
-      <div class="alerts">${chips.map(([t, c]) => `<span class="alert-chip ${c}">${t}</span>`).join('')}</div>
-      <div class="kpis">${k('Caos mundial', num(M.chaos, 0), 'Guerras, golpes, secessões e crises recentes', M.chaos > 60 ? '#ff9b8f' : M.chaos > 35 ? '#ffe08a' : '#9be3a5')}${k('Tensão', num(M.tension, 0), 'Risco de guerra entre as potências', M.tension > 60 ? '#ff9b8f' : M.tension > 35 ? '#ffe08a' : '#9be3a5')}${k('Guerras', M.wars ?? 0, 'Conflitos ativos')}${k('Polarização', num(M.polarization, 0), 'Pares de potências ideologicamente hostis')}${k('Democracias', num(M.democracy, 0) + '%', 'Países liberais ou social-democratas')}${k('Países', M.countries ?? 0, 'Estados soberanos existentes')}</div>`;
+      <div class="alerts">${chips.map(([t, c]) => c === 'era' ? t : `<span class="alert-chip ${c}">${t}</span>`).join(' ')}</div>
+      <div class="kpis">${k('Caos mundial', num(M.chaos, 0), 'Guerras, golpes, secessões e crises recentes', M.chaos > 60 ? '#ff9b8f' : M.chaos > 35 ? '#ffe08a' : '#9be3a5')}${k('Tensão', num(M.tension, 0), 'Risco de guerra entre as potências', M.tension > 60 ? '#ff9b8f' : M.tension > 35 ? '#ffe08a' : '#9be3a5')}${k('Guerras', M.wars ?? 0, 'Conflitos ativos')}${k('Polarização', num(M.polarization, 0), 'Pares de potências ideologicamente hostis')}${k('Democracias', num(M.democracy, 0) + '%', 'Países liberais ou social-democratas')}${k('IDH mundial', num(M.hdi, 3), 'Índice de desenvolvimento humano médio (ponderado pela população)')}${k('Pobreza', num(M.poverty, 1) + '%', 'Pobreza extrema estimada no mundo')}${k('Países', M.countries ?? 0, 'Estados soberanos existentes')}</div>`;
   }
   const worldName = () => S().world.cwdef?.name || D().worldScenarios?.find(x => x.id === S().world.wscn)?.name || 'Mundo real';
   function renderTicker() {
@@ -71,7 +74,7 @@ export function mountObservatory(game, { onExit }) {
         html += `<a href="#" data-ogo="${id}" class="${id === O.page ? 'active' : ''}"><svg viewBox="0 0 20 20">${ICONS[ic] || ICONS.reports}</svg>${name}${badge}</a>`;
       }
     }
-    html += `<div class="sec">Partida</div><a href="#" data-omenu="save"><svg viewBox="0 0 20 20">${ICONS.options}</svg>Salvar agora</a><a href="#" data-omenu="exit"><svg viewBox="0 0 20 20">${ICONS.overview}</svg>Voltar ao menu</a>`;
+    html += `<div class="sec">Partida</div><a href="#" data-omenu="end"><svg viewBox="0 0 20 20">${ICONS.reports}</svg>Encerrar experimento</a><a href="#" data-omenu="save"><svg viewBox="0 0 20 20">${ICONS.options}</svg>Salvar agora</a><a href="#" data-omenu="exit"><svg viewBox="0 0 20 20">${ICONS.overview}</svg>Voltar ao menu</a>`;
     $('#sidebar').innerHTML = html;
     $('#sidebar').classList.remove('open'); $('#nav-backdrop')?.classList.remove('open');
     const bn = $('#bottomnav'); if (bn) bn.innerHTML = [['painel', 'Painel', 'overview'], ['mapa', 'Mapa', 'map'], ['jornal', 'Jornal', 'reports'], ['lab', 'Lab', 'research']].map(([id, n, ic]) => `<button data-ogo="${id}" class="${id === O.page ? 'active' : ''}"><svg viewBox="0 0 20 20">${ICONS[ic]}</svg>${n}</button>`).join('') + '<button data-hamb aria-label="Menu"><svg viewBox="0 0 20 20"><path d="M3 5h14M3 10h14M3 15h14"/></svg>Menu</button>';
@@ -174,9 +177,10 @@ export function mountObservatory(game, { onExit }) {
       el.innerHTML = `<div class="panel banner"><span class="obs-eye" style="font-size:54px;color:#c9a227">◉</span><div style="flex:1"><div class="title">${esc(worldName())}</div><div class="motto">"Ver o mundo agir sozinho"</div>
           <div class="small" style="margin-top:4px">Observando desde <b>${fmtDate(Wd.obsStart?.day || 0, true)}</b> · ${M.countries} países · ${M.alliances} alianças · ${M.newStates} Estados novos · caos da IA ${Wd.lab?.chaos ?? 35}/100</div></div>
           <div class="right small"><div><b>${fmtDate(game.day, true)}</b></div><div>Semana ${game.week + 1}</div><div style="margin-top:4px">Situação: <b class="${status[1]}">${status[0]}</b></div></div></div>
+        ${M.era ? `<div class="panel tight" style="border-left:6px solid ${M.era.color}"><b>Classificação do mundo: <span style="color:${M.era.color}">${esc(M.era.name)}</span></b> — <span class="small">${esc(M.era.desc)}</span> <a href="#" data-ogo="relatorio" class="small">ver relatório</a></div>` : ''}
         <div class="grid" style="grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)">
           <div class="panel tight"><div class="row small" style="justify-content:space-between;margin-bottom:4px"><b>Mapa-múndi</b>${modeSeg()}</div><div data-omap class="obs-map-dash"></div><div class="obs-legend2" data-olegend></div></div>
-          <div><div class="panel"><h3>Medidores do mundo</h3>${meter('Caos mundial', M.chaos, '#c0392b', 'Guerras, golpes, secessões e crises recentes')}${meter('Tensão', M.tension, '#e67e22', 'Risco de guerra entre potências')}${meter('Polarização ideológica', M.polarization, '#8e44ad', 'Pares de potências ideologicamente hostis')}${meter('Nacionalismo', M.nationalism, '#34495e', 'Média ponderada pela população')}${meter('Democracias (%)', M.democracy, '#2f6db5', 'Países liberais ou social-democratas')}</div>
+          <div><div class="panel"><h3>Medidores do mundo</h3>${meter('Caos mundial', M.chaos, '#c0392b', 'Guerras, golpes, secessões e crises recentes')}${meter('Tensão', M.tension, '#e67e22', 'Risco de guerra entre potências')}${meter('Polarização ideológica', M.polarization, '#8e44ad', 'Pares de potências ideologicamente hostis')}${meter('Nacionalismo', M.nationalism, '#34495e', 'Média ponderada pela população')}${meter('Democracias (%)', M.democracy, '#2f6db5', 'Países liberais ou social-democratas')}${meter('IDH mundial (×100)', (M.hdi || 0) * 100, '#1e8449', 'Desenvolvimento humano médio estimado')}${meter('Pobreza extrema (%)', M.poverty, '#7e5109', 'Parcela estimada da população mundial na pobreza extrema')}${meter('Liberdade média', M.freedom, '#17a589', 'Liberdades civis médias, ponderadas pela população')}</div>
             <div class="panel"><h3>Selecionado</h3><div data-oselbox></div></div></div></div>
         <div class="grid g3">
           <div class="panel"><h3>Manchetes do mês</h3>${H.length ? `<div class="obs-lead-l">${esc(H[0].text)}</div>` + H.slice(1).map(l => `<div class="obs-n obs-${l.type}"><small>${fmtDate(l.day)}</small> ${esc(l.text)}</div>`).join('') : '<p class="muted small">Nada ainda — avance o tempo.</p>'}<button class="small" data-ogo="jornal" style="margin-top:6px">Abrir o jornal</button></div>
@@ -209,7 +213,7 @@ export function mountObservatory(game, { onExit }) {
       const sel = O.cmp ||= [...alive()].sort((a, b) => Wd.c[b].gdp - Wd.c[a].gdp).slice(0, 4), metric = O.metric ||= '1';
       const MET = { 1: 'PIB (bi US$)', 2: 'Estabilidade', 3: 'Poder militar', 4: 'População (mi)', 5: 'Províncias' };
       el.innerHTML = `<h2>Gráficos e dados</h2>
-        <div class="grid g2"><div class="panel"><div data-och="m1"></div></div><div class="panel"><div data-och="m2"></div></div><div class="panel"><div data-och="m3"></div></div><div class="panel"><div data-och="fam"></div></div></div>
+        <div class="grid g2"><div class="panel"><div data-och="m1"></div></div><div class="panel"><div data-och="m2"></div></div><div class="panel"><div data-och="m3"></div></div><div class="panel"><div data-och="fam"></div></div><div class="panel"><div data-och="soc"></div></div><div class="panel"><div data-och="pov"></div></div></div>
         <div class="panel"><h3>Comparar países</h3><div class="row" style="gap:6px;flex-wrap:wrap"><select data-ometric>${Object.entries(MET).map(([k, n]) => `<option value="${k}" ${metric === k ? 'selected' : ''}>${n}</option>`).join('')}</select>
           <select data-oaddcmp><option value="">+ adicionar país</option>${[...alive()].sort((a, b) => nm(a).localeCompare(nm(b), 'pt')).map(id => `<option value="${id}">${esc(nm(id))}</option>`).join('')}</select>
           ${sel.map(id => `<span class="tag">${fl(id, 14)} ${esc(nm(id))} <a href="#" data-ormcmp="${id}">×</a></span>`).join('')}</div><div data-och="cmp"></div>
@@ -218,6 +222,8 @@ export function mountObservatory(game, { onExit }) {
       const ser = (i, name, color) => ({ name, color, data: MH.map(r => [r[0], r[i]]) });
       mountLine(el.querySelector('[data-och="m1"]'), { title: 'Caos, tensão e polarização', series: [ser(1, 'Caos', '#c0392b'), ser(2, 'Tensão', '#e67e22'), ser(5, 'Polarização', '#8e44ad')], yMin: 0, yMax: 100, yFmt: v => num(v, 0) });
       mountLine(el.querySelector('[data-och="m2"]'), { title: 'Nacionalismo e democracias (%)', series: [ser(4, 'Nacionalismo', '#34495e'), ser(6, 'Democracias', '#2f6db5')], yMin: 0, yMax: 100, yFmt: v => num(v, 0) });
+      mountLine(el.querySelector('[data-och="soc"]'), { title: 'IDH mundial (×100) e liberdade média', series: [{ name: 'IDH ×100', color: '#1e8449', data: MH.filter(r => r[7] != null).map(r => [r[0], r[7]]) }, { name: 'Liberdade', color: '#17a589', data: MH.filter(r => r[9] != null).map(r => [r[0], r[9]]) }], yMin: 0, yMax: 100, yFmt: v => num(v, 0) });
+      mountLine(el.querySelector('[data-och="pov"]'), { title: 'Pobreza extrema mundial (%)', series: [{ name: 'Pobreza', color: '#7e5109', data: MH.filter(r => r[8] != null).map(r => [r[0], r[8]]) }], yMin: 0, yFmt: v => num(v, 1) });
       mountLine(el.querySelector('[data-och="m3"]'), { title: 'Guerras ativas', series: [ser(3, 'Guerras', '#7a1d12')], yMin: 0, yFmt: v => num(v, 0) });
       mountLine(el.querySelector('[data-och="fam"]'), { title: 'Países por família ideológica', series: Object.entries(FAMILIES).map(([k, f]) => ({ name: f.short, color: f.color, data: H.days.map((d, i) => [d, H.fams[i]?.[k] || 0]) })), yMin: 0, yFmt: v => num(v, 0) });
       mountLine(el.querySelector('[data-och="cmp"]'), { title: MET[metric], series: sel.map((id, i) => ({ name: nm(id), color: PALETTE[i % PALETTE.length], data: (H.c[id] || []).map(r => [r[0], r[+metric]]) })), yFmt: v => num(v, metric === '1' ? 0 : 1) });
@@ -256,10 +262,10 @@ export function mountObservatory(game, { onExit }) {
       const claims = Wd.claims.filter(x => x.status === 'active' && (x.claimant === id || x.holder === id));
       const als = (Wd.alliances || []).filter(a => a.members.includes(id));
       el.innerHTML = `<div class="row" style="gap:6px;margin-bottom:6px"><button class="small" data-ogo="paises">← Países</button></div>
-        <div class="panel banner">${fl(id, 120)}<div style="flex:1"><div class="title">${esc(e.name)}</div><div class="motto">${esc(L?.name || '')}${L?.traits ? ' · ' + esc(L.traits.join(', ')) : ''}</div>
+        <div class="panel banner"><div style="text-align:center">${fl(id, 120)}<br><button class="small" data-oflag="${id}" style="margin-top:4px">🏳 Editar bandeira</button></div><div style="flex:1"><div class="title">${esc(e.name)}</div><div class="motto">${esc(L?.name || '')}${L?.traits ? ' · ' + esc(L.traits.join(', ')) : ''}</div>
           <div class="small" style="margin-top:4px"><span class="tag" style="background:${FAMILIES[f].color};color:#fff">${esc(FAMILIES[f].name)}</span> <span class="tag">${esc(POSTURES[postureOf(s, data, id)]?.name || '')}</span> <span class="tag">nacionalismo ${num(nationalismOf(s, data, id), 0)}</span> ${e.born ? '<span class="tag warn">Estado novo</span>' : ''} ${e.custom ? '<span class="tag blue">nação customizada</span>' : ''}</div>
           <div class="small">Capital: <b>${esc(e.capital?.name || '')}</b> · ${provincesOf(s, data, id).length} províncias${als.length ? ' · Aliança: <b>' + als.map(a => esc(a.name)).join(', ') + '</b>' : ''}</div></div>
-          <div class="right small"><div>PIB <b>${money(c.gdp, 'US$')}</b></div><div>População <b>${num(c.pop, 1)} mi</b></div><div>Poder militar <b>${num(aiPower(c), 1)}</b></div><div>Estabilidade <b>${num(c.stab, 0)}</b></div></div></div>
+          <div class="right small"><div>PIB <b>${money(c.gdp, 'US$')}</b> · per capita <b>${num(socialOf(c).gdppc, 0)}</b></div><div>IDH <b>${num(socialOf(c, wars.length > 0).hdi, 3)}</b> · pobreza <b>${num(socialOf(c, wars.length > 0).poverty, 1)}%</b></div><div>População <b>${num(c.pop, 1)} mi</b></div><div>Poder militar <b>${num(aiPower(c), 1)}</b></div><div>Estabilidade <b>${num(c.stab, 0)}</b></div></div></div>
         <div class="grid g3"><div class="panel"><div data-och="gdp"></div></div><div class="panel"><div data-och="stab"></div></div><div class="panel"><div data-och="pow"></div></div></div>
         <div class="grid g3">
           <div class="panel"><h3>Relações</h3><div class="grid g2 small"><div><b>Amigos</b>${rels.slice(0, 7).map(([o, r]) => `<div data-ogo="pais:${o}" style="cursor:pointer">${fl(o, 14)} ${esc(nm(o))} <b class="c-good">${Math.round(r)}</b></div>`).join('')}</div><div><b>Inimigos</b>${rels.slice(-7).reverse().map(([o, r]) => `<div data-ogo="pais:${o}" style="cursor:pointer">${fl(o, 14)} ${esc(nm(o))} <b class="c-bad">${Math.round(r)}</b></div>`).join('')}</div></div>
@@ -356,6 +362,7 @@ export function mountObservatory(game, { onExit }) {
       const mk = (box, own) => new WorldMap(box, data.geo, { owner: own, color: (pid, o) => o === PLY ? '#d8d8d0' : tintOf(o), labels: true, search: false, labelOf: id => id === PLY ? '' : name(id), tip: (pid, o) => `<b>${esc(name(o))}</b><br>${esc(data.geo.prov[pid].n)}` });
       requestAnimationFrame(() => { mk(el.querySelector('[data-mb]'), before); mk(el.querySelector('[data-mn]'), now); });
     },
+    relatorio(el) { reportPage(el); },
     config(el) {
       const c = cfg(), ck = (k, n, hint) => `<label class="row" style="gap:8px;margin:6px 0"><input type="checkbox" data-ocfg="${k}" ${c[k] ? 'checked' : ''}><span><b>${n}</b><br><span class="small muted">${hint}</span></span></label>`;
       el.innerHTML = `<h2>Configurações do Observatório</h2><div class="grid g2"><div class="panel"><h3>Tempo</h3><label class="small">Velocidade do avanço rápido<br><select data-ospeed>${SPEEDS.map(([v, n]) => `<option value="${v}" ${c.speed === v ? 'selected' : ''}>${n}</option>`).join('')}</select></label>
@@ -369,6 +376,88 @@ export function mountObservatory(game, { onExit }) {
     return `<tr><td>${w.a.map(x => `<span data-ogo="pais:${x}" style="cursor:pointer">${fl(x, 14)} ${esc(nm(x))}</span>`).join('<br>')}</td><td>${w.b.map(x => `<span data-ogo="pais:${x}" style="cursor:pointer">${fl(x, 14)} ${esc(nm(x))}</span>`).join('<br>')}</td><td><div class="obs-front"><i style="left:${50 + f / 2}%"></i></div><span class="small muted">${f > 15 ? 'atacantes avançam' : f < -15 ? 'defensores resistem' : 'equilíbrio'}</span></td><td>${fmtDate(w.since || 0)}</td><td class="num">${occ}</td><td class="small">${esc(w.note || '')}</td></tr>`;
   }
   const warsMini = ws => ws.map(w => { const f = Math.max(-100, Math.min(100, w.front || 0)); return `<div class="obs-war" data-ogo="pais:${w.a[0]}"><div class="row small" style="justify-content:space-between;flex-wrap:nowrap">${fl(w.a[0], 16)} <span>${esc(nm(w.a[0]))}${w.a.length > 1 ? ` +${w.a.length - 1}` : ''}</span><span class="muted">×</span><span>${esc(nm(w.b[0]))}${w.b.length > 1 ? ` +${w.b.length - 1}` : ''}</span> ${fl(w.b[0], 16)}</div><div class="obs-front"><i style="left:${50 + f / 2}%"></i></div></div>`; }).join('') || '<p class="small muted">Paz no mundo — por enquanto.</p>';
+
+  // ---------- Relatório do experimento ----------
+  function reportPage(el) {
+    const s = S(), data = D(), Wd = W(), M = Wd.meters || {}, st = Wd.obsStart || { day: 0, countries: [], gdp: [], owner: {}, names: {} };
+    const al = alive(), gone = st.countries.filter(id => !Wd.c[id]), born = al.filter(id => !st.countries.includes(id));
+    const name = id => Wd.c[id] ? nm(id) : st.names?.[id] || data.reg[id]?.name || id;
+    const allWars = Wd.wars.filter(w => w.since != null);
+    const months = Math.max(0, Math.round((game.day - st.day) / 30.4));
+    const regimes = (Wd.regimeLog || []).filter(r => r.kind !== 'election');
+    const MH = Wd.meterHist || [], first = MH.find(r => r[7] != null) || [];
+    const cntB = {}, cntN = {};
+    for (const pid in data.geo.prov) { const b = st.owner?.[pid] || data.geo.prov[pid].a3, n = ownerOf(s, data, pid); cntB[b] = (cntB[b] || 0) + 1; cntN[n] = (cntN[n] || 0) + 1; }
+    const delta = al.map(id => [id, (cntN[id] || 0) - (cntB[id] || 0)]).filter(x => x[1]).sort((a, b) => b[1] - a[1]);
+    const nowTop = [...al].sort((a, b) => Wd.c[b].gdp - Wd.c[a].gdp).slice(0, 10);
+    const dur = w => Math.max(1, Math.round(((w.active ? game.day : (w.ended ?? w.endDay ?? game.day)) - (w.since || 0)) / 7));
+    const res = w => w.active ? '<span class="tag red">em curso</span>' : (w.front || 0) > 30 ? 'vitória atacante' : (w.front || 0) < -30 ? 'vitória defensora' : 'cessar-fogo';
+    const stat = (n, v, d) => `<div class="panel tight" style="text-align:center"><div style="font-size:24px;font-weight:bold">${v}</div><div class="small">${n}</div>${d ? `<div class="small muted">${d}</div>` : ''}</div>`;
+    const ch = (a, b, dig = 0, suf = '') => b == null || a == null || !Number.isFinite(a) ? '' : `início ${num(a, dig)}${suf} → agora ${num(b, dig)}${suf}`;
+    el.innerHTML = `<div class="row" style="justify-content:space-between;flex-wrap:wrap;gap:6px"><h2 style="margin:0">Relatório do experimento</h2><div class="row" style="gap:6px">${Wd.obsEnded ? '<button class="primary" data-oresume>▶ Continuar observando</button>' : ''}<button data-oexport>⬇ Exportar relatório (HTML)</button><button data-omenu="exit">↩ Voltar ao menu</button></div></div>
+      <div class="panel banner" style="border-left:8px solid ${M.era?.color || '#888'}"><div style="flex:1"><div class="small muted">${esc(worldName())} · de ${fmtDate(st.day, true)} a ${fmtDate(game.day, true)} (${months} meses)${Wd.obsEnded ? ' · <b>experimento encerrado</b>' : ''}</div>
+        <div class="title">O mundo terminou como: <span style="color:${M.era?.color}">${esc(M.era?.name || '—')}</span></div><div class="motto">${esc(M.era?.desc || '')}</div>
+        <div class="small" style="margin-top:4px">Fases do mundo: ${[...(Wd.eraLog || [])].reverse().map(e => `<span class="tag" style="background:${ERAS[e.id]?.color};color:#fff">${fmtMonth(e.day)}: ${esc(e.name)}</span>`).join(' ') || 'sem mudanças de fase'}</div></div></div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(130px,1fr))">
+        ${stat('guerras ao todo', allWars.length, `${allWars.filter(w => w.active).length} ainda em curso`)}${stat('países', `${st.countries.length} → ${al.length}`, `${gone.length} sumiram · ${born.length} surgiram`)}${stat('golpes e revoluções', regimes.length)}${stat('alianças', (Wd.alliances || []).length)}
+        ${stat('IDH mundial', num(M.hdi, 3), ch(first[7] / 100, M.hdi, 3))}${stat('pobreza extrema', num(M.poverty, 1) + '%', ch(first[8], M.poverty, 1, '%'))}${stat('democracias', num(M.democracy, 0) + '%', ch(first[6], M.democracy, 0, '%'))}${stat('intervenções do laboratório', (Wd.labLog || []).length)}</div>
+      <div class="grid g2"><div class="panel"><div data-och="r1"></div></div><div class="panel"><div data-och="r2"></div></div><div class="panel"><div data-och="r3"></div></div><div class="panel"><div data-och="r4"></div></div></div>
+      <div class="panel"><h3>Todas as guerras (${allWars.length})</h3><table class="data small"><tr><th>Atacantes</th><th>Defensores</th><th>Início</th><th class="num">Semanas</th><th class="num">Ocupações</th><th>Resultado</th><th>Motivo</th></tr>${[...allWars].reverse().map(w => `<tr><td>${w.a.map(x => fl(x, 14) + ' ' + esc(name(x))).join(', ')}</td><td>${w.b.map(x => fl(x, 14) + ' ' + esc(name(x))).join(', ')}</td><td>${fmtDate(w.since || 0)}</td><td class="num">${dur(w)}</td><td class="num">${(w.occA?.length || 0) + (w.occB?.length || 0)}</td><td>${res(w)}</td><td class="small">${esc(w.note || '')}</td></tr>`).join('') || '<tr><td class="muted">Nenhuma.</td></tr>'}</table></div>
+      <div class="grid g2"><div class="panel"><h3>Países que deixaram de existir (${gone.length})</h3><table class="data small">${gone.map(id => `<tr><td>${esc(name(id))}</td><td class="small muted">anexado, dividido ou absorvido</td></tr>`).join('') || '<tr><td class="muted">Nenhum.</td></tr>'}</table></div>
+        <div class="panel"><h3>Estados que surgiram (${born.length})</h3><table class="data small">${born.map(id => { const ns = (Wd.newStates || []).find(x => x.id === id); return `<tr><td>${fl(id, 14)} ${esc(name(id))}</td><td class="small">${ns ? 'separou-se de ' + esc(name(ns.from)) + ' em ' + fmtDate(ns.day) : ''}</td></tr>`; }).join('') || '<tr><td class="muted">Nenhum.</td></tr>'}</table></div></div>
+      <div class="grid g3"><div class="panel"><h3>Quem ganhou território</h3><table class="data small">${delta.filter(x => x[1] > 0).slice(0, 10).map(([id, d]) => `<tr><td>${fl(id, 14)} ${esc(name(id))}</td><td class="num c-good">+${d}</td></tr>`).join('') || '<tr><td class="muted">Ninguém.</td></tr>'}</table></div>
+        <div class="panel"><h3>Quem perdeu território</h3><table class="data small">${delta.filter(x => x[1] < 0).slice(-10).reverse().map(([id, d]) => `<tr><td>${fl(id, 14)} ${esc(name(id))}</td><td class="num c-bad">${d}</td></tr>`).join('') || '<tr><td class="muted">Ninguém.</td></tr>'}</table></div>
+        <div class="panel"><h3>Maiores economias</h3><table class="data small"><tr><th>Início</th><th>Agora</th></tr>${(st.gdp || []).map(([id], i) => `<tr><td>${i + 1}. ${esc(name(id))}</td><td>${nowTop[i] ? fl(nowTop[i], 14) + ' ' + esc(name(nowTop[i])) : ''}</td></tr>`).join('')}</table></div></div>
+      <div class="panel"><h3>Golpes, revoluções e mudanças de regime (${regimes.length})</h3><table class="data small">${regimes.map(r => `<tr><td style="white-space:nowrap">${fmtDate(r.day)}</td><td>${esc(r.text)}</td></tr>`).join('') || '<tr><td class="muted">Nenhuma.</td></tr>'}</table></div>
+      <div class="panel"><h3>Intervenções do laboratório</h3><table class="data small">${(Wd.labLog || []).map(x => `<tr><td style="white-space:nowrap">${fmtDate(x.day)}</td><td>${esc(x.text)}</td></tr>`).join('') || '<tr><td class="muted">Nenhuma — o mundo andou sozinho.</td></tr>'}</table></div>`;
+    const ser = (i, n, c) => ({ name: n, color: c, data: MH.filter(r => r[i] != null).map(r => [r[0], r[i]]) });
+    mountLine(el.querySelector('[data-och="r1"]'), { title: 'Caos e tensão', series: [ser(1, 'Caos', '#c0392b'), ser(2, 'Tensão', '#e67e22')], yMin: 0, yMax: 100, yFmt: v => num(v, 0) });
+    mountLine(el.querySelector('[data-och="r2"]'), { title: 'Guerras ativas', series: [ser(3, 'Guerras', '#7a1d12')], yMin: 0, yFmt: v => num(v, 0) });
+    mountLine(el.querySelector('[data-och="r3"]'), { title: 'IDH (×100), pobreza (%) e democracias (%)', series: [ser(7, 'IDH ×100', '#1e8449'), ser(8, 'Pobreza', '#7e5109'), ser(6, 'Democracias', '#2f6db5')], yMin: 0, yMax: 100, yFmt: v => num(v, 0) });
+    const H = Wd.obsHist || { days: [], fams: [] };
+    mountLine(el.querySelector('[data-och="r4"]'), { title: 'Países por família ideológica', series: Object.entries(FAMILIES).map(([k, fm]) => ({ name: fm.short, color: fm.color, data: H.days.map((d, i) => [d, H.fams[i]?.[k] || 0]) })), yMin: 0, yFmt: v => num(v, 0) });
+  }
+  // Exporta a página do relatório (com os gráficos) num arquivo HTML que abre em qualquer navegador.
+  function exportReport() {
+    if (O.page !== 'relatorio') go('relatorio');
+    let css = '';
+    for (const sh of document.styleSheets) { try { for (const r of sh.cssRules) css += r.cssText + '\n'; } catch {} }
+    const body = $('#main').cloneNode(true); body.querySelectorAll('button').forEach(b => b.remove());
+    const html = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Relatório — ${esc(worldName())}</title><style>${css} body{background:#e6e8ec;padding:16px;max-width:1300px;margin:auto}</style></head><body>${body.innerHTML}</body></html>`;
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+    a.download = 'relatorio-' + worldName().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w-]+/g, '_') + '-' + fmtDate(game.day).replace(/\W+/g, '_') + '.html';
+    document.body.appendChild(a); a.click(); a.remove(); toast('Relatório exportado.', 'good');
+  }
+  // Editor de bandeira de qualquer país (só no Observatório).
+  function openFlagEditor(id) {
+    const data = D(), e = ent(id); if (!e) return;
+    let spec = structuredClone(e.flag || (e.iso2 && hasIsoFlag(e.iso2) ? { iso: e.iso2 } : defaultFlag()));
+    let tab = spec.reg ? 'reg' : spec.hist ? 'hist' : spec.iso ? 'current' : 'custom';
+    const isoList = Object.values(data.reg).filter(x => x.iso2 && hasIsoFlag(x.iso2)).sort((a, b) => a.name.localeCompare(b.name, 'pt'));
+    const m = modal(`<h2>🏳 Bandeira de ${esc(nm(id))}</h2><div class="row" style="gap:14px;align-items:flex-start;flex-wrap:nowrap"><div data-fprev>${flagHTML(spec, 140)}</div><div style="flex:1"><div class="tabs">${[['current', 'Atuais'], ['reg', 'Regionais'], ['hist', 'Históricas'], ['custom', 'Personalizada']].map(([k, n]) => `<button data-ftab="${k}">${n}</button>`).join('')}</div><div data-fbody style="margin-top:6px"></div></div></div>
+      <div class="row" style="justify-content:space-between;margin-top:8px"><button data-freset>Voltar à original</button><span><button data-close>Cancelar</button> <button class="primary" data-fok>Aplicar bandeira</button></span></div>`, { wide: true });
+    m.el.classList.add('huge');
+    const pv = () => { m.el.querySelector('[data-fprev]').innerHTML = flagHTML(spec, 140); };
+    const body = () => {
+      m.el.querySelectorAll('[data-ftab]').forEach(b => b.classList.toggle('on', b.dataset.ftab === tab));
+      const fb = m.el.querySelector('[data-fbody]'); fb._pg?.destroy?.();
+      if (tab === 'current') { fb.innerHTML = '<input data-fsearch placeholder="Buscar bandeira…" style="width:100%;margin-bottom:6px"><div data-fpg></div>'; fb._pg = pagedGrid(fb.querySelector('[data-fpg]'), isoList, { size: 60, max: '50vh', item: x => `<button data-iso="${x.iso2}">${flagHTML({ iso: x.iso2 }, 48)}${esc(x.name)}</button>`, name: x => x.name }); }
+      else if (tab === 'reg') { const list = regionalFlags().sort((a, b) => a.name.localeCompare(b.name)); fb.innerHTML = '<input data-fsearch placeholder="Buscar região…" style="width:100%;margin-bottom:6px"><div data-fpg></div>'; fb._pg = pagedGrid(fb.querySelector('[data-fpg]'), list, { size: 60, max: '50vh', item: x => `<button data-regf="${x.key}">${flagHTML({ reg: x.key }, 48)}${esc(x.name)}</button>`, name: x => x.name + ' ' + (x.a3 || '') }); }
+      else if (tab === 'hist') fb.innerHTML = `<div class="flag-grid" style="max-height:50vh">${Object.entries(historicalFlags()).map(([k, h]) => `<button data-hist="${k}">${flagHTML({ hist: k }, 48)}${esc(h.name)}</button>`).join('')}</div>`;
+      else { if (!spec.layout || !Array.isArray(spec.colors)) spec = spec.hist ? structuredClone(historicalFlags()[spec.hist].spec) : defaultFlag(); mountFlagEditor(fb, spec, () => pv()); pv(); }
+    };
+    m.el.addEventListener('click', ev => {
+      const t = ev.target;
+      const tb = t.closest('[data-ftab]'); if (tb) { tab = tb.dataset.ftab; return body(); }
+      const i = t.closest('[data-iso]'); if (i) { spec = { iso: i.dataset.iso }; return pv(); }
+      const r = t.closest('[data-regf]'); if (r) { spec = { reg: r.dataset.regf }; return pv(); }
+      const h = t.closest('[data-hist]'); if (h) { spec = { hist: h.dataset.hist }; return pv(); }
+      if (t.closest('[data-freset]')) { const W0 = W(); if (W0.ents?.[id]?.flagEdited) { const base = data.reg[id]; W0.ents[id] = { ...W0.ents[id], flag: W0.ents[id].flagOrig ?? base?.flag, flagEdited: false }; } m.close(); refresh(); return; }
+      if (t.closest('[data-fok]')) { const W0 = W(); W0.ents ||= {}; const cur = ent(id); W0.ents[id] = { ...cur, flagOrig: cur.flagEdited ? cur.flagOrig : cur.flag, flag: structuredClone(spec), flagEdited: true }; game.save(); m.close(); toast('Bandeira aplicada.', 'good'); refresh(); }
+    });
+    m.el.addEventListener('input', ev => { if (ev.target.matches('[data-fsearch]')) m.el.querySelector('[data-fbody]')._pg?.reset(ev.target.value); });
+    body();
+  }
 
   function renderPage() {
     renderNav();
@@ -441,14 +530,17 @@ export function mountObservatory(game, { onExit }) {
   const onClick = e => {
     if ($('#app').hidden) return;
     const t = e.target;
-    if (t.closest('[data-oplay]')) return setPlaying(!O.playing);
+    if (t.closest('[data-oplay]')) { if (W().obsEnded && !O.playing) { W().obsEnded = null; toast('Experimento retomado.', 'info'); } return setPlaying(!O.playing); }
+    if (t.closest('[data-oresume]')) { W().obsEnded = null; game.save(); renderTop(); return go('painel'); }
+    if (t.closest('[data-oexport]')) return exportReport();
+    if (t.closest('[data-oflag]')) return openFlagEditor(t.closest('[data-oflag]').dataset.oflag);
     const st = t.closest('[data-ostep]'); if (st) { setPlaying(false); return advance(st.dataset.ostep); }
     const g = t.closest('[data-ogo]'); if (g && !t.closest('select,input')) { e.preventDefault(); return go(g.dataset.ogo); }
     const md = t.closest('[data-omode]'); if (md) { O.mode = md.dataset.omode; document.querySelectorAll('[data-omode]').forEach(b => b.classList.toggle('on', b.dataset.omode === O.mode)); return redrawMap(); }
     const so = t.closest('[data-osort]'); if (so) { const k = so.dataset.osort; O.sort = [k, O.sort[0] === k ? -O.sort[1] : (k === 'name' || k === 'fam' || k === 'post' ? 1 : -1)]; return renderPage(); }
     const rm = t.closest('[data-ormcmp]'); if (rm) { e.preventDefault(); O.cmp = O.cmp.filter(x => x !== rm.dataset.ormcmp); return renderPage(); }
     const a = t.closest('[data-oact]'); if (a) return act(a.dataset.oact);
-    const mn = t.closest('[data-omenu]'); if (mn) { e.preventDefault(); if (mn.dataset.omenu === 'save') { game.save(); toast('Salvo.', 'good'); } else if (confirm('Encerrar esta observação e voltar ao menu?')) { destroy(); onExit(); } }
+    const mn = t.closest('[data-omenu]'); if (mn) { e.preventDefault(); if (mn.dataset.omenu === 'save') { game.save(); toast('Salvo.', 'good'); } else if (mn.dataset.omenu === 'end') { if (confirm('Encerrar o experimento? O tempo para e você vê o relatório final (dá para continuar depois).')) { setPlaying(false); W().obsEnded = game.day; game.save(); renderTop(); go('relatorio'); } } else if (confirm('Encerrar esta observação e voltar ao menu?')) { destroy(); onExit(); } }
   };
   const onChange = e => {
     if ($('#app').hidden) return;

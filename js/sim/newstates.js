@@ -176,13 +176,25 @@ function genericProfile(base, culture) {
 }
 
 // ---------- Criação ----------
+// Já existe um país vivo com esse nome ou com a mesma bandeira regional? (evita duas "Sakha", dois "Curdistão"...)
+export function stateExists(s, data, name, regKey, movementId) {
+  const n = norm(name);
+  for (const id in s.world.c) {
+    const e = entOf(s, data, id); if (!e) continue;
+    if (movementId && e.movement === movementId) return id;
+    if (n && (norm(e.name) === n || norm(e.short) === n)) return id;
+    if (regKey && (e.flag?.reg === regKey || e.region === regKey)) return id;
+  }
+  return null;
+}
 export function foundState(s, data, ctx, { pids, from, movement, why = 'declara independência' }) {
   const W = s.world;
   pids = pids.filter(p => ownerOf(s, data, p) === from);
   if (!pids.length) return null;
+  if (from !== PLY && movement && stateExists(s, data, movement.name, regionalFlagFor(data, pids, movement.id), movement.id)) return null;
   W.ents ||= {}; W.newStates ||= [];
   const id = 'NEW' + (W.newStates.length + 1);
-  const base = entOf(s, data, from), culture = movement?.culture || (from === PLY ? s.nation.culture : cultureOf(data, from)) || 'en';
+  const base = entOf(s, data, from), culture = movement?.culture || base?.culture || (from === PLY ? s.nation.culture : cultureOf(data, base?.origin || base?.secededFrom || from)) || 'en';
   const cap = biggest(data, pids), rgName = regionName(data, pids);
   let name, flag, profile, ideo;
   if (movement) ({ name, flag, profile, ideo } = { name: movement.name, flag: structuredClone(movement.flag), profile: { ...movement.profile, resources: base?.profile?.resources || [] }, ideo: movement.ideo });
@@ -190,9 +202,11 @@ export function foundState(s, data, ctx, { pids, from, movement, why = 'declara 
   // Bandeira real da região (Commons), quando existe; a gerada fica de reserva.
   const rk = regionalFlagFor(data, pids, movement?.id);
   if (rk) flag = { reg: rk, alt: flag };
+  // Mesmo nome ou mesma bandeira regional de um país que já existe: não cria uma república repetida.
+  if (from !== PLY && stateExists(s, data, name, rk, movement?.id)) return null;
   if (Object.values(W.ents).some(e => e.name === name)) name += ' ' + ['Livre', 'Unida', 'Nova'][W.newStates.length % 3];
   W.ents[id] = { id, name, nameEn: name, short: movement?.short || rgName, iso2: null, cat: 'partially_recognized', parent: null, capital: { name: data.geo.prov[cap].n, prov: cap }, profile, flag, culture, ideo,
-    regions: base?.regions || s.nation.regions, recognition: `Proclamou independência de ${base?.name || s.nation.shortName}`, secededFrom: from, born: day(s), movement: movement?.id };
+    region: rk || null, origin: base?.origin || (from === PLY ? null : from), regions: base?.regions || s.nation.regions, recognition: `Proclamou independência de ${base?.name || s.nation.shortName}`, secededFrom: from, born: day(s), movement: movement?.id };
   const popM = pids.reduce((a, p) => a + (data.geo.prov[p].pop || 0), 0) / 1e6;
   const pc = s.world.c[from];
   W.c[id] = { id, pop: 0, gdp: 0, troops: Math.max(1, popM * 2.5 * profile.milIntensity), equip: pc ? pc.equip * 0.6 : s.st.equipment * 0.6, ready: 45, logi: 25, intel: 20, stab: 38, growth: pc ? pc.growth + 0.5 : 2.5, share: 1, dep: false,

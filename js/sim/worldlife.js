@@ -14,8 +14,12 @@ export function leaderOf(s, id) {
   const W = s.world; W.leaders ||= {};
   if (!W.leaders[id] && W.c[id]) {
     const lib = entOf(s, DATA, id)?.profile?.liberty ?? 50;
-    const title = lib > 60 ? pick(['Presidente', 'Primeiro-ministro', 'Primeira-ministra', 'Chanceler']) : lib < 30 ? pick(['Presidente', 'General', 'Líder Supremo', 'Rei', 'Emir']) : pick(['Presidente', 'Primeiro-ministro']);
-    W.leaders[id] = { name: genderize(`${title} ${leaderName(cultureOf(DATA, id))}`), traits: shuffle(Object.keys(LTRAITS)).slice(0, 2), since: day(s), age: Math.round(rand(45, 75)) };
+    const title = lib > 60 ? pick(['Presidente', 'Primeiro-ministro', 'Chanceler']) : lib < 30 ? pick(['Presidente', 'General', 'Líder Supremo', 'Rei', 'Emir']) : pick(['Presidente', 'Primeiro-ministro']);
+    const e = entOf(s, DATA, id);
+    const cult = e?.culture || cultureOf(DATA, e?.origin || e?.secededFrom || id);
+    const nm = e?.leaderName && !W.leaderUsed?.[id] ? e.leaderName : leaderName(cult);
+    (W.leaderUsed ||= {})[id] = true;
+    W.leaders[id] = { name: genderize(`${title} ${nm}`), traits: shuffle(Object.keys(LTRAITS)).slice(0, 2), since: day(s), age: Math.round(rand(45, 75)) };
   }
   return W.leaders[id];
 }

@@ -58,4 +58,21 @@ g.labAct({ type: 'posture', id: 'USA', v: 'isolationist' }); ok(postureOf(s, g.d
 g.labAct({ type: 'regime', id: 'FRA', v: 'socialist' }); ok(famOf(s, g.data, 'FRA') === 'socialist', 'laboratório: mudar regime');
 const w = g.labAct({ type: 'war', a: 'FRA', b: 'DEU' }); ok(s.world.wars.some(x => x.active && x.a.includes('FRA') && x.b.includes('DEU')), 'laboratório: provocar guerra');
 g.save(); const g2 = new Game(data, mem); ok(g2.load('auto') && g2.s.spectator, 'save/load mantém o observatório');
+
+// 4) Sem repúblicas duplicadas e líderes com nomes da cultura local (repúblicas russas separatistas, caos alto).
+const { leaderOf } = await import('../js/sim/worldlife.js');
+const { entOf } = await import('../js/sim/world.js');
+const gx = new Game(data, mem);
+gx.start({ seed: 11, spectator: true, scenario: 'custom', provinces: ['ATA+99?'], answers: data.identity.questions.map(() => 1), difficulty: 'normal', flag: {}, customWorld: presetWorld(data, 'rusrep'), nation: NAT, lab: { chaos: 95 } });
+for (let i = 0; i < 80; i++) gx.nextWeek();
+const W2 = gx.s.world, names = {}, regs = {};
+const gen = id => /^(NEW|CW_)/.test(id);
+for (const id in W2.c) { const e = entOf(gx.s, gx.data, id); if (!e) continue; const n = e.name.toLowerCase(); (names[n] ||= []).push(id); if (e.flag?.reg) (regs[e.flag.reg] ||= []).push(id); }
+const dupN = Object.entries(names).filter(([, v]) => v.length > 1 && v.some(gen)), dupR = Object.entries(regs).filter(([, v]) => v.length > 1 && v.some(gen));
+ok(!dupN.length && !dupR.length, 'sem países repetidos (nome ou bandeira regional)' + (dupN.length || dupR.length ? ': ' + JSON.stringify([...dupN, ...dupR]) : ''));
+const newIds = (W2.newStates || []).map(x => x.id).filter(id => W2.c[id]);
+const EN = /^(Presidente|Primeir[oa]-ministr[oa]|Chanceler|General|Líder Suprem[oa]|Rei|Rainha|Emir[a]?) (John|James|Michael|Robert|David|William|Mary|Patricia|Jennifer|Linda|Thomas|Charles|Daniel|Matthew|Elizabeth|Sarah|Emily)/;
+const lead = newIds.map(id => [entOf(gx.s, gx.data, id).name, leaderOf(gx.s, id).name]);
+console.log('   novos Estados e líderes:', lead.slice(0, 8).map(x => x.join(' → ')).join(' | '));
+ok(newIds.length === 0 || lead.filter(([, l]) => EN.test(l)).length <= Math.ceil(newIds.length * 0.2), 'líderes dos Estados novos com nomes da cultura local');
 console.log(fails ? fails + ' FALHAS' : 'OK'); process.exit(fails ? 1 : 0);
