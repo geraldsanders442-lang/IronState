@@ -1,0 +1,1163 @@
+[
+ {
+  "id": "nk_first_hours",
+  "cat": "Ataque nuclear",
+  "title": "As primeiras horas",
+  "desc": "Um clarão branco sobre {hitCity}. Depois, o cogumelo. Estimativas iniciais falam em {dead} mortos. Hospitais da {hitRegion} deixaram de existir; as estradas estão bloqueadas por destroços e carros abandonados.",
+  "context": "Cada decisão agora salva ou condena milhares.",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 5,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Mobilizar todo o Exército para resgate e evacuação.",
+    "hint": "Salva vidas; deixa a defesa exposta.",
+    "now": {
+     "readiness": -10,
+     "treasury": -0.8,
+     "legitimacy": 4
+    },
+    "groups": {
+     "military": -2
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Prioridade à defesa: o inimigo pode atacar de novo.",
+    "hint": "Mantém as tropas no front; o povo se sente abandonado.",
+    "now": {
+     "legitimacy": -5,
+     "readiness": 4
+    },
+    "groups": {
+     "workers": -6,
+     "regional": -6
+    }
+   },
+   {
+    "text": "Pedir ajuda internacional de emergência a todos os países.",
+    "hint": "Equipes estrangeiras chegam; dependência.",
+    "now": {
+     "reputation": 3
+    },
+    "long": [
+     {
+      "k": "aid",
+      "v": 3,
+      "d": 180
+     },
+     {
+      "k": "health",
+      "v": 1,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "all": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_leader_speech",
+  "cat": "Ataque nuclear",
+  "title": "O país espera ouvir {leader}",
+  "desc": "As redes de TV que ainda funcionam pedem um pronunciamento. Boatos dizem que o governo fugiu ou morreu.",
+  "context": "A voz do líder pode segurar o país — ou incendiá-lo.",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 4,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Discurso de luto e unidade nacional.",
+    "hint": "Acalma e une.",
+    "now": {
+     "legitimacy": 5,
+     "stability": 4,
+     "protest": -6
+    }
+   },
+   {
+    "text": "Discurso de vingança: \"{attacker} pagará mil vezes\".",
+    "hint": "Fúria patriótica; diplomacia em perigo.",
+    "now": {
+     "legitimacy": 4,
+     "warWeariness": -10
+    },
+    "groups": {
+     "military": 6
+    },
+    "rel": {
+     "$attacker": -20
+    }
+   },
+   {
+    "text": "Silêncio: só comunicados técnicos.",
+    "hint": "Evita erros; alimenta boatos.",
+    "now": {
+     "legitimacy": -4,
+     "protest": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_retaliation",
+  "cat": "Ataque nuclear",
+  "title": "Retaliar contra {attacker}?",
+  "desc": "O Estado-Maior apresenta opções de resposta contra {attacker}: alvos militares, cidades, ou nenhuma resposta armada.",
+  "context": "O mundo inteiro prende a respiração.",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 4,
+  "crisis": true,
+  "default": 2,
+  "options": [
+   {
+    "text": "Retaliação nuclear contra bases militares de {attacker}.",
+    "hint": "Só possível com arsenal próprio; risco de nova onda de ataques.",
+    "now": {
+     "reputation": -6
+    },
+    "act": {
+     "type": "nukeRetaliate",
+     "target": "military"
+    }
+   },
+   {
+    "text": "Ofensiva convencional total.",
+    "hint": "Raiva vira ofensiva; baixas pesadas.",
+    "now": {
+     "readiness": 6,
+     "treasury": -0.5
+    },
+    "act": {
+     "type": "nukeRetaliate",
+     "target": "conventional"
+    }
+   },
+   {
+    "text": "Nenhuma resposta armada: pedir ao mundo que isole {attacker}.",
+    "hint": "Moral elevada; {attacker} sai impune por ora.",
+    "now": {
+     "reputation": 8,
+     "legitimacy": -4
+    },
+    "groups": {
+     "military": -8
+    },
+    "rel": {
+     "all": 6
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_radiation_cloud",
+  "cat": "Ataque nuclear",
+  "title": "A nuvem radioativa",
+  "desc": "Ventos levam a poeira radioativa de {hitCity} para regiões vizinhas. Contadores Geiger disparam a 200 km.",
+  "context": "Evacuar mais gente ou proteger no lugar?",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Evacuar um raio de 100 km.",
+    "hint": "Menos câncer depois; caos logístico agora.",
+    "now": {
+     "treasury": -0.6,
+     "protest": 4
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 2,
+      "d": 1095
+     }
+    ]
+   },
+   {
+    "text": "Abrigar a população em casa e distribuir iodo.",
+    "hint": "Barato; exposição maior.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": -2,
+      "d": 1095
+     }
+    ]
+   },
+   {
+    "text": "Esconder a extensão da contaminação.",
+    "hint": "Evita pânico agora; escândalo e doenças depois.",
+    "now": {
+     "civil": -3
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": -4,
+      "d": 1095
+     },
+     {
+      "k": "legitimacy",
+      "v": -3,
+      "d": 730
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "nk_hospitals",
+  "cat": "Ataque nuclear",
+  "title": "Hospitais sem leitos",
+  "desc": "Dezenas de milhares de queimados e contaminados chegam a hospitais de todo o país. Médicos fazem triagem: muitos são deixados para morrer.",
+  "context": "O sistema de saúde está à beira do colapso.",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Converter estádios e escolas em hospitais de campanha.",
+    "hint": "Salva vidas; caro.",
+    "now": {
+     "treasury": -0.7,
+     "health": 2
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Enviar os feridos a países vizinhos.",
+    "hint": "Depende da boa vontade deles.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Prioridade a militares e funcionários essenciais.",
+    "hint": "Frio e eficiente; revolta moral.",
+    "now": {
+     "civil": -3,
+     "legitimacy": -4
+    },
+    "groups": {
+     "military": 4,
+     "workers": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_looting",
+  "cat": "Ataque nuclear",
+  "title": "Saques nas cidades vizinhas",
+  "desc": "Com a polícia desorganizada, gangues saqueiam farmácias, postos de gasolina e supermercados perto da {hitRegion}.",
+  "context": "Ordem ou compaixão?",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Toque de recolher e lei marcial.",
+    "hint": "Ordem restaurada; liberdade suspensa.",
+    "now": {
+     "control": 6,
+     "civil": -6,
+     "political": -4
+    }
+   },
+   {
+    "text": "Distribuição gratuita de comida e água.",
+    "hint": "Reduz saques; custo alto.",
+    "now": {
+     "treasury": -0.5,
+     "protest": -4
+    },
+    "groups": {
+     "workers": 4
+    }
+   },
+   {
+    "text": "Milícias de bairro autorizadas.",
+    "hint": "Barato; justiça com as próprias mãos.",
+    "now": {
+     "control": 2,
+     "crime": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_markets",
+  "cat": "Ataque nuclear",
+  "title": "O mercado desaba",
+  "desc": "A bolsa caiu 60% e foi fechada. A moeda perdeu metade do valor em dois dias. Bancos estão sem dinheiro vivo.",
+  "context": "A economia entra em choque.",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Fechar bancos por duas semanas e controlar capitais.",
+    "hint": "Evita a fuga de dinheiro; congela a economia.",
+    "groups": {
+     "business": -5
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.8,
+      "d": 180
+     },
+     {
+      "k": "inflation",
+      "v": -2,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Imprimir dinheiro para manter tudo funcionando.",
+    "hint": "Liquidez agora; inflação depois.",
+    "now": {
+     "treasury": 1.5
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": 8,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Pedir resgate emergencial a potências amigas.",
+    "hint": "Dinheiro externo com condições.",
+    "now": {
+     "treasury": 1,
+     "debt": 2
+    },
+    "rel": {
+     "west": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_refugees_internal",
+  "cat": "Ataque nuclear",
+  "title": "Um milhão de deslocados",
+  "desc": "Sobreviventes da {hitRegion} fogem em massa para outras regiões. Cidades vizinhas não têm onde abrigá-los e há atritos com moradores.",
+  "context": "Uma crise humanitária dentro do país.",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Campos de refugiados com o Exército.",
+    "hint": "Organizado; custo.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "regional": 2
+    }
+   },
+   {
+    "text": "Distribuir os deslocados por todas as regiões.",
+    "hint": "Divide o peso; ressentimento regional.",
+    "now": {
+     "stability": 2
+    },
+    "groups": {
+     "regional": -6
+    }
+   },
+   {
+    "text": "Abrir as fronteiras para que emigrem.",
+    "hint": "Alívio interno; perda permanente de população.",
+    "now": {
+     "pop": -1.5
+    },
+    "rel": {
+     "neighbors": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_blame",
+  "cat": "Ataque nuclear",
+  "title": "Quem falhou?",
+  "desc": "A oposição acusa o governo de ter provocado {attacker} e de não ter defesa antiaérea. Generais culpam os cortes no orçamento.",
+  "context": "O país procura culpados.",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 2,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Comissão nacional de inquérito.",
+    "hint": "Transparência; pode atingir o governo.",
+    "now": {
+     "political": 3,
+     "legitimacy": -2
+    }
+   },
+   {
+    "text": "Culpar e demitir o comando militar.",
+    "hint": "Bodes expiatórios; quartéis furiosos.",
+    "now": {
+     "legitimacy": 2
+    },
+    "groups": {
+     "military": -8
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 5,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Proibir críticas \"em tempo de guerra\".",
+    "hint": "Silencia; ressentimento.",
+    "now": {
+     "political": -6,
+     "civil": -4
+    },
+    "groups": {
+     "opposition": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_world_reaction",
+  "cat": "Ataque nuclear",
+  "title": "O mundo reage a {attacker}",
+  "desc": "O Conselho de Segurança se reúne em sessão de emergência. Várias potências oferecem sanções totais contra {attacker} — e esperam algo em troca.",
+  "context": "A solidariedade internacional tem preço.",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 1,
+  "options": [
+   {
+    "text": "Aceitar a aliança com quem oferecer proteção.",
+    "hint": "Garantias de defesa; perda de autonomia.",
+    "now": {
+     "influence": -3
+    },
+    "long": [
+     {
+      "k": "defense",
+      "v": 6,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "west": 8
+    }
+   },
+   {
+    "text": "Pedir só ajuda humanitária, sem alinhamento.",
+    "hint": "Neutralidade preservada.",
+    "long": [
+     {
+      "k": "aid",
+      "v": 2,
+      "d": 180
+     }
+    ],
+    "rel": {
+     "all": 3
+    }
+   },
+   {
+    "text": "Exigir que entreguem os líderes de {attacker} a um tribunal.",
+    "hint": "Justiça; pode prolongar a guerra.",
+    "now": {
+     "reputation": 4
+    },
+    "rel": {
+     "$attacker": -15
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_second_strike_fear",
+  "cat": "Ataque nuclear",
+  "title": "Medo de um segundo ataque",
+  "desc": "Serviços de inteligência detectam movimentação de lançadores em {attacker}. A população das grandes cidades foge em pânico.",
+  "context": "Haverá outra bomba?",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 2,
+  "options": [
+   {
+    "text": "Evacuar todas as grandes cidades.",
+    "hint": "Protege vidas; paralisa o país.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -1.5,
+      "d": 120
+     }
+    ],
+    "flags": {
+     "set": [
+      "evacuated"
+     ]
+    }
+   },
+   {
+    "text": "Aceitar negociar com {attacker} para evitar outro ataque.",
+    "hint": "Pode encerrar a guerra; humilhação.",
+    "now": {
+     "legitimacy": -5
+    },
+    "act": {
+     "type": "nukeRetaliate",
+     "target": "negotiate"
+    }
+   },
+   {
+    "text": "Construir abrigos e bunkers para o governo.",
+    "hint": "Protege a liderança no futuro.",
+    "now": {
+     "treasury": -0.6
+    },
+    "flags": {
+     "set": [
+      "bunker"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_food_water",
+  "cat": "Ataque nuclear",
+  "title": "Água e comida contaminadas",
+  "desc": "Rios e plantações da {hitRegion} estão contaminados. O preço da comida dobrou em todo o país.",
+  "context": "A fome é a próxima ameaça.",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 2,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Proibir a venda de alimentos da região e importar.",
+    "hint": "Seguro; caro.",
+    "now": {
+     "treasury": -0.5
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Testar lote por lote e liberar o que passar.",
+    "hint": "Equilíbrio arriscado.",
+    "long": [
+     {
+      "k": "health",
+      "v": -1,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Racionamento nacional.",
+    "hint": "Divide a escassez; descontentamento.",
+    "now": {
+     "protest": 5
+    },
+    "long": [
+     {
+      "k": "hunger",
+      "v": -1,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "nk_martyr_city",
+  "cat": "Ataque nuclear",
+  "title": "Os mortos de {hitCity}",
+  "desc": "Famílias procuram desaparecidos em listas coladas nos muros. Uma foto de uma criança em meio às cinzas virou símbolo mundial.",
+  "context": "Como o país vai lembrar este dia?",
+  "cond": {
+   "nukeCrisis": true
+  },
+  "w": 2,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Dia nacional de luto e memorial.",
+    "hint": "Une o país.",
+    "now": {
+     "legitimacy": 3,
+     "stability": 2,
+     "treasury": -0.1
+    }
+   },
+   {
+    "text": "Usar a tragédia para mobilizar a nação para a guerra.",
+    "hint": "Fervor patriótico.",
+    "groups": {
+     "military": 4
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 4,
+      "d": 365
+     },
+     {
+      "k": "warWeariness",
+      "v": -6,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "nk_capital_gone",
+  "cat": "Ataque nuclear",
+  "title": "{oldCapital} não existe mais",
+  "desc": "A capital foi destruída. Ministérios, arquivos, o parlamento e o banco central viraram cinzas. {leader} sobreviveu em um abrigo e está sendo levado para fora da zona de impacto.",
+  "context": "O Estado precisa de uma nova cabeça — e rápido.",
+  "cond": {
+   "nukeCrisis": true,
+   "nukeCapital": true
+  },
+  "w": 6,
+  "crisis": true,
+  "default": 1,
+  "options": [
+   {
+    "text": "Governar por decreto até a reconstrução.",
+    "hint": "Rapidez; poder concentrado.",
+    "now": {
+     "political": -5,
+     "control": 4
+    },
+    "groups": {
+     "opposition": -5
+    }
+   },
+   {
+    "text": "Gabinete de emergência com todos os partidos.",
+    "hint": "Legitimidade; decisões mais lentas.",
+    "now": {
+     "political": 4,
+     "legitimacy": 5,
+     "stability": 3
+    },
+    "groups": {
+     "opposition": 6
+    }
+   },
+   {
+    "text": "Entregar o comando provisório aos militares.",
+    "hint": "Ordem; risco de nunca devolverem.",
+    "now": {
+     "control": 6
+    },
+    "groups": {
+     "military": 8
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 10,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "nk_capital_cabinet",
+  "cat": "Ataque nuclear",
+  "title": "Ministros mortos",
+  "desc": "Parte do gabinete estava em {oldCapital} na hora do ataque. Substitutos às pressas assumem pastas sem conhecer os dossiês.",
+  "context": "Recompor o governo é urgente.",
+  "cond": {
+   "nukeCrisis": true,
+   "nukeCapital": true
+  },
+  "w": 4,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Nomear técnicos sem filiação.",
+    "hint": "Competência; pouca base política.",
+    "now": {
+     "efficiency": 3
+    },
+    "groups": {
+     "bureaucracy": 4
+    }
+   },
+   {
+    "text": "Nomear aliados leais.",
+    "hint": "Coesão; menos competência.",
+    "now": {
+     "efficiency": -2,
+     "stability": 2
+    }
+   },
+   {
+    "text": "Chamar governadores das regiões para o gabinete.",
+    "hint": "Une o país; fortalece as regiões.",
+    "now": {
+     "control": -2
+    },
+    "groups": {
+     "regional": 8
+    }
+   }
+  ]
+ },
+ {
+  "id": "nk_capital_rebuild",
+  "cat": "Ataque nuclear",
+  "title": "Reconstruir {oldCapital}?",
+  "desc": "Engenheiros dizem que a área da antiga capital ficará contaminada por décadas.",
+  "context": "Símbolo ou realismo?",
+  "cond": {
+   "nukeCrisis": true,
+   "nukeCapital": true
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 1,
+  "options": [
+   {
+    "text": "Reconstruir no mesmo lugar, custe o que custar.",
+    "hint": "Símbolo de resistência; caríssimo e perigoso.",
+    "now": {
+     "treasury": -1.5,
+     "legitimacy": 5
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": -1,
+      "d": 1095
+     }
+    ]
+   },
+   {
+    "text": "Transformar a área em memorial e zona de exclusão.",
+    "hint": "Prudente; perda permanente.",
+    "now": {
+     "reputation": 2
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": -3,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "nk_region_survivors",
+  "cat": "Ataque nuclear",
+  "title": "Os sobreviventes de {hitRegion}",
+  "desc": "Sobreviventes da região atingida exigem indenização, tratamento vitalício e moradia.",
+  "context": "Uma dívida moral do Estado.",
+  "cond": {
+   "nukeCrisis": true,
+   "nukeCapital": false
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Fundo nacional de indenização.",
+    "hint": "Justo; muito caro.",
+    "now": {
+     "treasury": -0.8
+    },
+    "groups": {
+     "regional": 6,
+     "workers": 4
+    },
+    "long": [
+     {
+      "k": "poverty",
+      "v": -1,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Tratamento médico, sem indenização.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": -0.3
+    }
+   },
+   {
+    "text": "Prometer ajuda quando a guerra acabar.",
+    "hint": "Sem custo; amargura.",
+    "groups": {
+     "regional": -8
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 4,
+      "d": 730
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ns_cancer",
+  "cat": "Sequelas nucleares",
+  "title": "Epidemia de câncer",
+  "desc": "Médicos registram um salto nos casos de leucemia e câncer de tireoide entre os sobreviventes da {hitRegion}.",
+  "context": "A radiação continua matando.",
+  "cond": {
+   "flag": "nuked",
+   "min": {
+    "day": 120
+   }
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Centros oncológicos especializados.",
+    "hint": "Caro; salva vidas.",
+    "now": {
+     "treasury": -0.5
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 3,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Parceria com hospitais estrangeiros.",
+    "hint": "Mais barato; dependência.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "all": 2
+    }
+   },
+   {
+    "text": "Não reconhecer a ligação com o ataque.",
+    "hint": "Sem custo; revolta.",
+    "now": {
+     "legitimacy": -4
+    },
+    "groups": {
+     "regional": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "ns_exclusion_zone",
+  "cat": "Sequelas nucleares",
+  "title": "A zona de exclusão",
+  "desc": "Saqueadores e curiosos entram na zona contaminada em torno de {hitCity}. Alguns moradores idosos voltaram às suas casas.",
+  "context": "Proibir ou tolerar?",
+  "cond": {
+   "flag": "nuked",
+   "min": {
+    "day": 60
+   }
+  },
+  "options": [
+   {
+    "text": "Cercar e patrulhar a zona.",
+    "hint": "Seguro; custo permanente.",
+    "now": {
+     "control": 2
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": -0.05,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Permitir turismo controlado.",
+    "hint": "Receita macabra.",
+    "now": {
+     "reputation": -1
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.05,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Deixar os idosos ficarem.",
+    "hint": "Humano.",
+    "now": {
+     "civil": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ns_birth_defects",
+  "cat": "Sequelas nucleares",
+  "title": "Crianças com malformações",
+  "desc": "Nascem crianças com malformações na região atingida. Mulheres jovens deixam a região em massa.",
+  "context": "A tragédia passa para a próxima geração.",
+  "cond": {
+   "flag": "nuked",
+   "min": {
+    "day": 200
+   }
+  },
+  "options": [
+   {
+    "text": "Programa de acompanhamento pré-natal gratuito.",
+    "hint": "Caro; dá esperança.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 1,
+      "d": 730
+     },
+     {
+      "k": "birth",
+      "v": 0.5,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Incentivar o repovoamento com subsídios.",
+    "hint": "Atrai gente para a região.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "migration",
+      "v": 0.5,
+      "d": 730
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ns_never_again",
+  "cat": "Sequelas nucleares",
+  "title": "\"Nunca mais\"",
+  "desc": "Um movimento de sobreviventes exige que o país lidere uma campanha mundial pelo desarmamento nuclear.",
+  "context": "A memória do ataque vira política.",
+  "cond": {
+   "flag": "nuked",
+   "min": {
+    "day": 90
+   }
+  },
+  "options": [
+   {
+    "text": "Abraçar a causa e propor um tratado global.",
+    "hint": "Prestígio mundial.",
+    "now": {
+     "reputation": 6,
+     "influence": 3
+    },
+    "rel": {
+     "all": 3
+    }
+   },
+   {
+    "text": "Fazer o contrário: construir nosso próprio arsenal.",
+    "hint": "Dissuasão; isolamento.",
+    "groups": {
+     "military": 6
+    },
+    "act": {
+     "type": "nukeProgram"
+    }
+   },
+   {
+    "text": "Ficar fora do debate.",
+    "hint": "Neutro."
+   }
+  ]
+ },
+ {
+  "id": "ns_reconstruction",
+  "cat": "Sequelas nucleares",
+  "title": "Plano de reconstrução",
+  "desc": "Dois anos de obras podem reconstruir a infraestrutura das regiões vizinhas ao impacto.",
+  "context": "Reconstruir é também reconstruir a confiança.",
+  "cond": {
+   "flag": "nuked",
+   "min": {
+    "day": 60
+   }
+  },
+  "options": [
+   {
+    "text": "Plano nacional de reconstrução.",
+    "hint": "Muito caro; crescimento e empregos.",
+    "groups": {
+     "regional": 5
+    },
+    "act": {
+     "type": "program",
+     "id": "megaworks"
+    }
+   },
+   {
+    "text": "Reconstrução com empresas estrangeiras.",
+    "hint": "Rápido; dependência.",
+    "now": {
+     "debt": 2
+    },
+    "long": [
+     {
+      "k": "logistics",
+      "v": 3,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "west": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ns_trauma",
+  "cat": "Sequelas nucleares",
+  "title": "Uma nação traumatizada",
+  "desc": "Pesquisas mostram que metade da população tem sintomas de estresse pós-traumático. Suicídios e alcoolismo disparam.",
+  "context": "As feridas invisíveis.",
+  "cond": {
+   "flag": "nuked",
+   "min": {
+    "day": 150
+   }
+  },
+  "options": [
+   {
+    "text": "Rede nacional de saúde mental.",
+    "hint": "Caro; recupera a sociedade.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "qol",
+      "v": 2,
+      "d": 730
+     },
+     {
+      "k": "productivity",
+      "v": 1,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Campanha de orgulho nacional.",
+    "hint": "Barato; superficial.",
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ }
+]

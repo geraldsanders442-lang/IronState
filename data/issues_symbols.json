@@ -1,0 +1,164 @@
+[
+ {
+  "id": "sy_embassies",
+  "cat": "Cultura e símbolos",
+  "title": "Embaixadores deixam a capital",
+  "desc": "Vários países chamaram seus embaixadores de volta depois que a nova bandeira passou a exibir símbolos de regimes totalitários do século XX.",
+  "context": "O mundo leu a mensagem.",
+  "cond": {
+   "flag": "totalFlag"
+  },
+  "w": 3,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Manter a bandeira: é soberania nacional.",
+    "hint": "Isolamento crescente.",
+    "now": {
+     "reputation": -4
+    },
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "west": -8
+    }
+   },
+   {
+    "text": "Explicar que é \"herança histórica\".",
+    "hint": "Pouca gente acredita.",
+    "now": {
+     "reputation": -1
+    }
+   },
+   {
+    "text": "Trocar a bandeira e pedir desculpas.",
+    "hint": "Alívio diplomático.",
+    "now": {
+     "reputation": 6
+    },
+    "rel": {
+     "all": 4
+    },
+    "flags": {
+     "clear": [
+      "totalFlag",
+      "heavyFlag"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "sy_sports_ban",
+  "cat": "Cultura e símbolos",
+  "title": "Seleção banida dos campeonatos",
+  "desc": "Federações esportivas internacionais proíbem a seleção de jogar com a bandeira e o uniforme nacionais.",
+  "context": "O esporte também tem regras.",
+  "cond": {
+   "flag": "totalFlag"
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Boicotar as competições.",
+    "hint": "Orgulho; jovens frustrados.",
+    "now": {
+     "legitimacy": 1
+    },
+    "groups": {
+     "youth": -5
+    }
+   },
+   {
+    "text": "Jogar sob bandeira neutra.",
+    "hint": "Humilhação discreta.",
+    "now": {
+     "legitimacy": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "sy_extremists_abroad",
+  "cat": "Cultura e símbolos",
+  "title": "Admiradores estrangeiros",
+  "desc": "Grupos extremistas de vários países passam a peregrinar a {capital} e a pedir cidadania.",
+  "context": "Atraímos quem não queríamos?",
+  "cond": {
+   "flag": "totalFlag"
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Recebê-los como aliados ideológicos.",
+    "hint": "Militância; reputação desaba.",
+    "now": {
+     "reputation": -6,
+     "crime": 2
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Proibir a entrada.",
+    "hint": "Contém o dano.",
+    "now": {
+     "reputation": 2,
+     "control": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "sy_minorities_flee",
+  "cat": "Cultura e símbolos",
+  "title": "Minorias deixam o país",
+  "desc": "Famílias de minorias religiosas e étnicas vendem tudo e partem, com medo do que a bandeira anuncia.",
+  "context": "Símbolos têm memória.",
+  "cond": {
+   "flag": "totalFlag"
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Garantias públicas de proteção.",
+    "hint": "Freia a fuga.",
+    "now": {
+     "civil": 2
+    },
+    "long": [
+     {
+      "k": "emigration",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "\"Quem não gosta, que vá embora.\"",
+    "hint": "Êxodo e perda de mão de obra.",
+    "now": {
+     "reputation": -4
+    },
+    "long": [
+     {
+      "k": "emigration",
+      "v": 2,
+      "d": 365
+     },
+     {
+      "k": "laborSupply",
+      "v": -0.4,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ }
+]

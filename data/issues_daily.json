@@ -1,0 +1,1616 @@
+[
+ {
+  "id": "dy_amazon",
+  "cat": "Meio ambiente",
+  "title": "Queimadas na floresta",
+  "desc": "Imagens de satélite mostram a maior área queimada da década. Fazendeiros abrem pasto; ONGs falam em crime.",
+  "context": "O mundo observa a fumaça.",
+  "cond": {
+   "min": {
+    "day": 60
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Operação federal contra o desmatamento.",
+    "hint": "Floresta protegida; ruralistas furiosos.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 4
+    },
+    "groups": {
+     "rural": -6
+    },
+    "rel": {
+     "west": 3
+    }
+   },
+   {
+    "text": "Liberar a expansão agrícola.",
+    "hint": "Exportações sobem; condenação mundial.",
+    "now": {
+     "reputation": -5
+    },
+    "groups": {
+     "rural": 6
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "pollution",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Fundo internacional: proteger em troca de dinheiro.",
+    "hint": "Receita verde.",
+    "now": {
+     "treasury": 0.6
+    },
+    "groups": {
+     "rural": -2
+    },
+    "rel": {
+     "west": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_oil_spill",
+  "cat": "Meio ambiente",
+  "title": "Vazamento de petróleo",
+  "desc": "Um petroleiro encalhou e 40 mil toneladas de óleo atingem as praias. Pescadores perderam tudo.",
+  "context": "Desastre ecológico em horário nobre.",
+  "cond": {
+   "coast": true
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Multa bilionária à empresa e limpeza imediata.",
+    "hint": "Justiça; investidores nervosos.",
+    "now": {
+     "treasury": 0.3,
+     "pollution": -2
+    },
+    "groups": {
+     "business": -3,
+     "rural": 3
+    }
+   },
+   {
+    "text": "O Estado paga a limpeza.",
+    "hint": "Rápido; contribuinte paga.",
+    "now": {
+     "treasury": -0.4,
+     "pollution": -3
+    }
+   },
+   {
+    "text": "Minimizar o desastre.",
+    "hint": "Sem custo; revolta local.",
+    "now": {
+     "pollution": 3,
+     "legitimacy": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_smog",
+  "cat": "Meio ambiente",
+  "title": "Neblina tóxica na capital",
+  "desc": "A poluição em {capital} atingiu níveis dez vezes acima do limite. Escolas fecham; hospitais lotam.",
+  "context": "O ar virou veneno.",
+  "cond": {
+   "min": {
+    "pollution": 45
+   }
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Rodízio de carros e fábricas.",
+    "hint": "Ar melhora; economia desacelera.",
+    "now": {
+     "pollution": -4
+    },
+    "groups": {
+     "business": -3
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.2,
+      "d": 90
+     }
+    ]
+   },
+   {
+    "text": "Plano de transporte limpo.",
+    "hint": "Caro e duradouro.",
+    "now": {
+     "treasury": -0.6
+    },
+    "long": [
+     {
+      "k": "pollution",
+      "v": -3,
+      "d": 0
+     },
+     {
+      "k": "congestion",
+      "v": -3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Esperar o vento.",
+    "hint": "Sem custo.",
+    "now": {
+     "health": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_nuclear_plant",
+  "cat": "Meio ambiente",
+  "title": "Usina nuclear civil",
+  "desc": "Engenheiros propõem a primeira usina nuclear do país para acabar com os apagões.",
+  "context": "Energia limpa e segura — até o dia em que não é.",
+  "cond": {
+   "min": {
+    "energyShort": 1
+   }
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Construir.",
+    "hint": "Energia abundante; ecologistas protestam.",
+    "now": {
+     "treasury": -1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Investir em solar e eólica.",
+    "hint": "Lento e limpo.",
+    "now": {
+     "treasury": -0.7
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 1.2,
+      "d": 0
+     },
+     {
+      "k": "pollution",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Carvão barato.",
+    "hint": "Rápido e sujo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 1.5,
+      "d": 0
+     },
+     {
+      "k": "pollution",
+      "v": 4,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dy_dam_village",
+  "cat": "Meio ambiente",
+  "title": "A represa que afoga uma cidade",
+  "desc": "A nova hidrelétrica exige inundar uma cidade histórica de 30 mil habitantes.",
+  "context": "Progresso versus memória.",
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Construir e indenizar.",
+    "hint": "Energia; desalojados revoltados.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "regional": -4
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Projeto menor, sem inundar a cidade.",
+    "hint": "Menos energia.",
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 0.6,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Cancelar.",
+    "hint": "Sem energia nova."
+   }
+  ]
+ },
+ {
+  "id": "dy_space",
+  "cat": "Ciência e tecnologia",
+  "title": "Programa espacial",
+  "desc": "Cientistas querem lançar o primeiro satélite nacional em três anos.",
+  "context": "Prestígio ou desperdício?",
+  "cond": {
+   "min": {
+    "tech": 40
+   }
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Programa espacial completo.",
+    "hint": "Prestígio e tecnologia; muito caro.",
+    "now": {
+     "treasury": -0.8,
+     "reputation": 2
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 4,
+      "d": 0
+     },
+     {
+      "k": "milIndustry",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "next": [
+     {
+      "id": "dy_space_launch",
+      "days": 400
+     }
+    ]
+   },
+   {
+    "text": "Satélite comprado no exterior.",
+    "hint": "Barato; sem tecnologia própria.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "intel",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Não.",
+    "hint": "Economia.",
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_gene_editing",
+  "cat": "Ciência e tecnologia",
+  "title": "Bebês editados",
+  "desc": "Uma clínica anuncia o nascimento de bebês com genes editados contra doenças hereditárias.",
+  "context": "A ciência cruzou uma fronteira.",
+  "cond": {
+   "min": {
+    "tech": 50
+   }
+  },
+  "cd": 2000,
+  "options": [
+   {
+    "text": "Proibir e processar.",
+    "hint": "Ética; cientistas emigram.",
+    "groups": {
+     "rural": 3
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Regulamentar com comitê de ética.",
+    "hint": "Equilíbrio.",
+    "long": [
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Permitir: seremos pioneiros.",
+    "hint": "Investimentos; escândalo mundial.",
+    "now": {
+     "reputation": -4
+    },
+    "groups": {
+     "rural": -5
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dy_ai_surveillance",
+  "cat": "Ciência e tecnologia",
+  "title": "Câmeras com reconhecimento facial",
+  "desc": "A polícia quer espalhar 500 mil câmeras com reconhecimento facial.",
+  "context": "Segurança total, privacidade zero.",
+  "cond": {
+   "min": {
+    "tech": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Instalar em todo o país.",
+    "hint": "Crime cai; vigilância total.",
+    "now": {
+     "civil": -5
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -4,
+      "d": 0
+     }
+    ],
+    "policy": {
+     "surveillance": "total"
+    }
+   },
+   {
+    "text": "Só em aeroportos e fronteiras.",
+    "hint": "Moderado.",
+    "long": [
+     {
+      "k": "crime",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Proibir o reconhecimento facial.",
+    "hint": "Privacidade.",
+    "now": {
+     "civil": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_hackers_bank",
+  "cat": "Ciência e tecnologia",
+  "title": "Hackers roubam o banco central",
+  "desc": "Um grupo hacker desviou 300 milhões do banco central em uma madrugada.",
+  "context": "Humilhação digital.",
+  "w": 0.8,
+  "cd": 900,
+  "options": [
+   {
+    "text": "Contratar os melhores hackers do país.",
+    "hint": "Defesa cibernética.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "intel",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Culpar uma potência estrangeira.",
+    "hint": "Distrai.",
+    "rel": {
+     "rival": -6
+    }
+   },
+   {
+    "text": "Abafar.",
+    "hint": "Silêncio.",
+    "now": {
+     "treasury": -0.1
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_supreme_court",
+  "cat": "Justiça",
+  "title": "A Suprema Corte desafia o governo",
+  "desc": "A Suprema Corte anulou uma lei-chave do governo por inconstitucionalidade.",
+  "context": "Freios e contrapesos — ou obstáculo?",
+  "cond": {
+   "min": {
+    "political": 30
+   }
+  },
+  "options": [
+   {
+    "text": "Acatar a decisão.",
+    "hint": "Estado de direito.",
+    "now": {
+     "political": 2,
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Aumentar o número de juízes e nomear aliados.",
+    "hint": "Controle da Corte.",
+    "now": {
+     "political": -5,
+     "reputation": -3
+    }
+   },
+   {
+    "text": "Ignorar a decisão.",
+    "hint": "Crise constitucional.",
+    "now": {
+     "political": -6,
+     "legitimacy": -4
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dy_death_penalty",
+  "cat": "Justiça",
+  "title": "Pena de morte?",
+  "desc": "Após um crime brutal, deputados propõem restaurar a pena de morte.",
+  "context": "Vingança ou justiça?",
+  "cond": {
+   "min": {
+    "crime": 40
+   }
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Restaurar a pena de morte.",
+    "hint": "Popular; condenação externa.",
+    "now": {
+     "civil": -3,
+     "reputation": -4,
+     "legitimacy": 2
+    }
+   },
+   {
+    "text": "Prisão perpétua.",
+    "hint": "Meio-termo.",
+    "now": {
+     "civil": -1
+    }
+   },
+   {
+    "text": "Rejeitar.",
+    "hint": "Direitos humanos.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "rural": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_amnesty",
+  "cat": "Justiça",
+  "title": "Anistia aos crimes do passado",
+  "desc": "Militares do regime anterior pedem anistia para crimes cometidos décadas atrás.",
+  "context": "Reconciliação ou impunidade?",
+  "cd": 2000,
+  "options": [
+   {
+    "text": "Anistia ampla.",
+    "hint": "Militares agradecidos; vítimas revoltadas.",
+    "now": {
+     "civil": -2
+    },
+    "groups": {
+     "military": 5,
+     "opposition": -6
+    }
+   },
+   {
+    "text": "Comissão da verdade, sem prisões.",
+    "hint": "Memória sem vingança.",
+    "now": {
+     "reputation": 2
+    },
+    "groups": {
+     "military": -2
+    }
+   },
+   {
+    "text": "Julgamentos.",
+    "hint": "Justiça; quartéis tensos.",
+    "now": {
+     "civil": 3
+    },
+    "groups": {
+     "military": -6
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 4,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dy_police_shooting",
+  "cat": "Justiça",
+  "title": "Policial mata adolescente",
+  "desc": "Um vídeo mostra um policial atirando num adolescente desarmado. Bairros inteiros protestam.",
+  "context": "Confiança nas instituições em jogo.",
+  "cond": {
+   "min": {
+    "crime": 35
+   }
+  },
+  "options": [
+   {
+    "text": "Prender o policial e investigar.",
+    "hint": "Justiça; polícia insatisfeita.",
+    "now": {
+     "protest": -3
+    },
+    "groups": {
+     "bureaucracy": -3,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Defender a corporação.",
+    "hint": "Polícia leal; revolta nas ruas.",
+    "now": {
+     "protest": 6
+    },
+    "groups": {
+     "youth": -5
+    }
+   },
+   {
+    "text": "Câmeras corporais em todos os policiais.",
+    "hint": "Reforma.",
+    "now": {
+     "treasury": -0.2,
+     "protest": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_metro",
+  "cat": "Cidades",
+  "title": "Um metrô para a capital",
+  "desc": "Engenheiros apresentam o plano de um metrô de 60 km em {capital}.",
+  "context": "Mobilidade ou buraco sem fundo?",
+  "cond": {
+   "min": {
+    "congestion": 40
+   }
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Construir.",
+    "hint": "Caro; transforma a cidade.",
+    "now": {
+     "treasury": -1
+    },
+    "groups": {
+     "workers": 4
+    },
+    "long": [
+     {
+      "k": "congestion",
+      "v": -6,
+      "d": 0
+     },
+     {
+      "k": "productivity",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "next": [
+     {
+      "id": "dy_metro_delay",
+      "days": 300,
+      "p": 0.6
+     }
+    ]
+   },
+   {
+    "text": "Corredores de ônibus.",
+    "hint": "Barato e rápido.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "congestion",
+      "v": -2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Novas avenidas.",
+    "hint": "Mais carros.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "congestion",
+      "v": -1,
+      "d": 365
+     },
+     {
+      "k": "pollution",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dy_slum_removal",
+  "cat": "Cidades",
+  "title": "Remoção das favelas",
+  "desc": "O prefeito quer remover uma favela de 50 mil pessoas para construir um centro financeiro.",
+  "context": "Para quem é a cidade?",
+  "cond": {
+   "max": {
+    "housing": 50
+   }
+  },
+  "options": [
+   {
+    "text": "Remover com moradias em outro lugar.",
+    "hint": "Projeto avança; comunidade dispersa.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "business": 4,
+     "workers": -3
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Urbanizar a favela.",
+    "hint": "Inclusão.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "workers": 4
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "crime",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Remoção forçada.",
+    "hint": "Rápido e brutal.",
+    "now": {
+     "civil": -4,
+     "protest": 5
+    },
+    "groups": {
+     "business": 5,
+     "workers": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_new_capital",
+  "cat": "Cidades",
+  "title": "Uma nova capital planejada",
+  "desc": "Urbanistas propõem construir uma capital nova, no interior, para desenvolver o território.",
+  "context": "Brasília, Astana, Nova Capital...",
+  "cond": {
+   "min": {
+    "day": 400
+   }
+  },
+  "w": 0.5,
+  "cd": 4000,
+  "options": [
+   {
+    "text": "Construir a nova capital.",
+    "hint": "Caríssimo; desenvolve o interior.",
+    "now": {
+     "treasury": -2
+    },
+    "groups": {
+     "regional": 6,
+     "bureaucracy": -5
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -3,
+      "d": 0
+     },
+     {
+      "k": "logistics",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Descentralizar ministérios.",
+    "hint": "Barato.",
+    "groups": {
+     "regional": 3
+    }
+   },
+   {
+    "text": "Não.",
+    "hint": "Sem custo."
+   }
+  ]
+ },
+ {
+  "id": "dy_press_owner",
+  "cat": "Imprensa",
+  "title": "O jornal à venda",
+  "desc": "O maior jornal do país está quebrado. Um oligarca aliado e um grupo estrangeiro disputam a compra.",
+  "context": "Quem controla a notícia?",
+  "cond": {
+   "min": {
+    "political": 25
+   }
+  },
+  "options": [
+   {
+    "text": "Facilitar a compra pelo aliado.",
+    "hint": "Imprensa amiga.",
+    "now": {
+     "political": -2
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Deixar o estrangeiro comprar.",
+    "hint": "Imprensa independente — e crítica.",
+    "now": {
+     "political": 2
+    },
+    "rel": {
+     "west": 1
+    }
+   },
+   {
+    "text": "Estatizar o jornal.",
+    "hint": "Controle total.",
+    "now": {
+     "political": -4
+    },
+    "policy": {
+     "press": "state"
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_journalist_killed",
+  "cat": "Imprensa",
+  "title": "Jornalista assassinado",
+  "desc": "Um repórter investigativo que apurava contratos do governo foi morto a tiros.",
+  "context": "O mundo cobra respostas.",
+  "cond": {
+   "min": {
+    "corruption": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Investigação independente com peritos estrangeiros.",
+    "hint": "Credibilidade.",
+    "now": {
+     "reputation": 3,
+     "political": 2
+    }
+   },
+   {
+    "text": "Investigação interna.",
+    "hint": "Ninguém acredita.",
+    "now": {
+     "reputation": -2
+    }
+   },
+   {
+    "text": "Culpar o crime comum.",
+    "hint": "Silêncio forçado.",
+    "now": {
+     "reputation": -5,
+     "political": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_farm_subsidy",
+  "cat": "Campo",
+  "title": "Agricultores bloqueiam estradas",
+  "desc": "Tratores bloqueiam as rodovias contra a queda do preço dos grãos.",
+  "context": "O campo para a cidade.",
+  "cond": {
+   "max": {
+    "g_rural": 50
+   }
+  },
+  "options": [
+   {
+    "text": "Preço mínimo garantido.",
+    "hint": "Campo satisfeito; custo.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "rural": 8
+    }
+   },
+   {
+    "text": "Seguro agrícola.",
+    "hint": "Moderado.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Desbloquear à força.",
+    "hint": "Ordem; campo revoltado.",
+    "now": {
+     "control": 2
+    },
+    "groups": {
+     "rural": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_land_reform",
+  "cat": "Campo",
+  "title": "Reforma agrária",
+  "desc": "Movimentos sem-terra ocupam latifúndios improdutivos e exigem reforma agrária.",
+  "context": "Terra para quem trabalha?",
+  "cond": {
+   "min": {
+    "inequality": 45
+   }
+  },
+  "w": 1.3,
+  "options": [
+   {
+    "text": "Desapropriar latifúndios improdutivos.",
+    "hint": "Camponeses felizes; proprietários furiosos.",
+    "groups": {
+     "rural": 6,
+     "business": -6
+    },
+    "long": [
+     {
+      "k": "inequality",
+      "v": -3,
+      "d": 0
+     },
+     {
+      "k": "s_food",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Comprar terras e redistribuir.",
+    "hint": "Caro e pacífico.",
+    "now": {
+     "treasury": -0.6
+    },
+    "groups": {
+     "rural": 4
+    },
+    "long": [
+     {
+      "k": "inequality",
+      "v": -2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Despejar os ocupantes.",
+    "hint": "Ordem; conflito no campo.",
+    "now": {
+     "civil": -2
+    },
+    "groups": {
+     "business": 4,
+     "rural": -5
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_gmo",
+  "cat": "Campo",
+  "title": "Sementes transgênicas",
+  "desc": "Uma multinacional oferece sementes transgênicas que dobram a colheita — com royalties.",
+  "context": "Produtividade ou soberania alimentar?",
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Liberar.",
+    "hint": "Mais comida; dependência.",
+    "groups": {
+     "rural": 3
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Proibir.",
+    "hint": "Agricultura tradicional.",
+    "groups": {
+     "rural": -2
+    }
+   },
+   {
+    "text": "Desenvolver sementes nacionais.",
+    "hint": "Caro; autonomia.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 0.8,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dy_vaccine_doubt",
+  "cat": "Saúde",
+  "title": "Movimento antivacina",
+  "desc": "Surtos de sarampo voltam. Um movimento antivacina cresce nas redes.",
+  "context": "Saúde pública contra desconfiança.",
+  "cond": {
+   "min": {
+    "education": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Vacinação obrigatória para matrícula escolar.",
+    "hint": "Eficaz; protestos.",
+    "now": {
+     "civil": -1,
+     "protest": 2
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Campanha de esclarecimento.",
+    "hint": "Lento.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Liberdade de escolha.",
+    "hint": "Surtos continuam.",
+    "long": [
+     {
+      "k": "health",
+      "v": -2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dy_doctors_flee",
+  "cat": "Saúde",
+  "title": "Médicos vão embora",
+  "desc": "Metade dos médicos formados no último ano emigrou.",
+  "context": "Hospitais sem quem os opere.",
+  "cond": {
+   "max": {
+    "qol": 55
+   }
+  },
+  "options": [
+   {
+    "text": "Salário dobrado no interior.",
+    "hint": "Caro; segura médicos.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Serviço obrigatório de dois anos.",
+    "hint": "Barato; ressentimento.",
+    "groups": {
+     "youth": -3
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 1.5,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Importar médicos estrangeiros.",
+    "hint": "Rápido.",
+    "long": [
+     {
+      "k": "health",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "CUB": 5
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_university_free",
+  "cat": "Educação",
+  "title": "Universidade gratuita?",
+  "desc": "Estudantes ocupam reitorias exigindo universidade pública gratuita para todos.",
+  "context": "Educação é direito ou investimento individual?",
+  "cond": {
+   "min": {
+    "g_youth": 20
+   }
+  },
+  "options": [
+   {
+    "text": "Gratuidade total.",
+    "hint": "Juventude agradece; custo alto.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "youth": 8
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Bolsas para os mais pobres.",
+    "hint": "Focalizado.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "youth": 3
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Mensalidades e crédito estudantil.",
+    "hint": "Receita; jovens endividados.",
+    "groups": {
+     "youth": -6
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.05,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dy_school_religion",
+  "cat": "Educação",
+  "title": "Religião nas escolas",
+  "desc": "Igrejas querem aulas obrigatórias de religião nas escolas públicas.",
+  "context": "Fé no currículo?",
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Aulas obrigatórias.",
+    "hint": "Religiosos felizes.",
+    "now": {
+     "civil": -1
+    },
+    "groups": {
+     "rural": 5,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Optativas.",
+    "hint": "Equilíbrio.",
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Escola laica.",
+    "hint": "Separação.",
+    "groups": {
+     "rural": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_illiteracy",
+  "cat": "Educação",
+  "title": "Analfabetismo no interior",
+  "desc": "Um censo revela que 25% dos adultos do interior não sabem ler.",
+  "context": "O atraso que ninguém vê.",
+  "cond": {
+   "max": {
+    "education": 45
+   }
+  },
+  "options": [
+   {
+    "text": "Campanha nacional de alfabetização.",
+    "hint": "Caro; transformador.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "rural": 4
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "productivity",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Rádio e TV educativos.",
+    "hint": "Barato.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dy_embassy_attack",
+  "cat": "Diplomacia",
+  "title": "Embaixada atacada",
+  "desc": "Manifestantes invadiram e incendiaram a embaixada de {power} em {capital}.",
+  "context": "Uma crise diplomática imediata.",
+  "tpl": {
+   "power": "hostile"
+  },
+  "options": [
+   {
+    "text": "Pedir desculpas e pagar a reconstrução.",
+    "hint": "Crise contida.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "$power": 6
+    }
+   },
+   {
+    "text": "Prender os responsáveis.",
+    "hint": "Firmeza.",
+    "now": {
+     "control": 1
+    },
+    "rel": {
+     "$power": 3
+    }
+   },
+   {
+    "text": "Culpar a política de {power}.",
+    "hint": "Popular; crise grave.",
+    "now": {
+     "legitimacy": 2
+    },
+    "rel": {
+     "$power": -20
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_spy_swap",
+  "cat": "Diplomacia",
+  "title": "Troca de espiões com {power}",
+  "desc": "{power} propõe trocar dois agentes nossos presos lá por um espião deles preso aqui.",
+  "context": "Discreto ou humilhante?",
+  "tpl": {
+   "power": "any"
+  },
+  "options": [
+   {
+    "text": "Aceitar a troca.",
+    "hint": "Agentes de volta.",
+    "now": {
+     "intel": 1
+    },
+    "rel": {
+     "$power": 4
+    }
+   },
+   {
+    "text": "Recusar e julgar o espião.",
+    "hint": "Firmeza.",
+    "rel": {
+     "$power": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_visa_free",
+  "cat": "Diplomacia",
+  "title": "Isenção de vistos com {nb}",
+  "desc": "{nb} propõe acabar com vistos entre os dois países.",
+  "context": "Turismo, comércio — e migração.",
+  "tpl": {
+   "nb": "friendly"
+  },
+  "options": [
+   {
+    "text": "Aceitar.",
+    "hint": "Integração.",
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.05,
+      "d": 0
+     },
+     {
+      "k": "migration",
+      "v": 0.3,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": 8
+    }
+   },
+   {
+    "text": "Só para turismo.",
+    "hint": "Moderado.",
+    "rel": {
+     "$nb": 3
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Controle.",
+    "rel": {
+     "$nb": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_world_cup_host",
+  "cat": "Diplomacia",
+  "title": "Copa do Mundo com {nb}",
+  "desc": "{nb} propõe uma candidatura conjunta para sediar a Copa do Mundo.",
+  "context": "Futebol e diplomacia.",
+  "tpl": {
+   "nb": "friendly"
+  },
+  "w": 0.5,
+  "cd": 3000,
+  "options": [
+   {
+    "text": "Candidatar-se juntos.",
+    "hint": "Prestígio dividido; obras.",
+    "now": {
+     "treasury": -0.6
+    },
+    "long": [
+     {
+      "k": "logistics",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": 12
+    }
+   },
+   {
+    "text": "Candidatura solo.",
+    "hint": "Mais caro; mais prestígio.",
+    "now": {
+     "treasury": -1,
+     "reputation": 3
+    },
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Não.",
+    "hint": "Sem gastos."
+   }
+  ]
+ },
+ {
+  "id": "dy_hostage_ship",
+  "cat": "Diplomacia",
+  "title": "Navio sequestrado",
+  "desc": "Piratas sequestraram um cargueiro com 22 tripulantes da nossa bandeira.",
+  "context": "Negociar com piratas?",
+  "tpl": {
+   "power": "friendly"
+  },
+  "cond": {
+   "coast": true
+  },
+  "options": [
+   {
+    "text": "Pagar o resgate.",
+    "hint": "Tripulação salva; incentiva novos sequestros.",
+    "now": {
+     "treasury": -0.2
+    }
+   },
+   {
+    "text": "Operação de resgate militar.",
+    "hint": "Arriscado; prestígio se der certo.",
+    "now": {
+     "readiness": -1,
+     "projection": 1
+    },
+    "groups": {
+     "military": 4
+    }
+   },
+   {
+    "text": "Pedir ajuda a {power}.",
+    "hint": "Eficaz; dependência.",
+    "rel": {
+     "$power": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_space_launch",
+  "cat": "Ciência e tecnologia",
+  "title": "O dia do lançamento",
+  "desc": "O foguete nacional está na plataforma. Milhões assistem ao vivo.",
+  "context": "Glória ou explosão?",
+  "cond": {
+   "min": {
+    "tech": 30
+   }
+  },
+  "chain": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Lançar como planejado.",
+    "hint": "Que dê certo.",
+    "now": {
+     "legitimacy": 3,
+     "reputation": 2
+    }
+   },
+   {
+    "text": "Adiar para revisar falhas.",
+    "hint": "Prudência.",
+    "now": {
+     "treasury": -0.1
+    }
+   }
+  ]
+ },
+ {
+  "id": "dy_metro_delay",
+  "cat": "Cidades",
+  "title": "O metrô atrasou",
+  "desc": "As obras do metrô estão dois anos atrasadas e 80% acima do orçamento.",
+  "context": "O buraco ficou maior.",
+  "chain": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Injetar mais dinheiro.",
+    "hint": "Termina a obra.",
+    "now": {
+     "treasury": -0.5
+    }
+   },
+   {
+    "text": "Investigar a empreiteira.",
+    "hint": "Atrasa ainda mais.",
+    "now": {
+     "corruption": -2
+    },
+    "groups": {
+     "business": -3
+    }
+   }
+  ]
+ }
+]

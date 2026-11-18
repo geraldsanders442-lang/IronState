@@ -1,0 +1,1888 @@
+[
+ {
+  "id": "nb_border_shooting",
+  "cat": "Vizinhança",
+  "title": "Tiros na fronteira com {nb}",
+  "desc": "Uma patrulha de {nb} abriu fogo contra pastores do nosso lado da fronteira; dois morreram. O governo de {nb} fala em \"contrabandistas armados\".",
+  "context": "As relações já eram ruins. A imprensa exige resposta.",
+  "tpl": {
+   "nb": "hostile"
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Exigir desculpas formais e indenização.",
+    "hint": "Firmeza diplomática, sem escalada.",
+    "now": {
+     "legitimacy": 2
+    },
+    "rel": {
+     "$nb": -6
+    }
+   },
+   {
+    "text": "Retaliar com artilharia contra o posto de onde vieram os tiros.",
+    "hint": "Satisfaz os militares; risco de escalada real.",
+    "now": {
+     "legitimacy": 3,
+     "reputation": -3
+    },
+    "groups": {
+     "military": 6,
+     "youth": -2
+    },
+    "rel": {
+     "$nb": -18
+    },
+    "next": [
+     {
+      "id": "nb_border_shooting_esc",
+      "days": 21,
+      "p": 0.5
+     }
+    ]
+   },
+   {
+    "text": "Propor uma comissão mista para investigar.",
+    "hint": "Acalma; parte do público vê fraqueza.",
+    "now": {
+     "legitimacy": -2
+    },
+    "groups": {
+     "military": -3
+    },
+    "rel": {
+     "$nb": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_border_shooting_esc",
+  "cat": "Vizinhança",
+  "title": "{nb} mobiliza tropas",
+  "desc": "Depois da nossa retaliação, {nb} deslocou blindados para a fronteira e convocou reservistas. Diplomatas estrangeiros pedem calma.",
+  "context": "A guerra ainda pode ser evitada.",
+  "tpl": {
+   "nb": "any"
+  },
+  "crisis": true,
+  "chain": true,
+  "default": 1,
+  "options": [
+   {
+    "text": "Mobilizar também e mostrar força.",
+    "hint": "Dissuasão; tensão máxima.",
+    "now": {
+     "readiness": 6,
+     "treasury": -0.4
+    },
+    "groups": {
+     "military": 5
+    },
+    "rel": {
+     "$nb": -10
+    }
+   },
+   {
+    "text": "Pedir mediação internacional.",
+    "hint": "Prestígio; a crise esfria.",
+    "now": {
+     "reputation": 3
+    },
+    "rel": {
+     "$nb": 6,
+     "all": 1
+    }
+   },
+   {
+    "text": "Abrir um canal secreto com o governo de {nb}.",
+    "hint": "Discreto e eficaz se a confiança existir.",
+    "groups": {
+     "military": -2
+    },
+    "rel": {
+     "$nb": 10
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_refugees",
+  "cat": "Vizinhança",
+  "title": "Refugiados de {nb} na fronteira",
+  "desc": "Milhares de pessoas fogem de {nb} após uma onda de repressão e fome. Acampamentos improvisados crescem do nosso lado da fronteira.",
+  "context": "Acolher custa caro; fechar a fronteira custa imagem.",
+  "tpl": {
+   "nb": "autocracy"
+  },
+  "options": [
+   {
+    "text": "Abrir a fronteira e montar campos com ajuda internacional.",
+    "hint": "Reputação; custo e tensão nas regiões de fronteira.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": 4
+    },
+    "groups": {
+     "regional": -3
+    },
+    "long": [
+     {
+      "k": "migration",
+      "v": 1.5,
+      "d": 365
+     },
+     {
+      "k": "crime",
+      "v": 1,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$nb": -6,
+     "west": 3
+    }
+   },
+   {
+    "text": "Fechar a fronteira com o Exército.",
+    "hint": "Agrada nacionalistas; condenação externa.",
+    "now": {
+     "reputation": -4
+    },
+    "groups": {
+     "military": 3,
+     "rural": 2
+    },
+    "rel": {
+     "$nb": 3
+    }
+   },
+   {
+    "text": "Aceitar só quem tiver família aqui.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "migration",
+      "v": 0.5,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Recrutar os refugiados como força de oposição a {nb}.",
+    "hint": "Arma política contra o vizinho; perigosa.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "$nb": -12
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 10,
+     "militia": 8
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_water_dam",
+  "cat": "Vizinhança",
+  "title": "A represa de {nb}",
+  "desc": "{nb} começou a construir uma grande represa no rio que abastece nossas lavouras. Engenheiros calculam queda de 20% na vazão.",
+  "context": "Sem água não há colheita. Mas {nb} diz que o rio nasce no território dele.",
+  "tpl": {
+   "nb": "any"
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Negociar um tratado de partilha das águas.",
+    "hint": "Solução duradoura; exige concessões.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": -0.5,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$nb": 6
+    }
+   },
+   {
+    "text": "Levar o caso a uma corte internacional.",
+    "hint": "Lento; prestígio se vencer.",
+    "now": {
+     "reputation": 2
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": -1,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Ameaçar ação militar se a obra continuar.",
+    "hint": "Pode funcionar — ou acender uma guerra.",
+    "groups": {
+     "military": 4,
+     "rural": 4
+    },
+    "rel": {
+     "$nb": -15
+    },
+    "flags": {
+     "set": [
+      "casusBelli"
+     ]
+    }
+   },
+   {
+    "text": "Construir nossas próprias represas e irrigação.",
+    "hint": "Caro; independência hídrica.",
+    "now": {
+     "treasury": -0.8
+    },
+    "groups": {
+     "rural": 5
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "nb_minority",
+  "cat": "Vizinhança",
+  "title": "Nossa minoria em {nb}",
+  "desc": "Falantes da nossa língua que vivem em {nb} denunciam o fechamento de escolas e jornais na língua materna. Pedem que {nation} interceda.",
+  "context": "Defender compatriotas é popular, mas é ingerência.",
+  "tpl": {
+   "nb": "any"
+  },
+  "w": 1.2,
+  "options": [
+   {
+    "text": "Protesto diplomático formal.",
+    "hint": "Firme, sem riscos.",
+    "now": {
+     "legitimacy": 1
+    },
+    "rel": {
+     "$nb": -5
+    }
+   },
+   {
+    "text": "Financiar escolas e mídia da minoria.",
+    "hint": "Fortalece aliados dentro de {nb}.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "$nb": -8
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 8
+    }
+   },
+   {
+    "text": "Distribuir passaportes da nossa nação a eles.",
+    "hint": "Base para reivindicações futuras; {nb} vê como agressão.",
+    "now": {
+     "reputation": -3
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "$nb": -15
+    },
+    "flags": {
+     "set": [
+      "casusBelli"
+     ]
+    }
+   },
+   {
+    "text": "Não interferir.",
+    "hint": "Evita crise; nacionalistas irritados.",
+    "now": {
+     "legitimacy": -1
+    },
+    "groups": {
+     "regional": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_smuggling",
+  "cat": "Vizinhança",
+  "title": "Contrabando pela fronteira de {nb}",
+  "desc": "Combustível subsidiado, cigarros e armas cruzam a fronteira com {nb} todas as noites. Polícias dos dois lados recebem propina.",
+  "context": "A fronteira é longa e porosa.",
+  "tpl": {
+   "nb": "any"
+  },
+  "options": [
+   {
+    "text": "Operação conjunta com {nb}.",
+    "hint": "Melhora relações e controle.",
+    "now": {
+     "control": 3,
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -2,
+      "d": 180
+     }
+    ],
+    "rel": {
+     "$nb": 5
+    }
+   },
+   {
+    "text": "Muro e vigilância eletrônica.",
+    "hint": "Caro; eficaz.",
+    "now": {
+     "treasury": -0.6,
+     "control": 4
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -3,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": -3
+    }
+   },
+   {
+    "text": "Fazer vista grossa: o comércio informal alimenta a região.",
+    "hint": "A economia local agradece; o crime também.",
+    "groups": {
+     "regional": 4
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": 2,
+      "d": 365
+     },
+     {
+      "k": "corruption",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "nb_election",
+  "cat": "Vizinhança",
+  "title": "Eleições em {nb}",
+  "desc": "{nb} vai às urnas. Um candidato promete aproximação com {nation}; o outro, que \"não cederá um centímetro\".",
+  "context": "Podemos influenciar — com discrição ou com dinheiro.",
+  "tpl": {
+   "nb": "democracy"
+  },
+  "w": 1.3,
+  "options": [
+   {
+    "text": "Financiar secretamente o candidato amigo.",
+    "hint": "Pode virar o jogo; risco de escândalo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 18
+    },
+    "next": [
+     {
+      "id": "nb_election_result",
+      "days": 30
+     }
+    ]
+   },
+   {
+    "text": "Declarar apoio público ao candidato amigo.",
+    "hint": "Mobiliza a base dele — e o nacionalismo do outro.",
+    "rel": {
+     "$nb": -3
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 8
+    },
+    "next": [
+     {
+      "id": "nb_election_result",
+      "days": 30
+     }
+    ]
+   },
+   {
+    "text": "Neutralidade absoluta.",
+    "hint": "Respeito; nenhum ganho.",
+    "now": {
+     "reputation": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_election_result",
+  "cat": "Vizinhança",
+  "title": "O resultado em {nb}",
+  "desc": "Apurados os votos em {nb}. Observadores comentam o papel de {nation} na campanha.",
+  "context": "O que fizermos agora define a relação pelos próximos anos.",
+  "tpl": {
+   "nb": "any"
+  },
+  "chain": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Parabenizar o vencedor, seja quem for.",
+    "hint": "Pragmatismo.",
+    "rel": {
+     "$nb": 6
+    }
+   },
+   {
+    "text": "Questionar a lisura da eleição.",
+    "hint": "Desestabiliza {nb}; afasta o novo governo.",
+    "rel": {
+     "$nb": -12
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 6
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_coup",
+  "cat": "Vizinhança",
+  "title": "Golpe de Estado em {nb}",
+  "desc": "Militares tomaram o palácio presidencial em {nb}. O governo deposto pede reconhecimento internacional do exílio.",
+  "context": "Quem reconhecermos primeiro terá nossa amizade — ou nosso inimigo.",
+  "tpl": {
+   "nb": "any"
+  },
+  "w": 0.7,
+  "cd": 500,
+  "options": [
+   {
+    "text": "Reconhecer a junta.",
+    "hint": "Pragmático; condenação ocidental.",
+    "now": {
+     "reputation": -3
+    },
+    "rel": {
+     "$nb": 15,
+     "west": -4
+    }
+   },
+   {
+    "text": "Condenar o golpe e sancionar a junta.",
+    "hint": "Princípios; vizinho hostil.",
+    "now": {
+     "reputation": 3
+    },
+    "rel": {
+     "west": 4
+    },
+    "act": {
+     "type": "sanction",
+     "id": "$nb"
+    }
+   },
+   {
+    "text": "Abrigar o governo no exílio e armar a resistência.",
+    "hint": "Ingerência máxima; pode instalar um aliado.",
+    "now": {
+     "treasury": -0.4
+    },
+    "rel": {
+     "$nb": -20
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 15,
+     "militia": 15
+    }
+   },
+   {
+    "text": "Esperar para ver quem prevalece.",
+    "hint": "Prudente."
+   }
+  ]
+ },
+ {
+  "id": "nb_pipeline",
+  "cat": "Vizinhança",
+  "title": "Gasoduto através de {nb}",
+  "desc": "Uma empresa propõe um gasoduto que ligaria nossos campos de gás ao mercado passando por {nb}. {nb} cobraria pedágio.",
+  "context": "Interdependência é paz — ou chantagem.",
+  "tpl": {
+   "nb": "friendly"
+  },
+  "options": [
+   {
+    "text": "Assinar: rota pelo território de {nb}.",
+    "hint": "Exportações e aproximação; dependência.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.04,
+      "d": 0
+     },
+     {
+      "k": "s_energy",
+      "v": 0.5,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": 12
+    }
+   },
+   {
+    "text": "Rota alternativa mais cara, por outro vizinho ou pelo mar.",
+    "hint": "Independência; custo.",
+    "now": {
+     "treasury": -0.9
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.03,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Desistir do projeto.",
+    "hint": "Sem riscos.",
+    "groups": {
+     "business": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_spy_ring",
+  "cat": "Vizinhança",
+  "title": "Rede de espionagem de {nb}",
+  "desc": "A contrainteligência prendeu oito pessoas acusadas de espionar para {nb}, entre elas um assessor do Ministério da Defesa.",
+  "context": "O caso é explosivo. A imprensa quer nomes.",
+  "tpl": {
+   "nb": "hostile"
+  },
+  "options": [
+   {
+    "text": "Julgamento público e expulsão de diplomatas de {nb}.",
+    "hint": "Firmeza; relação cai.",
+    "now": {
+     "intel": 3,
+     "legitimacy": 2
+    },
+    "rel": {
+     "$nb": -12
+    }
+   },
+   {
+    "text": "Trocar os presos por agentes nossos detidos lá.",
+    "hint": "Discreto; pragmático.",
+    "now": {
+     "intel": 2
+    },
+    "rel": {
+     "$nb": 2
+    }
+   },
+   {
+    "text": "Usá-los como agentes duplos.",
+    "hint": "Excelente para inteligência, se der certo.",
+    "long": [
+     {
+      "k": "intel",
+      "v": 4,
+      "d": 365
+     }
+    ],
+    "next": [
+     {
+      "id": "nb_double_agent",
+      "days": 90,
+      "p": 0.4
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "nb_double_agent",
+  "cat": "Vizinhança",
+  "title": "O agente duplo foi descoberto",
+  "desc": "{nb} percebeu o jogo e executou nosso contato. Pior: publicou documentos que expõem operações nossas.",
+  "context": "Constrangimento total.",
+  "tpl": {
+   "nb": "any"
+  },
+  "chain": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Negar tudo.",
+    "hint": "O de sempre.",
+    "now": {
+     "reputation": -2
+    }
+   },
+   {
+    "text": "Admitir e pedir calma.",
+    "hint": "Honesto; humilhante.",
+    "now": {
+     "legitimacy": -3
+    },
+    "rel": {
+     "$nb": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_rail",
+  "cat": "Vizinhança",
+  "title": "Ferrovia até {nb}",
+  "desc": "{nb} propõe financiar metade de uma ferrovia ligando as duas capitais, {capital} e a deles.",
+  "context": "Comércio e turismo crescem; dependência também.",
+  "tpl": {
+   "nb": "friendly"
+  },
+  "options": [
+   {
+    "text": "Aceitar e construir.",
+    "hint": "Comércio e relações; custo.",
+    "now": {
+     "treasury": -0.5
+    },
+    "long": [
+     {
+      "k": "logistics",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": 0.15,
+      "d": 730
+     }
+    ],
+    "rel": {
+     "$nb": 10
+    }
+   },
+   {
+    "text": "Aceitar só se a obra for feita por empresas nacionais.",
+    "hint": "Agrada empresários; atraso.",
+    "now": {
+     "treasury": -0.6
+    },
+    "groups": {
+     "business": 4
+    },
+    "long": [
+     {
+      "k": "logistics",
+      "v": 1.5,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": 3
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Sem custo.",
+    "rel": {
+     "$nb": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_leader_insult",
+  "cat": "Vizinhança",
+  "title": "O presidente de {nb} nos insulta",
+  "desc": "Em discurso televisionado, o líder de {nb} chamou {leader} de \"fantoche ridículo\" e debochou do nosso Exército.",
+  "context": "A população está indignada.",
+  "tpl": {
+   "nb": "hostile"
+  },
+  "options": [
+   {
+    "text": "Responder no mesmo tom.",
+    "hint": "O povo adora; diplomacia sofre.",
+    "now": {
+     "legitimacy": 2
+    },
+    "groups": {
+     "youth": 2
+    },
+    "rel": {
+     "$nb": -8
+    }
+   },
+   {
+    "text": "Convocar o embaixador para explicações.",
+    "hint": "Protocolar.",
+    "rel": {
+     "$nb": -3
+    }
+   },
+   {
+    "text": "Ignorar com elegância.",
+    "hint": "Estadista; alguns veem fraqueza.",
+    "now": {
+     "reputation": 1,
+     "legitimacy": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_fishing",
+  "cat": "Vizinhança",
+  "title": "Pesqueiros de {nb} em nossas águas",
+  "desc": "A guarda costeira flagrou 40 barcos de {nb} pescando ilegalmente em nossa zona econômica. Os pescadores locais exigem ação.",
+  "context": "É soberania — e peixe.",
+  "tpl": {
+   "nb": "any"
+  },
+  "cond": {
+   "coast": true
+  },
+  "options": [
+   {
+    "text": "Apreender os barcos.",
+    "hint": "Firme; {nb} protesta.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "rural": 4
+    },
+    "rel": {
+     "$nb": -8
+    }
+   },
+   {
+    "text": "Escoltar para fora e multar.",
+    "hint": "Proporcional.",
+    "rel": {
+     "$nb": -2
+    }
+   },
+   {
+    "text": "Negociar um acordo de pesca com licenças pagas.",
+    "hint": "Receita e paz.",
+    "groups": {
+     "rural": -3
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.05,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": 5
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_epidemic",
+  "cat": "Vizinhança",
+  "title": "Epidemia em {nb}",
+  "desc": "Um surto grave de cólera atinge {nb}. O sistema de saúde de lá colapsou e pacientes cruzam a fronteira.",
+  "context": "Ajudar contém o surto e conquista corações.",
+  "tpl": {
+   "nb": "any"
+  },
+  "options": [
+   {
+    "text": "Enviar equipes médicas e vacinas.",
+    "hint": "Caro; grande gesto.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 3
+    },
+    "rel": {
+     "$nb": 14
+    }
+   },
+   {
+    "text": "Fechar a fronteira e reforçar hospitais da região.",
+    "hint": "Protege a população; frieza.",
+    "now": {
+     "treasury": -0.2,
+     "health": 1
+    },
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Vacinar só do nosso lado.",
+    "hint": "Mínimo.",
+    "now": {
+     "treasury": -0.1
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_strong_threat",
+  "cat": "Vizinhança",
+  "title": "{nb} exige \"zona tampão\"",
+  "desc": "O governo de {nb}, militarmente muito mais forte, exige que retiremos tropas a 50 km da fronteira \"para garantir a paz\".",
+  "context": "Ceder é humilhante; resistir é perigoso.",
+  "tpl": {
+   "nb": "strong"
+  },
+  "cond": {
+   "min": {
+    "day": 60
+   }
+  },
+  "options": [
+   {
+    "text": "Aceitar a desmilitarização da faixa.",
+    "hint": "Evita crise; militares furiosos.",
+    "now": {
+     "defense": -5,
+     "legitimacy": -3
+    },
+    "groups": {
+     "military": -8
+    },
+    "rel": {
+     "$nb": 10
+    }
+   },
+   {
+    "text": "Recusar e reforçar a fronteira.",
+    "hint": "Orgulho; risco.",
+    "now": {
+     "defense": 4,
+     "treasury": -0.3
+    },
+    "groups": {
+     "military": 5
+    },
+    "rel": {
+     "$nb": -10
+    }
+   },
+   {
+    "text": "Buscar um tratado de defesa com uma potência.",
+    "hint": "Muda o equilíbrio; irrita {nb}.",
+    "rel": {
+     "$nb": -8,
+     "west": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_weak_annex",
+  "cat": "Vizinhança",
+  "title": "Facções em {nb} pedem nossa proteção",
+  "desc": "Líderes de uma província fronteiriça de {nb}, mais fraco que nós, pedem \"proteção\" de {nation} contra o governo central.",
+  "context": "É uma oportunidade — ou uma armadilha.",
+  "tpl": {
+   "nb": "weak"
+  },
+  "w": 1.2,
+  "options": [
+   {
+    "text": "Enviar armas e conselheiros às facções.",
+    "hint": "Pode levar a um levante e à anexação.",
+    "now": {
+     "treasury": -0.3
+    },
+    "rel": {
+     "$nb": -15
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "militia": 25
+    }
+   },
+   {
+    "text": "Oferecer mediação entre eles e o governo de {nb}.",
+    "hint": "Prestígio regional.",
+    "now": {
+     "influence": 2
+    },
+    "rel": {
+     "$nb": 6
+    }
+   },
+   {
+    "text": "Recusar: não nos metemos.",
+    "hint": "Prudência."
+   }
+  ]
+ },
+ {
+  "id": "nb_nuclear_neighbor",
+  "cat": "Vizinhança",
+  "title": "O arsenal de {nb}",
+  "desc": "{nb} realizou exercícios com mísseis de capacidade nuclear a poucos quilômetros da nossa fronteira.",
+  "context": "Não temos como responder na mesma moeda.",
+  "tpl": {
+   "nb": "nuclear"
+  },
+  "cond": {
+   "nuclear": false
+  },
+  "options": [
+   {
+    "text": "Buscar a proteção de uma potência nuclear.",
+    "hint": "Garantias; dependência.",
+    "now": {
+     "defense": 3
+    },
+    "rel": {
+     "west": 4,
+     "$nb": -6
+    }
+   },
+   {
+    "text": "Iniciar nosso próprio programa nuclear em segredo.",
+    "hint": "Anos de trabalho e risco de sanções.",
+    "act": {
+     "type": "nukeProgram"
+    }
+   },
+   {
+    "text": "Propor um tratado regional de não proliferação.",
+    "hint": "Diplomacia; prestígio.",
+    "now": {
+     "reputation": 3
+    },
+    "rel": {
+     "$nb": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_diaspora_vote",
+  "cat": "Vizinhança",
+  "title": "Os imigrantes de {nb}",
+  "desc": "Há centenas de milhares de imigrantes de {nb} em nossas cidades. Um partido propõe dar-lhes direito a voto local; outro, deportar os ilegais.",
+  "context": "Eles trabalham, consomem — e são alvo fácil.",
+  "tpl": {
+   "nb": "any"
+  },
+  "options": [
+   {
+    "text": "Direito a voto local após cinco anos.",
+    "hint": "Integração; nacionalistas reagem.",
+    "now": {
+     "civil": 2
+    },
+    "groups": {
+     "workers": 2,
+     "regional": -3
+    },
+    "rel": {
+     "$nb": 6
+    }
+   },
+   {
+    "text": "Anistia para regularizar quem trabalha.",
+    "hint": "Arrecadação e direitos.",
+    "now": {
+     "civil": 1
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.05,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": 4
+    }
+   },
+   {
+    "text": "Deportações em massa.",
+    "hint": "Agrada parte do eleitorado; crise com {nb}.",
+    "now": {
+     "civil": -3
+    },
+    "groups": {
+     "business": -4
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": -0.8,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$nb": -14
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_joint_army",
+  "cat": "Vizinhança",
+  "title": "Exercício militar conjunto com {nb}",
+  "desc": "O Estado-Maior de {nb} convida nossas Forças Armadas para manobras conjuntas.",
+  "context": "Aproxima as Forças; outros vizinhos observam.",
+  "tpl": {
+   "nb": "friendly"
+  },
+  "options": [
+   {
+    "text": "Participar com força total.",
+    "hint": "Prontidão e relações.",
+    "now": {
+     "treasury": -0.2,
+     "readiness": 3
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "$nb": 10,
+     "rival": -4
+    }
+   },
+   {
+    "text": "Enviar só observadores.",
+    "hint": "Cortesia.",
+    "rel": {
+     "$nb": 3
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Neutralidade.",
+    "rel": {
+     "$nb": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_two_rivals",
+  "cat": "Vizinhança",
+  "title": "{nb} e {nb2} em crise",
+  "desc": "{nb} e {nb2} trocam ameaças por causa de uma faixa de fronteira. Ambos pedem o apoio de {nation}.",
+  "context": "Escolher um lado nos dá um aliado e um inimigo.",
+  "tpl": {
+   "nb": "any",
+   "nb2": "any"
+  },
+  "w": 1.3,
+  "options": [
+   {
+    "text": "Apoiar {nb}.",
+    "hint": "Aliado ganho; {nb2} ressentido.",
+    "rel": {
+     "$nb": 12,
+     "$nb2": -12
+    },
+    "act": {
+     "type": "relAI",
+     "a": "$nb",
+     "b": "$nb2",
+     "v": -10
+    }
+   },
+   {
+    "text": "Apoiar {nb2}.",
+    "hint": "Aliado ganho; {nb} ressentido.",
+    "rel": {
+     "$nb2": 12,
+     "$nb": -12
+    },
+    "act": {
+     "type": "relAI",
+     "a": "$nb",
+     "b": "$nb2",
+     "v": -10
+    }
+   },
+   {
+    "text": "Mediar uma conferência de paz em {capital}.",
+    "hint": "Prestígio regional se der certo.",
+    "now": {
+     "influence": 3,
+     "reputation": 2,
+     "treasury": -0.1
+    },
+    "act": {
+     "type": "relAI",
+     "a": "$nb",
+     "b": "$nb2",
+     "v": 12
+    }
+   },
+   {
+    "text": "Jogar um contra o outro em segredo.",
+    "hint": "Enfraquece ambos; se descoberto, desastre.",
+    "now": {
+     "intel": 1
+    },
+    "act": {
+     "type": "relAI",
+     "a": "$nb",
+     "b": "$nb2",
+     "v": -25
+    },
+    "next": [
+     {
+      "id": "nb_two_rivals_exposed",
+      "days": 45,
+      "p": 0.3
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "nb_two_rivals_exposed",
+  "cat": "Vizinhança",
+  "title": "Descoberta a manobra entre {nb} e {nb2}",
+  "desc": "Telegramas vazados mostram que diplomatas de {nation} incentivaram os dois lados ao mesmo tempo.",
+  "context": "Ninguém gosta de ser manipulado.",
+  "tpl": {
+   "nb": "any",
+   "nb2": "any"
+  },
+  "chain": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Culpar um diplomata e demiti-lo.",
+    "hint": "Bode expiatório.",
+    "rel": {
+     "$nb": -6,
+     "$nb2": -6
+    }
+   },
+   {
+    "text": "Assumir e justificar como \"realpolitik\".",
+    "hint": "Honestidade cínica.",
+    "now": {
+     "reputation": -3
+    },
+    "rel": {
+     "$nb": -10,
+     "$nb2": -10
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_incite_offer",
+  "cat": "Vizinhança",
+  "title": "{nb} propõe uma aliança contra {nb2}",
+  "desc": "O governo de {nb} sugere, em reunião secreta, uma aliança para pressionar {nb2}, \"o inimigo comum dos dois povos\".",
+  "context": "Uma guerra entre eles enfraqueceria um rival — e poderia nos arrastar.",
+  "tpl": {
+   "nb": "friendly",
+   "nb2": "hostile"
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Encorajar {nb} a agir — com nosso apoio discreto.",
+    "hint": "Pode levar {nb} à guerra contra {nb2}.",
+    "rel": {
+     "$nb": 8
+    },
+    "act": {
+     "type": "incite",
+     "id": "$nb",
+     "target": "$nb2"
+    }
+   },
+   {
+    "text": "Aceitar só cooperação econômica.",
+    "hint": "Comércio sem guerra.",
+    "rel": {
+     "$nb": 4
+    }
+   },
+   {
+    "text": "Avisar {nb2} da conspiração.",
+    "hint": "Ganha a gratidão de {nb2}.",
+    "rel": {
+     "$nb2": 14,
+     "$nb": -15
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_border_market",
+  "cat": "Vizinhança",
+  "title": "Feira de fronteira com {nb}",
+  "desc": "Comerciantes dos dois lados querem uma zona de livre comércio na fronteira com {nb}.",
+  "context": "As cidades fronteiriças vivem do comércio.",
+  "tpl": {
+   "nb": "friendly"
+  },
+  "options": [
+   {
+    "text": "Criar a zona livre.",
+    "hint": "Crescimento regional; contrabando.",
+    "groups": {
+     "regional": 5,
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 0
+     },
+     {
+      "k": "crime",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": 6
+    }
+   },
+   {
+    "text": "Só com alfândega rígida.",
+    "hint": "Controlado.",
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.05,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": 2
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Protege a indústria.",
+    "groups": {
+     "workers": 2,
+     "regional": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_hostage",
+  "cat": "Vizinhança",
+  "title": "Cidadãos nossos presos em {nb}",
+  "desc": "Três jornalistas de {nation} foram presos em {nb} sob acusação de espionagem. A família de um deles, {person}, faz greve de fome em frente ao palácio.",
+  "context": "O caso domina o noticiário.",
+  "tpl": {
+   "nb": "autocracy"
+  },
+  "options": [
+   {
+    "text": "Negociar em silêncio, oferecendo concessões.",
+    "hint": "Liberta os presos; {nb} sai fortalecido.",
+    "now": {
+     "treasury": -0.1
+    },
+    "rel": {
+     "$nb": 4
+    },
+    "next": [
+     {
+      "id": "nb_hostage_free",
+      "days": 30,
+      "p": 0.7
+     }
+    ]
+   },
+   {
+    "text": "Campanha internacional e sanções.",
+    "hint": "Pressão; pode endurecer {nb}.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "$nb": -10,
+     "west": 2
+    }
+   },
+   {
+    "text": "Prender cidadãos de {nb} para trocar.",
+    "hint": "Olho por olho; reputação cai.",
+    "now": {
+     "reputation": -4,
+     "civil": -1
+    },
+    "rel": {
+     "$nb": -8
+    },
+    "next": [
+     {
+      "id": "nb_hostage_free",
+      "days": 21,
+      "p": 0.8
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "nb_hostage_free",
+  "cat": "Vizinhança",
+  "title": "Os jornalistas voltaram",
+  "desc": "Os três jornalistas desembarcaram em {capital} sob aplausos.",
+  "context": "Um momento de alívio nacional.",
+  "tpl": {
+   "nb": "any"
+  },
+  "chain": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Receber pessoalmente no aeroporto.",
+    "hint": "Popularidade.",
+    "now": {
+     "legitimacy": 3
+    }
+   },
+   {
+    "text": "Discrição para não provocar {nb}.",
+    "hint": "Diplomacia.",
+    "rel": {
+     "$nb": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_nbperson_dissident",
+  "cat": "Vizinhança",
+  "title": "Dissidente de {nb} pede asilo",
+  "desc": "{nbPerson}, o mais conhecido opositor de {nb}, desembarcou em {capital} e pede asilo político.",
+  "context": "Proteger um dissidente é nobre — e uma afronta ao governo de {nb}.",
+  "tpl": {
+   "nb": "autocracy"
+  },
+  "options": [
+   {
+    "text": "Conceder asilo e dar palanque.",
+    "hint": "Prestígio liberal; {nb} furioso.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "$nb": -14,
+     "west": 3
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 10
+    }
+   },
+   {
+    "text": "Asilo discreto, sem atividade política.",
+    "hint": "Equilíbrio.",
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Extraditar para {nb}.",
+    "hint": "Ganha o governo de lá; vergonha internacional.",
+    "now": {
+     "reputation": -5,
+     "civil": -1
+    },
+    "rel": {
+     "$nb": 15,
+     "west": -5
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_democracy_pressure",
+  "cat": "Vizinhança",
+  "title": "{nb} critica nossas prisões políticas",
+  "desc": "O parlamento de {nb} aprovou uma moção condenando nossos presos políticos e propõe sanções individuais contra ministros.",
+  "context": "Uma democracia vizinha nos aponta o dedo.",
+  "tpl": {
+   "nb": "democracy"
+  },
+  "cond": {
+   "max": {
+    "political": 35
+   }
+  },
+  "options": [
+   {
+    "text": "Libertar alguns presos como gesto.",
+    "hint": "Alivia a pressão.",
+    "now": {
+     "political": 3,
+     "civil": 2
+    },
+    "groups": {
+     "opposition": 4
+    },
+    "rel": {
+     "$nb": 8
+    }
+   },
+   {
+    "text": "Expulsar o embaixador de {nb}.",
+    "hint": "Soberania; isolamento.",
+    "now": {
+     "legitimacy": 1
+    },
+    "rel": {
+     "$nb": -15
+    }
+   },
+   {
+    "text": "Campanha de propaganda contra a \"hipocrisia\" de {nb}.",
+    "hint": "Mobiliza a base.",
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 2,
+      "d": 120
+     }
+    ],
+    "rel": {
+     "$nb": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_autocrat_offer",
+  "cat": "Vizinhança",
+  "title": "O regime de {nb} oferece cooperação policial",
+  "desc": "O ministro do Interior de {nb} oferece trocar listas de opositores exilados e treinar nossa polícia em \"controle de multidões\".",
+  "context": "Eficiente. Sujo.",
+  "tpl": {
+   "nb": "autocracy"
+  },
+  "options": [
+   {
+    "text": "Aceitar a cooperação completa.",
+    "hint": "Controle e repressão; reputação despenca.",
+    "now": {
+     "control": 4,
+     "civil": -4,
+     "reputation": -4
+    },
+    "groups": {
+     "opposition": -5
+    },
+    "rel": {
+     "$nb": 12
+    }
+   },
+   {
+    "text": "Só cooperação contra crime organizado.",
+    "hint": "Útil e defensável.",
+    "long": [
+     {
+      "k": "crime",
+      "v": -2,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$nb": 5
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Princípios.",
+    "rel": {
+     "$nb": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_cross_terror",
+  "cat": "Vizinhança",
+  "title": "Atentado planejado em {nb}",
+  "desc": "Um grupo armado baseado em {nb} assumiu um atentado em uma de nossas cidades de fronteira. O governo de {nb} nega proteção aos terroristas.",
+  "context": "A população exige vingança.",
+  "tpl": {
+   "nb": "any"
+  },
+  "cond": {
+   "min": {
+    "separatism": 15
+   }
+  },
+  "options": [
+   {
+    "text": "Ataque aéreo contra os acampamentos em {nb}.",
+    "hint": "Retaliação; viola soberania.",
+    "now": {
+     "legitimacy": 3,
+     "reputation": -3
+    },
+    "groups": {
+     "military": 5
+    },
+    "rel": {
+     "$nb": -15
+    },
+    "flags": {
+     "set": [
+      "casusBelli"
+     ]
+    }
+   },
+   {
+    "text": "Exigir que {nb} entregue os responsáveis.",
+    "hint": "Diplomacia firme.",
+    "rel": {
+     "$nb": -5
+    }
+   },
+   {
+    "text": "Operação conjunta de inteligência com {nb}.",
+    "hint": "Eficaz se houver confiança.",
+    "now": {
+     "intel": 2
+    },
+    "rel": {
+     "$nb": 6
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_currency_war",
+  "cat": "Vizinhança",
+  "title": "{nb} desvaloriza a moeda",
+  "desc": "O banco central de {nb} desvalorizou a moeda em 30%. Produtos de lá inundam nossas lojas e fábricas reclamam.",
+  "context": "Guerra cambial na vizinhança.",
+  "tpl": {
+   "nb": "any"
+  },
+  "options": [
+   {
+    "text": "Tarifas de emergência sobre produtos de {nb}.",
+    "hint": "Protege a indústria; inflação.",
+    "groups": {
+     "workers": 3,
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 1,
+      "d": 365
+     },
+     {
+      "k": "inflation",
+      "v": 0.5,
+      "d": 180
+     }
+    ],
+    "rel": {
+     "$nb": -8
+    }
+   },
+   {
+    "text": "Aceitar: consumidores ganham.",
+    "hint": "Preços menores; desemprego industrial.",
+    "long": [
+     {
+      "k": "inflation",
+      "v": -0.5,
+      "d": 180
+     },
+     {
+      "k": "unemployment",
+      "v": 0.4,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Negociar um acordo cambial.",
+    "hint": "Estabilidade regional.",
+    "rel": {
+     "$nb": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_holy_site",
+  "cat": "Vizinhança",
+  "title": "O santuário na fronteira com {nb}",
+  "desc": "Um santuário sagrado para os dois povos fica exatamente sobre a fronteira com {nb}. Peregrinos dos dois lados brigaram; um morreu.",
+  "context": "Religião e nacionalismo são combustível perigoso.",
+  "tpl": {
+   "nb": "any"
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Propor administração conjunta do santuário.",
+    "hint": "Pacificador.",
+    "now": {
+     "reputation": 2
+    },
+    "groups": {
+     "opposition": -1
+    },
+    "rel": {
+     "$nb": 8
+    }
+   },
+   {
+    "text": "Enviar a polícia para controlar nosso lado.",
+    "hint": "Ordem; tensão.",
+    "now": {
+     "control": 2
+    },
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Declarar o santuário patrimônio exclusivo nacional.",
+    "hint": "Nacionalistas e religiosos aplaudem; crise.",
+    "now": {
+     "legitimacy": 2
+    },
+    "groups": {
+     "rural": 4
+    },
+    "rel": {
+     "$nb": -14
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_power_line",
+  "cat": "Vizinhança",
+  "title": "{nb} corta a energia",
+  "desc": "Em plena onda de frio, {nb} interrompeu a exportação de eletricidade para nós, alegando \"manutenção\".",
+  "context": "Todos sabem que é retaliação política.",
+  "tpl": {
+   "nb": "hostile"
+  },
+  "options": [
+   {
+    "text": "Pagar mais caro e reatar o fornecimento.",
+    "hint": "Resolve rápido; mostra fraqueza.",
+    "now": {
+     "treasury": -0.3
+    },
+    "rel": {
+     "$nb": 4
+    }
+   },
+   {
+    "text": "Racionamento e usinas de emergência.",
+    "hint": "Doloroso; autonomia.",
+    "now": {
+     "treasury": -0.4,
+     "protest": 4
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 0.8,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Retaliar cortando o trânsito de mercadorias de {nb}.",
+    "hint": "Olho por olho.",
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.2,
+      "d": 120
+     }
+    ],
+    "rel": {
+     "$nb": -10
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_ethnic_militia_ask",
+  "cat": "Vizinhança",
+  "title": "Milicianos de {nb} pedem armas",
+  "desc": "Comandantes de uma minoria armada em {nb}, perseguida pelo governo de lá, pedem fuzis e munição a {nation}.",
+  "context": "Armar rebeldes enfraquece um rival. E pode virar guerra.",
+  "tpl": {
+   "nb": "hostile"
+  },
+  "w": 1.3,
+  "options": [
+   {
+    "text": "Enviar armas em segredo.",
+    "hint": "Fortalece a milícia; risco de descoberta.",
+    "now": {
+     "treasury": -0.2
+    },
+    "act": {
+     "type": "covert",
+     "id": "$nb",
+     "key": "fundMilitia"
+    }
+   },
+   {
+    "text": "Só ajuda humanitária.",
+    "hint": "Moral elevada.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 1
+    }
+   },
+   {
+    "text": "Entregar os comandantes a {nb}.",
+    "hint": "Ganha o governo de {nb}.",
+    "now": {
+     "reputation": -2
+    },
+    "rel": {
+     "$nb": 12
+    }
+   }
+  ]
+ },
+ {
+  "id": "nb_trade_offer_strong",
+  "cat": "Vizinhança",
+  "title": "{nb} oferece integração econômica",
+  "desc": "{nb}, economia muito maior que a nossa, propõe união aduaneira e moeda atrelada à deles.",
+  "context": "Prosperidade — e perda de autonomia.",
+  "tpl": {
+   "nb": "strong"
+  },
+  "options": [
+   {
+    "text": "Aceitar a integração.",
+    "hint": "Crescimento; soberania reduzida.",
+    "groups": {
+     "business": 6,
+     "military": -4
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.4,
+      "d": 0
+     },
+     {
+      "k": "exportAccess",
+      "v": 0.05,
+      "d": 0
+     },
+     {
+      "k": "inflation",
+      "v": -1,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$nb": 15
+    }
+   },
+   {
+    "text": "Só um acordo comercial.",
+    "hint": "Equilíbrio.",
+    "act": {
+     "type": "partner",
+     "id": "$nb",
+     "key": "trade"
+    }
+   },
+   {
+    "text": "Recusar e buscar outros parceiros.",
+    "hint": "Autonomia.",
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "$nb": -6
+    }
+   }
+  ]
+ }
+]

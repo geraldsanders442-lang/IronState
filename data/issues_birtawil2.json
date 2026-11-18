@@ -1,0 +1,1301 @@
+[
+ {
+  "id": "bt3_lottery",
+  "cat": "Micronação",
+  "title": "A loteria nacional (prêmio: um camelo)",
+  "desc": "O ministro da Fazenda propõe uma loteria para arrecadar fundos. O prêmio principal é um camelo com certificado; o segundo, uma tarde com o rei.",
+  "context": "Jogo de azar em escala de oásis.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Criar a loteria e vender bilhetes online.",
+    "hint": "Arrecada com turistas e curiosos.",
+    "now": {
+     "treasury": 0.07,
+     "reputation": 0.3
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Loteria só entre cidadãos, para financiar o poço.",
+    "hint": "Pequena e honesta.",
+    "now": {
+     "treasury": 0.02,
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Vetar: \"o camelo não é prêmio, é cidadão\".",
+    "hint": "Ética peluda.",
+    "now": {
+     "legitimacy": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_school",
+  "cat": "Micronação",
+  "title": "A escola de uma sala só",
+  "desc": "Um professor viajante se oferece para ensinar as crianças do reino (são quatro). Pede um quadro, giz e a garantia de que ninguém o prenderá por \"ensinar geografia errada\".",
+  "context": "Educação num lugar que ninguém marcou no mapa.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Contratar o professor e abrir a escola.",
+    "hint": "Educação básica garantida.",
+    "now": {
+     "treasury": -0.03,
+     "education": 1.5
+    },
+    "groups": {
+     "youth": 3,
+     "rural": 1
+    }
+   },
+   {
+    "text": "Ensino pela internet com o wi-fi do turista.",
+    "hint": "Barato, instável.",
+    "now": {
+     "education": 0.6,
+     "tech": 0.3
+    }
+   },
+   {
+    "text": "Dispensar: a escola é a vida.",
+    "hint": "Filosofia gratuita.",
+    "now": {
+     "education": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_doctor",
+  "cat": "Micronação",
+  "title": "Médicos sem fronteiras passam pelo deserto",
+  "desc": "Uma equipe médica oferece montar um posto por uma semana. Eles notam falta de vacinas, água limpa e um paciente reclamando de insolação... e de reinado.",
+  "context": "Saúde pública para 300 pessoas e 41 cabras.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Receber e pedir que fiquem um mês.",
+    "hint": "Vacinação e atendimento.",
+    "now": {
+     "health": 2,
+     "reputation": 1.5,
+     "treasury": -0.02
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Receber só por uma semana.",
+    "hint": "Alívio rápido.",
+    "now": {
+     "health": 1,
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Recusar: \"temos o curandeiro nacional\".",
+    "hint": "Tradição que dói.",
+    "now": {
+     "health": -0.5
+    },
+    "groups": {
+     "rural": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_mayor",
+  "cat": "Micronação",
+  "title": "Primeira eleição para \"prefeito do oásis\"",
+  "desc": "Os moradores do oásis pedem alguém para cuidar do poço e do lixo. Surgem dois candidatos: um nômade e o dono do único comércio. O rei suspeita de ambos.",
+  "context": "A democracia chegou (de caravana).",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Permitir a eleição livre.",
+    "hint": "Legitimidade e dor de cabeça.",
+    "now": {
+     "political": 2,
+     "legitimacy": 1.5
+    },
+    "groups": {
+     "regional": 2
+    }
+   },
+   {
+    "text": "Nomear o dono do comércio.",
+    "hint": "Eficiente e corrupto.",
+    "now": {
+     "efficiency": 1,
+     "corruption": 1
+    },
+    "groups": {
+     "business": 2,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Manter o rei como prefeito.",
+    "hint": "Concentração total.",
+    "now": {
+     "legitimacy": -0.5,
+     "control": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_tax",
+  "cat": "Micronação",
+  "title": "Imposto de renda para 312 pessoas",
+  "desc": "O ministro da Fazenda propõe criar o imposto de renda. Nenhum habitante tem renda declarada, salvo o dono do comércio, que \"mistura as contas com as da cabra\".",
+  "context": "A fome do Estado, mesmo em miniatura.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Imposto simbólico: 1% e um café.",
+    "hint": "Hábito de cidadania.",
+    "now": {
+     "treasury": 0.02,
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Cobrança dura, com fiscal e tudo.",
+    "hint": "O fiscal é o sobrinho.",
+    "now": {
+     "treasury": 0.06,
+     "legitimacy": -1.5,
+     "civil": -0.3
+    },
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Sem imposto: o rei \"vive do orgulho\".",
+    "hint": "Cofre vazio.",
+    "now": {
+     "legitimacy": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_dinar",
+  "cat": "Micronação",
+  "title": "O dinar de areia ganha papel e tinta",
+  "desc": "Uma gráfica de outro país se oferece para imprimir a moeda oficial do reino em edição colecionável. O rei exige o retrato dele em cada nota — e o do camelo no verso.",
+  "context": "Moeda sem Banco Central, mas com autoestima.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Encomendar a série completa.",
+    "hint": "Colecionadores pagam bem.",
+    "now": {
+     "treasury": 0.08,
+     "reputation": 0.5,
+     "legitimacy": 1
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Imprimir uma tiragem pequena em casa.",
+    "hint": "Artesanal e charmoso.",
+    "now": {
+     "treasury": 0.02
+    }
+   },
+   {
+    "text": "Adotar o dólar e esquecer a ideia.",
+    "hint": "Pragmático e sem graça.",
+    "now": {
+     "legitimacy": -1,
+     "inflation": -0.1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_markers",
+  "cat": "Micronação",
+  "title": "O vento move os marcos da fronteira",
+  "desc": "Os marcos de pedra que delimitam o território sumiram sob a areia. Sem eles, ninguém sabe onde o reino termina. Um morador sugere \"decidir pelo olho\".",
+  "context": "Fronteiras de papel, e agora de areia.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Replantar marcos com GPS e fotos.",
+    "hint": "Precisão e prova.",
+    "now": {
+     "treasury": -0.03,
+     "control": 1,
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Declarar a fronteira \"móvel\", conforme o vento.",
+    "hint": "Conceito inédito de soberania.",
+    "now": {
+     "reputation": 0.8,
+     "legitimacy": -0.5
+    },
+    "rel": {
+     "neighbors": -1
+    }
+   },
+   {
+    "text": "Deixar sem marcos: ninguém quer a terra mesmo.",
+    "hint": "Realista.",
+    "now": {
+     "control": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_goat_ngo",
+  "cat": "Micronação",
+  "title": "ONG exige direitos para as cabras",
+  "desc": "Uma organização internacional pede garantias de bem-estar animal para as 41 cabras do reino: sombra, ração e proibição de usá-las em \"cerimônias oficiais\".",
+  "context": "Direitos de quem não vota.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Aprovar a Carta dos Direitos Caprinos.",
+    "hint": "Imagem impecável.",
+    "now": {
+     "reputation": 1.5,
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Aprovar parcialmente e manter as cerimônias.",
+    "hint": "Meio-termo caprino.",
+    "now": {
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Recusar: \"a cabra é patrimônio, não pessoa\".",
+    "hint": "Controvérsia garantida.",
+    "now": {
+     "reputation": -1.5
+    },
+    "groups": {
+     "youth": -2,
+     "rural": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_documentary",
+  "cat": "Micronação",
+  "title": "Documentário sobre o reino é indicado a um prêmio",
+  "desc": "Um diretor de cinema filmou o cotidiano da micronação e a obra foi indicada a um festival. Ele pede que o rei compareça em traje de gala (um lençol bem passado).",
+  "context": "Fama internacional, mas o reino tem medo de turismo excessivo.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Comparecer à premiação.",
+    "hint": "Visibilidade e orgulho.",
+    "now": {
+     "reputation": 2.5,
+     "legitimacy": 1.5,
+     "treasury": -0.03
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Mandar o sobrinho como embaixador.",
+    "hint": "Aventura diplomática.",
+    "now": {
+     "reputation": 1.5
+    }
+   },
+   {
+    "text": "Ignorar: \"cinema é vaidade\".",
+    "hint": "Perde a chance.",
+    "now": {
+     "reputation": -0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_billionaire",
+  "cat": "Micronação",
+  "title": "Um bilionário excêntrico pede cidadania",
+  "desc": "Um empresário cansado de impostos oferece uma doação enorme para ser cidadão e \"primeiro-ministro honorário\". Ele quer isenção de qualquer obrigação.",
+  "context": "O reino vira refúgio para quem tem demais.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Aceitar a doação e dar a cidadania.",
+    "hint": "Dinheiro e escândalo.",
+    "now": {
+     "treasury": 0.3,
+     "reputation": -2,
+     "legitimacy": -1
+    },
+    "groups": {
+     "business": 2,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Aceitar a doação, sem cargos.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": 0.15,
+     "reputation": -0.5
+    }
+   },
+   {
+    "text": "Recusar: \"aqui não se compra o título\".",
+    "hint": "Dignidade pobre.",
+    "now": {
+     "legitimacy": 1.5,
+     "reputation": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_fake_embassy",
+  "cat": "Micronação",
+  "title": "Golpistas abrem uma embaixada falsa do reino",
+  "desc": "Alguém instalou um \"consulado do Reino de Bir Tawil\" em uma capital distante e vende vistos por centenas de dólares. Vítimas reclamam ao Ministério das Relações Exteriores (o rei).",
+  "context": "Até um país que não existe tem fraudes.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Denunciar a fraude publicamente.",
+    "hint": "Imagem de seriedade (inédita).",
+    "now": {
+     "reputation": 1,
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Pedir comissão aos golpistas.",
+    "hint": "Corrupção criativa.",
+    "now": {
+     "treasury": 0.05,
+     "corruption": 1.5,
+     "reputation": -1.5
+    }
+   },
+   {
+    "text": "Ignorar: \"publicidade grátis\".",
+    "hint": "Cheira mal.",
+    "now": {
+     "reputation": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_exercise",
+  "cat": "Micronação",
+  "title": "Exercício militar egípcio na fronteira",
+  "desc": "Tanques e helicópteros do exército do Egito fazem manobras a poucos quilômetros. Os onze soldados do reino pedem instruções. O camelo, calma.",
+  "context": "Sinais de força de um vizinho que alega não querer o território.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Enviar uma nota diplomática de \"boas-vindas\".",
+    "hint": "Simpático e desconcertante.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Mobilizar os onze soldados e o megafone.",
+    "hint": "Soberania teatral.",
+    "now": {
+     "readiness": 1,
+     "legitimacy": 1
+    },
+    "rel": {
+     "neighbors": -3
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Esconder a bandeira e fingir que não existe.",
+    "hint": "Estratégia de avestruz.",
+    "now": {
+     "legitimacy": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_hydroponics",
+  "cat": "Micronação",
+  "title": "Agricultura hidropônica no deserto",
+  "desc": "Uma startup de agrotecnologia quer testar estufas hidropônicas usando o poço. Prometem tomates e alface — e uma conta de água alta.",
+  "context": "Verde no meio do marrom.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Aceitar o projeto-piloto.",
+    "hint": "Comida local e risco para o poço.",
+    "now": {
+     "treasury": -0.03
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 1.5,
+      "d": 0
+     },
+     {
+      "k": "hunger",
+      "v": -0.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Condicionar a um limite de água.",
+    "hint": "Prudência.",
+    "long": [
+     {
+      "k": "s_food",
+      "v": 0.8,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Recusar: \"só deserto fica bem no cartão postal\".",
+    "hint": "Estética."
+   }
+  ]
+ },
+ {
+  "id": "bt3_trekking",
+  "cat": "Micronação",
+  "title": "Turismo de aventura: trilhas e acampamentos",
+  "desc": "Uma agência lança pacotes de trekking que cruzam o território. A pouca infraestrutura, o clima e a falta de sombra fazem o rei sorrir de nervoso.",
+  "context": "Turismo de nicho que dá dinheiro e dor de cabeça.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Criar guias e cobrar taxa de entrada.",
+    "hint": "Renda e empregos pequenos.",
+    "now": {
+     "treasury": 0.06,
+     "reputation": 0.8
+    },
+    "groups": {
+     "youth": 2,
+     "business": 1
+    }
+   },
+   {
+    "text": "Autorizar sem regras.",
+    "hint": "Mais gente, mais lixo.",
+    "now": {
+     "treasury": 0.08,
+     "pollution": 0.8,
+     "health": -0.2
+    }
+   },
+   {
+    "text": "Fechar à visitação.",
+    "hint": "Isolamento digno.",
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_bakery",
+  "cat": "Micronação",
+  "title": "A padaria nacional e o forno solar",
+  "desc": "Um inventor constrói um forno movido a sol para assar o pão do reino. O primeiro lote saiu duro como pedra, mas está \"autenticamente nacional\".",
+  "context": "A segurança alimentar começa no forno.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Financiar a padaria nacional.",
+    "hint": "Pão para todos, mais ou menos.",
+    "now": {
+     "treasury": -0.03,
+     "hunger": -0.3
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Vender o pão como souvenir.",
+    "hint": "Turista paga pelo tijolo.",
+    "now": {
+     "treasury": 0.04,
+     "reputation": 0.3
+    }
+   },
+   {
+    "text": "Importar pão do oásis vizinho.",
+    "hint": "Logística heroica.",
+    "now": {
+     "treasury": -0.02
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_cup",
+  "cat": "Micronação",
+  "title": "A Copa das Micronações de futebol",
+  "desc": "Uma liga de micronações convida o reino a participar do torneio. Dispõe-se de cinco jogadores (um é o rei) e um goleiro com medo de bola.",
+  "context": "Esporte como diplomacia de miniatura.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Participar e treinar com seriedade.",
+    "hint": "Orgulho nacional (e derrota certa).",
+    "now": {
+     "treasury": -0.03,
+     "legitimacy": 1.5,
+     "reputation": 0.8
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Mandar só o rei como técnico.",
+    "hint": "Poupa joelhos.",
+    "now": {
+     "legitimacy": 0.5
+    }
+   },
+   {
+    "text": "Recusar: \"futebol é para quem tem bola\".",
+    "hint": "Cômodo.",
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_language",
+  "cat": "Micronação",
+  "title": "Idioma oficial: invente um",
+  "desc": "O ministro da Cultura sugere criar uma língua própria do reino. A primeira palavra que inventou foi \"areia\". A segunda também.",
+  "context": "Soberania linguística em construção.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Criar o idioma oficial e escrever o dicionário.",
+    "hint": "Identidade cultural.",
+    "now": {
+     "legitimacy": 2,
+     "education": 0.3
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Adotar o inglês e o árabe.",
+    "hint": "Realista.",
+    "now": {
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Falar por gestos.",
+    "hint": "Mais simples.",
+    "now": {
+     "legitimacy": -0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_trial",
+  "cat": "Micronação",
+  "title": "Julgamento do camelo invasor",
+  "desc": "Um camelo vizinho foi flagrado pastando em território nacional. Moradores exigem um julgamento e uma cerimônia de deportação.",
+  "context": "O primeiro caso do sistema judiciário.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Julgar com juiz, advogado e plateia.",
+    "hint": "Espetáculo de justiça.",
+    "now": {
+     "legitimacy": 1.5,
+     "reputation": 0.8
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Perdoar e oferecer cidadania ao camelo.",
+    "hint": "Simpatia garantida.",
+    "now": {
+     "reputation": 1.2,
+     "legitimacy": 0.5
+    }
+   },
+   {
+    "text": "Deportar com honras.",
+    "hint": "Rápido e simbólico.",
+    "now": {
+     "legitimacy": 0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_cell",
+  "cat": "Micronação",
+  "title": "Torre de celular: sinal ou paisagem?",
+  "desc": "Uma operadora quer instalar uma torre de celular em troca de contrato. O sinal chegaria a todo o reino e, de quebra, ao território vizinho.",
+  "context": "Conectar-se é também ser vigiado.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Aceitar a torre e cobrar aluguel.",
+    "hint": "Sinal e renda.",
+    "now": {
+     "treasury": 0.04,
+     "tech": 1
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Aceitar com condição de dados abertos.",
+    "hint": "Transparência.",
+    "now": {
+     "treasury": 0.02,
+     "tech": 0.8,
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Recusar: \"silêncio é patrimônio\".",
+    "hint": "Paz de espírito.",
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_coins",
+  "cat": "Micronação",
+  "title": "Moedas de latão para turistas",
+  "desc": "Um artesão propõe cunhar moedas comemorativas do reino. Os turistas adoram. Os colecionadores, mais ainda.",
+  "context": "Numismática de nicho.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Cunhar uma edição limitada.",
+    "hint": "Boa renda.",
+    "now": {
+     "treasury": 0.06,
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Cunhar em massa.",
+    "hint": "Muito dinheiro; vira lembrancinha.",
+    "now": {
+     "treasury": 0.1,
+     "reputation": -0.8
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Sem barulho."
+   }
+  ]
+ },
+ {
+  "id": "bt3_constitution",
+  "cat": "Micronação",
+  "title": "A Constituição escrita num guardanapo",
+  "desc": "A assembleia dos sete cidadãos mais sérios propõe redigir uma Constituição. O rascunho, em um guardanapo, tem três artigos: \"o rei manda\", \"o camelo tem razão\" e \"quando em dúvida, café\".",
+  "context": "Um Estado sem Constituição é um clube.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 600,
+  "options": [
+   {
+    "text": "Aprovar a Constituição do guardanapo.",
+    "hint": "Documento histórico (e engordurado).",
+    "now": {
+     "legitimacy": 2,
+     "political": 1
+    }
+   },
+   {
+    "text": "Contratar um jurista de verdade.",
+    "hint": "Texto sério e custoso.",
+    "now": {
+     "treasury": -0.03,
+     "legitimacy": 1.5,
+     "reputation": 1,
+     "political": 1.5
+    }
+   },
+   {
+    "text": "Manter a tradição oral.",
+    "hint": "Ninguém sabe o que vale.",
+    "now": {
+     "legitimacy": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_refugees",
+  "cat": "Micronação",
+  "title": "Famílias fugindo de um conflito pedem abrigo",
+  "desc": "Um pequeno grupo de refugiados de uma região em guerra chega à fronteira. Não há comida suficiente, mas o reino é, em tese, o único país que \"não recusa ninguém\".",
+  "context": "O dilema mais sério do reino mais absurdo.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Abrigar e dividir os recursos.",
+    "hint": "Humanitário e apertado.",
+    "now": {
+     "treasury": -0.05,
+     "reputation": 3,
+     "qol": -0.3,
+     "health": -0.2
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Abrigar temporariamente e pedir ajuda da ONU.",
+    "hint": "Responsável.",
+    "now": {
+     "treasury": -0.02,
+     "reputation": 2
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Recusar: não há recursos.",
+    "hint": "Realista e duro.",
+    "now": {
+     "reputation": -2,
+     "legitimacy": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_blackout",
+  "cat": "Micronação",
+  "title": "Apagão: o gerador do palácio pifa",
+  "desc": "O único gerador do reino deixa de funcionar e o país mergulha no escuro. As estrelas, felizmente, são lindas.",
+  "context": "Sem luz, a política vira poesia.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Comprar um gerador novo.",
+    "hint": "Custo alto, luz de volta.",
+    "now": {
+     "treasury": -0.06,
+     "qol": 0.5
+    }
+   },
+   {
+    "text": "Instalar painéis solares de segunda mão.",
+    "hint": "Sustentável e remendado.",
+    "now": {
+     "treasury": -0.03
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Declarar \"a hora das estrelas\" e seguir.",
+    "hint": "Festa e preguiça.",
+    "now": {
+     "legitimacy": 0.5,
+     "qol": -0.3
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_mars",
+  "cat": "Micronação",
+  "title": "Cientistas escolhem o deserto para simular Marte",
+  "desc": "Uma agência espacial procura locais desolados para testar equipamentos de pouso marciano. Bir Tawil é \"perfeitamente nada\".",
+  "context": "Reputação científica em troca de poeira.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Receber os testes e cobrar aluguel.",
+    "hint": "Renda e prestígio.",
+    "now": {
+     "treasury": 0.08,
+     "reputation": 2,
+     "tech": 1
+    }
+   },
+   {
+    "text": "Exigir transferência de tecnologia.",
+    "hint": "Negocia o futuro.",
+    "now": {
+     "treasury": 0.03
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Recusar: \"o planeta vermelho que se vire\".",
+    "hint": "Orgulho terrestre."
+   }
+  ]
+ },
+ {
+  "id": "bt3_scorpions",
+  "cat": "Micronação",
+  "title": "Invasão de escorpiões",
+  "desc": "Uma chuva rara provocou uma explosão de escorpiões. Há picadas, medo e um pedido de decreto real contra a espécie.",
+  "context": "A natureza também tem sua política externa.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Comprar soro antiescorpiônico e botas para todos.",
+    "hint": "Salva vidas.",
+    "now": {
+     "treasury": -0.03,
+     "health": 1
+    }
+   },
+   {
+    "text": "Declarar guerra aos escorpiões.",
+    "hint": "Teatro e bota.",
+    "now": {
+     "legitimacy": 1,
+     "health": 0.2
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Declarar os escorpiões cidadãos honorários.",
+    "hint": "Convivência radical.",
+    "now": {
+     "health": -0.8,
+     "reputation": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_mausoleum",
+  "cat": "Micronação",
+  "title": "O rei quer um mausoléu de pedra",
+  "desc": "O rei pede uma pirâmide própria \"para quando chegar a hora\". O arquiteto nacional (o sobrinho) propõe usar sacos de areia empilhados.",
+  "context": "Faraós têm referências; reis de micronação também.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Construir um mausoléu modesto de pedra.",
+    "hint": "Caro e simbólico.",
+    "now": {
+     "treasury": -0.05,
+     "legitimacy": 1.5
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Adotar a pirâmide de sacos de areia.",
+    "hint": "Barato e frágil.",
+    "now": {
+     "treasury": -0.01,
+     "legitimacy": 0.5,
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Adiar: \"reis não morrem, apenas viajam\".",
+    "hint": "Teologia otimista."
+   }
+  ]
+ },
+ {
+  "id": "bt3_climbers",
+  "cat": "Micronação",
+  "title": "Alpinistas hasteiam a bandeira do reino numa colina",
+  "desc": "Um grupo de alpinistas escalou a única colina da região e colocou lá a bandeira do reino, junto com uma garrafa térmica. As fotos viralizaram.",
+  "context": "O ponto mais alto do país tem 40 metros.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Oficializar a colina como Monte Real.",
+    "hint": "Turismo e orgulho.",
+    "now": {
+     "reputation": 1.2,
+     "legitimacy": 1.2,
+     "treasury": 0.02
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Cobrar taxa de escalada.",
+    "hint": "Rendimento e picuinha.",
+    "now": {
+     "treasury": 0.04,
+     "reputation": -0.3
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Modéstia."
+   }
+  ]
+ },
+ {
+  "id": "bt3_soda",
+  "cat": "Micronação",
+  "title": "Marca de refrigerante pede exclusividade",
+  "desc": "Uma grande marca de bebidas oferece patrocinar o reino em troca de ser a única vendida em território nacional — e de nomear o poço. O rei quer saber se haverá gelo.",
+  "context": "Dinheiro com sabor de açúcar.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Aceitar o patrocínio.",
+    "hint": "Receita e dentes.",
+    "now": {
+     "treasury": 0.12,
+     "health": -0.3,
+     "reputation": -0.8
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Aceitar sem exclusividade.",
+    "hint": "Menos dinheiro, mais liberdade.",
+    "now": {
+     "treasury": 0.05
+    }
+   },
+   {
+    "text": "Recusar: \"o poço não tem preço\".",
+    "hint": "Altivo e seco.",
+    "now": {
+     "legitimacy": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_newspaper",
+  "cat": "Micronação",
+  "title": "O primeiro jornal do reino",
+  "desc": "Um jovem lança um boletim impresso em folha A4 com o título \"O Deserto Diário\". A manchete da primeira edição: \"Nada acontece, e todos sabem\".",
+  "context": "Imprensa em território onde tudo é segredo — porque ninguém liga.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Apoiar a imprensa livre e dar uma sala.",
+    "hint": "Transparência e dor de cabeça.",
+    "now": {
+     "civil": 1.5,
+     "legitimacy": 1
+    },
+    "groups": {
+     "youth": 3,
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Exigir revisão prévia do rei.",
+    "hint": "Censura de bolso.",
+    "now": {
+     "civil": -1.5,
+     "legitimacy": -1
+    },
+    "groups": {
+     "youth": -3
+    }
+   },
+   {
+    "text": "Comprar o jornal e virar o jornal oficial.",
+    "hint": "Propaganda e eficiência.",
+    "now": {
+     "treasury": -0.02
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "bt3_hackers",
+  "cat": "Micronação",
+  "title": "Hackers invadem o site do reino",
+  "desc": "O único site oficial exibiu, por três horas, uma foto de um gato gigante e a frase \"ninguém reclama\". O departamento de TI (um estagiário) está em pânico.",
+  "context": "Primeiro ciberataque de um país sem computadores.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Contratar uma empresa de segurança digital.",
+    "hint": "Reforço, caro para o orçamento.",
+    "now": {
+     "treasury": -0.03,
+     "intel": 1
+    }
+   },
+   {
+    "text": "Adotar o gato como mascote nacional.",
+    "hint": "Memes a favor.",
+    "now": {
+     "reputation": 1,
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Desligar o site e voltar ao papel.",
+    "hint": "Retrocesso decente.",
+    "now": {
+     "tech": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt3_strike",
+  "cat": "Micronação",
+  "title": "Greve geral: os soldados, o camelo e o cozinheiro",
+  "desc": "Os onze soldados, o camelo e o cozinheiro do palácio param. Querem aumento, folga e menos discursos do rei. O camelo, em solidariedade, não se mexe.",
+  "context": "O primeiro movimento sindical do reino.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 500,
+  "options": [
+   {
+    "text": "Negociar: mais folga e salário.",
+    "hint": "Acordo caro (para o orçamento).",
+    "now": {
+     "treasury": -0.03,
+     "legitimacy": 1
+    },
+    "groups": {
+     "military": 3,
+     "workers": 3
+    }
+   },
+   {
+    "text": "Demitir todos (menos o camelo).",
+    "hint": "Drama e fome.",
+    "now": {
+     "legitimacy": -2,
+     "efficiency": -1
+    },
+    "groups": {
+     "military": -4,
+     "workers": -3
+    }
+   },
+   {
+    "text": "O rei faz um discurso de 6 horas.",
+    "hint": "Vence pelo cansaço.",
+    "now": {
+     "legitimacy": -0.5
+    },
+    "groups": {
+     "workers": -1
+    }
+   }
+  ]
+ }
+]

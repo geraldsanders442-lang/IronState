@@ -1,0 +1,633 @@
+[
+ {
+  "id": "pk_oc_sea_level",
+  "cat": "Oceania",
+  "title": "O mar engole as ilhas",
+  "desc": "Atóis baixos sofrem salinização e inundação. Líderes discutem migração organizada e o direito de manter a soberania submersa.",
+  "context": "Ameaça existencial.",
+  "cond": {
+   "regions": [
+    "oceania"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Plano de migração com dignidade.",
+    "hint": "Humano.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 1.5
+    },
+    "groups": {
+     "rural": -1,
+     "youth": 2
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Construir ilhas e muros.",
+    "hint": "Resiliência.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Exigir compensação climática.",
+    "hint": "Diplomacia ativa.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {},
+    "rel": {
+     "west": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_oc_cruise_boom",
+  "cat": "Oceania",
+  "title": "Cruzeiros e turismo de massa",
+  "desc": "Navios gigantes despejam turistas e lixo em lagoas e recifes.",
+  "context": "Receita e fragilidade.",
+  "cond": {
+   "regions": [
+    "oceania"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Limitar chegadas e cobrar taxa.",
+    "hint": "Sustenta.",
+    "now": {
+     "treasury": 0.1,
+     "pollution": -0.4
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Ampliar o porto.",
+    "hint": "Mais renda.",
+    "now": {
+     "treasury": 0.25,
+     "pollution": 0.6
+    },
+    "groups": {
+     "business": 3
+    }
+   },
+   {
+    "text": "Turismo comunitário.",
+    "hint": "Distribui.",
+    "now": {
+     "treasury": 0.05
+    },
+    "groups": {
+     "rural": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_oc_fishing_licenses",
+  "cat": "Oceania",
+  "title": "Licenças de pesca de atum",
+  "desc": "Frotas estrangeiras pagam pelo acesso às águas. A pesca ilegal esvazia o oceano.",
+  "context": "Mar como recurso.",
+  "cond": {
+   "regions": [
+    "oceania"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Fiscalização por satélite e patrulhas.",
+    "hint": "Protege.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 1
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Vender mais licenças.",
+    "hint": "Receita.",
+    "now": {
+     "treasury": 0.25,
+     "pollution": 0.4
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Santuário marinho.",
+    "hint": "Preserva.",
+    "now": {
+     "treasury": -0.1,
+     "pollution": -0.5
+    },
+    "groups": {
+     "youth": 2,
+     "rural": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_oc_china_us_rivalry",
+  "cat": "Oceania",
+  "title": "Potências disputam o Pacífico",
+  "desc": "China e aliados oferecem bases, portos e dinheiro em troca de alinhamento.",
+  "context": "A nova grande disputa.",
+  "cond": {
+   "regions": [
+    "oceania"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aceitar a parceria de segurança com o Ocidente.",
+    "hint": "Proteção.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "west": 4,
+     "china": -4
+    }
+   },
+   {
+    "text": "Aceitar investimentos asiáticos.",
+    "hint": "Obras.",
+    "now": {
+     "treasury": 0.3,
+     "debt": 0.3
+    },
+    "groups": {
+     "business": 2
+    },
+    "rel": {
+     "china": 4,
+     "west": -3
+    }
+   },
+   {
+    "text": "Neutralidade ativa.",
+    "hint": "Equilíbrio.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_oc_cyclone",
+  "cat": "Oceania",
+  "title": "Ciclone devastador",
+  "desc": "Ventos destroem casas, plantações e infraestrutura. A reconstrução depende de ajuda externa.",
+  "context": "Clima extremo.",
+  "cond": {
+   "regions": [
+    "oceania"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Pedir ajuda e reconstruir mais forte.",
+    "hint": "Resiliente.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 0.5
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Reconstrução rápida e barata.",
+    "hint": "Vulnerável.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Realocar comunidades.",
+    "hint": "Doloroso.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "rural": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_oc_customary_land",
+  "cat": "Oceania",
+  "title": "Terra tradicional e investimento",
+  "desc": "A maior parte das terras pertence a clãs. Empresas querem comprá-las ou arrendá-las.",
+  "context": "Direito costumeiro.",
+  "cond": {
+   "regions": [
+    "oceania"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Arrendamento regulado.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "rural": 1,
+     "business": 2
+    }
+   },
+   {
+    "text": "Proteger a terra dos clãs.",
+    "hint": "Preserva.",
+    "now": {},
+    "groups": {
+     "rural": 3,
+     "business": -2
+    }
+   },
+   {
+    "text": "Liberar vendas.",
+    "hint": "Investimento.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": 3,
+     "rural": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_oc_diaspora_remit",
+  "cat": "Oceania",
+  "title": "Remessas das ilhas para o exterior",
+  "desc": "Muitos moradores trabalham no exterior e ajudam a sustentar a economia. Esvaziam-se as vilas.",
+  "context": "Dependência externa.",
+  "cond": {
+   "regions": [
+    "oceania"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Programa de trabalho sazonal organizado.",
+    "hint": "Estruturado.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "workers": 2
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Incentivar o retorno.",
+    "hint": "Retém.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Aceitar.",
+    "hint": "Dinheiro.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_oc_bougainville",
+  "cat": "Oceania",
+  "title": "Referendo de independência de uma região",
+  "desc": "Uma região insular que votou pela independência espera negociação. O governo central hesita.",
+  "context": "Autodeterminação.",
+  "cond": {
+   "regions": [
+    "oceania"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Negociar a independência gradual.",
+    "hint": "Pacífica.",
+    "now": {
+     "reputation": 1.5,
+     "treasury": -0.2
+    },
+    "groups": {
+     "regional": 3
+    }
+   },
+   {
+    "text": "Adiar indefinidamente.",
+    "hint": "Conflito latente.",
+    "now": {},
+    "groups": {
+     "regional": -3
+    }
+   },
+   {
+    "text": "Autonomia ampliada.",
+    "hint": "Meio-termo.",
+    "now": {},
+    "groups": {
+     "regional": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_oc_mining_island",
+  "cat": "Oceania",
+  "title": "Mineração em alto-mar",
+  "desc": "Empresas pedem licenças para extrair nódulos de metais no leito oceânico.",
+  "context": "Riqueza submersa.",
+  "cond": {
+   "regions": [
+    "oceania"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Moratória.",
+    "hint": "Protege.",
+    "now": {
+     "reputation": 1.5,
+     "pollution": -0.3
+    },
+    "groups": {
+     "youth": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Autorizar com padrões.",
+    "hint": "Dinheiro.",
+    "now": {
+     "treasury": 0.3,
+     "pollution": 0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Exigir participação do Estado.",
+    "hint": "Soberania.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_au_coal_exports",
+  "cat": "Oceania",
+  "title": "Carvão para o mundo",
+  "desc": "O país é um dos maiores exportadores; ambientalistas pedem fechamento progressivo das minas.",
+  "context": "Dilema australiano.",
+  "cond": {
+   "countries": [
+    "AUS"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Cronograma de saída.",
+    "hint": "Clima.",
+    "now": {
+     "treasury": -0.2,
+     "pollution": -0.7
+    },
+    "groups": {
+     "youth": 3,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Manter por décadas.",
+    "hint": "Receita.",
+    "now": {
+     "treasury": 0.3,
+     "pollution": 0.7,
+     "reputation": -1
+    },
+    "groups": {
+     "workers": 2,
+     "business": 2
+    }
+   },
+   {
+    "text": "Hidrogênio verde.",
+    "hint": "Aposta.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "business": 1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_oc_biosecurity",
+  "cat": "Oceania",
+  "title": "Espécies invasoras e fronteiras biológicas",
+  "desc": "Insetos e fungos ameaçam agricultura e fauna única. O controle de alfândegas é rígido.",
+  "context": "Isolamento valioso.",
+  "cond": {
+   "countries": [
+    "AUS",
+    "NZL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforçar inspeções e multas.",
+    "hint": "Protege.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Campanhas de erradicação.",
+    "hint": "Caro.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Aceitar a nova realidade.",
+    "hint": "Barato.",
+    "now": {
+     "pollution": 0.4
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_nz_sheep_dairy",
+  "cat": "Oceania",
+  "title": "Pecuária e emissões",
+  "desc": "O gado é metade das emissões do país, mas também o motor da economia.",
+  "context": "Verde e rural.",
+  "cond": {
+   "countries": [
+    "NZL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Taxar emissões agrícolas.",
+    "hint": "Clima.",
+    "now": {
+     "treasury": 0.15,
+     "pollution": -0.6
+    },
+    "groups": {
+     "rural": -4,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Pesquisa para reduzir metano.",
+    "hint": "Tecnologia.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Manter.",
+    "hint": "Sem mudança.",
+    "now": {},
+    "groups": {
+     "rural": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_oc_indigenous_voice",
+  "cat": "Oceania",
+  "title": "Representação dos povos originários",
+  "desc": "Um referendo propõe criar uma voz consultiva dos povos originários na Constituição.",
+  "context": "Reconciliação.",
+  "cond": {
+   "countries": [
+    "AUS",
+    "NZL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Apoiar a proposta.",
+    "hint": "Reconhecimento.",
+    "now": {
+     "civil": 1,
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Preferir tratado.",
+    "hint": "Alternativa.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {}
+   },
+   {
+    "text": "Opor-se.",
+    "hint": "Conservador.",
+    "now": {
+     "civil": -0.5
+    },
+    "groups": {
+     "rural": 2,
+     "youth": -2
+    }
+   }
+  ]
+ }
+]

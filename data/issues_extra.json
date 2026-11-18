@@ -1,0 +1,52 @@
+[
+{"id":"x_ranking_pride","cat":"Prestígio","title":"Subimos no ranking mundial","desc":"Um relatório internacional coloca o país entre as economias que mais crescem no mundo. O Ministério da Propaganda quer comemorar.","context":"Os números são bons, mas a desigualdade também cresceu.","cond":{"min":{"growth":4}},"options":[
+ {"text":"Festa nacional e outdoors pelo país.","hint":"Orgulho; gasto.","now":{"treasury":-0.05,"legitimacy":3},"groups":{"workers":2}},
+ {"text":"Usar o momento para atrair investidores.","hint":"Roadshow internacional.","now":{"treasury":-0.03},"long":[{"k":"growth","v":0.2,"d":240}],"groups":{"business":3}},
+ {"text":"Discrição: ainda há muito a fazer.","hint":"Humildade.","now":{"legitimacy":1}}
+]},
+{"id":"x_authoritarian_list","cat":"Prestígio","title":"Na lista dos piores regimes","desc":"Uma ONG internacional incluiu o país entre os dez governos mais autoritários do planeta.","context":"Investidores e turistas leem esses relatórios.","cond":{"max":{"political":25}},"options":[
+ {"text":"Libertar presos e convidar observadores.","hint":"Imagem melhora; oposição respira.","now":{"civil":3,"political":2,"reputation":4},"groups":{"opposition":4}},
+ {"text":"Proibir a ONG e denunciar 'colonialismo'.","hint":"Orgulho; isolamento.","now":{"reputation":-3,"legitimacy":1},"rel":{"west":-3}},
+ {"text":"Contratar uma agência de relações públicas.","hint":"Maquiagem.","now":{"treasury":-0.05,"reputation":1}}
+]},
+{"id":"x_bloc_dues","cat":"Integração","title":"Os sócios não pagam","desc":"Metade dos membros do bloco regional não pagou suas contribuições. O secretariado pede que o país cubra a diferença.","context":"Sem dinheiro, o bloco perde credibilidade.","cond":{"min":{"day":200}},"options":[
+ {"text":"Cobrir a diferença.","hint":"Liderança regional; custo.","now":{"treasury":-0.1},"long":[{"k":"influence","v":3,"d":365}],"rel":{"neighbors":4}},
+ {"text":"Exigir pagamento e ameaçar com expulsões.","hint":"Firmeza.","rel":{"neighbors":-3}},
+ {"text":"Reduzir o orçamento do bloco.","hint":"Menos ambição.","now":{"influence":-1}}
+]},
+{"id":"x_claim_map","cat":"Disputa territorial","title":"O mapa nos passaportes","desc":"Os novos passaportes do país vizinho trazem um mapa que inclui províncias nossas.","context":"A imprensa nacional exige resposta.","cond":{"min":{"day":60}},"options":[
+ {"text":"Não reconhecer os novos passaportes.","hint":"Retaliação simbólica.","rel":{"rival":-10},"now":{"legitimacy":2}},
+ {"text":"Protesto formal na ONU.","hint":"Diplomacia.","now":{"reputation":1},"rel":{"rival":-3}},
+ {"text":"Ignorar a provocação.","hint":"Calma.","groups":{"military":-2}}
+]},
+{"id":"x_loan_default_partner","cat":"Empréstimos","title":"O devedor pede perdão","desc":"Um país que recebeu nossos empréstimos diz não ter como pagar e pede o perdão da dívida.","context":"Perdoar compra amizade; cobrar mantém o princípio.","cond":{"min":{"day":150}},"options":[
+ {"text":"Perdoar a dívida.","hint":"Amizade e prestígio.","now":{"treasury":-0.05,"reputation":3},"rel":{"sul":4}},
+ {"text":"Trocar a dívida por concessões de mineração.","hint":"Recursos.","long":[{"k":"s_raw","v":3,"d":0}],"rel":{"sul":-2}},
+ {"text":"Cobrar e ameaçar com sanções.","hint":"Linha dura.","rel":{"sul":-5}}
+]},
+{"id":"x_general_ambition","cat":"Gabinete","title":"O general quer ser ministro","desc":"O general mais popular do país pede o Ministério da Defesa — e mais tarde, insinua, algo maior.","context":"Ele é leal hoje; amanhã, quem sabe.","options":[
+ {"text":"Nomeá-lo ministro.","hint":"Militares satisfeitos; rival em potencial.","groups":{"military":6},"long":[{"k":"coupRisk","v":3,"d":365}]},
+ {"text":"Mandá-lo como embaixador para longe.","hint":"Afasta o problema.","groups":{"military":-2},"now":{"coupRisk":-2}},
+ {"text":"Recusar e reforçar a guarda presidencial.","hint":"Desconfiança mútua.","now":{"treasury":-0.05},"groups":{"military":-4}}
+]},
+{"id":"x_world_order","cat":"Diplomacia","title":"Nova ordem mundial?","desc":"Potências emergentes convidam o país a assinar uma declaração pedindo a reforma das instituições financeiras globais.","context":"O Ocidente considera a declaração hostil.","options":[
+ {"text":"Assinar a declaração.","hint":"Sul global e Oriente aplaudem.","rel":{"east":5,"sul":4,"west":-5}},
+ {"text":"Assinar uma versão moderada.","hint":"Equilíbrio.","rel":{"sul":2}},
+ {"text":"Recusar.","hint":"Alinhamento ocidental.","rel":{"west":3,"east":-3}}
+]},
+{"id":"x_border_province_autonomy","cat":"Separatismo","title":"A província de fronteira quer sua própria bandeira","desc":"A assembleia de uma província fronteiriça aprovou bandeira e hino próprios. Nacionalistas falam em traição.","context":"A província tem laços culturais com o país vizinho.","cond":{"min":{"separatism":25}},"options":[
+ {"text":"Aceitar símbolos regionais.","hint":"Gesto de boa vontade.","groups":{"regional":5},"long":[{"k":"separatism","v":-3,"d":0}]},
+ {"text":"Anular a decisão no tribunal.","hint":"Centralismo.","groups":{"regional":-5},"long":[{"k":"separatism","v":3,"d":365}]},
+ {"text":"Negociar: símbolos sim, hino não.","hint":"Compromisso.","groups":{"regional":2}}
+]},
+{"id":"x_sanctions_smuggling","cat":"Sanções","title":"Contrabando para driblar sanções","desc":"Com as sanções, redes de contrabando trazem remédios e peças pela fronteira. Policiais cobram propina para deixar passar.","context":"Sem o contrabando, faltariam remédios.","cond":{"min":{"sanctions":0.5}},"options":[
+ {"text":"Tolerar o contrabando de bens essenciais.","hint":"Abastecimento; corrupção.","now":{"health":1,"corruption":2},"long":[{"k":"importAccess","v":0.04,"d":180}]},
+ {"text":"Estatizar o contrabando por empresas de fachada.","hint":"Controle e lucro.","now":{"treasury":0.1,"corruption":1},"long":[{"k":"importAccess","v":0.05,"d":180}]},
+ {"text":"Reprimir.","hint":"Lei; escassez.","now":{"health":-1,"control":1}}
+]},
+{"id":"x_capital_traffic","cat":"Desenvolvimento urbano","title":"A capital parou","desc":"O trânsito da capital é o pior do continente: três horas por dia em congestionamentos.","context":"Empresas reclamam da perda de produtividade.","cond":{"min":{"congestion":40}},"options":[
+ {"text":"Pedágio urbano no centro.","hint":"Menos carros; motoristas furiosos.","now":{"treasury":0.05,"congestion":-6},"groups":{"workers":-2}},
+ {"text":"Construir anéis viários.","hint":"Obra cara; alívio temporário.","now":{"treasury":-0.3,"congestion":-4},"long":[{"k":"pollution","v":1,"d":0}]},
+ {"text":"Corredores exclusivos de ônibus.","hint":"Barato e eficaz.","now":{"treasury":-0.05,"congestion":-3},"groups":{"workers":2}}
+]}
+]

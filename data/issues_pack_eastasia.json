@@ -1,0 +1,764 @@
+[
+ {
+  "id": "pk_ea_birth_rate",
+  "cat": "Leste Asiático",
+  "title": "A natalidade mais baixa do mundo",
+  "desc": "Poucos bebês nascem; escolas fecham e a população envelhece depressa. Pensa-se em bônus por filho e creches.",
+  "context": "Demografia em queda.",
+  "cond": {
+   "regions": [
+    "east_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Subsídios e creches universais.",
+    "hint": "Caro e eficaz.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "youth": 3,
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "birth",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Importar mão de obra.",
+    "hint": "Polêmico.",
+    "now": {
+     "unemployment": -0.1
+    },
+    "groups": {
+     "business": 2,
+     "rural": -2
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": 0.4,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Automação e robôs.",
+    "hint": "Aposta tecnológica.",
+    "now": {
+     "treasury": -0.3,
+     "tech": 1
+    },
+    "groups": {
+     "business": 2,
+     "workers": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ea_exam_pressure",
+  "cat": "Leste Asiático",
+  "title": "A pressão dos exames",
+  "desc": "Jovens estudam até a madrugada para vagas disputadas; casos de depressão e suicídio chocam o país.",
+  "context": "Educação como corrida.",
+  "cond": {
+   "regions": [
+    "east_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reduzir peso dos exames e reforçar saúde mental.",
+    "hint": "Alívio.",
+    "now": {
+     "education": -0.2,
+     "health": 0.4
+    },
+    "groups": {
+     "youth": 4
+    }
+   },
+   {
+    "text": "Proibir cursinhos noturnos.",
+    "hint": "Controle.",
+    "now": {
+     "civil": -0.3
+    },
+    "groups": {
+     "youth": 1,
+     "business": -1
+    }
+   },
+   {
+    "text": "Manter o sistema meritocrático.",
+    "hint": "Tradição.",
+    "now": {},
+    "groups": {
+     "youth": -2,
+     "bureaucracy": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ea_chips",
+  "cat": "Leste Asiático",
+  "title": "Guerra dos semicondutores",
+  "desc": "As fábricas de chips são vitais para o mundo. Potências exigem alinhamento e restringem exportações.",
+  "context": "Tecnologia como arma.",
+  "cond": {
+   "regions": [
+    "east_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Alinhar-se com o bloco ocidental.",
+    "hint": "Investimento e riscos.",
+    "now": {
+     "treasury": 0.2,
+     "tech": 1
+    },
+    "groups": {
+     "business": 2
+    },
+    "rel": {
+     "west": 4,
+     "china": -4
+    }
+   },
+   {
+    "text": "Neutralidade comercial.",
+    "hint": "Equilíbrio.",
+    "now": {},
+    "groups": {
+     "business": 1
+    },
+    "rel": {
+     "all": -1
+    }
+   },
+   {
+    "text": "Proteger a tecnologia e investir em ecossistema próprio.",
+    "hint": "Autonomia.",
+    "now": {
+     "treasury": -0.4,
+     "tech": 2
+    },
+    "groups": {
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ea_regional_tension",
+  "cat": "Leste Asiático",
+  "title": "Tensão no estreito",
+  "desc": "Exercícios militares e invasões de espaço aéreo elevam o risco de um incidente.",
+  "context": "Disputa territorial em curso.",
+  "cond": {
+   "regions": [
+    "east_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforçar defesa e alianças.",
+    "hint": "Dissuasão.",
+    "now": {
+     "treasury": -0.5,
+     "defense": 2
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "neighbors": -3
+    }
+   },
+   {
+    "text": "Canal de comunicação direta.",
+    "hint": "Reduz risco.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Reforçar comércio com o vizinho rival.",
+    "hint": "Interdependência.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ea_hikikomori",
+  "cat": "Leste Asiático",
+  "title": "Jovens isolados do mundo",
+  "desc": "Milhares de adultos jovens vivem trancados em casa, longe da escola e do trabalho.",
+  "context": "Solidão em massa.",
+  "cond": {
+   "regions": [
+    "east_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Programas de reinserção e saúde mental.",
+    "hint": "Humano.",
+    "now": {
+     "treasury": -0.2,
+     "health": 0.4
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Incentivos à contratação.",
+    "hint": "Barato.",
+    "now": {
+     "unemployment": -0.1
+    },
+    "groups": {
+     "business": 1,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Problema oculto.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_ea_work_hours",
+  "cat": "Leste Asiático",
+  "title": "Mortes por excesso de trabalho",
+  "desc": "A cultura de jornadas longas causa colapsos e mortes. Sindicatos e empresas disputam novas regras.",
+  "context": "Produtividade e saúde.",
+  "cond": {
+   "regions": [
+    "east_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Limitar jornada e punir abusos.",
+    "hint": "Protege.",
+    "now": {
+     "health": 0.4,
+     "growth": -0.1
+    },
+    "groups": {
+     "workers": 4,
+     "business": -3
+    }
+   },
+   {
+    "text": "Campanha voluntária.",
+    "hint": "Inócuo.",
+    "now": {},
+    "groups": {
+     "workers": -1
+    }
+   },
+   {
+    "text": "Banco de horas flexível.",
+    "hint": "Compromisso.",
+    "now": {
+     "health": 0.1
+    },
+    "groups": {
+     "workers": 1,
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ea_pop_culture",
+  "cat": "Leste Asiático",
+  "title": "Exportando cultura pop",
+  "desc": "Música e séries do país dominam os mercados globais. O setor pede apoio e regras trabalhistas para artistas.",
+  "context": "Soft power.",
+  "cond": {
+   "regions": [
+    "east_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Fundo de exportação cultural.",
+    "hint": "Marca-país.",
+    "now": {
+     "treasury": -0.15,
+     "reputation": 2
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Proteger contratos de artistas.",
+    "hint": "Justiça.",
+    "now": {},
+    "groups": {
+     "youth": 2,
+     "business": -1
+    }
+   },
+   {
+    "text": "Deixar o mercado.",
+    "hint": "Livre.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_ea_nuclear_neighbor",
+  "cat": "Leste Asiático",
+  "title": "Testes de mísseis do vizinho",
+  "desc": "Um vizinho isolado testa mísseis sobre o mar e ameaça com armas nucleares.",
+  "context": "Ameaça constante.",
+  "cond": {
+   "regions": [
+    "east_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Escudo antimísseis com aliados.",
+    "hint": "Proteção.",
+    "now": {
+     "treasury": -0.5,
+     "defense": 3
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "neighbors": -3,
+     "west": 2
+    }
+   },
+   {
+    "text": "Diálogo e ajuda humanitária.",
+    "hint": "Distensão.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Armar-se com capacidade própria.",
+    "hint": "Radical.",
+    "now": {
+     "defense": 3,
+     "reputation": -3
+    },
+    "groups": {
+     "military": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_cn_property",
+  "cat": "Leste Asiático",
+  "title": "A bolha imobiliária",
+  "desc": "Gigantes do setor imobiliário não conseguem pagar dívidas; obras param e compradores protestam.",
+  "context": "Risco sistêmico.",
+  "cond": {
+   "countries": [
+    "CHN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Resgate seletivo.",
+    "hint": "Evita o colapso.",
+    "now": {
+     "treasury": -0.5,
+     "stability": 1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Deixar quebrar e proteger compradores.",
+    "hint": "Disciplina.",
+    "now": {
+     "growth": -0.5
+    },
+    "groups": {
+     "workers": 2,
+     "business": -3
+    }
+   },
+   {
+    "text": "Estatizar as empresas.",
+    "hint": "Controle.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "bureaucracy": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_cn_social_credit",
+  "cat": "Leste Asiático",
+  "title": "Sistema de crédito social",
+  "desc": "O governo expande a pontuação de comportamento de cidadãos e empresas. Críticos falam em vigilância total.",
+  "context": "Eficiência e controle.",
+  "cond": {
+   "countries": [
+    "CHN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Ampliar o sistema.",
+    "hint": "Controle.",
+    "now": {
+     "control": 2,
+     "civil": -2,
+     "reputation": -1
+    },
+    "groups": {
+     "bureaucracy": 2,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Limitar a empresas.",
+    "hint": "Moderado.",
+    "now": {
+     "control": 0.5
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Suspender.",
+    "hint": "Liberdade.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_cn_belt_road",
+  "cat": "Leste Asiático",
+  "title": "Novas rotas de infraestrutura",
+  "desc": "Projetos de portos e ferrovias no exterior enfrentam dívidas e críticas.",
+  "context": "Poder e investimento.",
+  "cond": {
+   "countries": [
+    "CHN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Ampliar com garantias.",
+    "hint": "Influência.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": -0.5
+    },
+    "groups": {
+     "business": 2
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Reduzir e focar em projetos sólidos.",
+    "hint": "Prudência.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {}
+   },
+   {
+    "text": "Renegociar dívidas.",
+    "hint": "Imagem.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_jp_aging_robots",
+  "cat": "Leste Asiático",
+  "title": "Sociedade de idosos e robôs cuidadores",
+  "desc": "Metade das vilas rurais tem apenas idosos. Robôs de cuidado e imigrantes são opções.",
+  "context": "Envelhecimento extremo.",
+  "cond": {
+   "countries": [
+    "JPN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Investir em robótica de saúde.",
+    "hint": "Tecnologia.",
+    "now": {
+     "treasury": -0.4,
+     "tech": 1.5
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Abrir visto para cuidadores.",
+    "hint": "Humano.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "rural": -1,
+     "business": 1
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": 0.4,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Adiar aposentadoria.",
+    "hint": "Impopular.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "workers": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_jp_earthquake_nuclear",
+  "cat": "Leste Asiático",
+  "title": "Terremoto e usina nuclear",
+  "desc": "Um grande sismo danifica uma usina e reabre o debate sobre energia nuclear.",
+  "context": "Memória de desastres.",
+  "cond": {
+   "countries": [
+    "JPN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforçar segurança e manter.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Fechar usinas progressivamente.",
+    "hint": "Segurança.",
+    "now": {
+     "treasury": -0.3,
+     "pollution": 0.3
+    },
+    "groups": {
+     "youth": 2,
+     "business": -1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Expandir energias renováveis.",
+    "hint": "Futuro.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_kr_chaebol",
+  "cat": "Leste Asiático",
+  "title": "Poder dos grandes conglomerados",
+  "desc": "Escândalos envolvendo chefes de grupos familiares reacendem pedidos de reforma.",
+  "context": "Economia concentrada.",
+  "cond": {
+   "countries": [
+    "KOR"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Limitar propriedade cruzada.",
+    "hint": "Reduz poder.",
+    "now": {
+     "corruption": -0.8
+    },
+    "groups": {
+     "business": -3,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Perdão presidencial por interesse econômico.",
+    "hint": "Polêmico.",
+    "now": {
+     "corruption": 0.8,
+     "legitimacy": -2
+    },
+    "groups": {
+     "business": 3,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Regras de governança.",
+    "hint": "Moderado.",
+    "now": {
+     "corruption": -0.3
+    },
+    "groups": {
+     "business": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_mn_nomads_cities",
+  "cat": "Leste Asiático",
+  "title": "Nômades vão para a capital",
+  "desc": "Invernos extremos matam rebanhos e empurram pastores para Ulan Bator, que sufoca de poluição.",
+  "context": "Clima e urbanização.",
+  "cond": {
+   "countries": [
+    "MNG"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Seguro de rebanho e infraestrutura rural.",
+    "hint": "Mantém no campo.",
+    "now": {
+     "treasury": -0.25
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Urbanizar e dar moradia.",
+    "hint": "Cidade cresce.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Nada.",
+    "hint": "Colapso.",
+    "now": {
+     "hunger": 0.3,
+     "pollution": 0.5
+    },
+    "groups": {}
+   }
+  ]
+ }
+]

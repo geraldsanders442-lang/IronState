@@ -1,0 +1,1198 @@
+[
+ {
+  "id": "p3_new_party",
+  "cat": "Partidos e eleições",
+  "title": "Um partido novo assusta todos",
+  "desc": "{person}, empresário e apresentador de TV, lança um partido \"contra todos os políticos\". Já tem 25% nas pesquisas.",
+  "context": "O populismo bate à porta.",
+  "cond": {
+   "min": {
+    "political": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Atacar o candidato na TV estatal.",
+    "hint": "Desgasta o novato; parece desespero.",
+    "now": {
+     "political": -1
+    },
+    "groups": {
+     "youth": -2
+    }
+   },
+   {
+    "text": "Copiar parte do discurso dele.",
+    "hint": "Rouba votos; perde coerência.",
+    "now": {
+     "legitimacy": 2
+    },
+    "groups": {
+     "opposition": -3
+    }
+   },
+   {
+    "text": "Convidá-lo para o governo.",
+    "hint": "Neutraliza; ele ganha palco.",
+    "now": {
+     "stability": 2
+    },
+    "groups": {
+     "business": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_coalition_collapse",
+  "cat": "Partidos e eleições",
+  "title": "A coalizão desmorona",
+  "desc": "O partido aliado de {person} anuncia que deixará o governo se o orçamento da saúde não for dobrado.",
+  "context": "Ceder ou perder a maioria?",
+  "cond": {
+   "min": {
+    "political": 45
+   }
+  },
+  "options": [
+   {
+    "text": "Ceder.",
+    "hint": "Coalizão mantida; gasto maior.",
+    "now": {
+     "treasury": -0.4,
+     "health": 1,
+     "stability": 2
+    }
+   },
+   {
+    "text": "Formar nova coalizão com a oposição moderada.",
+    "hint": "Mudança de rumo.",
+    "now": {
+     "political": 2
+    },
+    "groups": {
+     "opposition": 5,
+     "regional": -3
+    }
+   },
+   {
+    "text": "Convocar eleições antecipadas.",
+    "hint": "Arriscado.",
+    "now": {
+     "stability": -3,
+     "legitimacy": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_vote_buying",
+  "cat": "Partidos e eleições",
+  "title": "Compra de votos",
+  "desc": "Gravações mostram cabos eleitorais do governo distribuindo dinheiro em troca de votos.",
+  "context": "A eleição está manchada.",
+  "cond": {
+   "min": {
+    "corruption": 35,
+    "political": 30
+   }
+  },
+  "options": [
+   {
+    "text": "Punir os envolvidos e pedir desculpas.",
+    "hint": "Credibilidade; partido furioso.",
+    "now": {
+     "corruption": -2,
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Negar e acusar montagem.",
+    "hint": "Escândalo cresce.",
+    "now": {
+     "legitimacy": -3
+    }
+   },
+   {
+    "text": "Comprar o silêncio da imprensa.",
+    "hint": "Abafa; corrupção.",
+    "long": [
+     {
+      "k": "corruption",
+      "v": 2,
+      "d": 365
+     },
+     {
+      "k": "propaganda",
+      "v": 1,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "p3_one_party",
+  "cat": "Partidos e eleições",
+  "title": "Partido único?",
+  "desc": "O núcleo duro do regime propõe proibir todos os partidos exceto o governista.",
+  "context": "Fim do pluralismo.",
+  "cond": {
+   "min": {
+    "ax_auth": 50
+   },
+   "max": {
+    "political": 50
+   }
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Proibir os demais partidos.",
+    "hint": "Controle total; oposição vai para a clandestinidade.",
+    "now": {
+     "political": -10
+    },
+    "groups": {
+     "opposition": -10
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": 4,
+      "d": 365
+     }
+    ],
+    "policy": {
+     "elections": "none"
+    }
+   },
+   {
+    "text": "Partidos \"satélites\" tolerados.",
+    "hint": "Fachada pluralista.",
+    "now": {
+     "political": -4
+    },
+    "policy": {
+     "elections": "controlled"
+    }
+   },
+   {
+    "text": "Rejeitar.",
+    "hint": "Pluralismo mantido.",
+    "now": {
+     "political": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_free_elections",
+  "cat": "Partidos e eleições",
+  "title": "Pressão por eleições livres",
+  "desc": "Estudantes, igrejas e sindicatos assinam um manifesto pedindo eleições livres em um ano.",
+  "context": "O regime pode se abrir ou se fechar.",
+  "cond": {
+   "max": {
+    "political": 30
+   },
+   "min": {
+    "protest": 30
+   }
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Anunciar eleições livres.",
+    "hint": "Transição; risco de perder o poder.",
+    "now": {
+     "political": 10,
+     "legitimacy": 5
+    },
+    "groups": {
+     "opposition": 10,
+     "military": -4
+    },
+    "policy": {
+     "elections": "multiparty"
+    }
+   },
+   {
+    "text": "Prometer \"abertura gradual\".",
+    "hint": "Ganha tempo.",
+    "now": {
+     "political": 2
+    }
+   },
+   {
+    "text": "Prender os signatários.",
+    "hint": "Repressão.",
+    "now": {
+     "civil": -5,
+     "political": -3
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": 5,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "p3_term_coup",
+  "cat": "Política interna",
+  "title": "O vice conspira",
+  "desc": "Seu vice, {person}, foi visto em reuniões com generais e banqueiros.",
+  "context": "Traição no topo.",
+  "cond": {
+   "min": {
+    "coupRisk": 20
+   }
+  },
+  "options": [
+   {
+    "text": "Demitir e investigar.",
+    "hint": "Elimina a ameaça; crise política.",
+    "now": {
+     "stability": -2
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": -4,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Dar-lhe mais poder para comprá-lo.",
+    "hint": "Apazigua.",
+    "now": {
+     "efficiency": -1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Vigiar em silêncio.",
+    "hint": "Informação.",
+    "now": {
+     "intel": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_constitution",
+  "cat": "Política interna",
+  "title": "Nova constituição",
+  "desc": "Uma assembleia constituinte é proposta para \"refundar\" o Estado.",
+  "context": "Reescrever as regras do jogo.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "w": 0.6,
+  "cd": 3000,
+  "options": [
+   {
+    "text": "Presidencialismo forte.",
+    "hint": "Mais poder ao líder.",
+    "now": {
+     "political": -3,
+     "efficiency": 2
+    }
+   },
+   {
+    "text": "Parlamentarismo.",
+    "hint": "Poder dividido.",
+    "now": {
+     "political": 4,
+     "stability": -1
+    }
+   },
+   {
+    "text": "Federalismo com autonomia regional.",
+    "hint": "Regiões fortes.",
+    "groups": {
+     "regional": 6
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -3,
+      "d": 0
+     }
+    ],
+    "policy": {
+     "autonomy": "federal"
+    }
+   },
+   {
+    "text": "Deixar como está.",
+    "hint": "Continuidade."
+   }
+  ]
+ },
+ {
+  "id": "p3_region_language",
+  "cat": "Regiões",
+  "title": "{region} quer língua própria",
+  "desc": "A assembleia da {region} aprova sua língua regional como oficial, ao lado da nacional.",
+  "context": "Diversidade ou fragmentação?",
+  "tpl": {
+   "region": "separatist"
+  },
+  "options": [
+   {
+    "text": "Reconhecer a cooficialidade.",
+    "hint": "Região satisfeita.",
+    "groups": {
+     "regional": 5
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Anular a decisão no tribunal.",
+    "hint": "Unidade; ressentimento.",
+    "groups": {
+     "regional": -5
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 4,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "p3_region_tax_revolt",
+  "cat": "Regiões",
+  "title": "{region} retém impostos",
+  "desc": "O governo da {region} anuncia que não repassará impostos à capital até receber mais investimentos.",
+  "context": "Desafio fiscal aberto.",
+  "tpl": {
+   "region": "any"
+  },
+  "cond": {
+   "min": {
+    "separatism": 20
+   }
+  },
+  "options": [
+   {
+    "text": "Negociar um pacote de investimentos.",
+    "hint": "Paz; custo. A obra aparece no mapa.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "regional": 5
+    },
+    "act": {
+     "type": "regionBuild",
+     "region": "$region",
+     "build": "auto"
+    }
+   },
+   {
+    "text": "Intervenção federal na região.",
+    "hint": "Autoridade; revolta local.",
+    "now": {
+     "control": 3
+    },
+    "groups": {
+     "regional": -8
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 4,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Cortar repasses à região.",
+    "hint": "Guerra fiscal.",
+    "groups": {
+     "regional": -4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "p3_region_disaster",
+  "cat": "Regiões",
+  "title": "Terremoto na {region}",
+  "desc": "Um terremoto de magnitude 7 atingiu a {region}. Milhares estão sob escombros.",
+  "context": "A resposta do governo será lembrada.",
+  "tpl": {
+   "region": "any"
+  },
+  "w": 0.6,
+  "cd": 900,
+  "options": [
+   {
+    "text": "Mobilização total.",
+    "hint": "Vidas salvas; caro. A obra aparece no mapa.",
+    "now": {
+     "treasury": -0.6,
+     "legitimacy": 4
+    },
+    "groups": {
+     "regional": 5
+    },
+    "act": {
+     "type": "regionBuild",
+     "region": "$region",
+     "build": "housing"
+    }
+   },
+   {
+    "text": "Ajuda internacional.",
+    "hint": "Rápido.",
+    "long": [
+     {
+      "k": "aid",
+      "v": 2,
+      "d": 120
+     }
+    ],
+    "rel": {
+     "all": 2
+    }
+   },
+   {
+    "text": "Resposta mínima.",
+    "hint": "Economia; ódio regional.",
+    "groups": {
+     "regional": -8
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 4,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "p3_bloc_summit_host",
+  "cat": "Blocos e alianças",
+  "title": "Cúpula do {bloc} em {capital}",
+  "desc": "Chegou nossa vez de sediar a cúpula anual do {bloc}.",
+  "context": "Vitrine diplomática.",
+  "tpl": {
+   "bloc": "own"
+  },
+  "options": [
+   {
+    "text": "Cúpula grandiosa.",
+    "hint": "Prestígio; custo.",
+    "now": {
+     "treasury": -0.3,
+     "influence": 3
+    },
+    "rel": {
+     "$bloc": 5
+    }
+   },
+   {
+    "text": "Cúpula sóbria.",
+    "hint": "Econômico.",
+    "rel": {
+     "$bloc": 2
+    }
+   },
+   {
+    "text": "Usar a cúpula para propor uma união mais profunda.",
+    "hint": "Liderança regional.",
+    "now": {
+     "influence": 2
+    },
+    "rel": {
+     "$bloc": 3
+    },
+    "act": {
+     "type": "blocMod",
+     "bloc": "$bloc",
+     "mods": {
+      "growth": 0.1
+     }
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_bloc_member_war",
+  "cat": "Blocos e alianças",
+  "title": "{blocMember} em guerra",
+  "desc": "{blocMember}, membro do {bloc}, foi arrastado para um conflito e exige solidariedade de todos.",
+  "context": "A aliança é testada.",
+  "tpl": {
+   "bloc": "own",
+   "blocMember": "any"
+  },
+  "cond": {
+   "min": {
+    "aiWars": 1
+   }
+  },
+  "options": [
+   {
+    "text": "Apoio total com sanções ao agressor.",
+    "hint": "Coesão.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "$blocMember": 10
+    }
+   },
+   {
+    "text": "Neutralidade.",
+    "hint": "Sem riscos; o bloco racha.",
+    "rel": {
+     "$blocMember": -10,
+     "$bloc": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_bloc_tariff_cheat",
+  "cat": "Blocos e alianças",
+  "title": "{blocMember} fura a tarifa comum",
+  "desc": "{blocMember} importa produtos baratos de fora e os revende dentro do {bloc}.",
+  "context": "Contrabando legalizado.",
+  "tpl": {
+   "bloc": "own",
+   "blocMember": "any"
+  },
+  "options": [
+   {
+    "text": "Multar {blocMember}.",
+    "hint": "Disciplina.",
+    "rel": {
+     "$blocMember": -8
+    }
+   },
+   {
+    "text": "Fechar os olhos.",
+    "hint": "Paz; indústria reclama.",
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Expulsar do bloco.",
+    "hint": "Exemplo.",
+    "act": {
+     "type": "expel",
+     "bloc": "$bloc",
+     "id": "$blocMember"
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_real_org_presidency",
+  "cat": "Blocos e alianças",
+  "title": "Presidência rotativa do {bloc}",
+  "desc": "Assumimos a presidência rotativa do {bloc} por seis meses.",
+  "context": "Agenda própria por meio ano.",
+  "tpl": {
+   "bloc": "real"
+  },
+  "options": [
+   {
+    "text": "Pauta de comércio e crescimento.",
+    "hint": "Empresários felizes.",
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.02,
+      "d": 180
+     }
+    ],
+    "rel": {
+     "$bloc": 3
+    }
+   },
+   {
+    "text": "Pauta de segurança regional.",
+    "hint": "Prestígio militar.",
+    "now": {
+     "influence": 2
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Pauta de direitos humanos.",
+    "hint": "Imagem.",
+    "now": {
+     "reputation": 3
+    },
+    "rel": {
+     "$bloc": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_nb_tv_war",
+  "cat": "Vizinhança",
+  "title": "Guerra de TVs com {nb}",
+  "desc": "Canais estatais de {nb} transmitem para nosso país acusando o governo de crimes.",
+  "context": "Propaganda transfronteiriça.",
+  "tpl": {
+   "nb": "hostile"
+  },
+  "options": [
+   {
+    "text": "Bloquear os canais de {nb}.",
+    "hint": "Censura.",
+    "now": {
+     "civil": -1
+    },
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Lançar canal em língua de {nb}.",
+    "hint": "Contra-ataque.",
+    "now": {
+     "treasury": -0.1
+    },
+    "rel": {
+     "$nb": -6
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 5
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Liberdade."
+   }
+  ]
+ },
+ {
+  "id": "p3_nb_leader_visit",
+  "cat": "Vizinhança",
+  "title": "O líder de {nb} quer nos visitar",
+  "desc": "Pela primeira vez em décadas, o chefe de Estado de {nb} propõe uma visita oficial a {capital}.",
+  "context": "Uma chance de virar a página.",
+  "tpl": {
+   "nb": "any"
+  },
+  "cond": {
+   "max": {
+    "reputation": 90
+   }
+  },
+  "options": [
+   {
+    "text": "Receber com honras.",
+    "hint": "Reaproximação.",
+    "groups": {
+     "military": -2
+    },
+    "rel": {
+     "$nb": 15
+    }
+   },
+   {
+    "text": "Receber com frieza.",
+    "hint": "Cautela.",
+    "rel": {
+     "$nb": 3
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Orgulho.",
+    "rel": {
+     "$nb": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_nb_water_crisis",
+  "cat": "Vizinhança",
+  "title": "{nb} quer nossa água",
+  "desc": "{nb}, em seca extrema, pede para comprar água dos nossos reservatórios.",
+  "context": "Água vale mais que petróleo.",
+  "tpl": {
+   "nb": "any"
+  },
+  "options": [
+   {
+    "text": "Vender a preço de mercado.",
+    "hint": "Receita; relação melhora.",
+    "now": {
+     "treasury": 0.2
+    },
+    "rel": {
+     "$nb": 8
+    }
+   },
+   {
+    "text": "Doar como gesto humanitário.",
+    "hint": "Gratidão.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "$nb": 15
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Nossos reservatórios primeiro.",
+    "rel": {
+     "$nb": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_nb_minority_rebels",
+  "cat": "Vizinhança",
+  "title": "Rebeldes de {nb} se escondem aqui",
+  "desc": "Guerrilheiros que lutam contra o governo de {nb} usam nosso território como base.",
+  "context": "Hospitalidade perigosa.",
+  "tpl": {
+   "nb": "hostile"
+  },
+  "options": [
+   {
+    "text": "Expulsá-los.",
+    "hint": "Agrada {nb}.",
+    "now": {
+     "control": 2
+    },
+    "rel": {
+     "$nb": 10
+    }
+   },
+   {
+    "text": "Armá-los discretamente.",
+    "hint": "Enfraquece {nb}.",
+    "rel": {
+     "$nb": -6
+    },
+    "act": {
+     "type": "covert",
+     "id": "$nb",
+     "key": "fundMilitia"
+    }
+   },
+   {
+    "text": "Fingir não ver.",
+    "hint": "Ambíguo.",
+    "rel": {
+     "$nb": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_power_aid_offer",
+  "cat": "Política interna",
+  "title": "{power} oferece ajuda condicionada",
+  "desc": "{power} oferece um pacote de ajuda generoso se adotarmos reformas que ela exige.",
+  "context": "Dinheiro com cordas.",
+  "tpl": {
+   "power": "friendly"
+  },
+  "cond": {
+   "max": {
+    "treasuryRatio": 2
+   }
+  },
+  "options": [
+   {
+    "text": "Aceitar e fazer as reformas.",
+    "hint": "Dinheiro; menos soberania.",
+    "now": {
+     "treasury": 1
+    },
+    "long": [
+     {
+      "k": "market",
+      "v": 4,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 10
+    }
+   },
+   {
+    "text": "Aceitar o dinheiro, adiar as reformas.",
+    "hint": "Esperto; {power} percebe.",
+    "now": {
+     "treasury": 0.6
+    },
+    "rel": {
+     "$power": -4
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Soberania.",
+    "now": {
+     "legitimacy": 1
+    },
+    "rel": {
+     "$power": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_power_dissident_list",
+  "cat": "Política interna",
+  "title": "{power} pede extradição",
+  "desc": "{power} pede a extradição de um opositor dela que vive em {capital}.",
+  "context": "Asilo ou alinhamento?",
+  "tpl": {
+   "power": "any"
+  },
+  "options": [
+   {
+    "text": "Extraditar.",
+    "hint": "Agrada {power}; vergonha.",
+    "now": {
+     "reputation": -4
+    },
+    "rel": {
+     "$power": 10
+    }
+   },
+   {
+    "text": "Negar.",
+    "hint": "Princípios.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "$power": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_youth_exodus",
+  "cat": "Política interna",
+  "title": "Os jovens votam com os pés",
+  "desc": "Pesquisa: 60% dos jovens querem emigrar. Hashtags debocham do governo.",
+  "context": "Uma geração perdida.",
+  "cond": {
+   "max": {
+    "g_youth": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Plano nacional para a juventude.",
+    "hint": "Caro.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "youth": 6
+    },
+    "long": [
+     {
+      "k": "emigration",
+      "v": -1,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Serviço nacional obrigatório.",
+    "hint": "Ocupa os jovens.",
+    "groups": {
+     "youth": -5,
+     "military": 3
+    }
+   },
+   {
+    "text": "Campanha patriótica.",
+    "hint": "Barato.",
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 1,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "p3_strongman_poll",
+  "cat": "Política interna",
+  "title": "O povo quer mão de ferro?",
+  "desc": "Uma pesquisa mostra que 55% apoiariam um \"governo forte, mesmo sem eleições\".",
+  "context": "A tentação autoritária.",
+  "cond": {
+   "min": {
+    "crime": 50,
+    "political": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Aproveitar e ampliar os poderes do Executivo.",
+    "hint": "Poder; oposição alarmada.",
+    "now": {
+     "political": -5,
+     "control": 3
+    },
+    "groups": {
+     "opposition": -6
+    }
+   },
+   {
+    "text": "Reafirmar a democracia.",
+    "hint": "Princípios.",
+    "now": {
+     "political": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_secret_police",
+  "cat": "Política interna",
+  "title": "Uma polícia política",
+  "desc": "O chefe da segurança quer criar um departamento para vigiar \"inimigos internos\".",
+  "context": "Quem vigia os vigilantes?",
+  "cond": {
+   "min": {
+    "revoRisk": 30
+   }
+  },
+  "options": [
+   {
+    "text": "Criar.",
+    "hint": "Controle; medo.",
+    "now": {
+     "civil": -4
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": -3,
+      "d": 0
+     },
+     {
+      "k": "revoRisk",
+      "v": -2,
+      "d": 0
+     }
+    ],
+    "policy": {
+     "surveillance": "total"
+    }
+   },
+   {
+    "text": "Inteligência só contra terrorismo.",
+    "hint": "Limitado.",
+    "long": [
+     {
+      "k": "intel",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Não.",
+    "hint": "Liberdade.",
+    "now": {
+     "civil": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_martial_law",
+  "cat": "Política interna",
+  "title": "Lei marcial?",
+  "desc": "Com protestos violentos em várias cidades, os generais pedem lei marcial.",
+  "context": "Suspender a constituição.",
+  "cond": {
+   "min": {
+    "protest": 60
+   }
+  },
+  "w": 1.6,
+  "crisis": true,
+  "default": 1,
+  "options": [
+   {
+    "text": "Decretar lei marcial.",
+    "hint": "Ordem; liberdades suspensas.",
+    "now": {
+     "protest": -12,
+     "civil": -8,
+     "political": -6,
+     "control": 8
+    },
+    "groups": {
+     "military": 6
+    }
+   },
+   {
+    "text": "Toque de recolher limitado.",
+    "hint": "Moderado.",
+    "now": {
+     "protest": -4,
+     "civil": -2
+    }
+   },
+   {
+    "text": "Negociar com os manifestantes.",
+    "hint": "Diálogo.",
+    "now": {
+     "protest": -3,
+     "political": 2
+    },
+    "groups": {
+     "opposition": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_assassination_attempt",
+  "cat": "Política interna",
+  "title": "Atentado contra {leader}",
+  "desc": "Um atirador errou {leader} por centímetros durante um comício.",
+  "context": "O país em choque.",
+  "cond": {
+   "min": {
+    "day": 150
+   }
+  },
+  "w": 0.5,
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Endurecer a segurança e caçar os mandantes.",
+    "hint": "Repressão.",
+    "now": {
+     "civil": -3,
+     "control": 3,
+     "legitimacy": 3
+    }
+   },
+   {
+    "text": "Discurso de reconciliação.",
+    "hint": "Comoção nacional.",
+    "now": {
+     "legitimacy": 5,
+     "stability": 2
+    }
+   },
+   {
+    "text": "Culpar a oposição.",
+    "hint": "Perseguição.",
+    "now": {
+     "political": -4
+    },
+    "groups": {
+     "opposition": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "p3_succession",
+  "cat": "Política interna",
+  "title": "Quem será o sucessor?",
+  "desc": "Rumores sobre a saúde de {leader} abrem uma disputa pela sucessão entre {person} e {person2}.",
+  "context": "A luta silenciosa pelo poder.",
+  "cond": {
+   "max": {
+    "political": 40
+   },
+   "min": {
+    "day": 500
+   }
+  },
+  "cd": 2000,
+  "options": [
+   {
+    "text": "Nomear {person} como herdeiro.",
+    "hint": "Estabilidade; o outro conspira.",
+    "now": {
+     "stability": 3
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Não nomear ninguém.",
+    "hint": "Ambiguidade; ambos disputam.",
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Afastar os dois.",
+    "hint": "Concentra poder.",
+    "now": {
+     "efficiency": -2
+    },
+    "groups": {
+     "bureaucracy": -3
+    }
+   }
+  ]
+ }
+]

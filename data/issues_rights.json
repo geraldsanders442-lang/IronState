@@ -1,0 +1,2991 @@
+[
+ {
+  "id": "rt_rich_magnet",
+  "cat": "Imigração",
+  "title": "O país virou ímã de talentos",
+  "desc": "Engenheiros, médicos e investidores do mundo todo querem se mudar para cá: a renda alta e a vida estável atraem milhares de pedidos de visto por semana.",
+  "context": "Imigrantes elevam a produtividade, mas pressionam moradia e serviços.",
+  "cond": {
+   "min": {
+    "gdppc": 28000,
+    "liberty": 45
+   },
+   "max": {
+    "imm": 22
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Abrir vistos para profissionais qualificados.",
+    "hint": "Mais produtividade e crescimento; aluguéis sobem.",
+    "now": {
+     "housing": -2,
+     "productivity": 1.5
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.25,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "business": 4,
+     "workers": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "imm": 1.2
+    }
+   },
+   {
+    "text": "Aceitar todos que vierem.",
+    "hint": "Fluxo máximo; grandes ganhos e grandes tensões.",
+    "now": {
+     "housing": -4,
+     "productivity": 1
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.35,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "business": 5,
+     "workers": -4,
+     "rural": -4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "imm": 3
+    }
+   },
+   {
+    "text": "Criar cotas rígidas.",
+    "hint": "Controle; menos benefício.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "rural": 2,
+     "business": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "imm": 0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_rich_gap",
+  "cat": "Sociedade",
+  "title": "Riqueza demais, moradia de menos",
+  "desc": "A prosperidade do país fez os aluguéis dispararem. Trabalhadores de serviços não conseguem mais morar nas cidades onde trabalham.",
+  "context": "Muitos dos que mais perdem são imigrantes e jovens.",
+  "cond": {
+   "min": {
+    "gdppc": 30000,
+    "inequality": 45
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Controlar aluguéis e construir moradia pública.",
+    "hint": "Alívio para os pobres; investidores reclamam.",
+    "now": {
+     "treasury": -0.3,
+     "housing": 5,
+     "inequality": -2
+    },
+    "groups": {
+     "workers": 4,
+     "youth": 4,
+     "business": -5
+    }
+   },
+   {
+    "text": "Liberar construção e esperar o mercado.",
+    "hint": "Oferta cresce devagar.",
+    "now": {
+     "housing": 2,
+     "growth": 0.2
+    },
+    "groups": {
+     "business": 3,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Nada. Mercado é mercado.",
+    "hint": "A tensão social aumenta.",
+    "now": {
+     "protest": 3,
+     "inequality": 1
+    },
+    "groups": {
+     "youth": -4,
+     "workers": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_rich_donor",
+  "cat": "Mundo",
+  "title": "País rico, conta alta: pedem que você pague mais",
+  "desc": "Organismos internacionais e vizinhos pobres pedem que o país rico financie refugiados e clima. A opinião pública está dividida.",
+  "context": "Doar melhora a imagem; reter dinheiro agrada eleitores.",
+  "cond": {
+   "min": {
+    "gdppc": 32000,
+    "reputation": 40
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Ampliar a ajuda externa.",
+    "hint": "Reputação e influência sobem; custa caro.",
+    "now": {
+     "treasury": -0.5,
+     "reputation": 4,
+     "influence": 2
+    },
+    "groups": {
+     "rural": -3,
+     "youth": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "relLib": 3
+    }
+   },
+   {
+    "text": "Ajuda só em troca de acordos migratórios.",
+    "hint": "Barganha dura.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 1
+    },
+    "groups": {
+     "rural": 2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "imm": -0.3
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Poupa dinheiro; imagem de egoísta.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "rural": 2,
+     "youth": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_rich_residency",
+  "cat": "Economia",
+  "title": "Vistos dourados para milionários",
+  "desc": "Um fundo propõe vender cidadania a quem investir um bilhão no país. A medida traria capital, mas expõe o governo a acusações de lavagem de dinheiro.",
+  "context": "Bilionários estrangeiros também elevam os preços e a corrupção.",
+  "cond": {
+   "min": {
+    "gdppc": 12000
+   },
+   "max": {
+    "corruption": 55
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Aprovar o programa.",
+    "hint": "Entrada de capital; mais corrupção.",
+    "now": {
+     "treasury": 0.5,
+     "corruption": 3,
+     "inequality": 1
+    },
+    "groups": {
+     "business": 4,
+     "workers": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "imm": 0.2
+    }
+   },
+   {
+    "text": "Aprovar com auditoria rigorosa.",
+    "hint": "Menos dinheiro, menos risco.",
+    "now": {
+     "treasury": 0.2,
+     "reputation": 1
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Rejeitar.",
+    "hint": "Mantém a imagem limpa.",
+    "groups": {
+     "business": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_poor_exodus",
+  "cat": "Imigração",
+  "title": "Êxodo dos jovens",
+  "desc": "Filas de jovens nos consulados: quem tem diploma quer ir embora. Ônibus lotados partem toda semana para os países vizinhos e mais ricos.",
+  "context": "A fuga de cérebros reduz a arrecadação e a produtividade futura.",
+  "cond": {
+   "max": {
+    "gdppc": 6500
+   },
+   "min": {
+    "poverty": 25
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Proibir a saída de profissionais essenciais.",
+    "hint": "Segura médicos e engenheiros; repressão e fuga clandestina.",
+    "now": {
+     "civil": -4,
+     "reputation": -3
+    },
+    "groups": {
+     "youth": -6,
+     "bureaucracy": 2
+    },
+    "policy": {
+     "emigration": "banned"
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 6
+    }
+   },
+   {
+    "text": "Cobrar taxa de formação de quem emigrar.",
+    "hint": "Arrecada; irrita os jovens.",
+    "now": {
+     "treasury": 0.15
+    },
+    "groups": {
+     "youth": -4
+    },
+    "policy": {
+     "emigration": "taxed"
+    }
+   },
+   {
+    "text": "Criar incentivos para ficar.",
+    "hint": "Salários e bolsas de retorno.",
+    "now": {
+     "treasury": -0.4,
+     "education": 1
+    },
+    "long": [
+     {
+      "k": "emigration",
+      "v": -0.8,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "youth": 5,
+     "bureaucracy": 3
+    }
+   },
+   {
+    "text": "Aceitar: as remessas compensam.",
+    "hint": "Dinheiro externo; perda de capital humano.",
+    "now": {
+     "treasury": 0.2,
+     "education": -1
+    },
+    "groups": {
+     "youth": 1
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "popPct": -0.1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_poor_remit",
+  "cat": "Economia",
+  "title": "As remessas sustentam as famílias",
+  "desc": "Emigrantes enviam bilhões para casa; em algumas cidades, metade da renda vem de fora. Bancos cobram taxas altas.",
+  "context": "Remessas reduzem a pobreza, mas criam dependência.",
+  "cond": {
+   "max": {
+    "gdppc": 7000
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Baratear as remessas e criar fundo de investimento.",
+    "hint": "Mais renda e poupança.",
+    "now": {
+     "poverty": -1,
+     "treasury": 0.1
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.15,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "rural": 3,
+     "business": -1
+    }
+   },
+   {
+    "text": "Tributar as remessas.",
+    "hint": "Arrecada; castiga os pobres.",
+    "now": {
+     "treasury": 0.25,
+     "poverty": 0.5
+    },
+    "groups": {
+     "rural": -4,
+     "workers": -3
+    }
+   },
+   {
+    "text": "Deixar como está.",
+    "hint": "Sem custo."
+   }
+  ]
+ },
+ {
+  "id": "rt_poor_brain",
+  "cat": "Sociedade",
+  "title": "Médicos e professores partem",
+  "desc": "Hospitais e escolas perdem pessoal para países ricos. Alguns municípios ficaram sem médico.",
+  "context": "Cada vaga vazia piora os serviços básicos.",
+  "cond": {
+   "max": {
+    "gdppc": 8000
+   },
+   "min": {
+    "education": 30
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Dobrar o salário do setor público essencial.",
+    "hint": "Segura profissionais; custa caro.",
+    "now": {
+     "treasury": -0.6,
+     "health": 2,
+     "education": 2
+    },
+    "groups": {
+     "bureaucracy": 5,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Importar profissionais de países aliados.",
+    "hint": "Alívio rápido.",
+    "now": {
+     "treasury": -0.2,
+     "health": 1
+    },
+    "groups": {
+     "youth": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "imm": 0.2
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Exigir serviço obrigatório de 5 anos.",
+    "hint": "Prende gente; impopular.",
+    "now": {
+     "health": 1,
+     "civil": -2
+    },
+    "groups": {
+     "youth": -5,
+     "bureaucracy": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_poor_boats",
+  "cat": "Imigração",
+  "title": "Barcos lotados partem da costa",
+  "desc": "Centenas de pessoas arriscam a vida em travessias clandestinas. Há mortes em cada viagem e os vizinhos acusam o governo de omissão.",
+  "context": "A tragédia chama atenção do mundo.",
+  "cond": {
+   "max": {
+    "gdppc": 7000
+   },
+   "min": {
+    "poverty": 30
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Reprimir os atravessadores e patrulhar a costa.",
+    "hint": "Reduz as saídas; custa e gera críticas.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": -1
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 2
+    }
+   },
+   {
+    "text": "Pedir ajuda internacional e abrir vias legais.",
+    "hint": "Reputação; custa político.",
+    "now": {
+     "reputation": 3,
+     "treasury": -0.1
+    },
+    "rel": {
+     "all": 2
+    }
+   },
+   {
+    "text": "Ignorar. Quem parte, parte.",
+    "hint": "Tragédias aumentam.",
+    "now": {
+     "reputation": -4
+    },
+    "groups": {
+     "youth": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "popPct": -0.05
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_auth_list",
+  "cat": "Direitos",
+  "title": "Lista de presos políticos chega à ONU",
+  "desc": "Uma organização internacional divulgou uma lista com centenas de nomes de presos políticos do país. A imprensa estrangeira pede explicações.",
+  "context": "O governo pode ceder, negar ou usar a lista como pretexto para mais prisões.",
+  "cond": {
+   "min": {
+    "abuse": 35,
+    "prisoners": 1
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Libertar os nomes mais conhecidos.",
+    "hint": "Alívio diplomático; a oposição reanima.",
+    "now": {
+     "reputation": 3,
+     "legitimacy": 1
+    },
+    "groups": {
+     "opposition": 4,
+     "youth": 3,
+     "military": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "releaseAll",
+     "pct": 0.3
+    }
+   },
+   {
+    "text": "Negar tudo e chamar de campanha de calúnia.",
+    "hint": "Sem custo imediato; o escrutínio cresce.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "military": 2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 3,
+     "heat": 0.5
+    }
+   },
+   {
+    "text": "Prender quem vazou a lista.",
+    "hint": "Cala as fontes; o mundo vê a escalada.",
+    "now": {
+     "reputation": -4,
+     "civil": -3,
+     "opposition": -2
+    },
+    "groups": {
+     "opposition": -5
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 9,
+     "prisoners": 40,
+     "heat": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_auth_journalist",
+  "cat": "Direitos",
+  "title": "Jornalista estrangeiro detido",
+  "desc": "Um correspondente de uma grande agência foi preso sob acusação de espionagem enquanto cobria protestos.",
+  "context": "O embaixador do país dele exige a libertação imediata.",
+  "cond": {
+   "max": {
+    "liberty": 40
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Libertar e expulsar.",
+    "hint": "Resolve a crise; a imprensa continua hostil.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "west": 3
+    }
+   },
+   {
+    "text": "Levá-lo a julgamento.",
+    "hint": "Mostra firmeza; o conflito diplomático cresce.",
+    "now": {
+     "reputation": -4
+    },
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "west": -8
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 4
+    }
+   },
+   {
+    "text": "Trocá-lo por um prisioneiro nosso no exterior.",
+    "hint": "Barganha.",
+    "now": {
+     "reputation": 0
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "west": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_auth_exiles",
+  "cat": "Direitos",
+  "title": "A oposição no exílio forma um governo paralelo",
+  "desc": "Líderes exilados se reúnem em uma capital europeia e anunciam um \"governo em exílio\" com apoio de ONGs e deputados estrangeiros.",
+  "context": "O movimento cresce nas redes e dentro do país.",
+  "cond": {
+   "min": {
+    "abuse": 45
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Negociar uma transição com os exilados.",
+    "hint": "Risco político; reputação alta.",
+    "now": {
+     "reputation": 4,
+     "political": 3,
+     "legitimacy": -1
+    },
+    "groups": {
+     "opposition": 6,
+     "military": -4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": -6
+    }
+   },
+   {
+    "text": "Cassar a cidadania dos exilados.",
+    "hint": "Agrava a imagem.",
+    "now": {
+     "reputation": -3,
+     "civil": -2
+    },
+    "groups": {
+     "opposition": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 5
+    }
+   },
+   {
+    "text": "Perseguir parentes e financiadores no país.",
+    "hint": "Rápido e brutal.",
+    "now": {
+     "reputation": -5,
+     "opposition": -3,
+     "civil": -4
+    },
+    "groups": {
+     "opposition": -6
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 11,
+     "prisoners": 30,
+     "heat": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_auth_ngo",
+  "cat": "Direitos",
+  "title": "Observadores pedem acesso às prisões",
+  "desc": "Uma ONG respeitada pede para visitar presídios e delegacias. Há denúncias de tortura e superlotação.",
+  "context": "Aceitar abre uma janela de transparência; recusar sinaliza que há o que esconder.",
+  "cond": {
+   "min": {
+    "abuse": 30
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Aceitar a visita sem restrições.",
+    "hint": "A imagem melhora, mas o relatório pode ser duro.",
+    "now": {
+     "reputation": 3,
+     "civil": 2
+    },
+    "groups": {
+     "military": -2,
+     "youth": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": -4
+    },
+    "policy": {
+     "prisons": "standard"
+    }
+   },
+   {
+    "text": "Aceitar uma visita guiada.",
+    "hint": "Aparência de abertura.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Recusar e acusar a ONG de espionagem.",
+    "hint": "Aumenta as suspeitas.",
+    "now": {
+     "reputation": -3
+    },
+    "groups": {
+     "military": 2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 2,
+     "heat": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_auth_death",
+  "cat": "Direitos",
+  "title": "Dissidente morre sob custódia",
+  "desc": "Um opositor conhecido morreu em uma delegacia. A versão oficial fala em \"mal súbito\", mas fotos do corpo circulam nas redes.",
+  "context": "Multidões saem às ruas e embaixadas exigem investigação independente.",
+  "cond": {
+   "min": {
+    "abuse": 55,
+    "prisoners": 1
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Abrir investigação independente e punir os responsáveis.",
+    "hint": "Custa a lealdade dos aparelhos de segurança.",
+    "now": {
+     "reputation": 4,
+     "legitimacy": 3,
+     "civil": 2
+    },
+    "groups": {
+     "military": -5,
+     "opposition": 4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": -8
+    }
+   },
+   {
+    "text": "Manter a versão oficial.",
+    "hint": "Os protestos crescem.",
+    "now": {
+     "protest": 6,
+     "reputation": -4,
+     "legitimacy": -3
+    },
+    "groups": {
+     "opposition": -3,
+     "youth": -5
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 4,
+     "heat": 1
+    }
+   },
+   {
+    "text": "Declarar estado de emergência e dispersar as ruas.",
+    "hint": "Repressão aberta.",
+    "now": {
+     "protest": -3,
+     "civil": -7,
+     "reputation": -7,
+     "control": 4
+    },
+    "groups": {
+     "military": 2,
+     "opposition": -7
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 14,
+     "prisoners": 60,
+     "heat": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_auth_visit",
+  "cat": "Direitos",
+  "title": "Relator da ONU quer visitar o país",
+  "desc": "Um relator especial para tortura e detenções arbitrárias pediu uma visita oficial.",
+  "context": "Os países ocidentais cobram resposta.",
+  "cond": {
+   "min": {
+    "abuse": 35
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Convidá-lo oficialmente.",
+    "hint": "Transparência.",
+    "now": {
+     "reputation": 3
+    },
+    "groups": {
+     "military": -1
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": -3
+    }
+   },
+   {
+    "text": "Aceitar com agenda controlada.",
+    "hint": "Meio-termo.",
+    "now": {
+     "reputation": 1
+    }
+   },
+   {
+    "text": "Recusar o pedido.",
+    "hint": "Reduz o risco imediato; sinal ruim.",
+    "now": {
+     "reputation": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "heat": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_sanctions_pack",
+  "cat": "Mundo",
+  "title": "Os países democráticos fecham o cerco",
+  "desc": "As sanções por direitos humanos já afetam o comércio. Embaixadores sugerem que só uma gesto de distensão destrava as negociações.",
+  "context": "Cada semana de impasse custa caro.",
+  "cond": {
+   "flag": "rt_sanc_card"
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Libertar presos políticos e permitir observadores.",
+    "hint": "Alívio gradual; risco de dissidência.",
+    "now": {
+     "reputation": 4,
+     "legitimacy": 1
+    },
+    "groups": {
+     "opposition": 5,
+     "military": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "releaseAll",
+     "pct": 0.5,
+     "flagOff": "rt_sanc_card"
+    }
+   },
+   {
+    "text": "Retaliar com restrições ao comércio e aos diplomatas.",
+    "hint": "Mostra força.",
+    "now": {
+     "reputation": -2,
+     "legitimacy": 2
+    },
+    "groups": {
+     "military": 3,
+     "business": -4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "relAuth": 5,
+     "relLib": -5,
+     "flagOff": "rt_sanc_card"
+    }
+   },
+   {
+    "text": "Buscar alívio com aliados autoritários.",
+    "hint": "Novas parcerias.",
+    "now": {
+     "reputation": -1
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "relAuth": 8,
+     "relLib": -2,
+     "flagOff": "rt_sanc_card"
+    }
+   }
+  ],
+  "default": 2
+ },
+ {
+  "id": "rt_icc_inquiry",
+  "cat": "Justiça internacional",
+  "title": "O tribunal abre um exame preliminar",
+  "desc": "A promotoria do Tribunal Penal Internacional anunciou exame preliminar sobre supostos crimes contra a humanidade cometidos no país.",
+  "context": "Cooperar reduz a pressão e o risco de acusação, mas pode expor ministros e generais.",
+  "cond": {
+   "flag": "rt_icc_inquiry"
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Cooperar plenamente com a investigação.",
+    "hint": "Reputação sobe; ministros ficam expostos.",
+    "now": {
+     "reputation": 3
+    },
+    "groups": {
+     "military": -4,
+     "bureaucracy": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "iccCooperate",
+     "flagOff": "rt_icc_inquiry"
+    }
+   },
+   {
+    "text": "Contestar a jurisdição e atrasar.",
+    "hint": "Reduz o ritmo; o mundo desconfia.",
+    "now": {
+     "reputation": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "iccObstruct",
+     "flagOff": "rt_icc_inquiry"
+    }
+   },
+   {
+    "text": "Deixar de reconhecer o tribunal.",
+    "hint": "Corta o risco formal; vira pária.",
+    "now": {
+     "legitimacy": 1
+    },
+    "groups": {
+     "military": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "iccWithdraw",
+     "flagOff": "rt_icc_inquiry"
+    }
+   }
+  ],
+  "default": 1
+ },
+ {
+  "id": "rt_icc_indict",
+  "cat": "Justiça internacional",
+  "title": "O tribunal formaliza acusações",
+  "desc": "Altos funcionários do governo foram formalmente acusados de crimes contra a humanidade. Sanções individuais e congelamento de bens já estão em estudo.",
+  "context": "O próximo passo pode ser um mandado de prisão contra o chefe de governo.",
+  "cond": {
+   "flag": "rt_icc_indict"
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Entregar os acusados ao tribunal.",
+    "hint": "Preserva você; custa o apoio do aparato de segurança.",
+    "now": {
+     "reputation": 6,
+     "legitimacy": -2,
+     "stability": -3
+    },
+    "groups": {
+     "military": -8,
+     "bureaucracy": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "iccCooperate",
+     "abuse": -8,
+     "heat": -4,
+     "flagOff": "rt_icc_indict"
+    }
+   },
+   {
+    "text": "Julgá-los no país, com um tribunal próprio.",
+    "hint": "Salva a face; observadores podem chamar de farsa.",
+    "now": {
+     "reputation": 1,
+     "legitimacy": 2
+    },
+    "groups": {
+     "military": -1
+    },
+    "act": {
+     "type": "rights",
+     "op": "trialSelf",
+     "heat": -2,
+     "flagOff": "rt_icc_indict"
+    }
+   },
+   {
+    "text": "Ignorar e dobrar a aposta.",
+    "hint": "O mandado fica mais próximo.",
+    "now": {
+     "reputation": -4
+    },
+    "groups": {
+     "military": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "iccObstruct",
+     "heat": 1.5,
+     "flagOff": "rt_icc_indict"
+    }
+   },
+   {
+    "text": "Deixar de reconhecer o tribunal.",
+    "hint": "Corta a jurisdição formal.",
+    "now": {
+     "legitimacy": 1
+    },
+    "groups": {
+     "military": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "iccWithdraw",
+     "flagOff": "rt_icc_indict"
+    }
+   }
+  ],
+  "default": 2
+ },
+ {
+  "id": "rt_icc_warrant",
+  "cat": "Justiça internacional",
+  "title": "Mandado de prisão contra o governante",
+  "desc": "O Tribunal Penal Internacional expediu mandado de prisão contra você. Aliados começam a recusar convites; algumas fronteiras já estão fechadas.",
+  "context": "Cada semana de poder aumenta o risco de ser entregue por um aliado cansado ou por um golpe.",
+  "cond": {
+   "flag": "rt_icc_warrant"
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Entregar-se ao tribunal e negociar a pena.",
+    "hint": "Fim do governo; evita um final pior.",
+    "act": {
+     "type": "rights",
+     "op": "iccSurrender",
+     "flagOff": "rt_icc_warrant"
+    }
+   },
+   {
+    "text": "Renunciar e partir para o exílio.",
+    "hint": "Foge antes de ser capturado.",
+    "act": {
+     "type": "rights",
+     "op": "exile",
+     "flagOff": "rt_icc_warrant"
+    }
+   },
+   {
+    "text": "Não reconhecer o tribunal e buscar proteção de aliados.",
+    "hint": "Segue no poder; sempre sob ameaça.",
+    "now": {
+     "reputation": -6,
+     "legitimacy": 1
+    },
+    "groups": {
+     "military": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "iccWithdraw",
+     "relAuth": 6,
+     "flagOff": "rt_icc_warrant"
+    }
+   },
+   {
+    "text": "Oferecer uma libertação em massa e uma anistia.",
+    "hint": "Pode desarmar o processo; a oposição se fortalece.",
+    "now": {
+     "reputation": 3
+    },
+    "groups": {
+     "opposition": 6,
+     "military": -4
+    },
+    "act": {
+     "type": "rights",
+     "op": "releaseAll",
+     "pct": 1,
+     "unban": true,
+     "heat": -5,
+     "abuse": -8,
+     "flagOff": "rt_icc_warrant"
+    }
+   }
+  ],
+  "default": 2
+ },
+ {
+  "id": "rt_lib_hate",
+  "cat": "Direitos",
+  "title": "Discurso de ódio nas redes",
+  "desc": "Grupos extremistas usam as redes para atacar minorias e imigrantes. Parte do público pede censura; outra parte defende a liberdade total.",
+  "context": "Qualquer lei de moderação será usada como argumento nas eleições.",
+  "cond": {
+   "min": {
+    "liberty": 60
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Criminalizar discurso de ódio com supervisão judicial.",
+    "hint": "Protege as minorias; críticos falam em censura.",
+    "now": {
+     "civil": -1,
+     "reputation": 2
+    },
+    "groups": {
+     "youth": 2,
+     "rural": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": -2
+    }
+   },
+   {
+    "text": "Exigir transparência das plataformas.",
+    "hint": "Meio-termo.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Não intervir.",
+    "hint": "Liberdade total; clima mais tenso.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "youth": -1
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_lib_sanctuary",
+  "cat": "Imigração",
+  "title": "Cidades-santuário para imigrantes",
+  "desc": "Prefeitos de várias cidades prometem não colaborar com a polícia de imigração e dar documentos locais a estrangeiros sem papéis.",
+  "context": "O interior e as grandes cidades discordam.",
+  "cond": {
+   "min": {
+    "liberty": 55,
+    "imm": 5
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Apoiar as cidades.",
+    "hint": "Integração, mas atrito com o interior.",
+    "now": {
+     "civil": 2,
+     "reputation": 2
+    },
+    "groups": {
+     "youth": 4,
+     "rural": -5
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": -3
+    }
+   },
+   {
+    "text": "Ameaçar cortar verbas.",
+    "hint": "Aplica a lei; custa popularidade nas cidades.",
+    "now": {
+     "civil": -1
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -4,
+     "regional": -3
+    }
+   },
+   {
+    "text": "Aprovar uma anistia de documentos.",
+    "hint": "Legaliza milhares.",
+    "now": {
+     "reputation": 2,
+     "productivity": 0.5
+    },
+    "groups": {
+     "rural": -4,
+     "business": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "naturalizePct",
+     "pct": 0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_lib_prize",
+  "cat": "Direitos",
+  "title": "Prêmio internacional de direitos humanos",
+  "desc": "Uma fundação reconheceu o país como exemplo de respeito às liberdades e à integração de imigrantes.",
+  "context": "O prêmio rende prestígio e pede que você mantenha o padrão.",
+  "cond": {
+   "min": {
+    "liberty": 70
+   },
+   "max": {
+    "abuse": 20
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Receber o prêmio em cerimônia pública.",
+    "hint": "Prestígio.",
+    "now": {
+     "reputation": 5,
+     "legitimacy": 2
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Usar o prêmio para abrir um fundo de apoio a refugiados.",
+    "hint": "Mais imagem; mais gastos.",
+    "now": {
+     "reputation": 4,
+     "treasury": -0.15
+    },
+    "groups": {
+     "youth": 4,
+     "rural": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "imm": 0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_lib_repar",
+  "cat": "Direitos",
+  "title": "Ex-presos políticos pedem reparação",
+  "desc": "Sobreviventes de governos anteriores exigem indenização e um memorial. O tema divide militares e a sociedade civil.",
+  "context": "Reparar é caro, mas fecha feridas.",
+  "cond": {
+   "min": {
+    "liberty": 50
+   },
+   "max": {
+    "abuse": 25
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Criar comissão da verdade e pagar reparações.",
+    "hint": "Reconciliação; atrito com militares.",
+    "now": {
+     "treasury": -0.3,
+     "legitimacy": 3,
+     "reputation": 3
+    },
+    "groups": {
+     "military": -4,
+     "youth": 3,
+     "opposition": 3
+    }
+   },
+   {
+    "text": "Apenas um memorial simbólico.",
+    "hint": "Barato.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "military": -1
+    }
+   },
+   {
+    "text": "Decretar o fim das investigações (\"virar a página\").",
+    "hint": "Agrada aos militares.",
+    "now": {
+     "legitimacy": -1
+    },
+    "groups": {
+     "military": 3,
+     "youth": -3,
+     "opposition": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_eth_uprising",
+  "cat": "Minorias",
+  "title": "Rebelião em região de minoria",
+  "desc": "Milícias de uma região de minoria étnica tomaram delegacias e hastearam uma bandeira própria. Exigem autonomia e o fim da discriminação.",
+  "context": "O que você fizer vai definir a relação com todas as minorias do país.",
+  "cond": {
+   "min": {
+    "ethnic": 62
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Negociar: autonomia cultural e anistia.",
+    "hint": "Pode acalmar o conflito; nacionalistas reclamam.",
+    "now": {
+     "reputation": 3
+    },
+    "groups": {
+     "regional": 6,
+     "military": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "concedeWorst",
+     "abuse": -3
+    },
+    "policy": {
+     "autonomy": "federal"
+    }
+   },
+   {
+    "text": "Esmagar a rebelião com o exército.",
+    "hint": "Rápido e sangrento.",
+    "now": {
+     "control": 3,
+     "reputation": -4
+    },
+    "groups": {
+     "military": 4,
+     "regional": -6
+    },
+    "act": {
+     "type": "rights",
+     "op": "crushWorst"
+    }
+   },
+   {
+    "text": "Cortar verbas e isolar a região.",
+    "hint": "Pressão sem tiros.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "regional": -4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": 4,
+     "abuse": 3
+    }
+   }
+  ],
+  "crisis": true
+ },
+ {
+  "id": "rt_eth_language",
+  "cat": "Minorias",
+  "title": "Disputa pela língua oficial",
+  "desc": "Representantes de uma minoria exigem que sua língua seja oficial nas escolas e tribunais da região.",
+  "context": "Línguas viram política.",
+  "cond": {
+   "min": {
+    "minorities": 8
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Reconhecer a língua como cooficial.",
+    "hint": "Reduz a tensão; custo administrativo.",
+    "now": {
+     "treasury": -0.15,
+     "reputation": 2
+    },
+    "groups": {
+     "regional": 5,
+     "rural": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": -8
+    }
+   },
+   {
+    "text": "Permitir só no ensino básico.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": -0.05
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": -3
+    }
+   },
+   {
+    "text": "Manter uma língua única.",
+    "hint": "Nacionalismo; ressentimento.",
+    "groups": {
+     "rural": 2,
+     "regional": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": 5
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_eth_kin",
+  "cat": "Minorias",
+  "title": "O vizinho se diz protetor da minoria",
+  "desc": "Um país vizinho passou a oferecer passaportes e apoio político à minoria que vive na sua fronteira, dizendo defendê-la.",
+  "context": "O discurso lembra pretextos históricos para intervenções.",
+  "cond": {
+   "min": {
+    "ethnic": 45,
+    "minorities": 6
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Proibir passaportes estrangeiros.",
+    "hint": "Afirma soberania; ressentimento.",
+    "now": {
+     "civil": -1
+    },
+    "groups": {
+     "military": 2,
+     "regional": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": 4
+    },
+    "rel": {
+     "neighbors": -6
+    }
+   },
+   {
+    "text": "Oferecer à minoria direitos e investimentos.",
+    "hint": "Tira o argumento do vizinho.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "regional": 4
+    },
+    "act": {
+     "type": "rights",
+     "op": "concedeWorst"
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Reforçar a fronteira.",
+    "hint": "Dissuasão.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "neighbors": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_eth_violence",
+  "cat": "Minorias",
+  "title": "Violência contra uma minoria",
+  "desc": "Uma multidão queimou lojas e casas de uma comunidade minoritária depois de um boato nas redes. A polícia chegou tarde.",
+  "context": "O país observa como o governo vai reagir.",
+  "cond": {
+   "min": {
+    "ethnic": 55
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Prender os agressores e proteger a comunidade.",
+    "hint": "Reafirma a lei; parte do público reclama.",
+    "now": {
+     "reputation": 3,
+     "civil": 1
+    },
+    "groups": {
+     "rural": -3,
+     "regional": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": -6,
+     "abuse": -2
+    }
+   },
+   {
+    "text": "Minimizar o episódio e pedir calma.",
+    "hint": "Evita atritos; a minoria perde confiança.",
+    "now": {
+     "reputation": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": 5
+    }
+   },
+   {
+    "text": "Apoiar discretamente a maioria nativista.",
+    "hint": "Colhe votos; o episódio se repete.",
+    "now": {
+     "reputation": -5,
+     "civil": -3
+    },
+    "groups": {
+     "rural": 4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": 10,
+     "abuse": 8
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_eth_refugees",
+  "cat": "Minorias",
+  "title": "A minoria foge para o país vizinho",
+  "desc": "Depois da repressão, milhares de membros da minoria cruzam a fronteira. Campos de refugiados surgem do outro lado.",
+  "context": "A imagem do país no exterior despenca.",
+  "cond": {
+   "min": {
+    "ethnic": 55,
+    "abuse": 45
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Permitir o retorno com garantias.",
+    "hint": "Reduz a crise; custa político.",
+    "now": {
+     "reputation": 4,
+     "treasury": -0.1
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": -6,
+     "popPct": 0.05
+    }
+   },
+   {
+    "text": "Declarar que são \"traidores\" e confiscar seus bens.",
+    "hint": "Pune; aumenta a revolta.",
+    "now": {
+     "reputation": -6,
+     "treasury": 0.15
+    },
+    "groups": {
+     "rural": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": 6,
+     "abuse": 8,
+     "popPct": -0.08
+    }
+   },
+   {
+    "text": "Ignorar a crise.",
+    "hint": "Silêncio.",
+    "now": {
+     "reputation": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "popPct": -0.06
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_imm_tension",
+  "cat": "Imigração",
+  "title": "Cresce a tensão contra imigrantes",
+  "desc": "Um partido nativista ganha as ruas com o lema \"o país primeiro\". Há ataques a abrigos e discursos duros no parlamento.",
+  "context": "O assunto domina o debate nacional.",
+  "cond": {
+   "min": {
+    "imm": 8
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Deportar uma parte dos imigrantes irregulares.",
+    "hint": "Agrada nativistas; custo humano e imagem.",
+    "now": {
+     "civil": -2
+    },
+    "groups": {
+     "rural": 4
+    },
+    "act": {
+     "type": "rights",
+     "op": "deportPct",
+     "pct": 0.12
+    }
+   },
+   {
+    "text": "Lançar programa de integração e naturalização.",
+    "hint": "Melhora a convivência a longo prazo.",
+    "now": {
+     "treasury": -0.3,
+     "civil": 2
+    },
+    "groups": {
+     "rural": -3,
+     "youth": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "naturalizePct",
+     "pct": 0.25
+    }
+   },
+   {
+    "text": "Ficar em silêncio.",
+    "hint": "Tensão sobe.",
+    "now": {
+     "protest": 2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_imm_riot",
+  "cat": "Imigração",
+  "title": "Distúrbios em bairro de imigrantes",
+  "desc": "Uma ação policial violenta acendeu protestos em um bairro popular onde vive grande parte da comunidade imigrante.",
+  "context": "Carros queimados, saques e confrontos nas ruas.",
+  "cond": {
+   "min": {
+    "imm": 9
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Conter com polícia e prisões em massa.",
+    "hint": "Restaura a ordem; gera ressentimento.",
+    "now": {
+     "protest": -3,
+     "civil": -3,
+     "reputation": -3
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 8,
+     "prisoners": 25
+    }
+   },
+   {
+    "text": "Dialogar com lideranças e investir no bairro.",
+    "hint": "Mais lento e caro.",
+    "now": {
+     "treasury": -0.4,
+     "protest": -1,
+     "qol": 1
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": -3
+    }
+   },
+   {
+    "text": "Deportar os líderes dos protestos.",
+    "hint": "Bode expiatório; cria um mártir.",
+    "now": {
+     "reputation": -4
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "deportPct",
+     "pct": 0.03
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_imm_party",
+  "cat": "Imigração",
+  "title": "Partido anti-imigração cresce nas pesquisas",
+  "desc": "Um novo partido que promete \"fechar as fronteiras\" dobra o apoio em seis meses. Os partidos tradicionais debatem se copiam o discurso.",
+  "context": "A política migratória virou o tema decisivo.",
+  "cond": {
+   "min": {
+    "imm": 10
+   },
+   "policy": {
+    "elections": "multiparty"
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Endurecer as regras migratórias.",
+    "hint": "Rouba o discurso; reputação cai.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "rural": 4,
+     "business": -2
+    },
+    "policy": {
+     "immigration": "restricted"
+    }
+   },
+   {
+    "text": "Defender a imigração controlada e a integração.",
+    "hint": "Mantém os valores; arrisca votos.",
+    "now": {
+     "reputation": 2
+    },
+    "groups": {
+     "rural": -3,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Cercar o partido com acusações judiciais.",
+    "hint": "Risco de escândalo.",
+    "now": {
+     "civil": -2,
+     "reputation": -3,
+     "legitimacy": -2
+    },
+    "groups": {
+     "opposition": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 5
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_imm_wave",
+  "cat": "Imigração",
+  "title": "Onda de refugiados na fronteira",
+  "desc": "Milhares de refugiados de uma guerra vizinha se aglomeram na fronteira. Faltam abrigos, comida e médicos.",
+  "context": "O mundo olha como o país vai reagir.",
+  "cond": {
+   "max": {
+    "imm": 22
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Abrir a fronteira e organizar acolhida.",
+    "hint": "Reputação e mão de obra; custa caro e gera tensão.",
+    "now": {
+     "treasury": -0.5,
+     "reputation": 5,
+     "housing": -2
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "imm": 1.8
+    }
+   },
+   {
+    "text": "Aceitar por cotas e com triagem.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 1
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "imm": 0.7
+    }
+   },
+   {
+    "text": "Fechar a fronteira.",
+    "hint": "Poupa recursos; imagem de dureza.",
+    "now": {
+     "reputation": -4
+    },
+    "groups": {
+     "rural": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 6
+    },
+    "policy": {
+     "refugees": "refuse"
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_imm_labor",
+  "cat": "Imigração",
+  "title": "Empresários pedem mais imigrantes",
+  "desc": "Setores inteiros enfrentam falta de mão de obra. A associação empresarial exige vistos de trabalho e criação de um programa temporário.",
+  "context": "Os sindicatos temem a queda de salários.",
+  "cond": {
+   "max": {
+    "imm": 6,
+    "unemployment": 6.5
+   },
+   "min": {
+    "gdppc": 8000
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Criar vistos temporários de trabalho.",
+    "hint": "Mais produção; mais imigrantes.",
+    "now": {
+     "growth": 0.3,
+     "productivity": 0.5
+    },
+    "groups": {
+     "business": 5,
+     "workers": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "imm": 0.9
+    }
+   },
+   {
+    "text": "Primeiro requalificar os desempregados locais.",
+    "hint": "Bom para os trabalhadores; mais lento.",
+    "now": {
+     "treasury": -0.3,
+     "unemployment": -0.3
+    },
+    "groups": {
+     "workers": 4,
+     "business": -2
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Sem mudança.",
+    "groups": {
+     "business": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_imm_ghetto",
+  "cat": "Imigração",
+  "title": "Guetos urbanos",
+  "desc": "Bairros inteiros viraram enclaves isolados, com escolas precárias e pouca presença do Estado. Os moradores se sentem abandonados.",
+  "context": "Sem integração, o isolamento alimenta o radicalismo.",
+  "cond": {
+   "min": {
+    "imm": 11
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Plano de obras, escolas e transporte.",
+    "hint": "Integra; custa caro.",
+    "now": {
+     "treasury": -0.7,
+     "housing": 4,
+     "education": 1,
+     "crime": -1
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "ethnic": -4
+    }
+   },
+   {
+    "text": "Policiamento intensivo.",
+    "hint": "Controle rápido.",
+    "now": {
+     "crime": -2,
+     "civil": -2
+    },
+    "groups": {
+     "rural": 2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 4,
+     "ethnic": 3
+    }
+   },
+   {
+    "text": "Dispersar os moradores por todo o país.",
+    "hint": "Polêmico; reduz o isolamento.",
+    "now": {
+     "civil": -2,
+     "treasury": -0.2
+    },
+    "groups": {
+     "youth": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 3,
+     "ethnic": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_imm_remittance_ban",
+  "cat": "Imigração",
+  "title": "Imigrantes querem votar",
+  "desc": "Residentes estrangeiros de longa data exigem direito de voto nas eleições locais.",
+  "context": "A medida divide a política.",
+  "cond": {
+   "min": {
+    "imm": 5,
+    "liberty": 50
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Conceder voto local.",
+    "hint": "Integração política; nativistas protestam.",
+    "now": {
+     "civil": 2,
+     "reputation": 2
+    },
+    "groups": {
+     "rural": -4,
+     "youth": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "naturalizePct",
+     "pct": 0.15
+    }
+   },
+   {
+    "text": "Exigir 10 anos de residência.",
+    "hint": "Meio-termo.",
+    "now": {
+     "reputation": 0
+    }
+   },
+   {
+    "text": "Negar.",
+    "hint": "Segue o status quo.",
+    "groups": {
+     "rural": 2,
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_fug_warcrim",
+  "cat": "Justiça internacional",
+  "title": "Criminoso de guerra pede asilo",
+  "desc": "Um ex-comandante de um país vizinho, procurado pelo tribunal internacional por massacres, chegou ao país e pede asilo político.",
+  "context": "Os aliados do comandante o veem como herói; o mundo, como criminoso.",
+  "cond": {
+   "max": {
+    "imm": 40
+   }
+  },
+  "w": 1,
+  "cd": 365,
+  "options": [
+   {
+    "text": "Abrigá-lo e recusar a extradição.",
+    "hint": "Agrada ao aparato militar; custa reputação.",
+    "now": {
+     "reputation": -5
+    },
+    "groups": {
+     "military": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "harbor",
+     "name": "O comandante foragido"
+    }
+   },
+   {
+    "text": "Entregá-lo ao tribunal internacional.",
+    "hint": "Reputação e boas relações com democracias.",
+    "now": {
+     "reputation": 6
+    },
+    "groups": {
+     "military": -3
+    },
+    "act": {
+     "type": "rights",
+     "op": "extradite",
+     "name": "O comandante"
+    }
+   },
+   {
+    "text": "Julgá-lo no país, com tribunal próprio.",
+    "hint": "Mostra soberania; precisa de um julgamento crível.",
+    "now": {
+     "treasury": -0.15
+    },
+    "act": {
+     "type": "rights",
+     "op": "trialSelf"
+    }
+   },
+   {
+    "text": "Expulsá-lo para um terceiro país.",
+    "hint": "Evita o problema; críticas dos dois lados.",
+    "now": {
+     "reputation": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_fug_dictator",
+  "cat": "Justiça internacional",
+  "title": "Ditador deposto aterrissa na capital",
+  "desc": "Um ex-ditador, expulso do poder em seu país, desembarca de jatinho com malas de dinheiro e pede refúgio.",
+  "context": "Seu novo governo exige a extradição para um julgamento.",
+  "cond": {
+   "max": {
+    "imm": 40
+   }
+  },
+  "w": 1,
+  "cd": 365,
+  "options": [
+   {
+    "text": "Abrigá-lo (e ficar com o dinheiro).",
+    "hint": "Cofres cheios; reputação cai.",
+    "now": {
+     "treasury": 0.6,
+     "reputation": -5,
+     "corruption": 2
+    },
+    "groups": {
+     "military": 2
+    },
+    "act": {
+     "type": "rights",
+     "op": "harbor",
+     "name": "O ex-ditador"
+    }
+   },
+   {
+    "text": "Entregar a seu país.",
+    "hint": "Reputação e melhores relações regionais.",
+    "now": {
+     "reputation": 4
+    },
+    "rel": {
+     "neighbors": 4
+    },
+    "act": {
+     "type": "rights",
+     "op": "extradite",
+     "name": "O ex-ditador"
+    }
+   },
+   {
+    "text": "Aceitá-lo apenas como residente discreto.",
+    "hint": "Meio-termo.",
+    "now": {
+     "reputation": -2,
+     "treasury": 0.2
+    },
+    "act": {
+     "type": "rights",
+     "op": "harbor",
+     "name": "O ex-ditador"
+    }
+   },
+   {
+    "text": "Recusar o pouso.",
+    "hint": "Evita o problema.",
+    "now": {
+     "reputation": 0
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_fug_extradite",
+  "cat": "Justiça internacional",
+  "title": "Aliado exige a entrega de um opositor",
+  "desc": "Um governo autoritário aliado pede a extradição de um jornalista asilado, acusando-o de terrorismo.",
+  "context": "A decisão testa os seus valores.",
+  "cond": {
+   "min": {
+    "gdppc": 3000
+   }
+  },
+  "w": 1,
+  "cd": 300,
+  "options": [
+   {
+    "text": "Entregar o jornalista.",
+    "hint": "Agrada o aliado; imagem arranhada.",
+    "now": {
+     "reputation": -4
+    },
+    "rel": {
+     "all": 0
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 6,
+     "relAuth": 5,
+     "relLib": -4
+    }
+   },
+   {
+    "text": "Recusar e conceder asilo.",
+    "hint": "Reputação sobe; o aliado fica irritado.",
+    "now": {
+     "reputation": 4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "relAuth": -6,
+     "relLib": 4
+    }
+   },
+   {
+    "text": "Adiar com recursos judiciais.",
+    "hint": "Ganha tempo.",
+    "now": {
+     "reputation": 0
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_fug_visit",
+  "cat": "Justiça internacional",
+  "title": "Chefe de Estado com mandado visita o país",
+  "desc": "Um chefe de Estado procurado pelo tribunal internacional pretende participar de uma cúpula regional no seu país.",
+  "context": "Como membro do tribunal, o país seria obrigado a prendê-lo.",
+  "cond": {
+   "min": {
+    "gdppc": 2000
+   }
+  },
+  "w": 1,
+  "cd": 365,
+  "options": [
+   {
+    "text": "Prendê-lo, como manda o tratado.",
+    "hint": "Honra o direito internacional; crise diplomática.",
+    "now": {
+     "reputation": 6
+    },
+    "groups": {
+     "military": -2
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "relLib": 5,
+     "relAuth": -8,
+     "heat": -1
+    }
+   },
+   {
+    "text": "Deixá-lo entrar e ignorar o mandado.",
+    "hint": "Preserva o aliado; a reputação cai.",
+    "now": {
+     "reputation": -4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "relAuth": 5,
+     "relLib": -5,
+     "heat": 1
+    }
+   },
+   {
+    "text": "Mudar o local da cúpula.",
+    "hint": "Evita o dilema.",
+    "now": {
+     "reputation": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_fug_asylum",
+  "cat": "Justiça internacional",
+  "title": "Dissidente do país vizinho pede asilo",
+  "desc": "Uma ativista fugida de um regime vizinho bate à porta da embaixada. Se aceitar, o vizinho promete represálias comerciais.",
+  "context": "Direitos humanos ou conveniência diplomática.",
+  "cond": {
+   "min": {
+    "gdppc": 2000
+   }
+  },
+  "w": 1,
+  "cd": 300,
+  "options": [
+   {
+    "text": "Conceder asilo.",
+    "hint": "Reputação sobe; atrito com o vizinho.",
+    "now": {
+     "reputation": 4
+    },
+    "rel": {
+     "neighbors": -6
+    }
+   },
+   {
+    "text": "Aceitar em segredo e negar publicamente.",
+    "hint": "Gestão de risco.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": -2
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Segue a conveniência.",
+    "now": {
+     "reputation": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_dp_wrongful",
+  "cat": "Direitos",
+  "title": "Condenado executado era inocente",
+  "desc": "Novas provas de DNA mostraram que um homem executado no ano passado era inocente. O caso reabre o debate sobre a pena de morte.",
+  "context": "Organizações e a imprensa exigem mudança.",
+  "cond": {
+   "policy": {
+    "deathpenalty": [
+     "exceptional",
+     "routine"
+    ]
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Abolir a pena de morte.",
+    "hint": "Reputação sobe; parte do público reclama.",
+    "now": {
+     "reputation": 5,
+     "civil": 4
+    },
+    "groups": {
+     "rural": -4,
+     "youth": 3
+    },
+    "policy": {
+     "deathpenalty": "abolished"
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": -5
+    }
+   },
+   {
+    "text": "Moratória e revisão de todos os casos.",
+    "hint": "Meio-termo.",
+    "now": {
+     "reputation": 3,
+     "civil": 2
+    },
+    "groups": {
+     "rural": -1
+    },
+    "policy": {
+     "deathpenalty": "exceptional"
+    }
+   },
+   {
+    "text": "Manter a lei e reforçar as perícias.",
+    "hint": "Sem mudança.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "rural": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_dp_referendum",
+  "cat": "Direitos",
+  "title": "Plebiscito sobre a pena de morte",
+  "desc": "Após uma série de crimes brutais, a população pede um plebiscito sobre o retorno da pena capital.",
+  "context": "A maioria parece a favor. As ONGs alertam para o risco.",
+  "cond": {
+   "policy": {
+    "deathpenalty": "abolished"
+   },
+   "min": {
+    "crime": 55
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Convocar o plebiscito e respeitar o resultado.",
+    "hint": "Restabelece a pena; a reputação cai.",
+    "now": {
+     "legitimacy": 2,
+     "reputation": -5,
+     "crime": -1,
+     "civil": -3
+    },
+    "groups": {
+     "rural": 5,
+     "youth": -3
+    },
+    "policy": {
+     "deathpenalty": "exceptional"
+    }
+   },
+   {
+    "text": "Recusar e reforçar a polícia.",
+    "hint": "Mantém o padrão; críticas dos conservadores.",
+    "now": {
+     "treasury": -0.3,
+     "crime": -1
+    },
+    "groups": {
+     "rural": -3,
+     "business": 2
+    }
+   },
+   {
+    "text": "Reintroduzir de forma ampla (rotineira).",
+    "hint": "Populista.",
+    "now": {
+     "legitimacy": 3,
+     "reputation": -9,
+     "crime": -3,
+     "civil": -7
+    },
+    "groups": {
+     "rural": 6,
+     "youth": -5
+    },
+    "policy": {
+     "deathpenalty": "routine"
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_pol_brutality",
+  "cat": "Direitos",
+  "title": "Vídeo de violência policial viraliza",
+  "desc": "Um vídeo mostra policiais espancando um homem rendido. Protestos explodem em várias cidades.",
+  "context": "A política de segurança é a questão.",
+  "cond": {
+   "policy": {
+    "policing": [
+     "tough",
+     "ruthless"
+    ]
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Punir os policiais e criar corregedoria externa.",
+    "hint": "Reduz o abuso; atrito com a polícia.",
+    "now": {
+     "legitimacy": 3,
+     "reputation": 3,
+     "civil": 2
+    },
+    "groups": {
+     "military": -3,
+     "youth": 3
+    },
+    "policy": {
+     "policing": "standard"
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": -6
+    }
+   },
+   {
+    "text": "Defender a polícia.",
+    "hint": "Agrada à base conservadora; protestos crescem.",
+    "now": {
+     "protest": 4,
+     "reputation": -3
+    },
+    "groups": {
+     "military": 3,
+     "youth": -5
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 3
+    }
+   },
+   {
+    "text": "Mandar a tropa de choque às ruas.",
+    "hint": "Escalada.",
+    "now": {
+     "protest": -2,
+     "civil": -5,
+     "reputation": -6
+    },
+    "groups": {
+     "youth": -6
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 11,
+     "prisoners": 30
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_pol_soft",
+  "cat": "Segurança",
+  "title": "Onda de crimes e polícia tolerante",
+  "desc": "Assaltos e roubos explodem nos bairros ricos e comerciantes pedem mão de ferro. A polícia só aplica advertências.",
+  "context": "A tolerância aparente virou tema nas eleições.",
+  "cond": {
+   "policy": {
+    "policing": "tolerant"
+   },
+   "min": {
+    "crime": 52
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Endurecer o policiamento.",
+    "hint": "Crime cai; direitos sofrem.",
+    "now": {
+     "crime": -3,
+     "civil": -2
+    },
+    "groups": {
+     "business": 4,
+     "youth": -3
+    },
+    "policy": {
+     "policing": "standard"
+    }
+   },
+   {
+    "text": "Investir em prevenção e inteligência.",
+    "hint": "Mais lento, mais barato em direitos.",
+    "now": {
+     "treasury": -0.3,
+     "crime": -1.5
+    },
+    "groups": {
+     "bureaucracy": 2
+    }
+   },
+   {
+    "text": "Manter a linha tolerante.",
+    "hint": "Sem mudança.",
+    "now": {
+     "crime": 1
+    },
+    "groups": {
+     "business": -3,
+     "rural": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_prison_riot",
+  "cat": "Segurança",
+  "title": "Rebelião em presídio superlotado",
+  "desc": "Presos tomaram um pavilhão em protesto contra as condições. Há reféns.",
+  "context": "O sistema prisional está no limite.",
+  "cond": {
+   "min": {
+    "crime": 45
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Negociar e reformar o presídio.",
+    "hint": "Evita mortes; custa dinheiro.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": 2,
+     "civil": 1
+    },
+    "policy": {
+     "prisons": "humane"
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": -4
+    }
+   },
+   {
+    "text": "Invadir com forças especiais.",
+    "hint": "Encerra rápido; há mortos.",
+    "now": {
+     "crime": -1,
+     "reputation": -3
+    },
+    "groups": {
+     "military": 3
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 7
+    }
+   },
+   {
+    "text": "Cortar água e comida até a rendição.",
+    "hint": "Brutal.",
+    "now": {
+     "reputation": -4
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 8
+    },
+    "policy": {
+     "prisons": "harsh"
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_gambling",
+  "cat": "Economia",
+  "title": "Cassino lava dinheiro de cartel",
+  "desc": "Uma investigação mostrou que os cassinos lavam dinheiro de grupos criminosos e financiam políticos.",
+  "context": "Fechar os jogos custa receita.",
+  "cond": {
+   "policy": {
+    "gambling": [
+     "licensed",
+     "free"
+    ]
+   },
+   "min": {
+    "corruption": 35
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Fechar os cassinos.",
+    "hint": "Combate o crime; perde-se receita.",
+    "now": {
+     "corruption": -3,
+     "treasury": -0.1
+    },
+    "groups": {
+     "rural": 3,
+     "business": -3
+    },
+    "policy": {
+     "gambling": "banned"
+    }
+   },
+   {
+    "text": "Auditoria rigorosa e licenças novas.",
+    "hint": "Mantém o setor.",
+    "now": {
+     "corruption": -1,
+     "treasury": -0.05
+    },
+    "groups": {
+     "bureaucracy": 2
+    }
+   },
+   {
+    "text": "Ignorar. É dinheiro demais.",
+    "hint": "Corrupção sobe.",
+    "now": {
+     "corruption": 2,
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_drugs_cartel",
+  "cat": "Segurança",
+  "title": "Cartel desafia o Estado",
+  "desc": "Um cartel de drogas assumiu bairros inteiros, cobra \"impostos\" e executa policiais. O debate sobre a política de drogas voltou.",
+  "context": "Qualquer resposta é controversa.",
+  "cond": {
+   "policy": {
+    "drugs": [
+     "war",
+     "prohibited"
+    ]
+   },
+   "min": {
+    "crime": 48
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Descriminalizar o uso e tratar como saúde.",
+    "hint": "Tira o mercado do cartel; críticas morais.",
+    "now": {
+     "civil": 3,
+     "health": 2,
+     "reputation": 2
+    },
+    "groups": {
+     "youth": 4,
+     "rural": -4
+    },
+    "policy": {
+     "drugs": "decriminalized"
+    }
+   },
+   {
+    "text": "Declarar guerra total às drogas.",
+    "hint": "Operações militares; abusos e baixas.",
+    "now": {
+     "crime": -3,
+     "civil": -6,
+     "reputation": -3
+    },
+    "groups": {
+     "military": 4,
+     "youth": -4
+    },
+    "policy": {
+     "drugs": "war"
+    },
+    "act": {
+     "type": "rights",
+     "op": "x",
+     "abuse": 9
+    }
+   },
+   {
+    "text": "Negociar com chefes locais.",
+    "hint": "Paz frágil; corrupção.",
+    "now": {
+     "crime": -1.5,
+     "corruption": 4,
+     "reputation": -2
+    },
+    "groups": {
+     "military": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_drugs_results",
+  "cat": "Segurança",
+  "title": "Balanço da descriminalização",
+  "desc": "Relatórios mostram queda nas overdoses e nas prisões por posse, mas moradores reclamam de cenas de uso nas praças.",
+  "context": "O debate sobre a política de drogas segue aceso.",
+  "cond": {
+   "policy": {
+    "drugs": [
+     "decriminalized",
+     "legal"
+    ]
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Ampliar tratamento e redução de danos.",
+    "hint": "Resultados melhores; custa caro.",
+    "now": {
+     "treasury": -0.3,
+     "health": 2,
+     "crime": -1
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Endurecer em espaços públicos.",
+    "hint": "Meio-termo.",
+    "now": {
+     "civil": -1,
+     "crime": -1
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Retroceder para a proibição.",
+    "hint": "Agrada aos conservadores; mais prisões.",
+    "now": {
+     "civil": -3
+    },
+    "groups": {
+     "rural": 4,
+     "youth": -4
+    },
+    "policy": {
+     "drugs": "prohibited"
+    }
+   }
+  ]
+ },
+ {
+  "id": "rt_alcohol",
+  "cat": "Sociedade",
+  "title": "Lei seca e mercado ilegal",
+  "desc": "Destilarias clandestinas crescem; envenenamentos por bebidas adulteradas viram notícia.",
+  "context": "Os religiosos defendem a proibição; a saúde pública vê o risco.",
+  "cond": {
+   "policy": {
+    "alcohol": "banned"
+   }
+  },
+  "w": 1,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Regulamentar o álcool.",
+    "hint": "Tira o mercado do crime.",
+    "now": {
+     "crime": -1,
+     "corruption": -2
+    },
+    "groups": {
+     "youth": 4,
+     "rural": -3
+    },
+    "policy": {
+     "alcohol": "regulated"
+    }
+   },
+   {
+    "text": "Endurecer a fiscalização.",
+    "hint": "Mantém a linha.",
+    "now": {
+     "treasury": -0.15,
+     "civil": -1
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Sem mudança.",
+    "now": {
+     "health": -1
+    }
+   }
+  ]
+ }
+]

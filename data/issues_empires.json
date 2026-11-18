@@ -1,0 +1,840 @@
+[
+ {
+  "id": "ro_senate",
+  "cat": "Império Romano",
+  "title": "O Senado quer poder de verdade",
+  "desc": "Senadores de famílias antigas exigem que o Imperator devolva ao Senado o controle das províncias senatoriais e do erário.",
+  "context": "Um Senado decorativo há dois mil anos.",
+  "cond": {
+   "flag": "rome"
+  },
+  "w": 2,
+  "cd": 600,
+  "options": [
+   {
+    "text": "Devolver poderes ao Senado.",
+    "hint": "Legitimidade e eficiência; menos controle imperial.",
+    "now": {
+     "political": 5,
+     "legitimacy": 3,
+     "control": -3
+    },
+    "groups": {
+     "regional": 4
+    }
+   },
+   {
+    "text": "Comprar os senadores com cargos e terras.",
+    "hint": "Paz no Senado; corrupção.",
+    "now": {
+     "stability": 2
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Expurgar os senadores rebeldes.",
+    "hint": "Autoridade; medo nas elites.",
+    "now": {
+     "political": -5
+    },
+    "groups": {
+     "business": -5,
+     "regional": -4
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": -2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ro_praetorians",
+  "cat": "Império Romano",
+  "title": "A Guarda Pretoriana exige um donativo",
+  "desc": "Os pretorianos lembram, com educação ameaçadora, que imperadores sem donativo costumam ter reinados curtos.",
+  "context": "Uma tradição perigosa.",
+  "cond": {
+   "flag": "rome"
+  },
+  "w": 2,
+  "cd": 500,
+  "options": [
+   {
+    "text": "Pagar o donativo.",
+    "hint": "Lealdade comprada.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "military": 6
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": -5,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Dissolver a Guarda e criar uma nova.",
+    "hint": "Arriscado agora; mais seguro depois.",
+    "groups": {
+     "military": -6
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 8,
+      "d": 90
+     },
+     {
+      "k": "coupRisk",
+      "v": -6,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Economia; risco real.",
+    "groups": {
+     "military": -8
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 10,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ro_limes",
+  "cat": "Império Romano",
+  "title": "O limes do Reno",
+  "desc": "Tribos germânicas modernas — o governo de {nb} — reforçam a fronteira e falam abertamente em \"libertar\" as províncias romanas da margem ocidental.",
+  "context": "A fronteira mais antiga do Império.",
+  "tpl": {
+   "nb": "hostile"
+  },
+  "cond": {
+   "flag": "rome"
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Reforçar as legiões no Reno.",
+    "hint": "Defesa; custo.",
+    "now": {
+     "treasury": -0.4,
+     "defense": 4
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Tratado de amizade com os germanos.",
+    "hint": "Paz; generais resmungam.",
+    "groups": {
+     "military": -3
+    },
+    "rel": {
+     "$nb": 15
+    }
+   },
+   {
+    "text": "Expedição punitiva além do Reno.",
+    "hint": "Glória ou Teutoburgo.",
+    "groups": {
+     "military": 6
+    },
+    "rel": {
+     "$nb": -20
+    },
+    "flags": {
+     "set": [
+      "casusBelli"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "ro_citizenship",
+  "cat": "Império Romano",
+  "title": "Cidadania para todos os provinciais?",
+  "desc": "Juristas propõem uma nova Constitutio Antoniniana: cidadania romana plena para todos os habitantes livres do Império.",
+  "context": "Unir o Império ou diluir Roma?",
+  "cond": {
+   "flag": "rome"
+  },
+  "w": 2,
+  "cd": 2000,
+  "options": [
+   {
+    "text": "Cidadania universal.",
+    "hint": "Separatismo cai; elites itálicas reclamam.",
+    "now": {
+     "civil": 3
+    },
+    "groups": {
+     "regional": 6,
+     "bureaucracy": -3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -10,
+      "d": 0
+     },
+     {
+      "k": "revenue",
+      "v": 0.2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Cidadania por serviço militar ou fiscal.",
+    "hint": "Gradual.",
+    "long": [
+     {
+      "k": "separatism",
+      "v": -4,
+      "d": 0
+     },
+     {
+      "k": "readiness",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Roma é para os romanos.",
+    "hint": "Itália satisfeita; províncias ressentidas.",
+    "groups": {
+     "regional": -6
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 6,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ro_bread_circus",
+  "cat": "Império Romano",
+  "title": "Pão e circo",
+  "desc": "A plebe de Roma exige trigo gratuito e jogos no Coliseu reformado. O tesouro está apertado.",
+  "context": "Juvenal não aprovaria.",
+  "cond": {
+   "flag": "rome"
+  },
+  "w": 1.6,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Trigo e jogos para todos.",
+    "hint": "Plebe feliz; tesouro sangra.",
+    "now": {
+     "treasury": -0.5,
+     "protest": -8,
+     "legitimacy": 3
+    },
+    "groups": {
+     "workers": 6
+    }
+   },
+   {
+    "text": "Só o trigo.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": -0.25,
+     "protest": -3
+    }
+   },
+   {
+    "text": "Nem pão nem circo.",
+    "hint": "Economia; rua revoltada.",
+    "now": {
+     "protest": 8
+    },
+    "groups": {
+     "workers": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "ro_province_revolt",
+  "cat": "Império Romano",
+  "title": "Levante na província da {region}",
+  "desc": "Uma revolta na {region} expulsou o governador. Os rebeldes falam em restaurar o antigo reino nativo.",
+  "context": "Como Roma sempre respondeu?",
+  "tpl": {
+   "region": "any"
+  },
+  "cond": {
+   "flag": "rome",
+   "min": {
+    "separatism": 30
+   }
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Enviar duas legiões e esmagar a revolta.",
+    "hint": "Ordem; massacre e ódio duradouro.",
+    "now": {
+     "control": 5,
+     "civil": -3,
+     "treasury": -0.3
+    },
+    "groups": {
+     "military": 4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -3,
+      "d": 180
+     },
+     {
+      "k": "separatism",
+      "v": 4,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Nomear um rei-cliente local.",
+    "hint": "Paz com autonomia.",
+    "now": {
+     "control": -3
+    },
+    "groups": {
+     "regional": 5
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Negociar com os líderes rebeldes.",
+    "hint": "Diplomacia.",
+    "now": {
+     "legitimacy": -1
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ro_parthia",
+  "cat": "Império Romano",
+  "title": "A Pártia renasce",
+  "desc": "O governo de {power} se proclama herdeiro da Pártia e exige que Roma abandone a Síria e a Armênia.",
+  "context": "O velho inimigo do Oriente.",
+  "tpl": {
+   "power": "any"
+  },
+  "cond": {
+   "flag": "rome"
+  },
+  "options": [
+   {
+    "text": "Mobilizar as legiões do Eufrates.",
+    "hint": "Dissuasão.",
+    "now": {
+     "readiness": 5,
+     "treasury": -0.4
+    },
+    "rel": {
+     "$power": -10
+    }
+   },
+   {
+    "text": "Propor uma paz eterna, como Justiniano.",
+    "hint": "Paz paga em ouro.",
+    "now": {
+     "treasury": -0.6
+    },
+    "rel": {
+     "$power": 20
+    }
+   },
+   {
+    "text": "Ignorar as bravatas.",
+    "hint": "Orgulho."
+   }
+  ]
+ },
+ {
+  "id": "ro_pontifex",
+  "cat": "Império Romano",
+  "title": "Júpiter ou Cristo?",
+  "desc": "O Pontifex Maximus pede a restauração do culto imperial nos templos; bispos ameaçam excomunhão.",
+  "context": "A velha questão religiosa do Império.",
+  "cond": {
+   "flag": "rome"
+  },
+  "cd": 2000,
+  "options": [
+   {
+    "text": "Restaurar o culto ao Imperator.",
+    "hint": "Tradição; cristãos furiosos.",
+    "now": {
+     "civil": -2
+    },
+    "groups": {
+     "rural": -5
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Liberdade de culto para todos (Édito de Milão moderno).",
+    "hint": "Paz religiosa.",
+    "now": {
+     "civil": 3
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Religião oficial cristã.",
+    "hint": "Unidade; minorias se fecham.",
+    "groups": {
+     "rural": 5,
+     "youth": -3
+    },
+    "policy": {
+     "religion": "state"
+    }
+   }
+  ]
+ },
+ {
+  "id": "mh_hagia_sophia",
+  "cat": "Megali Hellas",
+  "title": "O que fazer com Santa Sofia?",
+  "desc": "Os nacionalistas querem reconsagrar Santa Sofia como catedral ortodoxa. A população muçulmana de Constantinopla está em pânico.",
+  "context": "O símbolo máximo da Grande Ideia.",
+  "cond": {
+   "flag": "megali"
+  },
+  "w": 3,
+  "cd": 3000,
+  "options": [
+   {
+    "text": "Reconsagrar como catedral.",
+    "hint": "Êxtase nacional; revolta muçulmana e ira turca.",
+    "now": {
+     "legitimacy": 5
+    },
+    "groups": {
+     "rural": 6
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 6,
+      "d": 730
+     }
+    ],
+    "rel": {
+     "TUR": -20,
+     "all": -2
+    }
+   },
+   {
+    "text": "Museu aberto a todas as fés.",
+    "hint": "Gesto de convivência.",
+    "now": {
+     "reputation": 4
+    },
+    "groups": {
+     "rural": -3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Dividir o templo entre as duas comunidades.",
+    "hint": "Equilíbrio frágil.",
+    "groups": {
+     "rural": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mh_population_exchange",
+  "cat": "Megali Hellas",
+  "title": "Troca de populações?",
+  "desc": "Generais propõem \"trocar\" as populações turcas da Jônia pelos gregos que ainda vivem na Anatólia.",
+  "context": "Foi feito em 1923 — com milhões de vidas destruídas.",
+  "cond": {
+   "flag": "megali",
+   "min": {
+    "separatism": 25
+   }
+  },
+  "w": 2,
+  "cd": 2000,
+  "options": [
+   {
+    "text": "Rejeitar: todos são cidadãos.",
+    "hint": "Convivência; separatismo persiste.",
+    "now": {
+     "civil": 3,
+     "reputation": 4
+    },
+    "groups": {
+     "military": -4
+    }
+   },
+   {
+    "text": "Troca \"voluntária\" com incentivos.",
+    "hint": "Lento e controverso.",
+    "now": {
+     "treasury": -0.5,
+     "reputation": -3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -4,
+      "d": 0
+     },
+     {
+      "k": "emigration",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Expulsões forçadas.",
+    "hint": "Crime contra a humanidade; isolamento.",
+    "now": {
+     "pop": -3,
+     "reputation": -20,
+     "civil": -10
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -10,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "all": -12,
+     "TUR": -40
+    },
+    "flags": {
+     "set": [
+      "atrocity"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "mh_ionia_revolt",
+  "cat": "Megali Hellas",
+  "title": "Revolta em Esmirna",
+  "desc": "Bairros turcos de Esmirna se rebelam contra o governo grego. Armas cruzam a nova fronteira vindas de {claimant}.",
+  "context": "A Jônia queima de novo.",
+  "tpl": {
+   "claimant": "any"
+  },
+  "cond": {
+   "flag": "megali"
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Lei marcial na Jônia.",
+    "hint": "Ordem; ódio.",
+    "now": {
+     "control": 5,
+     "civil": -4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Autonomia cultural para os turcos da Jônia.",
+    "hint": "Desarma a revolta.",
+    "groups": {
+     "military": -4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -6,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Bombardear os depósitos de armas em {claimant}.",
+    "hint": "Escalada para a guerra.",
+    "groups": {
+     "military": 5
+    },
+    "rel": {
+     "$claimant": -20
+    },
+    "flags": {
+     "set": [
+      "casusBelli"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "mh_pontus",
+  "cat": "Megali Hellas",
+  "title": "Os gregos do Ponto pedem socorro",
+  "desc": "Comunidades gregas do Ponto, em {target}, pedem que Atenas \"complete a libertação\".",
+  "context": "A próxima etapa da Grande Ideia.",
+  "tpl": {
+   "target": "any"
+  },
+  "cond": {
+   "flag": "megali"
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Armar milícias gregas no Ponto.",
+    "hint": "Prepara um levante.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "$target": -10
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$target",
+     "militia": 25
+    }
+   },
+   {
+    "text": "Desembarque militar no Ponto.",
+    "hint": "Guerra aberta.",
+    "groups": {
+     "military": 8
+    },
+    "rel": {
+     "$target": -25
+    },
+    "flags": {
+     "set": [
+      "casusBelli"
+     ]
+    }
+   },
+   {
+    "text": "Prometer apoio diplomático e mais nada.",
+    "hint": "Prudência; nacionalistas frustrados.",
+    "groups": {
+     "military": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mh_king_vs_pm",
+  "cat": "Megali Hellas",
+  "title": "O rei contra o primeiro-ministro",
+  "desc": "O rei {person}, adorado pelo Exército, quer comandar pessoalmente a próxima campanha. O primeiro-ministro {leader} resiste.",
+  "context": "O velho cisma nacional grego.",
+  "cond": {
+   "flag": "megali"
+  },
+  "w": 1.5,
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Ceder ao rei.",
+    "hint": "Exército entusiasmado; governo civil enfraquecido.",
+    "now": {
+     "political": -4
+    },
+    "groups": {
+     "military": 8
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": -3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Afirmar o governo civil.",
+    "hint": "Democracia; quartéis em ebulição.",
+    "now": {
+     "political": 3
+    },
+    "groups": {
+     "military": -6
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 6,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Referendo sobre a monarquia.",
+    "hint": "Divide o país ao meio.",
+    "now": {
+     "stability": -4,
+     "political": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "mh_great_powers",
+  "cat": "Megali Hellas",
+  "title": "As potências pedem moderação",
+  "desc": "Londres, Paris e Roma advertem que não tolerarão novas anexações e ameaçam um bloqueio naval.",
+  "context": "A Grande Ideia sempre dependeu das Grandes Potências.",
+  "cond": {
+   "flag": "megali"
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Prometer parar onde está.",
+    "hint": "Alívio diplomático; nacionalistas furiosos.",
+    "now": {
+     "legitimacy": -2
+    },
+    "groups": {
+     "military": -5
+    },
+    "rel": {
+     "west": 8
+    }
+   },
+   {
+    "text": "Desafiar: a Grécia decide seu destino.",
+    "hint": "Orgulho; sanções possíveis.",
+    "groups": {
+     "military": 5
+    },
+    "rel": {
+     "west": -10
+    }
+   },
+   {
+    "text": "Buscar a Rússia como patrona ortodoxa.",
+    "hint": "Novo protetor.",
+    "rel": {
+     "RUS": 15,
+     "west": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "mh_kurds_armenians",
+  "cat": "Megali Hellas",
+  "title": "Uma frente anti-turca",
+  "desc": "Enviados armênios e curdos propõem uma aliança para dividir o que resta da Turquia.",
+  "context": "O inimigo do meu inimigo...",
+  "cond": {
+   "flag": "megali"
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Aceitar e financiar curdos e armênios.",
+    "hint": "Turquia cercada.",
+    "now": {
+     "treasury": -0.3
+    },
+    "rel": {
+     "ARM": 15,
+     "TUR": -15
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "TUR",
+     "militia": 20
+    }
+   },
+   {
+    "text": "Só cooperação de inteligência.",
+    "hint": "Discreto.",
+    "now": {
+     "intel": 2
+    },
+    "rel": {
+     "ARM": 6
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Evita uma guerra regional."
+   }
+  ]
+ }
+]

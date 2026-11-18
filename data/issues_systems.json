@@ -1,0 +1,795 @@
+[
+ {
+  "id": "gc_pan_lockdown",
+  "cat": "Crise global",
+  "title": "Fechar o país?",
+  "desc": "A pandemia chegou com força. Epidemiologistas pedem quarentena total; comerciantes imploram para continuar abertos.",
+  "context": "Cada semana de decisão custa vidas ou empregos.",
+  "cond": {
+   "flag": "gc_pandemic"
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 1,
+  "options": [
+   {
+    "text": "Quarentena total por um mês.",
+    "hint": "Salva vidas; recessão.",
+    "groups": {
+     "business": -6,
+     "workers": -2
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 3,
+      "d": 180
+     },
+     {
+      "k": "growth",
+      "v": -1.5,
+      "d": 60
+     }
+    ]
+   },
+   {
+    "text": "Restrições parciais e máscaras.",
+    "hint": "Meio-termo.",
+    "long": [
+     {
+      "k": "health",
+      "v": 1,
+      "d": 120
+     },
+     {
+      "k": "growth",
+      "v": -0.4,
+      "d": 60
+     }
+    ]
+   },
+   {
+    "text": "Nada fecha: a economia primeiro.",
+    "hint": "Economia de pé; hospitais lotados.",
+    "now": {
+     "health": -5,
+     "pop": -0.3
+    },
+    "groups": {
+     "business": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "gc_pan_vaccine",
+  "cat": "Crise global",
+  "title": "A corrida pela vacina",
+  "desc": "Laboratórios estrangeiros vendem as primeiras doses a quem pagar mais. {power} oferece prioridade em troca de apoio político.",
+  "context": "Quem vacina primeiro reabre primeiro.",
+  "tpl": {
+   "power": "any"
+  },
+  "cond": {
+   "flag": "gc_pandemic"
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Pagar caro e comprar já.",
+    "hint": "Vacinação rápida; caro.",
+    "now": {
+     "treasury": -0.8
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Aceitar a oferta de {power}.",
+    "hint": "Rápido e barato; dívida política.",
+    "long": [
+     {
+      "k": "health",
+      "v": 2,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$power": 12
+    }
+   },
+   {
+    "text": "Esperar o consórcio internacional.",
+    "hint": "Barato; lento.",
+    "long": [
+     {
+      "k": "health",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "gc_pan_aid",
+  "cat": "Crise global",
+  "title": "Auxílio emergencial",
+  "desc": "Milhões perderam a renda com a pandemia. Economistas propõem um auxílio mensal às famílias.",
+  "context": "Pão na mesa ou contas em ordem?",
+  "cond": {
+   "flag": "gc_pandemic"
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Auxílio generoso.",
+    "hint": "Pobreza contida; déficit.",
+    "now": {
+     "treasury": -1,
+     "protest": -5
+    },
+    "groups": {
+     "workers": 6
+    },
+    "long": [
+     {
+      "k": "poverty",
+      "v": -2,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Auxílio focalizado nos mais pobres.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "poverty",
+      "v": -1,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Sem auxílio.",
+    "hint": "Contas preservadas; fome.",
+    "long": [
+     {
+      "k": "hunger",
+      "v": 2,
+      "d": 180
+     },
+     {
+      "k": "revoRisk",
+      "v": 3,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "gc_crash_banks",
+  "cat": "Crise global",
+  "title": "Bancos à beira da quebra",
+  "desc": "Com o colapso financeiro mundial, dois grandes bancos nacionais não conseguem pagar os depositantes.",
+  "context": "Corrida bancária à vista.",
+  "cond": {
+   "flag": "gc_crash"
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 1,
+  "options": [
+   {
+    "text": "Resgatar os bancos.",
+    "hint": "Evita o pânico; revolta popular.",
+    "now": {
+     "treasury": -1.2,
+     "debt": 2
+    },
+    "groups": {
+     "business": 5,
+     "workers": -4
+    }
+   },
+   {
+    "text": "Garantir só os pequenos depositantes.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": -0.5
+    }
+   },
+   {
+    "text": "Deixar quebrar.",
+    "hint": "Saneamento brutal.",
+    "long": [
+     {
+      "k": "growth",
+      "v": -1.5,
+      "d": 180
+     },
+     {
+      "k": "unemployment",
+      "v": 2,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "gc_crash_stimulus",
+  "cat": "Crise global",
+  "title": "Estímulo contra a recessão",
+  "desc": "O mundo entra em recessão. O ministro {person} propõe um pacote de obras e crédito.",
+  "context": "Gastar para não afundar.",
+  "cond": {
+   "flag": "gc_crash"
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Pacote grande de estímulo.",
+    "hint": "Amortece a crise; dívida.",
+    "now": {
+     "debt": 1
+    },
+    "act": {
+     "type": "program",
+     "id": "pac"
+    }
+   },
+   {
+    "text": "Cortar gastos e esperar.",
+    "hint": "Austeridade em plena recessão.",
+    "act": {
+     "type": "program",
+     "id": "austerity"
+    }
+   },
+   {
+    "text": "Nada a fazer.",
+    "hint": "Neutro."
+   }
+  ]
+ },
+ {
+  "id": "gc_climate_harvest",
+  "cat": "Crise global",
+  "title": "Safras perdidas",
+  "desc": "A onda de calor global queimou a colheita. O preço dos alimentos dispara no mundo inteiro.",
+  "context": "A fome bate à porta.",
+  "cond": {
+   "flag": "gc_climate"
+  },
+  "w": 3,
+  "options": [
+   {
+    "text": "Importar a qualquer preço.",
+    "hint": "Evita a fome; caro.",
+    "now": {
+     "treasury": -0.6
+    },
+    "long": [
+     {
+      "k": "hunger",
+      "v": -2,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Racionar e controlar preços.",
+    "hint": "Divide a escassez.",
+    "now": {
+     "protest": 4
+    },
+    "long": [
+     {
+      "k": "hunger",
+      "v": -1,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Proibir exportações de alimentos.",
+    "hint": "Comida em casa; parceiros irritados.",
+    "long": [
+     {
+      "k": "s_food",
+      "v": 1,
+      "d": 180
+     }
+    ],
+    "rel": {
+     "all": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gc_climate_refugees",
+  "cat": "Crise global",
+  "title": "Refugiados do clima",
+  "desc": "Milhares de pessoas fogem de regiões que viraram desertos e chegam às nossas fronteiras.",
+  "context": "Uma nova grande migração.",
+  "cond": {
+   "flag": "gc_climate"
+  },
+  "options": [
+   {
+    "text": "Acolher e integrar.",
+    "hint": "Mão de obra e reputação; tensões.",
+    "now": {
+     "reputation": 3
+    },
+    "groups": {
+     "workers": -2
+    },
+    "long": [
+     {
+      "k": "migration",
+      "v": 2,
+      "d": 365
+     },
+     {
+      "k": "laborSupply",
+      "v": 0.5,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Fechar a fronteira.",
+    "hint": "Controle; condenação.",
+    "now": {
+     "reputation": -3
+    },
+    "groups": {
+     "rural": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gc_gulf_fuel",
+  "cat": "Crise global",
+  "title": "Postos sem combustível",
+  "desc": "Com o Golfo fechado, falta diesel. Caminhoneiros ameaçam greve e o preço da gasolina dobrou.",
+  "context": "A economia anda sobre rodas.",
+  "cond": {
+   "flag": "gc_gulf"
+  },
+  "w": 3,
+  "options": [
+   {
+    "text": "Subsidiar o combustível.",
+    "hint": "Alivia; caro.",
+    "now": {
+     "treasury": -0.6
+    },
+    "groups": {
+     "workers": 3
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -1.5,
+      "d": 90
+     }
+    ]
+   },
+   {
+    "text": "Racionamento.",
+    "hint": "Divide o sacrifício.",
+    "now": {
+     "protest": 4
+    }
+   },
+   {
+    "text": "Liberar o preço.",
+    "hint": "Contas em ordem; revolta.",
+    "now": {
+     "protest": 7
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": 2,
+      "d": 90
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "gc_gulf_navy",
+  "cat": "Crise global",
+  "title": "Escoltar petroleiros no Golfo?",
+  "desc": "Potências formam uma coalizão naval para reabrir o Estreito de Ormuz e pedem navios nossos.",
+  "context": "Prestígio no mar — e risco.",
+  "cond": {
+   "flag": "gc_gulf"
+  },
+  "options": [
+   {
+    "text": "Enviar navios.",
+    "hint": "Prestígio e aliados; risco de baixas.",
+    "now": {
+     "projection": 2,
+     "readiness": -2
+    },
+    "rel": {
+     "west": 4
+    }
+   },
+   {
+    "text": "Ficar de fora.",
+    "hint": "Neutralidade."
+   }
+  ]
+ },
+ {
+  "id": "gc_cyber_hospitals",
+  "cat": "Crise global",
+  "title": "Hospitais sem sistema",
+  "desc": "O ciberataque global paralisou os sistemas de hospitais e bancos. Cirurgias foram canceladas.",
+  "context": "Um país inteiro offline.",
+  "cond": {
+   "flag": "gc_cyber"
+  },
+  "w": 3,
+  "crisis": true,
+  "default": 1,
+  "options": [
+   {
+    "text": "Pagar o resgate aos hackers.",
+    "hint": "Sistemas voltam; incentiva novos ataques.",
+    "now": {
+     "treasury": -0.3
+    }
+   },
+   {
+    "text": "Mobilizar especialistas e esperar.",
+    "hint": "Lento; sem pagar criminosos.",
+    "long": [
+     {
+      "k": "efficiency",
+      "v": -2,
+      "d": 60
+     },
+     {
+      "k": "intel",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sy_party_defection",
+  "cat": "Política interna",
+  "title": "Deputados trocam de partido",
+  "desc": "Doze deputados da base ameaçam migrar para a oposição se não receberem cargos e verbas para suas regiões.",
+  "context": "A maioria no parlamento balança.",
+  "cond": {
+   "min": {
+    "political": 45
+   }
+  },
+  "options": [
+   {
+    "text": "Distribuir cargos e emendas.",
+    "hint": "Base fiel; corrupção.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "regional": 4
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Deixá-los ir.",
+    "hint": "Governo enfraquecido no parlamento.",
+    "now": {
+     "stability": -2
+    }
+   },
+   {
+    "text": "Expor as chantagens na imprensa.",
+    "hint": "Moral elevada; inimigos no Congresso.",
+    "now": {
+     "political": 2,
+     "legitimacy": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "sy_faction_summit",
+  "cat": "Política interna",
+  "title": "Conclave do regime",
+  "desc": "Os líderes das facções do regime exigem um conclave para redefinir o rumo do governo.",
+  "context": "O equilíbrio interno do poder está em jogo.",
+  "cond": {
+   "max": {
+    "political": 45
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Fortalecer a linha dura.",
+    "hint": "Controle; abertura adiada.",
+    "now": {
+     "political": -2
+    },
+    "act": {
+     "type": "faction",
+     "id": "hard",
+     "choice": "concede"
+    }
+   },
+   {
+    "text": "Fortalecer os reformistas.",
+    "hint": "Abertura; linha dura irritada.",
+    "now": {
+     "political": 2
+    },
+    "act": {
+     "type": "faction",
+     "id": "reform",
+     "choice": "concede"
+    }
+   },
+   {
+    "text": "Fortalecer os tecnocratas.",
+    "hint": "Eficiência; ideólogos resmungam.",
+    "now": {
+     "efficiency": 2
+    },
+    "act": {
+     "type": "faction",
+     "id": "tech",
+     "choice": "concede"
+    }
+   }
+  ]
+ },
+ {
+  "id": "sy_company_ipo",
+  "cat": "Economia",
+  "title": "Estatal na bolsa?",
+  "desc": "Bancos de investimento propõem vender 30% de uma grande estatal na bolsa, mantendo o controle.",
+  "context": "Dinheiro sem perder o comando.",
+  "cond": {
+   "max": {
+    "market": 70
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Abrir o capital.",
+    "hint": "Caixa e eficiência.",
+    "now": {
+     "treasury": 1
+    },
+    "groups": {
+     "business": 4,
+     "workers": -2
+    },
+    "long": [
+     {
+      "k": "efficiency",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Manter 100% estatal.",
+    "hint": "Controle total.",
+    "groups": {
+     "workers": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "sy_exchange_attack",
+  "cat": "Economia",
+  "title": "Ataque especulativo contra a moeda",
+  "desc": "Fundos estrangeiros apostam contra a moeda nacional, que perde 8% em dois dias.",
+  "context": "O mercado testa o banco central.",
+  "cond": {
+   "min": {
+    "inflation": 6
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Queimar reservas para defender a moeda.",
+    "hint": "Moeda estável; reservas caem.",
+    "now": {
+     "reserves": -2
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -1,
+      "d": 90
+     }
+    ]
+   },
+   {
+    "text": "Subir os juros com força.",
+    "hint": "Moeda estável; recessão.",
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.8,
+      "d": 120
+     },
+     {
+      "k": "inflation",
+      "v": -1.5,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Deixar a moeda cair.",
+    "hint": "Exportações sobem; inflação.",
+    "long": [
+     {
+      "k": "inflation",
+      "v": 2,
+      "d": 120
+     },
+     {
+      "k": "exportAccess",
+      "v": 0.03,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sy_press_leak",
+  "cat": "Imprensa",
+  "title": "O vazamento do século",
+  "desc": "Um consórcio de jornalistas publica milhares de documentos sobre contas secretas de membros do governo.",
+  "context": "A imprensa contra o palácio.",
+  "cond": {
+   "min": {
+    "corruption": 40,
+    "political": 30
+   }
+  },
+  "options": [
+   {
+    "text": "Abrir investigação e demitir citados.",
+    "hint": "Transparência; aliados com medo.",
+    "now": {
+     "corruption": -3,
+     "legitimacy": 2
+    },
+    "groups": {
+     "bureaucracy": -3
+    }
+   },
+   {
+    "text": "Desqualificar os jornalistas.",
+    "hint": "Guerra com a imprensa.",
+    "now": {
+     "political": -2,
+     "legitimacy": -2
+    }
+   },
+   {
+    "text": "Processar os veículos.",
+    "hint": "Mordaça.",
+    "now": {
+     "political": -4,
+     "reputation": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "sy_research_breakthrough",
+  "cat": "Ciência e tecnologia",
+  "title": "Descoberta nos laboratórios",
+  "desc": "Cientistas de {capital} anunciam um avanço que pode encurtar anos de pesquisa — se houver verba.",
+  "context": "A ciência pede passagem.",
+  "tpl": {
+   "power": "friendly"
+  },
+  "cond": {
+   "min": {
+    "education": 40
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Verba extra para o projeto.",
+    "hint": "Acelera a pesquisa.",
+    "now": {
+     "treasury": -0.3,
+     "tech": 2
+    }
+   },
+   {
+    "text": "Parceria com {power}.",
+    "hint": "Rápido; tecnologia compartilhada.",
+    "now": {
+     "tech": 1
+    },
+    "rel": {
+     "$power": 6
+    }
+   },
+   {
+    "text": "Manter o orçamento.",
+    "hint": "Sem custo."
+   }
+  ]
+ },
+ {
+  "id": "sy_tension_arms",
+  "cat": "Mundo",
+  "title": "O mundo se arma",
+  "desc": "Com a tensão mundial no auge, vizinhos aumentam gastos militares e o Estado-Maior pede o mesmo.",
+  "context": "Corrida armamentista.",
+  "cond": {
+   "min": {
+    "tension": 65
+   }
+  },
+  "w": 1.5,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Aumentar o orçamento militar.",
+    "hint": "Segurança; menos verba social.",
+    "now": {
+     "readiness": 4,
+     "treasury": -0.4
+    },
+    "groups": {
+     "military": 5
+    }
+   },
+   {
+    "text": "Apostar na diplomacia.",
+    "hint": "Prestígio; risco.",
+    "now": {
+     "reputation": 2
+    }
+   }
+  ]
+ }
+]

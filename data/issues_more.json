@@ -1,0 +1,1215 @@
+[
+ {
+  "id": "mx_party_split",
+  "cat": "Política interna",
+  "title": "Racha no partido do governo",
+  "desc": "A ala radical do partido governista, liderada por {person}, acusa {leader} de trair o programa e ameaça fundar um novo partido.",
+  "context": "Unidade ou pureza ideológica?",
+  "cond": {
+   "min": {
+    "day": 120
+   }
+  },
+  "options": [
+   {
+    "text": "Ceder à ala radical.",
+    "hint": "Unidade; moderados se afastam.",
+    "now": {
+     "stability": 2
+    },
+    "groups": {
+     "business": -3,
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Expulsar os radicais.",
+    "hint": "Moderação; perde base militante.",
+    "now": {
+     "legitimacy": -2
+    },
+    "groups": {
+     "business": 3
+    }
+   },
+   {
+    "text": "Congresso partidário para decidir.",
+    "hint": "Democracia interna.",
+    "now": {
+     "political": 2,
+     "stability": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_secret_police_abuse",
+  "cat": "Política interna",
+  "title": "Tortura nos porões",
+  "desc": "Um vídeo vazado mostra agentes da polícia política torturando um estudante. O vídeo tem 20 milhões de visualizações.",
+  "context": "O aparato repressivo se expôs.",
+  "cond": {
+   "max": {
+    "civil": 35
+   }
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Punir os agentes exemplarmente.",
+    "hint": "Contenção; aparato irritado.",
+    "now": {
+     "civil": 3,
+     "reputation": 2
+    },
+    "groups": {
+     "military": -2
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 1,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Dizer que o vídeo é falso.",
+    "hint": "Negação.",
+    "now": {
+     "reputation": -4,
+     "legitimacy": -2
+    }
+   },
+   {
+    "text": "Prender quem vazou.",
+    "hint": "Mensagem clara.",
+    "now": {
+     "civil": -3,
+     "political": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_religious_law",
+  "cat": "Sociedade",
+  "title": "Clérigos exigem lei religiosa",
+  "desc": "O conselho religioso mais influente do país, liderado por {person}, exige que a legislação civil siga os preceitos da fé.",
+  "context": "Fé e Estado em choque.",
+  "cond": {
+   "min": {
+    "g_rural": 35
+   }
+  },
+  "options": [
+   {
+    "text": "Aceitar parcialmente: direito de família religioso.",
+    "hint": "Religiosos e rurais felizes; jovens não.",
+    "now": {
+     "civil": -3
+    },
+    "groups": {
+     "rural": 6,
+     "youth": -6
+    }
+   },
+   {
+    "text": "Reafirmar o Estado laico.",
+    "hint": "Modernidade; religiosos irritados.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "rural": -5,
+     "youth": 4
+    }
+   },
+   {
+    "text": "Cooptar os clérigos com cargos e verbas.",
+    "hint": "Paz comprada.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": 3
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_ethnic_quota",
+  "cat": "Sociedade",
+  "title": "Cotas para a minoria",
+  "desc": "Representantes da maior minoria étnica do país exigem cotas no parlamento e no serviço público.",
+  "context": "Inclusão ou divisão?",
+  "cond": {
+   "min": {
+    "separatism": 15
+   }
+  },
+  "options": [
+   {
+    "text": "Aprovar as cotas.",
+    "hint": "Inclusão; maioria resmunga.",
+    "groups": {
+     "regional": 4,
+     "bureaucracy": -2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Programa de desenvolvimento regional no lugar.",
+    "hint": "Alternativa; caro.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Recusar: somos uma só nação.",
+    "hint": "Nacionalismo.",
+    "groups": {
+     "regional": -4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_language_law",
+  "cat": "Sociedade",
+  "title": "Uma só língua oficial?",
+  "desc": "Nacionalistas propõem tornar obrigatório o uso exclusivo da língua nacional em escolas e repartições.",
+  "context": "Língua é identidade — e poder.",
+  "cond": {
+   "min": {
+    "separatism": 10
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Aprovar a língua única.",
+    "hint": "Unidade cultural; minorias se revoltam.",
+    "groups": {
+     "regional": -6,
+     "military": 2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 4,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Bilinguismo nas regiões de minorias.",
+    "hint": "Inclusivo.",
+    "groups": {
+     "regional": 4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Arquivar o projeto.",
+    "hint": "Sem crise."
+   }
+  ]
+ },
+ {
+  "id": "mx_military_parade",
+  "cat": "Forças armadas",
+  "title": "Um desfile para o mundo ver",
+  "desc": "O Estado-Maior propõe o maior desfile militar da história no dia nacional, com mísseis e tanques novos.",
+  "context": "Exibir força tem efeitos dentro e fora.",
+  "cd": 365,
+  "options": [
+   {
+    "text": "Desfile monumental.",
+    "hint": "Orgulho; vizinhos tensos; custo.",
+    "now": {
+     "treasury": -0.2,
+     "legitimacy": 2
+    },
+    "groups": {
+     "military": 5
+    },
+    "rel": {
+     "neighbors": -2
+    }
+   },
+   {
+    "text": "Desfile modesto.",
+    "hint": "Tradição.",
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Cancelar e usar o dinheiro em hospitais.",
+    "hint": "Popular; quartéis frustrados.",
+    "now": {
+     "health": 1
+    },
+    "groups": {
+     "military": -4,
+     "workers": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_conscription",
+  "cat": "Forças armadas",
+  "title": "Serviço militar obrigatório",
+  "desc": "Com o efetivo em queda, generais pedem a volta do alistamento obrigatório de 18 meses.",
+  "context": "Soldados ou estudantes?",
+  "cond": {
+   "max": {
+    "readiness": 45
+   }
+  },
+  "options": [
+   {
+    "text": "Alistamento obrigatório.",
+    "hint": "Efetivo; jovens revoltados.",
+    "now": {
+     "troops": 15
+    },
+    "groups": {
+     "youth": -8,
+     "military": 5
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": -0.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Serviço voluntário bem pago.",
+    "hint": "Profissional; caro.",
+    "now": {
+     "treasury": -0.3,
+     "troops": 5,
+     "readiness": 2
+    }
+   },
+   {
+    "text": "Reservistas treinados nos fins de semana.",
+    "hint": "Barato; moderado.",
+    "now": {
+     "troops": 6
+    },
+    "long": [
+     {
+      "k": "readiness",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_arms_industry",
+  "cat": "Forças armadas",
+  "title": "Indústria bélica nacional",
+  "desc": "Empresários propõem uma estatal de armamentos para reduzir a dependência de fornecedores estrangeiros.",
+  "context": "Autonomia militar tem preço.",
+  "tpl": {
+   "power": "friendly"
+  },
+  "options": [
+   {
+    "text": "Criar a estatal.",
+    "hint": "Indústria militar; custo alto.",
+    "now": {
+     "treasury": -0.7
+    },
+    "groups": {
+     "military": 4
+    },
+    "long": [
+     {
+      "k": "milIndustry",
+      "v": 6,
+      "d": 0
+     },
+     {
+      "k": "industry",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Parceria com {power}.",
+    "hint": "Tecnologia; dependência.",
+    "long": [
+     {
+      "k": "milIndustry",
+      "v": 4,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 8
+    }
+   },
+   {
+    "text": "Continuar importando.",
+    "hint": "Barato."
+   }
+  ]
+ },
+ {
+  "id": "mx_veterans",
+  "cat": "Forças armadas",
+  "title": "Veteranos marcham em {capital}",
+  "desc": "Milhares de veteranos de guerra exigem pensões prometidas e tratamento para traumas.",
+  "context": "Heróis na rua.",
+  "cond": {
+   "min": {
+    "warWeariness": 25
+   }
+  },
+  "options": [
+   {
+    "text": "Pagar as pensões.",
+    "hint": "Justo; caro.",
+    "now": {
+     "treasury": -0.4,
+     "legitimacy": 2
+    },
+    "groups": {
+     "military": 5
+    }
+   },
+   {
+    "text": "Prometer em parcelas.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Dispersar a marcha.",
+    "hint": "Péssima imagem.",
+    "now": {
+     "legitimacy": -3
+    },
+    "groups": {
+     "military": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_war_propaganda",
+  "cat": "Forças armadas",
+  "title": "A guerra na TV",
+  "desc": "Canais de TV mostram imagens de soldados mortos no front. O Ministério da Defesa quer censura militar.",
+  "context": "A opinião pública vira com as imagens.",
+  "cond": {
+   "war": true
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Censura total à cobertura de guerra.",
+    "hint": "Moral controlada; liberdade cai.",
+    "now": {
+     "civil": -3,
+     "political": -3
+    },
+    "long": [
+     {
+      "k": "warWeariness",
+      "v": -4,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Imprensa livre, com coletivas diárias.",
+    "hint": "Transparência.",
+    "now": {
+     "political": 1
+    },
+    "long": [
+     {
+      "k": "warWeariness",
+      "v": 2,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Campanha patriótica de mobilização.",
+    "hint": "Une o país.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 3,
+      "d": 120
+     },
+     {
+      "k": "warWeariness",
+      "v": -2,
+      "d": 120
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_deserters",
+  "cat": "Forças armadas",
+  "title": "Desertores no front",
+  "desc": "Centenas de soldados desertaram na última semana. Comandantes pedem fuzilamentos exemplares.",
+  "context": "A disciplina está ruindo.",
+  "cond": {
+   "war": true,
+   "min": {
+    "warWeariness": 35
+   }
+  },
+  "w": 1.6,
+  "options": [
+   {
+    "text": "Tribunais militares sumários.",
+    "hint": "Disciplina pelo terror.",
+    "now": {
+     "civil": -4,
+     "readiness": 3,
+     "reputation": -3
+    }
+   },
+   {
+    "text": "Rodízio de tropas e licenças.",
+    "hint": "Moral recuperada; menos gente no front.",
+    "now": {
+     "readiness": -2
+    },
+    "long": [
+     {
+      "k": "warWeariness",
+      "v": -3,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Aumentar o soldo de quem fica.",
+    "hint": "Caro.",
+    "now": {
+     "treasury": -0.3,
+     "readiness": 2
+    },
+    "groups": {
+     "military": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_world_cup",
+  "cat": "Sociedade",
+  "title": "O país na final",
+  "desc": "A seleção nacional chegou à final do campeonato mundial. O povo inteiro está nas ruas.",
+  "context": "Esporte é política.",
+  "w": 0.6,
+  "cd": 900,
+  "options": [
+   {
+    "text": "Decretar feriado e assistir com o povo.",
+    "hint": "Popularidade.",
+    "now": {
+     "legitimacy": 2
+    },
+    "groups": {
+     "youth": 3,
+     "workers": 3
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.1,
+      "d": 30
+     }
+    ]
+   },
+   {
+    "text": "Usar o momento para anunciar reformas impopulares.",
+    "hint": "Astúcia; se perder, desastre.",
+    "now": {
+     "stability": -1
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_ai_jobs",
+  "cat": "Sociedade",
+  "title": "Robôs e inteligência artificial",
+  "desc": "Bancos e fábricas demitem milhares substituídos por sistemas de IA. Sindicatos pedem proibição.",
+  "context": "O futuro chegou sem pedir licença.",
+  "cond": {
+   "min": {
+    "tech": 45
+   }
+  },
+  "options": [
+   {
+    "text": "Taxar a automação e financiar requalificação.",
+    "hint": "Equilíbrio.",
+    "groups": {
+     "workers": 4
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.1,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": -0.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Abraçar a revolução tecnológica.",
+    "hint": "Produtividade; desemprego.",
+    "groups": {
+     "business": 5,
+     "workers": -5
+    },
+    "long": [
+     {
+      "k": "productivity",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "unemployment",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Renda básica experimental.",
+    "hint": "Ousado; caro.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "workers": 5,
+     "business": -3
+    },
+    "long": [
+     {
+      "k": "poverty",
+      "v": -2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_drought",
+  "cat": "Sociedade",
+  "title": "Seca histórica",
+  "desc": "A pior seca em um século destrói colheitas. Reservatórios estão em 8%.",
+  "context": "Água e comida viraram segurança nacional.",
+  "w": 0.8,
+  "cd": 700,
+  "options": [
+   {
+    "text": "Racionamento e importação emergencial.",
+    "hint": "Caro; evita fome.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "rural": 2
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": -1,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Grandes obras de transposição de rios.",
+    "hint": "Solução estrutural; muito cara.",
+    "now": {
+     "treasury": -1
+    },
+    "groups": {
+     "rural": 6,
+     "regional": 3
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Pedir ajuda internacional.",
+    "hint": "Humilde; eficaz.",
+    "long": [
+     {
+      "k": "aid",
+      "v": 1,
+      "d": 180
+     }
+    ],
+    "rel": {
+     "all": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pandemic_lockdown",
+  "cat": "Sociedade",
+  "title": "Novo vírus respiratório",
+  "desc": "Um novo vírus se espalha rapidamente. Hospitais da capital lotam em dias.",
+  "context": "Fechar tudo ou manter a economia?",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "w": 0.6,
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Quarentena rígida.",
+    "hint": "Salva vidas; economia para.",
+    "now": {
+     "civil": -2
+    },
+    "groups": {
+     "business": -5
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -2,
+      "d": 90
+     },
+     {
+      "k": "health",
+      "v": 2,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Medidas leves e vacinação.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.5,
+      "d": 90
+     }
+    ]
+   },
+   {
+    "text": "Nada: a vida segue.",
+    "hint": "Economia; mortes.",
+    "now": {
+     "pop": -0.2,
+     "health": -3
+    },
+    "groups": {
+     "business": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_press_freedom",
+  "cat": "Política interna",
+  "title": "Jornal revela segredos do governo",
+  "desc": "O maior jornal do país publicou documentos secretos sobre contratos militares superfaturados.",
+  "context": "A imprensa livre morde.",
+  "cond": {
+   "min": {
+    "political": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Respeitar e investigar.",
+    "hint": "Democracia madura.",
+    "now": {
+     "political": 2,
+     "corruption": -2
+    },
+    "groups": {
+     "military": -3
+    }
+   },
+   {
+    "text": "Processar o jornal por vazamento.",
+    "hint": "Intimidação.",
+    "now": {
+     "political": -3
+    },
+    "groups": {
+     "opposition": 3
+    }
+   },
+   {
+    "text": "Fechar o jornal.",
+    "hint": "Censura aberta.",
+    "now": {
+     "political": -6,
+     "reputation": -5
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_cult_of_personality",
+  "cat": "Política interna",
+  "title": "Estátuas do líder",
+  "desc": "Prefeitos aliados competem para erguer estátuas de {leader} nas praças. Já são 300.",
+  "context": "Bajulação ou propaganda útil?",
+  "cond": {
+   "max": {
+    "political": 30
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Incentivar o culto.",
+    "hint": "Propaganda; ridículo internacional.",
+    "now": {
+     "reputation": -2
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Proibir estátuas de líderes vivos.",
+    "hint": "Modéstia.",
+    "now": {
+     "reputation": 2,
+     "legitimacy": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_ideology_school",
+  "cat": "Política interna",
+  "title": "O currículo escolar",
+  "desc": "O Ministério da Educação propõe reescrever os livros de história de acordo com a visão do governo.",
+  "context": "Quem controla o passado controla o futuro.",
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Reescrever os livros.",
+    "hint": "Doutrinação; educação perde qualidade.",
+    "groups": {
+     "youth": -3
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "education",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Comissão de historiadores independentes.",
+    "hint": "Rigor.",
+    "now": {
+     "civil": 1
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_power_coup_offer",
+  "cat": "Mundo",
+  "title": "{power} oferece apoio a um golpe em {nb}",
+  "desc": "Agentes de {power} sugerem que {nation} ajude a derrubar o governo de {nb} e instalar alguém mais \"razoável\".",
+  "context": "Uma superpotência quer nossa ajuda para uma mudança de regime.",
+  "tpl": {
+   "power": "friendly",
+   "nb": "hostile"
+  },
+  "options": [
+   {
+    "text": "Participar.",
+    "hint": "Pode instalar um aliado em {nb}.",
+    "rel": {
+     "$power": 10,
+     "$nb": -10
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 30,
+     "militia": 10
+    }
+   },
+   {
+    "text": "Recusar e avisar {nb}.",
+    "hint": "Ganha {nb}; {power} irritado.",
+    "rel": {
+     "$nb": 15,
+     "$power": -12
+    }
+   },
+   {
+    "text": "Recusar em silêncio.",
+    "hint": "Neutro."
+   }
+  ]
+ },
+ {
+  "id": "mx_nb_regime_fall",
+  "cat": "Mundo",
+  "title": "O regime de {nb} balança",
+  "desc": "Protestos gigantescos sacodem {nb}. O governo pode cair a qualquer momento.",
+  "context": "Quem chegar ao poder lembrará quem ajudou.",
+  "tpl": {
+   "nb": "autocracy"
+  },
+  "options": [
+   {
+    "text": "Apoiar os manifestantes.",
+    "hint": "Um futuro governo amigo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "$nb": -10
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 25
+    }
+   },
+   {
+    "text": "Apoiar o governo atual.",
+    "hint": "Estabilidade regional.",
+    "rel": {
+     "$nb": 12
+    }
+   },
+   {
+    "text": "Ficar de fora.",
+    "hint": "Prudência."
+   }
+  ]
+ },
+ {
+  "id": "mx_bloc_rival_summit",
+  "cat": "Mundo",
+  "title": "Cúpula de {outsideBloc} sem nós",
+  "desc": "O {outsideBloc} realiza cúpula na vizinhança e debate sanções comerciais a países de fora — incluindo nós.",
+  "context": "Ficar de fora tem custo.",
+  "tpl": {
+   "outsideBloc": "any"
+  },
+  "options": [
+   {
+    "text": "Pedir status de observador.",
+    "hint": "Aproximação.",
+    "act": {
+     "type": "joinOrg",
+     "bloc": "$outsideBloc"
+    }
+   },
+   {
+    "text": "Formar uma frente com outros excluídos.",
+    "hint": "Contrapeso.",
+    "now": {
+     "influence": 2
+    },
+    "rel": {
+     "sul": 3
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Nada."
+   }
+  ]
+ },
+ {
+  "id": "mx_ai_war_volunteers",
+  "cat": "Mundo",
+  "title": "Voluntários para a guerra de {aiA}",
+  "desc": "Centenas de jovens querem lutar como voluntários na guerra entre {aiA} e {aiB}. Recrutadores atuam abertamente.",
+  "context": "Combatentes estrangeiros voltam radicalizados.",
+  "tpl": {
+   "aiWar": "any"
+  },
+  "options": [
+   {
+    "text": "Proibir o recrutamento.",
+    "hint": "Neutralidade.",
+    "now": {
+     "control": 1
+    }
+   },
+   {
+    "text": "Permitir discretamente a favor de {aiA}.",
+    "hint": "Ajuda {aiA}; {aiB} irritado.",
+    "rel": {
+     "$aiA": 5,
+     "$aiB": -8
+    },
+    "act": {
+     "type": "aiWarSupport",
+     "war": "$aiWar",
+     "side": "A",
+     "v": 0.05,
+     "cost": 0
+    }
+   },
+   {
+    "text": "Permitir discretamente a favor de {aiB}.",
+    "hint": "Ajuda {aiB}; {aiA} irritado.",
+    "rel": {
+     "$aiB": 5,
+     "$aiA": -8
+    },
+    "act": {
+     "type": "aiWarSupport",
+     "war": "$aiWar",
+     "side": "B",
+     "v": 0.05,
+     "cost": 0
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_ai_war_peace_conf",
+  "cat": "Mundo",
+  "title": "Conferência de paz entre {aiA} e {aiB}",
+  "desc": "{aiA} e {aiB} aceitaram negociar e procuram uma capital neutra. {capital} é uma das candidatas.",
+  "context": "Sediar a paz dá prestígio duradouro.",
+  "tpl": {
+   "aiWar": "any"
+  },
+  "w": 0.8,
+  "options": [
+   {
+    "text": "Oferecer {capital} e garantias.",
+    "hint": "Prestígio; custo.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 4,
+     "influence": 3
+    },
+    "rel": {
+     "$aiA": 5,
+     "$aiB": 5
+    }
+   },
+   {
+    "text": "Não se envolver.",
+    "hint": "Sem risco."
+   }
+  ]
+ },
+ {
+  "id": "mx_sanction_neighbor_aggr",
+  "cat": "Mundo",
+  "title": "Sancionar {nb}?",
+  "desc": "{nb} foi acusado de bombardear civis em um conflito regional. Parceiros pedem que {nation} se junte às sanções.",
+  "context": "Princípios ou comércio?",
+  "tpl": {
+   "nb": "hostile"
+  },
+  "cond": {
+   "min": {
+    "aiWars": 1
+   }
+  },
+  "options": [
+   {
+    "text": "Aderir às sanções.",
+    "hint": "Coerência; perde comércio.",
+    "rel": {
+     "west": 2
+    },
+    "act": {
+     "type": "sanction",
+     "id": "$nb"
+    }
+   },
+   {
+    "text": "Sanções simbólicas.",
+    "hint": "Meio-termo.",
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Recusar e manter o comércio.",
+    "hint": "Pragmatismo.",
+    "rel": {
+     "$nb": 5,
+     "west": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_ally_betrayal",
+  "cat": "Mundo",
+  "title": "{ally} negocia com nossos inimigos",
+  "desc": "Telegramas interceptados mostram que {ally}, nosso aliado formal, negocia secretamente com nossos rivais.",
+  "context": "Aliados também traem.",
+  "tpl": {
+   "ally": "any"
+  },
+  "options": [
+   {
+    "text": "Confrontar {ally} em privado.",
+    "hint": "Esclarece; tensão.",
+    "rel": {
+     "$ally": -5
+    }
+   },
+   {
+    "text": "Romper a aliança.",
+    "hint": "Orgulho; isolamento.",
+    "act": {
+     "type": "partner",
+     "id": "$ally",
+     "key": "cancelPact"
+    }
+   },
+   {
+    "text": "Fingir não saber e espionar de volta.",
+    "hint": "Frieza calculada.",
+    "now": {
+     "intel": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_diaspora_lobby",
+  "cat": "Mundo",
+  "title": "Nossa diáspora em {power}",
+  "desc": "Emigrantes de {nation} em {power} formaram um lobby poderoso e pedem que o governo financie candidatos amigos lá.",
+  "context": "Influência de baixo para cima.",
+  "tpl": {
+   "power": "any"
+  },
+  "options": [
+   {
+    "text": "Financiar o lobby.",
+    "hint": "Influência em {power}.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "influence",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 6
+    }
+   },
+   {
+    "text": "Agradecer e manter distância.",
+    "hint": "Neutro."
+   }
+  ]
+ }
+]

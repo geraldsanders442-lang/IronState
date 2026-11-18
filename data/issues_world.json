@@ -1,0 +1,252 @@
+[
+{"id":"w_un_seat","cat":"Diplomacia","title":"Uma cadeira no Conselho de Segurança","desc":"Diplomatas sugerem lançar candidatura a uma cadeira rotativa no Conselho de Segurança da ONU.","context":"A campanha exige meses de lobby e votos negociados.","cond":{"org":"UN"},"options":[
+ {"text":"Campanha agressiva com ajuda a países pequenos.","hint":"Prestígio; custo.","now":{"treasury":-0.2},"next":[{"id":"w_un_seat_vote","days":60}],"rel":{"sul":4}},
+ {"text":"Candidatura discreta.","hint":"Chance menor.","next":[{"id":"w_un_seat_vote","days":60,"p":0.5}]},
+ {"text":"Não se candidatar.","hint":"Sem gastos."}
+]},
+{"id":"w_un_seat_vote","chain":true,"cat":"Diplomacia","title":"A votação na Assembleia Geral","desc":"O país foi eleito para o Conselho de Segurança! Agora terá de votar em resoluções sobre guerras e sanções que dividem as potências.","context":"Cada voto agrada uns e irrita outros.","default":2,"options":[
+ {"text":"Votar com o Ocidente.","hint":"Aproximação ocidental.","now":{"influence":3,"reputation":3},"rel":{"west":6,"east":-5}},
+ {"text":"Votar com Rússia e China.","hint":"Aproximação oriental.","now":{"influence":3},"rel":{"east":6,"west":-5}},
+ {"text":"Abster-se e mediar.","hint":"Respeito do Sul global.","now":{"influence":2,"reputation":2},"rel":{"sul":4}}
+]},
+{"id":"w_arms_embargo","cat":"Sanções","title":"Embargo de armas","desc":"Fornecedores ocidentais suspenderam a venda de peças para nossos aviões e blindados por causa da situação de direitos humanos.","context":"Sem peças, metade da frota ficará parada em um ano.","cond":{"max":{"civil":40}},"options":[
+ {"text":"Comprar de fornecedores orientais.","hint":"Troca de alinhamento militar.","now":{"treasury":-0.3},"rel":{"RUS":5,"CHN":4,"west":-4},"long":[{"k":"equipment","v":-2,"d":180}]},
+ {"text":"Desenvolver indústria de defesa nacional.","hint":"Autonomia; lento e caro.","now":{"treasury":-0.4},"long":[{"k":"milIndustry","v":5,"d":0},{"k":"equipment","v":-3,"d":240}]},
+ {"text":"Libertar presos políticos para levantar o embargo.","hint":"Concessão.","now":{"civil":4,"reputation":3},"rel":{"west":6},"groups":{"military":-2,"opposition":4}}
+]},
+{"id":"w_peacekeepers","cat":"Militar","title":"Tropas de paz da ONU","desc":"A ONU pede dois mil soldados para uma missão de paz num conflito africano.","context":"As missões dão prestígio e experiência — e às vezes escândalos.","options":[
+ {"text":"Enviar as tropas.","hint":"Prestígio e experiência; risco de baixas.","now":{"reputation":4,"readiness":2},"groups":{"military":3},"long":[{"k":"influence","v":2,"d":365}]},
+ {"text":"Enviar apenas engenheiros e médicos.","hint":"Contribuição segura.","now":{"reputation":2}},
+ {"text":"Recusar.","hint":"Sem custos."}
+]},
+{"id":"w_border_wall","cat":"Fronteiras","title":"Muro na fronteira","desc":"Diante do contrabando e da imigração ilegal, deputados querem um muro ao longo da fronteira mais porosa.","context":"O vizinho considera a ideia uma ofensa.","options":[
+ {"text":"Construir o muro.","hint":"Controle; vizinho ofendido.","now":{"treasury":-0.5,"control":3,"crime":-1},"rel":{"neighbors":-6},"groups":{"rural":3,"military":2}},
+ {"text":"Vigilância eletrônica e mais guardas.","hint":"Eficiente e discreto.","now":{"treasury":-0.15,"control":2}},
+ {"text":"Acordo de cooperação fronteiriça.","hint":"Diplomacia.","rel":{"neighbors":4},"now":{"crime":-1}}
+]},
+{"id":"w_nuclear_test","cat":"Militar","title":"Testar a bomba?","desc":"Os cientistas do programa secreto dizem que o artefato está pronto. Um teste subterrâneo mostraria ao mundo que o país é potência nuclear.","context":"Sanções seriam quase certas.","cond":{"flag":"nuclear"},"w":2,"options":[
+ {"text":"Realizar o teste.","hint":"Dissuasão máxima; sanções e isolamento.","now":{"reputation":-15,"legitimacy":5},"long":[{"k":"defense","v":15,"d":0},{"k":"influence","v":8,"d":0}],"rel":{"west":-20,"neighbors":-15},"groups":{"military":10},"flags":{"set":["nukeTest"]}},
+ {"text":"Manter a ambiguidade.","hint":"Dissuasão incerta.","long":[{"k":"defense","v":4,"d":0}]},
+ {"text":"Desmontar o programa em troca de benefícios.","hint":"Reaproximação.","now":{"treasury":0.5,"reputation":8},"rel":{"west":12},"groups":{"military":-8},"flags":{"clear":["nuclear"]}}
+]},
+{"id":"w_naval_incident","cat":"Incidente militar","title":"Navio estrangeiro em águas territoriais","desc":"Um destróier de uma grande potência navegou dentro das nossas águas territoriais ignorando avisos.","context":"A potência diz exercer 'liberdade de navegação'.","cond":{"coast":true},"options":[
+ {"text":"Enviar a marinha para escoltá-lo para fora.","hint":"Firmeza; risco de incidente.","now":{"legitimacy":2},"groups":{"military":4},"rel":{"USA":-3}},
+ {"text":"Protesto diplomático formal.","hint":"Moderado.","now":{"legitimacy":1}},
+ {"text":"Ignorar.","hint":"Parece fraqueza.","groups":{"military":-3}}
+]},
+{"id":"w_military_base_offer","cat":"Alianças","title":"Uma potência quer uma base","desc":"Uma grande potência oferece investimentos e proteção em troca de uma base militar permanente no país.","context":"A base atrairia hostilidade dos rivais dessa potência.","cond":{"min":{"day":90}},"options":[
+ {"text":"Aceitar a base ocidental.","hint":"Proteção; rivais furiosos.","now":{"treasury":0.4},"long":[{"k":"defense","v":8,"d":0}],"rel":{"USA":15,"RUS":-15,"CHN":-10},"groups":{"military":3,"opposition":-2}},
+ {"text":"Aceitar a base oriental.","hint":"Proteção; Ocidente desconfia.","now":{"treasury":0.3},"long":[{"k":"defense","v":7,"d":0}],"rel":{"RUS":12,"CHN":10,"USA":-15},"groups":{"military":2}},
+ {"text":"Recusar qualquer base estrangeira.","hint":"Soberania.","now":{"legitimacy":2}}
+]},
+{"id":"w_sanctions_join","cat":"Sanções","title":"Aderir às sanções?","desc":"Aliados pedem que o país imponha sanções contra uma potência acusada de agressão militar.","context":"A potência é um parceiro comercial importante.","options":[
+ {"text":"Aderir às sanções.","hint":"Solidariedade ocidental; perdas comerciais.","rel":{"west":6,"RUS":-15},"long":[{"k":"exportAccess","v":-0.03,"d":365}]},
+ {"text":"Recusar e manter o comércio.","hint":"Pragmatismo.","rel":{"west":-5,"RUS":6},"long":[{"k":"growth","v":0.1,"d":365}]},
+ {"text":"Sanções simbólicas.","hint":"Equilíbrio.","rel":{"west":2,"RUS":-3}}
+]},
+{"id":"w_sanction_evasion","cat":"Sanções","title":"Furando as sanções","desc":"Comerciantes propõem reexportar produtos de um país sancionado, lucrando com a triangulação.","context":"O comércio seria lucrativo, mas arriscado.","options":[
+ {"text":"Permitir discretamente.","hint":"Lucro; risco de sanções secundárias.","now":{"treasury":0.2},"long":[{"k":"growth","v":0.2,"d":365}],"rel":{"west":-5,"RUS":5}},
+ {"text":"Proibir e fiscalizar.","hint":"Respeito às regras.","rel":{"west":3},"groups":{"business":-3}},
+ {"text":"Legalizar abertamente.","hint":"Desafio aberto.","now":{"treasury":0.3},"rel":{"west":-10,"east":6}}
+]},
+{"id":"w_hostages","cat":"Crise internacional","title":"Cidadãos sequestrados no exterior","desc":"Um grupo armado sequestrou doze engenheiros nacionais num país vizinho em guerra civil e exige resgate.","context":"Pagar resgate incentiva novos sequestros.","crisis":true,"default":1,"options":[
+ {"text":"Operação de resgate das forças especiais.","hint":"Arriscado; heróis ou tragédia.","now":{"legitimacy":3,"readiness":-2},"groups":{"military":5}},
+ {"text":"Pagar o resgate secretamente.","hint":"Vidas salvas; dinheiro para terroristas.","now":{"treasury":-0.05,"legitimacy":1}},
+ {"text":"Negociar via mediadores religiosos.","hint":"Lento.","now":{"legitimacy":-1}}
+]},
+{"id":"w_embassy_attack","cat":"Crise internacional","title":"Embaixada atacada","desc":"Manifestantes invadiram e incendiaram nossa embaixada numa capital estrangeira. O governo local não interveio.","context":"Os diplomatas escaparam por pouco.","options":[
+ {"text":"Romper relações.","hint":"Dignidade; perdas comerciais.","rel":{"rival":-25},"now":{"legitimacy":3},"groups":{"military":3}},
+ {"text":"Exigir desculpas e indenização.","hint":"Firmeza diplomática.","rel":{"rival":-8}},
+ {"text":"Minimizar o incidente.","hint":"Paz; parece fraqueza.","now":{"legitimacy":-2}}
+]},
+{"id":"w_foreign_journalist","cat":"Diplomacia","title":"Jornalista estrangeiro preso","desc":"Um correspondente de um grande jornal ocidental foi preso por 'espionagem' após entrevistar opositores.","context":"O governo dele exige libertação imediata.","cond":{"max":{"civil":50}},"options":[
+ {"text":"Libertá-lo e expulsá-lo.","hint":"Saída rápida.","rel":{"west":3},"now":{"reputation":1}},
+ {"text":"Julgá-lo por espionagem.","hint":"Moeda de troca; condenação.","now":{"reputation":-6,"civil":-2},"rel":{"west":-8}},
+ {"text":"Trocá-lo por um espião nosso preso no exterior.","hint":"Pragmatismo.","now":{"intel":2},"rel":{"west":-2}}
+]},
+{"id":"w_aid_conditions","cat":"Ajuda externa","title":"Ajuda com condições","desc":"Uma agência de ajuda ocidental oferece um pacote generoso para hospitais e escolas, condicionado a reformas de transparência.","context":"Ministros temem perder o controle de verbas.","options":[
+ {"text":"Aceitar com as condições.","hint":"Dinheiro e reformas.","now":{"treasury":0.5,"corruption":-2},"rel":{"west":5},"groups":{"bureaucracy":-3}},
+ {"text":"Negociar condições mais leves.","hint":"Menos dinheiro.","now":{"treasury":0.2}},
+ {"text":"Recusar a interferência.","hint":"Soberania.","now":{"legitimacy":1},"rel":{"west":-2}}
+]},
+{"id":"w_china_loan","cat":"Ajuda externa","title":"O empréstimo chinês","desc":"Pequim oferece um empréstimo bilionário para infraestrutura, sem condições políticas — mas com empreiteiras e trabalhadores chineses.","context":"Analistas alertam para a 'armadilha da dívida'.","options":[
+ {"text":"Aceitar integralmente.","hint":"Obras rápidas; dívida e dependência.","now":{"debt":2.5,"treasury":0.5},"long":[{"k":"infra","v":4,"d":0},{"k":"growth","v":0.3,"d":730}],"rel":{"CHN":10,"USA":-4},"groups":{"workers":-2}},
+ {"text":"Aceitar exigindo mão de obra local.","hint":"Menos dinheiro, mais empregos.","now":{"debt":1,"unemployment":-0.3},"long":[{"k":"infra","v":2,"d":0}],"rel":{"CHN":4}},
+ {"text":"Recusar.","hint":"Independência.","rel":{"CHN":-4}}
+]},
+{"id":"w_us_trade_deal","cat":"Comércio","title":"Acordo com os Estados Unidos","desc":"Washington propõe um acordo de livre comércio com cláusulas sobre propriedade intelectual, trabalho e meio ambiente.","context":"O acordo abriria o maior mercado consumidor do mundo.","cond":{"min":{"reputation":35}},"options":[
+ {"text":"Assinar o acordo.","hint":"Exportações; indústria local pressionada.","rel":{"USA":12,"CHN":-3},"long":[{"k":"exportAccess","v":0.08,"d":0},{"k":"industry","v":-1,"d":0}],"groups":{"business":4,"workers":-3}},
+ {"text":"Negociar exceções para setores sensíveis.","hint":"Acordo menor.","rel":{"USA":4},"long":[{"k":"exportAccess","v":0.03,"d":0}]},
+ {"text":"Recusar.","hint":"Proteção da indústria.","rel":{"USA":-4},"groups":{"workers":2}}
+]},
+{"id":"w_regional_summit","cat":"Diplomacia","title":"Sediar a cúpula regional","desc":"O país foi convidado a sediar a cúpula de chefes de Estado da região.","context":"Seria uma vitrine — e um alvo de protestos.","options":[
+ {"text":"Sediar com pompa.","hint":"Prestígio regional; custo.","now":{"treasury":-0.1,"reputation":3},"long":[{"k":"influence","v":3,"d":365}],"rel":{"neighbors":5}},
+ {"text":"Sediar com simplicidade.","hint":"Prestígio moderado.","now":{"treasury":-0.03,"reputation":1},"rel":{"neighbors":2}},
+ {"text":"Recusar.","hint":"Sem custos."}
+]},
+{"id":"w_mediation","cat":"Diplomacia","title":"Mediar uma guerra alheia","desc":"Dois países em guerra aceitaram que o governante faça a mediação de um cessar-fogo.","context":"O sucesso traria prestígio mundial; o fracasso, vexame.","cond":{"min":{"reputation":45}},"options":[
+ {"text":"Assumir a mediação pessoalmente.","hint":"Prestígio; riscos.","now":{"reputation":5},"long":[{"k":"influence","v":4,"d":365}]},
+ {"text":"Enviar diplomatas de carreira.","hint":"Discreto.","now":{"reputation":2}},
+ {"text":"Recusar.","hint":"Nada muda."}
+]},
+{"id":"w_defector_general","cat":"Militar","title":"General inimigo pede asilo","desc":"Um general de um país rival desertou com segredos militares e pede asilo.","context":"O rival exige sua extradição.","options":[
+ {"text":"Conceder asilo e explorar os segredos.","hint":"Inteligência; rival furioso.","now":{"intel":5},"rel":{"rival":-15},"groups":{"military":3}},
+ {"text":"Repassá-lo a uma potência aliada.","hint":"Favor diplomático.","rel":{"west":4}},
+ {"text":"Extraditá-lo.","hint":"Gesto de boa vizinhança.","rel":{"rival":10},"groups":{"military":-2}}
+]},
+{"id":"w_drone_strike","cat":"Guerra","title":"Ataque com drones?","desc":"A inteligência localizou o líder de uma guerrilha que ataca nossas tropas, escondido numa aldeia além da fronteira.","context":"O ataque violaria a soberania do vizinho e poderia matar civis.","cond":{"min":{"separatism":20}},"options":[
+ {"text":"Autorizar o ataque.","hint":"Golpe na guerrilha; crise diplomática.","now":{"separatism":-4,"reputation":-4},"rel":{"neighbors":-8},"groups":{"military":4}},
+ {"text":"Pedir ao vizinho que o prenda.","hint":"Cooperação.","rel":{"neighbors":3}},
+ {"text":"Esperar ele cruzar a fronteira.","hint":"Paciência.","long":[{"k":"separatism","v":2,"d":120}]}
+]},
+{"id":"w_mercenaries","cat":"Militar","title":"Contratar mercenários?","desc":"Uma companhia militar privada estrangeira oferece tropas experientes para combater insurgentes, pagas em concessões de mineração.","context":"Mercenários respondem a quem paga mais.","cond":{"min":{"revoRisk":30}},"options":[
+ {"text":"Contratar os mercenários.","hint":"Força imediata; abusos e dependência.","now":{"control":5,"reputation":-5},"long":[{"k":"s_raw","v":-4,"d":365}],"rel":{"RUS":5,"west":-6},"groups":{"military":-5}},
+ {"text":"Usar apenas como instrutores.","hint":"Moderado.","now":{"readiness":3,"treasury":-0.1}},
+ {"text":"Recusar.","hint":"Soberania militar.","groups":{"military":2}}
+]},
+{"id":"w_mutiny_ships","cat":"Militar","title":"Motim na marinha","desc":"Marinheiros de três navios se amotinaram por salários atrasados e comida estragada.","context":"Os navios estão ancorados na capital.","cond":{"coast":true,"max":{"g_military":45}},"options":[
+ {"text":"Pagar os atrasados e punir os oficiais.","hint":"Resolve; custo.","now":{"treasury":-0.1},"groups":{"military":3}},
+ {"text":"Cercar e prender os amotinados.","hint":"Disciplina; risco de banho de sangue.","now":{"readiness":-3,"control":2},"groups":{"military":-4}},
+ {"text":"Negociar com os amotinados.","hint":"Paz frágil.","groups":{"military":-1}}
+]},
+{"id":"w_cyber_army","cat":"Espionagem","title":"Um exército de hackers","desc":"O serviço de inteligência quer recrutar hackers criminosos para operações ofensivas contra rivais.","context":"Os hackers exigem anistia para seus crimes.","options":[
+ {"text":"Criar a unidade ofensiva.","hint":"Capacidade cibernética; riscos.","now":{"intel":5,"corruption":1},"rel":{"rival":-3}},
+ {"text":"Unidade apenas defensiva.","hint":"Proteção.","now":{"treasury":-0.1,"intel":3}},
+ {"text":"Recusar.","hint":"Legalidade."}
+]},
+{"id":"w_satellite","cat":"Tecnologia","title":"Programa espacial","desc":"A agência espacial quer lançar o primeiro satélite nacional, para comunicações e espionagem.","context":"Seria um marco de prestígio.","cond":{"min":{"tech":40}},"options":[
+ {"text":"Lançamento com foguete nacional.","hint":"Prestígio e tecnologia; caro.","now":{"treasury":-0.4,"reputation":3},"long":[{"k":"tech","v":4,"d":0},{"k":"intel","v":3,"d":0}],"groups":{"youth":4}},
+ {"text":"Comprar o lançamento de uma potência.","hint":"Mais barato.","now":{"treasury":-0.15},"long":[{"k":"intel","v":2,"d":0}]},
+ {"text":"Adiar.","hint":"Sem gasto."}
+]},
+{"id":"w_space_race","cat":"Tecnologia","title":"Um astronauta nacional","desc":"Uma potência oferece levar um astronauta nacional à estação espacial, em troca de um acordo de cooperação.","context":"A população adoraria.","options":[
+ {"text":"Aceitar.","hint":"Orgulho nacional; alinhamento.","now":{"treasury":-0.05,"legitimacy":3},"rel":{"east":4},"groups":{"youth":4}},
+ {"text":"Pedir à agência ocidental em vez disso.","hint":"Mais caro.","now":{"treasury":-0.1,"legitimacy":3},"rel":{"west":4}},
+ {"text":"Recusar.","hint":"Nada muda."}
+]},
+{"id":"w_river_dispute","cat":"Fronteiras","title":"A represa do vizinho","desc":"O país vizinho rio acima construiu uma barragem que reduziu à metade a água que chega às nossas plantações.","context":"Sem água, a agricultura do sul está ameaçada.","options":[
+ {"text":"Ameaçar uma ação militar.","hint":"Pressão; escalada.","rel":{"neighbors":-15},"groups":{"military":5,"rural":4},"flags":{"set":["casusBelli"]}},
+ {"text":"Levar à corte internacional.","hint":"Lento e legal.","now":{"reputation":2},"long":[{"k":"s_food","v":-3,"d":365}]},
+ {"text":"Negociar uma divisão das águas.","hint":"Compromisso.","rel":{"neighbors":5},"long":[{"k":"s_food","v":-1,"d":365}]}
+]},
+{"id":"w_island_dispute","cat":"Fronteiras","title":"A ilha contestada","desc":"Pescadores de um país vizinho ergueram uma bandeira numa ilhota desabitada que ambos os países reivindicam.","context":"Há petróleo submarino na região.","cond":{"coast":true},"options":[
+ {"text":"Desembarcar fuzileiros e retirar a bandeira.","hint":"Afirmação; crise.","rel":{"neighbors":-10},"groups":{"military":5},"now":{"legitimacy":2}},
+ {"text":"Propor exploração conjunta do petróleo.","hint":"Cooperação lucrativa.","rel":{"neighbors":6},"long":[{"k":"s_energy","v":2,"d":0}]},
+ {"text":"Ignorar.","hint":"Perde a ilha de fato.","groups":{"military":-3}}
+]},
+{"id":"w_minority_abroad","cat":"Nacionalismo","title":"Compatriotas no país vizinho","desc":"Uma comunidade que fala nossa língua no país vizinho pede passaportes e proteção.","context":"Dar passaportes pode ser visto como prelúdio de anexação.","options":[
+ {"text":"Distribuir passaportes.","hint":"Laços étnicos; vizinho alarmado.","rel":{"neighbors":-10},"groups":{"rural":3},"flags":{"set":["casusBelli"]}},
+ {"text":"Programas culturais e bolsas.","hint":"Soft power.","rel":{"neighbors":-1},"now":{"influence":1}},
+ {"text":"Pedir que se integrem ao país onde vivem.","hint":"Boa vizinhança.","rel":{"neighbors":4},"groups":{"rural":-2}}
+]},
+{"id":"w_referendum_claim","cat":"Disputa territorial","title":"Referendo na região disputada","desc":"Moradores de uma região que outro país reivindica querem um referendo para decidir seu futuro.","context":"O resultado pode resolver ou explodir a disputa.","cond":{"min":{"separatism":20}},"options":[
+ {"text":"Autorizar o referendo com observadores.","hint":"Legitimidade; risco de perder a região.","now":{"reputation":4,"political":2},"long":[{"k":"separatism","v":-4,"d":0}]},
+ {"text":"Proibir o referendo.","hint":"Integridade territorial; ressentimento.","now":{"civil":-2},"long":[{"k":"separatism","v":5,"d":365}]},
+ {"text":"Oferecer autonomia ampliada no lugar.","hint":"Compromisso.","groups":{"regional":4},"long":[{"k":"separatism","v":-2,"d":0}]}
+]},
+{"id":"w_coup_neighbor","cat":"Crise internacional","title":"Golpe no país vizinho","desc":"Militares derrubaram o governo eleito do país vizinho. Os golpistas pedem reconhecimento.","context":"O presidente deposto pede ajuda para voltar ao poder.","options":[
+ {"text":"Reconhecer a junta.","hint":"Pragmatismo; críticas democráticas.","rel":{"west":-3},"now":{"reputation":-2}},
+ {"text":"Exigir a volta da ordem constitucional.","hint":"Princípios; relação com a junta piora.","now":{"reputation":3},"rel":{"neighbors":-4}},
+ {"text":"Abrigar o presidente deposto.","hint":"Gesto democrático e arriscado.","now":{"reputation":2},"rel":{"neighbors":-8},"groups":{"military":-2}}
+]},
+{"id":"w_civil_war_neighbor","cat":"Crise internacional","title":"Guerra civil do outro lado da fronteira","desc":"O país vizinho mergulhou em guerra civil. Rebeldes pedem armas; o governo pede que fechemos a fronteira.","context":"Ondas de refugiados já cruzam a fronteira.","cond":{"min":{"day":120}},"options":[
+ {"text":"Armar os rebeldes.","hint":"Influência futura; risco de contágio.","now":{"treasury":-0.1},"rel":{"neighbors":-10},"long":[{"k":"influence","v":3,"d":365}],"groups":{"military":3}},
+ {"text":"Fechar a fronteira e apoiar o governo.","hint":"Ordem.","policy":{"borders":"closed"},"rel":{"neighbors":6}},
+ {"text":"Neutralidade e ajuda humanitária.","hint":"Reputação.","now":{"treasury":-0.1,"reputation":3},"next":[{"id":"refugee_wave","days":14,"p":0.6}]}
+]},
+{"id":"w_coalition_request","cat":"Alianças","title":"Pedido de coalizão militar","desc":"Uma grande potência pede tropas para uma coalizão contra um grupo terrorista em outro continente.","context":"Participar aproxima da potência; ficar fora a decepciona.","options":[
+ {"text":"Enviar tropas de combate.","hint":"Aliança forte; baixas e cansaço.","now":{"warWeariness":4,"readiness":3},"rel":{"USA":10},"groups":{"military":4,"youth":-3}},
+ {"text":"Enviar apoio logístico.","hint":"Contribuição segura.","rel":{"USA":4}},
+ {"text":"Recusar.","hint":"Neutralidade.","rel":{"USA":-4}}
+]},
+{"id":"w_arms_export","cat":"Indústria de defesa","title":"Exportar armas para um regime?","desc":"Um regime acusado de massacres quer comprar nossos blindados e munições por um preço excelente.","context":"A indústria de defesa precisa de clientes.","cond":{"min":{"milIndustry":30}},"options":[
+ {"text":"Vender.","hint":"Lucro; reputação manchada.","now":{"treasury":0.3,"reputation":-5},"long":[{"k":"milIndustry","v":3,"d":0}],"rel":{"west":-4}},
+ {"text":"Vender só equipamento não letal.","hint":"Meio-termo.","now":{"treasury":0.1}},
+ {"text":"Recusar.","hint":"Princípios.","now":{"reputation":2},"groups":{"business":-2}}
+]},
+{"id":"w_missile_defense","cat":"Militar","title":"Escudo antimísseis","desc":"Uma potência oferece instalar um sistema antimísseis no país. Outra potência promete apontar seus mísseis para ele.","context":"A instalação seria operada por estrangeiros.","options":[
+ {"text":"Aceitar o escudo.","hint":"Defesa; alvo estratégico.","long":[{"k":"defense","v":10,"d":0}],"rel":{"USA":10,"RUS":-15}},
+ {"text":"Comprar um sistema próprio.","hint":"Caro; soberano.","now":{"treasury":-0.5},"long":[{"k":"defense","v":6,"d":0}]},
+ {"text":"Recusar.","hint":"Neutralidade.","rel":{"RUS":3}}
+]},
+{"id":"w_draft_dodgers","cat":"Militar","title":"Fuga dos recrutas","desc":"Milhares de jovens fogem para o exterior para escapar do serviço militar obrigatório.","context":"As famílias os escondem.","cond":{"policy":{"conscription":["selective","universal"]}},"options":[
+ {"text":"Prender os desertores e suas famílias.","hint":"Medo; ódio.","now":{"civil":-4,"readiness":2},"groups":{"youth":-8}},
+ {"text":"Permitir serviço civil alternativo.","hint":"Compromisso.","now":{"readiness":-1},"groups":{"youth":4}},
+ {"text":"Acabar com o recrutamento obrigatório.","hint":"Exército profissional.","policy":{"conscription":"volunteer"},"groups":{"youth":6,"military":-4}}
+]},
+{"id":"w_veterans","cat":"Militar","title":"Veteranos esquecidos","desc":"Veteranos de guerra mutilados acampam diante do Ministério da Defesa exigindo pensões prometidas há décadas.","context":"As imagens comovem o país.","options":[
+ {"text":"Pagar as pensões.","hint":"Justiça; custo.","now":{"treasury":-0.15,"legitimacy":2},"groups":{"military":5}},
+ {"text":"Pensão parcial e homenagem pública.","hint":"Meio-termo.","now":{"treasury":-0.05},"groups":{"military":2}},
+ {"text":"Remover o acampamento.","hint":"Vergonha nacional.","now":{"legitimacy":-3},"groups":{"military":-6}}
+]},
+{"id":"w_foreign_bases_leave","cat":"Alianças","title":"Fora as tropas estrangeiras!","desc":"Uma onda nacionalista exige a retirada das tropas estrangeiras estacionadas no país desde décadas atrás.","context":"As tropas trazem dinheiro e segurança.","cond":{"min":{"day":200}},"options":[
+ {"text":"Pedir a retirada.","hint":"Soberania; proteção perdida.","now":{"legitimacy":3},"long":[{"k":"defense","v":-5,"d":0}],"rel":{"USA":-10}},
+ {"text":"Renegociar o aluguel para cima.","hint":"Dinheiro.","now":{"treasury":0.2},"rel":{"USA":-2}},
+ {"text":"Manter tudo como está.","hint":"Status quo.","groups":{"opposition":2}}
+]},
+{"id":"w_chemical_accusation","cat":"Crise internacional","title":"Acusação de armas químicas","desc":"Um relatório internacional acusa nossas forças de usar gás tóxico contra insurgentes.","context":"As provas são contestadas.","cond":{"war":true},"options":[
+ {"text":"Permitir inspeção internacional.","hint":"Transparência; risco de prova.","now":{"reputation":2}},
+ {"text":"Negar e bloquear inspetores.","hint":"Suspeita aumenta.","now":{"reputation":-6},"rel":{"west":-8}},
+ {"text":"Culpar um comandante rebelde das nossas tropas.","hint":"Bode expiatório.","now":{"reputation":-1},"groups":{"military":-3}}
+]},
+{"id":"w_war_propaganda","cat":"Guerra","title":"Notícias do front","desc":"Jornalistas querem mostrar a verdade do front, incluindo baixas e derrotas.","context":"O moral da população depende do que ela vê.","cond":{"war":true},"options":[
+ {"text":"Censura militar total.","hint":"Moral artificial.","now":{"civil":-3,"warWeariness":-3},"groups":{"youth":-2}},
+ {"text":"Liberdade de cobertura.","hint":"Verdade; cansaço de guerra cresce.","now":{"civil":2,"warWeariness":3}},
+ {"text":"Jornalistas embutidos nas tropas.","hint":"Controle sutil.","now":{"warWeariness":-1}}
+]},
+{"id":"w_war_economy","cat":"Guerra","title":"Economia de guerra","desc":"Os generais pedem a conversão de fábricas civis para produção militar e racionamento.","context":"A guerra se prolonga mais do que o previsto.","cond":{"war":true},"w":1.5,"options":[
+ {"text":"Converter a indústria.","hint":"Força militar; consumo cai.","now":{"gdp":-0.5},"long":[{"k":"milIndustry","v":8,"d":0},{"k":"equipment","v":4,"d":0},{"k":"inflation","v":1,"d":240}],"groups":{"business":-4,"military":5}},
+ {"text":"Comprar armas no exterior.","hint":"Rápido e caro.","now":{"treasury":-0.6,"equipment":5}},
+ {"text":"Manter a economia civil.","hint":"Normalidade.","groups":{"military":-3}}
+]},
+{"id":"w_war_mothers","cat":"Guerra","title":"As mães dos soldados","desc":"Milhares de mães de soldados mortos marcham até o palácio exigindo o fim da guerra.","context":"O movimento cresce a cada semana.","cond":{"war":true,"min":{"warWeariness":20}},"options":[
+ {"text":"Receber as mães e prometer negociações.","hint":"Humanidade; militares desconfiados.","now":{"protest":-3,"legitimacy":2},"groups":{"military":-3}},
+ {"text":"Proibir a marcha.","hint":"Cria mártires.","now":{"civil":-3,"protest":4},"long":[{"k":"revoRisk","v":3,"d":180}]},
+ {"text":"Indenizar as famílias.","hint":"Custo.","now":{"treasury":-0.15,"warWeariness":-3}}
+]},
+{"id":"w_war_crimes","cat":"Guerra","title":"Massacre de civis","desc":"Fotos mostram soldados nacionais executando prisioneiros e civis numa aldeia conquistada.","context":"O mundo inteiro viu as imagens.","cond":{"war":true},"options":[
+ {"text":"Corte marcial para os responsáveis.","hint":"Justiça; tropas ressentidas.","now":{"reputation":4},"groups":{"military":-4}},
+ {"text":"Negar a autenticidade das fotos.","hint":"Ninguém acredita.","now":{"reputation":-8},"rel":{"west":-8}},
+ {"text":"Pedir desculpas e indenizar.","hint":"Diplomacia.","now":{"treasury":-0.05,"reputation":2},"groups":{"military":-2}}
+]},
+{"id":"w_occupation_admin","cat":"Ocupação","title":"Administrar os territórios ocupados","desc":"As províncias tomadas na guerra precisam de governo: polícia, escolas e abastecimento.","context":"A população local nos vê como invasores.","cond":{"flag":"occupied"},"options":[
+ {"text":"Governador militar com mão de ferro.","hint":"Controle; resistência.","now":{"control":3,"reputation":-3},"long":[{"k":"separatism","v":4,"d":365}]},
+ {"text":"Conselhos locais com autonomia.","hint":"Legitimidade local.","now":{"treasury":-0.1},"long":[{"k":"separatism","v":-3,"d":0}]},
+ {"text":"Reconstrução e investimento massivo.","hint":"Conquistar corações; caro.","now":{"treasury":-0.4},"long":[{"k":"separatism","v":-5,"d":0},{"k":"infra","v":1,"d":0}]}
+]},
+{"id":"w_partisan_ambush","cat":"Ocupação","title":"Emboscada de guerrilheiros","desc":"Guerrilheiros mataram trinta soldados num comboio nos territórios ocupados.","context":"Os generais querem represálias.","cond":{"flag":"occupied"},"crisis":true,"default":1,"options":[
+ {"text":"Represálias contra aldeias suspeitas.","hint":"Medo; ódio e condenação.","now":{"control":3,"reputation":-8,"civil":-3},"long":[{"k":"separatism","v":5,"d":365}],"groups":{"military":3}},
+ {"text":"Operações direcionadas com inteligência.","hint":"Eficaz e caro.","now":{"treasury":-0.1,"control":2}},
+ {"text":"Retirar-se das áreas mais hostis.","hint":"Menos baixas; parece fraqueza.","now":{"control":-3},"groups":{"military":-4}}
+]},
+{"id":"w_bloc_currency","cat":"Integração","title":"Moeda comum regional?","desc":"Vizinhos propõem uma moeda comum para a região, com banco central regional.","context":"Abriria mercados, mas tiraria o controle dos juros.","cond":{"min":{"day":150}},"options":[
+ {"text":"Apoiar a moeda comum.","hint":"Integração; perda de soberania monetária.","rel":{"neighbors":8},"long":[{"k":"exportAccess","v":0.05,"d":0},{"k":"inflation","v":-0.5,"d":0}],"groups":{"business":4,"military":-2}},
+ {"text":"Apenas paridade cambial.","hint":"Meio-termo.","rel":{"neighbors":3}},
+ {"text":"Recusar.","hint":"Soberania.","rel":{"neighbors":-2}}
+]},
+{"id":"w_bloc_freemove","cat":"Integração","title":"Livre circulação na região","desc":"Os vizinhos propõem abolir passaportes e permitir que cidadãos trabalhem em qualquer país da região.","context":"Trabalhadores temem concorrência; empresas comemoram.","options":[
+ {"text":"Aderir à livre circulação.","hint":"Integração; tensões laborais.","rel":{"neighbors":8},"policy":{"borders":"open"},"groups":{"business":4,"workers":-3}},
+ {"text":"Livre circulação só para turismo.","hint":"Gradual.","rel":{"neighbors":3}},
+ {"text":"Recusar.","hint":"Controle.","rel":{"neighbors":-3}}
+]},
+{"id":"w_great_power_visit","cat":"Diplomacia","title":"Visita de Estado","desc":"O presidente de uma superpotência quer fazer uma visita de Estado. Rivais dessa potência observam.","context":"A visita traria acordos — e protestos.","cond":{"min":{"reputation":40}},"options":[
+ {"text":"Receber com honras máximas.","hint":"Aproximação; rivais desconfiados.","now":{"reputation":3},"rel":{"USA":8,"CHN":-3},"long":[{"k":"growth","v":0.2,"d":365}]},
+ {"text":"Receber o líder chinês em seguida, para equilibrar.","hint":"Equidistância.","rel":{"USA":3,"CHN":4},"now":{"reputation":2}},
+ {"text":"Adiar a visita.","hint":"Distância.","rel":{"USA":-3}}
+]},
+{"id":"w_arctic_claim","cat":"Disputa territorial","title":"A corrida pelo fundo do mar","desc":"Geólogos afirmam que a plataforma continental do país se estende muito além do limite atual, sobre jazidas de petróleo.","context":"Um vizinho tem a mesma pretensão.","cond":{"coast":true},"w":0.6,"options":[
+ {"text":"Reivindicar na ONU e enviar navios.","hint":"Recursos futuros; tensão.","rel":{"neighbors":-6},"long":[{"k":"s_energy","v":3,"d":0}],"groups":{"military":3}},
+ {"text":"Negociar exploração conjunta.","hint":"Cooperação.","rel":{"neighbors":4},"long":[{"k":"s_energy","v":1,"d":0}]},
+ {"text":"Não reivindicar.","hint":"Paz."}
+]},
+{"id":"w_foreign_ngo_aid","cat":"Ajuda externa","title":"Médicos estrangeiros nas zonas de conflito","desc":"Uma ONG médica internacional quer operar nas regiões separatistas, atendendo também os rebeldes.","context":"Militares acusam a ONG de ajudar o inimigo.","cond":{"min":{"separatism":25}},"options":[
+ {"text":"Autorizar o trabalho humanitário.","hint":"Reputação; militares contrariados.","now":{"reputation":3,"health":1},"groups":{"military":-3}},
+ {"text":"Autorizar apenas em áreas controladas.","hint":"Meio-termo.","now":{"reputation":1}},
+ {"text":"Proibir.","hint":"Controle total.","now":{"reputation":-4},"groups":{"military":2}}
+]},
+{"id":"w_nuclear_deal","cat":"Diplomacia","title":"Garantias nucleares","desc":"Uma potência nuclear oferece um 'guarda-chuva nuclear' — proteção contra ataques — em troca de alinhamento estratégico.","context":"Os vizinhos veriam a oferta como ameaça.","cond":{"min":{"day":200}},"options":[
+ {"text":"Aceitar o guarda-chuva ocidental.","hint":"Dissuasão; alinhamento.","long":[{"k":"defense","v":10,"d":0}],"rel":{"USA":12,"RUS":-12,"CHN":-8}},
+ {"text":"Aceitar o guarda-chuva russo.","hint":"Dissuasão; Ocidente hostil.","long":[{"k":"defense","v":9,"d":0}],"rel":{"RUS":12,"USA":-12}},
+ {"text":"Manter-se fora.","hint":"Neutralidade.","now":{"legitimacy":1}}
+]}
+]

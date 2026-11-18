@@ -1,0 +1,7 @@
+# Versão antiga e arquivos de trabalho
+OLD VERSION DO NOT USE THIS/
+tools/node_modules/
+tools/raw/
+tools/_tmp*
+*.log
+.claude/settings.local.json

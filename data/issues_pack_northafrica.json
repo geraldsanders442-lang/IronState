@@ -1,0 +1,956 @@
+[
+ {
+  "id": "pk_na_arab_spring",
+  "cat": "Norte da África",
+  "title": "Ecos da primavera árabe",
+  "desc": "Jovens desempregados voltam às praças e pedem emprego, dignidade e liberdades. Redes sociais organizam tudo.",
+  "context": "Memória da onda de 2011.",
+  "cond": {
+   "regions": [
+    "north_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reformas políticas e emprego jovem.",
+    "hint": "Previne a explosão.",
+    "now": {
+     "political": 1.5,
+     "treasury": -0.3
+    },
+    "groups": {
+     "youth": 4,
+     "military": -1
+    }
+   },
+   {
+    "text": "Repressão e controle da internet.",
+    "hint": "Contenção.",
+    "now": {
+     "civil": -2,
+     "protest": -0.5,
+     "reputation": -2
+    },
+    "groups": {
+     "youth": -4,
+     "military": 2
+    }
+   },
+   {
+    "text": "Promessas e concessões econômicas.",
+    "hint": "Ganha tempo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_bread_subsidy",
+  "cat": "Norte da África",
+  "title": "O subsídio do pão",
+  "desc": "O governo gasta fortunas em pão e combustível baratos. Cortar significa motins; manter, déficit.",
+  "context": "A paz social tem preço.",
+  "cond": {
+   "regions": [
+    "north_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Focalizar o subsídio nos mais pobres.",
+    "hint": "Justo e arriscado.",
+    "now": {
+     "treasury": 0.3,
+     "protest": 1
+    },
+    "groups": {
+     "workers": -2
+    }
+   },
+   {
+    "text": "Manter integralmente.",
+    "hint": "Paz e dívida.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Reduzir peso do pão.",
+    "hint": "Truque conhecido.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "workers": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_tourism_security",
+  "cat": "Norte da África",
+  "title": "Turismo e atentados",
+  "desc": "Um ataque a turistas derruba as reservas de hotéis. Operadores pedem proteção reforçada.",
+  "context": "Receita sensível.",
+  "cond": {
+   "regions": [
+    "north_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Polícia turística e câmeras.",
+    "hint": "Recupera confiança.",
+    "now": {
+     "treasury": -0.2,
+     "crime": -0.2
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Campanha de marketing.",
+    "hint": "Imagem.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 0.5
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Fechar zonas de risco.",
+    "hint": "Seguro e custoso.",
+    "now": {
+     "growth": -0.1
+    },
+    "groups": {
+     "business": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_migrants_sea",
+  "cat": "Norte da África",
+  "title": "Barcos de migrantes rumo à Europa",
+  "desc": "O país é ponto de partida de rotas perigosas pelo Mediterrâneo; Bruxelas oferece dinheiro para conter.",
+  "context": "Fronteira da Europa.",
+  "cond": {
+   "regions": [
+    "north_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aceitar o acordo e patrulhar.",
+    "hint": "Dinheiro e críticas.",
+    "now": {
+     "treasury": 0.3,
+     "reputation": -2
+    },
+    "groups": {
+     "military": 1,
+     "youth": -1
+    },
+    "rel": {
+     "west": 3
+    }
+   },
+   {
+    "text": "Exigir canais legais de migração.",
+    "hint": "Barganha.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Soberania.",
+    "now": {},
+    "groups": {},
+    "rel": {
+     "west": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_desert_solar",
+  "cat": "Norte da África",
+  "title": "Energia solar do Saara para a Europa",
+  "desc": "Um consórcio propõe megausinas solares no deserto com exportação de eletricidade ao norte.",
+  "context": "Sol como commodity.",
+  "cond": {
+   "regions": [
+    "north_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aprovar com participação nacional.",
+    "hint": "Receita e tecnologia.",
+    "now": {
+     "treasury": 0.2,
+     "tech": 1
+    },
+    "groups": {
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 3,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "west": 2
+    }
+   },
+   {
+    "text": "Só para consumo interno.",
+    "hint": "Soberania energética.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "workers": 1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Adiar.",
+    "hint": "Neutro.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_na_water_stress",
+  "cat": "Norte da África",
+  "title": "Escassez hídrica extrema",
+  "desc": "Reservatórios e lençóis freáticos caem; a agricultura consome a maior parte da água.",
+  "context": "Estresse hídrico crônico.",
+  "cond": {
+   "regions": [
+    "north_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Dessalinização e irrigação eficiente.",
+    "hint": "Caro e estrutural.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "rural": 2
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Racionar a agricultura.",
+    "hint": "Dói no campo.",
+    "now": {
+     "hunger": 0.3
+    },
+    "groups": {
+     "rural": -3
+    }
+   },
+   {
+    "text": "Importar alimentos.",
+    "hint": "Transfere o problema.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_amazigh",
+  "cat": "Norte da África",
+  "title": "Reconhecimento da língua e cultura amazigh",
+  "desc": "Movimentos berberes pedem ensino na língua e símbolos oficiais.",
+  "context": "Identidade e unidade.",
+  "cond": {
+   "regions": [
+    "north_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Oficializar o idioma.",
+    "hint": "Reduz tensão.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "regional": 3,
+     "military": -1
+    }
+   },
+   {
+    "text": "Ensino opcional nas escolas.",
+    "hint": "Moderado.",
+    "now": {
+     "civil": 0.3
+    },
+    "groups": {
+     "regional": 1
+    }
+   },
+   {
+    "text": "Manter só o árabe.",
+    "hint": "Unidade.",
+    "now": {},
+    "groups": {
+     "regional": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_islamist_party",
+  "cat": "Norte da África",
+  "title": "Partido islamista vence a eleição municipal",
+  "desc": "Um partido religioso conquista grandes cidades prometendo moralidade e combate à corrupção.",
+  "context": "Política e religião.",
+  "cond": {
+   "regions": [
+    "north_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Respeitar e dialogar.",
+    "hint": "Inclusivo.",
+    "now": {
+     "political": 1
+    },
+    "groups": {
+     "opposition": 1,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Restringir o partido.",
+    "hint": "Linha dura.",
+    "now": {
+     "political": -1,
+     "civil": -1
+    },
+    "groups": {
+     "military": 1,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Cooptar com ministérios.",
+    "hint": "Divide.",
+    "now": {},
+    "groups": {
+     "rural": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_phosphate",
+  "cat": "Norte da África",
+  "title": "Fosfato e conflito de território",
+  "desc": "A mineração de fosfato em região disputada enriquece o país, mas gera protestos e acusações.",
+  "context": "Recurso e disputa.",
+  "cond": {
+   "regions": [
+    "north_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Dividir receitas com a região.",
+    "hint": "Justo.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "regional": 3
+    }
+   },
+   {
+    "text": "Reprimir protestos.",
+    "hint": "Controle.",
+    "now": {
+     "control": 1,
+     "civil": -1
+    },
+    "groups": {
+     "military": 1,
+     "regional": -3
+    }
+   },
+   {
+    "text": "Terceirizar a mineradora.",
+    "hint": "Dinheiro.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_nile_dispute",
+  "cat": "Norte da África",
+  "title": "O fluxo do rio e os vizinhos a montante",
+  "desc": "Barragens a montante ameaçam a principal fonte de água do país.",
+  "context": "A vida depende do rio.",
+  "cond": {
+   "regions": [
+    "north_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Diplomacia dura e apoio internacional.",
+    "hint": "Pressão.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": -3
+    }
+   },
+   {
+    "text": "Acordo de cooperação hídrica.",
+    "hint": "Pacífico.",
+    "now": {},
+    "groups": {},
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Reforçar capacidade militar.",
+    "hint": "Dissuasão.",
+    "now": {
+     "treasury": -0.4,
+     "defense": 2
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "neighbors": -5
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eg_new_capital",
+  "cat": "Norte da África",
+  "title": "A nova capital no deserto",
+  "desc": "O governo erguem uma nova capital administrativa com torres e monotrilho, enquanto o Cairo sufoca.",
+  "context": "Megaprojeto e prioridade.",
+  "cond": {
+   "countries": [
+    "EGY"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Concluir a obra.",
+    "hint": "Prestígio e dívida.",
+    "now": {
+     "treasury": -0.6,
+     "reputation": 1
+    },
+    "groups": {
+     "business": 2,
+     "workers": -1
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Reduzir o escopo.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {}
+   },
+   {
+    "text": "Priorizar o Cairo.",
+    "hint": "Resolve dores atuais.",
+    "now": {
+     "treasury": -0.3,
+     "qol": 0.5
+    },
+    "groups": {
+     "workers": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eg_suez",
+  "cat": "Norte da África",
+  "title": "O canal e o bloqueio marítimo",
+  "desc": "Crises no mar Vermelho derrubam a receita do canal. Armadores pedem redução de tarifas.",
+  "context": "Artéria do comércio mundial.",
+  "cond": {
+   "countries": [
+    "EGY"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reduzir pedágios para atrair navios.",
+    "hint": "Retoma o fluxo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Manter tarifas.",
+    "hint": "Receita.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Ampliar o canal.",
+    "hint": "Investimento.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.02,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_ma_world_cup",
+  "cat": "Norte da África",
+  "title": "Sediar a Copa do Mundo",
+  "desc": "O país foi escolhido para co-organizar o torneio. Estádios e transporte demandam bilhões.",
+  "context": "Prestígio e orçamento.",
+  "cond": {
+   "countries": [
+    "MAR"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Investir pesado.",
+    "hint": "Legado, risco.",
+    "now": {
+     "treasury": -0.6,
+     "reputation": 2,
+     "legitimacy": 2
+    },
+    "groups": {
+     "youth": 3,
+     "business": 2
+    }
+   },
+   {
+    "text": "Orçamento enxuto.",
+    "hint": "Cautela.",
+    "now": {
+     "treasury": -0.25,
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Desistir.",
+    "hint": "Fura a expectativa.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ma_western_sahara",
+  "cat": "Norte da África",
+  "title": "A questão do Saara Ocidental",
+  "desc": "A disputa territorial no sul volta ao noticiário, com reconhecimentos diplomáticos e escaramuças.",
+  "context": "Soberania e diplomacia.",
+  "cond": {
+   "countries": [
+    "MAR"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Oferecer autonomia ampla.",
+    "hint": "Saída negociada.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "regional": 1
+    },
+    "rel": {
+     "neighbors": -1
+    }
+   },
+   {
+    "text": "Reforçar a presença militar.",
+    "hint": "Firme.",
+    "now": {
+     "treasury": -0.3,
+     "defense": 1
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "neighbors": -4
+    }
+   },
+   {
+    "text": "Buscar reconhecimento de potências.",
+    "hint": "Diplomacia.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {},
+    "rel": {
+     "west": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_dz_gas_europe",
+  "cat": "Norte da África",
+  "title": "Gás para a Europa",
+  "desc": "Com a crise energética, a Europa busca mais gás do país. Contratos de longo prazo estão em jogo.",
+  "context": "Poder de barganha.",
+  "cond": {
+   "countries": [
+    "DZA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Fechar contratos de longo prazo.",
+    "hint": "Receita certa.",
+    "now": {
+     "treasury": 0.5
+    },
+    "groups": {
+     "business": 2
+    },
+    "rel": {
+     "west": 3
+    }
+   },
+   {
+    "text": "Preservar parte para consumo interno.",
+    "hint": "Prudência.",
+    "now": {
+     "treasury": 0.2,
+     "qol": 0.3
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Usar o gás como arma política.",
+    "hint": "Poder, risco.",
+    "now": {
+     "treasury": 0.3,
+     "reputation": -1.5
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "west": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_dz_hirak",
+  "cat": "Norte da África",
+  "title": "O movimento pelas ruas",
+  "desc": "Manifestações semanais pedem renovação do sistema político e fim da elite militar.",
+  "context": "Pressão popular contínua.",
+  "cond": {
+   "countries": [
+    "DZA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Eleições e nova Constituição.",
+    "hint": "Responde às ruas.",
+    "now": {
+     "political": 1.5,
+     "legitimacy": 1
+    },
+    "groups": {
+     "youth": 3,
+     "military": -2
+    }
+   },
+   {
+    "text": "Repressão seletiva.",
+    "hint": "Desgasta.",
+    "now": {
+     "civil": -1.5
+    },
+    "groups": {
+     "youth": -3,
+     "military": 2
+    }
+   },
+   {
+    "text": "Aguardar o cansaço.",
+    "hint": "Aposta.",
+    "now": {
+     "stability": -0.5
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_tn_unions",
+  "cat": "Norte da África",
+  "title": "O poderoso sindicato e a austeridade",
+  "desc": "O sindicato geral ameaça greve contra cortes exigidos por credores.",
+  "context": "Equilíbrio frágil.",
+  "cond": {
+   "countries": [
+    "TUN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Negociar um pacto social.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Seguir com o ajuste.",
+    "hint": "Credibilidade externa.",
+    "now": {
+     "treasury": 0.3,
+     "protest": 1
+    },
+    "groups": {
+     "workers": -4
+    }
+   },
+   {
+    "text": "Reforma gradual.",
+    "hint": "Lento.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "workers": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ly_militias",
+  "cat": "Norte da África",
+  "title": "Milícias e dois governos",
+  "desc": "Territórios dominados por milícias rivais disputam receitas do petróleo e da capital.",
+  "context": "Estado fragmentado.",
+  "cond": {
+   "countries": [
+    "LBY"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Governo de unidade com divisão de renda.",
+    "hint": "Reduz o conflito.",
+    "now": {
+     "stability": 1,
+     "treasury": -0.2
+    },
+    "groups": {
+     "regional": 3
+    }
+   },
+   {
+    "text": "Ofensiva contra as milícias.",
+    "hint": "Violento.",
+    "now": {
+     "control": 2,
+     "civil": -1
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Integrar milícias às forças oficiais.",
+    "hint": "Pragmático.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_slavery_legacy",
+  "cat": "Norte da África",
+  "title": "Trabalho análogo à escravidão",
+  "desc": "Relatórios mostram formas de servidão herdadas em comunidades rurais, e organizações pedem punição.",
+  "context": "Direitos humanos e tradição.",
+  "cond": {
+   "countries": [
+    "SDN",
+    "MRT"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Leis duras e fiscalização.",
+    "hint": "Eficaz.",
+    "now": {
+     "civil": 1,
+     "reputation": 1.5
+    },
+    "groups": {
+     "rural": -1,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Programas de terra e educação para libertos.",
+    "hint": "Justo.",
+    "now": {
+     "treasury": -0.2,
+     "poverty": -0.2
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Negar o problema.",
+    "hint": "Imagem pior.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {}
+   }
+  ]
+ }
+]

@@ -1,0 +1,1061 @@
+[
+ {
+  "id": "cl_claimant_radio",
+  "cat": "Territórios disputados",
+  "title": "{claimant} transmite para {claimProv}",
+  "desc": "Rádios e TVs de {claimant} transmitem 24 horas para {claimProv}, chamando a população a \"voltar para casa\".",
+  "context": "A região que eles reivindicam ouve tudo.",
+  "tpl": {
+   "claimant": "any"
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Bloquear o sinal.",
+    "hint": "Eficaz; censura.",
+    "now": {
+     "civil": -2,
+     "control": 2
+    },
+    "rel": {
+     "$claimant": -4
+    }
+   },
+   {
+    "text": "Investir pesado em {claimProv}: estradas, empregos, escolas.",
+    "hint": "Conquista corações; caro.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "regional": 4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -4,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Lançar nossa própria rádio para o lado de lá.",
+    "hint": "Guerra de propaganda.",
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 1,
+      "d": 180
+     }
+    ],
+    "rel": {
+     "$claimant": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "cl_claimant_passports",
+  "cat": "Territórios disputados",
+  "title": "{claimant} distribui passaportes em {claimProv}",
+  "desc": "Consulados de {claimant} entregam passaportes a moradores de {claimProv}. Milhares já aceitaram.",
+  "context": "É o primeiro passo de uma anexação.",
+  "tpl": {
+   "claimant": "any"
+  },
+  "options": [
+   {
+    "text": "Proibir a dupla cidadania na região.",
+    "hint": "Firme; ressentimento local.",
+    "now": {
+     "control": 3,
+     "civil": -2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 2,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$claimant": -6
+    }
+   },
+   {
+    "text": "Oferecer autonomia cultural à região.",
+    "hint": "Esvazia o apelo de {claimant}.",
+    "now": {
+     "control": -2
+    },
+    "groups": {
+     "regional": 5
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Fechar os consulados de {claimant}.",
+    "hint": "Crise diplomática.",
+    "now": {
+     "legitimacy": 2
+    },
+    "rel": {
+     "$claimant": -15
+    }
+   }
+  ]
+ },
+ {
+  "id": "cl_claimant_rebels",
+  "cat": "Territórios disputados",
+  "title": "Rebeldes armados em {claimProv}",
+  "desc": "Um grupo armado que se diz \"Frente de Libertação\" atacou delegacias em {claimProv}. Os fuzis são do mesmo modelo usado pelo Exército de {claimant}.",
+  "context": "É uma guerra por procuração.",
+  "tpl": {
+   "claimant": "any"
+  },
+  "cond": {
+   "min": {
+    "separatism": 20
+   }
+  },
+  "w": 1.5,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Ofensiva militar contra os rebeldes.",
+    "hint": "Esmaga a revolta; vítimas civis.",
+    "now": {
+     "control": 5,
+     "civil": -2,
+     "treasury": -0.3
+    },
+    "groups": {
+     "military": 3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -3,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Anistia a quem depuser as armas e diálogo.",
+    "hint": "Pode pacificar; parece fraqueza.",
+    "now": {
+     "control": -1
+    },
+    "groups": {
+     "military": -3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -4,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Acusar {claimant} na ONU e exigir sanções.",
+    "hint": "Diplomacia.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "$claimant": -10,
+     "all": 1
+    }
+   },
+   {
+    "text": "Financiar rebeldes dentro de {claimant} em retaliação.",
+    "hint": "Olho por olho.",
+    "rel": {
+     "$claimant": -8
+    },
+    "act": {
+     "type": "covert",
+     "id": "$claimant",
+     "key": "fundMilitia"
+    }
+   }
+  ]
+ },
+ {
+  "id": "cl_referendum_demand",
+  "cat": "Territórios disputados",
+  "title": "Plebiscito em {claimProv}?",
+  "desc": "Líderes locais de {claimProv} exigem um plebiscito sobre o futuro da região. {claimant} promete respeitar o resultado — se for a favor dele.",
+  "context": "Democracia ou integridade territorial?",
+  "tpl": {
+   "claimant": "any"
+  },
+  "cond": {
+   "min": {
+    "separatism": 30
+   }
+  },
+  "options": [
+   {
+    "text": "Permitir o plebiscito com observadores internacionais.",
+    "hint": "Legitimidade; pode perder a região.",
+    "now": {
+     "reputation": 5,
+     "political": 2
+    },
+    "next": [
+     {
+      "id": "cl_referendum_result",
+      "days": 45
+     }
+    ]
+   },
+   {
+    "text": "Proibir e prender os organizadores.",
+    "hint": "Mantém o território; repressão.",
+    "now": {
+     "civil": -3,
+     "control": 3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Oferecer um estatuto de autonomia no lugar.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "regional": 5
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -4,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "cl_referendum_result",
+  "cat": "Territórios disputados",
+  "title": "O plebiscito em {claimProv}",
+  "desc": "Urnas apuradas em {claimProv}. A participação foi alta e os observadores aprovaram o processo.",
+  "context": "Respeitaremos o resultado?",
+  "tpl": {
+   "claimant": "any"
+  },
+  "chain": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Respeitar o resultado, seja qual for.",
+    "hint": "Democracia; risco real de perder a região.",
+    "act": {
+     "type": "insurgency",
+     "claim": "$claim",
+     "choice": "referendum"
+    }
+   },
+   {
+    "text": "Anular por \"irregularidades\".",
+    "hint": "Mantém a região; escândalo.",
+    "now": {
+     "reputation": -6,
+     "legitimacy": -3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 4,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "cl_claimant_offer_buy",
+  "cat": "Territórios disputados",
+  "title": "{claimant} quer comprar {claimProv}",
+  "desc": "Em proposta inédita, {claimant} oferece uma fortuna para \"adquirir\" {claimProv} e encerrar a disputa.",
+  "context": "Dinheiro por terra. Como no século XIX.",
+  "tpl": {
+   "claimant": "any"
+  },
+  "w": 0.6,
+  "cd": 900,
+  "options": [
+   {
+    "text": "Vender.",
+    "hint": "Muito dinheiro; humilhação nacional.",
+    "now": {
+     "treasury": 4,
+     "legitimacy": -8
+    },
+    "groups": {
+     "military": -8
+    },
+    "act": {
+     "type": "cede",
+     "id": "$claimant",
+     "claim": "$claim"
+    }
+   },
+   {
+    "text": "Recusar com indignação.",
+    "hint": "Orgulho.",
+    "now": {
+     "legitimacy": 2
+    },
+    "rel": {
+     "$claimant": -6
+    }
+   },
+   {
+    "text": "Propor administração conjunta.",
+    "hint": "Criativo; divide opiniões.",
+    "now": {
+     "control": -2
+    },
+    "rel": {
+     "$claimant": 8
+    }
+   }
+  ]
+ },
+ {
+  "id": "cl_target_unrest",
+  "cat": "Territórios disputados",
+  "title": "Protestos pró-{nation} em {targetProv}",
+  "desc": "Milhares marcham em {targetProv}, território de {target} que reivindicamos, pedindo união com {nation}. A polícia de {target} reprimiu com violência.",
+  "context": "É hora de agir?",
+  "tpl": {
+   "target": "any"
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Financiar os manifestantes.",
+    "hint": "Fortalece o movimento.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "$target": -6
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$target",
+     "party": 6,
+     "militia": 10
+    }
+   },
+   {
+    "text": "Enviar armas para autodefesa.",
+    "hint": "Pode virar levante.",
+    "rel": {
+     "$target": -10
+    },
+    "act": {
+     "type": "covert",
+     "id": "$target",
+     "key": "sendArms"
+    }
+   },
+   {
+    "text": "Exigir que {target} respeite os direitos deles.",
+    "hint": "Diplomacia.",
+    "now": {
+     "legitimacy": 1
+    },
+    "rel": {
+     "$target": -4
+    }
+   },
+   {
+    "text": "Desestimular: não é o momento.",
+    "hint": "Prudência; nacionalistas frustrados.",
+    "groups": {
+     "military": -3,
+     "regional": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "cl_target_negotiate",
+  "cat": "Territórios disputados",
+  "title": "Negociar {targetProv}?",
+  "desc": "Diplomatas de {target} sugerem uma mesa de negociação sobre {targetProv}, a região que reivindicamos.",
+  "context": "Pode haver um acordo — ou só tempo perdido.",
+  "tpl": {
+   "target": "any"
+  },
+  "options": [
+   {
+    "text": "Exigir a devolução integral.",
+    "hint": "Maximalista.",
+    "now": {
+     "legitimacy": 2
+    },
+    "rel": {
+     "$target": -6
+    }
+   },
+   {
+    "text": "Propor condomínio e livre circulação.",
+    "hint": "Criativo; acalma a disputa.",
+    "groups": {
+     "military": -3
+    },
+    "rel": {
+     "$target": 10
+    }
+   },
+   {
+    "text": "Renunciar à reivindicação em troca de compensação.",
+    "hint": "Paz definitiva; nacionalistas furiosos.",
+    "now": {
+     "treasury": 1,
+     "legitimacy": -5
+    },
+    "groups": {
+     "military": -8
+    },
+    "rel": {
+     "$target": 25
+    }
+   }
+  ]
+ },
+ {
+  "id": "cl_target_militia_leader",
+  "cat": "Operações secretas",
+  "title": "O comandante de {targetProv}",
+  "desc": "{person}, chefe da milícia que apoiamos em {targetProv}, exige mais armas e promete \"libertar a região em seis meses\".",
+  "context": "Ele é útil. E imprevisível.",
+  "tpl": {
+   "target": "any"
+  },
+  "cond": {
+   "min": {
+    "covertOps": 1
+   }
+  },
+  "options": [
+   {
+    "text": "Dobrar o apoio.",
+    "hint": "Levante mais provável; risco de descoberta.",
+    "now": {
+     "treasury": -0.3
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$target",
+     "militia": 20
+    }
+   },
+   {
+    "text": "Manter o apoio atual.",
+    "hint": "Prudência."
+   },
+   {
+    "text": "Cortar o apoio: ele virou um problema.",
+    "hint": "Encerra a operação.",
+    "act": {
+     "type": "covertBoost",
+     "id": "$target",
+     "militia": -40
+    }
+   }
+  ]
+ },
+ {
+  "id": "cv_agent_caught",
+  "cat": "Operações secretas",
+  "title": "Agente nosso preso em {covert}",
+  "desc": "A polícia de {covert} prendeu um homem com malas de dinheiro e documentos que apontam para a nossa inteligência.",
+  "context": "Se ele falar, a operação inteira cai.",
+  "tpl": {
+   "covert": "any"
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Negar qualquer vínculo.",
+    "hint": "Padrão; pouco convincente.",
+    "now": {
+     "reputation": -2
+    },
+    "rel": {
+     "$covert": -6
+    }
+   },
+   {
+    "text": "Negociar a libertação em troca de concessões.",
+    "hint": "Recupera o agente; custo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "$covert": 2
+    }
+   },
+   {
+    "text": "Encerrar a operação e queimar arquivos.",
+    "hint": "Contém o dano; perde o investimento.",
+    "act": {
+     "type": "covertBoost",
+     "id": "$covert",
+     "party": -30,
+     "militia": -30
+    }
+   }
+  ]
+ },
+ {
+  "id": "cv_party_wants_more",
+  "cat": "Operações secretas",
+  "title": "Nosso partido em {covert} pede mais",
+  "desc": "Os dirigentes do partido que financiamos em {covert} dizem estar a um passo do poder e pedem uma última injeção de recursos.",
+  "context": "O prêmio é um governo amigo.",
+  "tpl": {
+   "covert": "any"
+  },
+  "options": [
+   {
+    "text": "Financiar a campanha final.",
+    "hint": "Chance real de vitória.",
+    "now": {
+     "treasury": -0.4
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$covert",
+     "party": 20
+    }
+   },
+   {
+    "text": "Apoio moderado.",
+    "hint": "Menos risco.",
+    "now": {
+     "treasury": -0.15
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$covert",
+     "party": 8
+    }
+   },
+   {
+    "text": "Recuar: está chamando atenção.",
+    "hint": "Segurança."
+   }
+  ]
+ },
+ {
+  "id": "cv_rebels_atrocity",
+  "cat": "Operações secretas",
+  "title": "Massacre cometido por rebeldes que armamos",
+  "desc": "Milicianos que recebem nossas armas em {covert} massacraram uma aldeia. Imagens correm o mundo.",
+  "context": "Nossas digitais estão nas armas.",
+  "tpl": {
+   "covert": "any"
+  },
+  "cond": {
+   "min": {
+    "covertOps": 1
+   }
+  },
+  "options": [
+   {
+    "text": "Cortar o apoio publicamente e condenar.",
+    "hint": "Salva a imagem; perde a milícia.",
+    "now": {
+     "reputation": 1
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$covert",
+     "militia": -40
+    }
+   },
+   {
+    "text": "Continuar o apoio em silêncio.",
+    "hint": "A guerra segue; reputação desaba.",
+    "now": {
+     "reputation": -6
+    },
+    "rel": {
+     "$covert": -10
+    }
+   },
+   {
+    "text": "Exigir que entreguem os culpados.",
+    "hint": "Disciplina; atrito com os rebeldes.",
+    "act": {
+     "type": "covertBoost",
+     "id": "$covert",
+     "militia": -10
+    }
+   }
+  ]
+ },
+ {
+  "id": "cv_spy_chief",
+  "cat": "Operações secretas",
+  "title": "O chefe da inteligência quer carta branca",
+  "desc": "{person}, diretor do serviço secreto, pede orçamento e autorização para \"operações especiais\" em países vizinhos, sem supervisão parlamentar.",
+  "context": "Eficiência ou abuso?",
+  "cond": {
+   "min": {
+    "covertOps": 1
+   }
+  },
+  "options": [
+   {
+    "text": "Conceder carta branca.",
+    "hint": "Operações mais eficazes; risco de abuso.",
+    "now": {
+     "political": -2,
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "intel",
+      "v": 6,
+      "d": 0
+     },
+     {
+      "k": "coupRisk",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Mais verba, com supervisão.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "intel",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Negar.",
+    "hint": "Controle civil.",
+    "groups": {
+     "military": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "cv_region_separatists",
+  "cat": "Operações secretas",
+  "title": "Separatistas em {region}",
+  "desc": "Um movimento separatista cresce em {region}. Panfletos falam em independência; há suspeitas de financiamento estrangeiro.",
+  "context": "Ignorar pode ser fatal.",
+  "tpl": {
+   "region": "separatist"
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Infiltrar e desarticular o movimento.",
+    "hint": "Discreto; eficaz.",
+    "now": {
+     "intel": 1,
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -4,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Investir pesado na região.",
+    "hint": "Caro; resolve as causas. A obra aparece no mapa.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "regional": 5
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -5,
+      "d": 0
+     }
+    ],
+    "act": {
+     "type": "regionBuild",
+     "region": "$region",
+     "build": "auto"
+    }
+   },
+   {
+    "text": "Proibir o movimento e prender líderes.",
+    "hint": "Rápido; mártires.",
+    "now": {
+     "control": 3,
+     "civil": -3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Conceder autonomia.",
+    "hint": "Desarma a crise; perde poder.",
+    "now": {
+     "control": -3
+    },
+    "groups": {
+     "regional": 6
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -6,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "cv_region_poor",
+  "cat": "Territórios disputados",
+  "title": "{region} se sente abandonada",
+  "desc": "Moradores de {region} bloqueiam estradas reclamando de abandono: escolas sem professores, hospitais sem médicos.",
+  "context": "O ressentimento regional cresce.",
+  "tpl": {
+   "region": "poor"
+  },
+  "options": [
+   {
+    "text": "Plano emergencial para {region}.",
+    "hint": "Caro; acalma. A obra aparece no mapa.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "regional": 4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -3,
+      "d": 365
+     }
+    ],
+    "act": {
+     "type": "regionBuild",
+     "region": "$region",
+     "build": "auto"
+    }
+   },
+   {
+    "text": "Enviar a polícia para desbloquear.",
+    "hint": "Ordem; raiva.",
+    "now": {
+     "control": 2,
+     "protest": 2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Prometer obras no próximo orçamento.",
+    "hint": "Barato; pouca credibilidade.",
+    "now": {
+     "legitimacy": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "nu_scientists",
+  "cat": "Programa nuclear",
+  "title": "Cientistas propõem a bomba",
+  "desc": "Um grupo de físicos do programa civil de energia afirma que, com verba e sigilo, o país teria uma arma nuclear em dois anos.",
+  "context": "A decisão mais grave que um governo pode tomar.",
+  "cond": {
+   "nuclear": false,
+   "noflag": "npt",
+   "min": {
+    "milIndustry": 25
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Autorizar o programa secreto.",
+    "hint": "Dissuasão futura; risco de sanções.",
+    "groups": {
+     "military": 5
+    },
+    "act": {
+     "type": "nukeProgram"
+    }
+   },
+   {
+    "text": "Manter só o programa civil.",
+    "hint": "Prudência.",
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 0.3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Assinar tratados de não proliferação e inspeções.",
+    "hint": "Reputação.",
+    "now": {
+     "reputation": 4
+    },
+    "rel": {
+     "west": 3
+    },
+    "flags": {
+     "set": [
+      "npt"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "nu_program_leak",
+  "cat": "Programa nuclear",
+  "title": "Vazamento sobre o programa",
+  "desc": "Um engenheiro do programa nuclear tentou vender plantas a um jornal estrangeiro. Foi preso, mas cópias podem ter saído.",
+  "context": "Sigilo comprometido.",
+  "cond": {
+   "min": {
+    "nukeProg": 10
+   },
+   "nuclear": false
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Julgamento secreto.",
+    "hint": "Abafa.",
+    "now": {
+     "civil": -2
+    }
+   },
+   {
+    "text": "Acelerar o programa antes que o mundo reaja.",
+    "hint": "Mais caro; mais rápido.",
+    "now": {
+     "treasury": -0.5
+    },
+    "act": {
+     "type": "nukeBoost",
+     "v": 15
+    }
+   }
+  ]
+ },
+ {
+  "id": "nu_doctrine",
+  "cat": "Programa nuclear",
+  "title": "Doutrina nuclear",
+  "desc": "Agora que temos a bomba, o Estado-Maior pede uma doutrina clara: usaremos primeiro? Só em retaliação?",
+  "context": "O mundo quer saber.",
+  "cond": {
+   "nuclear": true
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Não uso primeiro.",
+    "hint": "Tranquiliza o mundo.",
+    "now": {
+     "reputation": 4
+    },
+    "rel": {
+     "all": 2
+    }
+   },
+   {
+    "text": "Ambiguidade estratégica.",
+    "hint": "Dissuasão máxima.",
+    "now": {
+     "defense": 3
+    }
+   },
+   {
+    "text": "Uso contra qualquer ameaça existencial, inclusive convencional.",
+    "hint": "Dissuasão agressiva; vizinhos alarmados.",
+    "now": {
+     "defense": 5,
+     "reputation": -4
+    },
+    "rel": {
+     "neighbors": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "nu_arms_race",
+  "cat": "Programa nuclear",
+  "title": "Corrida armamentista com {nb}",
+  "desc": "{nb} anunciou que desenvolverá armas nucleares \"em resposta ao arsenal de {nation}\".",
+  "context": "A bomba gera bombas.",
+  "tpl": {
+   "nb": "any"
+  },
+  "cond": {
+   "nuclear": true
+  },
+  "options": [
+   {
+    "text": "Oferecer um tratado de controle de armas.",
+    "hint": "Diplomacia; prestígio.",
+    "now": {
+     "reputation": 3
+    },
+    "rel": {
+     "$nb": 10
+    }
+   },
+   {
+    "text": "Ameaçar ataque preventivo às instalações.",
+    "hint": "Pode deter — ou provocar guerra.",
+    "rel": {
+     "$nb": -18
+    },
+    "flags": {
+     "set": [
+      "casusBelli"
+     ]
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Eles que tentem."
+   }
+  ]
+ },
+ {
+  "id": "nu_sell_tech",
+  "cat": "Programa nuclear",
+  "title": "Comprador de tecnologia nuclear",
+  "desc": "{power} sondou, por intermediários, a compra de tecnologia de centrífugas.",
+  "context": "Muito dinheiro. Muito perigo.",
+  "tpl": {
+   "power": "hostile"
+  },
+  "cond": {
+   "nuclear": true
+  },
+  "w": 0.6,
+  "cd": 900,
+  "options": [
+   {
+    "text": "Vender em segredo.",
+    "hint": "Receita; risco enorme.",
+    "now": {
+     "treasury": 2,
+     "reputation": -8
+    },
+    "rel": {
+     "$power": 15,
+     "west": -10
+    }
+   },
+   {
+    "text": "Recusar e denunciar.",
+    "hint": "Prestígio.",
+    "now": {
+     "reputation": 3
+    },
+    "rel": {
+     "$power": -10
+    }
+   },
+   {
+    "text": "Recusar em silêncio.",
+    "hint": "Neutro."
+   }
+  ]
+ },
+ {
+  "id": "nu_accident",
+  "cat": "Programa nuclear",
+  "title": "Acidente em instalação nuclear",
+  "desc": "Um vazamento radioativo em uma instalação militar contaminou um rio. Moradores relatam peixes mortos.",
+  "context": "Esconder ou admitir?",
+  "cond": {
+   "nuclear": true
+  },
+  "w": 0.5,
+  "cd": 900,
+  "options": [
+   {
+    "text": "Admitir, evacuar e pedir ajuda.",
+    "hint": "Transparência; pânico controlado.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": 2,
+     "health": -2
+    }
+   },
+   {
+    "text": "Encobrir.",
+    "hint": "Silêncio; se vazar, escândalo.",
+    "now": {
+     "civil": -2
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ }
+]

@@ -1,0 +1,1132 @@
+[
+ {
+  "id": "pk_me_oil_diversify",
+  "cat": "Oriente Médio",
+  "title": "Depois do petróleo",
+  "desc": "Com a transição energética mundial, o país busca diversificar para turismo, tecnologia e finanças.",
+  "context": "Visão do pós-petróleo.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Fundo soberano e cidades inteligentes.",
+    "hint": "Aposta alta.",
+    "now": {
+     "treasury": -0.5,
+     "tech": 1.5
+    },
+    "groups": {
+     "youth": 3,
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Estender o petróleo o máximo possível.",
+    "hint": "Lucro de curto prazo.",
+    "now": {
+     "treasury": 0.4
+    },
+    "groups": {
+     "business": 1,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Investir em energias renováveis.",
+    "hint": "Coerente.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_me_women_driving",
+  "cat": "Oriente Médio",
+  "title": "Direitos das mulheres no espaço público",
+  "desc": "Reformas permitem às mulheres dirigir, trabalhar e viajar sozinhas, enfrentando resistência conservadora.",
+  "context": "Modernização social.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aprovar as reformas.",
+    "hint": "Imagem e economia.",
+    "now": {
+     "civil": 1.5,
+     "reputation": 1.5,
+     "growth": 0.1
+    },
+    "groups": {
+     "youth": 4,
+     "rural": -3
+    }
+   },
+   {
+    "text": "Reformas lentas.",
+    "hint": "Cautela.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 1,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Manter regras tradicionais.",
+    "hint": "Segurança conservadora.",
+    "now": {
+     "civil": -0.5,
+     "reputation": -1
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_water_desal",
+  "cat": "Oriente Médio",
+  "title": "Água do mar para beber",
+  "desc": "Usinas de dessalinização consomem energia enorme; falhas deixam cidades sem água.",
+  "context": "Vida no deserto.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Ampliar as usinas com energia solar.",
+    "hint": "Caro e estrutural.",
+    "now": {
+     "treasury": -0.5,
+     "qol": 0.5
+    },
+    "groups": {
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Racionar e taxar o consumo.",
+    "hint": "Barato.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "workers": -2
+    }
+   },
+   {
+    "text": "Parcerias com empresas estrangeiras.",
+    "hint": "Técnico.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_expat_workers",
+  "cat": "Oriente Médio",
+  "title": "Trabalhadores migrantes e o sistema de patrocínio",
+  "desc": "Milhões de estrangeiros constroem o país, mas o sistema de patrocínio gera abusos. Governos de origem protestam.",
+  "context": "Dependência de mão de obra.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reformar o sistema e fixar salário mínimo.",
+    "hint": "Corrige.",
+    "now": {
+     "reputation": 2,
+     "treasury": -0.1
+    },
+    "groups": {
+     "workers": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Manter regras com fiscalização.",
+    "hint": "Moderado.",
+    "now": {
+     "reputation": 0.3
+    },
+    "groups": {}
+   },
+   {
+    "text": "Nada a mudar.",
+    "hint": "Mão de obra barata.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_sectarian",
+  "cat": "Oriente Médio",
+  "title": "Tensão entre comunidades religiosas",
+  "desc": "Uma disputa política vira conflito entre grupos religiosos rivais, com mortes em protestos.",
+  "context": "Fragilidade sectária.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Pacto de poder compartilhado.",
+    "hint": "Estabiliza.",
+    "now": {
+     "stability": 1,
+     "political": 0.5
+    },
+    "groups": {
+     "regional": 2
+    }
+   },
+   {
+    "text": "Segurança dura.",
+    "hint": "Contenção.",
+    "now": {
+     "control": 1.5,
+     "civil": -1.5
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Mediação de uma potência regional.",
+    "hint": "Dependência.",
+    "now": {
+     "stability": 0.5
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_proxy_war",
+  "cat": "Oriente Médio",
+  "title": "Guerra por procuração no seu território",
+  "desc": "Potências rivais financiam facções locais, e armas chegam sem controle.",
+  "context": "Soberania como campo de batalha.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Neutralidade rigorosa.",
+    "hint": "Evita lados.",
+    "now": {
+     "stability": 0.5
+    },
+    "groups": {}
+   },
+   {
+    "text": "Escolher um patrono forte.",
+    "hint": "Proteção.",
+    "now": {
+     "defense": 2,
+     "reputation": -1
+    },
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "east": 3,
+     "west": -2
+    }
+   },
+   {
+    "text": "Pedir intervenção da ONU.",
+    "hint": "Lento.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {},
+    "rel": {
+     "all": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_hajj_pilgrim",
+  "cat": "Oriente Médio",
+  "title": "A peregrinação anual",
+  "desc": "Milhões chegam a locais sagrados; o calor extremo e aglomerações causam mortes.",
+  "context": "Logística da fé.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Modernizar transporte e cotas.",
+    "hint": "Seguro.",
+    "now": {
+     "treasury": -0.3,
+     "health": 0.5
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Aumentar o número de peregrinos.",
+    "hint": "Receita.",
+    "now": {
+     "treasury": 0.2,
+     "health": -0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Parcerias internacionais.",
+    "hint": "Cooperação.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_me_gulf_mega",
+  "cat": "Oriente Médio",
+  "title": "Megaprojetos futuristas",
+  "desc": "O governo anuncia uma cidade linear de centenas de quilômetros e torres gigantes. Engenheiros duvidam do custo.",
+  "context": "Ambição desmedida.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Seguir adiante em escala reduzida.",
+    "hint": "Prudência.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": 1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Executar o projeto integral.",
+    "hint": "Risco fiscal.",
+    "now": {
+     "treasury": -0.9,
+     "reputation": 2
+    },
+    "groups": {
+     "business": 3,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Cancelar.",
+    "hint": "Pragmático.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_sovereign_wealth",
+  "cat": "Oriente Médio",
+  "title": "O fundo soberano e a política",
+  "desc": "Investimentos bilionários em clubes de futebol e empresas ocidentais geram debate sobre \"lavagem esportiva\".",
+  "context": "Dinheiro e imagem.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Continuar comprando influência.",
+    "hint": "Soft power.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Investir em indústria local.",
+    "hint": "Retorno interno.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Guardar para gerações futuras.",
+    "hint": "Prudência.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_me_iran_deal",
+  "cat": "Oriente Médio",
+  "title": "O acordo nuclear e as sanções",
+  "desc": "Uma potência regional avança em seu programa nuclear; vizinhos e ocidentais discutem sanções e acordos.",
+  "context": "Corrida regional.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Apoiar sanções.",
+    "hint": "Alinhamento ocidental.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "west": 3,
+     "neighbors": -3
+    }
+   },
+   {
+    "text": "Defender negociação diplomática.",
+    "hint": "Moderado.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {}
+   },
+   {
+    "text": "Buscar sua própria capacidade.",
+    "hint": "Perigoso.",
+    "now": {
+     "treasury": -0.5,
+     "defense": 2,
+     "reputation": -3
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "all": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_refugees_neighbor",
+  "cat": "Oriente Médio",
+  "title": "Milhões de refugiados vizinhos",
+  "desc": "Guerras vizinhas lançam milhões em seu território; recursos e serviços entram em colapso.",
+  "context": "Humanitarismo sob pressão.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Abrir campos e escolas.",
+    "hint": "Humano e caro.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": 2
+    },
+    "groups": {
+     "youth": 2,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Fechar fronteira.",
+    "hint": "Duro.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Exigir apoio financeiro internacional.",
+    "hint": "Pressão diplomática.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {},
+    "rel": {
+     "west": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_gaza_aid",
+  "cat": "Oriente Médio",
+  "title": "Pressão popular por causa de um conflito",
+  "desc": "Multidões saem às ruas por solidariedade a uma causa regional e exigem medidas contra um vizinho poderoso.",
+  "context": "Opinião pública contra diplomacia.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Cortar relações e suspender acordos.",
+    "hint": "Agrada às ruas.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "youth": 3,
+     "military": 1
+    },
+    "rel": {
+     "west": -4
+    }
+   },
+   {
+    "text": "Pedir cessar-fogo e ajuda humanitária.",
+    "hint": "Diplomacia.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Reprimir manifestações.",
+    "hint": "Estabilidade e ira.",
+    "now": {
+     "civil": -2,
+     "protest": 1.5
+    },
+    "groups": {
+     "youth": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_kurdish",
+  "cat": "Oriente Médio",
+  "title": "A questão curda e as fronteiras",
+  "desc": "Movimentos curdos pedem autonomia e dividem o território de vários países.",
+  "context": "Identidade sem Estado.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Autonomia cultural e política.",
+    "hint": "Reduz tensão.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "regional": 3,
+     "military": -1
+    }
+   },
+   {
+    "text": "Reprimir.",
+    "hint": "Contenção.",
+    "now": {
+     "control": 1.5,
+     "civil": -1.5
+    },
+    "groups": {
+     "military": 2,
+     "regional": -3
+    }
+   },
+   {
+    "text": "Negociar com vizinhos um acordo regional.",
+    "hint": "Complexo.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_date_palm",
+  "cat": "Oriente Médio",
+  "title": "Tamareiras, oásis e agricultura tradicional",
+  "desc": "Pequenos agricultores perdem terras para urbanização e falta de água.",
+  "context": "Tradição que murcha.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Subsídios e certificação de origem.",
+    "hint": "Preserva.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Converter terra em empreendimentos.",
+    "hint": "Dinheiro.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": 2,
+     "rural": -3
+    }
+   },
+   {
+    "text": "Turismo rural.",
+    "hint": "Híbrido.",
+    "now": {
+     "treasury": 0.05
+    },
+    "groups": {
+     "rural": 1,
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_airline_hub",
+  "cat": "Oriente Médio",
+  "title": "O hub aéreo mundial",
+  "desc": "Companhias do Golfo disputam passageiros globais. A concorrência estrangeira reclama de subsídios.",
+  "context": "Aviação como estratégia.",
+  "cond": {
+   "regions": [
+    "middle_east"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Expandir o aeroporto e a frota.",
+    "hint": "Posição global.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Acordos de aviação abertos.",
+    "hint": "Cooperação.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Cortar subsídios.",
+    "hint": "Conforme regras.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ir_hijab_protest",
+  "cat": "Oriente Médio",
+  "title": "Protestos contra a polícia moral",
+  "desc": "Mulheres lideram marchas contra o código de vestimenta, e a repressão deixa mortos.",
+  "context": "Liberdades e regime.",
+  "cond": {
+   "countries": [
+    "IRN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Suspender a polícia moral.",
+    "hint": "Concessão.",
+    "now": {
+     "civil": 1.5,
+     "protest": -1
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Reprimir e prender organizadores.",
+    "hint": "Dura.",
+    "now": {
+     "civil": -2,
+     "reputation": -3,
+     "protest": 1
+    },
+    "groups": {
+     "youth": -5,
+     "military": 2
+    }
+   },
+   {
+    "text": "Diálogo com clérigos moderados.",
+    "hint": "Compromisso.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ir_sanctions_evasion",
+  "cat": "Oriente Médio",
+  "title": "Contornar sanções com petróleo clandestino",
+  "desc": "Petroleiros desligam transponders para vender ilegalmente a compradores asiáticos.",
+  "context": "A economia das sanções.",
+  "cond": {
+   "countries": [
+    "IRN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Ampliar a frota paralela.",
+    "hint": "Receita e riscos.",
+    "now": {
+     "treasury": 0.4,
+     "reputation": -1.5
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "china": 3,
+     "west": -3
+    }
+   },
+   {
+    "text": "Negociar alívio em troca de limites nucleares.",
+    "hint": "Diplomacia.",
+    "now": {
+     "treasury": 0.2,
+     "reputation": 1
+    },
+    "groups": {},
+    "rel": {
+     "west": 3
+    }
+   },
+   {
+    "text": "Substituir importações internamente.",
+    "hint": "Longo prazo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_il_judicial_reform",
+  "cat": "Oriente Médio",
+  "title": "Reforma do Judiciário e rua dividida",
+  "desc": "Uma proposta para limitar o poder da Suprema Corte leva multidões às ruas e reservistas a ameaçar boicote.",
+  "context": "Democracia sob tensão.",
+  "cond": {
+   "countries": [
+    "ISR",
+    "PSE"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Suspender a reforma e negociar.",
+    "hint": "Reduz crise.",
+    "now": {
+     "political": 1,
+     "stability": 1
+    },
+    "groups": {
+     "opposition": 2,
+     "military": 1
+    }
+   },
+   {
+    "text": "Aprovar a reforma.",
+    "hint": "Polariza.",
+    "now": {
+     "political": -2,
+     "stability": -2
+    },
+    "groups": {
+     "opposition": -4
+    }
+   },
+   {
+    "text": "Referendo.",
+    "hint": "Decisão popular.",
+    "now": {
+     "legitimacy": 0.5
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_tr_inflation_lira",
+  "cat": "Oriente Médio",
+  "title": "Lira em queda livre",
+  "desc": "A moeda perde valor com juros baixos impostos pelo governo, e a inflação corrói salários.",
+  "context": "Política monetária heterodoxa.",
+  "cond": {
+   "countries": [
+    "TUR"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Subir juros e cortar gasto.",
+    "hint": "Estabiliza.",
+    "now": {
+     "inflation": -3,
+     "growth": -0.4
+    },
+    "groups": {
+     "workers": -3,
+     "business": -1
+    }
+   },
+   {
+    "text": "Manter a política.",
+    "hint": "Inflação persiste.",
+    "now": {
+     "inflation": 1.5
+    },
+    "groups": {
+     "workers": -2
+    }
+   },
+   {
+    "text": "Controle de capitais.",
+    "hint": "Paliativo.",
+    "now": {
+     "inflation": -0.8,
+     "reputation": -1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_tr_earthquake_build",
+  "cat": "Oriente Médio",
+  "title": "Terremoto e construtoras",
+  "desc": "Um grande sismo expõe prédios mal construídos. Cresce a pressão por responsabilização.",
+  "context": "Corrupção que mata.",
+  "cond": {
+   "countries": [
+    "TUR"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Processar construtoras e autoridades.",
+    "hint": "Justiça.",
+    "now": {
+     "corruption": -1,
+     "legitimacy": 1
+    },
+    "groups": {
+     "business": -2,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Reconstrução rápida sem punição.",
+    "hint": "Imediato.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Novo código de construção.",
+    "hint": "Futuro seguro.",
+    "now": {
+     "treasury": -0.2,
+     "corruption": -0.4
+    },
+    "groups": {
+     "workers": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_royal_succession",
+  "cat": "Oriente Médio",
+  "title": "Sucessão da família real",
+  "desc": "O monarca idoso prepara o herdeiro; ramos rivais da família se movimentam.",
+  "context": "Estabilidade monárquica.",
+  "cond": {
+   "countries": [
+    "SAU",
+    "ARE",
+    "QAT",
+    "KWT",
+    "BHR",
+    "OMN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Consolidar o herdeiro.",
+    "hint": "Continuidade.",
+    "now": {
+     "stability": 1
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Conselho de família para decidir.",
+    "hint": "Tradição.",
+    "now": {
+     "stability": 0.3
+    },
+    "groups": {
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Abrir para eleição consultiva.",
+    "hint": "Ousado.",
+    "now": {
+     "political": 1.5,
+     "stability": -1
+    },
+    "groups": {
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_me_reconstruction",
+  "cat": "Oriente Médio",
+  "title": "Reconstrução depois da guerra",
+  "desc": "Cidades destruídas pedem bilhões. Doadores impõem condições, e potências disputam contratos.",
+  "context": "Quem reconstrói, governa.",
+  "cond": {
+   "countries": [
+    "IRQ",
+    "SYR",
+    "LBN",
+    "JOR",
+    "YEM"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aceitar ajuda ocidental com condições.",
+    "hint": "Dinheiro e vigilância.",
+    "now": {
+     "treasury": 0.4,
+     "political": 0.5
+    },
+    "groups": {
+     "business": 1
+    },
+    "rel": {
+     "west": 3
+    }
+   },
+   {
+    "text": "Parceria com potências alinhadas.",
+    "hint": "Sem condições políticas.",
+    "now": {
+     "treasury": 0.3
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "east": 3,
+     "west": -2
+    }
+   },
+   {
+    "text": "Reconstruir com recursos próprios.",
+    "hint": "Lento.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "workers": 1
+    }
+   }
+  ]
+ }
+]

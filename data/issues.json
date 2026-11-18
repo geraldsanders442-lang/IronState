@@ -1,0 +1,312 @@
+[
+{"id":"steel_crisis","cat":"Empresas","title":"Siderúrgica nacional à beira da falência","desc":"A maior siderúrgica do país anunciou que não consegue pagar salários. Vinte mil empregos dependem dela, além de fornecedores em toda a Região Industrial.","context":"O aço importado ficou mais barato e a empresa acumula dívidas há anos.","options":[
+ {"text":"Subsidiar a empresa até que se recupere.","hint":"Preserva empregos agora, custa caro e favorece os donos.","now":{"treasury":-0.4,"unemployment":-0.4},"groups":{"workers":6,"business":3},"long":[{"k":"corruption","v":2,"d":180}]},
+ {"text":"Nacionalizar a siderúrgica.","hint":"Controle estatal; investidores estrangeiros reclamam.","now":{"treasury":-0.25,"market":-4},"groups":{"workers":7,"business":-8,"bureaucracy":4},"long":[{"k":"industry","v":3,"d":0},{"k":"efficiency","v":-2,"d":180}],"rel":{"west":-5},"flags":{"set":["nationalized"]}},
+ {"text":"Deixar o mercado decidir.","hint":"Zero gasto; desemprego e revolta na Região Industrial.","now":{"unemployment":1.2,"protest":4},"groups":{"workers":-9,"business":4,"regional":-4},"long":[{"k":"growth","v":0.2,"d":365}]}
+]},
+{"id":"minister_scandal","cat":"Corrupção","title":"Ministro flagrado com malas de dinheiro","desc":"Um vídeo vazado mostra o Ministro de Obras recebendo malas de dinheiro de uma empreiteira. O vídeo já circula em todos os celulares.","context":"O ministro é aliado antigo e conhece segredos do regime.","options":[
+ {"text":"Demiti-lo e entregá-lo à justiça.","hint":"Ganha credibilidade; aliados ficam nervosos.","now":{"legitimacy":4,"corruption":-3},"groups":{"bureaucracy":-5,"regional":-3,"opposition":3},"long":[{"k":"coupRisk","v":2,"d":120}]},
+ {"text":"Negar tudo: o vídeo é montagem estrangeira.","hint":"Protege o círculo íntimo; funciona melhor com imprensa controlada.","now":{"legitimacy":-3,"protest":3},"groups":{"bureaucracy":3,"youth":-5,"opposition":-3},"long":[{"k":"corruption","v":3,"d":240}]},
+ {"text":"Prender o jornalista que divulgou o vídeo.","hint":"Silencia o caso; repercussão internacional negativa.","now":{"civil":-4,"political":-3,"reputation":-4},"groups":{"youth":-6,"opposition":-6,"bureaucracy":4},"rel":{"west":-4}}
+]},
+{"id":"bread_prices","cat":"Social","title":"O preço do pão disparou","desc":"Filas se formam nas padarias depois que o preço do trigo subiu 40% em um mês. Panelaços ecoam nos bairros pobres da capital.","context":"A seca em países produtores elevou as cotações internacionais.","cond":{"min":{"inflation":5}},"options":[
+ {"text":"Congelar o preço do pão por decreto.","hint":"Alívio imediato; padarias reduzem a produção.","now":{"inflation":-1,"hunger":-1},"groups":{"workers":5,"rural":3,"business":-6},"long":[{"k":"s_food","v":-4,"d":180},{"k":"market","v":-3,"d":180}]},
+ {"text":"Subsidiar a farinha para os moinhos.","hint":"Custo fiscal, preços estáveis.","now":{"treasury":-0.3,"hunger":-2},"groups":{"workers":4,"rural":2}},
+ {"text":"Distribuir vales-alimentação às famílias pobres.","hint":"Ajuda quem precisa; exige máquina eficiente.","now":{"treasury":-0.2,"poverty":-1,"hunger":-2},"groups":{"workers":3,"rural":4,"bureaucracy":2},"long":[{"k":"corruption","v":1,"d":120}]},
+ {"text":"Não intervir. O mercado se ajusta.","hint":"Sem custo; fome e protestos.","now":{"hunger":2,"protest":5},"groups":{"workers":-6,"rural":-4,"business":3}}
+]},
+{"id":"press_law","cat":"Direitos civis","title":"A Lei da Verdade Informativa","desc":"Deputados leais propõem multar meios de comunicação que publicarem \"notícias que prejudiquem a imagem da nação\".","context":"A imprensa independente tem publicado reportagens sobre gastos do governo.","cond":{"notPolicy":{"press":"state"}},"options":[
+ {"text":"Aprovar a lei e estatizar a narrativa.","hint":"Imprensa passa a ser estatal.","policy":{"press":"state"},"groups":{"opposition":-5,"youth":-4,"military":2}},
+ {"text":"Rejeitar a lei e garantir a liberdade de imprensa.","hint":"Imprensa livre: mais transparência, mais críticas.","policy":{"press":"free"},"groups":{"opposition":5,"youth":5,"bureaucracy":-3}},
+ {"text":"Aprovar uma versão branda, com censura pontual.","hint":"Mantém a imprensa regulada.","policy":{"press":"regulated"},"now":{"legitimacy":1}}
+]},
+{"id":"teachers_strike","cat":"Trabalho","title":"Professores em greve","desc":"O sindicato dos professores paralisou as escolas públicas exigindo reajuste de 25%. Pais protestam com cartazes em frente ao Ministério.","context":"Os salários dos professores estão congelados há três anos.","options":[
+ {"text":"Conceder o reajuste integral.","hint":"Melhora a educação; pressão sobre as contas.","now":{"treasury":-0.2},"groups":{"workers":4,"youth":4,"bureaucracy":3},"long":[{"k":"education","v":3,"d":365},{"k":"g_business","v":-2,"d":120}]},
+ {"text":"Oferecer 10% e uma comissão de estudos.","hint":"Meio-termo; ninguém fica totalmente satisfeito.","now":{"treasury":-0.08},"groups":{"workers":1},"long":[{"k":"education","v":1,"d":180}]},
+ {"text":"Cortar o ponto e contratar substitutos.","hint":"Quebra a greve; educação piora.","now":{"protest":4,"education":-3},"groups":{"workers":-7,"youth":-5,"business":2},"long":[{"k":"g_bureaucracy","v":-4,"d":120}]}
+]},
+{"id":"refugee_wave","cat":"Migração","title":"Milhares de refugiados na fronteira","desc":"Uma guerra civil em um país próximo empurrou 80 mil pessoas para a nossa fronteira. Organizações humanitárias pedem a abertura imediata de corredores.","context":"Os refugiados incluem médicos, engenheiros e muitas crianças.","options":[
+ {"text":"Abrir as fronteiras e acolher todos.","hint":"Reputação e mão de obra; tensão social e custo.","now":{"treasury":-0.2,"pop":0.4,"reputation":5},"groups":{"rural":-5,"workers":-3,"opposition":3},"long":[{"k":"laborSupply","v":0.4,"d":365},{"k":"productivity","v":1,"d":0}],"rel":{"west":5,"all":2}},
+ {"text":"Aceitar apenas profissionais qualificados.","hint":"Ganho econômico seletivo; críticas humanitárias.","now":{"pop":0.1,"reputation":-1},"groups":{"business":4},"long":[{"k":"productivity","v":1.5,"d":0}]},
+ {"text":"Fechar a fronteira com tropas.","hint":"Agrada nacionalistas; condenação internacional.","now":{"reputation":-6,"control":2},"groups":{"military":3,"rural":4,"youth":-3},"rel":{"west":-5}}
+]},
+{"id":"oil_discovery","cat":"Energia","title":"Petróleo descoberto no litoral","desc":"Geólogos confirmaram uma grande reserva de petróleo. Petroleiras estrangeiras já ligaram para o palácio oferecendo parcerias.","context":"A reserva pode mudar a balança energética do país, mas exige investimento.","cond":{"noflag":"oil"},"w":0.6,"options":[
+ {"text":"Criar uma petrolífera estatal.","hint":"Controle e receitas futuras; investimento estatal.","now":{"treasury":-0.6,"market":-3},"groups":{"bureaucracy":4,"military":2,"business":-3},"long":[{"k":"s_energy","v":15,"d":0},{"k":"revenue","v":0.5,"d":0},{"k":"corruption","v":3,"d":0}],"flags":{"set":["oil"]}},
+ {"text":"Leiloar concessões a empresas estrangeiras.","hint":"Dinheiro rápido e investimento; menos controle.","now":{"treasury":0.5},"groups":{"business":5,"regional":3,"military":-2},"long":[{"k":"s_energy","v":10,"d":0},{"k":"growth","v":0.3,"d":730}],"rel":{"usa":6,"uk":4,"china":4},"flags":{"set":["oil"]}},
+ {"text":"Manter o petróleo no subsolo.","hint":"Ambientalistas aplaudem; oportunidade perdida.","now":{"reputation":3},"groups":{"youth":3,"business":-5,"regional":-3},"flags":{"set":["oil"]}}
+]},
+{"id":"conscription_debate","cat":"Militar","title":"Os generais querem recrutas","desc":"O Estado-Maior alerta que o Exército está pequeno demais para proteger as fronteiras e pede o serviço militar obrigatório.","context":"Os vizinhos ampliaram seus exércitos no último ano.","cond":{"policy":{"conscription":["volunteer","selective"]}},"options":[
+ {"text":"Instituir o serviço militar universal.","hint":"Mais tropas; jovens furiosos e menos mão de obra.","policy":{"conscription":"universal"},"groups":{"military":6,"youth":-6}},
+ {"text":"Recrutamento seletivo por sorteio.","hint":"Compromisso intermediário.","policy":{"conscription":"selective"},"groups":{"military":3,"youth":-2}},
+ {"text":"Manter o exército profissional e aumentar salários.","hint":"Custo fiscal, agrada a tropa sem afetar os jovens.","now":{"treasury":-0.2,"readiness":3},"groups":{"military":4},"policy":{"conscription":"volunteer"}}
+]},
+{"id":"general_strike_threat","cat":"Trabalho","title":"Centrais sindicais ameaçam greve geral","desc":"Os sindicatos exigem aumento do salário mínimo e congelamento das tarifas de transporte, ou pararão o país na próxima segunda-feira.","context":"O desemprego e a inflação corroeram os salários.","cond":{"min":{"protest":35}},"options":[
+ {"text":"Negociar aumento do salário mínimo.","hint":"Paz social; empresas e inflação pressionadas.","now":{"protest":-6,"inflation":0.6},"groups":{"workers":8,"business":-6}},
+ {"text":"Declarar a greve ilegal e prender líderes.","hint":"Evita a paralisação; cria mártires.","now":{"protest":-3,"civil":-3},"groups":{"workers":-8,"business":4,"opposition":-3},"long":[{"k":"revoRisk","v":4,"d":180}],"policy":{"unions":"banned"}},
+ {"text":"Ignorar e deixar a greve acontecer.","hint":"Perde produção por semanas.","now":{"gdp":-0.4},"groups":{"workers":-2},"long":[{"k":"growth","v":-1,"d":45}]}
+]},
+{"id":"church_schools","cat":"Religião","title":"A Igreja quer as escolas","desc":"O líder da maior denominação religiosa propõe assumir a gestão de mil escolas públicas, com ensino religioso obrigatório, em troca de apoio político.","context":"A fé é forte no interior e fraca na capital.","options":[
+ {"text":"Aceitar e oficializar a religião nacional.","hint":"Apoio rural e legitimidade; jovens e minorias insatisfeitos.","policy":{"religion":"state"},"now":{"treasury":0.1},"groups":{"rural":5,"youth":-4}},
+ {"text":"Aceitar a gestão, mas sem religião oficial.","hint":"Economia nas contas; qualidade incerta.","now":{"treasury":0.1},"groups":{"rural":3},"long":[{"k":"education","v":-1,"d":365}]},
+ {"text":"Recusar: escola pública é laica.","hint":"Estado laico; clero na oposição.","policy":{"religion":"secular"},"groups":{"rural":-4,"youth":3}}
+]},
+{"id":"protest_square","cat":"Protestos","title":"Acampamento na Praça Central","desc":"Milhares de manifestantes acamparam na Praça Central exigindo eleições. A polícia aguarda ordens.","context":"O acampamento cresce a cada noite, transmitido ao vivo nas redes.","cond":{"min":{"protest":40}},"options":[
+ {"text":"Dispersar à força.","hint":"Controle imediato; mortos e condenação internacional.","now":{"protest":-10,"reputation":-7,"civil":-3},"groups":{"opposition":-8,"youth":-8,"military":2},"long":[{"k":"revoRisk","v":6,"d":240},{"k":"legitimacy","v":-4,"d":180}],"rel":{"west":-8}},
+ {"text":"Receber uma comissão de manifestantes.","hint":"Reduz a tensão; mostra fraqueza aos linha-dura.","now":{"protest":-5,"legitimacy":2},"groups":{"opposition":4,"youth":4,"military":-4}},
+ {"text":"Convocar contra-manifestação de apoiadores.","hint":"Demonstra força popular; risco de confrontos.","now":{"treasury":-0.05,"protest":3},"groups":{"bureaucracy":3,"rural":2,"youth":-3},"long":[{"k":"stability","v":-2,"d":60}]},
+ {"text":"Prometer eleições multipartidárias.","hint":"Abertura política real.","policy":{"elections":"multiparty"},"now":{"protest":-8},"groups":{"opposition":8,"military":-5}}
+]},
+{"id":"tax_evasion","cat":"Impostos","title":"Bilionários escondem dinheiro no exterior","desc":"Um vazamento de documentos revela que as 200 famílias mais ricas mantêm fortunas em paraísos fiscais.","context":"A arrecadação vem caindo há dois anos.","options":[
+ {"text":"Criar imposto sobre grandes fortunas.","hint":"Receita e redução da desigualdade; fuga de capitais.","now":{"treasury":0.3},"groups":{"business":-8,"workers":5},"long":[{"k":"inequality","v":-3,"d":0},{"k":"growth","v":-0.2,"d":365}]},
+ {"text":"Anistia fiscal com repatriação taxada.","hint":"Dinheiro rápido; premia sonegadores.","now":{"treasury":0.4,"corruption":2},"groups":{"business":5,"workers":-3}},
+ {"text":"Fortalecer a fiscalização tributária.","hint":"Aumenta a arrecadação no médio prazo.","now":{"treasury":-0.05},"groups":{"business":-4},"long":[{"k":"taxCapacity","v":5,"d":0}]}
+]},
+{"id":"army_budget","cat":"Militar","title":"Generais pedem mais orçamento","desc":"Em reunião fechada, o Chefe do Estado-Maior entrega uma lista de compras: tanques, helicópteros e aumento de soldos. Ele lembra, sem sorrir, que \"o Exército sempre foi leal\".","context":"Os militares são o grupo mais influente do país.","options":[
+ {"text":"Aprovar todo o pacote.","hint":"Militares satisfeitos; tesouro mais vazio.","now":{"treasury":-0.5,"equipment":4,"readiness":3},"groups":{"military":10}},
+ {"text":"Aumentar só os soldos.","hint":"Lealdade sem modernização.","now":{"treasury":-0.15},"groups":{"military":5}},
+ {"text":"Recusar e lembrar quem manda.","hint":"Economia; generais ressentidos.","groups":{"military":-9},"long":[{"k":"coupRisk","v":5,"d":180}]}
+]},
+{"id":"border_incident","cat":"Expansão","title":"Incidente na fronteira com o vizinho rival","desc":"Uma patrulha nossa foi alvejada perto do rio fronteiriço. Dois soldados morreram. A imprensa estatal exige retaliação.","context":"O vizinho rival reivindica o vale do rio há décadas.","cond":{"war":false},"options":[
+ {"text":"Exigir desculpas formais e reparações.","hint":"Diplomacia firme.","now":{"legitimacy":1},"rel":{"rival":-5},"groups":{"military":1}},
+ {"text":"Bombardear posições inimigas.","hint":"Satisfaz a tropa; cria pretexto para guerra.","now":{"reputation":-3},"rel":{"rival":-20},"groups":{"military":6,"youth":-2},"flags":{"set":["casusBelli"]}},
+ {"text":"Propor comissão conjunta de investigação.","hint":"Reduz tensões; parece fraqueza.","rel":{"rival":10},"groups":{"military":-4},"now":{"reputation":2}}
+]},
+{"id":"china_port","cat":"Tratados","title":"China oferece construir um megaporto","desc":"Um consórcio chinês propõe financiar e construir um porto de águas profundas, em troca de 30 anos de concessão e uso preferencial.","context":"O porto mudaria o fluxo de exportações, mas a dívida seria com Pequim.","cond":{"coast":true,"noflag":"china_port"},"options":[
+ {"text":"Aceitar a oferta.","hint":"Infraestrutura e comércio; dívida e desconfiança ocidental.","now":{"debt":1.5},"long":[{"k":"exportAccess","v":0.12,"d":0},{"k":"growth","v":0.3,"d":730}],"rel":{"china":15,"usa":-8,"japan":-4},"flags":{"set":["china_port"]}},
+ {"text":"Negociar participação estatal majoritária.","hint":"Menos dívida, menos ganhos.","now":{"treasury":-0.3},"long":[{"k":"exportAccess","v":0.07,"d":0}],"rel":{"china":5},"flags":{"set":["china_port"]}},
+ {"text":"Recusar por razões de soberania.","hint":"Agrada o Ocidente e nacionalistas.","rel":{"china":-8,"usa":5},"groups":{"military":3},"flags":{"set":["china_port"]}}
+]},
+{"id":"hospital_collapse","cat":"Saúde","title":"Hospitais lotados com surto de gripe","desc":"Um surto de gripe grave lotou os hospitais públicos. Pacientes esperam em corredores e médicos ameaçam pedir demissão.","context":"O sistema de saúde opera no limite há anos.","cond":{"max":{"health":65}},"options":[
+ {"text":"Hospitais de campanha e contratações emergenciais.","hint":"Salva vidas; custa caro.","now":{"treasury":-0.35,"health":3},"groups":{"workers":4,"rural":3}},
+ {"text":"Requisitar leitos de hospitais privados.","hint":"Rápido e barato; irrita os donos.","now":{"health":2,"market":-2},"groups":{"business":-6,"workers":4}},
+ {"text":"Pedir ajuda médica internacional.","hint":"Gratuito; admite fraqueza.","now":{"health":1,"legitimacy":-2},"rel":{"all":2}},
+ {"text":"Minimizar o surto na imprensa.","hint":"Nenhum custo agora; mortes evitáveis.","now":{"health":-3,"legitimacy":-2,"pop":-0.05},"groups":{"workers":-4,"youth":-4}}
+]},
+{"id":"land_reform","cat":"Social","title":"Camponeses ocupam latifúndios","desc":"Movimentos de trabalhadores sem-terra ocuparam três grandes fazendas improdutivas no Interior Agrário. Os fazendeiros exigem a polícia.","context":"Metade das terras pertence a 2% dos proprietários.","options":[
+ {"text":"Desapropriar e distribuir as terras.","hint":"Reduz desigualdade; fazendeiros e investidores reagem.","now":{"inequality":-2,"market":-3},"groups":{"rural":6,"regional":-8,"business":-5},"long":[{"k":"s_food","v":-3,"d":365},{"k":"poverty","v":-2,"d":0}],"flags":{"set":["nationalized"]}},
+ {"text":"Despejar os ocupantes.","hint":"Ordem e propriedade; conflito no campo.","now":{"protest":3},"groups":{"rural":-6,"regional":5,"business":3},"long":[{"k":"revoRisk","v":2,"d":180}]},
+ {"text":"Comprar terras para assentamentos.","hint":"Solução negociada e cara.","now":{"treasury":-0.3},"groups":{"rural":4,"regional":1},"long":[{"k":"poverty","v":-1,"d":0}]}
+]},
+{"id":"internet_shutdown","cat":"Vigilância","title":"Desligar a internet?","desc":"Os serviços de segurança afirmam que agitadores coordenam protestos por aplicativos e pedem autorização para bloquear as redes sociais.","context":"Jovens e empresas de tecnologia dependem da internet.","cond":{"min":{"protest":30}},"options":[
+ {"text":"Bloquear as redes sociais indefinidamente.","hint":"Desarticula protestos; prejudica negócios e jovens.","now":{"protest":-6,"civil":-5},"groups":{"youth":-8,"business":-4},"long":[{"k":"growth","v":-0.3,"d":180},{"k":"tech","v":-2,"d":180}],"policy":{"surveillance":"total"}},
+ {"text":"Monitorar em silêncio sem bloquear.","hint":"Inteligência sem alarde.","now":{"intel":3,"civil":-2},"groups":{"youth":-1}},
+ {"text":"Recusar: a internet é um direito.","hint":"Jovens e investidores aprovam.","now":{"civil":2},"groups":{"youth":4,"business":2},"policy":{"surveillance":"minimal"}}
+]},
+{"id":"imf_offer","cat":"Impostos","title":"Missão do Fundo Monetário Global","desc":"Técnicos do Fundo oferecem um pacote de resgate em troca de corte de gastos, privatizações e reforma da previdência.","context":"A dívida pública passou de níveis confortáveis.","cond":{"min":{"debtRatio":70}},"options":[
+ {"text":"Aceitar o pacote completo.","hint":"Dinheiro e juros menores; austeridade e protestos.","now":{"treasury":3,"debt":3,"market":5},"groups":{"workers":-8,"business":6,"bureaucracy":-6},"long":[{"k":"creditLimit","v":0.2,"d":730},{"k":"poverty","v":2,"d":365}]},
+ {"text":"Negociar condições mais suaves.","hint":"Menos dinheiro, menos sacrifício.","now":{"treasury":1.2,"debt":1.2},"groups":{"workers":-2,"business":2}},
+ {"text":"Expulsar os técnicos: soberania!","hint":"Popular internamente; mercados assustados.","now":{"legitimacy":3,"reputation":-3},"groups":{"workers":3,"military":3,"business":-6},"long":[{"k":"growth","v":-0.3,"d":365}],"rel":{"usa":-5,"germany":-3}}
+]},
+{"id":"separatist_party","cat":"Separatismo","title":"Partido separatista vence eleições locais","desc":"Na Província Fronteiriça, um partido que defende a independência conquistou a maioria da assembleia regional.","context":"A província tem idioma próprio e se sente esquecida pela capital.","cond":{"min":{"separatism":15}},"options":[
+ {"text":"Conceder autonomia federal.","hint":"Reduz o separatismo; capital perde poder.","policy":{"autonomy":"federal"},"groups":{"regional":6,"military":-4}},
+ {"text":"Investir pesado na província.","hint":"Ganha corações com obras.","now":{"treasury":-0.4},"groups":{"regional":4},"long":[{"k":"separatism","v":-6,"d":365}]},
+ {"text":"Anular a eleição e enviar tropas.","hint":"Controle no curto prazo; ressentimento profundo.","now":{"control":5,"civil":-3,"reputation":-4},"groups":{"regional":-8,"military":3},"long":[{"k":"separatism","v":8,"d":365}],"policy":{"autonomy":"centralized"}}
+]},
+{"id":"foreign_ngos","cat":"Direitos civis","title":"ONGs estrangeiras sob suspeita","desc":"A inteligência acusa ONGs financiadas do exterior de treinar ativistas da oposição.","context":"Elas também mantêm clínicas e escolas em bairros pobres.","options":[
+ {"text":"Expulsar todas as ONGs estrangeiras.","hint":"Menos influência externa; perda de serviços.","now":{"civil":-3,"health":-1,"reputation":-4},"groups":{"opposition":-5,"military":3},"rel":{"west":-6}},
+ {"text":"Exigir registro e prestação de contas.","hint":"Controle moderado.","now":{"control":1},"groups":{"bureaucracy":2}},
+ {"text":"Deixá-las trabalhar livremente.","hint":"Serviços e reputação; oposição mais organizada.","now":{"reputation":2,"health":1},"groups":{"opposition":4},"long":[{"k":"opposition","v":3,"d":180}],"rel":{"west":3}}
+]},
+{"id":"heatwave_power","cat":"Energia","title":"Apagões na onda de calor","desc":"O consumo de ar-condicionado sobrecarregou a rede e cidades inteiras ficaram sem luz por horas.","context":"A rede elétrica não recebe investimentos há anos.","cond":{"min":{"energyShort":0.5}},"w":1.5,"options":[
+ {"text":"Importar energia a qualquer preço.","hint":"Luz volta; conta salgada.","now":{"treasury":-0.3,"reserves":-0.3},"groups":{"workers":3,"business":3}},
+ {"text":"Racionamento programado.","hint":"Barato; produção cai.","now":{"gdp":-0.3,"protest":3},"groups":{"business":-4,"workers":-3}},
+ {"text":"Construir termelétricas emergenciais.","hint":"Energia em meses; poluição.","now":{"treasury":-0.5},"long":[{"k":"s_energy","v":8,"d":0},{"k":"pollution","v":4,"d":0}]}
+]},
+{"id":"famine_warning","cat":"Crise humanitária","title":"Alerta de fome no interior","desc":"Relatórios do Ministério da Agricultura indicam que safras perdidas deixaram milhões sem comida suficiente.","context":"A fome é a principal causa histórica de revoluções.","cond":{"min":{"hunger":8}},"w":2,"options":[
+ {"text":"Distribuição emergencial de alimentos.","hint":"Reduz a fome; custo e logística.","now":{"treasury":-0.4,"hunger":-4},"groups":{"rural":6,"workers":3}},
+ {"text":"Pedir ajuda alimentar internacional.","hint":"Gratuito, mas expõe a crise.","now":{"hunger":-3,"legitimacy":-2},"rel":{"all":3}},
+ {"text":"Proibir exportações de alimentos.","hint":"Comida fica no país; parceiros reclamam.","now":{"hunger":-2},"long":[{"k":"s_food","v":5,"d":180},{"k":"exportAccess","v":-0.05,"d":180}],"groups":{"rural":-3,"business":-3},"rel":{"all":-3}},
+ {"text":"Negar que haja fome.","hint":"Nada muda; revolta silenciosa.","now":{"hunger":2},"groups":{"rural":-8},"long":[{"k":"revoRisk","v":6,"d":180}]}
+]},
+{"id":"tech_giant","cat":"Empresas","title":"Gigante tecnológica quer se instalar","desc":"Uma multinacional de tecnologia promete 15 mil empregos se receber isenção fiscal por 20 anos e acesso aos dados dos usuários.","context":"Seria o maior investimento estrangeiro da história do país.","cond":{"min":{"education":35}},"options":[
+ {"text":"Aceitar todas as exigências.","hint":"Empregos e tecnologia; perde receita e privacidade.","now":{"unemployment":-0.6},"long":[{"k":"tech","v":5,"d":0},{"k":"revenue","v":-0.15,"d":0},{"k":"civil","v":-2,"d":0}],"groups":{"business":5,"youth":4},"rel":{"usa":5}},
+ {"text":"Aceitar sem a cláusula dos dados.","hint":"Menos atraente, chance de desistirem.","long":[{"k":"tech","v":2,"d":0}],"groups":{"youth":3}},
+ {"text":"Exigir uma estatal como sócia.","hint":"Controle e tecnologia; investimento menor.","now":{"treasury":-0.2,"market":-2},"long":[{"k":"tech","v":2,"d":0}],"groups":{"bureaucracy":3,"business":-2}}
+]},
+{"id":"journalist_death","cat":"Direitos civis","title":"Jornalista morto em circunstâncias suspeitas","desc":"Um conhecido jornalista investigativo foi encontrado morto. A polícia fala em assalto; ninguém acredita.","context":"Ele investigava contratos militares.","options":[
+ {"text":"Investigação independente com peritos estrangeiros.","hint":"Transparência; pode revelar culpados no aparelho de segurança.","now":{"reputation":3,"legitimacy":2},"groups":{"military":-5,"opposition":3},"rel":{"west":3}},
+ {"text":"Manter a versão do assalto.","hint":"Protege o aparelho; desconfiança e protestos.","now":{"legitimacy":-3,"protest":3,"reputation":-4},"groups":{"military":2,"youth":-4},"rel":{"west":-5}},
+ {"text":"Culpar um agente estrangeiro.","hint":"Desvia a atenção; tensão diplomática.","now":{"legitimacy":1,"reputation":-2},"rel":{"uk":-8,"usa":-5},"groups":{"military":2}}
+]},
+{"id":"minimum_wage","cat":"Trabalho","title":"Debate sobre o salário mínimo","desc":"Economistas do governo divergem: aumentar o salário mínimo estimularia o consumo ou destruiria empregos formais?","context":"O salário mínimo é um dos mais baixos da região.","options":[
+ {"text":"Aumento real de 15%.","hint":"Reduz pobreza; pressão sobre empresas e inflação.","now":{"poverty":-1.5,"inflation":0.5},"groups":{"workers":7,"business":-6},"long":[{"k":"unemployment","v":0.5,"d":365}]},
+ {"text":"Repor apenas a inflação.","hint":"Neutro.","groups":{"workers":1}},
+ {"text":"Congelar o salário mínimo.","hint":"Competitividade; trabalhadores insatisfeitos.","groups":{"workers":-6,"business":5},"long":[{"k":"growth","v":0.2,"d":365},{"k":"poverty","v":1,"d":365}]}
+]},
+{"id":"pollution_river","cat":"Meio ambiente","title":"Rio envenenado por mineradora","desc":"Uma barragem de rejeitos se rompeu e contaminou o principal rio da Região Industrial. Peixes mortos cobrem as margens.","context":"A mineradora pertence a um sócio de membros do governo.","cond":{"min":{"pollution":30}},"options":[
+ {"text":"Multa pesada e prisão dos diretores.","hint":"Justiça ambiental; elites incomodadas.","now":{"treasury":0.15,"corruption":-2,"pollution":-2},"groups":{"business":-5,"regional":-3,"youth":5}},
+ {"text":"Acordo sigiloso de reparação.","hint":"Discreto; vazamentos são prováveis.","now":{"treasury":0.05,"corruption":2},"groups":{"business":3},"long":[{"k":"legitimacy","v":-2,"d":120}]},
+ {"text":"Criar uma agência ambiental.","hint":"Menos poluição a longo prazo; custos para a indústria.","now":{"treasury":-0.15},"long":[{"k":"pollution","v":-6,"d":0},{"k":"industry","v":-1,"d":0}],"groups":{"youth":4,"business":-3}}
+]},
+{"id":"military_parade","cat":"Propaganda","title":"Grande desfile do Dia da Nação","desc":"O Ministério da Propaganda propõe um desfile militar monumental com tanques, aviões e 50 mil soldados.","context":"Uma demonstração de força para dentro e para fora.","options":[
+ {"text":"O maior desfile da nossa história!","hint":"Orgulho e propaganda; gasto ostensivo.","now":{"treasury":-0.1,"legitimacy":3},"groups":{"military":5,"youth":-2},"rel":{"neighbors":-3}},
+ {"text":"Uma festa popular com shows gratuitos.","hint":"Simpatia popular.","now":{"treasury":-0.05,"legitimacy":2},"groups":{"workers":3,"youth":3,"military":-2}},
+ {"text":"Cancelar as comemorações por austeridade.","hint":"Economia; parece fraqueza.","now":{"legitimacy":-1},"groups":{"military":-3}}
+]},
+{"id":"brain_drain","cat":"Migração","title":"Fuga de cérebros","desc":"Um estudo mostra que 40% dos médicos e engenheiros formados no último ano emigraram.","context":"Salários baixos e falta de liberdade são as razões citadas.","cond":{"max":{"migration":1}},"options":[
+ {"text":"Taxa de saída para formados em universidades públicas.","hint":"Reduz a emigração; jovens indignados.","policy":{"emigration":"taxed"},"groups":{"youth":-3}},
+ {"text":"Programa de bolsas e salários para pesquisadores.","hint":"Atrai talentos; custa.","now":{"treasury":-0.2},"long":[{"k":"migration","v":1.5,"d":365},{"k":"tech","v":2,"d":0}],"groups":{"youth":4}},
+ {"text":"Proibir a emigração de profissionais.","hint":"Fecha a porta; repressão.","policy":{"emigration":"banned"},"groups":{"youth":-6,"opposition":-2}},
+ {"text":"Deixar partir: as remessas ajudam a economia.","hint":"Remessas entram; talentos se vão.","now":{"reserves":0.2},"long":[{"k":"productivity","v":-1,"d":365}]}
+]},
+{"id":"coup_rumors","cat":"Golpe","title":"Rumores de conspiração nos quartéis","desc":"O serviço de inteligência entregou um dossiê: um grupo de coronéis estaria articulando a sua derrubada.","context":"Os militares estão insatisfeitos.","cond":{"min":{"coupRisk":40}},"w":2,"options":[
+ {"text":"Prender os coronéis imediatamente.","hint":"Reduz o risco; oficiais leais ficam assustados.","now":{"coupRisk":-12,"readiness":-5},"groups":{"military":-5}},
+ {"text":"Promovê-los e aumentar soldos.","hint":"Compra lealdade.","now":{"treasury":-0.2,"coupRisk":-7},"groups":{"military":7}},
+ {"text":"Vigiar e esperar provas.","hint":"Nada muda agora; o perigo cresce.","now":{"intel":2},"long":[{"k":"coupRisk","v":3,"d":60}]}
+]},
+{"id":"student_movement","cat":"Protestos","title":"Universitários ocupam a reitoria","desc":"Estudantes ocuparam a principal universidade contra o aumento das mensalidades e a presença de policiais no campus.","context":"Os jovens são o setor mais insatisfeito.","cond":{"max":{"g_youth":50}},"options":[
+ {"text":"Revogar o aumento e retirar a polícia.","hint":"Concessão aos jovens.","now":{"treasury":-0.1,"protest":-4},"groups":{"youth":7,"military":-2}},
+ {"text":"Desocupar com a tropa de choque.","hint":"Ordem; imagens de violência.","now":{"protest":-2,"civil":-2,"reputation":-2},"groups":{"youth":-8},"long":[{"k":"revoRisk","v":3,"d":180}]},
+ {"text":"Fechar a universidade por um semestre.","hint":"Esvazia o movimento; prejudica a educação.","now":{"education":-2,"protest":-3},"groups":{"youth":-5}}
+]},
+{"id":"trade_war","cat":"Tratados","title":"Tarifas punitivas sobre nossos produtos","desc":"Uma grande potência impôs tarifas de 25% sobre nossas exportações, alegando dumping.","context":"O setor exportador emprega milhares de pessoas.","options":[
+ {"text":"Retaliar com tarifas equivalentes.","hint":"Orgulho nacional; comércio encolhe.","now":{"legitimacy":2},"long":[{"k":"exportAccess","v":-0.06,"d":365},{"k":"inflation","v":0.5,"d":365}],"rel":{"usa":-8},"groups":{"military":2,"business":-4}},
+ {"text":"Recorrer à arbitragem comercial.","hint":"Lento, mas sem escalada.","long":[{"k":"exportAccess","v":-0.03,"d":180}],"rel":{"usa":2}},
+ {"text":"Buscar novos mercados na Ásia.","hint":"Diversifica; aproxima do bloco oriental.","now":{"treasury":-0.05},"rel":{"china":6,"india":5,"usa":-3}}
+]},
+{"id":"police_violence","cat":"Policiamento","title":"Vídeo de violência policial","desc":"Policiais foram filmados espancando um jovem desarmado em um bairro pobre. O vídeo tem milhões de visualizações.","context":"A polícia é vista como braço do regime.","options":[
+ {"text":"Afastar e processar os policiais.","hint":"Justiça; a corporação reclama.","now":{"legitimacy":2,"civil":1},"groups":{"youth":4,"bureaucracy":-3},"long":[{"k":"control","v":-2,"d":120}]},
+ {"text":"Defender a polícia publicamente.","hint":"Moral da tropa; revolta nos bairros.","now":{"protest":4},"groups":{"youth":-5,"workers":-3,"military":2},"long":[{"k":"control","v":2,"d":120}]},
+ {"text":"Câmeras corporais e corregedoria independente.","hint":"Reforma de longo prazo.","now":{"treasury":-0.08},"long":[{"k":"crime","v":-2,"d":0},{"k":"civil","v":2,"d":0}],"groups":{"youth":2}}
+]},
+{"id":"housing_crisis","cat":"Desenvolvimento urbano","title":"Favelas crescem na capital","desc":"A migração do campo para a cidade criou novos bairros irregulares na periferia da capital, sem água nem esgoto.","context":"O déficit habitacional explodiu com a urbanização.","cond":{"max":{"housing":55}},"options":[
+ {"text":"Urbanizar as favelas: água, luz e títulos de propriedade.","hint":"Melhora a vida; custo alto.","now":{"treasury":-0.4},"long":[{"k":"housing","v":6,"d":0},{"k":"poverty","v":-1,"d":0}],"groups":{"workers":5}},
+ {"text":"Remoção forçada para conjuntos distantes.","hint":"Libera áreas centrais; revolta e corrupção.","now":{"treasury":-0.2,"protest":4},"groups":{"workers":-5,"business":4},"long":[{"k":"housing","v":3,"d":0},{"k":"corruption","v":2,"d":180}]},
+ {"text":"Restringir a migração interna.","hint":"Contém o crescimento urbano; controle autoritário.","now":{"civil":-3},"groups":{"rural":-4},"long":[{"k":"growth","v":-0.2,"d":365}]}
+]},
+{"id":"russia_arms","cat":"Militar","title":"Moscou oferece armamentos baratos","desc":"Emissários russos oferecem caças e blindados com 50% de desconto, financiados a longo prazo.","context":"A oferta inclui instrutores militares russos no país.","cond":{"noflag":"russian_arms"},"options":[
+ {"text":"Aceitar a oferta completa.","hint":"Exército moderno; Ocidente desconfia.","now":{"debt":0.8,"equipment":6},"groups":{"military":6},"rel":{"russia":15,"usa":-10,"uk":-6},"flags":{"set":["russian_arms"]}},
+ {"text":"Comprar só peças de reposição.","hint":"Melhora modesta.","now":{"treasury":-0.1,"equipment":2},"rel":{"russia":4},"flags":{"set":["russian_arms"]}},
+ {"text":"Recusar e buscar fornecedores ocidentais.","hint":"Mais caro; aproximação com o Ocidente.","now":{"treasury":-0.3,"equipment":3},"rel":{"usa":5,"russia":-8},"flags":{"set":["russian_arms"]}}
+]},
+{"id":"lottery_law","cat":"Costumes","title":"Cassinos e jogos de azar","desc":"Empresários estrangeiros querem abrir resorts com cassinos no litoral. Líderes religiosos protestam.","context":"O turismo poderia gerar receitas e empregos.","options":[
+ {"text":"Liberar jogos, álcool e outras atividades.","hint":"Receitas e turismo; críticas morais.","policy":{"vices":"liberal"},"groups":{"business":4,"rural":-3}},
+ {"text":"Permitir apenas cassinos licenciados.","hint":"Regulado.","policy":{"vices":"regulated"},"now":{"treasury":0.05}},
+ {"text":"Criminalizar jogos e endurecer leis morais.","hint":"Agrada religiosos; mercado ilegal e corrupção.","policy":{"vices":"prohibited"},"groups":{"rural":4,"youth":-3}}
+]},
+{"id":"bank_run","cat":"Crise econômica","title":"Corrida aos bancos","desc":"Rumores de desvalorização levaram multidões aos caixas eletrônicos. Dois bancos médios fecharam as portas.","context":"Confiança no sistema financeiro está em queda.","cond":{"min":{"inflation":10}},"w":1.5,"options":[
+ {"text":"Resgatar os bancos com dinheiro público.","hint":"Estabiliza o sistema; custa e premia banqueiros.","now":{"treasury":-0.6},"groups":{"business":5,"workers":-3},"long":[{"k":"growth","v":0.3,"d":180}]},
+ {"text":"Congelar saques por 30 dias.","hint":"Estanca a sangria; fúria popular.","now":{"protest":6,"legitimacy":-4},"groups":{"workers":-6,"business":-3},"long":[{"k":"inflation","v":-1,"d":90}]},
+ {"text":"Usar reservas para garantir depósitos.","hint":"Tranquiliza; consome reservas.","now":{"reserves":-1},"groups":{"workers":3,"business":3}}
+]},
+{"id":"neighbor_minority","cat":"Expansão","title":"Compatriotas oprimidos além da fronteira","desc":"Uma minoria que fala nossa língua vive do outro lado da fronteira com o vizinho rival e denuncia perseguição.","context":"Nacionalistas pedem ação; diplomatas pedem calma.","cond":{"war":false},"options":[
+ {"text":"Exigir proteção internacional da minoria.","hint":"Pressão diplomática.","now":{"reputation":1},"rel":{"rival":-6}},
+ {"text":"Armar milícias da minoria.","hint":"Desestabiliza o rival; pretexto para conflito.","now":{"treasury":-0.1},"rel":{"rival":-20},"groups":{"military":4},"flags":{"set":["casusBelli"]},"long":[{"k":"reputation","v":-3,"d":240}]},
+ {"text":"Oferecer cidadania a quem quiser emigrar.","hint":"Ganho populacional; solução pacífica.","now":{"pop":0.2},"rel":{"rival":-2},"groups":{"rural":-2}}
+]},
+{"id":"defense_pact_offer","cat":"Tratados","title":"Convite para uma aliança militar","desc":"Uma potência regional propõe um pacto de defesa mútua e bases militares conjuntas.","context":"Uma aliança protege, mas também arrasta para guerras alheias.","cond":{"war":false,"noflag":"pact_offer"},"w":0.7,"options":[
+ {"text":"Aceitar e ceder uma base militar.","hint":"Proteção forte; soberania reduzida.","now":{"defense":5},"groups":{"military":3,"opposition":-1},"long":[{"k":"defense","v":6,"d":0},{"k":"legitimacy","v":-2,"d":180}],"rel":{"usa":10,"russia":-8},"flags":{"set":["pact_offer"]}},
+ {"text":"Aceitar apenas exercícios conjuntos.","hint":"Cooperação limitada.","now":{"readiness":3},"rel":{"usa":4},"flags":{"set":["pact_offer"]}},
+ {"text":"Recusar: neutralidade total.","hint":"Sem compromissos.","now":{"legitimacy":1},"rel":{"usa":-3,"russia":2},"flags":{"set":["pact_offer"]}}
+]},
+{"id":"election_fraud","cat":"Corrupção","title":"Fraude nas eleições municipais?","desc":"Observadores apontam irregularidades em favor do partido oficial nas eleições municipais.","context":"A oposição promete levar o caso a organismos internacionais.","cond":{"policy":{"elections":["controlled","multiparty"]}},"options":[
+ {"text":"Anular as eleições suspeitas e repeti-las.","hint":"Legitimidade; o partido perde prefeituras.","now":{"legitimacy":3,"political":3},"groups":{"opposition":5,"bureaucracy":-4}},
+ {"text":"Validar os resultados.","hint":"Mantém o controle; desconfiança.","now":{"legitimacy":-3,"protest":3},"groups":{"bureaucracy":3,"opposition":-4},"rel":{"west":-3}},
+ {"text":"Suspender as eleições municipais por tempo indeterminado.","hint":"Fim das eleições.","policy":{"elections":"none"},"groups":{"opposition":-6}}
+]},
+{"id":"pension_reform","cat":"Gastos públicos","title":"O rombo da previdência","desc":"A previdência pública consome uma fatia crescente do orçamento. Técnicos propõem elevar a idade mínima de aposentadoria.","context":"Funcionários públicos e trabalhadores formais seriam os mais afetados.","cond":{"min":{"debtRatio":40}},"options":[
+ {"text":"Aprovar a reforma completa.","hint":"Economia permanente; protestos.","now":{"protest":5},"groups":{"workers":-7,"bureaucracy":-6,"business":5},"long":[{"k":"revenue","v":0.6,"d":0}]},
+ {"text":"Reforma só para novos servidores.","hint":"Economia menor, mais aceitação.","groups":{"bureaucracy":-2},"long":[{"k":"revenue","v":0.2,"d":0}]},
+ {"text":"Engavetar a proposta.","hint":"Paz social; contas pioram.","groups":{"workers":2,"bureaucracy":2,"business":-3},"long":[{"k":"revenue","v":-0.15,"d":0}]}
+]},
+{"id":"drug_cartel","cat":"Segurança","title":"Cartel domina cidades do interior","desc":"Um cartel de drogas assumiu o controle de três cidades, cobrando \"impostos\" e substituindo a polícia local.","context":"Policiais locais estariam na folha de pagamento do cartel.","cond":{"min":{"crime":40}},"options":[
+ {"text":"Enviar o Exército.","hint":"Retoma o controle; abusos e custo.","now":{"treasury":-0.2,"control":4,"civil":-2},"groups":{"military":3,"rural":-2},"long":[{"k":"crime","v":-6,"d":240}]},
+ {"text":"Negociar uma trégua secreta.","hint":"Paz aparente; corrupção.","now":{"corruption":4},"long":[{"k":"crime","v":-2,"d":120},{"k":"control","v":-2,"d":0}]},
+ {"text":"Programa social e polícia comunitária.","hint":"Lento e caro; resultado duradouro.","now":{"treasury":-0.25},"long":[{"k":"crime","v":-4,"d":0},{"k":"poverty","v":-1,"d":0}],"groups":{"rural":3}}
+]},
+{"id":"gold_reserves","cat":"Crise econômica","title":"Bancos centrais estrangeiros vendem nossa moeda","desc":"A moeda nacional perdeu 15% do valor em uma semana. Importadores repassam os preços.","context":"Investidores duvidam da sustentabilidade fiscal.","cond":{"min":{"debtRatio":60}},"options":[
+ {"text":"Subir os juros drasticamente.","hint":"Segura a moeda; esfria a economia.","now":{"inflation":-1.5},"long":[{"k":"growth","v":-0.8,"d":180}],"groups":{"business":-5,"workers":-3}},
+ {"text":"Controle de câmbio.","hint":"Estanca a fuga; mercado negro e corrupção.","now":{"reserves":0.3,"market":-3},"long":[{"k":"corruption","v":2,"d":240},{"k":"exportAccess","v":-0.04,"d":240}],"groups":{"business":-6}},
+ {"text":"Deixar a moeda flutuar.","hint":"Exportações ganham; inflação sobe.","now":{"inflation":1.5},"long":[{"k":"exportAccess","v":0.05,"d":180}],"groups":{"business":2,"workers":-3}}
+]},
+{"id":"vaccine_mandate","cat":"Saúde","title":"Vacinação obrigatória","desc":"Um surto de sarampo atinge crianças em várias cidades. Grupos religiosos se recusam a vacinar.","context":"A cobertura vacinal caiu nos últimos anos.","options":[
+ {"text":"Vacinação obrigatória com multas.","hint":"Saúde pública; resistência religiosa.","now":{"health":3,"civil":-1},"groups":{"rural":-3}},
+ {"text":"Campanha massiva de convencimento.","hint":"Custo moderado.","now":{"treasury":-0.08,"health":2}},
+ {"text":"Respeitar a liberdade de escolha.","hint":"Sem atritos; surtos continuam.","now":{"health":-2},"groups":{"rural":2}}
+]},
+{"id":"union_rights","cat":"Trabalho","title":"Sindicatos independentes pedem registro","desc":"Trabalhadores das fábricas de automóveis querem fundar um sindicato fora da central oficial.","context":"A central sindical oficial é vista como braço do governo.","cond":{"policy":{"unions":["controlled","banned"]}},"options":[
+ {"text":"Legalizar sindicatos livres.","hint":"Trabalhadores ganham voz; greves ficam mais fáceis.","policy":{"unions":"free"},"groups":{"workers":4}},
+ {"text":"Manter apenas a central oficial.","hint":"Status quo.","policy":{"unions":"controlled"},"groups":{"workers":-2}},
+ {"text":"Proibir qualquer sindicato.","hint":"Custos trabalhistas baixos; ressentimento.","policy":{"unions":"banned"},"groups":{"business":3}}
+]},
+{"id":"sanctions_threat","cat":"Sanções","title":"Ultimato ocidental sobre direitos humanos","desc":"Diplomatas ocidentais entregaram uma lista de presos políticos e ameaçam sanções se não forem libertados.","context":"Sanções afetariam bancos e exportações.","cond":{"max":{"civil":40}},"options":[
+ {"text":"Libertar os presos políticos.","hint":"Evita sanções; oposição fortalecida.","now":{"civil":4,"reputation":4},"groups":{"opposition":6,"military":-3},"rel":{"west":10}},
+ {"text":"Libertar alguns, como gesto simbólico.","hint":"Meio-termo.","now":{"civil":1,"reputation":1},"rel":{"west":3}},
+ {"text":"Rejeitar a interferência e buscar o Oriente.","hint":"Soberania; risco real de sanções.","now":{"legitimacy":2},"rel":{"west":-15,"china":5,"russia":6},"groups":{"military":3}}
+]},
+{"id":"infra_contract","cat":"Corrupção","title":"Licitação bilionária de obras","desc":"Três empreiteiras disputam o contrato da nova rodovia. Uma delas é do cunhado do Ministro do Interior e oferece \"contribuições\" ao partido.","context":"A obra é prioritária para a integração do país.","options":[
+ {"text":"Licitação transparente com auditoria.","hint":"Obra mais barata; aliados frustrados.","now":{"corruption":-2},"groups":{"bureaucracy":-3,"regional":-2},"long":[{"k":"infra","v":2,"d":365}]},
+ {"text":"Dar o contrato ao cunhado.","hint":"Dinheiro para o partido; obra superfaturada.","now":{"treasury":0.05,"corruption":3},"groups":{"bureaucracy":4,"regional":3},"long":[{"k":"infra","v":1,"d":365}]},
+ {"text":"Cancelar a obra.","hint":"Economia; regiões isoladas.","groups":{"regional":-4}}
+]},
+{"id":"food_imports","cat":"Agricultura","title":"Agricultores contra importações","desc":"Produtores rurais bloquearam estradas contra a entrada de alimentos importados baratos.","context":"As importações reduzem preços nas cidades, mas quebram pequenos produtores.","options":[
+ {"text":"Tarifas sobre alimentos importados.","hint":"Protege o campo; comida mais cara.","now":{"inflation":0.6},"groups":{"rural":7,"workers":-3},"long":[{"k":"s_food","v":4,"d":0},{"k":"importAccess","v":-0.04,"d":0}]},
+ {"text":"Subsídios agrícolas.","hint":"Agrada o campo sem encarecer comida.","now":{"treasury":-0.25},"groups":{"rural":5},"long":[{"k":"s_food","v":3,"d":365}]},
+ {"text":"Manter o comércio livre.","hint":"Comida barata; campo em crise.","groups":{"rural":-6,"workers":2,"business":2}}
+]},
+{"id":"cult_personality","cat":"Propaganda","title":"Estátuas do Líder","desc":"O Ministério da Cultura propõe erguer estátuas do governante em todas as praças e rebatizar a capital em sua homenagem.","context":"Bajuladores disputam sua atenção.","options":[
+ {"text":"Aprovar: o povo precisa de um símbolo.","hint":"Propaganda e culto; ridículo no exterior.","now":{"treasury":-0.1,"legitimacy":2,"reputation":-3},"groups":{"bureaucracy":3,"youth":-4},"long":[{"k":"propaganda","v":1,"d":365}]},
+ {"text":"Recusar com modéstia pública.","hint":"Ganha simpatia.","now":{"legitimacy":2},"groups":{"bureaucracy":-1}},
+ {"text":"Só um retrato em repartições públicas.","hint":"Discreto.","now":{"legitimacy":1}}
+]},
+{"id":"gender_rights","cat":"Direitos civis","title":"Lei de igualdade no trabalho","desc":"Uma deputada propõe punir empresas que pagam salários menores a mulheres pelo mesmo trabalho.","context":"Pesquisas mostram diferença salarial de 30%.","options":[
+ {"text":"Aprovar a lei com fiscalização.","hint":"Direitos e produtividade; resistência conservadora.","now":{"civil":3,"inequality":-1},"groups":{"youth":4,"rural":-2,"business":-2},"long":[{"k":"productivity","v":1,"d":0}],"rel":{"west":3}},
+ {"text":"Aprovar sem punições.","hint":"Simbólico.","now":{"civil":1}},
+ {"text":"Arquivar: tradição é tradição.","hint":"Agrada conservadores.","groups":{"rural":3,"youth":-3}}
+]},
+{"id":"war_bonds","cat":"Guerra","title":"Financiar o esforço de guerra","desc":"A guerra consome o orçamento. O Ministério da Fazenda apresenta opções para pagar a conta.","context":"Cada dia de guerra custa caro.","cond":{"war":true},"w":2,"options":[
+ {"text":"Emitir títulos de guerra patrióticos.","hint":"Dinheiro agora, dívida depois.","now":{"treasury":1.2,"debt":1.2},"groups":{"military":2}},
+ {"text":"Imposto extraordinário de guerra.","hint":"Contas equilibradas; insatisfação.","now":{"treasury":1},"groups":{"business":-6,"workers":-4}},
+ {"text":"Imprimir dinheiro.","hint":"Sem sacrifício imediato; inflação.","now":{"treasury":1.5,"inflation":4},"groups":{"workers":-3}}
+]},
+{"id":"war_deserters","cat":"Guerra","title":"Desertores na frente de batalha","desc":"Centenas de soldados abandonaram suas posições. Suas famílias pedem clemência.","context":"O cansaço de guerra se espalha.","cond":{"war":true},"options":[
+ {"text":"Execuções sumárias como exemplo.","hint":"Disciplina pelo medo.","now":{"readiness":4,"civil":-3,"reputation":-4},"groups":{"youth":-7,"military":3}},
+ {"text":"Anistia para quem voltar.","hint":"Recupera soldados; parece fraqueza.","now":{"readiness":1,"warWeariness":-3},"groups":{"youth":3,"military":-2}},
+ {"text":"Rodízio de tropas e licenças.","hint":"Moral melhora; menos soldados na frente.","now":{"treasury":-0.1,"warWeariness":-5,"readiness":-2},"groups":{"military":2}}
+]},
+{"id":"occupied_resistance","cat":"Expansão","title":"Resistência nos territórios ocupados","desc":"Guerrilheiros atacaram comboios nos territórios anexados. A população local não reconhece nossa autoridade.","context":"A ocupação custa caro.","cond":{"flag":"occupied"},"w":2,"options":[
+ {"text":"Repressão total com toque de recolher.","hint":"Controle; condenação internacional.","now":{"control":4,"reputation":-5},"groups":{"military":2},"long":[{"k":"separatism","v":4,"d":180}],"rel":{"west":-6}},
+ {"text":"Autonomia e investimento para a região.","hint":"Ganha a população com o tempo.","now":{"treasury":-0.3},"long":[{"k":"separatism","v":-5,"d":0}],"groups":{"military":-2}},
+ {"text":"Assentar colonos nacionais.","hint":"Muda a demografia; ódio duradouro.","now":{"treasury":-0.2},"long":[{"k":"control","v":3,"d":0},{"k":"reputation","v":-4,"d":0}],"groups":{"rural":3}}
+]},
+{"id":"anticorruption_purge","cat":"Corrupção","title":"Campanha contra a corrupção","desc":"Promotores querem investigar governadores e generais. Muitos são aliados históricos do regime.","context":"A corrupção drena recursos de todas as iniciativas.","cond":{"min":{"corruption":40}},"options":[
+ {"text":"Carta branca aos promotores.","hint":"Corrupção cai; aliados poderosos ameaçados.","now":{"corruption":-5,"legitimacy":3},"groups":{"regional":-6,"military":-4,"bureaucracy":-4},"long":[{"k":"coupRisk","v":4,"d":180}]},
+ {"text":"Investigar só opositores.","hint":"Uso político da justiça.","now":{"corruption":-1,"political":-3},"groups":{"opposition":-6,"bureaucracy":3}},
+ {"text":"Encerrar as investigações.","hint":"Paz com as elites.","now":{"corruption":2},"groups":{"regional":3,"bureaucracy":3,"youth":-3}}
+]},
+{"id":"immigration_wave","cat":"Migração","title":"Imigrantes econômicos chegam às cidades","desc":"Com a economia crescendo, trabalhadores de países vizinhos chegam em grande número para empregos na construção e na agricultura.","context":"Empresas comemoram; sindicatos reclamam.","cond":{"min":{"growth":2}},"options":[
+ {"text":"Incentivar a imigração com vistos fáceis.","hint":"Mão de obra; tensão com trabalhadores locais.","policy":{"immigration":"encouraged"}},
+ {"text":"Cotas por setor.","hint":"Equilíbrio.","policy":{"immigration":"quotas"}},
+ {"text":"Restringir e deportar irregulares.","hint":"Agrada trabalhadores; falta mão de obra.","policy":{"immigration":"restricted"},"now":{"pop":-0.2,"reputation":-2},"rel":{"neighbors":-4}}
+]},
+{"id":"isolation_debate","cat":"Tratados","title":"Autossuficiência ou integração?","desc":"No Conselho de Ministros, nacionalistas defendem fechar o país ao capital estrangeiro; tecnocratas querem aderir a blocos comerciais.","context":"A decisão definirá a política externa por anos.","cond":{"min":{"day":60}},"options":[
+ {"text":"Rumo à autossuficiência nacional.","hint":"Menos dependência e pressão externa; menos comércio e tecnologia.","policy":{"foreign":"isolationist"},"groups":{"military":3}},
+ {"text":"Neutralidade pragmática.","hint":"Status quo.","policy":{"foreign":"neutral"}},
+ {"text":"Integração ao mundo.","hint":"Mercados e investimentos; mais escrutínio.","policy":{"foreign":"integration"},"groups":{"business":3}}
+]},
+{"id":"disaster_relief","cat":"Crise humanitária","title":"Desabrigados após a catástrofe","desc":"Dezenas de milhares perderam suas casas. Abrigos improvisados estão superlotados.","context":"A resposta do governo será lembrada.","cond":{"flag":"disaster"},"options":[
+ {"text":"Reconstrução total com recursos públicos.","hint":"Solidariedade; custo alto.","now":{"treasury":-0.5,"legitimacy":4},"groups":{"workers":4,"rural":4},"long":[{"k":"housing","v":3,"d":0}]},
+ {"text":"Parceria com construtoras privadas.","hint":"Mais rápido; lucro privado.","now":{"treasury":-0.25,"corruption":2},"groups":{"business":4}},
+ {"text":"Mobilizar o Exército para ajudar.","hint":"Rápido e barato; militares ganham prestígio.","now":{"treasury":-0.1,"legitimacy":2},"groups":{"military":4}}
+]},
+{"id":"nuclear_program","cat":"Militar","title":"Cientistas propõem programa nuclear","desc":"O Conselho de Ciência afirma que, com investimento, o país pode dominar o ciclo nuclear em poucos anos — para energia ou para algo mais.","context":"As potências vigiam programas nucleares com atenção.","cond":{"min":{"tech":40},"noflag":"nuclear"},"w":0.6,"options":[
+ {"text":"Programa civil sob inspeção internacional.","hint":"Energia limpa; boa reputação.","now":{"treasury":-0.6,"reputation":3},"long":[{"k":"s_energy","v":10,"d":0},{"k":"tech","v":3,"d":0}],"flags":{"set":["nuclear"]}},
+ {"text":"Programa secreto de armas.","hint":"Dissuasão futura; sanções prováveis.","now":{"treasury":-0.8},"long":[{"k":"defense","v":12,"d":0},{"k":"influence","v":8,"d":0},{"k":"reputation","v":-12,"d":0}],"rel":{"usa":-20,"uk":-15,"germany":-15,"japan":-15},"groups":{"military":8},"flags":{"set":["nuclear"]}},
+ {"text":"Arquivar a ideia.","hint":"Nenhum risco.","flags":{"set":["nuclear"]}}
+]},
+{"id":"regional_governors","cat":"Separatismo","title":"Governadores exigem mais verbas","desc":"Os governadores das regiões assinaram uma carta conjunta exigindo maior parcela dos impostos federais.","context":"Elites regionais controlam votos e milícias locais.","options":[
+ {"text":"Repassar 10% a mais às regiões.","hint":"Elites regionais satisfeitas; menos recursos centrais.","now":{"treasury":-0.2},"groups":{"regional":7},"long":[{"k":"corruption","v":1,"d":0},{"k":"separatism","v":-3,"d":0}]},
+ {"text":"Trocar verbas por lealdade política.","hint":"Clientelismo clássico.","now":{"treasury":-0.1,"corruption":2},"groups":{"regional":4,"bureaucracy":2}},
+ {"text":"Recusar e substituir os governadores.","hint":"Centralização.","policy":{"autonomy":"centralized"},"groups":{"regional":-5}}
+]},
+{"id":"stock_boom","cat":"Economia","title":"Euforia na bolsa de valores","desc":"A bolsa nacional subiu 60% em um ano. Economistas alertam para uma bolha especulativa.","context":"A classe média investe suas economias em ações.","cond":{"min":{"growth":4}},"options":[
+ {"text":"Esfriar com juros e regulação.","hint":"Evita a bolha; crescimento menor.","long":[{"k":"growth","v":-0.4,"d":180},{"k":"inflation","v":-0.8,"d":180}],"groups":{"business":-3}},
+ {"text":"Deixar a festa continuar.","hint":"Crescimento agora; risco de crise depois.","long":[{"k":"growth","v":0.6,"d":180},{"k":"inflation","v":1,"d":240}],"groups":{"business":4},"flags":{"set":["bubble"]}},
+ {"text":"Taxar ganhos de capital.","hint":"Receita extra; investidores irritados.","now":{"treasury":0.3},"groups":{"business":-5,"workers":2}}
+]},
+{"id":"bubble_burst","cat":"Crise econômica","title":"A bolha estourou","desc":"A bolsa caiu 40% em três dias. Empresas endividadas demitem em massa.","context":"O alerta foi ignorado meses atrás.","cond":{"flag":"bubble"},"w":2,"options":[
+ {"text":"Pacote de estímulo fiscal.","hint":"Amortece a queda; dívida maior.","now":{"treasury":-0.6,"gdp":-0.5},"long":[{"k":"growth","v":0.5,"d":180}],"groups":{"business":3},"flags":{"clear":["bubble"]}},
+ {"text":"Deixar o mercado se ajustar.","hint":"Recessão profunda e curta.","now":{"gdp":-1.5,"unemployment":2},"groups":{"workers":-6,"business":-4},"flags":{"clear":["bubble"]}},
+ {"text":"Estatizar empresas falidas.","hint":"Preserva empregos; Estado inchado.","now":{"treasury":-0.4,"gdp":-0.8,"market":-5},"groups":{"workers":4,"business":-6},"flags":{"set":["nationalized"],"clear":["bubble"]}}
+]}
+]

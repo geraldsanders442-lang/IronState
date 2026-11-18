@@ -1,0 +1,1858 @@
+[
+ {
+  "id": "ps_hospital_collapse",
+  "cat": "Serviços públicos",
+  "title": "Hospitais em colapso",
+  "desc": "Pacientes morrem em macas nos corredores. O sindicato dos médicos ameaça greve geral: faltam luvas, remédios e salários.",
+  "context": "Os cortes na saúde chegaram ao limite.",
+  "cond": {
+   "min": {
+    "under_health": 20
+   }
+  },
+  "w": 2,
+  "crisis": true,
+  "default": 3,
+  "options": [
+   {
+    "text": "Recompor o orçamento da saúde imediatamente.",
+    "hint": "Caro; resolve.",
+    "now": {
+     "treasury": -0.6,
+     "health": 4
+    },
+    "groups": {
+     "workers": 4
+    }
+   },
+   {
+    "text": "Contratar médicos estrangeiros baratos.",
+    "hint": "Rápido; corporações reagem.",
+    "now": {
+     "treasury": -0.2,
+     "health": 2
+    },
+    "groups": {
+     "bureaucracy": -3
+    },
+    "rel": {
+     "CUB": 4
+    }
+   },
+   {
+    "text": "Privatizar a gestão dos hospitais.",
+    "hint": "Eficiência para quem pode pagar.",
+    "groups": {
+     "business": 4,
+     "workers": -4
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "inequality",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Reprimir a greve.",
+    "hint": "Silencia; a crise continua.",
+    "now": {
+     "civil": -2,
+     "health": -2
+    },
+    "groups": {
+     "workers": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "ps_teacher_strike",
+  "cat": "Serviços públicos",
+  "title": "Greve nacional de professores",
+  "desc": "Escolas fechadas há três semanas. Professores exigem reajuste e denunciam salas com 60 alunos.",
+  "context": "Uma geração perde o ano letivo.",
+  "cond": {
+   "min": {
+    "under_education": 20
+   }
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Conceder o reajuste.",
+    "hint": "Fim da greve; custo permanente.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "youth": 4,
+     "workers": 3
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Cortar o ponto dos grevistas.",
+    "hint": "Firmeza; protestos crescem.",
+    "now": {
+     "protest": 5
+    },
+    "groups": {
+     "youth": -5,
+     "workers": -4
+    }
+   },
+   {
+    "text": "Ensino a distância e militarização das escolas.",
+    "hint": "Controverso.",
+    "groups": {
+     "military": 3,
+     "youth": -4
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ps_crime_wave",
+  "cat": "Serviços públicos",
+  "title": "Facções tomam os bairros",
+  "desc": "Com a polícia sem viaturas e salários atrasados, facções criminosas impõem toque de recolher em bairros inteiros.",
+  "context": "O Estado perdeu o controle das ruas.",
+  "cond": {
+   "min": {
+    "under_security": 20
+   }
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Recompor a polícia e contratar 20 mil agentes.",
+    "hint": "Caro; eficaz.",
+    "now": {
+     "treasury": -0.5,
+     "control": 4
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -4,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Colocar o Exército nas ruas.",
+    "hint": "Rápido; abusos.",
+    "now": {
+     "control": 5,
+     "civil": -3
+    },
+    "groups": {
+     "military": 4
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -3,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Negociar uma trégua com as facções.",
+    "hint": "Paz frágil e vergonhosa.",
+    "now": {
+     "legitimacy": -3
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -2,
+      "d": 180
+     },
+     {
+      "k": "corruption",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ps_bridge_fall",
+  "cat": "Serviços públicos",
+  "title": "A ponte caiu",
+  "desc": "Uma ponte rodoviária sem manutenção desabou na hora do rush. Dezenas de mortos. Engenheiros alertam: outras 200 estão em risco.",
+  "context": "O sucateamento da infraestrutura cobra vidas.",
+  "cond": {
+   "min": {
+    "under_infra": 20
+   }
+  },
+  "w": 1.8,
+  "options": [
+   {
+    "text": "Programa nacional de manutenção.",
+    "hint": "Caro; necessário.",
+    "now": {
+     "treasury": -0.7
+    },
+    "groups": {
+     "regional": 3
+    },
+    "long": [
+     {
+      "k": "logistics",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Concessões privadas com pedágio.",
+    "hint": "Sem custo; pedágios caros.",
+    "groups": {
+     "business": 4,
+     "workers": -2
+    },
+    "long": [
+     {
+      "k": "logistics",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "inflation",
+      "v": 0.3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Culpar o governo anterior.",
+    "hint": "Barato; ninguém acredita.",
+    "now": {
+     "legitimacy": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ps_welfare_hunger",
+  "cat": "Serviços públicos",
+  "title": "Saques a supermercados",
+  "desc": "Com o corte dos programas sociais, famílias nas periferias saqueiam supermercados. Imagens de crianças magras dominam as redes.",
+  "context": "A fome é a mãe das revoluções.",
+  "cond": {
+   "min": {
+    "under_welfare": 25
+   }
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Restaurar os auxílios.",
+    "hint": "Caro; acalma.",
+    "now": {
+     "treasury": -0.5,
+     "protest": -5
+    },
+    "groups": {
+     "workers": 5
+    },
+    "long": [
+     {
+      "k": "poverty",
+      "v": -2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Distribuir cestas básicas pelo Exército.",
+    "hint": "Emergencial.",
+    "now": {
+     "treasury": -0.2,
+     "hunger": -1
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Reprimir os saques.",
+    "hint": "Ordem; revolta.",
+    "now": {
+     "civil": -2
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": 4,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ps_bureaucracy_collapse",
+  "cat": "Serviços públicos",
+  "title": "A máquina pública parou",
+  "desc": "Sem verba, cartórios, receita e previdência funcionam dois dias por semana. Propinas viraram a única forma de conseguir um documento.",
+  "context": "O Estado existe só no papel.",
+  "cond": {
+   "min": {
+    "under_admin": 25
+   }
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Concurso público e digitalização.",
+    "hint": "Eficiência a médio prazo.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "efficiency",
+      "v": 4,
+      "d": 0
+     },
+     {
+      "k": "corruption",
+      "v": -2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Terceirizar serviços.",
+    "hint": "Rápido; caro no longo prazo.",
+    "groups": {
+     "bureaucracy": -5,
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "efficiency",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Deixar como está.",
+    "hint": "Sem custo.",
+    "long": [
+     {
+      "k": "corruption",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ps_army_unpaid",
+  "cat": "Serviços públicos",
+  "title": "Soldados sem soldo",
+  "desc": "Quartéis no interior ficaram três meses sem pagamento. Oficiais médios se reúnem em segredo.",
+  "context": "Exércitos sem salário fazem política.",
+  "cond": {
+   "min": {
+    "under_military": 30
+   }
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Pagar os atrasados imediatamente.",
+    "hint": "Caro; acalma.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "military": 6
+    }
+   },
+   {
+    "text": "Prometer pagamento e trocar comandantes.",
+    "hint": "Arriscado.",
+    "groups": {
+     "military": -2
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 3,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Liberar os militares para \"negócios\" locais.",
+    "hint": "Paga sozinho; corrupção e abusos.",
+    "groups": {
+     "military": 4
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "crime",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pp_coalition",
+  "cat": "Política interna",
+  "title": "A coalizão ameaça romper",
+  "desc": "{person}, líder do maior partido aliado, exige três ministérios e o controle da estatal de energia para continuar apoiando o governo.",
+  "context": "Sem eles, o governo perde a maioria.",
+  "cond": {
+   "min": {
+    "political": 40
+   }
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Ceder os ministérios.",
+    "hint": "Governabilidade; corrupção.",
+    "now": {
+     "stability": 3
+    },
+    "groups": {
+     "regional": 4
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Ceder só um ministério.",
+    "hint": "Negociação dura.",
+    "now": {
+     "stability": 1
+    }
+   },
+   {
+    "text": "Romper e governar por decreto.",
+    "hint": "Autoridade; legitimidade cai.",
+    "now": {
+     "political": -3,
+     "legitimacy": -3
+    },
+    "long": [
+     {
+      "k": "opposition",
+      "v": 4,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pp_snap_election",
+  "cat": "Política interna",
+  "title": "Eleições antecipadas?",
+  "desc": "Com a aprovação alta, assessores sugerem antecipar as eleições para garantir mais quatro anos.",
+  "context": "Popularidade é um ativo perecível.",
+  "cond": {
+   "min": {
+    "support": 62,
+    "political": 45
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Antecipar.",
+    "hint": "Mandato renovado; risco calculado.",
+    "now": {
+     "legitimacy": 6,
+     "political": 1
+    },
+    "groups": {
+     "opposition": -5
+    }
+   },
+   {
+    "text": "Manter o calendário.",
+    "hint": "Respeito institucional.",
+    "now": {
+     "reputation": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pp_unpopular_election",
+  "cat": "Política interna",
+  "title": "Eleição com o governo impopular",
+  "desc": "As pesquisas dão vitória à oposição na eleição marcada para daqui a dois meses.",
+  "context": "O que um governo faz quando vai perder?",
+  "cond": {
+   "max": {
+    "support": 42
+   },
+   "min": {
+    "political": 35
+   }
+  },
+  "w": 1.6,
+  "cd": 500,
+  "options": [
+   {
+    "text": "Aceitar o risco e fazer campanha.",
+    "hint": "Democrático; pode perder.",
+    "now": {
+     "political": 2
+    },
+    "long": [
+     {
+      "k": "opposition",
+      "v": 3,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Gastança eleitoral.",
+    "hint": "Popularidade comprada; déficit.",
+    "now": {
+     "treasury": -1,
+     "legitimacy": 4
+    },
+    "groups": {
+     "workers": 4,
+     "rural": 4
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Adiar as eleições por \"emergência\".",
+    "hint": "Golpe branco.",
+    "now": {
+     "political": -8,
+     "legitimacy": -5,
+     "reputation": -6
+    },
+    "groups": {
+     "opposition": -10
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": 5,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Desqualificar o candidato da oposição na Justiça.",
+    "hint": "Eficaz; escândalo.",
+    "now": {
+     "political": -5,
+     "reputation": -4
+    },
+    "groups": {
+     "opposition": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "pp_protest_square",
+  "cat": "Política interna",
+  "title": "Acampamento na praça central",
+  "desc": "Há duas semanas, milhares acampam na praça central de {capital}. Exigem a renúncia do governo.",
+  "context": "O mundo assiste ao vivo.",
+  "cond": {
+   "min": {
+    "protest": 55
+   }
+  },
+  "w": 1.8,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Dialogar com os líderes.",
+    "hint": "Pode esvaziar o movimento.",
+    "now": {
+     "political": 2,
+     "protest": -4
+    },
+    "groups": {
+     "opposition": 3
+    }
+   },
+   {
+    "text": "Desocupar à força.",
+    "hint": "Fim do acampamento; mortes possíveis.",
+    "now": {
+     "protest": -8,
+     "civil": -4,
+     "reputation": -5
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": 4,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Organizar contramanifestação governista.",
+    "hint": "Polarização.",
+    "now": {
+     "protest": 2
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 2,
+      "d": 90
+     }
+    ]
+   },
+   {
+    "text": "Reforma ministerial para dar respostas.",
+    "hint": "Sinal de mudança.",
+    "now": {
+     "legitimacy": 2,
+     "stability": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pp_general_ambition",
+  "cat": "Política interna",
+  "title": "O general popular",
+  "desc": "O general {person}, herói nacional, critica o governo em entrevista e diz que \"o país precisa de ordem\".",
+  "context": "Militares populares são perigosos.",
+  "cond": {
+   "min": {
+    "coupRisk": 30
+   }
+  },
+  "w": 1.6,
+  "options": [
+   {
+    "text": "Promovê-lo a um cargo honorário longe das tropas.",
+    "hint": "Neutraliza com elegância.",
+    "groups": {
+     "military": -2
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": -3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Aposentá-lo compulsoriamente.",
+    "hint": "Firme; ressentimento nos quartéis.",
+    "groups": {
+     "military": -5
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 2,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Nomeá-lo ministro da Defesa.",
+    "hint": "Coopta; dá-lhe poder.",
+    "groups": {
+     "military": 6
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pp_corruption_scandal",
+  "cat": "Política interna",
+  "title": "Escândalo de propinas no governo",
+  "desc": "Uma investigação revela que o ministro {person} recebeu milhões de uma empreiteira.",
+  "context": "A corrupção chegou ao primeiro escalão.",
+  "cond": {
+   "min": {
+    "corruption": 50
+   }
+  },
+  "w": 1.6,
+  "options": [
+   {
+    "text": "Demitir e entregar à Justiça.",
+    "hint": "Credibilidade; aliados com medo.",
+    "now": {
+     "corruption": -3,
+     "legitimacy": 2
+    },
+    "groups": {
+     "business": -3
+    }
+   },
+   {
+    "text": "Defender o ministro.",
+    "hint": "Lealdade; escândalo cresce.",
+    "now": {
+     "legitimacy": -5
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Criar uma comissão anticorrupção independente.",
+    "hint": "Reforma institucional.",
+    "groups": {
+     "bureaucracy": -4
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": -4,
+      "d": 0
+     },
+     {
+      "k": "efficiency",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pp_regional_autonomy",
+  "cat": "Política interna",
+  "title": "Regiões exigem federalismo",
+  "desc": "Governadores das regiões mais ricas exigem ficar com mais impostos. \"{capital} nos suga\", dizem.",
+  "context": "Centralização ou federação?",
+  "cond": {
+   "min": {
+    "separatism": 25
+   }
+  },
+  "options": [
+   {
+    "text": "Aprovar o federalismo fiscal.",
+    "hint": "Regiões felizes; menos receita central.",
+    "groups": {
+     "regional": 8
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": -0.3,
+      "d": 0
+     },
+     {
+      "k": "separatism",
+      "v": -4,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Recentralizar.",
+    "hint": "Mais poder em {capital}.",
+    "groups": {
+     "regional": -8
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "revenue",
+      "v": 0.2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Fundo de compensação para regiões pobres.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "regional": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pp_media_mogul",
+  "cat": "Política interna",
+  "title": "O magnata da mídia",
+  "desc": "{person}, dono das maiores TVs do país, oferece apoio editorial incondicional em troca de uma concessão de telefonia.",
+  "context": "Narrativa tem preço.",
+  "cond": {
+   "min": {
+    "political": 25
+   }
+  },
+  "options": [
+   {
+    "text": "Aceitar o acordo.",
+    "hint": "Propaganda favorável; corrupção.",
+    "groups": {
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 3,
+      "d": 365
+     },
+     {
+      "k": "corruption",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Recusar e licitar a telefonia.",
+    "hint": "Limpo; ele vira inimigo.",
+    "now": {
+     "corruption": -1
+    },
+    "long": [
+     {
+      "k": "opposition",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Nacionalizar as TVs dele.",
+    "hint": "Controle total; reputação desaba.",
+    "now": {
+     "political": -6,
+     "reputation": -5
+    },
+    "groups": {
+     "business": -8
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pp_opposition_leader",
+  "cat": "Política interna",
+  "title": "A líder da oposição cresce",
+  "desc": "{person}, líder da oposição, lidera as pesquisas e prepara uma grande marcha nacional.",
+  "context": "Ela é carismática e incansável.",
+  "cond": {
+   "min": {
+    "opposition": 50
+   }
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Convidá-la para um governo de união nacional.",
+    "hint": "Estabilidade; você divide poder.",
+    "now": {
+     "stability": 4,
+     "political": 3
+    },
+    "groups": {
+     "opposition": 8
+    }
+   },
+   {
+    "text": "Investigar as contas dela.",
+    "hint": "Lawfare; pode funcionar.",
+    "now": {
+     "political": -3
+    },
+    "groups": {
+     "opposition": -5
+    }
+   },
+   {
+    "text": "Prender por \"incitação\".",
+    "hint": "Repressão; mártir.",
+    "now": {
+     "political": -6,
+     "reputation": -4
+    },
+    "groups": {
+     "opposition": -8
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": 5,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Ignorar e governar.",
+    "hint": "Confiante."
+   }
+  ]
+ },
+ {
+  "id": "pp_revolution_brewing",
+  "cat": "Política interna",
+  "title": "Sinais de revolução",
+  "desc": "A inteligência alerta: comitês revolucionários se organizam nas fábricas e universidades. Panfletos falam em \"poder popular\".",
+  "context": "A panela de pressão está para explodir.",
+  "cond": {
+   "min": {
+    "revoRisk": 50
+   }
+  },
+  "w": 2,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Concessões amplas: salário mínimo e anistia.",
+    "hint": "Alivia; custo.",
+    "now": {
+     "treasury": -0.6,
+     "protest": -6
+    },
+    "groups": {
+     "workers": 6
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": -8,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Prisões preventivas em massa.",
+    "hint": "Decapita o movimento; ódio.",
+    "now": {
+     "civil": -5,
+     "political": -4
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": -4,
+      "d": 120
+     },
+     {
+      "k": "opposition",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Reforma política com eleições livres.",
+    "hint": "Abre o regime.",
+    "now": {
+     "political": 8,
+     "legitimacy": 4
+    },
+    "groups": {
+     "opposition": 6
+    }
+   }
+  ]
+ },
+ {
+  "id": "pp_term_limits",
+  "cat": "Política interna",
+  "title": "Mais um mandato?",
+  "desc": "Aliados propõem emenda constitucional para permitir mais um mandato a {leader}.",
+  "context": "Continuidade ou personalismo?",
+  "cond": {
+   "min": {
+    "day": 500
+   }
+  },
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Aprovar a emenda.",
+    "hint": "Continuidade; oposição em fúria.",
+    "now": {
+     "political": -4,
+     "legitimacy": -2
+    },
+    "groups": {
+     "opposition": -6,
+     "bureaucracy": 3
+    }
+   },
+   {
+    "text": "Recusar publicamente.",
+    "hint": "Estadista.",
+    "now": {
+     "political": 3,
+     "reputation": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pp_youth_unemployment",
+  "cat": "Política interna",
+  "title": "Geração sem futuro",
+  "desc": "Desemprego entre jovens passa de 30%. Hashtags convocam protestos e os mais qualificados emigram.",
+  "context": "A juventude perde a esperança.",
+  "cond": {
+   "min": {
+    "unemployment": 14
+   }
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Programa de primeiro emprego subsidiado.",
+    "hint": "Caro; eficaz.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "youth": 6
+    },
+    "long": [
+     {
+      "k": "unemployment",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Serviço civil obrigatório.",
+    "hint": "Ocupa os jovens; impopular.",
+    "groups": {
+     "youth": -5,
+     "military": 3
+    },
+    "long": [
+     {
+      "k": "unemployment",
+      "v": -1.5,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Facilitar a emigração e viver das remessas.",
+    "hint": "Alivia; fuga de cérebros.",
+    "groups": {
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "emigration",
+      "v": 2,
+      "d": 365
+     },
+     {
+      "k": "revenue",
+      "v": 0.05,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pp_hyperinflation",
+  "cat": "Economia",
+  "title": "A inflação sai do controle",
+  "desc": "Preços sobem toda semana. Comerciantes remarcam etiquetas duas vezes por dia e o povo corre para o dólar.",
+  "context": "A moeda nacional derrete.",
+  "cond": {
+   "min": {
+    "inflation": 25
+   }
+  },
+  "w": 2,
+  "crisis": true,
+  "default": 1,
+  "options": [
+   {
+    "text": "Choque de juros e corte de gastos.",
+    "hint": "Doloroso; funciona.",
+    "now": {
+     "protest": 4
+    },
+    "groups": {
+     "workers": -4,
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -6,
+      "d": 365
+     },
+     {
+      "k": "growth",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Congelar preços.",
+    "hint": "Alívio imediato; desabastecimento depois.",
+    "groups": {
+     "workers": 4,
+     "business": -6
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -4,
+      "d": 120
+     },
+     {
+      "k": "s_food",
+      "v": -0.5,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Nova moeda com âncora cambial.",
+    "hint": "Recomeço; exige reservas.",
+    "now": {
+     "reserves": -1
+    },
+    "groups": {
+     "business": 4
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -8,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Dolarizar a economia.",
+    "hint": "Fim da inflação; fim da soberania monetária.",
+    "groups": {
+     "military": -3,
+     "business": 5
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -10,
+      "d": 0
+     },
+     {
+      "k": "creditLimit",
+      "v": -0.1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pp_debt_crisis",
+  "cat": "Economia",
+  "title": "Credores batem à porta",
+  "desc": "Os juros da dívida explodiram e os bancos se recusam a rolar os títulos que vencem este mês.",
+  "context": "O calote está a um passo.",
+  "cond": {
+   "min": {
+    "debtRatio": 95
+   }
+  },
+  "w": 2,
+  "crisis": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Pacote de austeridade drástico.",
+    "hint": "Evita o calote; recessão.",
+    "now": {
+     "treasury": 0.8
+    },
+    "groups": {
+     "workers": -5
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -1.2,
+      "d": 365
+     }
+    ],
+    "act": {
+     "type": "program",
+     "id": "austerity"
+    }
+   },
+   {
+    "text": "Reestruturar a dívida com desconto.",
+    "hint": "Alívio; reputação cai.",
+    "now": {
+     "debt": -8,
+     "reputation": -6
+    },
+    "long": [
+     {
+      "k": "creditLimit",
+      "v": -0.1,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Calote total.",
+    "hint": "Liberdade e caos.",
+    "now": {
+     "debt": -15,
+     "reputation": -15
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -1.5,
+      "d": 365
+     }
+    ],
+    "flags": {
+     "set": [
+      "defaulted"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "pp_boom_bubble",
+  "cat": "Economia",
+  "title": "Bolha imobiliária",
+  "desc": "Preços de imóveis dobraram em dois anos. Economistas alertam para uma bolha; construtoras querem mais crédito.",
+  "context": "Euforia é o momento mais perigoso.",
+  "cond": {
+   "min": {
+    "growth": 4.5
+   }
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Apertar o crédito.",
+    "hint": "Esfria a bolha; menos crescimento.",
+    "groups": {
+     "business": -3
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.4,
+      "d": 365
+     },
+     {
+      "k": "inflation",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Deixar a festa continuar.",
+    "hint": "Crescimento agora; risco de crise.",
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.4,
+      "d": 180
+     }
+    ],
+    "next": [
+     {
+      "id": "pp_bubble_burst",
+      "days": 200,
+      "p": 0.6
+     }
+    ]
+   },
+   {
+    "text": "Programa de moradia popular para absorver a demanda.",
+    "hint": "Social; caro.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 4,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pp_bubble_burst",
+  "cat": "Economia",
+  "title": "A bolha estourou",
+  "desc": "Construtoras quebram, bancos ficam com imóveis vazios e o desemprego dispara.",
+  "context": "A conta da euforia chegou.",
+  "chain": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Resgatar os bancos.",
+    "hint": "Evita o colapso; revolta popular.",
+    "now": {
+     "treasury": -1,
+     "debt": 2
+    },
+    "groups": {
+     "business": 4,
+     "workers": -5
+    }
+   },
+   {
+    "text": "Deixar quebrar.",
+    "hint": "Saneamento brutal.",
+    "long": [
+     {
+      "k": "growth",
+      "v": -1.5,
+      "d": 365
+     },
+     {
+      "k": "unemployment",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Estatizar os bancos falidos.",
+    "hint": "Controle estatal.",
+    "now": {
+     "debt": 1
+    },
+    "groups": {
+     "business": -6,
+     "workers": 3
+    },
+    "long": [
+     {
+      "k": "market",
+      "v": -5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pp_brain_drain",
+  "cat": "Economia",
+  "title": "Fuga de cérebros",
+  "desc": "Médicos, engenheiros e programadores emigram aos milhares. Hospitais e empresas de tecnologia ficam sem pessoal.",
+  "context": "Perdemos quem formamos.",
+  "cond": {
+   "max": {
+    "qol": 50
+   },
+   "min": {
+    "education": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Salários e incentivos para quem fica.",
+    "hint": "Caro; segura talentos.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "emigration",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Taxa de saída para formados em universidade pública.",
+    "hint": "Polêmico.",
+    "now": {
+     "civil": -2
+    },
+    "groups": {
+     "youth": -5
+    },
+    "long": [
+     {
+      "k": "emigration",
+      "v": -1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Atrair imigrantes qualificados.",
+    "hint": "Repõe talentos.",
+    "groups": {
+     "workers": -2
+    },
+    "long": [
+     {
+      "k": "migration",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pp_tax_revolt",
+  "cat": "Economia",
+  "title": "Revolta dos impostos",
+  "desc": "Caminhoneiros, comerciantes e agricultores bloqueiam estradas contra a carga tributária \"escorchante\".",
+  "context": "O país para.",
+  "cond": {
+   "min": {
+    "protest": 35
+   }
+  },
+  "w": 1.2,
+  "options": [
+   {
+    "text": "Reduzir impostos.",
+    "hint": "Fim do bloqueio; menos receita.",
+    "groups": {
+     "business": 5,
+     "rural": 4
+    },
+    "act": {
+     "type": "program",
+     "id": "taxreform"
+    }
+   },
+   {
+    "text": "Negociar isenções setoriais.",
+    "hint": "Fragmenta o movimento.",
+    "groups": {
+     "rural": 3
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": -0.2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Desbloquear com tropas.",
+    "hint": "Ordem; raiva.",
+    "now": {
+     "control": 3,
+     "civil": -2
+    },
+    "groups": {
+     "business": -4,
+     "rural": -5
+    }
+   }
+  ]
+ },
+ {
+  "id": "pg_pac_overrun",
+  "cat": "Economia",
+  "title": "Obras do PAC atrasadas",
+  "desc": "Metade das obras do programa de aceleração está parada. Auditores apontam superfaturamento.",
+  "context": "O dinheiro sumiu nos canteiros.",
+  "cond": {
+   "program": "pac",
+   "min": {
+    "corruption": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Auditoria e punição.",
+    "hint": "Limpa; atrasa mais.",
+    "now": {
+     "corruption": -2
+    },
+    "groups": {
+     "business": -4
+    }
+   },
+   {
+    "text": "Liberar mais verba para concluir.",
+    "hint": "Obras terminam; mais gasto.",
+    "now": {
+     "treasury": -0.5
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.3,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pg_liberal_backlash",
+  "cat": "Economia",
+  "title": "Revolta contra o choque liberal",
+  "desc": "Sindicatos convocam greve geral contra o fim dos subsídios. Ministro da Economia, {person}, diz que \"o pior já passou\".",
+  "context": "Recuar agora desperdiça o sacrifício.",
+  "cond": {
+   "program": "liberal"
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Manter o rumo.",
+    "hint": "Credibilidade; protestos.",
+    "now": {
+     "protest": 5,
+     "reputation": 2
+    },
+    "groups": {
+     "workers": -4
+    }
+   },
+   {
+    "text": "Compensar os mais pobres.",
+    "hint": "Alivia; custo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Abandonar o programa.",
+    "hint": "Paz social; investidores fogem.",
+    "now": {
+     "reputation": -4
+    },
+    "groups": {
+     "business": -6,
+     "workers": 4
+    },
+    "act": {
+     "type": "cancelProgram",
+     "id": "liberal"
+    }
+   }
+  ]
+ },
+ {
+  "id": "pg_stimulus_hangover",
+  "cat": "Economia",
+  "title": "Ressaca do estímulo",
+  "desc": "O consumo explodiu com os cheques do governo, mas a inflação também. Lojas não dão conta da demanda.",
+  "context": "Dinheiro fácil tem efeito colateral.",
+  "cond": {
+   "program": "stimulus",
+   "min": {
+    "inflation": 6
+   }
+  },
+  "options": [
+   {
+    "text": "Encerrar o estímulo antes do prazo.",
+    "hint": "Contém a inflação.",
+    "groups": {
+     "workers": -3
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -1.5,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Manter: o povo gosta.",
+    "hint": "Popularidade; inflação.",
+    "now": {
+     "legitimacy": 2
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": 1,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pg_plan5_quotas",
+  "cat": "Economia",
+  "title": "Metas do plano quinquenal",
+  "desc": "Diretores de fábricas falsificam números para cumprir as metas do plano. Os armazéns estão cheios de produtos que ninguém quer.",
+  "context": "O planejamento central tem seus vícios.",
+  "cond": {
+   "program": "plan5"
+  },
+  "options": [
+   {
+    "text": "Punir diretores fraudulentos.",
+    "hint": "Disciplina.",
+    "now": {
+     "corruption": -2
+    },
+    "groups": {
+     "bureaucracy": -4
+    }
+   },
+   {
+    "text": "Introduzir incentivos de mercado.",
+    "hint": "Mais eficiência.",
+    "long": [
+     {
+      "k": "productivity",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "market",
+      "v": 4,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Ignorar os números.",
+    "hint": "Paz burocrática.",
+    "long": [
+     {
+      "k": "productivity",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pg_freezone_sweatshops",
+  "cat": "Economia",
+  "title": "Escândalo nas zonas francas",
+  "desc": "Reportagem mostra operárias trabalhando 14 horas por dia nas fábricas das zonas francas.",
+  "context": "O milagre exportador tem um lado sombrio.",
+  "cond": {
+   "program": "freezones"
+  },
+  "options": [
+   {
+    "text": "Fiscalização trabalhista rigorosa.",
+    "hint": "Direitos; empresas reclamam.",
+    "now": {
+     "civil": 2
+    },
+    "groups": {
+     "workers": 5,
+     "business": -4
+    }
+   },
+   {
+    "text": "Defender: são empregos.",
+    "hint": "Pragmático.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "business": 3,
+     "workers": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pg_print_money",
+  "cat": "Economia",
+  "title": "O banco central resiste",
+  "desc": "O presidente do banco central, {person}, se recusa a continuar comprando títulos do governo e ameaça renunciar.",
+  "context": "Independência ou obediência?",
+  "cond": {
+   "program": "print"
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Aceitar a renúncia e nomear um aliado.",
+    "hint": "Controle total; mercados em pânico.",
+    "now": {
+     "reputation": -4
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Ceder e encerrar a emissão.",
+    "hint": "Credibilidade.",
+    "now": {
+     "reputation": 2
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pg_minister_plan",
+  "cat": "Economia",
+  "title": "O ministro tem um plano",
+  "desc": "O ministro da Economia, {person}, apresenta três caminhos para destravar o crescimento.",
+  "context": "Escolha uma direção.",
+  "cond": {
+   "max": {
+    "growth": 2,
+    "programs": 1
+   }
+  },
+  "w": 1.4,
+  "cd": 300,
+  "options": [
+   {
+    "text": "Programa de Aceleração do Crescimento.",
+    "hint": "Obras e crédito.",
+    "act": {
+     "type": "program",
+     "id": "pac"
+    }
+   },
+   {
+    "text": "Atração de investimento estrangeiro.",
+    "hint": "Capital e tecnologia.",
+    "act": {
+     "type": "program",
+     "id": "fdi"
+    }
+   },
+   {
+    "text": "Reforma tributária.",
+    "hint": "Arrecadação e eficiência.",
+    "act": {
+     "type": "program",
+     "id": "taxreform"
+    }
+   },
+   {
+    "text": "Nenhum: deixemos a economia respirar.",
+    "hint": "Sem custo."
+   }
+  ]
+ }
+]

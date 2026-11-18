@@ -1,0 +1,236 @@
+[
+{"id":"e_crypto","cat":"Economia","title":"Moeda digital oficial?","desc":"Um bilionário da tecnologia propõe adotar uma criptomoeda como moeda legal, prometendo atrair investidores do mundo todo.","context":"A volatilidade dessas moedas é lendária.","options":[
+ {"text":"Adotar a criptomoeda como moeda legal.","hint":"Aposta ousada; FMI alarmado.","now":{"reputation":-3},"groups":{"youth":4,"business":2},"long":[{"k":"inflation","v":1.5,"d":365},{"k":"tech","v":2,"d":0}],"next":[{"id":"e_crypto_crash","days":90,"p":0.6}],"flags":{"set":["crypto"]}},
+ {"text":"Lançar uma moeda digital do Banco Central.","hint":"Modernização controlada.","now":{"treasury":-0.05,"tech":2,"taxCapacity":2}},
+ {"text":"Proibir criptomoedas.","hint":"Estabilidade; jovens frustrados.","now":{"civil":-1},"groups":{"youth":-3}}
+]},
+{"id":"e_crypto_crash","chain":true,"crisis":true,"cat":"Crise econômica","title":"A criptomoeda despencou","desc":"A moeda digital adotada perdeu 70% do valor em duas semanas. Salários pagos nela evaporaram.","context":"Poupadores fazem fila nas casas de câmbio.","default":1,"options":[
+ {"text":"Abandonar a criptomoeda e indenizar poupadores.","hint":"Custa caro, encerra a crise.","now":{"treasury":-0.6,"legitimacy":-2},"flags":{"clear":["crypto"]},"long":[{"k":"inflation","v":-1,"d":120}]},
+ {"text":"Manter a aposta: o preço vai voltar.","hint":"Teimosia.","now":{"gdp":-0.8,"protest":5},"groups":{"workers":-6}},
+ {"text":"Converter tudo em moeda nacional à força.","hint":"Rápido e impopular.","now":{"gdp":-0.3,"civil":-2},"groups":{"business":-4,"youth":-4},"flags":{"clear":["crypto"]}}
+]},
+{"id":"e_auto_plant","cat":"Indústria","title":"Uma montadora quer se instalar","desc":"Uma montadora estrangeira oferece construir uma fábrica de carros elétricos se receber terreno gratuito, isenções e subsídio à energia.","context":"Seriam 12 mil empregos diretos.","options":[
+ {"text":"Aceitar todas as condições.","hint":"Empregos e indústria; renúncia fiscal.","now":{"treasury":-0.3,"unemployment":-0.5},"long":[{"k":"industry","v":4,"d":0},{"k":"revenue","v":-0.1,"d":0}],"groups":{"workers":5,"business":3}},
+ {"text":"Exigir conteúdo nacional mínimo de 40%.","hint":"Encadeamento industrial; pode desistir.","long":[{"k":"industry","v":2,"d":0}],"groups":{"business":3},"next":[{"id":"e_auto_plant_answer","days":28}]},
+ {"text":"Recusar subsídios.","hint":"Contas preservadas; oportunidade perdida.","groups":{"business":-2}}
+]},
+{"id":"e_auto_plant_answer","chain":true,"cat":"Indústria","title":"A montadora responde","desc":"A montadora aceitou o conteúdo nacional, mas pede em troca que o governo compre 20 mil veículos para a frota pública.","context":"A frota pública é velha e poluente.","default":1,"options":[
+ {"text":"Fechar o acordo.","hint":"Fábrica garantida.","now":{"treasury":-0.25,"pollution":-1},"long":[{"k":"industry","v":3,"d":0},{"k":"tech","v":1,"d":0}],"groups":{"workers":4}},
+ {"text":"Recusar a compra.","hint":"A montadora vai para o vizinho.","groups":{"workers":-3},"rel":{"neighbors":-1}}
+]},
+{"id":"e_gig_workers","cat":"Trabalho","title":"Entregadores de aplicativo","desc":"Milhares de entregadores de aplicativo bloquearam avenidas exigindo salário mínimo, seguro e direitos trabalhistas.","context":"As plataformas ameaçam sair do país.","options":[
+ {"text":"Reconhecer vínculo empregatício.","hint":"Direitos; serviços mais caros.","now":{"inequality":-1},"groups":{"workers":6,"youth":4,"business":-6}},
+ {"text":"Criar uma categoria intermediária com seguro.","hint":"Compromisso.","now":{"treasury":-0.05},"groups":{"workers":2}},
+ {"text":"Manter tudo como está.","hint":"Plataformas felizes.","groups":{"business":3,"workers":-4,"youth":-3}}
+]},
+{"id":"e_robots","cat":"Tecnologia","title":"Robôs nas fábricas","desc":"Grandes indústrias anunciam a automação de linhas de montagem; 40 mil empregos serão eliminados em dois anos.","context":"A produtividade subiria muito.","cond":{"min":{"industry":35}},"options":[
+ {"text":"Tributar robôs para financiar requalificação.","hint":"Transição justa; automação mais lenta.","now":{"treasury":0.1},"groups":{"workers":4,"business":-4},"long":[{"k":"productivity","v":1,"d":0}]},
+ {"text":"Incentivar a automação.","hint":"Competitividade; desemprego temporário.","now":{"unemployment":1},"groups":{"business":5,"workers":-6},"long":[{"k":"productivity","v":4,"d":0},{"k":"industry","v":2,"d":0}]},
+ {"text":"Proibir demissões por automação.","hint":"Empregos protegidos; investimento foge.","groups":{"workers":5,"business":-7},"long":[{"k":"growth","v":-0.3,"d":365}]}
+]},
+{"id":"e_central_bank","cat":"Economia","title":"Independência do Banco Central","desc":"Economistas defendem um Banco Central independente para conter a inflação. O governo perderia o controle dos juros.","context":"A inflação tem sido usada para financiar gastos.","options":[
+ {"text":"Conceder autonomia total.","hint":"Credibilidade; menos espaço para gastar.","now":{"reputation":2},"groups":{"business":5},"long":[{"k":"inflation","v":-1.2,"d":0},{"k":"growth","v":-0.1,"d":365}]},
+ {"text":"Manter o Banco Central subordinado.","hint":"Controle; mercados desconfiam.","long":[{"k":"inflation","v":0.4,"d":0}],"groups":{"business":-2}},
+ {"text":"Nomear um aliado com mandato fixo.","hint":"Fachada de independência.","now":{"corruption":1},"groups":{"business":1}}
+]},
+{"id":"e_gold_mine","cat":"Recursos","title":"Ouro sob a reserva indígena","desc":"Geólogos encontraram ouro de alto teor sob uma reserva indígena. Mineradoras oferecem royalties generosos.","context":"Os povos indígenas rejeitam a mineração.","options":[
+ {"text":"Autorizar a mineração.","hint":"Receita; conflitos e condenação.","now":{"treasury":0.3,"reputation":-4,"pollution":2},"long":[{"k":"s_raw","v":6,"d":0}],"groups":{"business":5,"regional":4},"next":[{"id":"e_mine_conflict","days":45,"p":0.5}]},
+ {"text":"Mineração com consulta e participação indígena.","hint":"Mais lento e legítimo.","long":[{"k":"s_raw","v":3,"d":0}],"now":{"reputation":2}},
+ {"text":"Proteger a reserva.","hint":"Direitos; dinheiro deixado no chão.","now":{"reputation":3},"groups":{"business":-4,"youth":3}}
+]},
+{"id":"e_mine_conflict","chain":true,"crisis":true,"cat":"Recursos","title":"Garimpeiros contra indígenas","desc":"Garimpeiros armados invadiram aldeias perto da nova mina. Há mortos dos dois lados e imagens de rios contaminados.","context":"A ONU pediu explicações.","default":0,"options":[
+ {"text":"Enviar forças federais para expulsar invasores.","hint":"Ordem e direitos.","now":{"treasury":-0.1,"reputation":3,"control":2},"groups":{"regional":-4}},
+ {"text":"Suspender a mineração temporariamente.","hint":"Perde receita.","now":{"reputation":2},"long":[{"k":"s_raw","v":-4,"d":180}],"groups":{"business":-4}},
+ {"text":"Deixar a situação se resolver localmente.","hint":"Omissão.","now":{"reputation":-6,"civil":-2},"rel":{"west":-4}}
+]},
+{"id":"e_microcredit","cat":"Economia","title":"Microcrédito para os pobres","desc":"Um banco comunitário propõe um programa nacional de microcrédito para mulheres empreendedoras nas periferias.","context":"Experiências em outros países foram mistas.","options":[
+ {"text":"Financiar o programa com dinheiro público.","hint":"Empreendedorismo e inclusão.","now":{"treasury":-0.15},"long":[{"k":"poverty","v":-2,"d":0},{"k":"growth","v":0.1,"d":365}],"groups":{"workers":3}},
+ {"text":"Garantias públicas para bancos privados.","hint":"Menos custo, mais risco.","now":{"treasury":-0.05},"long":[{"k":"poverty","v":-1,"d":0}],"groups":{"business":2}},
+ {"text":"Não intervir.","hint":"Nada muda."}
+]},
+{"id":"e_price_gouging","cat":"Inflação","title":"Supermercados acusados de abuso","desc":"Os preços nos supermercados subiram bem acima da inflação. Consumidores acusam as três grandes redes de cartel.","context":"As redes alegam custos de transporte.","cond":{"min":{"inflation":5}},"options":[
+ {"text":"Tabelar preços de 50 produtos básicos.","hint":"Alívio imediato; desabastecimento.","now":{"inflation":-0.8},"groups":{"workers":5,"business":-6},"long":[{"k":"s_food","v":-3,"d":180},{"k":"market","v":-3,"d":180}]},
+ {"text":"Investigação antitruste e multas.","hint":"Concorrência no médio prazo.","now":{"treasury":0.05},"long":[{"k":"inflation","v":-0.4,"d":240}],"groups":{"business":-2}},
+ {"text":"Zerar tarifas de importação de alimentos.","hint":"Concorrência externa.","now":{"inflation":-0.5},"groups":{"rural":-5},"long":[{"k":"importAccess","v":0.04,"d":365}]}
+]},
+{"id":"e_pension_fund","cat":"Gastos públicos","title":"O fundo de pensão quebrou","desc":"O maior fundo de pensão estatal está insolvente após investimentos ruins em empresas de amigos do governo.","context":"Dois milhões de aposentados dependem dele.","cond":{"min":{"corruption":35}},"options":[
+ {"text":"Resgate com dinheiro do Tesouro.","hint":"Aposentados protegidos; conta enorme.","now":{"treasury":-0.8},"groups":{"workers":4}},
+ {"text":"Cortar benefícios pela metade.","hint":"Contas preservadas; revolta.","now":{"protest":6,"poverty":2},"groups":{"workers":-8,"rural":-4}},
+ {"text":"Resgate parcial e investigação dos gestores.","hint":"Meio-termo.","now":{"treasury":-0.4,"corruption":-2},"groups":{"bureaucracy":-2}}
+]},
+{"id":"e_tourism_resort","cat":"Turismo","title":"Megarresort no litoral","desc":"Um grupo hoteleiro quer construir um resort de luxo numa praia virgem habitada por comunidades de pescadores.","context":"O turismo traria divisas e empregos sazonais.","cond":{"coast":true},"options":[
+ {"text":"Aprovar o resort e remover os pescadores.","hint":"Divisas; injustiça social.","now":{"reserves":0.2},"long":[{"k":"s_services","v":3,"d":0}],"groups":{"business":4,"rural":-5}},
+ {"text":"Aprovar com reassentamento digno.","hint":"Mais caro e justo.","now":{"treasury":-0.1},"long":[{"k":"s_services","v":2,"d":0}]},
+ {"text":"Criar um parque nacional.","hint":"Ecoturismo e preservação.","now":{"reputation":2},"long":[{"k":"pollution","v":-1,"d":0}],"groups":{"youth":3}}
+]},
+{"id":"e_ports_privatize","cat":"Infraestrutura","title":"Privatizar os portos?","desc":"Operadores estrangeiros querem comprar a concessão dos principais portos por 30 anos.","context":"Os portos são lentos e corruptos, mas estratégicos.","cond":{"coast":true},"options":[
+ {"text":"Vender ao maior lance.","hint":"Dinheiro e eficiência; soberania questionada.","now":{"treasury":0.5,"market":3},"long":[{"k":"exportAccess","v":0.05,"d":0}],"groups":{"military":-3,"business":4}},
+ {"text":"Concessão com operador nacional majoritário.","hint":"Compromisso.","now":{"treasury":0.2},"long":[{"k":"exportAccess","v":0.02,"d":0}]},
+ {"text":"Manter estatal e investir na modernização.","hint":"Controle; custo.","now":{"treasury":-0.3},"long":[{"k":"exportAccess","v":0.03,"d":0}],"groups":{"workers":3}}
+]},
+{"id":"e_counterfeit","cat":"Economia","title":"Notas falsas em circulação","desc":"O Banco Central detectou uma enxurrada de notas falsas de alta qualidade. Suspeita-se de uma gráfica estrangeira.","context":"A confiança na moeda está em jogo.","options":[
+ {"text":"Trocar todas as cédulas por um novo modelo.","hint":"Caro e eficaz.","now":{"treasury":-0.2,"inflation":-0.3}},
+ {"text":"Acelerar a digitalização dos pagamentos.","hint":"Modernização.","now":{"treasury":-0.05,"tech":2,"taxCapacity":2},"groups":{"rural":-2}},
+ {"text":"Investigar discretamente.","hint":"Problema persiste.","long":[{"k":"inflation","v":0.5,"d":120}]}
+]},
+{"id":"e_brain_gain","cat":"Tecnologia","title":"Vistos para cientistas","desc":"Cientistas perseguidos num país autoritário pedem asilo e trazem patentes e laboratórios inteiros.","context":"O governo de origem exige sua extradição.","options":[
+ {"text":"Conceder asilo e financiamento.","hint":"Tecnologia; crise diplomática.","now":{"treasury":-0.1},"long":[{"k":"tech","v":4,"d":0}],"rel":{"east":-4},"groups":{"youth":3}},
+ {"text":"Conceder asilo discreto, sem financiamento.","hint":"Ganho menor.","long":[{"k":"tech","v":1,"d":0}]},
+ {"text":"Recusar para não irritar ninguém.","hint":"Neutralidade.","now":{"reputation":-2}}
+]},
+{"id":"e_ai_regulation","cat":"Tecnologia","title":"Inteligência artificial no governo","desc":"Uma empresa oferece um sistema de IA para decidir benefícios sociais, multas e até sentenças judiciais.","context":"Promete eficiência; críticos temem vieses e opacidade.","cond":{"min":{"tech":30}},"options":[
+ {"text":"Adotar o sistema amplamente.","hint":"Eficiência; protestos por erros.","now":{"efficiency":5,"civil":-3},"groups":{"bureaucracy":-4,"youth":-2},"long":[{"k":"corruption","v":-2,"d":0}]},
+ {"text":"Usar apenas como apoio a servidores humanos.","hint":"Ganho moderado.","now":{"efficiency":2,"tech":1}},
+ {"text":"Proibir IA em decisões públicas.","hint":"Garantias; atraso tecnológico.","now":{"civil":2},"long":[{"k":"tech","v":-1,"d":365}]}
+]},
+{"id":"e_ai_surveillance","cat":"Vigilância","title":"Reconhecimento facial nas cidades","desc":"A polícia quer câmeras com reconhecimento facial em todas as estações e praças.","context":"A tecnologia vem de uma potência estrangeira.","options":[
+ {"text":"Instalar em todo o país.","hint":"Controle e segurança; privacidade acaba.","now":{"treasury":-0.2,"crime":-3,"control":3,"civil":-5},"groups":{"youth":-5},"rel":{"CHN":4},"policy":{"surveillance":"total"}},
+ {"text":"Instalar só com ordem judicial para uso.","hint":"Compromisso.","now":{"treasury":-0.1,"crime":-1}},
+ {"text":"Proibir o reconhecimento facial.","hint":"Privacidade preservada.","now":{"civil":2},"groups":{"youth":3}}
+]},
+{"id":"e_semiconductors","cat":"Tecnologia","title":"Fábrica de chips","desc":"Uma empresa asiática de semicondutores procura um país para uma fábrica de 20 bilhões fora da zona de tensão do Pacífico.","context":"Exige energia estável, água e mão de obra qualificada.","cond":{"min":{"education":50,"stability":50}},"w":0.6,"options":[
+ {"text":"Oferecer subsídios bilionários.","hint":"Salto tecnológico; conta alta.","now":{"treasury":-0.8},"long":[{"k":"tech","v":8,"d":0},{"k":"s_tech","v":12,"d":0},{"k":"growth","v":0.4,"d":730}],"rel":{"USA":5,"CHN":-5}},
+ {"text":"Oferecer infraestrutura, sem dinheiro direto.","hint":"Chance menor.","now":{"treasury":-0.2},"long":[{"k":"tech","v":2,"d":0}]},
+ {"text":"Não competir.","hint":"Sem custo."}
+]},
+{"id":"e_black_market","cat":"Economia","title":"O mercado negro de dólares","desc":"Com o câmbio controlado, o dólar paralelo vale o dobro do oficial. Exportadores escondem divisas.","context":"A diferença alimenta corrupção e contrabando.","cond":{"min":{"inflation":10}},"options":[
+ {"text":"Unificar o câmbio de uma vez.","hint":"Choque inflacionário; mercado saneado.","now":{"inflation":4,"reserves":0.3},"groups":{"workers":-5,"business":4},"long":[{"k":"corruption","v":-2,"d":0},{"k":"exportAccess","v":0.04,"d":365}]},
+ {"text":"Reprimir os doleiros.","hint":"Prisões; o mercado se adapta.","now":{"civil":-2,"corruption":-1}},
+ {"text":"Desvalorização gradual.","hint":"Lento e previsível.","long":[{"k":"inflation","v":1,"d":180}]}
+]},
+{"id":"e_farm_subsidy_war","cat":"Agricultura","title":"Subsídios agrícolas do vizinho","desc":"Um país vizinho passou a subsidiar pesadamente seus agricultores, inundando nosso mercado com grãos baratos.","context":"Agricultores bloqueiam a fronteira.","options":[
+ {"text":"Impor tarifas antidumping.","hint":"Protege o campo; vizinho irritado.","now":{"inflation":0.3},"groups":{"rural":6},"rel":{"neighbors":-5},"long":[{"k":"s_food","v":3,"d":0}]},
+ {"text":"Subsidiar nossos agricultores também.","hint":"Guerra de subsídios cara.","now":{"treasury":-0.25},"groups":{"rural":5}},
+ {"text":"Aproveitar os grãos baratos.","hint":"Comida barata; campo quebra.","now":{"inflation":-0.4},"groups":{"rural":-6,"workers":2}}
+]},
+{"id":"e_locust","cat":"Agricultura","title":"Nuvem de gafanhotos","desc":"Uma nuvem de gafanhotos com bilhões de insetos atravessa a fronteira e devora plantações.","context":"Agrônomos têm dias para agir.","crisis":true,"default":2,"options":[
+ {"text":"Pulverização aérea massiva.","hint":"Eficaz; poluição e custo.","now":{"treasury":-0.2,"pollution":2},"groups":{"rural":3}},
+ {"text":"Pedir ajuda técnica internacional.","hint":"Cooperação.","now":{"treasury":-0.05},"rel":{"all":1},"long":[{"k":"s_food","v":-3,"d":90}]},
+ {"text":"Deixar a praga passar.","hint":"Safra perdida.","long":[{"k":"s_food","v":-10,"d":120}],"groups":{"rural":-8},"next":[{"id":"famine_warning","days":30,"p":0.5}]}
+]},
+{"id":"e_gmo","cat":"Agricultura","title":"Sementes transgênicas","desc":"Uma multinacional oferece sementes transgênicas resistentes à seca, com contratos de royalties de longo prazo.","context":"Ambientalistas e pequenos agricultores protestam.","options":[
+ {"text":"Liberar as sementes.","hint":"Produtividade; dependência.","long":[{"k":"s_food","v":8,"d":0}],"groups":{"business":3,"rural":-2,"youth":-2}},
+ {"text":"Desenvolver sementes em laboratório público.","hint":"Soberania; lento.","now":{"treasury":-0.15},"long":[{"k":"s_food","v":4,"d":0},{"k":"tech","v":1,"d":0}]},
+ {"text":"Proibir transgênicos.","hint":"Precaução.","groups":{"youth":2,"rural":2}}
+]},
+{"id":"e_water_privatize","cat":"Serviços públicos","title":"Privatizar a água?","desc":"A companhia estatal de água perde 40% da água tratada em vazamentos. Investidores querem comprá-la.","context":"Em outros países, a privatização da água causou revoltas.","options":[
+ {"text":"Privatizar com metas de investimento.","hint":"Dinheiro e eficiência; tarifas sobem.","now":{"treasury":0.4,"market":3},"groups":{"workers":-5,"business":4},"long":[{"k":"health","v":1,"d":0}]},
+ {"text":"Manter pública e investir.","hint":"Custo fiscal.","now":{"treasury":-0.3},"long":[{"k":"health","v":2,"d":0}],"groups":{"workers":2}},
+ {"text":"Parceria público-privada.","hint":"Meio-termo.","now":{"treasury":0.1}}
+]},
+{"id":"e_strike_mines","cat":"Trabalho","title":"Greve nas minas","desc":"Mineiros de cobre e carvão param a produção exigindo segurança após uma série de acidentes fatais.","context":"Os minérios são a maior fonte de divisas.","cond":{"min":{"industry":25}},"options":[
+ {"text":"Atender às exigências de segurança.","hint":"Custo para empresas; trabalho volta.","now":{"treasury":-0.05},"groups":{"workers":6,"business":-3}},
+ {"text":"Mandar a polícia reabrir as minas.","hint":"Produção retomada; mortos e ódio.","now":{"protest":5,"civil":-3},"groups":{"workers":-8},"long":[{"k":"revoRisk","v":3,"d":180}]},
+ {"text":"Nacionalizar as minas em crise.","hint":"Controle estatal.","now":{"market":-4,"treasury":-0.2},"groups":{"workers":5,"business":-5},"flags":{"set":["nationalized"]},"rel":{"west":-3}}
+]},
+{"id":"e_four_day_week","cat":"Trabalho","title":"Semana de quatro dias","desc":"Sindicatos e startups defendem a semana de trabalho de quatro dias sem redução salarial.","context":"Testes pilotos mostraram ganhos de produtividade.","options":[
+ {"text":"Adotar por lei.","hint":"Qualidade de vida; empresas pequenas sofrem.","now":{"qol":2},"groups":{"workers":6,"youth":5,"business":-5},"long":[{"k":"growth","v":-0.2,"d":365}]},
+ {"text":"Incentivar voluntariamente.","hint":"Gradual.","groups":{"workers":2,"youth":2}},
+ {"text":"Rejeitar.","hint":"Empresários aliviados.","groups":{"business":2,"workers":-2}}
+]},
+{"id":"e_debt_restructure","cat":"Dívida","title":"Reestruturar a dívida?","desc":"Os juros consomem uma parte crescente do orçamento. Assessores sugerem renegociar com os credores — ou declarar moratória.","context":"Os credores estrangeiros estão nervosos.","cond":{"min":{"debtRatio":75}},"options":[
+ {"text":"Negociação amigável com desconto modesto.","hint":"Alívio parcial.","now":{"debt":-5,"reputation":-2}},
+ {"text":"Moratória unilateral.","hint":"Alívio enorme; crédito cortado.","now":{"debt":-20,"reputation":-12},"flags":{"set":["defaulted"]},"rel":{"west":-8},"long":[{"k":"growth","v":-1.5,"d":365}]},
+ {"text":"Honrar tudo e cortar gastos.","hint":"Credibilidade; austeridade.","now":{"protest":4},"groups":{"workers":-5,"business":4},"long":[{"k":"creditLimit","v":0.1,"d":730}]}
+]},
+{"id":"e_sovereign_fund","cat":"Economia","title":"Fundo soberano","desc":"Economistas propõem guardar parte das receitas de exportação num fundo soberano investido no exterior.","context":"Isso reduziria o dinheiro disponível hoje.","cond":{"min":{"growth":2}},"options":[
+ {"text":"Criar o fundo com regras rígidas.","hint":"Poupança para o futuro.","now":{"treasury":-0.3,"reserves":0.4,"reputation":2},"groups":{"business":3}},
+ {"text":"Criar o fundo para investir em obras nacionais.","hint":"Desenvolvimento; risco político.","now":{"treasury":-0.2,"corruption":1},"long":[{"k":"infra","v":2,"d":0}]},
+ {"text":"Gastar as receitas agora.","hint":"Popularidade imediata.","now":{"legitimacy":2},"groups":{"workers":2}}
+]},
+{"id":"e_special_zone","cat":"Economia","title":"Zona econômica especial","desc":"Consultores sugerem criar uma zona com leis trabalhistas e tributárias próprias para atrair indústrias exportadoras.","context":"Funcionou na Ásia; críticos falam em 'país dentro do país'.","options":[
+ {"text":"Criar a zona com regras liberais.","hint":"Investimento; desigualdade regional.","long":[{"k":"growth","v":0.5,"d":730},{"k":"industry","v":3,"d":0},{"k":"inequality","v":2,"d":0}],"groups":{"business":5,"workers":-3}},
+ {"text":"Zona com direitos trabalhistas preservados.","hint":"Menos atrativa.","long":[{"k":"growth","v":0.2,"d":730}]},
+ {"text":"Não criar a zona.","hint":"Nada muda."}
+]},
+{"id":"e_energy_subsidy","cat":"Energia","title":"Subsídio aos combustíveis","desc":"O subsídio aos combustíveis consome uma fatia enorme do orçamento. O FMI recomenda cortá-lo.","context":"Da última vez que os preços subiram, houve motins.","options":[
+ {"text":"Cortar o subsídio de uma vez.","hint":"Contas equilibradas; revolta.","now":{"treasury":0.5,"protest":8,"inflation":1.5},"groups":{"workers":-7,"rural":-5},"long":[{"k":"revoRisk","v":3,"d":120}]},
+ {"text":"Cortar gradualmente com transferência aos pobres.","hint":"Transição sensata.","now":{"treasury":0.1},"long":[{"k":"poverty","v":-1,"d":365}]},
+ {"text":"Manter o subsídio.","hint":"Paz social; buraco fiscal.","long":[{"k":"revenue","v":-0.2,"d":0}],"groups":{"workers":2}}
+]},
+{"id":"e_nuclear_plant","cat":"Energia","title":"Usina nuclear","desc":"Uma estatal estrangeira oferece construir e financiar uma usina nuclear, com combustível fornecido por 40 anos.","context":"Resolveria a crise de energia — e criaria dependência.","cond":{"noflag":"npp"},"w":0.7,"options":[
+ {"text":"Aceitar a oferta.","hint":"Energia limpa; dependência do fornecedor.","now":{"debt":1.5},"long":[{"k":"s_energy","v":15,"d":0},{"k":"pollution","v":-3,"d":0}],"rel":{"RUS":6},"flags":{"set":["npp"]}},
+ {"text":"Construir com tecnologia própria.","hint":"Soberania; caro e demorado.","now":{"treasury":-0.8},"long":[{"k":"s_energy","v":10,"d":0},{"k":"tech","v":3,"d":0}],"flags":{"set":["npp"]}},
+ {"text":"Recusar a energia nuclear.","hint":"Sem riscos nucleares.","groups":{"youth":2},"flags":{"set":["npp"]}}
+]},
+{"id":"e_solar_desert","cat":"Energia","title":"Um deserto de painéis solares","desc":"Investidores querem cobrir uma região árida com painéis solares e exportar energia por cabo submarino.","context":"A região é terra de pastores nômades.","options":[
+ {"text":"Aprovar o megaprojeto.","hint":"Energia e divisas.","long":[{"k":"s_energy","v":10,"d":0},{"k":"exportAccess","v":0.03,"d":0},{"k":"pollution","v":-2,"d":0}],"groups":{"business":4,"rural":-3}},
+ {"text":"Projeto menor para consumo interno.","hint":"Moderado.","now":{"treasury":-0.2},"long":[{"k":"s_energy","v":5,"d":0}]},
+ {"text":"Proteger os pastores.","hint":"Tradição preservada.","groups":{"rural":3}}
+]},
+{"id":"e_fracking","cat":"Energia","title":"Gás de xisto","desc":"Empresas querem explorar gás de xisto com fraturamento hidráulico sob terras agrícolas.","context":"Pode tornar o país exportador de energia.","options":[
+ {"text":"Liberar o fracking.","hint":"Energia barata; água contaminada.","long":[{"k":"s_energy","v":12,"d":0},{"k":"pollution","v":5,"d":0}],"groups":{"business":5,"rural":-5}},
+ {"text":"Liberar com regras ambientais rígidas.","hint":"Ganho menor.","long":[{"k":"s_energy","v":5,"d":0},{"k":"pollution","v":1,"d":0}]},
+ {"text":"Proibir.","hint":"Precaução.","groups":{"rural":3,"youth":3}}
+]},
+{"id":"e_pipeline","cat":"Energia","title":"O gasoduto estrangeiro","desc":"Uma potência quer construir um gasoduto atravessando nosso território para levar gás a seus clientes, pagando taxas de trânsito.","context":"Quem controla dutos controla influência.","options":[
+ {"text":"Aceitar com taxas altas.","hint":"Receita e alavanca.","now":{"treasury":0.2},"long":[{"k":"revenue","v":0.3,"d":0}],"rel":{"RUS":6,"west":-3}},
+ {"text":"Aceitar só com gás para consumo próprio a preço baixo.","hint":"Energia barata.","long":[{"k":"s_energy","v":6,"d":0}],"rel":{"RUS":3}},
+ {"text":"Recusar.","hint":"Independência.","rel":{"RUS":-5,"west":3}}
+]},
+{"id":"e_blackout_hack","cat":"Energia","title":"Apagão por ataque hacker","desc":"Um ataque cibernético desligou a rede elétrica de três regiões por 36 horas no inverno.","context":"Hospitais funcionaram com geradores; houve mortes.","crisis":true,"default":1,"options":[
+ {"text":"Retaliar com ataque cibernético.","hint":"Escalada perigosa.","now":{"legitimacy":2},"rel":{"rival":-12},"groups":{"military":3}},
+ {"text":"Investir em ciberdefesa e redundância.","hint":"Custo e prevenção.","now":{"treasury":-0.25},"long":[{"k":"intel","v":4,"d":0}]},
+ {"text":"Culpar a manutenção e demitir a direção da estatal.","hint":"Bode expiatório.","now":{"legitimacy":-1}}
+]},
+{"id":"e_textile_china","cat":"Comércio","title":"Concorrência têxtil asiática","desc":"As fábricas têxteis nacionais fecham uma após a outra diante de importações baratas da Ásia.","context":"O setor emprega 200 mil pessoas, principalmente mulheres.","options":[
+ {"text":"Cotas de importação.","hint":"Empregos protegidos; China reage.","groups":{"workers":5},"rel":{"CHN":-6},"long":[{"k":"importAccess","v":-0.03,"d":0}]},
+ {"text":"Requalificar os trabalhadores para outros setores.","hint":"Transição.","now":{"treasury":-0.15},"long":[{"k":"productivity","v":1,"d":0}],"groups":{"workers":2}},
+ {"text":"Deixar o setor desaparecer.","hint":"Eficiência; desemprego.","now":{"unemployment":0.8},"groups":{"workers":-6}}
+]},
+{"id":"e_remittances","cat":"Economia","title":"Taxar remessas de emigrantes?","desc":"Emigrantes enviam bilhões para suas famílias todos os anos. O Tesouro quer cobrar 5% sobre cada remessa.","context":"As remessas sustentam milhões de famílias pobres.","options":[
+ {"text":"Taxar as remessas.","hint":"Receita; famílias pobres penalizadas.","now":{"treasury":0.2,"poverty":1},"groups":{"rural":-5,"workers":-3}},
+ {"text":"Isentar e criar títulos para a diáspora.","hint":"Atrai investimentos.","now":{"reserves":0.3},"groups":{"rural":3}},
+ {"text":"Manter como está.","hint":"Nada muda."}
+]},
+{"id":"e_stock_exchange","cat":"Economia","title":"Abrir a bolsa ao capital estrangeiro","desc":"A pequena bolsa de valores nacional poderia triplicar de tamanho se estrangeiros pudessem comprar ações livremente.","context":"O capital estrangeiro também foge rápido.","options":[
+ {"text":"Abrir totalmente.","hint":"Investimento; volatilidade.","long":[{"k":"growth","v":0.4,"d":365},{"k":"inflation","v":0.3,"d":365}],"groups":{"business":5},"flags":{"set":["bubble"]}},
+ {"text":"Abrir com limites de 30% por empresa.","hint":"Gradual.","long":[{"k":"growth","v":0.2,"d":365}],"groups":{"business":2}},
+ {"text":"Manter fechada.","hint":"Controle nacional.","groups":{"business":-2,"military":1}}
+]},
+{"id":"e_unions_minwage_youth","cat":"Trabalho","title":"Salário mínimo jovem","desc":"Para reduzir o desemprego juvenil, empresários propõem um salário mínimo 30% menor para menores de 25 anos.","context":"O desemprego entre jovens é o dobro da média.","cond":{"min":{"unemployment":8}},"options":[
+ {"text":"Aprovar o salário mínimo jovem.","hint":"Mais contratações; jovens indignados.","now":{"unemployment":-0.5},"groups":{"business":4,"youth":-6}},
+ {"text":"Subsidiar o primeiro emprego.","hint":"Custo fiscal; jovens felizes.","now":{"treasury":-0.15,"unemployment":-0.4},"groups":{"youth":5}},
+ {"text":"Rejeitar.","hint":"Nada muda.","groups":{"youth":1}}
+]},
+{"id":"e_harbor_china","cat":"Infraestrutura","title":"Dívida da ferrovia chinesa","desc":"O país não consegue pagar o empréstimo chinês que financiou uma ferrovia. Pequim propõe ficar com a operação por 99 anos.","context":"A ferrovia liga a capital ao principal porto.","cond":{"min":{"debtRatio":70}},"options":[
+ {"text":"Ceder a operação.","hint":"Dívida perdoada; soberania arranhada.","now":{"debt":-3,"legitimacy":-3},"rel":{"CHN":8,"USA":-4},"groups":{"military":-4}},
+ {"text":"Renegociar prazos.","hint":"Ganha tempo.","rel":{"CHN":-2},"long":[{"k":"creditLimit","v":-0.05,"d":365}]},
+ {"text":"Pagar com reservas internacionais.","hint":"Soberania; reservas esvaziadas.","now":{"reserves":-1.5,"debt":-2}}
+]},
+{"id":"e_billionaire_party","cat":"Política","title":"O bilionário quer ser presidente","desc":"O homem mais rico do país anunciou que fundará um partido e disputará o poder, financiado por sua fortuna.","context":"Ele controla bancos, jornais e um time de futebol.","options":[
+ {"text":"Cooptá-lo com contratos e cargos.","hint":"Aliado caro.","now":{"corruption":2},"groups":{"business":5}},
+ {"text":"Investigar seus negócios.","hint":"Contém a ameaça; empresários assustados.","now":{"corruption":-1},"groups":{"business":-6,"opposition":2}},
+ {"text":"Permitir a candidatura e competir.","hint":"Democracia.","now":{"political":2},"long":[{"k":"opposition","v":3,"d":240}]}
+]},
+{"id":"e_strategic_reserves","cat":"Economia","title":"Estoques estratégicos","desc":"Com o mundo instável, assessores sugerem estocar petróleo, grãos e remédios para seis meses.","context":"Os depósitos custariam caro para construir e manter.","options":[
+ {"text":"Estocar para seis meses.","hint":"Segurança; custo alto.","now":{"treasury":-0.5},"long":[{"k":"s_food","v":4,"d":0},{"k":"s_energy","v":3,"d":0},{"k":"inflation","v":-0.3,"d":0}]},
+ {"text":"Estocar só combustível e remédios.","hint":"Meio-termo.","now":{"treasury":-0.2},"long":[{"k":"s_energy","v":2,"d":0}]},
+ {"text":"Confiar no mercado.","hint":"Sem custo.","groups":{"business":1}}
+]},
+{"id":"e_illegal_logging","cat":"Meio ambiente","title":"Desmatamento ilegal","desc":"Satélites mostram que madeireiros ilegais derrubaram uma área de floresta do tamanho de uma província no último ano.","context":"Os madeireiros financiam políticos locais.","options":[
+ {"text":"Operação federal de fiscalização.","hint":"Floresta protegida; elites locais irritadas.","now":{"treasury":-0.1,"reputation":3,"pollution":-1},"groups":{"regional":-5}},
+ {"text":"Legalizar parte da extração com manejo.","hint":"Receita controlada.","now":{"treasury":0.1},"long":[{"k":"s_raw","v":3,"d":0}],"groups":{"regional":3}},
+ {"text":"Fazer vista grossa.","hint":"Paz com os madeireiros.","now":{"reputation":-4,"corruption":2},"rel":{"west":-4},"groups":{"regional":3}}
+]},
+{"id":"e_carbon_tax","cat":"Meio ambiente","title":"Imposto sobre carbono","desc":"Uma coalizão internacional ameaça taxar nossas exportações se não criarmos um imposto sobre emissões de carbono.","context":"Indústria pesada e agronegócio resistem.","options":[
+ {"text":"Criar o imposto de carbono.","hint":"Acesso a mercados; custo para a indústria.","now":{"treasury":0.2,"pollution":-2},"groups":{"business":-5},"long":[{"k":"exportAccess","v":0.03,"d":0},{"k":"industry","v":-1,"d":0}],"rel":{"west":5}},
+ {"text":"Programa voluntário de compensação.","hint":"Gesto parcial.","now":{"reputation":1}},
+ {"text":"Rejeitar a pressão estrangeira.","hint":"Soberania; tarifas prováveis.","rel":{"west":-4},"long":[{"k":"exportAccess","v":-0.03,"d":365}],"groups":{"business":3}}
+]},
+{"id":"e_plastic_ban","cat":"Meio ambiente","title":"Banir plásticos descartáveis","desc":"Rios e praias estão cobertos de lixo plástico. Ambientalistas pedem a proibição de sacolas e embalagens descartáveis.","context":"A indústria de plásticos emprega milhares.","options":[
+ {"text":"Proibir em um ano.","hint":"Ambiente limpo; indústria sofre.","now":{"pollution":-3},"groups":{"youth":4,"business":-3}},
+ {"text":"Taxar o plástico descartável.","hint":"Receita e redução gradual.","now":{"treasury":0.05,"pollution":-1}},
+ {"text":"Campanha de reciclagem voluntária.","hint":"Simbólico.","groups":{"youth":-1}}
+]},
+{"id":"e_dam_project","cat":"Infraestrutura","title":"A grande barragem","desc":"Engenheiros propõem a maior hidrelétrica do continente, que inundaria 80 vilarejos e um sítio arqueológico.","context":"A energia abasteceria metade do país.","options":[
+ {"text":"Construir a barragem.","hint":"Energia abundante; deslocados e protestos.","now":{"treasury":-0.8,"protest":3},"long":[{"k":"s_energy","v":15,"d":0}],"groups":{"rural":-6,"business":4}},
+ {"text":"Várias barragens menores.","hint":"Menos impacto.","now":{"treasury":-0.4},"long":[{"k":"s_energy","v":7,"d":0}]},
+ {"text":"Desistir.","hint":"Patrimônio preservado.","now":{"reputation":2},"groups":{"rural":2}}
+]},
+{"id":"e_gold_reserves_abroad","cat":"Economia","title":"O ouro guardado no exterior","desc":"Metade das reservas de ouro do país está em cofres de um banco central estrangeiro. Nacionalistas exigem trazê-lo de volta.","context":"Sanções recentes congelaram reservas de outros países.","options":[
+ {"text":"Repatriar todo o ouro.","hint":"Soberania; operação cara e simbólica.","now":{"treasury":-0.05,"legitimacy":2},"long":[{"k":"sanctionShield","v":0.1,"d":0}],"rel":{"west":-2}},
+ {"text":"Deixar onde está.","hint":"Confiança no sistema.","rel":{"west":1}},
+ {"text":"Vender parte do ouro.","hint":"Liquidez.","now":{"treasury":0.3,"reserves":-0.3}}
+]}
+]

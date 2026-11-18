@@ -1,0 +1,397 @@
+[
+ {
+  "id": "pk_ca_water_dispute",
+  "cat": "Ásia Central",
+  "title": "Água do rio e do mar secando",
+  "desc": "Montante e jusante disputam barragens e irrigação enquanto o mar de Aral encolhe.",
+  "context": "Água atravessa fronteiras.",
+  "cond": {
+   "regions": [
+    "central_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Tratado regional de uso.",
+    "hint": "Cooperação.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "rural": 1
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Construir as próprias barragens.",
+    "hint": "Soberania.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "rural": 2
+    },
+    "rel": {
+     "neighbors": -4
+    }
+   },
+   {
+    "text": "Modernizar a irrigação.",
+    "hint": "Eficiente.",
+    "now": {
+     "treasury": -0.3,
+     "pollution": -0.3
+    },
+    "groups": {
+     "rural": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ca_authoritarian_succession",
+  "cat": "Ásia Central",
+  "title": "Sucessão do líder vitalício",
+  "desc": "O presidente há décadas no poder prepara o filho ou um aliado. O país fica de olho.",
+  "context": "Estabilidade personalista.",
+  "cond": {
+   "regions": [
+    "central_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Abrir para eleições competitivas.",
+    "hint": "Ousado.",
+    "now": {
+     "political": 2,
+     "stability": -1.5
+    },
+    "groups": {
+     "opposition": 3,
+     "military": -2
+    }
+   },
+   {
+    "text": "Sucessão controlada.",
+    "hint": "Estável.",
+    "now": {
+     "stability": 1,
+     "political": -1
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Atrasar a decisão.",
+    "hint": "Incerteza.",
+    "now": {
+     "stability": -0.5
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_ca_pipeline_geopolitics",
+  "cat": "Ásia Central",
+  "title": "Gasodutos e potências vizinhas",
+  "desc": "Russia, China e Ocidente disputam rotas de energia pelo seu território.",
+  "context": "Posição estratégica.",
+  "cond": {
+   "regions": [
+    "central_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Vender a todos e manter equilíbrio.",
+    "hint": "Multivetorial.",
+    "now": {
+     "treasury": 0.3
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Fechar com uma potência.",
+    "hint": "Proteção e dependência.",
+    "now": {
+     "treasury": 0.4
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "china": 3,
+     "russia": -1
+    }
+   },
+   {
+    "text": "Construir rota alternativa.",
+    "hint": "Autonomia.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ca_migrants_russia",
+  "cat": "Ásia Central",
+  "title": "Trabalhadores migrantes na Rússia",
+  "desc": "Milhões enviam remessas, mas leis restritivas e conflitos ameaçam o fluxo.",
+  "context": "Dependência externa.",
+  "cond": {
+   "regions": [
+    "central_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Acordos bilaterais.",
+    "hint": "Proteção.",
+    "now": {},
+    "groups": {
+     "workers": 2
+    },
+    "rel": {
+     "russia": 2
+    }
+   },
+   {
+    "text": "Diversificar para outros países.",
+    "hint": "Reduz risco.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "workers": 1
+    }
+   },
+   {
+    "text": "Programa de emprego interno.",
+    "hint": "Longo prazo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "workers": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ca_nomad_traditions",
+  "cat": "Ásia Central",
+  "title": "Tradições nômades e yurts",
+  "desc": "Jovens urbanos redescobrem o nomadismo como identidade, e o turismo cultural cresce.",
+  "context": "Identidade em retomada.",
+  "cond": {
+   "regions": [
+    "central_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Programas de preservação e festivais.",
+    "hint": "Orgulho.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 1
+    },
+    "groups": {
+     "rural": 2,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Turismo comercial.",
+    "hint": "Rápido.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Modernizar e urbanizar.",
+    "hint": "Desenvolvimento.",
+    "now": {},
+    "groups": {
+     "rural": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ca_cotton",
+  "cat": "Ásia Central",
+  "title": "Algodão e trabalho forçado",
+  "desc": "Denúncias de trabalho forçado na colheita levam a boicotes de marcas internacionais.",
+  "context": "Direitos e comércio.",
+  "cond": {
+   "regions": [
+    "central_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Mecanizar e pagar salários.",
+    "hint": "Resolve.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 1.5
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Negar as acusações.",
+    "hint": "Perda de mercado.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "rural": -1
+    }
+   },
+   {
+    "text": "Inspeções externas.",
+    "hint": "Transparência.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_ca_extremism",
+  "cat": "Ásia Central",
+  "title": "Radicalização e retorno de combatentes",
+  "desc": "Jovens recrutados por grupos extremistas retornam ao país. O Estado teme atentados.",
+  "context": "Segurança e reintegração.",
+  "cond": {
+   "regions": [
+    "central_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Programas de desradicalização.",
+    "hint": "Prevenção.",
+    "now": {
+     "treasury": -0.2,
+     "crime": -0.2
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Prisão e vigilância.",
+    "hint": "Controle.",
+    "now": {
+     "control": 1,
+     "civil": -1.5
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Cooperação regional de inteligência.",
+    "hint": "Eficiência.",
+    "now": {
+     "intel": 1
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ca_silk_road",
+  "cat": "Ásia Central",
+  "title": "A rota da seda revisitada",
+  "desc": "Corredores ferroviários ligam a China à Europa, passando pelo país.",
+  "context": "Trânsito e dívida.",
+  "cond": {
+   "regions": [
+    "central_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aceitar investimentos.",
+    "hint": "Infraestrutura.",
+    "now": {
+     "treasury": 0.3,
+     "debt": 0.4
+    },
+    "groups": {
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "china": 3
+    }
+   },
+   {
+    "text": "Parcerias com várias potências.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": 0.15
+    },
+    "groups": {},
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Autonomia.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ }
+]

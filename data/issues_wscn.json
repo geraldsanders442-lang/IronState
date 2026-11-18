@@ -1,0 +1,1747 @@
+[
+ {
+  "id": "ws_red_comintern",
+  "cat": "Mundo Vermelho",
+  "title": "O Comintern convoca um congresso",
+  "desc": "A Internacional Socialista reúne partidos de todo o mundo. Delegados querem definir a linha: revolução permanente ou coexistência com os poucos Estados capitalistas.",
+  "context": "No Mundo Vermelho, quase todo país tem um partido-Estado socialista.",
+  "cond": {
+   "wscn": "red_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Defender a linha de coexistência.",
+    "hint": "Paz e comércio; ala dura reclama.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "west": 3,
+     "east": -1
+    },
+    "groups": {
+     "military": -2
+    }
+   },
+   {
+    "text": "Apoiar a revolução permanente.",
+    "hint": "Prestígio entre os radicais; tensão com os capitalistas.",
+    "now": {
+     "influence": 2
+    },
+    "rel": {
+     "west": -6,
+     "east": 4
+    },
+    "groups": {
+     "youth": 2,
+     "military": 2
+    }
+   },
+   {
+    "text": "Manter distância do congresso.",
+    "hint": "Neutralidade e solidão.",
+    "now": {
+     "influence": -1
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_red_plan",
+  "cat": "Mundo Vermelho",
+  "title": "O Plano Quinquenal da Internacional",
+  "desc": "Moscou, Pequim e outras capitais propõem metas de produção coordenadas e divisão do trabalho entre os países-irmãos.",
+  "context": "Planejamento supranacional: ganhos e perda de autonomia.",
+  "cond": {
+   "wscn": "red_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aderir ao plano coordenado.",
+    "hint": "Crédito e mercados garantidos entre irmãos.",
+    "now": {
+     "treasury": 0.2,
+     "industry": 1
+    },
+    "groups": {
+     "workers": 3,
+     "business": -3
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.02,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Seguir plano próprio.",
+    "hint": "Autonomia; menos benefícios.",
+    "now": {
+     "influence": 1
+    },
+    "groups": {
+     "bureaucracy": 2
+    }
+   },
+   {
+    "text": "Pedir regras de mercado dentro do plano.",
+    "hint": "Hibridismo; irrita ortodoxos.",
+    "now": {
+     "growth": 0.2
+    },
+    "groups": {
+     "business": 2,
+     "workers": -1
+    },
+    "rel": {
+     "east": -2
+    }
+   }
+  ],
+  "cd": 360
+ },
+ {
+  "id": "ws_red_defector",
+  "cat": "Mundo Vermelho",
+  "title": "Dissidente pede asilo",
+  "desc": "Um economista do partido, acusado de “desvio revisionista” em país vizinho, pede asilo e promete revelar números reais da produção.",
+  "context": "O vizinho exige a devolução.",
+  "cond": {
+   "wscn": "red_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Conceder asilo.",
+    "hint": "Princípios; fricção com o vizinho.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "neighbors": -5
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Devolver o dissidente.",
+    "hint": "Solidariedade entre partidos; imagem manchada.",
+    "now": {
+     "reputation": -3,
+     "civil": -1
+    },
+    "rel": {
+     "neighbors": 4
+    }
+   },
+   {
+    "text": "Expulsá-lo discretamente a um país neutro.",
+    "hint": "Evita o problema.",
+    "rel": {
+     "neighbors": 1
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_red_capitalist",
+  "cat": "Mundo Vermelho",
+  "title": "O enclave capitalista oferece acordos",
+  "desc": "Um dos poucos Estados de mercado, rico e isolado, propõe comércio e investimento. O partido discute se o lucro é inimigo ou ferramenta.",
+  "context": "Raros e ricos: tentadores para os pragmáticos.",
+  "cond": {
+   "wscn": "red_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Fechar o acordo comercial.",
+    "hint": "Divisas e tecnologia; críticas ideológicas.",
+    "now": {
+     "treasury": 0.3,
+     "tech": 1
+    },
+    "groups": {
+     "business": 3,
+     "workers": -1
+    },
+    "rel": {
+     "east": -2,
+     "west": 3
+    }
+   },
+   {
+    "text": "Recusar: não comerciamos com o capital.",
+    "hint": "Pureza ideológica; economia perde.",
+    "now": {
+     "growth": -0.1
+    },
+    "rel": {
+     "east": 2
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Criar zonas econômicas especiais.",
+    "hint": "Ensaio controlado.",
+    "now": {
+     "treasury": 0.15
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "business": 2
+    }
+   }
+  ],
+  "cd": 360
+ },
+ {
+  "id": "ws_red_schism",
+  "cat": "Mundo Vermelho",
+  "title": "Cisma entre as potências do campo socialista",
+  "desc": "Duas grandes potências socialistas disputam a liderança do movimento. Cada uma exige que você condene a outra.",
+  "context": "Um mundo de partidos-irmãos também tem rivalidades.",
+  "cond": {
+   "wscn": "red_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Alinhar-se à potência mais próxima.",
+    "hint": "Proteção e dependência.",
+    "now": {
+     "defense": 2
+    },
+    "rel": {
+     "east": 3
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Defender a unidade e mediar.",
+    "hint": "Prestígio; ninguém gosta de mediadores.",
+    "now": {
+     "reputation": 2,
+     "influence": 1
+    }
+   },
+   {
+    "text": "Declarar-se não alinhado.",
+    "hint": "Liberdade e exposição.",
+    "now": {
+     "influence": 1
+    },
+    "rel": {
+     "east": -2
+    }
+   }
+  ],
+  "cd": 400
+ },
+ {
+  "id": "ws_imp_berlin",
+  "cat": "Mundo Imperialista",
+  "title": "A Conferência da partilha",
+  "desc": "As grandes potências convocam uma conferência para dividir esferas de influência no mundo. Seu país é convidado como possível parceiro júnior.",
+  "context": "Num mundo imperial, quem não está à mesa está no menu.",
+  "cond": {
+   "wscn": "imperial_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Reivindicar uma esfera de influência.",
+    "hint": "Prestígio, rivalidade e risco de choque.",
+    "now": {
+     "influence": 3,
+     "reputation": -2
+    },
+    "rel": {
+     "neighbors": -4
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Aceitar o protetorado de uma potência.",
+    "hint": "Segurança e perda de autonomia.",
+    "now": {
+     "defense": 3,
+     "influence": -2
+    },
+    "rel": {
+     "all": 2
+    },
+    "groups": {
+     "military": -1,
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Defender a integridade territorial dos fracos.",
+    "hint": "Honra; ninguém ouve.",
+    "now": {
+     "reputation": 3
+    },
+    "rel": {
+     "all": -1
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_imp_arms",
+  "cat": "Mundo Imperialista",
+  "title": "Corrida armamentista de encouraçados",
+  "desc": "Os estaleiros imperiais lançam novos encouraçados e os orçamentos navais explodem. Sua marinha é pequena demais.",
+  "context": "A frota mede o prestígio imperial.",
+  "cond": {
+   "wscn": "imperial_world",
+   "coast": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Construir uma frota moderna.",
+    "hint": "Respeito e dívida.",
+    "now": {
+     "treasury": -0.7,
+     "projection": 4,
+     "equipment": 2
+    },
+    "groups": {
+     "military": 5,
+     "business": 2
+    }
+   },
+   {
+    "text": "Comprar navios usados de uma potência.",
+    "hint": "Barato; dependência.",
+    "now": {
+     "treasury": -0.3,
+     "projection": 2
+    },
+    "rel": {
+     "west": 2
+    }
+   },
+   {
+    "text": "Priorizar o exército e a defesa costeira.",
+    "hint": "Defensivo e econômico.",
+    "now": {
+     "treasury": -0.2,
+     "defense": 3
+    },
+    "groups": {
+     "military": 2
+    }
+   }
+  ],
+  "cd": 280
+ },
+ {
+  "id": "ws_imp_colony",
+  "cat": "Mundo Imperialista",
+  "title": "Revolta colonial",
+  "desc": "Um território sob seu protetorado se levanta contra a metrópole. Jornais exigem esmagar; liberais exigem autonomia.",
+  "context": "Impérios caem pelas periferias.",
+  "cond": {
+   "wscn": "imperial_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Esmagar a revolta.",
+    "hint": "Ordem e má imagem.",
+    "now": {
+     "control": 3,
+     "reputation": -3,
+     "civil": -1
+    },
+    "groups": {
+     "military": 3,
+     "regional": -4
+    }
+   },
+   {
+    "text": "Oferecer autonomia sob o império.",
+    "hint": "Esfria a revolta; precedente.",
+    "now": {
+     "control": -1
+    },
+    "groups": {
+     "regional": 4,
+     "military": -2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Conceder independência negociada.",
+    "hint": "Fim honroso; perda de prestígio.",
+    "now": {
+     "reputation": 3,
+     "influence": -2
+    },
+    "groups": {
+     "military": -4,
+     "youth": 2
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_imp_ultimatum",
+  "cat": "Mundo Imperialista",
+  "title": "Ultimato de uma potência",
+  "desc": "Um império vizinho exige concessões comerciais, portos e passagem de tropas. A recusa é considerada ofensa.",
+  "context": "A diplomacia das canhoneiras está de volta.",
+  "cond": {
+   "wscn": "imperial_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Ceder em parte.",
+    "hint": "Evita guerra; humilhação.",
+    "now": {
+     "legitimacy": -3,
+     "reputation": -1
+    },
+    "rel": {
+     "neighbors": 4
+    },
+    "groups": {
+     "military": -2
+    }
+   },
+   {
+    "text": "Recusar e mobilizar.",
+    "hint": "Orgulho nacional; risco de guerra.",
+    "now": {
+     "legitimacy": 3,
+     "readiness": 3
+    },
+    "rel": {
+     "neighbors": -8
+    },
+    "groups": {
+     "military": 4
+    }
+   },
+   {
+    "text": "Buscar proteção de outro império.",
+    "hint": "Equilíbrio; troca de patrão.",
+    "now": {
+     "defense": 2
+    },
+    "rel": {
+     "all": -2
+    }
+   }
+  ],
+  "cd": 360
+ },
+ {
+  "id": "ws_imp_democrats",
+  "cat": "Mundo Imperialista",
+  "title": "Reformistas pedem constituição",
+  "desc": "Intelectuais e comerciantes exigem uma constituição e um parlamento. Num mundo onde nenhum Estado é democrático, a ideia é subversiva.",
+  "context": "Quem ousa pedir liberdade?",
+  "cond": {
+   "wscn": "imperial_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Reprimir os reformistas.",
+    "hint": "Mantém o trono; fortalece a clandestinidade.",
+    "now": {
+     "civil": -2,
+     "stability": 1
+    },
+    "groups": {
+     "opposition": -4,
+     "youth": -3
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": 2,
+      "d": 240
+     }
+    ]
+   },
+   {
+    "text": "Conceder uma carta limitada.",
+    "hint": "Válvula de escape.",
+    "now": {
+     "civil": 1.5,
+     "political": 1
+    },
+    "groups": {
+     "opposition": 3,
+     "military": -2
+    }
+   },
+   {
+    "text": "Cooptar os líderes com títulos.",
+    "hint": "Desarma por ora.",
+    "now": {
+     "corruption": 1
+    },
+    "groups": {
+     "business": 2,
+     "opposition": 1
+    }
+   }
+  ],
+  "cd": 340
+ },
+ {
+  "id": "ws_lib_summit",
+  "cat": "Mundo Liberal",
+  "title": "Cúpula das Democracias",
+  "desc": "As democracias do mundo convidam todos a assinar a Carta de Liberdades. Quem não assina será “convidado a reformar-se”.",
+  "context": "No mundo unipolar liberal, a legitimidade vem do voto.",
+  "cond": {
+   "wscn": "liberal_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Assinar a Carta e abrir o regime.",
+    "hint": "Aceitação e investimentos; perda de controle.",
+    "now": {
+     "civil": 3,
+     "political": 3,
+     "reputation": 4
+    },
+    "groups": {
+     "youth": 4,
+     "opposition": 3,
+     "military": -2
+    },
+    "rel": {
+     "all": 4
+    }
+   },
+   {
+    "text": "Assinar com reservas.",
+    "hint": "Meio-termo diplomático.",
+    "now": {
+     "civil": 1,
+     "reputation": 1
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Recusar a Carta.",
+    "hint": "Soberania e isolamento.",
+    "now": {
+     "reputation": -5
+    },
+    "rel": {
+     "all": -4,
+     "west": -4
+    },
+    "groups": {
+     "military": 2
+    }
+   }
+  ],
+  "cd": 320
+ },
+ {
+  "id": "ws_lib_sanction",
+  "cat": "Mundo Liberal",
+  "title": "Sanções por “déficit democrático”",
+  "desc": "Organismos internacionais ameaçam cortar crédito e comércio caso o país não realize eleições livres monitoradas.",
+  "context": "A pressão vem de todo lado.",
+  "cond": {
+   "wscn": "liberal_world",
+   "max": {
+    "political": 55
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Permitir observadores e eleições.",
+    "hint": "Alívio e risco de perder o poder.",
+    "now": {
+     "political": 3,
+     "reputation": 3
+    },
+    "groups": {
+     "opposition": 5,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Reformas cosméticas.",
+    "hint": "Compra tempo; credibilidade em jogo.",
+    "now": {
+     "political": 0.5,
+     "reputation": 0
+    },
+    "rel": {
+     "all": -1
+    }
+   },
+   {
+    "text": "Enfrentar as sanções.",
+    "hint": "Orgulho e dificuldades.",
+    "now": {
+     "growth": -0.4,
+     "reputation": -3
+    },
+    "groups": {
+     "military": 2,
+     "business": -3
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_lib_ngo",
+  "cat": "Mundo Liberal",
+  "title": "ONGs globais e financiamento político",
+  "desc": "Fundações estrangeiras financiam organizações da sociedade civil, jornais e partidos de oposição no país.",
+  "context": "Defesa da democracia ou interferência?",
+  "cond": {
+   "wscn": "liberal_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aceitar e transparência.",
+    "hint": "Credibilidade; oposição cresce.",
+    "now": {
+     "civil": 1,
+     "reputation": 2
+    },
+    "groups": {
+     "opposition": 3,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Lei de agentes estrangeiros.",
+    "hint": "Sufoca financiamentos; imagem manchada.",
+    "now": {
+     "civil": -2,
+     "reputation": -3
+    },
+    "groups": {
+     "opposition": -3
+    }
+   },
+   {
+    "text": "Criar fundo estatal concorrente.",
+    "hint": "Disputa narrativa.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "bureaucracy": 2
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_lib_trade",
+  "cat": "Mundo Liberal",
+  "title": "Tratado global de livre comércio",
+  "desc": "Todas as grandes democracias assinam um mercado comum global. Quem entrar corta tarifas e subsídios.",
+  "context": "Abertura total: oportunidades e dores.",
+  "cond": {
+   "wscn": "liberal_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aderir ao tratado.",
+    "hint": "Exportações sobem; indústria local sofre.",
+    "now": {
+     "treasury": 0.1
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.05,
+      "d": 0
+     },
+     {
+      "k": "importAccess",
+      "v": 0.05,
+      "d": 0
+     },
+     {
+      "k": "industry",
+      "v": -1,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 4,
+     "workers": -4
+    }
+   },
+   {
+    "text": "Aderir com cláusulas de proteção.",
+    "hint": "Equilíbrio.",
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.025,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 1,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Ficar de fora.",
+    "hint": "Protege a indústria; perde mercados.",
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": -0.03,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "workers": 2,
+     "business": -3
+    }
+   }
+  ],
+  "cd": 360
+ },
+ {
+  "id": "ws_theo_synod",
+  "cat": "Mundo Teocrático",
+  "title": "O Sínodo Universal da fé",
+  "desc": "Os grandes líderes religiosos convocam um concílio para decidir o calendário, as leis morais e a partilha das terras santas.",
+  "context": "Num mundo teocrático, a fé é diplomacia.",
+  "cond": {
+   "wscn": "theocratic_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Apoiar a linha ortodoxa.",
+    "hint": "Aceitação entre os devotos; rigidez.",
+    "now": {
+     "civil": -1.5,
+     "legitimacy": 2
+    },
+    "groups": {
+     "rural": 4,
+     "youth": -4
+    },
+    "rel": {
+     "all": 2
+    }
+   },
+   {
+    "text": "Defender a reforma moderada.",
+    "hint": "Atraente a jovens; cisma com tradicionalistas.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -3
+    },
+    "rel": {
+     "all": -2
+    }
+   },
+   {
+    "text": "Manter distância do Sínodo.",
+    "hint": "Isolamento espiritual.",
+    "now": {
+     "legitimacy": -2
+    },
+    "rel": {
+     "all": -3
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_theo_crusade",
+  "cat": "Mundo Teocrático",
+  "title": "Conclamação à guerra santa",
+  "desc": "A autoridade religiosa da sua fé declara que o inimigo infiel merece ser combatido. Voluntários se alistam e pedem suas bênçãos.",
+  "context": "A paz religiosa se desfaz.",
+  "cond": {
+   "wscn": "theocratic_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aderir à guerra santa.",
+    "hint": "Fervor e mobilização; risco de guerra aberta.",
+    "now": {
+     "readiness": 4,
+     "warWeariness": 1,
+     "legitimacy": 3
+    },
+    "groups": {
+     "military": 4,
+     "rural": 3
+    },
+    "rel": {
+     "all": -3
+    }
+   },
+   {
+    "text": "Enviar apenas voluntários e dinheiro.",
+    "hint": "Participação limitada.",
+    "now": {
+     "treasury": -0.2,
+     "legitimacy": 1
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Pregar a coexistência.",
+    "hint": "Moralmente respeitado; radicais atacam.",
+    "now": {
+     "reputation": 2
+    },
+    "groups": {
+     "rural": -3,
+     "military": -2
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_theo_heresy",
+  "cat": "Mundo Teocrático",
+  "title": "Acusação de heresia contra um ministro",
+  "desc": "O clero acusa um ministro de ensinar doutrina desviante. A corte se divide entre sacerdotes e tecnocratas.",
+  "context": "A teologia pesa no gabinete.",
+  "cond": {
+   "wscn": "theocratic_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Condenar o ministro.",
+    "hint": "Agrada o clero; perde competência.",
+    "now": {
+     "efficiency": -2,
+     "legitimacy": 2
+    },
+    "groups": {
+     "rural": 3,
+     "bureaucracy": -3
+    }
+   },
+   {
+    "text": "Proteger o ministro.",
+    "hint": "Choque com a hierarquia.",
+    "now": {
+     "legitimacy": -3,
+     "efficiency": 1
+    },
+    "groups": {
+     "rural": -3,
+     "bureaucracy": 3
+    }
+   },
+   {
+    "text": "Julgamento público aberto.",
+    "hint": "Teatro político.",
+    "now": {
+     "civil": 0.5
+    }
+   }
+  ],
+  "cd": 280
+ },
+ {
+  "id": "ws_theo_pilgrim",
+  "cat": "Mundo Teocrático",
+  "title": "Peregrinação massiva",
+  "desc": "Milhões de peregrinos cruzam seu território rumo ao lugar sagrado. Receita e risco sanitário aumentam.",
+  "context": "Logística e fé.",
+  "cond": {
+   "wscn": "theocratic_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Organizar e taxar a peregrinação.",
+    "hint": "Receita; exige estrutura.",
+    "now": {
+     "treasury": 0.3,
+     "health": -0.5
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Oferecer hospitalidade gratuita.",
+    "hint": "Prestígio religioso.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 3
+    }
+   },
+   {
+    "text": "Restringir a passagem por segurança.",
+    "hint": "Evita problemas e desagrada fiéis.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "rural": -3
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_cont_summit",
+  "cat": "Mundo de Uniões",
+  "title": "Cúpula da União Continental",
+  "desc": "A união regional vai votar uma nova rodada de integração: moeda comum, exército único e passaporte único.",
+  "context": "No mundo de uniões continentais, a soberania é compartilhada.",
+  "cond": {
+   "wscn": "continental_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Votar a favor.",
+    "hint": "Mercado e segurança; menos soberania.",
+    "now": {
+     "treasury": 0.15,
+     "reputation": 2
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.03,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 3,
+     "military": -2
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Votar contra e exigir exceções.",
+    "hint": "Soberania; atrito regional.",
+    "now": {
+     "legitimacy": 1
+    },
+    "rel": {
+     "neighbors": -4
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Abster-se.",
+    "hint": "Neutralidade."
+   }
+  ],
+  "cd": 280
+ },
+ {
+  "id": "ws_cont_exit",
+  "cat": "Mundo de Uniões",
+  "title": "Movimento para deixar a união",
+  "desc": "Nacionalistas pedem um referendo para sair da união continental. Banqueiros e exportadores avisam do desastre.",
+  "context": "Vale a pena a independência?",
+  "cond": {
+   "wscn": "continental_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Autorizar o referendo.",
+    "hint": "Legitima; o resultado é incerto.",
+    "now": {
+     "legitimacy": 2
+    },
+    "groups": {
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Rejeitar com campanha pró-união.",
+    "hint": "Preserva a união; polariza.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "business": 3,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Negociar condições especiais.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": -0.05
+    },
+    "rel": {
+     "neighbors": 1
+    }
+   }
+  ],
+  "cd": 340
+ },
+ {
+  "id": "ws_cont_rival",
+  "cat": "Mundo de Uniões",
+  "title": "Tarifas entre uniões rivais",
+  "desc": "A união vizinha impôs tarifas altas aos produtos do seu bloco, e os exportadores exigem retaliação.",
+  "context": "Guerras comerciais entre continentes.",
+  "cond": {
+   "wscn": "continental_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Retaliar com tarifas espelhadas.",
+    "hint": "Pressão e inflação.",
+    "now": {
+     "inflation": 0.4
+    },
+    "rel": {
+     "all": -2
+    },
+    "groups": {
+     "workers": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Acionar a mediação de uma organização mundial.",
+    "hint": "Lento e civilizado.",
+    "now": {
+     "reputation": 1
+    }
+   },
+   {
+    "text": "Buscar mercados alternativos.",
+    "hint": "Diversificação.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.02,
+      "d": 0
+     }
+    ]
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_cont_citizen",
+  "cat": "Mundo de Uniões",
+  "title": "Cidadania continental",
+  "desc": "A união propõe uma cidadania comum, com livre circulação plena. Cidades pequenas temem perder jovens; empresas querem mão de obra.",
+  "context": "Integração às últimas consequências.",
+  "cond": {
+   "wscn": "continental_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aprovar a cidadania comum.",
+    "hint": "Mobilidade; esvaziamento regional.",
+    "now": {
+     "reputation": 2
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": 0.3,
+      "d": 0
+     },
+     {
+      "k": "emigration",
+      "v": 0.3,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "youth": 4,
+     "business": 2,
+     "regional": -2
+    }
+   },
+   {
+    "text": "Condicionar a restrições.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "youth": 1,
+     "regional": 1
+    }
+   },
+   {
+    "text": "Rejeitar.",
+    "hint": "Protege a identidade e os empregos locais.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "rural": 2,
+     "youth": -3
+    }
+   }
+  ],
+  "cd": 340
+ },
+ {
+  "id": "ws_cw_proxy",
+  "cat": "Guerra Fria",
+  "title": "Guerra por procuração na vizinhança",
+  "desc": "Um conflito local numa região não alinhada põe os dois blocos a financiar lados opostos. Os dois pedem seu apoio.",
+  "context": "A rivalidade global chega à sua porta.",
+  "cond": {
+   "wscn": "cold_war_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Alinhar-se ao bloco mais próximo.",
+    "hint": "Ajuda militar e dependência.",
+    "now": {
+     "equipment": 3,
+     "defense": 2
+    },
+    "rel": {
+     "east": 4,
+     "west": -5
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Declarar não alinhamento.",
+    "hint": "Autonomia e solidão.",
+    "now": {
+     "reputation": 2,
+     "influence": 1
+    },
+    "rel": {
+     "all": -1
+    }
+   },
+   {
+    "text": "Negociar com os dois blocos.",
+    "hint": "Barganha perigosa.",
+    "now": {
+     "treasury": 0.3
+    },
+    "rel": {
+     "all": -2
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_cw_spy",
+  "cat": "Guerra Fria",
+  "title": "Troca de espiões na ponte",
+  "desc": "Um espião capturado pode ser trocado por outro agente. O outro bloco oferece em segredo concessões comerciais.",
+  "context": "Diplomacia de sombras.",
+  "cond": {
+   "wscn": "cold_war_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aceitar a troca.",
+    "hint": "Alívio e imagem de força.",
+    "now": {
+     "intel": 1,
+     "reputation": 1
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Recusar e julgar o espião.",
+    "hint": "Exemplo duro.",
+    "now": {
+     "reputation": -1,
+     "legitimacy": 2
+    },
+    "rel": {
+     "all": -3
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Usar o caso para extrair concessões.",
+    "hint": "Cálculo frio.",
+    "now": {
+     "treasury": 0.2
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_cw_space",
+  "cat": "Guerra Fria",
+  "title": "A corrida espacial e o orçamento",
+  "desc": "Satélites, cães, astronautas: um programa espacial vale prestígio e tecnologia, mas custa muito.",
+  "context": "A Lua vale milhões de votos.",
+  "cond": {
+   "wscn": "cold_war_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Programa espacial nacional ambicioso.",
+    "hint": "Prestígio e tecnologia.",
+    "now": {
+     "treasury": -0.6,
+     "reputation": 2
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "youth": 3,
+     "military": 2
+    }
+   },
+   {
+    "text": "Cooperar com o bloco aliado.",
+    "hint": "Barato.",
+    "now": {
+     "treasury": -0.15
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Ignorar a corrida.",
+    "hint": "Poupa.",
+    "groups": {
+     "youth": -2
+    }
+   }
+  ],
+  "cd": 400
+ },
+ {
+  "id": "ws_cw_nuke_alarm",
+  "cat": "Guerra Fria",
+  "title": "Alarme nuclear falso",
+  "desc": "Radares apontam mísseis a caminho. Foi um erro de sensor, mas só dá para saber depois. O que fazer em segundos?",
+  "context": "Um erro e tudo acaba.",
+  "cond": {
+   "wscn": "cold_war_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Elevar o alerta e preparar resposta.",
+    "hint": "Dissuasão; risco enorme.",
+    "now": {
+     "readiness": 4
+    },
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "all": -3
+    }
+   },
+   {
+    "text": "Contatar a linha direta com o outro bloco.",
+    "hint": "Evita o pior.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "all": 2
+    }
+   },
+   {
+    "text": "Esperar confirmação por mais um minuto.",
+    "hint": "Nervos de aço.",
+    "now": {
+     "stability": -1
+    }
+   }
+  ],
+  "cd": 500
+ },
+ {
+  "id": "ws_corp_lobby",
+  "cat": "Mundo Corporativo",
+  "title": "O lobby das megaempresas",
+  "desc": "Um conglomerado oferece financiar sua campanha e as obras públicas em troca de concessões de portos e mineração.",
+  "context": "Nada é de graça.",
+  "cond": {
+   "wscn": "corporate_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aceitar o financiamento e dar a concessão.",
+    "hint": "Dinheiro e dívida política.",
+    "now": {
+     "treasury": 0.4,
+     "corruption": 2
+    },
+    "groups": {
+     "business": 4,
+     "workers": -3
+    }
+   },
+   {
+    "text": "Recusar e regular o lobby.",
+    "hint": "Autonomia; menos caixa.",
+    "now": {
+     "corruption": -1,
+     "legitimacy": 2
+    },
+    "groups": {
+     "business": -3,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Aceitar com contrapartidas sociais.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "workers": 1
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "ws_corp_gig",
+  "cat": "Mundo Corporativo",
+  "title": "Trabalhadores da gig economy param o país",
+  "desc": "Entregadores e motoristas de aplicativo, sem direitos, bloqueiam as principais avenidas. As plataformas ameaçam deixar o país.",
+  "context": "Ninguém é empregado de ninguém.",
+  "cond": {
+   "wscn": "corporate_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Regular com direitos mínimos.",
+    "hint": "Equilibra.",
+    "now": {
+     "treasury": 0.05,
+     "unemployment": 0.1
+    },
+    "groups": {
+     "workers": 4,
+     "business": -3
+    }
+   },
+   {
+    "text": "Ficar do lado das plataformas.",
+    "hint": "Investimento mantido.",
+    "groups": {
+     "workers": -4,
+     "business": 3
+    }
+   },
+   {
+    "text": "Cooperativas estatais de plataforma.",
+    "hint": "Ousado.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "workers": 3,
+     "youth": 2,
+     "business": -2
+    }
+   }
+  ],
+  "cd": 320
+ },
+ {
+  "id": "ws_corp_police",
+  "cat": "Mundo Corporativo",
+  "title": "Segurança privada no lugar da polícia",
+  "desc": "Empresas oferecem segurança privada para bairros e portos por contratos baratos. A polícia pública diz estar sem verba.",
+  "context": "Ordem é um produto.",
+  "cond": {
+   "wscn": "corporate_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Terceirizar a segurança.",
+    "hint": "Economia; desigualdade.",
+    "now": {
+     "treasury": 0.3,
+     "crime": -1,
+     "control": -1
+    },
+    "groups": {
+     "business": 3,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Reforçar a polícia pública.",
+    "hint": "Caro, universal.",
+    "now": {
+     "treasury": -0.4,
+     "control": 2
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Modelo misto regulado.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": 0.1
+    }
+   }
+  ],
+  "cd": 330
+ },
+ {
+  "id": "ws_corp_tax",
+  "cat": "Mundo Corporativo",
+  "title": "Paraíso fiscal ou imposto global?",
+  "desc": "Vários países cortam impostos das empresas para atrair sedes. A pressão para você fazer o mesmo é enorme.",
+  "context": "A corrida para o fundo.",
+  "cond": {
+   "wscn": "corporate_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Cortar imposto para empresas.",
+    "hint": "Atrai investimentos; receita cai.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.2,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "business": 4,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Defender um imposto mínimo global.",
+    "hint": "Imagem; briga.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "all": -1
+    },
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Manter e investir em serviços.",
+    "hint": "Escolha própria.",
+    "groups": {
+     "workers": 2,
+     "business": -1
+    }
+   }
+  ],
+  "cd": 360
+ },
+ {
+  "id": "ws_clim_refugees",
+  "cat": "Colapso Climático",
+  "title": "Refugiados do mar e da seca",
+  "desc": "Milhões de pessoas deixam litorais afogados e regiões secas. Seu país é destino em potencial. A fronteira treme.",
+  "context": "A migração é inevitável.",
+  "cond": {
+   "wscn": "climate_collapse_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Receber e reassentar com planos de longo prazo.",
+    "hint": "Humanitário e caro.",
+    "now": {
+     "treasury": -0.5,
+     "reputation": 4
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": 0.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "workers": -2,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Cota rigorosa de entrada.",
+    "hint": "Controle.",
+    "now": {
+     "reputation": -2,
+     "control": 1
+    },
+    "groups": {
+     "military": 2,
+     "rural": 2
+    }
+   },
+   {
+    "text": "Fechar a fronteira.",
+    "hint": "Dureza e condenação.",
+    "now": {
+     "reputation": -5
+    },
+    "groups": {
+     "military": 3,
+     "youth": -4
+    }
+   }
+  ],
+  "cd": 280
+ },
+ {
+  "id": "ws_clim_water",
+  "cat": "Colapso Climático",
+  "title": "Guerras da água",
+  "desc": "Um rio compartilhado secou em parte. Os países de jusante ameaçam usar a força para garantir o abastecimento.",
+  "context": "Quem controla a nascente controla o futuro.",
+  "cond": {
+   "wscn": "climate_collapse_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Tratado de partilha e investimentos conjuntos.",
+    "hint": "Paz cara.",
+    "now": {
+     "treasury": -0.3
+    },
+    "rel": {
+     "neighbors": 5
+    }
+   },
+   {
+    "text": "Reservar a água para o seu povo.",
+    "hint": "Egoísmo e conflito.",
+    "now": {
+     "stability": 1
+    },
+    "rel": {
+     "neighbors": -10
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Dessalinização e reuso em massa.",
+    "hint": "Alta tecnologia.",
+    "now": {
+     "treasury": -0.6
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ],
+  "cd": 280
+ },
+ {
+  "id": "ws_clim_geo",
+  "cat": "Colapso Climático",
+  "title": "Geoengenharia: refletir o sol?",
+  "desc": "Cientistas propõem lançar aerossóis na estratosfera para esfriar o planeta. Os efeitos regionais são imprevisíveis.",
+  "context": "Jogar os dados com a atmosfera.",
+  "cond": {
+   "wscn": "climate_collapse_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Apoiar o programa de geoengenharia.",
+    "hint": "Esfria o clima; riscos.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": -1,
+     "pollution": -1
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "all": -1
+    }
+   },
+   {
+    "text": "Opor-se e apostar em cortes de carbono.",
+    "hint": "Moral e demorado.",
+    "now": {
+     "reputation": 2
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Pesquisar sem implantar.",
+    "hint": "Cautela.",
+    "now": {
+     "treasury": -0.15
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ],
+  "cd": 400
+ },
+ {
+  "id": "ws_clim_cities",
+  "cat": "Colapso Climático",
+  "title": "Abandonar a cidade costeira",
+  "desc": "O mar já invade as ruas da cidade portuária. Fica mais caro proteger do que mudar. Os moradores se dividem.",
+  "context": "Retirada ou muralha?",
+  "cond": {
+   "wscn": "climate_collapse_world"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Muralha e bombeamento.",
+    "hint": "Mantém a cidade; muito caro.",
+    "now": {
+     "treasury": -0.8
+    },
+    "groups": {
+     "business": 3,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Reassentamento planejado.",
+    "hint": "Dói e funciona.",
+    "now": {
+     "treasury": -0.5,
+     "legitimacy": -2
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 1.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "regional": -2
+    }
+   },
+   {
+    "text": "Abrir mão em fases.",
+    "hint": "Gradual.",
+    "now": {
+     "treasury": -0.3
+    }
+   }
+  ],
+  "cd": 320
+ }
+]

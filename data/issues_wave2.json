@@ -1,0 +1,2790 @@
+[
+ {
+  "id": "w2_gig",
+  "cat": "Economia",
+  "title": "Entregadores de aplicativo param o país",
+  "desc": "Milhares de entregadores e motoristas de aplicativo bloqueiam avenidas pedindo salário mínimo por hora e seguro contra acidentes. As plataformas ameaçam sair do país.",
+  "context": "Trabalho novo, direitos velhos.",
+  "cond": {
+   "min": {
+    "gdppc": 2500
+   }
+  },
+  "options": [
+   {
+    "text": "Criar um estatuto com piso por hora e seguro.",
+    "hint": "Direitos garantidos; plataformas reclamam e encarecem.",
+    "groups": {
+     "workers": 6,
+     "youth": 4,
+     "business": -5
+    },
+    "long": [
+     {
+      "k": "inequality",
+      "v": -1,
+      "d": 365
+     },
+     {
+      "k": "unemployment",
+      "v": 0.3,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Reconhecer vínculo de emprego.",
+    "hint": "Proteção total; muitas vagas somem.",
+    "groups": {
+     "workers": 8,
+     "business": -9
+    },
+    "long": [
+     {
+      "k": "unemployment",
+      "v": 0.9,
+      "d": 365
+     },
+     {
+      "k": "poverty",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Deixar o mercado decidir.",
+    "hint": "Plataformas felizes; a greve continua.",
+    "now": {
+     "protest": 4
+    },
+    "groups": {
+     "business": 5,
+     "workers": -6,
+     "youth": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_crypto",
+  "cat": "Economia",
+  "title": "Uma moeda digital nacional?",
+  "desc": "O banco central propõe lançar uma moeda digital oficial. Entusiastas de criptomoedas querem, em vez disso, adotar o bitcoin como moeda legal.",
+  "context": "Dinheiro do futuro — ou aposta perigosa.",
+  "cd": 900,
+  "options": [
+   {
+    "text": "Lançar a moeda digital do banco central.",
+    "hint": "Pagamentos baratos e controle; críticos falam em vigilância.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "efficiency",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "taxCapacity",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "civil",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Adotar o bitcoin como moeda legal.",
+    "hint": "Atrai investidores do setor; FMI e credores torcem o nariz.",
+    "now": {
+     "reputation": -4
+    },
+    "groups": {
+     "youth": 5
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.2,
+      "d": 365
+     },
+     {
+      "k": "inflation",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Nenhuma das duas.",
+    "hint": "Prudência."
+   }
+  ]
+ },
+ {
+  "id": "w2_truckers",
+  "cat": "Economia",
+  "title": "Greve dos caminhoneiros",
+  "desc": "Com o diesel caro, caminhoneiros bloqueiam as principais rodovias. Supermercados começam a ficar sem produtos.",
+  "context": "Em três dias, falta comida.",
+  "cond": {
+   "min": {
+    "inflation": 5
+   }
+  },
+  "w": 1.2,
+  "options": [
+   {
+    "text": "Subsidiar o diesel por seis meses.",
+    "hint": "A greve acaba; o tesouro paga.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 3,
+     "rural": 2
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -0.5,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Usar o Exército para desbloquear as estradas.",
+    "hint": "Estradas abertas; confronto.",
+    "now": {
+     "protest": 3,
+     "political": -1
+    },
+    "groups": {
+     "military": 3,
+     "workers": -4
+    }
+   },
+   {
+    "text": "Negociar um frete mínimo.",
+    "hint": "Paz com os caminhoneiros; a indústria paga mais.",
+    "groups": {
+     "workers": 4,
+     "business": -4
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": 0.6,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_housing_bubble",
+  "cat": "Economia",
+  "title": "Bolha imobiliária?",
+  "desc": "Os preços dos imóveis subiram 40% em dois anos. Bancos emprestam sem critério e economistas alertam para uma bolha.",
+  "context": "Hoje todos se sentem ricos.",
+  "cond": {
+   "min": {
+    "growth": 2.5
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Endurecer as regras de crédito.",
+    "hint": "Esfria o mercado antes que estoure.",
+    "groups": {
+     "business": -3
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.4,
+      "d": 180
+     },
+     {
+      "k": "housing",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Deixar o boom seguir.",
+    "hint": "Crescimento agora; risco de crise depois.",
+    "groups": {
+     "business": 4
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.5,
+      "d": 180
+     },
+     {
+      "k": "growth",
+      "v": -1,
+      "d": 540
+     }
+    ]
+   },
+   {
+    "text": "Programa de moradia popular para baixar os preços.",
+    "hint": "Mais oferta; custo fiscal.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 5
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 4,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_brain_drain",
+  "cat": "Economia",
+  "title": "Fuga de cérebros",
+  "desc": "Um levantamento mostra que um em cada cinco formados em engenharia e medicina deixou o país nos últimos três anos.",
+  "context": "Formamos e o mundo aproveita.",
+  "cond": {
+   "min": {
+    "education": 50
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Bolsas e salários para pesquisadores que ficarem.",
+    "hint": "Retém talentos; custo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "youth": 4
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "emigration",
+      "v": -0.5,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Taxar quem sai sem cumprir anos de serviço.",
+    "hint": "Polêmico; reduz a saída.",
+    "groups": {
+     "youth": -6
+    },
+    "policy": {
+     "emigration": "taxed"
+    }
+   },
+   {
+    "text": "Aproveitar a diáspora: redes de investimento e remessas.",
+    "hint": "Dinheiro e contatos voltam.",
+    "now": {
+     "reputation": 1
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_minwage",
+  "cat": "Economia",
+  "title": "Reajuste do salário mínimo",
+  "desc": "As centrais sindicais exigem um reajuste real do salário mínimo. Os empresários dizem que haverá demissões.",
+  "context": "Todo ano a mesma briga.",
+  "w": 1.3,
+  "cd": 330,
+  "options": [
+   {
+    "text": "Reajuste forte, acima da inflação.",
+    "hint": "Renda sobe; custo para empresas e previdência.",
+    "groups": {
+     "workers": 7,
+     "business": -6
+    },
+    "long": [
+     {
+      "k": "poverty",
+      "v": -1.5,
+      "d": 365
+     },
+     {
+      "k": "inflation",
+      "v": 0.8,
+      "d": 180
+     },
+     {
+      "k": "unemployment",
+      "v": 0.4,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Repor só a inflação.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "workers": -1
+    }
+   },
+   {
+    "text": "Congelar o mínimo este ano.",
+    "hint": "Alívio para as contas; perda de renda.",
+    "now": {
+     "protest": 3
+    },
+    "groups": {
+     "workers": -8,
+     "business": 4
+    },
+    "long": [
+     {
+      "k": "poverty",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_datacenters",
+  "cat": "Economia",
+  "title": "Gigantes da tecnologia querem data centers",
+  "desc": "Duas empresas de tecnologia propõem construir enormes centros de dados no país — desde que recebam energia subsidiada e isenção de impostos.",
+  "context": "Empregos de ponta ou conta de luz mais cara?",
+  "cond": {
+   "min": {
+    "tech": 35
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Aceitar com isenções.",
+    "hint": "Investimento e tecnologia; energia mais disputada.",
+    "groups": {
+     "business": 4
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "s_energy",
+      "v": -1,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": 0.15,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Aceitar, mas com energia renovável própria.",
+    "hint": "Mais lento; sem pressão na rede.",
+    "long": [
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "pollution",
+      "v": -0.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Soberania energética.",
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_bank_merger",
+  "cat": "Economia",
+  "title": "Fusão dos maiores bancos",
+  "desc": "Os dois maiores bancos privados anunciam fusão. Se aprovada, um único grupo terá 45% do crédito do país.",
+  "context": "Concentração ou solidez?",
+  "cond": {
+   "min": {
+    "market": 40
+   }
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Aprovar a fusão.",
+    "hint": "Banco gigante e sólido; menos concorrência.",
+    "groups": {
+     "business": 5
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": 0.3,
+      "d": 0
+     },
+     {
+      "k": "market",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Aprovar com condições: vender agências e baixar tarifas.",
+    "hint": "Equilíbrio.",
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Vetar a fusão.",
+    "hint": "Concorrência preservada; mercado irritado.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "business": -5
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_household_debt",
+  "cat": "Economia",
+  "title": "Famílias afogadas em dívidas",
+  "desc": "Sete em cada dez famílias têm contas atrasadas. O consumo despenca e o comércio demite.",
+  "context": "O crédito fácil virou armadilha.",
+  "cond": {
+   "min": {
+    "unemployment": 8
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Programa de renegociação com desconto bancado pelo governo.",
+    "hint": "Limpa o nome de milhões; custo fiscal.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "workers": 6
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.4,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Limitar os juros do cartão e do cheque especial.",
+    "hint": "Alívio; bancos cortam crédito.",
+    "groups": {
+     "workers": 4,
+     "business": -4
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.1,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Educação financeira e paciência.",
+    "hint": "Barato; lento.",
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.3,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_dam",
+  "cat": "Economia",
+  "title": "Barragem de rejeitos rompe",
+  "desc": "Uma barragem de uma mineradora rompeu, soterrou um vilarejo e contaminou um rio inteiro. Há dezenas de mortos.",
+  "context": "Tragédia anunciada.",
+  "cond": {
+   "min": {
+    "industry": 30
+   }
+  },
+  "w": 0.7,
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Multa bilionária e fechamento da mina.",
+    "hint": "Justiça; empregos perdidos na região.",
+    "now": {
+     "treasury": 0.3
+    },
+    "groups": {
+     "business": -6,
+     "rural": 3
+    },
+    "long": [
+     {
+      "k": "pollution",
+      "v": -1,
+      "d": 365
+     },
+     {
+      "k": "s_raw",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Acordo de reparação negociado.",
+    "hint": "Indenizações rápidas; críticos falam em impunidade.",
+    "now": {
+     "corruption": 1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Nova lei de segurança de barragens para todo o setor.",
+    "hint": "Previne a próxima; custa ao setor.",
+    "now": {
+     "legitimacy": 2
+    },
+    "groups": {
+     "business": -3
+    },
+    "long": [
+     {
+      "k": "pollution",
+      "v": -0.5,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": -0.05,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_pension",
+  "cat": "Economia",
+  "title": "A previdência não fecha",
+  "desc": "O rombo da previdência já consome um terço do orçamento. Técnicos propõem idade mínima maior e regras de transição.",
+  "context": "A conta chega para todos.",
+  "cond": {
+   "min": {
+    "debtRatio": 55
+   }
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Reforma dura: idade mínima de 65 anos.",
+    "hint": "Economia enorme no futuro; impopular.",
+    "now": {
+     "protest": 5
+    },
+    "groups": {
+     "workers": -8,
+     "bureaucracy": -6,
+     "business": 6
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Reforma gradual com transição longa.",
+    "hint": "Economia menor; menos dor.",
+    "groups": {
+     "workers": -3,
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.4,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Não mexer na previdência.",
+    "hint": "Paz agora; o rombo cresce.",
+    "groups": {
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": -0.3,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_smuggling",
+  "cat": "Economia",
+  "title": "Contrabando na fronteira",
+  "desc": "Cigarros, eletrônicos e armas entram livremente pela fronteira com {nb}. A indústria nacional perde mercado e o crime se arma.",
+  "context": "Fronteira porosa.",
+  "tpl": {
+   "nb": "any"
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Operação conjunta com {nb}.",
+    "hint": "Eficaz e diplomática.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -2,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$nb": 4
+    }
+   },
+   {
+    "text": "Muro e vigilância militar na fronteira.",
+    "hint": "Caro; relação tensa.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "military": 3
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Baixar impostos para tirar a vantagem do contrabando.",
+    "hint": "Contrabando perde sentido; arrecadação cai.",
+    "groups": {
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": -0.3,
+      "d": 0
+     },
+     {
+      "k": "crime",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_ai_schools",
+  "cat": "Sociedade",
+  "title": "Inteligência artificial nas escolas",
+  "desc": "Alunos usam IA para fazer todos os trabalhos. Professores pedem proibição; empresas de tecnologia oferecem tutores digitais grátis.",
+  "context": "A escola do século XXI.",
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Tutores de IA em todas as escolas públicas.",
+    "hint": "Ensino personalizado; dependência de empresas.",
+    "groups": {
+     "youth": 4
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 1.5,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Proibir IA nas escolas.",
+    "hint": "Volta ao básico; alunos burlam.",
+    "groups": {
+     "youth": -4
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": -0.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Formar professores para usar a IA com critério.",
+    "hint": "Mais lento e caro; equilibrado.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_vaccine_mandate",
+  "cat": "Sociedade",
+  "title": "Vacinação obrigatória",
+  "desc": "Um surto de sarampo atinge cidades onde a cobertura vacinal caiu. Médicos pedem vacinação obrigatória para matrícula escolar.",
+  "context": "Liberdade individual ou saúde coletiva?",
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Vacina obrigatória para matrícula.",
+    "hint": "Cobertura sobe; protestos de antivacina.",
+    "now": {
+     "protest": 2
+    },
+    "groups": {
+     "rural": -2
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Campanha nacional, sem obrigar.",
+    "hint": "Mais lento; sem conflito.",
+    "now": {
+     "treasury": -0.05
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Respeitar a escolha das famílias.",
+    "hint": "Surto se espalha.",
+    "now": {
+     "health": -2
+    },
+    "groups": {
+     "rural": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_football",
+  "cat": "Sociedade",
+  "title": "Violência no futebol",
+  "desc": "Uma briga entre torcidas organizadas termina com mortes no estádio. A imprensa exige providências.",
+  "context": "O esporte nacional em xeque.",
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Proibir torcidas organizadas.",
+    "hint": "Estádios mais seguros; organizadas protestam.",
+    "groups": {
+     "youth": -3
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Torcida única e cadastro biométrico.",
+    "hint": "Equilíbrio; custo para os clubes.",
+    "long": [
+     {
+      "k": "crime",
+      "v": -0.5,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Deixar com a polícia de sempre.",
+    "hint": "Nada muda.",
+    "now": {
+     "legitimacy": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_marijuana",
+  "cat": "Sociedade",
+  "title": "Legalizar a maconha?",
+  "desc": "Um movimento reúne médicos, juristas e artistas pela legalização da maconha, com venda regulada e impostos.",
+  "context": "Guerra às drogas ou mercado regulado?",
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Legalizar com venda regulada.",
+    "hint": "Arrecadação e menos presos; conservadores furiosos.",
+    "groups": {
+     "youth": 6,
+     "rural": -5
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.2,
+      "d": 0
+     },
+     {
+      "k": "crime",
+      "v": -1,
+      "d": 0
+     }
+    ],
+    "policy": {
+     "vices": "liberal"
+    }
+   },
+   {
+    "text": "Só uso medicinal.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Manter a proibição e endurecer penas.",
+    "hint": "Conservadores aplaudem; presídios lotam.",
+    "groups": {
+     "rural": 3,
+     "youth": -4
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_child_labor",
+  "cat": "Sociedade",
+  "title": "Trabalho infantil nas lavouras",
+  "desc": "Uma reportagem mostra crianças trabalhando em plantações que exportam para a Europa. Compradores ameaçam boicote.",
+  "context": "A vitrine internacional está em jogo.",
+  "cond": {
+   "max": {
+    "gdppc": 9000
+   }
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Fiscalização dura e multas pesadas.",
+    "hint": "Imagem limpa; produtores reclamam.",
+    "now": {
+     "reputation": 3
+    },
+    "groups": {
+     "rural": -3
+    },
+    "long": [
+     {
+      "k": "poverty",
+      "v": 0.5,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Bolsa para famílias manterem os filhos na escola.",
+    "hint": "Resolve a raiz; custo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "poverty",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Negar a reportagem.",
+    "hint": "Boicote começa.",
+    "now": {
+     "reputation": -4
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": -0.02,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_elder_care",
+  "cat": "Sociedade",
+  "title": "Quem cuida dos idosos?",
+  "desc": "A população envelhece rápido. Asilos estão lotados e famílias não conseguem cuidar dos pais.",
+  "context": "O país está ficando grisalho.",
+  "cond": {
+   "min": {
+    "gdppc": 7000
+   }
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Rede pública de cuidadores e centros-dia.",
+    "hint": "Alívio para as famílias; custo permanente.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "workers": 3
+    },
+    "long": [
+     {
+      "k": "qol",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Incentivo fiscal para cuidadores privados.",
+    "hint": "Mercado cresce; desigual.",
+    "groups": {
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": -0.1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Facilitar a imigração de cuidadores.",
+    "hint": "Mão de obra; tensão com nacionalistas.",
+    "groups": {
+     "regional": -2
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": 0.4,
+      "d": 0
+     },
+     {
+      "k": "migration",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_mental_health",
+  "cat": "Sociedade",
+  "title": "Epidemia silenciosa",
+  "desc": "Os casos de depressão e ansiedade entre jovens dobraram. Os suicídios crescem e os postos de saúde não têm psicólogos.",
+  "context": "Saúde que não se vê.",
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Psicólogos em todas as escolas e postos.",
+    "hint": "Cuidado real; custo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "youth": 5
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "qol",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Campanha de conscientização.",
+    "hint": "Barato; efeito limitado.",
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Restringir redes sociais para menores de 16.",
+    "hint": "Polêmico; empresas de tecnologia protestam.",
+    "groups": {
+     "youth": -3
+    },
+    "long": [
+     {
+      "k": "qol",
+      "v": 0.5,
+      "d": 0
+     },
+     {
+      "k": "civil",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_mega_event",
+  "cat": "Sociedade",
+  "title": "Sediar o grande torneio mundial?",
+  "desc": "A federação internacional oferece ao país a sede do maior torneio esportivo do planeta. Exige estádios novos e garantias de segurança.",
+  "context": "Festa global — e uma conta enorme.",
+  "cond": {
+   "min": {
+    "gdppc": 5000
+   }
+  },
+  "w": 0.7,
+  "cd": 2000,
+  "options": [
+   {
+    "text": "Aceitar e construir tudo.",
+    "hint": "Prestígio e turismo; elefantes brancos e corrupção.",
+    "now": {
+     "treasury": -1,
+     "reputation": 5
+    },
+    "groups": {
+     "business": 4,
+     "youth": 3
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": 2,
+      "d": 365
+     },
+     {
+      "k": "growth",
+      "v": 0.3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Aceitar com estádios já existentes.",
+    "hint": "Menos glamour; custo menor.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 2
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Contas preservadas.",
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_indigenous_lang",
+  "cat": "Sociedade",
+  "title": "Línguas indígenas e minoritárias",
+  "desc": "Lideranças de povos originários e minorias pedem que suas línguas sejam ensinadas nas escolas das suas regiões.",
+  "context": "Identidade e unidade nacional.",
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Ensino bilíngue nas regiões.",
+    "hint": "Minorias reconhecidas; nacionalistas reclamam.",
+    "groups": {
+     "regional": 5
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -2,
+      "d": 0
+     },
+     {
+      "k": "civil",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Só como matéria optativa.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "regional": 1
+    }
+   },
+   {
+    "text": "Língua nacional única.",
+    "hint": "Unidade; ressentimento regional.",
+    "groups": {
+     "regional": -5
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_compulsory_vote",
+  "cat": "Política interna",
+  "title": "Voto obrigatório em debate",
+  "desc": "A abstenção bateu recorde na última eleição. Uma proposta quer multar quem não votar; outra quer acabar de vez com a obrigação.",
+  "context": "Dever ou direito?",
+  "cond": {
+   "policy": {
+    "elections": "multiparty"
+   }
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Tornar o voto obrigatório.",
+    "hint": "Participação sobe; mais votos de protesto.",
+    "long": [
+     {
+      "k": "legitimacy",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "opposition",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Voto facultativo.",
+    "hint": "Só vota quem quer; mais polarização.",
+    "groups": {
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "political",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Manter como está.",
+    "hint": "Nada muda."
+   }
+  ]
+ },
+ {
+  "id": "w2_fake_news",
+  "cat": "Política interna",
+  "title": "Lei contra fake news",
+  "desc": "Uma onda de boatos nas redes provocou linchamentos. O Congresso discute obrigar as plataformas a remover conteúdo falso em 24 horas.",
+  "context": "Quem decide o que é falso?",
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Aprovar a lei com um conselho independente.",
+    "hint": "Menos boatos; risco de exageros.",
+    "groups": {
+     "opposition": -2
+    },
+    "long": [
+     {
+      "k": "protest",
+      "v": -1,
+      "d": 365
+     },
+     {
+      "k": "civil",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Deixar o governo decidir o que é falso.",
+    "hint": "Controle total da narrativa.",
+    "now": {
+     "reputation": -3
+    },
+    "groups": {
+     "opposition": -6
+    },
+    "long": [
+     {
+      "k": "political",
+      "v": -3,
+      "d": 0
+     },
+     {
+      "k": "propaganda",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Apostar em checagem e educação digital.",
+    "hint": "Liberdade preservada; boatos continuam.",
+    "long": [
+     {
+      "k": "civil",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_vice",
+  "cat": "Política interna",
+  "title": "O vice conspira?",
+  "desc": "Gravações sugerem que o vice-presidente {person} negocia com a oposição e com generais um eventual afastamento seu.",
+  "context": "O inimigo mora no palácio.",
+  "cond": {
+   "min": {
+    "coupRisk": 25
+   }
+  },
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Expor as gravações e isolar o vice.",
+    "hint": "Ele perde força; o escândalo respinga em você.",
+    "now": {
+     "legitimacy": -1,
+     "coupRisk": -3
+    }
+   },
+   {
+    "text": "Reaproximar-se com cargos para o grupo dele.",
+    "hint": "Paz interna; custo político.",
+    "now": {
+     "corruption": 1,
+     "coupRisk": -2
+    },
+    "groups": {
+     "bureaucracy": 2
+    }
+   },
+   {
+    "text": "Ignorar: é intriga da imprensa.",
+    "hint": "Se for verdade, o perigo cresce.",
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 4,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_campaign_money",
+  "cat": "Política interna",
+  "title": "Financiamento de campanha",
+  "desc": "Uma investigação mostra que grandes empresas financiaram por fora as campanhas de quase todos os partidos.",
+  "context": "Dinheiro e voto.",
+  "cond": {
+   "policy": {
+    "elections": [
+     "multiparty",
+     "controlled"
+    ]
+   }
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Proibir doações de empresas e criar fundo público.",
+    "hint": "Campanhas mais limpas; custo público.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "business": -4
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": -2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Teto de doações e transparência total.",
+    "hint": "Meio-termo.",
+    "long": [
+     {
+      "k": "corruption",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Abafar o caso.",
+    "hint": "Os partidos agradecem.",
+    "now": {
+     "corruption": 3,
+     "legitimacy": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_civil_service",
+  "cat": "Política interna",
+  "title": "Estabilidade dos servidores",
+  "desc": "A equipe econômica quer acabar com a estabilidade dos novos servidores públicos e avaliar todos por desempenho.",
+  "context": "Máquina pública mais leve — ou mais vulnerável?",
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Fim da estabilidade para novos servidores.",
+    "hint": "Eficiência; sindicatos do funcionalismo em guerra.",
+    "groups": {
+     "bureaucracy": -10,
+     "business": 4
+    },
+    "long": [
+     {
+      "k": "efficiency",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "corruption",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Avaliação de desempenho sem tirar a estabilidade.",
+    "hint": "Ganhos menores; menos conflito.",
+    "groups": {
+     "bureaucracy": -3
+    },
+    "long": [
+     {
+      "k": "efficiency",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Manter tudo como está.",
+    "hint": "Servidores aliviados.",
+    "groups": {
+     "bureaucracy": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_supreme_court",
+  "cat": "Política interna",
+  "title": "Vaga na Suprema Corte",
+  "desc": "Um ministro da Suprema Corte se aposenta. Você indica o substituto — e o tribunal decide temas cruciais para o governo.",
+  "context": "Uma indicação para décadas.",
+  "cd": 1300,
+  "options": [
+   {
+    "text": "Indicar um jurista respeitado e independente.",
+    "hint": "Prestígio; o tribunal pode contrariar você.",
+    "now": {
+     "reputation": 1
+    },
+    "long": [
+     {
+      "k": "civil",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "corruption",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Indicar um aliado fiel.",
+    "hint": "Tribunal amigo; críticas de aparelhamento.",
+    "groups": {
+     "opposition": -4
+    },
+    "long": [
+     {
+      "k": "political",
+      "v": -2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Negociar o nome com o Congresso.",
+    "hint": "Apoio parlamentar; nome morno.",
+    "groups": {
+     "regional": 2,
+     "bureaucracy": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_fires",
+  "cat": "Meio ambiente",
+  "title": "Queimadas fora de controle",
+  "desc": "Incêndios criminosos devastam florestas e cerrados. A fumaça chega às capitais e governos estrangeiros ameaçam sanções comerciais.",
+  "context": "O mundo olha a fumaça.",
+  "cond": {
+   "size": [
+    "large",
+    "continental"
+   ]
+  },
+  "w": 1.1,
+  "cd": 600,
+  "options": [
+   {
+    "text": "Força-tarefa ambiental e multas pesadas.",
+    "hint": "Fogo diminui; ruralistas reclamam.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 3
+    },
+    "groups": {
+     "rural": -4
+    },
+    "long": [
+     {
+      "k": "pollution",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Enviar o Exército para apagar e vigiar.",
+    "hint": "Eficaz a curto prazo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Dizer que é exagero da imprensa estrangeira.",
+    "hint": "Ruralistas aplaudem; sanções.",
+    "now": {
+     "reputation": -5
+    },
+    "groups": {
+     "rural": 4
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": -0.02,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_drought",
+  "cat": "Meio ambiente",
+  "title": "Seca histórica",
+  "desc": "Os reservatórios estão em 15%. As grandes cidades podem ficar sem água em semanas e as hidrelétricas param.",
+  "context": "Torneira seca.",
+  "cd": 900,
+  "options": [
+   {
+    "text": "Racionamento rigoroso de água e energia.",
+    "hint": "Evita o colapso; população irritada.",
+    "now": {
+     "protest": 4
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.4,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Usinas térmicas de emergência.",
+    "hint": "Luz garantida; conta cara e poluição.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "pollution",
+      "v": 1.5,
+      "d": 365
+     },
+     {
+      "k": "inflation",
+      "v": 0.8,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Obras de transposição e dessalinização.",
+    "hint": "Solução de longo prazo; muito caro.",
+    "now": {
+     "treasury": -0.8
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "act": {
+     "type": "regionBuild",
+     "region": null,
+     "build": "power"
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_ev",
+  "cat": "Meio ambiente",
+  "title": "Carros elétricos",
+  "desc": "Uma montadora estrangeira oferece uma fábrica de carros elétricos se o governo zerar impostos de importação de baterias e investir em carregadores.",
+  "context": "O futuro sobre rodas.",
+  "cond": {
+   "min": {
+    "industry": 35
+   }
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Aceitar e montar uma rede de carregadores.",
+    "hint": "Indústria nova; menos petróleo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 1.5,
+      "d": 0
+     },
+     {
+      "k": "pollution",
+      "v": -1,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Proteger as montadoras a combustão.",
+    "hint": "Empregos atuais preservados.",
+    "groups": {
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": -0.5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_plastic",
+  "cat": "Meio ambiente",
+  "title": "Mares de plástico",
+  "desc": "Fotos de praias cobertas de plástico viralizam. Ambientalistas pedem banir sacolas e embalagens descartáveis.",
+  "context": "Conveniência ou oceano limpo?",
+  "cond": {
+   "coast": true
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Proibir plásticos descartáveis.",
+    "hint": "Praias limpas; indústria reclama.",
+    "groups": {
+     "business": -3,
+     "youth": 3
+    },
+    "long": [
+     {
+      "k": "pollution",
+      "v": -1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Taxa sobre embalagens.",
+    "hint": "Gradual; arrecada.",
+    "long": [
+     {
+      "k": "pollution",
+      "v": -0.7,
+      "d": 0
+     },
+     {
+      "k": "revenue",
+      "v": 0.1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Deixar como está.",
+    "hint": "Nada muda.",
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_floods",
+  "cat": "Meio ambiente",
+  "title": "Enchentes nas cidades",
+  "desc": "Chuvas recordes alagam bairros inteiros de {capital}. Há desabrigados e prejuízo bilionário.",
+  "context": "Cidades que não drenam.",
+  "cd": 700,
+  "options": [
+   {
+    "text": "Grande plano de drenagem e contenção de encostas.",
+    "hint": "Previne as próximas; caro.",
+    "now": {
+     "treasury": -0.6
+    },
+    "groups": {
+     "workers": 3
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Remover moradias de áreas de risco.",
+    "hint": "Necessário e doloroso.",
+    "now": {
+     "protest": 3
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": -1,
+      "d": 180
+     },
+     {
+      "k": "housing",
+      "v": 2,
+      "d": 720
+     }
+    ]
+   },
+   {
+    "text": "Ajuda emergencial e nada mais.",
+    "hint": "Barato agora.",
+    "now": {
+     "treasury": -0.1,
+     "legitimacy": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_indigenous_mining",
+  "cat": "Meio ambiente",
+  "title": "Mineração em terras indígenas",
+  "desc": "Mineradoras pressionam para explorar ouro e lítio em reservas indígenas. As lideranças avisam que vão resistir.",
+  "context": "Riqueza no subsolo, povos na superfície.",
+  "cond": {
+   "size": [
+    "medium",
+    "large",
+    "continental"
+   ]
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Liberar a mineração com royalties aos povos.",
+    "hint": "Dinheiro e conflito.",
+    "now": {
+     "reputation": -3
+    },
+    "groups": {
+     "business": 4
+    },
+    "long": [
+     {
+      "k": "s_raw",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 0
+     },
+     {
+      "k": "pollution",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Proibir de vez.",
+    "hint": "Povos protegidos; mineradoras irritadas.",
+    "now": {
+     "reputation": 3
+    },
+    "groups": {
+     "business": -4,
+     "regional": 2
+    }
+   },
+   {
+    "text": "Expulsar garimpeiros ilegais com a Polícia Federal.",
+    "hint": "Lei cumprida; custo.",
+    "now": {
+     "treasury": -0.15,
+     "reputation": 2
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -0.5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_drones",
+  "cat": "Forças armadas",
+  "title": "A era dos drones",
+  "desc": "O Estado-Maior pede uma frota de drones armados e de vigilância. Indústrias locais e estrangeiras disputam o contrato.",
+  "context": "Guerra barata, guerra fácil?",
+  "tpl": {
+   "power": "friendly"
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Comprar drones de {power}.",
+    "hint": "Rápido; dependência do fornecedor.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "equipment",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "intel",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 4
+    }
+   },
+   {
+    "text": "Desenvolver drones nacionais.",
+    "hint": "Lento; indústria e tecnologia crescem.",
+    "now": {
+     "treasury": -0.5
+    },
+    "long": [
+     {
+      "k": "milIndustry",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Não agora.",
+    "hint": "Economia.",
+    "groups": {
+     "military": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_women_service",
+  "cat": "Forças armadas",
+  "title": "Mulheres no serviço militar",
+  "desc": "Uma proposta abre todas as carreiras militares às mulheres, inclusive combate. Generais estão divididos.",
+  "context": "Igualdade na farda.",
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Abrir todas as carreiras.",
+    "hint": "Mais recrutas e prestígio; resistência da caserna.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 3,
+     "military": -2
+    },
+    "long": [
+     {
+      "k": "readiness",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "laborSupply",
+      "v": -0.1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Abrir só funções de apoio.",
+    "hint": "Meio-termo."
+   },
+   {
+    "text": "Manter como está.",
+    "hint": "Tradição.",
+    "groups": {
+     "military": 2,
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_foreign_base",
+  "cat": "Forças armadas",
+  "title": "{power} quer uma base no país",
+  "desc": "{power} oferece investimentos e proteção em troca de uma base militar em território nacional.",
+  "context": "Soberania tem preço?",
+  "tpl": {
+   "power": "friendly"
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Aceitar a base.",
+    "hint": "Proteção e dinheiro; rivais de {power} reagem.",
+    "now": {
+     "treasury": 0.4
+    },
+    "groups": {
+     "military": -3
+    },
+    "long": [
+     {
+      "k": "defense",
+      "v": 4,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 15
+    }
+   },
+   {
+    "text": "Aceitar só exercícios conjuntos.",
+    "hint": "Aproximação sem base.",
+    "rel": {
+     "$power": 5
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Soberania; {power} se ressente.",
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "$power": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_veterans",
+  "cat": "Forças armadas",
+  "title": "Veteranos acampam diante do palácio",
+  "desc": "Ex-combatentes de guerras passadas acampam há semanas exigindo pensões e tratamento médico prometidos.",
+  "context": "Heróis esquecidos.",
+  "cond": {
+   "min": {
+    "warWeariness": 15
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Pagar as pensões atrasadas.",
+    "hint": "Gratidão nas casernas; custo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "military": 5
+    }
+   },
+   {
+    "text": "Prometer um estudo.",
+    "hint": "Ganha tempo.",
+    "groups": {
+     "military": -2
+    }
+   },
+   {
+    "text": "Remover o acampamento.",
+    "hint": "Imagem horrível.",
+    "now": {
+     "legitimacy": -2
+    },
+    "groups": {
+     "military": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_border_drills",
+  "cat": "Forças armadas",
+  "title": "Exercícios militares de {nb} na fronteira",
+  "desc": "{nb} faz grandes manobras a poucos quilômetros da fronteira, com tanques e artilharia.",
+  "context": "Recado ou preparação?",
+  "tpl": {
+   "nb": "hostile"
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Fazer manobras do nosso lado.",
+    "hint": "Mostra força; tensão sobe.",
+    "now": {
+     "readiness": 3
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "$nb": -5
+    }
+   },
+   {
+    "text": "Pedir explicações por via diplomática.",
+    "hint": "Prudência.",
+    "rel": {
+     "$nb": 1
+    }
+   },
+   {
+    "text": "Levar o caso à ONU.",
+    "hint": "Apoio internacional; {nb} se irrita.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "$nb": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_refugees_nb",
+  "cat": "Mundo",
+  "title": "Refugiados de {nb}",
+  "desc": "Uma crise em {nb} empurra milhares de famílias para a nossa fronteira.",
+  "context": "Abrir ou fechar a porta?",
+  "tpl": {
+   "nb": "any"
+  },
+  "cond": {
+   "min": {
+    "tension": 40
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Acolher com campos e registro.",
+    "hint": "Reputação; custo e tensão local.",
+    "now": {
+     "treasury": -0.15,
+     "reputation": 3
+    },
+    "groups": {
+     "regional": -2
+    },
+    "long": [
+     {
+      "k": "migration",
+      "v": 1,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$nb": 3
+    }
+   },
+   {
+    "text": "Acolher só crianças e doentes.",
+    "hint": "Meio-termo.",
+    "now": {
+     "reputation": 1
+    }
+   },
+   {
+    "text": "Fechar a fronteira.",
+    "hint": "Controle; críticas.",
+    "now": {
+     "reputation": -3
+    },
+    "groups": {
+     "regional": 2
+    },
+    "policy": {
+     "refugees": "refuse"
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_5g",
+  "cat": "Mundo",
+  "title": "A rede 5G de {power}",
+  "desc": "A empresa estatal de {power} oferece a rede 5G mais barata. Aliados de outro bloco alertam para espionagem.",
+  "context": "Tecnologia e geopolítica.",
+  "tpl": {
+   "power": "any"
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Contratar a rede de {power}.",
+    "hint": "Barato e rápido; rivais de {power} irritados.",
+    "long": [
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "intel",
+      "v": -2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 8
+    }
+   },
+   {
+    "text": "Contratar fornecedores ocidentais.",
+    "hint": "Mais caro; seguro.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "west": 3,
+     "$power": -4
+    }
+   },
+   {
+    "text": "Desenvolver uma rede nacional com parceiros diversos.",
+    "hint": "Lento; soberano.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_fishing",
+  "cat": "Mundo",
+  "title": "Guerra da pesca com {nb}",
+  "desc": "Barcos de {nb} pescam ilegalmente nas nossas águas. Pescadores locais pedem que a Marinha afunde os invasores.",
+  "context": "Peixe é soberania.",
+  "tpl": {
+   "nb": "any"
+  },
+  "cond": {
+   "coast": true
+  },
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Apreender os barcos.",
+    "hint": "Pescadores felizes; crise diplomática.",
+    "groups": {
+     "rural": 3
+    },
+    "rel": {
+     "$nb": -6
+    }
+   },
+   {
+    "text": "Negociar cotas de pesca.",
+    "hint": "Acordo; pescadores reclamam.",
+    "groups": {
+     "rural": -2
+    },
+    "rel": {
+     "$nb": 4
+    }
+   },
+   {
+    "text": "Patrulhas e multas.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": -0.05
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_extradition",
+  "cat": "Mundo",
+  "title": "Extradição de um opositor de {power}",
+  "desc": "{power} pede a extradição de um jornalista exilado aqui, acusado de \"terrorismo\". Grupos de direitos humanos dizem que é perseguição.",
+  "context": "Direito de asilo.",
+  "tpl": {
+   "power": "any"
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Conceder asilo.",
+    "hint": "Prestígio liberal; {power} retalia.",
+    "now": {
+     "reputation": 3
+    },
+    "rel": {
+     "$power": -10
+    }
+   },
+   {
+    "text": "Extraditar.",
+    "hint": "{power} agradece; vergonha internacional.",
+    "now": {
+     "reputation": -4,
+     "civil": -1
+    },
+    "rel": {
+     "$power": 8
+    }
+   },
+   {
+    "text": "Deixar a Justiça decidir, devagar.",
+    "hint": "Adia o problema.",
+    "rel": {
+     "$power": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_humanitarian",
+  "cat": "Mundo",
+  "title": "Corredor humanitário na guerra entre {aiA} e {aiB}",
+  "desc": "Agências da ONU pedem que o país organize um corredor humanitário e envie médicos para a guerra entre {aiA} e {aiB}.",
+  "context": "Neutralidade ativa.",
+  "tpl": {
+   "aiWar": "any"
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Enviar médicos e mediar o corredor.",
+    "hint": "Prestígio e influência; risco para a equipe.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 4,
+     "influence": 2
+    }
+   },
+   {
+    "text": "Enviar só dinheiro.",
+    "hint": "Barato e seguro.",
+    "now": {
+     "treasury": -0.05,
+     "reputation": 1
+    }
+   },
+   {
+    "text": "Não se envolver.",
+    "hint": "Nada muda."
+   }
+  ]
+ },
+ {
+  "id": "w2_ns_arms",
+  "cat": "Mundo caótico",
+  "title": "{newstate} pede armas",
+  "desc": "O jovem governo de {newstate} enfrenta tropas do antigo país e pede armamento e instrutores a {nation}.",
+  "context": "Um aliado novo — e uma guerra alheia.",
+  "tpl": {
+   "newstate": "any"
+  },
+  "cond": {
+   "min": {
+    "chaos": 1
+   }
+  },
+  "w": 1.5,
+  "cd": 200,
+  "options": [
+   {
+    "text": "Enviar armas e instrutores.",
+    "hint": "Aliado leal; o antigo país vira inimigo.",
+    "now": {
+     "treasury": -0.2,
+     "equipment": -1
+    },
+    "long": [
+     {
+      "k": "influence",
+      "v": 2,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$newstate": 20
+    }
+   },
+   {
+    "text": "Ajuda humanitária, sem armas.",
+    "hint": "Simpatia sem risco.",
+    "now": {
+     "treasury": -0.05
+    },
+    "rel": {
+     "$newstate": 6
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Neutralidade.",
+    "rel": {
+     "$newstate": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_ns_trade",
+  "cat": "Mundo caótico",
+  "title": "{newstate} propõe um acordo comercial",
+  "desc": "{newstate} precisa de mercados para sobreviver e oferece tarifa zero e acesso a seus recursos.",
+  "context": "Comércio com quem quase ninguém reconhece.",
+  "tpl": {
+   "newstate": "friendly"
+  },
+  "cond": {
+   "min": {
+    "chaos": 1
+   }
+  },
+  "cd": 300,
+  "options": [
+   {
+    "text": "Assinar o acordo.",
+    "hint": "Comércio novo; o antigo país protesta.",
+    "act": {
+     "type": "trade",
+     "id": "$newstate"
+    }
+   },
+   {
+    "text": "Comércio informal, sem acordo oficial.",
+    "hint": "Ganhos pequenos, sem compromisso.",
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.05,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$newstate": 3
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Sem risco diplomático.",
+    "rel": {
+     "$newstate": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_ns_inspired",
+  "cat": "Mundo caótico",
+  "title": "Separatistas inspirados em {newstate}",
+  "desc": "O sucesso de {newstate} empolgou separatistas dentro do nosso país. Bandeiras regionais aparecem nas ruas de {region}.",
+  "context": "O exemplo é contagioso.",
+  "tpl": {
+   "newstate": "any",
+   "region": "any"
+  },
+  "cond": {
+   "min": {
+    "chaos": 1,
+    "separatism": 15
+   }
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Investir pesado na região.",
+    "hint": "Esvazia o movimento; caro.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -3,
+      "d": 365
+     }
+    ],
+    "act": {
+     "type": "regionBuild",
+     "region": "$region",
+     "build": "auto"
+    }
+   },
+   {
+    "text": "Proibir símbolos separatistas.",
+    "hint": "Ordem; ressentimento.",
+    "groups": {
+     "regional": -4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 2,
+      "d": 365
+     },
+     {
+      "k": "civil",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Prometer mais autonomia.",
+    "hint": "Acalma; nacionalistas reclamam.",
+    "groups": {
+     "regional": 4,
+     "military": -2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "w2_ns_mercs",
+  "cat": "Mundo caótico",
+  "title": "Mercenários batem à porta",
+  "desc": "Uma empresa militar privada oferece seus serviços: soldados veteranos das guerras de independência que se espalham pelo mundo.",
+  "context": "Força à venda.",
+  "cond": {
+   "min": {
+    "chaos": 1,
+    "aiWars": 4
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Contratar para proteger fronteiras.",
+    "hint": "Mais força já; má fama.",
+    "now": {
+     "treasury": -0.3,
+     "readiness": 4,
+     "reputation": -2
+    }
+   },
+   {
+    "text": "Contratar para treinar o Exército.",
+    "hint": "Profissionaliza as tropas.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "readiness",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Proibir mercenários no país.",
+    "hint": "Imagem limpa.",
+    "now": {
+     "reputation": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_ns_minority",
+  "cat": "Mundo caótico",
+  "title": "Minoria pede anexação a {newstate}",
+  "desc": "Moradores de uma região de fronteira, da mesma etnia de {newstate}, fazem um plebiscito informal pedindo para se juntar ao novo país.",
+  "context": "Fronteiras em movimento.",
+  "tpl": {
+   "newstate": "near"
+  },
+  "cond": {
+   "min": {
+    "chaos": 1
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Declarar o plebiscito ilegal e reforçar a fronteira.",
+    "hint": "Soberania garantida; tensão.",
+    "groups": {
+     "military": 3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 2,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$newstate": -10
+    }
+   },
+   {
+    "text": "Negociar direitos especiais para a minoria.",
+    "hint": "Acalma; nacionalistas desconfiam.",
+    "groups": {
+     "regional": 3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -1,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$newstate": 4
+    }
+   },
+   {
+    "text": "Prender os organizadores.",
+    "hint": "Medo e mártires.",
+    "now": {
+     "civil": -2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 3,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$newstate": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_ns_refugees",
+  "cat": "Mundo caótico",
+  "title": "Refugiados das guerras de independência",
+  "desc": "As guerras que redesenham o mapa produzem uma onda de refugiados rumo ao nosso país.",
+  "context": "O caos dos outros bate à porta.",
+  "cond": {
+   "min": {
+    "chaos": 1,
+    "aiWars": 3
+   }
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Acolher e integrar.",
+    "hint": "Reputação e mão de obra; custo e tensões.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 3
+    },
+    "groups": {
+     "regional": -3
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": 0.4,
+      "d": 365
+     },
+     {
+      "k": "migration",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Campos temporários na fronteira.",
+    "hint": "Controle; críticas moderadas.",
+    "now": {
+     "treasury": -0.1
+    }
+   },
+   {
+    "text": "Fechar a fronteira.",
+    "hint": "Ordem; condenação.",
+    "now": {
+     "reputation": -3
+    },
+    "groups": {
+     "regional": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "w2_alliance_pressure",
+  "cat": "Mundo caótico",
+  "title": "Pressão para escolher um lado",
+  "desc": "Com o mundo se dividindo em alianças regionais, diplomatas avisam: quem fica neutro fica sozinho quando a guerra chegar.",
+  "context": "Neutralidade tem prazo de validade.",
+  "cond": {
+   "min": {
+    "chaos": 1,
+    "alliances": 2
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Buscar uma aliança militar.",
+    "hint": "Proteção; risco de ser arrastado.",
+    "groups": {
+     "military": 3
+    },
+    "long": [
+     {
+      "k": "defense",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "neighbors": 4
+    }
+   },
+   {
+    "text": "Reforçar a neutralidade armada.",
+    "hint": "Gasto militar maior; independência.",
+    "now": {
+     "treasury": -0.3,
+     "readiness": 3
+    }
+   },
+   {
+    "text": "Apostar na diplomacia e na ONU.",
+    "hint": "Prestígio; pouca proteção.",
+    "now": {
+     "reputation": 3
+    }
+   }
+  ]
+ }
+]

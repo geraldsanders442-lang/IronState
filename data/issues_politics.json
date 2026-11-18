@@ -1,0 +1,237 @@
+[
+{"id":"p_minister_son","cat":"Escândalo","title":"O filho do ministro e a Ferrari","desc":"O filho do Ministro do Interior bateu uma Ferrari contra um ponto de ônibus e fugiu. A polícia liberou o rapaz em meia hora.","context":"As imagens da câmera de segurança vazaram nas redes.","options":[
+ {"text":"Exigir que o rapaz seja julgado como qualquer cidadão.","hint":"Ganha credibilidade; o ministro se enfurece.","now":{"legitimacy":3,"corruption":-1},"groups":{"bureaucracy":-4,"youth":4},"next":[{"id":"p_minister_revenge","days":30,"p":0.5}]},
+ {"text":"Pagar uma indenização generosa às vítimas e abafar o caso.","hint":"Dinheiro resolve, mas a desconfiança fica.","now":{"treasury":-0.05,"legitimacy":-2,"corruption":2},"groups":{"bureaucracy":3}},
+ {"text":"Demitir o ministro e o chefe de polícia.","hint":"Gesto forte; aliados se perguntam quem é o próximo.","now":{"legitimacy":4,"stability":-1},"groups":{"bureaucracy":-6,"workers":3},"long":[{"k":"coupRisk","v":1,"d":120}]}
+]},
+{"id":"p_minister_revenge","chain":true,"cat":"Escândalo","title":"O ministro contra-ataca","desc":"Humilhado pelo julgamento do filho, o Ministro do Interior vazou à imprensa documentos sobre contas secretas do governo no exterior.","context":"Ele controla a polícia e conhece muitos segredos.","default":1,"options":[
+ {"text":"Prendê-lo por traição.","hint":"Silencia o ministro; parece vingança.","now":{"control":3,"civil":-3,"legitimacy":-2},"groups":{"bureaucracy":-5}},
+ {"text":"Negar os documentos e acusá-lo de falsificação.","hint":"Guerra de versões.","now":{"legitimacy":-3,"protest":3}},
+ {"text":"Admitir as contas e prometer repatriá-las.","hint":"Transparência dolorosa.","now":{"treasury":0.2,"legitimacy":2,"corruption":-3},"groups":{"business":-3,"opposition":4}}
+]},
+{"id":"p_vote_buying","cat":"Corrupção","title":"Votos a preço de cesta básica","desc":"Câmeras escondidas flagraram cabos eleitorais do partido governista trocando cestas básicas por títulos de eleitor.","context":"As eleições regionais são em seis semanas.","cond":{"policy":{"elections":["controlled","multiparty"]}},"options":[
+ {"text":"Expulsar os envolvidos do partido.","hint":"Limpeza superficial.","now":{"legitimacy":1},"groups":{"bureaucracy":-2}},
+ {"text":"Criar uma justiça eleitoral independente.","hint":"Eleições mais limpas; menos controle.","now":{"political":4,"corruption":-2},"groups":{"opposition":5,"bureaucracy":-3},"long":[{"k":"legitimacy","v":3,"d":0}]},
+ {"text":"Dizer que a oposição faz o mesmo.","hint":"Ninguém acredita, mas ninguém liga.","now":{"legitimacy":-2,"political":-1}}
+]},
+{"id":"p_parliament_revolt","cat":"Crise política","title":"Rebelião no parlamento","desc":"Quarenta deputados da base aliada ameaçam votar contra o orçamento se não ganharem cargos e verbas para suas regiões.","context":"Sem a aprovação do orçamento, o governo fica paralisado.","cond":{"policy":{"elections":["controlled","multiparty"]}},"options":[
+ {"text":"Distribuir cargos e emendas.","hint":"Compra apoio; mais corrupção.","now":{"treasury":-0.2,"corruption":2},"groups":{"regional":5,"bureaucracy":3}},
+ {"text":"Governar por decreto até o fim da crise.","hint":"Rápido e autoritário.","now":{"political":-4,"control":2},"groups":{"opposition":-4,"regional":-4},"long":[{"k":"legitimacy","v":-3,"d":180}]},
+ {"text":"Convocar a população às ruas contra os chantagistas.","hint":"Mobilização populista.","now":{"protest":4,"legitimacy":2},"groups":{"workers":3,"regional":-5}}
+]},
+{"id":"p_term_limits","cat":"Instituições","title":"Mais um mandato?","desc":"Aliados propõem uma emenda constitucional que permitiria ao governante permanecer no cargo indefinidamente.","context":"A constituição atual limita o mandato.","cond":{"min":{"day":180}},"options":[
+ {"text":"Aprovar a emenda: o país precisa de continuidade.","hint":"Poder garantido; legitimidade abalada.","now":{"political":-6,"reputation":-5},"groups":{"opposition":-8,"bureaucracy":4,"youth":-5},"long":[{"k":"revoRisk","v":4,"d":365}],"flags":{"set":["eternal"]}},
+ {"text":"Recusar publicamente a emenda.","hint":"Gesto republicano.","now":{"legitimacy":5,"political":3},"groups":{"opposition":4,"bureaucracy":-3}},
+ {"text":"Convocar um referendo.","hint":"Arrisca, mas legitima.","now":{"treasury":-0.05},"next":[{"id":"p_referendum_result","days":21}]}
+]},
+{"id":"p_referendum_result","chain":true,"cat":"Instituições","title":"O resultado do referendo","desc":"As urnas foram apuradas. Segundo a comissão eleitoral, 58% votaram a favor da continuidade do governante. Observadores relatam irregularidades em várias províncias.","context":"A oposição promete contestar o resultado.","default":0,"options":[
+ {"text":"Proclamar a vitória.","hint":"Mandato renovado; acusações de fraude.","now":{"legitimacy":3,"political":-2,"protest":4},"groups":{"opposition":-5}},
+ {"text":"Permitir uma recontagem com observadores estrangeiros.","hint":"Arriscado, mas confiável.","now":{"reputation":4,"political":3},"groups":{"opposition":3}},
+ {"text":"Anular o referendo e manter as regras atuais.","hint":"Sai de cena com dignidade.","now":{"legitimacy":2},"groups":{"bureaucracy":-3}}
+]},
+{"id":"p_spy_ring","cat":"Espionagem","title":"Agentes estrangeiros no ministério","desc":"A contrainteligência descobriu que três funcionários do Ministério da Defesa repassavam planos militares a uma potência estrangeira.","context":"Os agentes trabalhavam para o país vizinho mais hostil.","options":[
+ {"text":"Julgamento público e expulsão de diplomatas.","hint":"Demonstra força; crise diplomática.","now":{"legitimacy":2,"intel":2},"rel":{"rival":-12},"groups":{"military":4}},
+ {"text":"Usá-los para passar informações falsas.","hint":"Jogo de espionagem sofisticado.","now":{"intel":5},"next":[{"id":"p_double_agents","days":40,"p":0.7}]},
+ {"text":"Abafar o caso para evitar constrangimento.","hint":"Evita escândalo; inteligência sai fragilizada.","now":{"intel":-2,"corruption":1}}
+]},
+{"id":"p_double_agents","chain":true,"cat":"Espionagem","title":"O jogo duplo deu certo","desc":"As informações falsas plantadas pelos agentes duplos levaram o rival a deslocar tropas para o lugar errado. Os generais querem aproveitar.","context":"A oportunidade não vai durar.","default":2,"options":[
+ {"text":"Revelar a operação para humilhar o rival.","hint":"Prestígio interno; rival furioso.","now":{"legitimacy":3},"rel":{"rival":-10},"groups":{"military":4}},
+ {"text":"Aproveitar para fortalecer as defesas na fronteira.","hint":"Ganho discreto.","now":{"defense":4,"readiness":2}},
+ {"text":"Encerrar a operação discretamente.","hint":"Sem riscos.","now":{"intel":2}}
+]},
+{"id":"p_hacked_election","cat":"Espionagem","title":"Hackers estrangeiros nas eleições","desc":"Uma empresa de segurança afirma que hackers ligados a uma potência estrangeira invadiram o sistema de votação.","context":"Não está claro se votos foram alterados.","cond":{"policy":{"elections":["controlled","multiparty"]}},"options":[
+ {"text":"Voltar ao voto em papel.","hint":"Mais seguro; mais lento e caro.","now":{"treasury":-0.05,"legitimacy":2}},
+ {"text":"Acusar publicamente a potência estrangeira.","hint":"Patriótico; crise diplomática.","rel":{"east":-6},"now":{"legitimacy":1},"groups":{"military":2}},
+ {"text":"Minimizar o problema.","hint":"Desconfiança cresce.","now":{"legitimacy":-3},"groups":{"opposition":3}}
+]},
+{"id":"p_poisoned_dissident","cat":"Atentado","title":"Dissidente envenenado no exterior","desc":"Um opositor exilado foi envenenado numa capital europeia. A imprensa internacional aponta para os serviços secretos do seu governo.","context":"Você não deu essa ordem — ou deu?","cond":{"max":{"political":45}},"options":[
+ {"text":"Negar categoricamente e oferecer cooperação.","hint":"Contém o dano.","now":{"reputation":-3},"rel":{"west":-4}},
+ {"text":"Expurgar o serviço secreto.","hint":"Assume responsabilidade indireta.","now":{"intel":-5,"reputation":1},"groups":{"bureaucracy":-4},"long":[{"k":"coupRisk","v":2,"d":120}]},
+ {"text":"Insinuar que traidores merecem seu destino.","hint":"Medo interno; isolamento externo.","now":{"reputation":-8,"opposition":-4,"civil":-3},"rel":{"west":-12},"groups":{"military":3,"opposition":-6}}
+]},
+{"id":"p_mole","cat":"Espionagem","title":"Há um traidor no gabinete","desc":"Um desertor estrangeiro afirma que um dos seus ministros é agente pago de uma potência rival.","context":"O desertor pode estar mentindo para semear discórdia.","options":[
+ {"text":"Investigação secreta de todo o gabinete.","hint":"Clima de paranoia.","now":{"intel":3,"stability":-2},"groups":{"bureaucracy":-4},"next":[{"id":"p_mole_found","days":30,"p":0.6}]},
+ {"text":"Ignorar: é desinformação.","hint":"Nada muda; e se for verdade?","long":[{"k":"intel","v":-3,"d":180}]},
+ {"text":"Usar a denúncia para afastar ministros incômodos.","hint":"Oportunismo político.","now":{"control":2,"political":-2},"groups":{"bureaucracy":-6}}
+]},
+{"id":"p_mole_found","chain":true,"cat":"Espionagem","title":"O traidor foi encontrado","desc":"A investigação identificou o espião: o vice-ministro de Relações Exteriores, que vendia telegramas diplomáticos havia anos.","context":"O caso pode virar um escândalo internacional.","default":1,"options":[
+ {"text":"Julgamento público televisionado.","hint":"Exemplo e prestígio.","now":{"legitimacy":3,"intel":3}},
+ {"text":"Trocá-lo por agentes nossos presos no exterior.","hint":"Pragmatismo.","now":{"intel":2,"reputation":1}},
+ {"text":"Fazê-lo desaparecer discretamente.","hint":"Rápido e sombrio.","now":{"civil":-2,"intel":2},"long":[{"k":"repression","v":2,"d":120}]}
+]},
+{"id":"p_opposition_leader_jailed","cat":"Oposição","title":"A prisão do líder oposicionista","desc":"A promotoria pede a prisão do principal líder da oposição por suposta corrupção quando era prefeito.","context":"Os indícios existem, mas o momento político é suspeito.","options":[
+ {"text":"Deixar a justiça seguir seu curso.","hint":"Legalidade; oposição grita perseguição.","now":{"opposition":-4,"protest":3},"groups":{"opposition":-6}},
+ {"text":"Conceder indulto em nome da reconciliação.","hint":"Generosidade; base governista irritada.","now":{"political":3,"legitimacy":2},"groups":{"opposition":6,"bureaucracy":-2}},
+ {"text":"Acelerar o julgamento e proibir sua candidatura.","hint":"Elimina o rival; reputação sofre.","now":{"political":-5,"reputation":-4,"opposition":-6},"groups":{"opposition":-10,"youth":-3},"long":[{"k":"revoRisk","v":3,"d":240}]}
+]},
+{"id":"p_prime_minister","cat":"Instituições","title":"Criar o cargo de primeiro-ministro?","desc":"Constitucionalistas sugerem dividir o poder executivo com um primeiro-ministro escolhido pelo parlamento.","context":"Isso distribuiria a culpa pelas crises — e o poder.","options":[
+ {"text":"Criar o cargo com poderes reais.","hint":"Mais institucional; menos controle pessoal.","now":{"political":5,"efficiency":2},"groups":{"opposition":4,"bureaucracy":3},"long":[{"k":"legitimacy","v":3,"d":0}]},
+ {"text":"Criar um cargo decorativo.","hint":"Fachada institucional.","now":{"legitimacy":1}},
+ {"text":"Rejeitar: o poder não se divide.","hint":"Concentração.","now":{"political":-2},"groups":{"military":2}}
+]},
+{"id":"p_martial_law","cat":"Crise política","title":"Pedido de lei marcial","desc":"Após semanas de distúrbios, o comando militar pede a declaração de lei marcial em três províncias.","context":"Toques de recolher e tribunais militares substituiriam a justiça comum.","crisis":true,"default":1,"cond":{"min":{"protest":45}},"options":[
+ {"text":"Decretar a lei marcial.","hint":"Ordem imediata; ressentimento duradouro.","now":{"protest":-10,"control":6,"civil":-8,"reputation":-6},"groups":{"military":6,"youth":-8,"opposition":-6},"long":[{"k":"revoRisk","v":5,"d":240}]},
+ {"text":"Reforçar a polícia sem suspender direitos.","hint":"Meio-termo.","now":{"treasury":-0.1,"protest":-4},"groups":{"military":-2}},
+ {"text":"Abrir uma mesa de diálogo nacional.","hint":"Desarma tensões; militares desconfiados.","now":{"protest":-5,"legitimacy":3},"groups":{"military":-5,"opposition":5}}
+]},
+{"id":"p_generals_letter","cat":"Militares","title":"A carta dos generais","desc":"Doze generais assinaram uma carta pública criticando a 'deriva' do governo e pedindo 'correções de rumo'.","context":"Nunca é um bom sinal quando militares escrevem cartas.","cond":{"max":{"g_military":50}},"options":[
+ {"text":"Reformar os signatários imediatamente.","hint":"Afirma autoridade; risco de reação.","now":{"coupRisk":-5,"readiness":-4},"groups":{"military":-6}},
+ {"text":"Reunir-se com eles e atender a parte das demandas.","hint":"Apaziguamento.","now":{"treasury":-0.15},"groups":{"military":6},"long":[{"k":"gi_military","v":0.2,"d":365}]},
+ {"text":"Ignorar a carta.","hint":"Parece fraqueza.","long":[{"k":"coupRisk","v":4,"d":120}]}
+]},
+{"id":"p_presidential_palace","cat":"Corrupção","title":"Um novo palácio presidencial","desc":"Arquitetos apresentaram o projeto de um palácio de mármore com 1.100 salas, jardins e um aeroporto privado.","context":"O custo equivaleria a três hospitais.","options":[
+ {"text":"Construir: a nação merece grandeza.","hint":"Gasto ostensivo; símbolo de poder.","now":{"treasury":-0.6,"legitimacy":-2},"groups":{"bureaucracy":3,"workers":-5},"long":[{"k":"propaganda","v":1,"d":365}]},
+ {"text":"Uma versão modesta.","hint":"Meio-termo.","now":{"treasury":-0.15}},
+ {"text":"Transformar o palácio atual em museu e morar num apartamento.","hint":"Humildade populista.","now":{"legitimacy":5},"groups":{"workers":5,"bureaucracy":-2}}
+]},
+{"id":"p_census","cat":"Instituições","title":"O censo constrangedor","desc":"O novo censo mostra que a população é 8% menor do que as estatísticas oficiais diziam, e que a minoria regional é bem maior.","context":"Os números afetam verbas regionais e representação.","options":[
+ {"text":"Publicar os números como estão.","hint":"Transparência; tensão regional.","now":{"efficiency":3,"reputation":2},"long":[{"k":"separatism","v":2,"d":180}],"groups":{"regional":4}},
+ {"text":"Ajustar os números antes de publicar.","hint":"Evita conflito; corrói a confiança.","now":{"corruption":2,"efficiency":-2}},
+ {"text":"Adiar a publicação indefinidamente.","hint":"Nada se decide.","now":{"efficiency":-1}}
+]},
+{"id":"p_whistleblower","cat":"Corrupção","title":"O denunciante da estatal","desc":"Um contador da companhia estatal de energia entregou à imprensa planilhas que mostram desvios bilionários para empresas de fachada.","context":"Diretores da estatal são indicados políticos.","options":[
+ {"text":"Proteger o denunciante e investigar.","hint":"Combate à corrupção; aliados expostos.","now":{"corruption":-4,"legitimacy":3},"groups":{"bureaucracy":-5,"regional":-3}},
+ {"text":"Processar o denunciante por vazamento.","hint":"Intimida futuros denunciantes.","now":{"corruption":3,"civil":-2,"reputation":-3},"groups":{"youth":-3}},
+ {"text":"Privatizar a estatal para acabar com o problema.","hint":"Solução radical.","now":{"market":4,"treasury":0.3},"groups":{"business":5,"workers":-4},"flags":{"set":["privatized"]}}
+]},
+{"id":"p_regional_strongman","cat":"Separatismo","title":"O caudilho do interior","desc":"Um governador regional montou uma milícia própria, cobra impostos paralelos e se recusa a receber ordens da capital.","context":"Ele é popular em sua região e tem armas.","cond":{"min":{"separatism":20}},"options":[
+ {"text":"Enviar o Exército para depô-lo.","hint":"Restaura a autoridade; risco de conflito armado.","now":{"control":5,"stability":-3},"groups":{"regional":-6,"military":3},"next":[{"id":"p_strongman_war","days":21,"p":0.4}]},
+ {"text":"Negociar: autonomia em troca de lealdade.","hint":"Paz comprada; precedente perigoso.","now":{"control":-2},"groups":{"regional":6},"long":[{"k":"separatism","v":-4,"d":240},{"k":"corruption","v":1,"d":240}]},
+ {"text":"Comprar seus comandantes um a um.","hint":"Discreto e caro.","now":{"treasury":-0.2,"corruption":2,"control":2}}
+]},
+{"id":"p_strongman_war","chain":true,"crisis":true,"cat":"Separatismo","title":"A milícia resiste","desc":"As tropas federais foram emboscadas nas montanhas. O governador deposto proclamou um 'governo legítimo' regional.","context":"Uma guerra civil localizada pode se espalhar.","default":1,"options":[
+ {"text":"Ofensiva total até a rendição.","hint":"Custo humano e político alto.","now":{"treasury":-0.3,"control":4,"warWeariness":5},"groups":{"military":4,"regional":-6},"long":[{"k":"separatism","v":3,"d":180}]},
+ {"text":"Cessar-fogo e mediação religiosa.","hint":"Interrompe a violência.","now":{"control":-3,"legitimacy":-1},"long":[{"k":"separatism","v":-3,"d":180}]},
+ {"text":"Anistia para os combatentes que se renderem.","hint":"Divide a milícia.","now":{"control":2,"stability":1},"groups":{"regional":2}}
+]},
+{"id":"p_cabinet_reshuffle","cat":"Gabinete","title":"Reforma ministerial","desc":"Após um ano de críticas, assessores sugerem trocar metade do gabinete por técnicos sem filiação partidária.","context":"Os políticos atuais controlam bancadas e regiões.","cond":{"min":{"day":200}},"options":[
+ {"text":"Gabinete técnico.","hint":"Eficiência; base política ressentida.","now":{"efficiency":5,"corruption":-2},"groups":{"bureaucracy":-3,"regional":-4,"business":3}},
+ {"text":"Gabinete de coalizão ampla.","hint":"Estabilidade negociada.","now":{"stability":3,"corruption":1},"groups":{"regional":4,"opposition":2}},
+ {"text":"Manter o gabinete atual.","hint":"Continuidade.","groups":{"bureaucracy":2}}
+]},
+{"id":"p_ombudsman","cat":"Direitos civis","title":"A ouvidora incômoda","desc":"A ouvidora nacional de direitos humanos publicou um relatório com 300 casos de tortura em delegacias.","context":"Ela foi nomeada pelo governo anterior e tem mandato fixo.","options":[
+ {"text":"Acatar o relatório e punir responsáveis.","hint":"Direitos e reputação; polícia insatisfeita.","now":{"civil":4,"reputation":4},"groups":{"bureaucracy":-3},"long":[{"k":"control","v":-2,"d":180}]},
+ {"text":"Extinguir a ouvidoria.","hint":"Fim das críticas oficiais.","now":{"civil":-5,"reputation":-5},"groups":{"opposition":-4}},
+ {"text":"Questionar a metodologia e engavetar.","hint":"Desgaste lento.","now":{"reputation":-2}}
+]},
+{"id":"p_lese_majeste","cat":"Direitos civis","title":"Crime de ofensa ao chefe de Estado","desc":"Um humorista foi preso por imitar o governante num programa de TV. Advogados pedem a revogação da lei de ofensa ao chefe de Estado.","context":"O vídeo da imitação tem dez milhões de visualizações.","options":[
+ {"text":"Revogar a lei e soltar o humorista.","hint":"Liberdade e simpatia.","now":{"civil":4,"legitimacy":2},"groups":{"youth":6,"opposition":3}},
+ {"text":"Manter a lei, mas conceder perdão.","hint":"Magnanimidade calculada.","now":{"civil":1,"legitimacy":1}},
+ {"text":"Endurecer as penas.","hint":"Ninguém mais ri.","now":{"civil":-5,"reputation":-3},"groups":{"youth":-6}}
+]},
+{"id":"p_secret_police","cat":"Vigilância","title":"Arquivos da polícia política","desc":"Um jornal obteve arquivos que mostram que a polícia política mantém fichas de 400 mil cidadãos, incluindo padres e professores.","context":"A existência do órgão é oficialmente negada.","cond":{"policy":{"surveillance":["moderate","total"]}},"options":[
+ {"text":"Dissolver a polícia política.","hint":"Liberdade; inteligência enfraquecida.","policy":{"surveillance":"minimal"},"groups":{"youth":4,"bureaucracy":-4}},
+ {"text":"Legalizá-la com supervisão parlamentar.","hint":"Controle institucional.","now":{"civil":1,"intel":1}},
+ {"text":"Prender os jornalistas responsáveis.","hint":"Medo e silêncio.","now":{"civil":-5,"reputation":-4},"groups":{"opposition":-5}}
+]},
+{"id":"p_party_purge","cat":"Partido","title":"Expurgo no partido","desc":"A ala jovem do partido governista exige a saída da velha guarda, acusada de corrupção e imobilismo.","context":"A velha guarda controla o aparato partidário.","options":[
+ {"text":"Apoiar a ala jovem.","hint":"Renovação; velha guarda conspira.","now":{"corruption":-2},"groups":{"youth":5,"bureaucracy":-5},"long":[{"k":"coupRisk","v":2,"d":120}]},
+ {"text":"Apoiar a velha guarda.","hint":"Estabilidade interna; juventude frustrada.","groups":{"bureaucracy":4,"youth":-5}},
+ {"text":"Fazer uma convenção e deixar o partido decidir.","hint":"Democracia interna.","now":{"political":2},"groups":{"opposition":1}}
+]},
+{"id":"p_heir","cat":"Sucessão","title":"Quem será o sucessor?","desc":"Diplomatas estrangeiros e empresários perguntam abertamente quem sucederá o governante. A incerteza afasta investimentos.","context":"Escolher um herdeiro cria um rival; não escolher cria vácuo.","cond":{"min":{"day":365}},"options":[
+ {"text":"Nomear um parente como herdeiro.","hint":"Dinastia; elites resistem.","now":{"political":-3,"stability":2},"groups":{"bureaucracy":-3,"military":-3},"long":[{"k":"g_business","v":2,"d":365}]},
+ {"text":"Indicar um técnico respeitado.","hint":"Confiança dos mercados.","now":{"stability":3},"groups":{"business":4},"long":[{"k":"growth","v":0.2,"d":365}]},
+ {"text":"Recusar o tema: o líder é insubstituível.","hint":"Incerteza.","long":[{"k":"growth","v":-0.2,"d":240}]}
+]},
+{"id":"p_deep_fake","cat":"Escândalo","title":"O vídeo falso","desc":"Um vídeo hiper-realista mostra o governante aceitando suborno. Especialistas dizem que é falso — mas metade do país acredita.","context":"A tecnologia de vídeos falsos se espalha.","options":[
+ {"text":"Criminalizar vídeos falsos com penas pesadas.","hint":"Proteção; risco de censura.","now":{"civil":-2,"legitimacy":1}},
+ {"text":"Financiar checadores de fatos independentes.","hint":"Solução de longo prazo.","now":{"treasury":-0.05,"legitimacy":2},"long":[{"k":"civil","v":1,"d":0}]},
+ {"text":"Produzir vídeos falsos dos opositores.","hint":"Guerra suja.","now":{"legitimacy":1,"reputation":-3,"political":-2},"groups":{"opposition":-4}}
+]},
+{"id":"p_amnesty_old_regime","cat":"Justiça","title":"Os crimes do regime anterior","desc":"Vítimas do governo anterior exigem uma comissão da verdade. Muitos culpados hoje ocupam cargos no seu governo.","context":"A memória do passado divide o país.","options":[
+ {"text":"Criar uma comissão da verdade com poder de punir.","hint":"Justiça; aliados ameaçados.","now":{"legitimacy":4,"civil":3},"groups":{"bureaucracy":-5,"military":-5,"opposition":5}},
+ {"text":"Comissão da verdade sem punições.","hint":"Memória sem vingança.","now":{"legitimacy":2},"groups":{"military":-1}},
+ {"text":"Anistia geral e esquecimento.","hint":"Paz com as elites.","groups":{"military":4,"bureaucracy":3,"opposition":-6}}
+]},
+{"id":"p_capital_move","cat":"Estado","title":"Mudar a capital?","desc":"Urbanistas propõem construir uma nova capital planejada no interior para integrar o território e desafogar a cidade atual.","context":"Seria a obra do século — e seu maior gasto.","cond":{"min":{"day":200}},"options":[
+ {"text":"Construir a nova capital.","hint":"Integração nacional; custo gigantesco.","now":{"treasury":-1.2},"long":[{"k":"control","v":4,"d":0},{"k":"infra","v":3,"d":0},{"k":"corruption","v":2,"d":730}],"groups":{"regional":6,"bureaucracy":-4}},
+ {"text":"Descentralizar ministérios para várias cidades.","hint":"Meio-termo.","now":{"treasury":-0.3},"groups":{"regional":4},"long":[{"k":"separatism","v":-2,"d":0}]},
+ {"text":"Manter a capital onde está.","hint":"Nada muda.","groups":{"bureaucracy":2}}
+]},
+{"id":"p_nepotism","cat":"Corrupção","title":"A família no governo","desc":"Uma reportagem mostra que 34 parentes do governante ocupam cargos públicos, incluindo a direção do Banco Central.","context":"A oposição chama o regime de 'empresa familiar'.","cond":{"min":{"corruption":35}},"options":[
+ {"text":"Lei antinepotismo e demissões.","hint":"Moralização; família furiosa.","now":{"corruption":-4,"legitimacy":3,"efficiency":2},"groups":{"bureaucracy":-3}},
+ {"text":"Defender a competência dos parentes.","hint":"Desgaste.","now":{"legitimacy":-3,"corruption":1}},
+ {"text":"Censurar a reportagem.","hint":"Silêncio caro.","now":{"civil":-3,"reputation":-3}}
+]},
+{"id":"p_bribed_judge","cat":"Justiça","title":"O juiz comprado","desc":"Escutas mostram um juiz da Suprema Corte negociando sentenças com empresários. Ele foi indicado por você.","context":"A Corte decide casos cruciais do governo.","options":[
+ {"text":"Pedir seu afastamento imediato.","hint":"Credibilidade institucional.","now":{"corruption":-3,"legitimacy":2},"groups":{"business":-2}},
+ {"text":"Defendê-lo e atacar as escutas ilegais.","hint":"Protege aliado.","now":{"corruption":2,"legitimacy":-3}},
+ {"text":"Aproveitar para nomear uma Corte inteiramente nova.","hint":"Controle total do judiciário.","now":{"political":-5,"control":3,"reputation":-4},"groups":{"opposition":-6}}
+]},
+{"id":"p_assassination_plot","cat":"Atentado","title":"Plano de assassinato frustrado","desc":"A segurança presidencial descobriu um plano para explodir o carro do governante durante uma inauguração.","context":"Os conspiradores tinham contatos no Exército.","cond":{"min":{"coupRisk":25}},"options":[
+ {"text":"Prisões em massa de suspeitos.","hint":"Segurança; abusos.","now":{"coupRisk":-6,"civil":-4,"readiness":-2},"groups":{"military":-4}},
+ {"text":"Investigação discreta e reforço da guarda pessoal.","hint":"Prudência.","now":{"treasury":-0.05,"coupRisk":-3,"intel":2}},
+ {"text":"Usar o caso para reconquistar apoio popular.","hint":"Comoção nacional.","now":{"legitimacy":4},"groups":{"workers":3,"rural":3}}
+]},
+{"id":"p_opposition_unity","cat":"Oposição","title":"A oposição se une","desc":"Os quatro partidos de oposição, antes rivais, assinaram um pacto e lançaram um candidato único com grande popularidade.","context":"Pela primeira vez, a oposição pode vencer.","cond":{"policy":{"elections":"multiparty"}},"options":[
+ {"text":"Competir limpo e melhorar o governo.","hint":"Democracia; risco real.","now":{"political":2},"long":[{"k":"legitimacy","v":3,"d":240}],"groups":{"opposition":4}},
+ {"text":"Impugnar o candidato nos tribunais.","hint":"Eliminação jurídica.","now":{"political":-4,"protest":5},"groups":{"opposition":-6},"long":[{"k":"revoRisk","v":3,"d":180}]},
+ {"text":"Oferecer cargos para rachar a aliança.","hint":"Divide e conquista.","now":{"treasury":-0.1,"corruption":2},"groups":{"opposition":-3}}
+]},
+{"id":"p_constitution","cat":"Instituições","title":"Uma nova constituição","desc":"Juristas apresentaram o rascunho de uma nova constituição. O texto pode consolidar o regime ou abri-lo.","context":"A atual é um remendo de várias épocas.","cond":{"min":{"day":120}},"options":[
+ {"text":"Constituição presidencialista forte.","hint":"Centralização legal.","now":{"political":-3,"control":3},"long":[{"k":"legitimacy","v":2,"d":0}]},
+ {"text":"Constituição parlamentarista com direitos amplos.","hint":"Abertura institucional.","now":{"political":6,"civil":4},"groups":{"opposition":6,"military":-4}},
+ {"text":"Constituição federal com autonomia regional.","hint":"Descentralização.","policy":{"autonomy":"federal"},"groups":{"regional":5}}
+]},
+{"id":"p_leaked_cables","cat":"Escândalo","title":"Telegramas vazados","desc":"Um site publicou telegramas da sua chancelaria chamando líderes estrangeiros de 'idiotas úteis' e 'ditadores de opereta'.","context":"Vários governos convocaram seus embaixadores.","options":[
+ {"text":"Pedir desculpas formais.","hint":"Reduz o dano.","now":{"reputation":1},"rel":{"all":2}},
+ {"text":"Demitir o chanceler.","hint":"Bode expiatório.","now":{"reputation":2},"groups":{"bureaucracy":-2}},
+ {"text":"Não comentar telegramas roubados.","hint":"Orgulho; relações estremecidas.","rel":{"all":-3}}
+]},
+{"id":"p_state_tv","cat":"Propaganda","title":"A TV estatal perde audiência","desc":"A TV estatal tem só 4% de audiência; canais por streaming e redes dominam. O ministro da comunicação quer mais verba.","context":"A propaganda já não chega aos jovens.","options":[
+ {"text":"Investir em influenciadores pagos.","hint":"Propaganda moderna.","now":{"treasury":-0.1,"legitimacy":2},"long":[{"k":"propaganda","v":1,"d":365}],"groups":{"youth":-1}},
+ {"text":"Privatizar a TV estatal.","hint":"Economia e mercado.","now":{"treasury":0.1,"market":2},"groups":{"bureaucracy":-3}},
+ {"text":"Bloquear plataformas estrangeiras.","hint":"Monopólio da informação.","now":{"civil":-4,"legitimacy":1},"groups":{"youth":-7,"business":-3},"long":[{"k":"tech","v":-2,"d":365}]}
+]},
+{"id":"p_women_cabinet","cat":"Direitos civis","title":"Nenhuma mulher no gabinete","desc":"Uma foto oficial com vinte ministros, todos homens, viralizou. Organizações feministas convocam protestos.","context":"Metade do eleitorado é feminino.","options":[
+ {"text":"Nomear mulheres para metade dos ministérios.","hint":"Representatividade; conservadores reclamam.","now":{"civil":3,"legitimacy":3},"groups":{"youth":4,"rural":-2}},
+ {"text":"Nomear uma ministra simbólica.","hint":"Gesto mínimo.","now":{"legitimacy":1}},
+ {"text":"Dizer que o mérito vem antes do gênero.","hint":"Base conservadora aplaude.","now":{"legitimacy":-1},"groups":{"rural":3,"youth":-4}}
+]},
+{"id":"p_ex_leader_returns","cat":"Oposição","title":"O ex-presidente quer voltar","desc":"O antigo governante, exilado há anos, anunciou que retornará ao país para 'salvar a nação'.","context":"Ele ainda tem seguidores fiéis nas Forças Armadas.","cond":{"min":{"day":150}},"options":[
+ {"text":"Permitir o retorno e garantir sua segurança.","hint":"Democrático; ele pode virar rival.","now":{"political":3},"groups":{"opposition":5},"long":[{"k":"coupRisk","v":2,"d":180}]},
+ {"text":"Prendê-lo no aeroporto.","hint":"Neutraliza; cria mártir.","now":{"civil":-3,"protest":4},"groups":{"military":-3}},
+ {"text":"Proibir o retorno por decreto.","hint":"Exílio permanente.","now":{"political":-2,"reputation":-2}}
+]},
+{"id":"p_lobby_law","cat":"Corrupção","title":"Regulamentar o lobby?","desc":"Empresas gastam fortunas para influenciar leis. Uma proposta obrigaria lobistas a registrar reuniões e doações.","context":"Hoje tudo acontece em jantares privados.","options":[
+ {"text":"Aprovar a lei de transparência.","hint":"Corrupção cai; empresários desconfiados.","now":{"corruption":-3,"efficiency":1},"groups":{"business":-4}},
+ {"text":"Legalizar o lobby com limites frouxos.","hint":"Formaliza a influência.","now":{"corruption":1},"groups":{"business":4}},
+ {"text":"Arquivar a proposta.","hint":"Tudo como antes.","groups":{"business":2}}
+]},
+{"id":"p_curfew_capital","cat":"Segurança","title":"Toque de recolher na capital?","desc":"Após uma onda de assaltos, o prefeito da capital pede toque de recolher a partir das 22h.","context":"Comerciantes da vida noturna temem a falência.","cond":{"min":{"crime":45}},"options":[
+ {"text":"Decretar o toque de recolher.","hint":"Ordem; economia noturna sofre.","now":{"crime":-4,"civil":-3,"gdp":-0.1},"groups":{"youth":-5,"business":-3}},
+ {"text":"Mais policiamento e iluminação.","hint":"Custo moderado.","now":{"treasury":-0.1,"crime":-2}},
+ {"text":"Programas sociais nos bairros violentos.","hint":"Efeito lento e duradouro.","now":{"treasury":-0.15},"long":[{"k":"crime","v":-4,"d":0}]}
+]},
+{"id":"p_bureaucracy_strike","cat":"Funcionalismo","title":"Greve do funcionalismo","desc":"Os servidores públicos cruzaram os braços: hospitais, escolas e cartórios param. Exigem reajuste e plano de carreira.","context":"O funcionalismo é a espinha dorsal da máquina estatal.","cond":{"max":{"g_bureaucracy":50}},"options":[
+ {"text":"Conceder o reajuste.","hint":"Paz administrativa; conta pesada.","now":{"treasury":-0.3},"groups":{"bureaucracy":8}},
+ {"text":"Demitir grevistas e contratar terceirizados.","hint":"Choque de gestão; serviços pioram.","now":{"efficiency":-3,"protest":3},"groups":{"bureaucracy":-10,"business":3}},
+ {"text":"Reajuste parcial atrelado a metas.","hint":"Meritocracia negociada.","now":{"treasury":-0.1,"efficiency":2},"groups":{"bureaucracy":2}}
+]},
+{"id":"p_militia_party","cat":"Segurança","title":"O partido com milícia","desc":"Um partido nacionalista radical desfila com uniformes paramilitares e ataca imigrantes.","context":"O partido cresce entre jovens desempregados.","cond":{"min":{"unemployment":9}},"options":[
+ {"text":"Banir o partido e desarmar a milícia.","hint":"Ordem democrática; risco de radicalização.","now":{"control":2,"political":-1},"groups":{"youth":-2}},
+ {"text":"Tolerar, desde que não haja violência.","hint":"Arriscado.","now":{"crime":2},"long":[{"k":"protest","v":3,"d":180}]},
+ {"text":"Cooptar o partido como força auxiliar.","hint":"Músculo político; reputação despenca.","now":{"control":3,"reputation":-6,"civil":-4},"groups":{"military":-3}}
+]},
+{"id":"p_tax_on_church","cat":"Religião","title":"Tributar as igrejas?","desc":"As instituições religiosas são isentas de impostos e possuem vastas propriedades. O Tesouro quer cobrar.","context":"Os líderes religiosos têm grande influência no interior.","options":[
+ {"text":"Tributar as propriedades religiosas.","hint":"Receita; clero hostil.","now":{"treasury":0.2},"groups":{"rural":-6},"long":[{"k":"revenue","v":0.2,"d":0}]},
+ {"text":"Manter a isenção em troca de apoio político.","hint":"Aliança tácita.","now":{"legitimacy":2},"groups":{"rural":4}},
+ {"text":"Tributar apenas atividades comerciais religiosas.","hint":"Compromisso.","now":{"treasury":0.05},"groups":{"rural":-1}}
+]},
+{"id":"p_independence_day","cat":"Propaganda","title":"Reescrever a história","desc":"O Ministério da Educação propõe novos livros de história que glorificam o regime e apagam episódios constrangedores.","context":"Historiadores protestam.","options":[
+ {"text":"Adotar os novos livros.","hint":"Doutrinação.","now":{"civil":-2,"legitimacy":2},"groups":{"youth":-3},"long":[{"k":"propaganda","v":1,"d":730},{"k":"education","v":-1,"d":365}]},
+ {"text":"Deixar os historiadores escreverem os livros.","hint":"Rigor e liberdade acadêmica.","now":{"civil":2,"education":1},"groups":{"youth":2}},
+ {"text":"Versão patriótica, mas sem mentiras flagrantes.","hint":"Meio-termo.","now":{"legitimacy":1}}
+]},
+{"id":"p_corruption_index","cat":"Corrupção","title":"Último lugar no índice de transparência","desc":"Uma ONG internacional colocou o país entre os dez mais corruptos do mundo. Investidores citam o relatório.","context":"O ranking mede percepção, não fatos — mas percepção importa.","cond":{"min":{"corruption":55}},"options":[
+ {"text":"Pacto anticorrupção com metas públicas.","hint":"Compromisso visível.","now":{"corruption":-3,"reputation":2},"groups":{"bureaucracy":-3},"long":[{"k":"growth","v":0.2,"d":365}]},
+ {"text":"Expulsar a ONG do país.","hint":"Orgulho; mais desconfiança.","now":{"reputation":-4,"civil":-2}},
+ {"text":"Contratar consultorias para melhorar a imagem.","hint":"Maquiagem.","now":{"treasury":-0.05,"reputation":1}}
+]},
+{"id":"p_foreign_bribe","cat":"Corrupção","title":"Propina estrangeira","desc":"Uma empresa estrangeira de armamentos admitiu ter pago propina a generais e ministros para vencer licitações.","context":"O processo corre num tribunal estrangeiro.","options":[
+ {"text":"Cooperar com a investigação estrangeira.","hint":"Limpeza; generais expostos.","now":{"corruption":-3,"reputation":3},"groups":{"military":-5}},
+ {"text":"Cancelar os contratos e exigir ressarcimento.","hint":"Dinheiro de volta; relações tensas.","now":{"treasury":0.15,"equipment":-2},"rel":{"west":-3}},
+ {"text":"Negar qualquer irregularidade.","hint":"Proteção mútua.","now":{"corruption":2,"reputation":-2},"groups":{"military":2}}
+]}
+]

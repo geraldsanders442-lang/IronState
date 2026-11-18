@@ -1,0 +1,3198 @@
+[
+ {
+  "id": "rg_cold_winter",
+  "cat": "Clima",
+  "title": "O inverno mais duro em décadas",
+  "desc": "Uma onda polar derrubou as temperaturas a -35 °C. Aquecimento falha em bairros populares e a demanda por gás e lenha dispara.",
+  "context": "Redes de energia e aquecimento no limite. Hospitais registram hipotermia e acidentes.",
+  "cond": {
+   "cold": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Subsidiar o aquecimento e abrir abrigos.",
+    "hint": "Custa caro; evita mortes e protege o governo.",
+    "now": {
+     "treasury": -0.35,
+     "qol": 1,
+     "legitimacy": 2
+    },
+    "groups": {
+     "workers": 3,
+     "rural": 2
+    }
+   },
+   {
+    "text": "Racionar energia da indústria para as casas.",
+    "hint": "Economia sofre, mas as famílias ficam aquecidas.",
+    "now": {
+     "growth": -0.4,
+     "legitimacy": 1
+    },
+    "groups": {
+     "business": -4,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Pedir que a população se vire.",
+    "hint": "Poupa o orçamento.",
+    "now": {
+     "health": -2,
+     "legitimacy": -3
+    },
+    "groups": {
+     "workers": -4,
+     "rural": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_icebreakers",
+  "cat": "Infraestrutura",
+  "title": "Portos congelados e rota polar",
+  "desc": "O gelo trava os portos do norte por meses. Empresas pedem quebra-gelos e uma rota marítima polar para escoar minérios e petróleo.",
+  "context": "Investimento alto, retorno de longo prazo.",
+  "cond": {
+   "cold": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Construir uma frota de quebra-gelos.",
+    "hint": "Abre rotas e dá prestígio estratégico.",
+    "now": {
+     "treasury": -0.5,
+     "projection": 2
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.02,
+      "d": 0
+     },
+     {
+      "k": "industry",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Concessão a empresas privadas.",
+    "hint": "Menos custo; o Estado perde controle.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 240
+     }
+    ]
+   },
+   {
+    "text": "Adiar.",
+    "hint": "Sem gasto; o norte continua isolado.",
+    "groups": {
+     "business": -2,
+     "regional": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_permafrost",
+  "cat": "Meio ambiente",
+  "title": "O permafrost cede",
+  "desc": "O solo congelado derrete: prédios racham, estradas afundam e oleodutos vazam. Cientistas falam em risco para cidades inteiras.",
+  "context": "O problema só tende a crescer.",
+  "cond": {
+   "cold": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Plano nacional de adaptação do norte.",
+    "hint": "Estacas, drenagem e relocação de vilas.",
+    "now": {
+     "treasury": -0.4,
+     "pollution": -1
+    },
+    "groups": {
+     "regional": 3
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Reforçar só a infraestrutura de energia.",
+    "hint": "Evita vazamentos; vilas ficam à própria sorte.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "regional": -2
+    }
+   },
+   {
+    "text": "Ignorar por ora.",
+    "hint": "Poupa dinheiro agora.",
+    "now": {
+     "pollution": 2
+    },
+    "groups": {
+     "regional": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_herders",
+  "cat": "Povos",
+  "title": "Pastores de renas contra a mineradora",
+  "desc": "Comunidades indígenas do norte bloqueiam uma nova mina que cruza as rotas de migração das renas. A empresa promete empregos; os líderes exigem consulta prévia.",
+  "context": "Direitos de povos tradicionais x desenvolvimento.",
+  "cond": {
+   "cold": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Respeitar a consulta e rever o projeto.",
+    "hint": "Atrasa a mina; fortalece direitos e a imagem externa.",
+    "now": {
+     "reputation": 3,
+     "growth": -0.1
+    },
+    "groups": {
+     "regional": 3,
+     "business": -3
+    }
+   },
+   {
+    "text": "Autorizar com compensações e participação nos lucros.",
+    "hint": "Compromisso: mina avança com royalties locais.",
+    "now": {
+     "treasury": 0.15
+    },
+    "groups": {
+     "business": 3,
+     "regional": 1
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.15,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Mandar a polícia liberar a estrada.",
+    "hint": "Mina segue; ressentimento e má imagem.",
+    "now": {
+     "reputation": -4,
+     "civil": -2
+    },
+    "groups": {
+     "business": 4,
+     "regional": -5
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 2,
+      "d": 240
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_arctic_oil",
+  "cat": "Energia",
+  "title": "Petróleo e gás no Ártico",
+  "desc": "Geólogos confirmam grandes reservas sob o mar gelado do norte. Explorar custa uma fortuna e ameaça um ecossistema frágil.",
+  "context": "Os vizinhos árticos também observam.",
+  "cond": {
+   "cold": true,
+   "coast": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Licitar blocos para petrolíferas.",
+    "hint": "Receitas futuras; risco de vazamentos.",
+    "now": {
+     "treasury": 0.3,
+     "pollution": 2
+    },
+    "groups": {
+     "business": 4
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "revenue",
+      "v": 0.15,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Explorar só com a estatal.",
+    "hint": "Mais controle e menos pressa.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "bureaucracy": 2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Proteger a região por lei.",
+    "hint": "Reputação ambiental; empresários reclamam.",
+    "now": {
+     "reputation": 3
+    },
+    "groups": {
+     "business": -3,
+     "youth": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_exodus",
+  "cat": "Demografia",
+  "title": "Cidades do norte se esvaziam",
+  "desc": "Jovens deixam as cidades geladas rumo ao sul. Escolas fecham, hospitais perdem médicos e vilas inteiras viram fantasmas.",
+  "context": "Prefeitos pedem incentivos.",
+  "cond": {
+   "cold": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Bônus de “fronteira fria”: salários e impostos menores.",
+    "hint": "Fixa moradores; custa receita.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "regional": 4,
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "emigration",
+      "v": -0.3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Concentrar serviços em poucos polos.",
+    "hint": "Mais eficiente; vilas perdem tudo.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "regional": -4
+    }
+   },
+   {
+    "text": "Deixar o mercado decidir.",
+    "hint": "Sem custo; o norte encolhe.",
+    "groups": {
+     "regional": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_blizzard",
+  "cat": "Desastre",
+  "title": "Nevasca isola uma região inteira",
+  "desc": "Uma nevasca de cinco dias cortou estradas, energia e comunicações no interior. Há comboios soterrados e vilarejos sem comida.",
+  "context": "A resposta será lembrada.",
+  "cond": {
+   "cold": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Mobilizar o exército e aviação para o resgate.",
+    "hint": "Salva vidas; mostra eficiência do Estado.",
+    "now": {
+     "treasury": -0.2,
+     "legitimacy": 3,
+     "readiness": -2
+    },
+    "groups": {
+     "military": 3,
+     "rural": 3
+    }
+   },
+   {
+    "text": "Contar com defesa civil local.",
+    "hint": "Barato; dependente de sorte.",
+    "now": {
+     "health": -1,
+     "legitimacy": -1
+    },
+    "groups": {
+     "rural": -2
+    }
+   },
+   {
+    "text": "Declarar luto e pedir ajuda externa.",
+    "hint": "Mostra fraqueza, mas traz parceiros.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "all": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_aurora",
+  "cat": "Turismo",
+  "title": "Turismo de aurora boreal",
+  "desc": "Agências estrangeiras querem pacotes de “luzes do norte”. Há quem queira uma base militar na mesma região, o que espantaria turistas.",
+  "context": "Receita versus segurança.",
+  "cond": {
+   "cold": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Apostar no turismo do Ártico.",
+    "hint": "Empregos locais e divisas.",
+    "now": {
+     "treasury": -0.1,
+     "unemployment": -0.1
+    },
+    "groups": {
+     "regional": 3,
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.08,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Priorizar a base militar.",
+    "hint": "Defesa do flanco norte.",
+    "now": {
+     "treasury": -0.2,
+     "defense": 2
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Fazer as duas coisas em lugares diferentes.",
+    "hint": "Mais caro, mas todos ganham um pouco.",
+    "now": {
+     "treasury": -0.3,
+     "defense": 1
+    },
+    "groups": {
+     "regional": 2,
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_gas_pipe",
+  "cat": "Energia",
+  "title": "Duto de gás para o sul",
+  "desc": "Um consórcio propõe um gasoduto de milhares de quilômetros ligando seus campos ao sul densamente povoado.",
+  "context": "Receita certa; dependência do cliente.",
+  "cond": {
+   "cold": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aprovar com participação estatal.",
+    "hint": "Receita e influência sobre o comprador.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.2,
+      "d": 0
+     },
+     {
+      "k": "exportAccess",
+      "v": 0.015,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 3,
+     "bureaucracy": 2
+    }
+   },
+   {
+    "text": "Deixar o setor privado fazer.",
+    "hint": "Mais barato, menos controle.",
+    "now": {
+     "treasury": -0.05
+    },
+    "groups": {
+     "business": 4
+    }
+   },
+   {
+    "text": "Recusar: gás é patrimônio nacional.",
+    "hint": "Soberania; renúncia de receita.",
+    "groups": {
+     "business": -3,
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_fuel",
+  "cat": "Sociedade",
+  "title": "Lenha, carvão e a fumaça de inverno",
+  "desc": "No inverno, milhões queimam lenha e carvão para se aquecer. A poluição urbana dispara e hospitais enchem de casos respiratórios.",
+  "context": "Alternativas custam dinheiro.",
+  "cond": {
+   "cold": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Subsidiar aquecimento elétrico e centrais urbanas.",
+    "hint": "Ar limpo e custo alto.",
+    "now": {
+     "treasury": -0.35,
+     "pollution": -2,
+     "health": 1
+    },
+    "groups": {
+     "youth": 2,
+     "workers": 1
+    }
+   },
+   {
+    "text": "Proibir carvão em cidades.",
+    "hint": "Barato, mas o povo sente frio.",
+    "now": {
+     "pollution": -2,
+     "legitimacy": -2
+    },
+    "groups": {
+     "workers": -3,
+     "rural": -3
+    }
+   },
+   {
+    "text": "Manter como está.",
+    "hint": "Sem custo; saúde sofre.",
+    "now": {
+     "health": -1,
+     "pollution": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_sea_route",
+  "cat": "Geopolítica",
+  "title": "O gelo derrete e abre uma rota marítima",
+  "desc": "Com o degelo, uma rota ártica encurta viagens entre a Ásia e a Europa. Vizinhos disputam o direito de cobrar pedágio e patrulhar.",
+  "context": "Oportunidade e disputa.",
+  "cond": {
+   "cold": true,
+   "coast": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Cobrar pedágio e patrulhar com a marinha.",
+    "hint": "Receita e tensão com rivais.",
+    "now": {
+     "treasury": 0.2,
+     "projection": 2
+    },
+    "rel": {
+     "neighbors": -3
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Propor um regime internacional de navegação.",
+    "hint": "Estabilidade e prestígio, menos receita.",
+    "now": {
+     "reputation": 3
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Ignorar a rota.",
+    "hint": "Perde oportunidade."
+   }
+  ]
+ },
+ {
+  "id": "rg_cold_darkness",
+  "cat": "Saúde",
+  "title": "A longa noite polar",
+  "desc": "Meses de pouca luz elevam depressão e suicídios. Psicólogos pedem programas de saúde mental e luz terapêutica.",
+  "context": "Impacto silencioso e real.",
+  "cond": {
+   "cold": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Rede de saúde mental e luz terapêutica nas escolas.",
+    "hint": "Barato e eficaz.",
+    "now": {
+     "treasury": -0.15,
+     "health": 1.5,
+     "qol": 1
+    },
+    "groups": {
+     "youth": 3,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Campanha pública de esportes de inverno.",
+    "hint": "Popular e saudável; efeito limitado.",
+    "now": {
+     "treasury": -0.05,
+     "health": 0.5
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Não é prioridade.",
+    "hint": "Sem gasto.",
+    "now": {
+     "health": -1
+    },
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_caudillo",
+  "cat": "Política",
+  "title": "Um caudilho local desafia a capital",
+  "desc": "O governador de uma região rica em soja e minério se apresenta como “o único que entrega resultados” e conta com milícias leais.",
+  "context": "A tradição de caudilhos é forte; a lealdade das províncias conta.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Negociar: mais verbas em troca de lealdade.",
+    "hint": "Compra paz e fortalece o regionalismo.",
+    "now": {
+     "treasury": -0.3,
+     "coupRisk": -2
+    },
+    "groups": {
+     "regional": 4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Intervir na província.",
+    "hint": "Mostra autoridade; risco de crise.",
+    "now": {
+     "control": 3,
+     "legitimacy": -2,
+     "coupRisk": 2
+    },
+    "groups": {
+     "regional": -6,
+     "military": 2
+    }
+   },
+   {
+    "text": "Cooptar com um ministério.",
+    "hint": "Rouba o discurso, ao custo de poder.",
+    "now": {
+     "corruption": 1.5
+    },
+    "groups": {
+     "regional": 3,
+     "bureaucracy": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_cartel",
+  "cat": "Segurança",
+  "title": "Cartéis tomam uma fronteira",
+  "desc": "Facções do narcotráfico controlam estradas, prefeituras e portos de uma região de fronteira. Policiais desaparecem, empresários pagam “pedágio”.",
+  "context": "Guerra às drogas ou política alternativa?",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Ofensiva militar contra os cartéis.",
+    "hint": "Resultados rápidos e baixas.",
+    "now": {
+     "crime": -2,
+     "control": 3,
+     "civil": -1,
+     "reputation": -1
+    },
+    "groups": {
+     "military": 4,
+     "youth": -2
+    },
+    "long": [
+     {
+      "k": "repression",
+      "v": 1,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Combinar polícia federal, inteligência e programas sociais.",
+    "hint": "Lento e caro; menos violência.",
+    "now": {
+     "treasury": -0.4,
+     "crime": -1
+    },
+    "groups": {
+     "workers": 3,
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Negociar a “pacificação” com as facções.",
+    "hint": "Calma aparente; corrupção e vergonha.",
+    "now": {
+     "crime": -1,
+     "corruption": 3,
+     "legitimacy": -3
+    },
+    "groups": {
+     "military": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_land",
+  "cat": "Economia",
+  "title": "A reforma agrária volta à pauta",
+  "desc": "Movimentos camponeses ocupam fazendas improdutivas. Proprietários exigem despejo; o campo ferve.",
+  "context": "Questão histórica da região.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Desapropriar e assentar famílias.",
+    "hint": "Reduz desigualdade; fere o agronegócio.",
+    "now": {
+     "inequality": -1.5,
+     "poverty": -0.8
+    },
+    "groups": {
+     "rural": 5,
+     "business": -5,
+     "military": -1
+    }
+   },
+   {
+    "text": "Crédito e titulação sem desapropriação.",
+    "hint": "Gradual, menos conflito.",
+    "now": {
+     "treasury": -0.25,
+     "poverty": -0.4
+    },
+    "groups": {
+     "rural": 3,
+     "business": -1
+    }
+   },
+   {
+    "text": "Despejar as ocupações.",
+    "hint": "Defende a propriedade.",
+    "now": {
+     "civil": -1,
+     "legitimacy": -1
+    },
+    "groups": {
+     "business": 4,
+     "rural": -5
+    },
+    "long": [
+     {
+      "k": "opposition",
+      "v": 2,
+      "d": 240
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_hurricane",
+  "cat": "Desastre",
+  "title": "Temporada de furacões",
+  "desc": "Um furacão devasta a costa: casas destruídas, plantações perdidas e portos fechados. Governadores pedem verba de emergência.",
+  "context": "A capacidade de resposta é a prova de fogo.",
+  "cond": {
+   "regions": [
+    "central_america",
+    "caribbean"
+   ],
+   "coast": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Fundo de emergência e reconstrução.",
+    "hint": "Caro e bem visto.",
+    "now": {
+     "treasury": -0.5,
+     "legitimacy": 3,
+     "qol": 1
+    },
+    "groups": {
+     "rural": 3,
+     "workers": 3
+    }
+   },
+   {
+    "text": "Pedir ajuda internacional.",
+    "hint": "Barato; traz doadores e influência de terceiros.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 1
+    },
+    "rel": {
+     "all": 2
+    }
+   },
+   {
+    "text": "Cada município por si.",
+    "hint": "Poupa recursos.",
+    "now": {
+     "legitimacy": -4,
+     "poverty": 0.5
+    },
+    "groups": {
+     "rural": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_lithium",
+  "cat": "Recursos",
+  "title": "A febre do lítio e dos metais raros",
+  "desc": "Multinacionais correm para os salares e as montanhas. Comunidades indígenas denunciam a água sugada e pedem royalties.",
+  "context": "Soberania sobre recursos é tema quente.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Estatizar a exploração.",
+    "hint": "Controle e receitas; investidores recuam.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "bureaucracy": 3,
+     "business": -4,
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Concessão com royalties e cota de processamento local.",
+    "hint": "Equilíbrio; mais indústria.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": 2,
+     "regional": 2
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Abrir à iniciativa privada.",
+    "hint": "Investimento rápido, retorno local menor.",
+    "now": {
+     "treasury": 0.25,
+     "pollution": 1.5
+    },
+    "groups": {
+     "business": 5,
+     "regional": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_imf",
+  "cat": "Economia",
+  "title": "O FMI bate à porta de novo",
+  "desc": "A inflação e a dívida em dólar fizeram o país procurar socorro. O Fundo oferece crédito com ajuste fiscal duro.",
+  "context": "Memória de crises passadas pesa.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aceitar o pacote.",
+    "hint": "Entra dinheiro; cortes e protestos.",
+    "now": {
+     "treasury": 0.6,
+     "reputation": 2,
+     "inflation": -0.8
+    },
+    "groups": {
+     "workers": -5,
+     "youth": -3,
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "protest",
+      "v": 3,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Reestruturar a dívida por conta própria.",
+    "hint": "Mais soberania e risco.",
+    "now": {
+     "reputation": -3,
+     "inflation": 0.3
+    },
+    "groups": {
+     "business": -2,
+     "workers": 1
+    }
+   },
+   {
+    "text": "Rejeitar e buscar crédito na China ou em bancos regionais.",
+    "hint": "Evita o ajuste; muda parceiros.",
+    "now": {
+     "treasury": 0.3
+    },
+    "rel": {
+     "west": -3,
+     "china": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_remit",
+  "cat": "Economia",
+  "title": "Remessas de emigrantes sustentam as famílias",
+  "desc": "Parentes no exterior enviam bilhões, mas a fuga de jovens preocupa. Alguns propõem taxar remessas; outros querem um fundo de investimento da diáspora.",
+  "context": "Fonte de divisas e vulnerabilidade.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Fundo de investimento da diáspora.",
+    "hint": "Atrai capital para as vilas.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.15,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Tributar remessas.",
+    "hint": "Receita fácil; revolta.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "rural": -5,
+     "workers": -3
+    }
+   },
+   {
+    "text": "Não mexer.",
+    "hint": "Mantém tudo."
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_caravan",
+  "cat": "Migração",
+  "title": "Caravana de migrantes na fronteira",
+  "desc": "Milhares de pessoas atravessam o país rumo ao norte, fugindo de crise e violência. Cidades de passagem pedem apoio.",
+  "context": "A região é corredor migratório.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Corredor humanitário e vistos temporários.",
+    "hint": "Imagem humanitária; custo.",
+    "now": {
+     "treasury": -0.25,
+     "reputation": 3
+    },
+    "groups": {
+     "youth": 2,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Fechar a fronteira com tropas.",
+    "hint": "Satisfaz vizinhos ricos; tensão e denúncias.",
+    "now": {
+     "reputation": -3,
+     "civil": -1
+    },
+    "rel": {
+     "usa": 3
+    },
+    "groups": {
+     "military": 2,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Negociar com os países de origem e destino.",
+    "hint": "Lento, mas sustentável.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_stadium",
+  "cat": "Cultura",
+  "title": "A Copa e o estádio de bilhões",
+  "desc": "O país disputa sediar um torneio de futebol. A paixão nacional é enorme; os custos de estádios também.",
+  "context": "Prestígio ou elefante branco.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Candidatar-se e construir estádios.",
+    "hint": "Orgulho e dívidas.",
+    "now": {
+     "treasury": -0.6,
+     "legitimacy": 3,
+     "reputation": 2
+    },
+    "groups": {
+     "youth": 3,
+     "workers": 2,
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": 1.5,
+      "d": 240
+     }
+    ]
+   },
+   {
+    "text": "Sediar com estádios existentes.",
+    "hint": "Barato; menos glamour.",
+    "now": {
+     "treasury": -0.15,
+     "legitimacy": 1
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Recusar: saúde e escolas primeiro.",
+    "hint": "Prioridade social; críticas dos torcedores.",
+    "now": {
+     "legitimacy": 1
+    },
+    "groups": {
+     "youth": -2,
+     "workers": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_church",
+  "cat": "Sociedade",
+  "title": "Católicos e evangélicos disputam a moral pública",
+  "desc": "Igrejas mobilizam multidões por leis de costumes, escolas e rádios. O Congresso se divide.",
+  "context": "Os líderes religiosos têm voto e microfone.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Apoiar a agenda conservadora das igrejas.",
+    "hint": "Base fiel; jovens e liberais se afastam.",
+    "now": {
+     "civil": -1.5
+    },
+    "groups": {
+     "rural": 4,
+     "youth": -5,
+     "opposition": -1
+    }
+   },
+   {
+    "text": "Defender o Estado laico.",
+    "hint": "Aplaudido pelos jovens; igrejas mobilizam fiéis contra o governo.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "youth": 4,
+     "rural": -4,
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Conciliar com ministérios para cada fé.",
+    "hint": "Alívio temporário, custo político.",
+    "now": {
+     "treasury": -0.05
+    },
+    "groups": {
+     "rural": 1,
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_dam",
+  "cat": "Energia",
+  "title": "A hidrelétrica binacional e o preço da energia",
+  "desc": "O vizinho exige renegociar o tratado da grande usina binacional e cobra um preço mais alto pela energia.",
+  "context": "Questão de soberania e contas.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aceitar um novo preço.",
+    "hint": "Evita crise; encarece energia.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "neighbors": 4
+    }
+   },
+   {
+    "text": "Manter o tratado a qualquer custo.",
+    "hint": "Soberania e atrito.",
+    "rel": {
+     "neighbors": -5
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Levar a uma arbitragem internacional.",
+    "hint": "Lento, desgastante, respeitado.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_guerrilla",
+  "cat": "Segurança",
+  "title": "Proposta de paz com a guerrilha",
+  "desc": "Uma guerrilha antiga, com bases na selva, aceita negociar desarmamento em troca de terras, anistia e cadeiras no Congresso.",
+  "context": "Paz exige concessões amargas.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america",
+    "caribbean"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Assinar o acordo de paz.",
+    "hint": "Reduz a violência; opinião dividida.",
+    "now": {
+     "crime": -1,
+     "stability": 2,
+     "legitimacy": -1
+    },
+    "groups": {
+     "military": -3,
+     "rural": 3,
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "protest",
+      "v": -1,
+      "d": 240
+     }
+    ]
+   },
+   {
+    "text": "Seguir a ofensiva militar.",
+    "hint": "Mantém a linha dura; guerra longa.",
+    "now": {
+     "warWeariness": 2,
+     "readiness": 1
+    },
+    "groups": {
+     "military": 4,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Cessar-fogo e referendo sobre o acordo.",
+    "hint": "Legitima, mas arrisca o povo dizer não.",
+    "now": {
+     "legitimacy": 1
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_lat_default",
+  "cat": "Economia",
+  "title": "Calote seletivo da dívida",
+  "desc": "Credores externos exigem pagamento; a população exige escolas e hospitais. Um calote parcial divide o gabinete.",
+  "context": "Memória de moratórias passadas.",
+  "cond": {
+   "regions": [
+    "south_america",
+    "central_america"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Pagar tudo em dia.",
+    "hint": "Credibilidade; cortes de gastos.",
+    "now": {
+     "treasury": -0.5,
+     "reputation": 2
+    },
+    "groups": {
+     "workers": -2,
+     "business": 3
+    }
+   },
+   {
+    "text": "Moratória parcial e renegociação.",
+    "hint": "Fôlego imediato; juros sobem.",
+    "now": {
+     "treasury": 0.4,
+     "reputation": -4
+    },
+    "long": [
+     {
+      "k": "creditLimit",
+      "v": -0.08,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Auditoria da dívida e suspensão do pagamento.",
+    "hint": "Soberania; sanções financeiras.",
+    "now": {
+     "treasury": 0.6,
+     "reputation": -7
+    },
+    "rel": {
+     "west": -4
+    },
+    "groups": {
+     "youth": 3,
+     "business": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_gas",
+  "cat": "Energia",
+  "title": "Crise do gás e a dependência do vizinho",
+  "desc": "O principal fornecedor de gás ameaça fechar as torneiras. Preços sobem e indústrias param.",
+  "context": "A Europa depende de poucos gasodutos.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Buscar fornecedores alternativos e GNL.",
+    "hint": "Mais caro, mais seguro.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Acelerar renováveis e nucleares.",
+    "hint": "Mudança estrutural de longo prazo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "pollution",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Ceder às condições do fornecedor.",
+    "hint": "Alívio imediato e dependência política.",
+    "now": {
+     "treasury": -0.1
+    },
+    "rel": {
+     "russia": 3,
+     "west": -2
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_refugees",
+  "cat": "Migração",
+  "title": "Cotas de refugiados e a fronteira aberta",
+  "desc": "Bruxelas e vizinhos discutem um mecanismo de cotas de refugiados. Prefeitos pedem apoio; partidos populistas ganham voz.",
+  "context": "O debate ocupa os noticiários.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aceitar a cota e investir em integração.",
+    "hint": "Imagem europeia; custos e tensão local.",
+    "now": {
+     "treasury": -0.25,
+     "reputation": 3
+    },
+    "groups": {
+     "youth": 2,
+     "workers": -2,
+     "rural": -3
+    }
+   },
+   {
+    "text": "Bloquear com cercas e controle de fronteira.",
+    "hint": "Satisfaz o eleitorado duro; atrito com a UE.",
+    "now": {
+     "reputation": -3,
+     "civil": -1
+    },
+    "groups": {
+     "rural": 3,
+     "military": 2,
+     "youth": -3
+    },
+    "rel": {
+     "west": -2
+    }
+   },
+   {
+    "text": "Apoiar acordos com países de origem.",
+    "hint": "Meio-termo diplomático.",
+    "now": {
+     "treasury": -0.1
+    },
+    "rel": {
+     "all": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_referendum",
+  "cat": "Política",
+  "title": "Referendo sobre integração europeia",
+  "desc": "Euroentusiastas e eurocéticos reúnem assinaturas: o povo quer decidir se aprofunda, mantém ou reduz a integração.",
+  "context": "Decisão de longo alcance.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Convocar o referendo.",
+    "hint": "Legitimidade e risco; resultado imprevisível.",
+    "now": {
+     "legitimacy": 2,
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 2,
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Vetar o referendo por razões técnicas.",
+    "hint": "Evita o risco; revolta e acusações de autoritarismo.",
+    "now": {
+     "legitimacy": -3,
+     "civil": -1
+    },
+    "groups": {
+     "opposition": -3,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Negociar um novo acordo com Bruxelas antes.",
+    "hint": "Ganha tempo e concessões.",
+    "now": {
+     "treasury": -0.05,
+     "reputation": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_aging",
+  "cat": "Sociedade",
+  "title": "Envelhecimento e greves por pensões",
+  "desc": "A população envelhece rápido. O governo quer elevar a idade de aposentadoria; sindicatos paralisam o transporte.",
+  "context": "Todo europeu conhece essa briga.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Reformar a previdência.",
+    "hint": "Salva as contas; greves e protestos.",
+    "now": {
+     "treasury": 0.4,
+     "protest": 3
+    },
+    "groups": {
+     "workers": -6,
+     "youth": 1,
+     "business": 3
+    }
+   },
+   {
+    "text": "Preservar as regras e aumentar contribuições.",
+    "hint": "Paz social; pressão sobre quem trabalha.",
+    "now": {
+     "treasury": 0.15
+    },
+    "groups": {
+     "workers": 2,
+     "business": -3
+    }
+   },
+   {
+    "text": "Estimular imigração e natalidade.",
+    "hint": "Solução de longo prazo, polêmica.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": -2,
+     "youth": 1
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": 0.3,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_farmers",
+  "cat": "Economia",
+  "title": "Tratores bloqueiam a capital",
+  "desc": "Agricultores protestam contra regras ambientais, importações baratas e burocracia. Comboios de tratores param avenidas.",
+  "context": "Apoio popular amplo ao campo.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Ceder: subsídios e exceções ambientais.",
+    "hint": "Acalma o campo; contas e meio ambiente pagam.",
+    "now": {
+     "treasury": -0.3,
+     "pollution": 1
+    },
+    "groups": {
+     "rural": 6,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Manter as regras e abrir diálogo.",
+    "hint": "Firmeza; protestos continuam.",
+    "now": {
+     "legitimacy": -1
+    },
+    "groups": {
+     "rural": -3,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Proteger a produção com tarifas.",
+    "hint": "Agradece ao campo; atrito comercial.",
+    "now": {
+     "treasury": 0.1
+    },
+    "rel": {
+     "all": -1
+    },
+    "groups": {
+     "rural": 4,
+     "business": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_language",
+  "cat": "Minorias",
+  "title": "Língua e autonomia de uma minoria histórica",
+  "desc": "Uma região de língua própria pede escola, mídia e tribunais no idioma local, e mais controle dos impostos.",
+  "context": "Como outras regiões na Europa.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Conceder estatuto de autonomia cultural.",
+    "hint": "Reduz tensão; dá precedente.",
+    "now": {
+     "civil": 1.5
+    },
+    "groups": {
+     "regional": 5,
+     "military": -1
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Reconhecer a língua, sem autonomia fiscal.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "regional": 2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -1,
+      "d": 240
+     }
+    ]
+   },
+   {
+    "text": "Rejeitar: um Estado, uma língua.",
+    "hint": "Satisfaz nacionalistas; ressentimento.",
+    "now": {
+     "civil": -1
+    },
+    "groups": {
+     "regional": -5,
+     "military": 1
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_tourism",
+  "cat": "Turismo",
+  "title": "Turismo de massa sufoca o centro histórico",
+  "desc": "Moradores se queixam de aluguéis, barulho e cruzeiros que despejam milhares de visitantes por dia.",
+  "context": "Dilema entre renda e qualidade de vida.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Cobrar taxa turística e limitar cruzeiros.",
+    "hint": "Preserva a cidade; setor reclama.",
+    "now": {
+     "treasury": 0.15
+    },
+    "groups": {
+     "business": -3,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Incentivar mais turismo.",
+    "hint": "Receita e empregos; tensão local.",
+    "now": {
+     "treasury": 0.2,
+     "unemployment": -0.1
+    },
+    "groups": {
+     "business": 3,
+     "workers": -1,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Deixar prefeituras decidirem.",
+    "hint": "Solução local.",
+    "groups": {
+     "regional": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_populists",
+  "cat": "Política",
+  "title": "Partidos antissistema crescem nas pesquisas",
+  "desc": "Um partido populista promete “limpar o establishment” e cresce com o voto jovem e o dos descontentes. Os partidos tradicionais debatem um cordão sanitário.",
+  "context": "Polarização crescente.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Isolar o partido em coalizão de centro.",
+    "hint": "Preserva instituições; alimenta o discurso antielite.",
+    "now": {
+     "stability": 1
+    },
+    "groups": {
+     "opposition": 3,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Absorver parte da agenda deles.",
+    "hint": "Tira votos; normaliza as ideias.",
+    "now": {
+     "civil": -1
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Reformar o que gera ressentimento (habitação, custo de vida).",
+    "hint": "Resolve a causa; demanda tempo e dinheiro.",
+    "now": {
+     "treasury": -0.3,
+     "poverty": -0.2
+    },
+    "groups": {
+     "workers": 3,
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_nato",
+  "cat": "Defesa",
+  "title": "A meta de gastar mais com defesa",
+  "desc": "Aliados cobram que o país eleve os gastos militares e entregue tropas à aliança regional. Contribuintes preferem escolas.",
+  "context": "Pressão externa cada vez maior.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aumentar o orçamento de defesa.",
+    "hint": "Aliados satisfeitos; menos verba social.",
+    "now": {
+     "treasury": -0.5,
+     "readiness": 3,
+     "equipment": 2
+    },
+    "groups": {
+     "military": 5,
+     "workers": -2
+    },
+    "rel": {
+     "west": 4
+    }
+   },
+   {
+    "text": "Contribuição simbólica e cibersegurança.",
+    "hint": "Baixo custo.",
+    "now": {
+     "treasury": -0.1,
+     "intel": 2
+    },
+    "rel": {
+     "west": 1
+    }
+   },
+   {
+    "text": "Recusar: neutralidade ativa.",
+    "hint": "Autonomia; aliados desconfiam.",
+    "rel": {
+     "west": -4
+    },
+    "groups": {
+     "military": -2,
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_brain",
+  "cat": "Economia",
+  "title": "Fuga de cérebros para o oeste",
+  "desc": "Engenheiros e médicos emigram para países mais ricos. Hospitais e empresas de tecnologia reclamam da falta de profissionais.",
+  "context": "Mercado de trabalho europeu aberto.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Programa de retenção: salários e moradia.",
+    "hint": "Segura talentos; custa caro.",
+    "now": {
+     "treasury": -0.35
+    },
+    "long": [
+     {
+      "k": "emigration",
+      "v": -0.4,
+      "d": 365
+     },
+     {
+      "k": "productivity",
+      "v": 0.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Contrapartida: exigir anos de serviço.",
+    "hint": "Barato; impopular.",
+    "now": {
+     "civil": -0.5
+    },
+    "groups": {
+     "youth": -4
+    }
+   },
+   {
+    "text": "Aceitar como parte da integração.",
+    "hint": "Remessas compensam um pouco.",
+    "long": [
+     {
+      "k": "tech",
+      "v": -0.5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_memory",
+  "cat": "Cultura",
+  "title": "Estátuas e memória histórica",
+  "desc": "Monumentos de um passado controverso viram alvo de protestos e contraprotestos. A vizinhança reage a cada decisão.",
+  "context": "História mal resolvida.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Remover os monumentos e abrir um museu da memória.",
+    "hint": "Reconciliação com algumas minorias; nacionalistas reagem.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "youth": 3,
+     "military": -2
+    },
+    "rel": {
+     "neighbors": 1
+    }
+   },
+   {
+    "text": "Manter com placas explicativas.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Proteger os monumentos por lei.",
+    "hint": "Satisfaz a base tradicional.",
+    "groups": {
+     "rural": 3,
+     "youth": -3
+    },
+    "rel": {
+     "neighbors": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rg_eu_nuclear",
+  "cat": "Energia",
+  "title": "Usinas nucleares: fechar ou ampliar",
+  "desc": "Os verdes querem desligar as usinas; a indústria teme apagões e alta de preços. Uma central antiga apresenta falhas.",
+  "context": "Escolha energética de uma geração.",
+  "cond": {
+   "regions": [
+    "europe",
+    "eastern_europe",
+    "balkans"
+   ]
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Ampliar a energia nuclear.",
+    "hint": "Estabilidade e menos carbono; risco e custo.",
+    "now": {
+     "treasury": -0.5
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "pollution",
+      "v": -1,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Fechar gradualmente as usinas.",
+    "hint": "Apoio ambientalista; dependência de gás.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": -2,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "youth": 3,
+     "business": -2
+    }
+   },
+   {
+    "text": "Prorrogar a vida útil e investir em renováveis.",
+    "hint": "Transição pragmática.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sc_empire_court",
+  "cat": "Monarquia",
+  "title": "A corte, o protocolo e o orçamento do trono",
+  "desc": "A restauração trouxe palácios, cerimônias e uma lista civil. Jornais pedem cortes; tradicionalistas pedem esplendor.",
+  "context": "A monarquia vive de símbolos, mas o povo vive de pão.",
+  "cond": {
+   "flag": "empire_start"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Corte austera: pouca pompa, muita presença nas províncias.",
+    "hint": "Popular entre o povo; tradicionalistas reclamam.",
+    "now": {
+     "treasury": 0.1,
+     "legitimacy": 1
+    },
+    "groups": {
+     "workers": 2,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Grandes cerimônias e mecenato.",
+    "hint": "Prestígio e unidade simbólica; custa caro.",
+    "now": {
+     "treasury": -0.3,
+     "legitimacy": 3,
+     "reputation": 1
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Meio-termo: cerimônias anuais.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": -0.1,
+     "legitimacy": 1
+    }
+   }
+  ],
+  "cd": 300
+ },
+ {
+  "id": "sc_empire_republicans",
+  "cat": "Monarquia",
+  "title": "Republicanos pedem um plebiscito",
+  "desc": "Clubes republicanos juntam assinaturas para um plebiscito sobre a forma de governo. Monarquistas acusam traição.",
+  "context": "A restauração ainda divide o país.",
+  "cond": {
+   "flag": "empire_start"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Convocar o plebiscito.",
+    "hint": "Legitima a coroa se ela vencer; arriscado.",
+    "now": {
+     "legitimacy": 2
+    },
+    "groups": {
+     "opposition": 3,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Proibir a campanha republicana.",
+    "hint": "Estabilidade imediata, ressentimento.",
+    "now": {
+     "civil": -2,
+     "legitimacy": -2
+    },
+    "groups": {
+     "opposition": -4,
+     "youth": -3
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": 2,
+      "d": 240
+     }
+    ]
+   },
+   {
+    "text": "Ampliar os poderes do parlamento.",
+    "hint": "Esfria a pressão; a coroa perde poder.",
+    "now": {
+     "political": 2,
+     "legitimacy": 1
+    },
+    "groups": {
+     "opposition": 2,
+     "military": -2
+    }
+   }
+  ],
+  "cd": 340
+ },
+ {
+  "id": "sc_empire_moderador",
+  "cat": "Monarquia",
+  "title": "O poder moderador numa crise de gabinete",
+  "desc": "O gabinete caiu e ninguém reúne maioria. O trono pode dissolver a câmara, nomear um primeiro-ministro de sua escolha ou convocar um governo de unidade.",
+  "context": "Teste do poder moderador.",
+  "cond": {
+   "flag": "empire_start"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Dissolver a câmara e convocar eleições.",
+    "hint": "Devolve a decisão ao povo.",
+    "now": {
+     "political": 1,
+     "stability": -1
+    },
+    "groups": {
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Nomear um primeiro-ministro de confiança da coroa.",
+    "hint": "Estabilidade e acusações de absolutismo.",
+    "now": {
+     "stability": 2,
+     "political": -2,
+     "legitimacy": -1
+    },
+    "groups": {
+     "military": 2,
+     "opposition": -3
+    }
+   },
+   {
+    "text": "Governo de unidade nacional.",
+    "hint": "Meio-termo.",
+    "now": {
+     "stability": 1
+    },
+    "groups": {
+     "bureaucracy": 2
+    }
+   }
+  ],
+  "cd": 320
+ },
+ {
+  "id": "sc_cold_first_winter",
+  "cat": "Clima",
+  "title": "O primeiro inverno do novo país",
+  "desc": "Sem o antigo sistema de suprimento do país-mãe, estoques de combustível e comida estão no limite antes da neve. Cada decisão importa.",
+  "context": "A nova nação precisa sobreviver ao frio.",
+  "cond": {
+   "flag": "cold_start"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Comprar combustível e comida a qualquer preço.",
+    "hint": "Garante o inverno; esvazia o caixa.",
+    "now": {
+     "treasury": -0.6,
+     "hunger": -1,
+     "legitimacy": 3
+    },
+    "groups": {
+     "workers": 3,
+     "rural": 3
+    }
+   },
+   {
+    "text": "Racionar e priorizar hospitais e escolas.",
+    "hint": "Dói, mas sobrevive.",
+    "now": {
+     "treasury": -0.2,
+     "legitimacy": -1,
+     "health": 1
+    },
+    "groups": {
+     "business": -3,
+     "workers": 1
+    }
+   },
+   {
+    "text": "Pedir ajuda ao antigo país-mãe.",
+    "hint": "Ajuda com condições políticas.",
+    "now": {
+     "treasury": -0.1
+    },
+    "rel": {
+     "neighbors": 4
+    },
+    "groups": {
+     "military": -2,
+     "regional": -3
+    }
+   }
+  ],
+  "cd": 600
+ },
+ {
+  "id": "sc_cold_fuel_deal",
+  "cat": "Energia",
+  "title": "Contrato de combustível com o vizinho poderoso",
+  "desc": "O vizinho oferece combustível barato por dez anos — em troca de bases, voto em organismos internacionais e acesso ao seu porto.",
+  "context": "Energia por soberania.",
+  "cond": {
+   "flag": "cold_start"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aceitar o contrato completo.",
+    "hint": "Aquecimento barato, perda de autonomia.",
+    "now": {
+     "treasury": 0.2,
+     "legitimacy": -2
+    },
+    "rel": {
+     "neighbors": 8,
+     "west": -4
+    },
+    "groups": {
+     "military": -2
+    }
+   },
+   {
+    "text": "Contrato só comercial, sem bases.",
+    "hint": "Preço maior, mais liberdade.",
+    "now": {
+     "treasury": -0.1
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Diversificar com fornecedores distantes e renováveis.",
+    "hint": "Caro agora, livre depois.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "youth": 2
+    }
+   }
+  ],
+  "cd": 500
+ },
+ {
+  "id": "sc_cold_border_posts",
+  "cat": "Segurança",
+  "title": "Postos de fronteira no gelo",
+  "desc": "A nova fronteira tem milhares de quilômetros de tundra e floresta. Contrabandistas, patrulhas rivais e refugiados passam por ela.",
+  "context": "Quem não guarda a fronteira não tem país.",
+  "cond": {
+   "flag": "cold_start"
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Rede de postos aquecidos e drones.",
+    "hint": "Fronteira controlada; caro.",
+    "now": {
+     "treasury": -0.4,
+     "control": 3,
+     "defense": 2
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Patrulhas móveis e acordo com o vizinho.",
+    "hint": "Barato e arriscado.",
+    "now": {
+     "treasury": -0.1,
+     "control": 1
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Deixar as populações locais fiscalizarem.",
+    "hint": "Quase sem custo; fraco.",
+    "now": {
+     "control": -1
+    },
+    "groups": {
+     "regional": 3
+    }
+   }
+  ],
+  "cd": 500
+ },
+ {
+  "id": "bt_nobody_wants",
+  "cat": "Micronação",
+  "title": "Nem o Egito nem o Sudão querem você",
+  "desc": "Os dois vizinhos reafirmam, cada um, que Bir Tawil pertence ao OUTRO. Pela lógica deles, o deserto sob seus pés não é de ninguém — ou seja, é de vocês. Um diplomata egípcio pede, polidamente, que você não conte a ninguém que ele veio.",
+  "context": "Para ficar com a faixa que importa (Halaib), cada país precisa continuar recusando esta.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Anunciar que a recusa DELES prova a SUA soberania.",
+    "hint": "Genial no papel; ninguém lê o papel.",
+    "now": {
+     "legitimacy": 3,
+     "reputation": -1
+    },
+    "rel": {
+     "neighbors": -2
+    }
+   },
+   {
+    "text": "Oferecer aos dois a faixa em troca de reconhecimento.",
+    "hint": "Os dois fingem não ouvir.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": 1
+    }
+   },
+   {
+    "text": "Reivindicar também Halaib, só para ver a reação.",
+    "hint": "Absurdo; a diplomacia entra em pânico.",
+    "now": {
+     "reputation": -3,
+     "influence": 1
+    },
+    "rel": {
+     "neighbors": -8
+    },
+    "groups": {
+     "military": 2
+    }
+   }
+  ],
+  "cd": 400
+ },
+ {
+  "id": "bt_flag_anthem",
+  "cat": "Micronação",
+  "title": "Bandeira, hino e um sobrinho inconformado",
+  "desc": "A bandeira foi costurada com lençóis; o hino, gravado em um kazoo. O sobrinho do rei diz que a crina do camelo no escudo está errada e exige um concurso nacional.",
+  "context": "Símbolos são tudo o que um país sem exército tem.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Concurso nacional de símbolos (3 votantes).",
+    "hint": "Democracia em miniatura.",
+    "now": {
+     "legitimacy": 2,
+     "political": 1
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Decreto real: o kazoo é oficial.",
+    "hint": "Tradição inventada em tempo recorde.",
+    "now": {
+     "legitimacy": 1,
+     "civil": -0.5
+    }
+   },
+   {
+    "text": "Encomendar desenho profissional por 50 dólares.",
+    "hint": "O freelancer aceita se não precisar visitar.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": 1
+    }
+   }
+  ],
+  "cd": 500
+ },
+ {
+  "id": "bt_tourists",
+  "cat": "Micronação",
+  "title": "Influenciadores chegam de caravana",
+  "desc": "Trinta turistas, três influenciadores e uma equipe de TV atravessaram o deserto para “conhecer o país que ninguém quer”. Pedem carimbo no passaporte, selfie com o rei e, claro, banheiro.",
+  "context": "Não há banheiro. Não há muito de nada.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Cobrar visto de 20 dólares e vender carimbos.",
+    "hint": "A receita do ano, em uma tarde.",
+    "now": {
+     "treasury": 1.5,
+     "reputation": 1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Dar o tour oficial com discurso do rei.",
+    "hint": "Prestígio e areia nos olhos.",
+    "now": {
+     "reputation": 2,
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Expulsar todos por “violação de fronteira”.",
+    "hint": "Soberania total, canal de vídeo perdido.",
+    "now": {
+     "reputation": -2,
+     "legitimacy": 1
+    },
+    "groups": {
+     "youth": -2
+    }
+   }
+  ],
+  "cd": 280
+ },
+ {
+  "id": "bt_titles",
+  "cat": "Micronação",
+  "title": "À venda: títulos de nobreza",
+  "desc": "Alguém sugere vender títulos de conde, duque e barão pela internet. A nobreza não tem terra para dar; só o título, uma certidão em papel timbrado e um lugar na fila para o banquete.",
+  "context": "A nobreza do deserto: sem palácio, mas com certificado.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Vender 500 títulos a 30 dólares cada.",
+    "hint": "Dinheiro fácil; um bom escândalo.",
+    "now": {
+     "treasury": 2,
+     "corruption": 1,
+     "reputation": -1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Vender só 10 títulos, caríssimos.",
+    "hint": "Exclusividade.",
+    "now": {
+     "treasury": 0.8,
+     "reputation": 1
+    }
+   },
+   {
+    "text": "Recusar: nobreza é para quem merece.",
+    "hint": "Pureza e miséria.",
+    "now": {
+     "legitimacy": 1
+    },
+    "groups": {
+     "military": 1
+    }
+   }
+  ],
+  "cd": 400
+ },
+ {
+  "id": "bt_un",
+  "cat": "Micronação",
+  "title": "Pedido de reconhecimento na ONU",
+  "desc": "O governo redige uma carta de 14 páginas pedindo uma cadeira na Assembleia Geral. A resposta oficial é um e-mail automático: “Obrigado pelo seu contato. Tempo médio de resposta: indefinido.”",
+  "context": "Seis países responderam com “fale com o consulado”. Não existe consulado.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Insistir semanalmente com cartas mais longas.",
+    "hint": "Persistência heroica.",
+    "now": {
+     "reputation": 0.5,
+     "treasury": -0.1
+    }
+   },
+   {
+    "text": "Procurar um patrocinador: uma micronação amiga.",
+    "hint": "Reconhecimento mútuo entre aflitos.",
+    "now": {
+     "reputation": 1,
+     "influence": 1
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Abrir um serviço consular: a tenda vizinha.",
+    "hint": "Burocracia criativa.",
+    "now": {
+     "treasury": -0.2,
+     "efficiency": 1
+    },
+    "groups": {
+     "bureaucracy": 3
+    }
+   }
+  ],
+  "cd": 600
+ },
+ {
+  "id": "bt_sandstorm",
+  "cat": "Micronação",
+  "title": "Tempestade de areia engole o palácio (uma tenda)",
+  "desc": "Uma tempestade de dois dias derrubou o palácio, o tesouro (uma caixa de biscoitos) e a sala do trono. O rei foi encontrado dormindo dentro do tambor de água.",
+  "context": "A infraestrutura nacional cabe numa caminhonete.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Reconstruir com concreto: o primeiro prédio do país.",
+    "hint": "Marco histórico, dinheiro que não existe.",
+    "now": {
+     "treasury": -1,
+     "legitimacy": 3
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 3,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Mais tendas, desta vez com estacas.",
+    "hint": "Modesto e eficaz.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Declarar luto nacional e mudar de lugar (2 km ao lado).",
+    "hint": "Mudança de capital!",
+    "now": {
+     "legitimacy": -1,
+     "control": -1
+    }
+   }
+  ],
+  "cd": 400
+ },
+ {
+  "id": "bt_crypto",
+  "cat": "Micronação",
+  "title": "Areiacoin: a moeda do deserto",
+  "desc": "Um engenheiro curioso propõe lançar a moeda digital oficial, lastreada em “um grão de areia por token”. Dois investidores já ofereceram comprar o país inteiro por 3 mil dólares.",
+  "context": "A economia cabe numa planilha.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Lançar o token e emitir cédulas simbólicas.",
+    "hint": "Euforia e risco de golpe.",
+    "now": {
+     "treasury": 1.2,
+     "reputation": -1,
+     "inflation": 0.5
+    },
+    "groups": {
+     "youth": 2,
+     "business": 2
+    }
+   },
+   {
+    "text": "Continuar com o dinar de areia, em papel.",
+    "hint": "Charme analógico.",
+    "now": {
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Aceitar a oferta e vender a coroa.",
+    "hint": "Fim do reino, começo da rendição.",
+    "now": {
+     "treasury": 3,
+     "legitimacy": -6,
+     "reputation": -3
+    },
+    "groups": {
+     "military": -3
+    }
+   }
+  ],
+  "cd": 500
+ },
+ {
+  "id": "bt_census",
+  "cat": "Micronação",
+  "title": "O censo nacional",
+  "desc": "O ministro da Estatística relata 312 habitantes: 187 nômades que passam de vez em quando, 41 cabras com nome, 3 pesquisadores e um homem que afirma ser “o verdadeiro rei” e quer que você o prove.",
+  "context": "As cabras já pediram direito de voto.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Dar cidadania às cabras.",
+    "hint": "Tecnicamente legal; o mundo ri.",
+    "now": {
+     "reputation": -1,
+     "legitimacy": 1
+    },
+    "groups": {
+     "rural": 3,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Exigir prova de sangue azul ao pretendente.",
+    "hint": "Duelo de genealogias.",
+    "now": {
+     "legitimacy": 2
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Expulsar o pretendente para o Egito.",
+    "hint": "O Egito não aceita.",
+    "now": {
+     "stability": -1,
+     "reputation": -1
+    },
+    "rel": {
+     "neighbors": -1
+    }
+   }
+  ],
+  "cd": 500
+ },
+ {
+  "id": "bt_gold",
+  "cat": "Micronação",
+  "title": "Boato: há ouro sob a areia",
+  "desc": "Um geólogo bêbado jura ter visto brilho numa rocha. Mineradoras fantasma já prometem investir; o Egito e o Sudão de repente lembram que “talvez” a faixa tenha valor.",
+  "context": "Bir Tawil pode virar o território mais disputado do mundo.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Concessão exclusiva à mineradora que pagar mais.",
+    "hint": "Dinheiro e dívida política.",
+    "now": {
+     "treasury": 2,
+     "corruption": 2
+    },
+    "groups": {
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.05,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Prospecção própria com pás e esperança.",
+    "hint": "Trabalho duro e piada interna.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Negar o boato publicamente.",
+    "hint": "Mantém os vizinhos desinteressados.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   }
+  ],
+  "cd": 600
+ },
+ {
+  "id": "bt_micronations",
+  "cat": "Micronação",
+  "title": "Cúpula das micronações",
+  "desc": "O principado de uma ilhota inexistente, a república de um cômodo e um império de um terraço convidam você para uma conferência. Ninguém reconhece ninguém, mas todos se reconhecem.",
+  "context": "A diplomacia do improvável.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Comparecer e assinar o Pacto das Soberanias Mínimas.",
+    "hint": "Seis reconhecimentos de papel.",
+    "now": {
+     "reputation": 2,
+     "influence": 1
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Mandar um embaixador (o sobrinho).",
+    "hint": "Menos custo, mais drama.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Fundar uma cúpula rival, só sua.",
+    "hint": "Isolamento digno.",
+    "now": {
+     "legitimacy": 1
+    }
+   }
+  ],
+  "cd": 500
+ },
+ {
+  "id": "bt_army",
+  "cat": "Micronação",
+  "title": "O exército nacional",
+  "desc": "O Marechal (único oficial) pede uma reforma: o exército tem onze homens, um camelo e um megafone. Querem uniformes, um canhão de brinquedo e um desfile no Dia da Soberania.",
+  "context": "Em um país sem inimigos, a ameaça é o tédio.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Uniformes e desfile anual.",
+    "hint": "Orgulho nacional.",
+    "now": {
+     "treasury": -0.4,
+     "readiness": 2,
+     "legitimacy": 2
+    },
+    "groups": {
+     "military": 4
+    }
+   },
+   {
+    "text": "Dissolver o exército e manter só o camelo.",
+    "hint": "Pacifismo de areia.",
+    "now": {
+     "treasury": 0.1,
+     "readiness": -1
+    },
+    "groups": {
+     "military": -4
+    }
+   },
+   {
+    "text": "Transformar o exército em guarda florestal (de deserto).",
+    "hint": "Criativo.",
+    "now": {
+     "efficiency": 1
+    },
+    "groups": {
+     "military": 1,
+     "rural": 2
+    }
+   }
+  ],
+  "cd": 500
+ },
+ {
+  "id": "bt_border_guard",
+  "cat": "Micronação",
+  "title": "Um soldado egípcio pede asilo",
+  "desc": "Um recruta de uma patrulha de fronteira, cansado de turnos no deserto, aparece pedindo asilo político, água e um sanduíche. Seus superiores querem o rapaz de volta.",
+  "context": "A primeira crise diplomática de verdade.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Conceder asilo e cidadania.",
+    "hint": "O primeiro cidadão novo em anos.",
+    "now": {
+     "reputation": 1,
+     "legitimacy": 1
+    },
+    "rel": {
+     "neighbors": -4
+    }
+   },
+   {
+    "text": "Devolver com um presente (uma cabra).",
+    "hint": "Gesto de boa vontade.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Empregá-lo como ministro da Defesa.",
+    "hint": "Promoção sem concurso.",
+    "now": {
+     "efficiency": -0.5
+    },
+    "groups": {
+     "military": 2
+    }
+   }
+  ],
+  "cd": 600
+ },
+ {
+  "id": "bt_passport",
+  "cat": "Micronação",
+  "title": "Passaportes do país que não existe",
+  "desc": "Um aventureiro propõe vender passaportes “diplomáticos” do reino. Ninguém aceitará o documento, mas ele fica ótimo em uma estante.",
+  "context": "Uma indústria de souvenir.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Vender passaportes colecionáveis.",
+    "hint": "Entra dinheiro; polícia de fronteiras alerta.",
+    "now": {
+     "treasury": 1,
+     "reputation": -2
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Passaportes só para residentes e honorários.",
+    "hint": "Digno e pobre.",
+    "now": {
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Banir os passaportes e emitir apenas carimbos.",
+    "hint": "Minimalismo.",
+    "now": {
+     "treasury": 0.1
+    }
+   }
+  ],
+  "cd": 500
+ },
+ {
+  "id": "bt_space",
+  "cat": "Micronação",
+  "title": "O programa espacial de balões",
+  "desc": "O ministro da Ciência afirma que, com 12 balões meteorológicos e um forno, o reino chegará à estratosfera antes do Egito. A Nasa não confirmou ter sido consultada.",
+  "context": "O céu é o único limite que ninguém reivindica.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Financiar o lançamento de balões.",
+    "hint": "Prestígio e fotos incríveis.",
+    "now": {
+     "treasury": -0.6,
+     "reputation": 2
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 1.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Aproveitar os balões para entregar correspondência.",
+    "hint": "Utilidade absurda.",
+    "now": {
+     "treasury": -0.1,
+     "efficiency": 0.5
+    }
+   },
+   {
+    "text": "Cancelar: gastar em água potável.",
+    "hint": "Racionalidade deprimente.",
+    "now": {
+     "treasury": -0.2,
+     "health": 1
+    },
+    "groups": {
+     "workers": 2
+    }
+   }
+  ],
+  "cd": 600
+ },
+ {
+  "id": "bt_reality",
+  "cat": "Micronação",
+  "title": "Uma TV quer filmar o reality show do reino",
+  "desc": "Uma produtora oferece pagar para transmitir a “vida real” de uma micronação, com intrigas, camelos e eleições ao vivo. O rei teme perder a dignidade; o sobrinho, a oportunidade.",
+  "context": "Todos querem o país que não é de ninguém.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Assinar o contrato de exclusividade.",
+    "hint": "Fama e dinheiro, privacidade zero.",
+    "now": {
+     "treasury": 2.5,
+     "reputation": 2,
+     "legitimacy": -2
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Aceitar só um documentário sério.",
+    "hint": "Imagem mais digna.",
+    "now": {
+     "treasury": 0.6,
+     "reputation": 3
+    }
+   },
+   {
+    "text": "Recusar e manter o mistério.",
+    "hint": "Aura enigmática.",
+    "now": {
+     "legitimacy": 1
+    }
+   }
+  ],
+  "cd": 700
+ },
+ {
+  "id": "bt_coup",
+  "cat": "Micronação",
+  "title": "O primo do rei dá um “golpe” (com um megafone)",
+  "desc": "O primo reúne dois nômades, o sobrinho e uma cabra, toma a tenda do tesouro e proclama o fim da monarquia. Exige eleições, um novo hino e a devolução do kazoo.",
+  "context": "Um golpe tem de começar em algum lugar.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Negociar: vice-rei e republica simbólica.",
+    "hint": "Divide o poder; ganha paz.",
+    "now": {
+     "stability": 2,
+     "political": 1
+    },
+    "groups": {
+     "youth": 2,
+     "military": -1
+    }
+   },
+   {
+    "text": "Prender o primo (na tenda de trás).",
+    "hint": "Ordem estabelecida.",
+    "now": {
+     "stability": 1,
+     "civil": -1
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Abdicar a favor da cabra.",
+    "hint": "Tradição republicana ou piada?",
+    "now": {
+     "legitimacy": -3,
+     "reputation": 1
+    },
+    "groups": {
+     "rural": 3
+    }
+   }
+  ],
+  "cd": 700
+ },
+ {
+  "id": "bt_well",
+  "cat": "Micronação",
+  "title": "O único poço do país seca",
+  "desc": "Sem água, a população some em dois dias. Caminhões-tanque de vizinhos poderiam socorrer, mas pediriam “algo em troca” — como reconhecimento ou a posse do poço.",
+  "context": "Soberania ou sobrevivência.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Aceitar a ajuda e a condição.",
+    "hint": "Salva todos; perde algo do orgulho.",
+    "now": {
+     "health": 1,
+     "legitimacy": -3
+    },
+    "rel": {
+     "neighbors": 4
+    }
+   },
+   {
+    "text": "Perfurar um novo poço com a ajuda de turistas.",
+    "hint": "Colaborativo e incerto.",
+    "now": {
+     "treasury": -0.4,
+     "health": 1
+    },
+    "groups": {
+     "workers": 2,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Recorrer à ONU: “crise humanitária”.",
+    "hint": "O e-mail automático responde.",
+    "now": {
+     "reputation": 1
+    }
+   }
+  ],
+  "cd": 600
+ },
+ {
+  "id": "bt_goat_deal",
+  "cat": "Micronação",
+  "title": "Oferta absurda: trocar o país por uma cabra",
+  "desc": "Um vizinho propõe, meio de brincadeira, trocar o reino por uma cabra premiada, dois sacos de farinha e uma TV. Os jornais discutem se é piada, golpe ou diplomacia criativa.",
+  "context": "Todo preço é uma declaração política.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 7,
+  "options": [
+   {
+    "text": "Aceitar a cabra e continuar rei como governador.",
+    "hint": "Estatuto de protetorado, com churrasco.",
+    "now": {
+     "treasury": 0.3,
+     "reputation": -2,
+     "legitimacy": -3
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Contraproposta: um satélite e um poço.",
+    "hint": "Barganha ousada.",
+    "now": {
+     "treasury": 0.5,
+     "reputation": 1
+    }
+   },
+   {
+    "text": "Recusar com um discurso inflamado.",
+    "hint": "Orgulho nacional intacto.",
+    "now": {
+     "legitimacy": 3
+    },
+    "groups": {
+     "military": 2,
+     "rural": 2
+    }
+   }
+  ],
+  "cd": 800
+ }
+]

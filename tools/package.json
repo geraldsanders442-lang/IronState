@@ -1,0 +1,1 @@
+{"name":"ironstate-tools","private":true,"type":"module","dependencies":{"d3-geo":"^3.1.1","esbuild":"^0.24.2","flag-icons":"^7.2.3","mapshaper":"^0.6.102","topojson-client":"^3.1.0"}}

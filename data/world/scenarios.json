@@ -1,0 +1,7086 @@
+{
+ "_doc": "Cenários históricos e de história alternativa. Sobrepõem o mundo-base apenas na campanha escolhida. territory.entities = países inteiros; territory.provinces = províncias admin-1 adicionais. answers = respostas sugeridas do questionário (índices 0-3; o jogador pode alterar). start = condições iniciais. rel = ajustes de relação por país ou bloco (west/east/neighbors/all). claimsAgainst = reivindicações que vizinhos passam a ter. Nenhuma fronteira de cenário representa fronteiras reconhecidas internacionalmente.",
+ "scenarios": [
+  {
+   "id": "custom",
+   "name": "Nação personalizada",
+   "desc": "Escolha livremente países e províncias no mapa e funde um novo Estado. As consequências geopolíticas são calculadas a partir das fronteiras, reivindicações e relações dos territórios escolhidos.",
+   "alt": false,
+   "territory": null,
+   "pick": true,
+   "cats": []
+  },
+  {
+   "id": "existing",
+   "name": "Assumir um país existente",
+   "desc": "Escolha um país real no mapa e assuma o poder com um novo regime. Herda relações, alianças e disputas do país.",
+   "alt": false,
+   "territory": null,
+   "pick": "single",
+   "keepOrgs": true,
+   "cats": []
+  },
+  {
+   "id": "ussr",
+   "name": "URSS restaurada",
+   "desc": "História alternativa: as quinze antigas repúblicas soviéticas voltam a formar uma união. Nacionalistas bálticos, ucranianos, georgianos e moldavos resistem; o Ocidente reage com alarme; a China observa com interesse.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "RUS",
+     "UKR",
+     "BLR",
+     "KAZ",
+     "UZB",
+     "TKM",
+     "KGZ",
+     "TJK",
+     "ARM",
+     "AZE",
+     "GEO",
+     "MDA",
+     "LTU",
+     "LVA",
+     "EST",
+     "KAB"
+    ]
+   },
+   "capital": "RUS",
+   "nation": {
+    "officialName": "União das Repúblicas Socialistas Soviéticas",
+    "shortName": "URSS",
+    "leader": "Secretário-Geral Viktor Orlov",
+    "currency": "Rublo",
+    "motto": "Proletários de todos os países, uni-vos!",
+    "regime": "União Soviética"
+   },
+   "flag": {
+    "hist": "ussr"
+   },
+   "answers": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    3,
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    1,
+    1,
+    0
+   ],
+   "start": {
+    "stability": -12,
+    "separatism": 25,
+    "reputation": -15,
+    "treasury": 1,
+    "unrestIn": [
+     "UKR",
+     "LTU",
+     "LVA",
+     "EST",
+     "GEO",
+     "MDA",
+     "AZE",
+     "ARM"
+    ]
+   },
+   "rel": {
+    "west": -30,
+    "CHN": 10,
+    "PRK": 15,
+    "CUB": 20,
+    "POL": -30,
+    "FIN": -25,
+    "TUR": -15,
+    "ROU": -20
+   },
+   "orgs": [
+    "UN"
+   ],
+   "note": "Inspirado na URSS de 1922-1991.",
+   "cats": [
+    "cold",
+    "europe"
+   ]
+  },
+  {
+   "id": "greater_syria",
+   "name": "Grande Síria",
+   "desc": "História alternativa inspirada no conceito territorial de 'Síria natural' associado ao Partido Social Nacionalista Sírio (SSNP): Síria, Líbano, Jordânia, Palestina/Israel, Iraque, Kuwait, Chipre, o Sinai, a Cilícia e o Cuzistão sob um só Estado. Os vizinhos de quem foram tomadas províncias contestam ferozmente as fronteiras. Cenário de sandbox, não uma defesa dessas fronteiras.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "SYR",
+     "LBN",
+     "JOR",
+     "ISR",
+     "PSX",
+     "IRQ",
+     "KWT",
+     "CYP",
+     "CYN",
+     "CNM",
+     "ESB",
+     "WSB"
+    ],
+    "provinces": [
+     "EGY-1558",
+     "EGY-1557",
+     "TUR-2289",
+     "TUR-3018",
+     "TUR-2285",
+     "IRN-3219"
+    ]
+   },
+   "capital": "SYR",
+   "nation": {
+    "officialName": "República da Grande Síria",
+    "shortName": "Grande Síria",
+    "leader": "Presidente Antoun Haddad",
+    "currency": "Lira síria",
+    "motto": "Liberdade, Dever, Disciplina, Força",
+    "regime": "República Nacional Síria"
+   },
+   "flag": {
+    "hist": "syria1920"
+   },
+   "answers": [
+    1,
+    1,
+    1,
+    0,
+    2,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    2,
+    0,
+    1
+   ],
+   "start": {
+    "stability": -18,
+    "separatism": 30,
+    "reputation": -20,
+    "unrestIn": [
+     "ISR",
+     "PSX",
+     "CYP",
+     "CYN",
+     "KWT",
+     "IRQ"
+    ]
+   },
+   "rel": {
+    "TUR": -45,
+    "EGY": -40,
+    "IRN": -45,
+    "USA": -35,
+    "GBR": -25,
+    "GRC": -35,
+    "SAU": -20,
+    "west": -15,
+    "RUS": 5
+   },
+   "claimsAgainst": [
+    {
+     "claimant": "TUR",
+     "provinces": [
+      "TUR-2289",
+      "TUR-3018",
+      "TUR-2285"
+     ]
+    },
+    {
+     "claimant": "EGY",
+     "provinces": [
+      "EGY-1558",
+      "EGY-1557"
+     ]
+    },
+    {
+     "claimant": "IRN",
+     "provinces": [
+      "IRN-3219"
+     ]
+    },
+    {
+     "claimant": "GRC",
+     "entities": [
+      "CYP"
+     ],
+     "type": "irredentist"
+    }
+   ],
+   "orgs": [
+    "UN",
+    "ARAB"
+   ],
+   "cats": []
+  },
+  {
+   "id": "balkan_federation",
+   "name": "Federação Balcânica",
+   "desc": "História alternativa: as antigas repúblicas iugoslavas e a Albânia formam uma federação. Memórias de guerra, a questão de Kosovo e nacionalismos sérvio, croata e albanês testam a união desde o primeiro dia.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "SRB",
+     "HRV",
+     "BIH",
+     "SVN",
+     "MNE",
+     "MKD",
+     "KOS",
+     "ALB"
+    ]
+   },
+   "capital": "SRB",
+   "nation": {
+    "officialName": "Federação Balcânica",
+    "shortName": "Balcânia",
+    "leader": "Presidente Dragan Lukić",
+    "currency": "Dinar federal",
+    "motto": "Unidade na diversidade",
+    "regime": "Federação"
+   },
+   "flag": {
+    "hist": "balkanfed"
+   },
+   "answers": [
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    1
+   ],
+   "start": {
+    "stability": -10,
+    "separatism": 28,
+    "unrestIn": [
+     "KOS",
+     "ALB",
+     "HRV",
+     "SVN"
+    ]
+   },
+   "rel": {
+    "BGR": -10,
+    "GRC": -15,
+    "RUS": 10,
+    "HUN": 5,
+    "ITA": -5,
+    "AUT": -5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "post_civil_war",
+   "name": "República pós-guerra civil",
+   "desc": "Escolha um país no mapa. Uma longa guerra civil acabou de terminar: infraestrutura destruída, milícias armadas, refugiados e um cessar-fogo frágil.",
+   "alt": false,
+   "territory": null,
+   "pick": "single",
+   "start": {
+    "stability": -25,
+    "infra": -25,
+    "treasury": -1.5,
+    "debt": 40,
+    "hunger": 10,
+    "poverty": 15,
+    "separatism": 20,
+    "health": -15,
+    "gdpMult": 0.6,
+    "flags": [
+     "postwar"
+    ]
+   },
+   "rel": {
+    "all": 5
+   },
+   "keepOrgs": true,
+   "cats": []
+  },
+  {
+   "id": "separatist_crisis",
+   "name": "Crise separatista",
+   "desc": "Escolha um país no mapa. Na primeira semana do seu governo, uma região proclama independência com bandeira, governo e milícias próprios — e pede reconhecimento ao mundo. Retomar pela força, negociar um referendo, conceder autonomia ou aceitar a separação: a decisão é sua, e o resto do país observa.",
+   "alt": false,
+   "territory": null,
+   "pick": "single",
+   "start": {
+    "stability": -8,
+    "separatism": 25,
+    "flags": [
+     "separatistCrisis"
+    ]
+   },
+   "keepOrgs": true,
+   "secession": true,
+   "cats": []
+  },
+  {
+   "id": "new_independent",
+   "name": "Groenlândia independente",
+   "desc": "A Groenlândia acaba de proclamar a independência. Uma população pequena, um território imenso, terras raras sob o gelo e superpotências interessadas.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "GRL"
+    ]
+   },
+   "capital": "GRL",
+   "nation": {
+    "officialName": "República de Kalaallit Nunaat",
+    "shortName": "Groenlândia",
+    "leader": "Primeira-Ministra Aaja Lynge",
+    "currency": "Coroa groenlandesa",
+    "motto": "Nunarput — nossa terra",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "iso": "gl"
+   },
+   "start": {
+    "treasury": 3,
+    "stability": -5
+   },
+   "rel": {
+    "DNK": 10,
+    "USA": 15,
+    "CAN": 10,
+    "CHN": 5,
+    "ISL": 20,
+    "NOR": 10
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "east_africa",
+   "name": "Federação da África Oriental",
+   "desc": "História alternativa: Quênia, Tanzânia, Uganda, Ruanda, Burundi e Sudão do Sul concretizam o antigo projeto de federação da Comunidade da África Oriental.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "KEN",
+     "TZA",
+     "UGA",
+     "RWA",
+     "BDI",
+     "SDS"
+    ]
+   },
+   "capital": "TZA",
+   "nation": {
+    "officialName": "Federação da África Oriental",
+    "shortName": "África Oriental",
+    "leader": "Presidente Amani Mwangi",
+    "currency": "Shilling federal",
+    "motto": "Umoja ni nguvu",
+    "regime": "Federação"
+   },
+   "flag": {
+    "hist": "eaf"
+   },
+   "answers": [
+    2,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    0
+   ],
+   "start": {
+    "stability": -8,
+    "separatism": 18,
+    "unrestIn": [
+     "SDS",
+     "BDI"
+    ]
+   },
+   "rel": {
+    "COD": -10,
+    "ETH": 5,
+    "SOM": -5,
+    "CHN": 5
+   },
+   "orgs": [
+    "UN",
+    "AU",
+    "EAC"
+   ],
+   "cats": []
+  },
+  {
+   "id": "central_america",
+   "name": "República Federal da América Central",
+   "desc": "A federação de 1823-1841 renasce: Guatemala, El Salvador, Honduras, Nicarágua e Costa Rica sob um só governo.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "GTM",
+     "SLV",
+     "HND",
+     "NIC",
+     "CRI"
+    ]
+   },
+   "capital": "GTM",
+   "nation": {
+    "officialName": "República Federal da América Central",
+    "shortName": "América Central",
+    "leader": "Presidente Inés Morazán",
+    "currency": "Peso centro-americano",
+    "motto": "Dios, Unión, Libertad",
+    "regime": "República federal"
+   },
+   "flag": {
+    "hist": "frca"
+   },
+   "answers": [
+    2,
+    2,
+    2,
+    2,
+    1,
+    2,
+    1,
+    1,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    1
+   ],
+   "start": {
+    "stability": -8,
+    "separatism": 15
+   },
+   "rel": {
+    "MEX": 0,
+    "USA": 5,
+    "BLZ": -10,
+    "PAN": 5
+   },
+   "orgs": [
+    "UN",
+    "OAS",
+    "SICA"
+   ],
+   "cats": [
+    "latam"
+   ]
+  },
+  {
+   "id": "gran_colombia",
+   "name": "Grã-Colômbia",
+   "desc": "O sonho de Bolívar: Colômbia, Venezuela, Equador e Panamá reunidos. Crises migratórias, petróleo e o Canal do Panamá no mesmo Estado.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "COL",
+     "VEN",
+     "ECU",
+     "PAN"
+    ]
+   },
+   "capital": "COL",
+   "nation": {
+    "officialName": "República da Grã-Colômbia",
+    "shortName": "Grã-Colômbia",
+    "leader": "Presidente Simón Arango",
+    "currency": "Peso grancolombiano",
+    "motto": "Unión, Libertad, Gloria",
+    "regime": "República"
+   },
+   "flag": {
+    "hist": "grancol"
+   },
+   "answers": [
+    1,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2,
+    2,
+    0,
+    2,
+    2,
+    2,
+    1
+   ],
+   "start": {
+    "stability": -10,
+    "separatism": 15,
+    "unrestIn": [
+     "VEN"
+    ]
+   },
+   "rel": {
+    "USA": 0,
+    "GUY": -20,
+    "BRA": 5,
+    "PER": 0
+   },
+   "orgs": [
+    "UN",
+    "OAS"
+   ],
+   "cats": [
+    "latam"
+   ]
+  },
+  {
+   "id": "iberian_union",
+   "name": "União Ibérica",
+   "desc": "História alternativa: Espanha, Portugal e Andorra formam uma federação ibérica. Lisboa desconfia de Madri, catalães e bascos querem mais autonomia, e Bruxelas observa.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ESP",
+     "PRT",
+     "AND"
+    ]
+   },
+   "capital": "ESP",
+   "nation": {
+    "officialName": "União Federal Ibérica",
+    "shortName": "Ibéria",
+    "leader": "Presidente Álvaro Mendes",
+    "currency": "Escudo ibérico",
+    "motto": "Duas coroas, um destino",
+    "regime": "Federação"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#c60b1e",
+     "#ffc400",
+     "#006600"
+    ],
+    "emblems": [
+     {
+      "type": "shield",
+      "color": "#1d3e8f",
+      "x": 0.3,
+      "y": 0.5,
+      "s": 0.32
+     }
+    ]
+   },
+   "start": {
+    "stability": -6,
+    "separatism": 22,
+    "unrestIn": [
+     "PRT"
+    ]
+   },
+   "rel": {
+    "FRA": 0,
+    "MAR": -10,
+    "GBR": -5
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "two_nations",
+   "name": "República das Duas Nações",
+   "desc": "História alternativa: Polônia, Lituânia, Letônia e Bielorrússia renascem como a velha república polaco-lituana. Moscou vê uma ameaça; minorias russófonas resistem.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "POL",
+     "LTU",
+     "LVA",
+     "BLR"
+    ]
+   },
+   "capital": "POL",
+   "nation": {
+    "officialName": "República das Duas Nações",
+    "shortName": "Commonwealth",
+    "leader": "Presidente Tadeusz Wiśniewski",
+    "currency": "Złoty federal",
+    "motto": "Si Deus nobiscum, quis contra nos",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h2",
+    "colors": [
+     "#f4f4f4",
+     "#dc143c"
+    ],
+    "emblems": [
+     {
+      "type": "eagle",
+      "color": "#c9a227",
+      "x": 0.25,
+      "y": 0.5,
+      "s": 0.34
+     }
+    ]
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 24,
+    "unrestIn": [
+     "BLR",
+     "LVA"
+    ]
+   },
+   "rel": {
+    "RUS": -45,
+    "DEU": 5,
+    "UKR": 10,
+    "USA": 10
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "cold",
+    "europe"
+   ]
+  },
+  {
+   "id": "nordic_union",
+   "name": "União Nórdica",
+   "desc": "História alternativa: Noruega, Suécia, Finlândia, Dinamarca e Islândia unificam governo, Forças Armadas e moeda. Uma potência rica e pequena demais para ser ignorada.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "NOR",
+     "SWE",
+     "FIN",
+     "DNK",
+     "ISL"
+    ]
+   },
+   "capital": "SWE",
+   "nation": {
+    "officialName": "União Nórdica",
+    "shortName": "Norden",
+    "leader": "Primeira-ministra Ingrid Halvorsen",
+    "currency": "Coroa nórdica",
+    "motto": "Med lag skal land byggas",
+    "regime": "Monarquia parlamentar federal"
+   },
+   "flag": {
+    "layout": "nordic",
+    "colors": [
+     "#1d3e8f",
+     "#ffc400",
+     "#d21034"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": 5,
+    "separatism": 10
+   },
+   "rel": {
+    "RUS": -30,
+    "USA": 10,
+    "GBR": 10,
+    "DEU": 8
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cats": [
+    "cold",
+    "europe"
+   ]
+  },
+  {
+   "id": "turan",
+   "name": "Federação Turânica",
+   "desc": "História alternativa: Turquia, Azerbaijão e as repúblicas turcomanas da Ásia Central formam uma federação. Rússia, China e Irã reagem; o separatismo curdo e as rivalidades dos clãs pesam.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "TUR",
+     "AZE",
+     "TKM",
+     "UZB",
+     "KAZ",
+     "KGZ"
+    ]
+   },
+   "capital": "TUR",
+   "nation": {
+    "officialName": "Federação dos Povos Túrquicos",
+    "shortName": "Turan",
+    "leader": "Presidente Mehmet Aydın",
+    "currency": "Lira turânica",
+    "motto": "Bir millet, altı devlet",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "solid",
+    "colors": [
+     "#00a3dd",
+     "#00a3dd",
+     "#00a3dd"
+    ],
+    "emblems": [
+     {
+      "type": "crescent",
+      "color": "#ffffff",
+      "x": 0.4,
+      "y": 0.5,
+      "s": 0.36
+     },
+     {
+      "type": "star",
+      "color": "#ffffff",
+      "x": 0.55,
+      "y": 0.5,
+      "s": 0.16
+     }
+    ]
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 30,
+    "reputation": -5,
+    "unrestIn": [
+     "KAZ",
+     "KGZ"
+    ]
+   },
+   "rel": {
+    "RUS": -30,
+    "CHN": -15,
+    "IRN": -25,
+    "ARM": -50,
+    "GRC": -25,
+    "CYP": -30
+   },
+   "orgs": [
+    "UN",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "sahel_confederation",
+   "name": "Confederação do Sahel",
+   "desc": "Mali, Burkina Faso e Níger se fundem sob governos militares. Pobreza extrema, insurgências jihadistas no deserto e uma guinada contra a antiga metrópole.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "MLI",
+     "BFA",
+     "NER"
+    ]
+   },
+   "capital": "MLI",
+   "nation": {
+    "officialName": "Confederação dos Estados do Sahel",
+    "shortName": "Sahel",
+    "leader": "Coronel Assimi Diarra",
+    "currency": "Franco do Sahel",
+    "motto": "Unité, Souveraineté, Travail",
+    "regime": "Junta militar"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#14b53a",
+     "#fcd116",
+     "#ce1126"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#7a3e12",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.26
+     }
+    ]
+   },
+   "start": {
+    "stability": -18,
+    "separatism": 30,
+    "hunger": 8,
+    "unrestIn": [
+     "NER",
+     "BFA"
+    ]
+   },
+   "rel": {
+    "FRA": -40,
+    "RUS": 20,
+    "CIV": -10,
+    "NGA": -5,
+    "DZA": -5
+   },
+   "orgs": [
+    "UN",
+    "AES"
+   ],
+   "cats": []
+  },
+  {
+   "id": "kurdistan",
+   "name": "Curdistão independente",
+   "desc": "História alternativa: as regiões curdas do Iraque, da Síria, da Turquia e do Irã proclamam um Estado. Os quatro vizinhos consideram isso uma declaração de guerra.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "IRQ-3046",
+     "IRQ-3050",
+     "IRQ-3242",
+     "SYR-141",
+     "TUR-3044",
+     "TUR-3047",
+     "TUR-3048",
+     "TUR-3041",
+     "TUR-2309",
+     "TUR-3042",
+     "TUR-3043",
+     "TUR-2311",
+     "TUR-2310",
+     "TUR-2308",
+     "TUR-3045",
+     "TUR-2307",
+     "IRN-3241",
+     "IRN-3239"
+    ]
+   },
+   "capital": "IRQ",
+   "nation": {
+    "officialName": "República do Curdistão",
+    "shortName": "Curdistão",
+    "leader": "Presidente Rojan Barzani",
+    "currency": "Dinar curdo",
+    "motto": "Ey Reqîb",
+    "regime": "República"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#ed2024",
+     "#ffffff",
+     "#278e43"
+    ],
+    "emblems": [
+     {
+      "type": "sun",
+      "color": "#febd11",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.3
+     }
+    ]
+   },
+   "start": {
+    "stability": -15,
+    "separatism": 20,
+    "treasury": -0.5
+   },
+   "rel": {
+    "TUR": -60,
+    "IRN": -50,
+    "IRQ": -45,
+    "SYR": -40,
+    "USA": 15,
+    "ISR": 10
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "maghreb_union",
+   "name": "União do Magrebe",
+   "desc": "Marrocos, Argélia, Tunísia, Líbia e Mauritânia superam rivalidades históricas e formam uma união. A questão do Saara Ocidental e o poder dos militares argelinos dominam a política.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "MAR",
+     "DZA",
+     "TUN",
+     "LBY",
+     "MRT"
+    ]
+   },
+   "capital": "DZA",
+   "nation": {
+    "officialName": "União do Grande Magrebe",
+    "shortName": "Magrebe",
+    "leader": "Presidente Karim Benali",
+    "currency": "Dinar magrebino",
+    "motto": "Unidade, fé, trabalho",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "v2",
+    "colors": [
+     "#006233",
+     "#ffffff"
+    ],
+    "emblems": [
+     {
+      "type": "crescent",
+      "color": "#d21034",
+      "x": 0.55,
+      "y": 0.5,
+      "s": 0.34
+     }
+    ]
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 26,
+    "unrestIn": [
+     "LBY",
+     "MAR"
+    ]
+   },
+   "rel": {
+    "ESP": -5,
+    "FRA": -15,
+    "EGY": 0,
+    "SAH": -30
+   },
+   "orgs": [
+    "UN",
+    "AU",
+    "ARAB"
+   ],
+   "cats": []
+  },
+  {
+   "id": "gulf_union",
+   "name": "União do Golfo",
+   "desc": "As monarquias do Golfo fundem-se em uma confederação. Petróleo infinito, rivalidade com o Irã e famílias reais disputando o trono comum.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "SAU",
+     "ARE",
+     "KWT",
+     "QAT",
+     "BHR",
+     "OMN"
+    ]
+   },
+   "capital": "SAU",
+   "nation": {
+    "officialName": "União das Monarquias do Golfo",
+    "shortName": "Khalij",
+    "leader": "Rei Faisal bin Khalid",
+    "currency": "Khaleeji",
+    "motto": "Deus, pátria, rei",
+    "regime": "Monarquia absoluta federal"
+   },
+   "flag": {
+    "layout": "canton",
+    "colors": [
+     "#006c35",
+     "#ffffff",
+     "#000000"
+    ],
+    "emblems": [
+     {
+      "type": "sword",
+      "color": "#ffffff",
+      "x": 0.6,
+      "y": 0.3,
+      "s": 0.3
+     }
+    ]
+   },
+   "start": {
+    "stability": -4,
+    "separatism": 18,
+    "treasury": 2
+   },
+   "rel": {
+    "IRN": -55,
+    "USA": 15,
+    "ISR": -10,
+    "YEM": -30
+   },
+   "orgs": [
+    "UN",
+    "GCC",
+    "ARAB",
+    "OPEC"
+   ],
+   "cats": []
+  },
+  {
+   "id": "korea_unified",
+   "name": "Coreia reunificada",
+   "desc": "O regime do Norte desabou e Seul assume o país inteiro. Vinte e cinco milhões de pessoas famintas, um arsenal nuclear órfão e China e EUA disputando a península.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "KOR",
+     "PRK"
+    ]
+   },
+   "capital": "KOR",
+   "nation": {
+    "officialName": "República da Coreia Unificada",
+    "shortName": "Coreia",
+    "leader": "Presidente Kim Min-jun",
+    "currency": "Won",
+    "motto": "Hongik Ingan",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "solid",
+    "colors": [
+     "#ffffff",
+     "#ffffff",
+     "#ffffff"
+    ],
+    "emblems": [
+     {
+      "type": "circle",
+      "color": "#cd2e3a",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.36
+     }
+    ]
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 20,
+    "poverty": 8,
+    "hunger": 6,
+    "unrestIn": [
+     "PRK"
+    ]
+   },
+   "rel": {
+    "CHN": -15,
+    "USA": 15,
+    "JPN": 0,
+    "RUS": -10
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "indochina",
+   "name": "Federação Indochinesa",
+   "desc": "Vietnã, Laos e Camboja formam uma federação socialista. Hanói comanda; os cambojanos resistem; a China vigia o Mar do Sul.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "VNM",
+     "LAO",
+     "KHM"
+    ]
+   },
+   "capital": "VNM",
+   "nation": {
+    "officialName": "República Socialista da Indochina",
+    "shortName": "Indochina",
+    "leader": "Secretário-Geral Nguyen Van Thanh",
+    "currency": "Dong federal",
+    "motto": "Independência, liberdade, felicidade",
+    "regime": "Estado socialista"
+   },
+   "flag": {
+    "layout": "h2",
+    "colors": [
+     "#da251d",
+     "#1d3e8f"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffcd00",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.34
+     }
+    ]
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 22,
+    "unrestIn": [
+     "KHM"
+    ]
+   },
+   "rel": {
+    "CHN": -20,
+    "THA": -15,
+    "USA": 0,
+    "RUS": 10
+   },
+   "orgs": [
+    "UN",
+    "ASEAN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "greater_romania",
+   "name": "Grande Romênia",
+   "desc": "Romênia e Moldávia se unificam. A Transnístria se recusa a aceitar, e Moscou ameaça.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ROU",
+     "MDA"
+    ]
+   },
+   "capital": "ROU",
+   "nation": {
+    "officialName": "România Mare",
+    "shortName": "Romênia",
+    "leader": "Presidente Andrei Popescu",
+    "currency": "Leu",
+    "motto": "Nihil sine Deo",
+    "regime": "República semipresidencialista"
+   },
+   "flag": {
+    "layout": "v3",
+    "colors": [
+     "#002b7f",
+     "#fcd116",
+     "#ce1126"
+    ],
+    "emblems": [
+     {
+      "type": "eagle",
+      "color": "#7a5a12",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.26
+     }
+    ]
+   },
+   "start": {
+    "stability": -4,
+    "separatism": 16,
+    "unrestIn": [
+     "MDA"
+    ]
+   },
+   "rel": {
+    "RUS": -30,
+    "HUN": -8,
+    "UKR": 0
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "peru_bolivia",
+   "name": "Confederação Peru-Boliviana",
+   "desc": "O velho sonho de Santa Cruz volta: Peru e Bolívia unidos nos Andes. O Chile vê a ressurreição de um inimigo do século XIX.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "PER",
+     "BOL"
+    ]
+   },
+   "capital": "PER",
+   "nation": {
+    "officialName": "Confederação Peru-Boliviana",
+    "shortName": "Confederação Andina",
+    "leader": "Presidente Rafael Quispe",
+    "currency": "Sol andino",
+    "motto": "Firme y feliz por la unión",
+    "regime": "Confederação"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#d91023",
+     "#ffffff",
+     "#007934"
+    ],
+    "emblems": [
+     {
+      "type": "sun",
+      "color": "#f9e300",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.28
+     }
+    ]
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 18,
+    "unrestIn": [
+     "BOL"
+    ]
+   },
+   "rel": {
+    "CHL": -35,
+    "ECU": -5,
+    "BRA": 5,
+    "ARG": 5
+   },
+   "orgs": [
+    "UN",
+    "ANDEAN"
+   ],
+   "cats": [
+    "latam"
+   ]
+  },
+  {
+   "id": "catalonia",
+   "name": "Catalunha independente",
+   "desc": "Barcelona proclamou a independência após um referendo. Madri não reconhece, o euro está em dúvida e as empresas ameaçam partir.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "ESP-5809",
+     "ESP-5820",
+     "ESP-5831",
+     "ESP-5846"
+    ]
+   },
+   "capital": "ESP",
+   "nation": {
+    "officialName": "República Catalã",
+    "shortName": "Catalunha",
+    "leader": "President Jordi Puig",
+    "currency": "Euro (provisório)",
+    "motto": "Som i serem",
+    "regime": "República parlamentarista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#fcdd09",
+     "#da121a",
+     "#fcdd09"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffffff",
+      "x": 0.18,
+      "y": 0.5,
+      "s": 0.26
+     }
+    ]
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 6,
+    "reputation": -4
+   },
+   "rel": {
+    "ESP": -40,
+    "FRA": -10,
+    "AND": 20
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "scotland",
+   "name": "Escócia independente",
+   "desc": "A Escócia deixou o Reino Unido. Petróleo do Mar do Norte, uma base de submarinos nucleares britânicos em seu litoral e um pedido de volta à União Europeia.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "GBR-2026",
+     "GBR-2138",
+     "GBR-2017",
+     "GBR-2016",
+     "GBR-2015",
+     "GBR-2025",
+     "GBR-2023",
+     "GBR-2024",
+     "GBR-2022",
+     "GBR-2009",
+     "GBR-2006",
+     "GBR-2005",
+     "GBR-2008",
+     "GBR-2011",
+     "GBR-2746",
+     "GBR-2745",
+     "GBR-2014",
+     "GBR-2013",
+     "GBR-2012",
+     "GBR-2019",
+     "GBR-2020",
+     "GBR-2018",
+     "GBR-2021",
+     "GBR-2772",
+     "GBR-2744",
+     "GBR-2747",
+     "GBR-2007",
+     "GBR-2002",
+     "GBR-2004",
+     "GBR-2003",
+     "GBR-2001",
+     "GBR-2010"
+    ]
+   },
+   "capital": "GBR",
+   "nation": {
+    "officialName": "Reino da Escócia",
+    "shortName": "Escócia",
+    "leader": "First Minister Fiona MacLeod",
+    "currency": "Libra escocesa",
+    "motto": "Nemo me impune lacessit",
+    "regime": "Monarquia parlamentar"
+   },
+   "flag": {
+    "layout": "saltire",
+    "colors": [
+     "#005eb8",
+     "#ffffff",
+     "#ffffff"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -3,
+    "separatism": 8,
+    "treasury": 0.5
+   },
+   "rel": {
+    "GBR": -20,
+    "IRL": 15,
+    "NOR": 10,
+    "USA": 0
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "quebec",
+   "name": "Quebec independente",
+   "desc": "O terceiro referendo deu certo: o Quebec é soberano. Ottawa negocia a dívida, os povos indígenas do norte reivindicam suas terras e Paris comemora.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "CAN-683"
+    ]
+   },
+   "capital": "CAN",
+   "nation": {
+    "officialName": "République du Québec",
+    "shortName": "Quebec",
+    "leader": "Première ministre Geneviève Tremblay",
+    "currency": "Dollar québécois",
+    "motto": "Je me souviens",
+    "regime": "República parlamentarista"
+   },
+   "flag": {
+    "layout": "cross",
+    "colors": [
+     "#003da5",
+     "#ffffff",
+     "#ffffff"
+    ],
+    "emblems": [
+     {
+      "type": "crown",
+      "color": "#ffffff",
+      "x": 0.2,
+      "y": 0.23,
+      "s": 0.18
+     }
+    ]
+   },
+   "start": {
+    "stability": -4,
+    "separatism": 14
+   },
+   "rel": {
+    "CAN": -18,
+    "FRA": 25,
+    "USA": -5,
+    "BEL": 10
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "california",
+   "name": "República da Califórnia",
+   "desc": "História alternativa: a Califórnia se separa dos Estados Unidos. A quinta economia do mundo, sem Exército, com Washington furioso e o Vale do Silício em pânico.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "USA-3521"
+    ]
+   },
+   "capital": "USA",
+   "nation": {
+    "officialName": "República da Califórnia",
+    "shortName": "Califórnia",
+    "leader": "Governadora Elena Ramírez",
+    "currency": "Dólar californiano",
+    "motto": "Eureka",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "hcenter",
+    "colors": [
+     "#ffffff",
+     "#ffffff",
+     "#bf0a30"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#bf0a30",
+      "x": 0.15,
+      "y": 0.25,
+      "s": 0.18
+     },
+     {
+      "type": "lion",
+      "color": "#5c3a14",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.3
+     }
+    ]
+   },
+   "start": {
+    "stability": -6,
+    "readiness": -12,
+    "equipment": -8,
+    "reputation": 2
+   },
+   "rel": {
+    "USA": -28,
+    "MEX": 15,
+    "CAN": 5,
+    "CHN": 8
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "roman_empire",
+   "name": "Império Romano",
+   "desc": "História alternativa: o Império Romano nunca caiu e chega ao século XXI com as fronteiras do auge de Trajano (c. 117 d.C.) — do muro de Adriano ao Eufrates, do Atlântico ao Mar Negro. Dezenas de povos sob a mesma águia, um Senado decorativo, legiões caras e vizinhos que lembram muito bem quem os conquistou.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ITA",
+     "SMR",
+     "VAT",
+     "MLT",
+     "FRA",
+     "MCO",
+     "ESP",
+     "PRT",
+     "AND",
+     "GIB",
+     "BEL",
+     "LUX",
+     "CHE",
+     "LIE",
+     "AUT",
+     "SVN",
+     "HRV",
+     "BIH",
+     "SRB",
+     "MNE",
+     "KOS",
+     "MKD",
+     "ALB",
+     "GRC",
+     "BGR",
+     "ROU",
+     "CYP",
+     "CYN",
+     "ESB",
+     "WSB",
+     "TUR",
+     "SYR",
+     "LBN",
+     "ISR",
+     "PSX",
+     "JOR",
+     "EGY",
+     "TUN"
+    ],
+    "provinces": [
+     "GBR-2126",
+     "GBR-5707",
+     "GBR-2127",
+     "GBR-2779",
+     "GBR-2111",
+     "GBR-2775",
+     "GBR-2132",
+     "GBR-2039",
+     "GBR-2034",
+     "GBR-2139",
+     "GBR-5662",
+     "GBR-5663",
+     "GBR-5664",
+     "GBR-2029",
+     "GBR-2030",
+     "GBR-2032",
+     "GBR-2140",
+     "GBR-2124",
+     "GBR-2055",
+     "GBR-2057",
+     "GBR-2056",
+     "GBR-2081",
+     "GBR-2319",
+     "GBR-2318",
+     "GBR-2317",
+     "GBR-2679",
+     "GBR-2676",
+     "GBR-3409",
+     "GBR-2678",
+     "GBR-2677",
+     "GBR-2674",
+     "GBR-2748",
+     "GBR-2035",
+     "GBR-2759",
+     "GBR-2036",
+     "GBR-2051",
+     "GBR-2050",
+     "GBR-2052",
+     "GBR-2048",
+     "GBR-2142",
+     "GBR-2141",
+     "GBR-2110",
+     "GBR-2047",
+     "GBR-2045",
+     "GBR-2044",
+     "GBR-2046",
+     "GBR-2133",
+     "GBR-2116",
+     "GBR-2117",
+     "GBR-2112",
+     "GBR-2118",
+     "GBR-2119",
+     "GBR-2104",
+     "GBR-2106",
+     "GBR-2105",
+     "GBR-2130",
+     "GBR-2129",
+     "GBR-2125",
+     "GBR-2108",
+     "GBR-5708",
+     "GBR-5666",
+     "GBR-5668",
+     "GBR-5667",
+     "GBR-2123",
+     "GBR-5670",
+     "GBR-2758",
+     "GBR-2128",
+     "GBR-5988",
+     "GBR-2113",
+     "GBR-2115",
+     "GBR-2131",
+     "GBR-2134",
+     "GBR-2114",
+     "GBR-2079",
+     "GBR-2073",
+     "GBR-2080",
+     "GBR-2072",
+     "GBR-2070",
+     "GBR-2066",
+     "GBR-2069",
+     "GBR-2033",
+     "GBR-2028",
+     "GBR-2031",
+     "GBR-2075",
+     "GBR-4809",
+     "GBR-2077",
+     "GBR-5665",
+     "GBR-5661",
+     "GBR-2120",
+     "GBR-5669",
+     "GBR-2067",
+     "GBR-2042",
+     "GBR-5705",
+     "GBR-2078",
+     "GBR-2074",
+     "GBR-2675",
+     "GBR-2053",
+     "GBR-2061",
+     "GBR-2076",
+     "GBR-2038",
+     "GBR-2040",
+     "GBR-2753",
+     "GBR-2062",
+     "GBR-2752",
+     "GBR-2767",
+     "GBR-5697",
+     "GBR-5698",
+     "GBR-2762",
+     "GBR-2764",
+     "GBR-2749",
+     "GBR-2064",
+     "GBR-2071",
+     "GBR-2760",
+     "GBR-2768",
+     "GBR-2771",
+     "GBR-5689",
+     "GBR-2065",
+     "GBR-2769",
+     "GBR-2766",
+     "GBR-2754",
+     "GBR-2770",
+     "GBR-2068",
+     "GBR-2765",
+     "GBR-2060",
+     "GBR-2054",
+     "GBR-5706",
+     "GBR-2059",
+     "GBR-5686",
+     "GBR-5687",
+     "GBR-2778",
+     "GBR-2121",
+     "GBR-2777",
+     "GBR-2063",
+     "GBR-2776",
+     "GBR-2750",
+     "GBR-2751",
+     "GBR-5677",
+     "GBR-5683",
+     "GBR-2774",
+     "GBR-5700",
+     "GBR-5701",
+     "GBR-5702",
+     "GBR-5703",
+     "GBR-5704",
+     "GBR-5699",
+     "GBR-2755",
+     "GBR-2122",
+     "GBR-2756",
+     "GBR-2043",
+     "GBR-2757",
+     "GBR-5672",
+     "GBR-5671",
+     "GBR-2763",
+     "GBR-2761",
+     "GBR-2058",
+     "GBR-5674",
+     "GBR-5673",
+     "GBR-5675",
+     "GBR-5688",
+     "GBR-5676",
+     "GBR-5678",
+     "GBR-5685",
+     "GBR-5684",
+     "GBR-5681",
+     "GBR-5680",
+     "GBR-5682",
+     "GBR-5679",
+     "GBR-5695",
+     "GBR-5696",
+     "GBR-5690",
+     "GBR-5691",
+     "GBR-5692",
+     "GBR-5694",
+     "GBR-5693",
+     "NLD-896",
+     "NLD-898",
+     "NLD-903",
+     "NLD-3483",
+     "NLD-3485",
+     "NLD-3484",
+     "DEU-1580",
+     "DEU-1581",
+     "DEU-1573",
+     "HUN-3156",
+     "HUN-4904",
+     "HUN-3138",
+     "HUN-3159",
+     "HUN-3157",
+     "HUN-3155",
+     "HUN-3163",
+     "HUN-3164",
+     "HUN-3162",
+     "HUN-3158",
+     "HUN-3165",
+     "HUN-3160",
+     "HUN-4907",
+     "HUN-4925",
+     "HUN-4906",
+     "HUN-4905",
+     "HUN-4903",
+     "HUN-4910",
+     "HUN-4911",
+     "HUN-4909",
+     "HUN-4912",
+     "HUN-4913",
+     "HUN-4914",
+     "HUN-4908",
+     "DZA-2164",
+     "DZA-2222",
+     "DZA-2163",
+     "DZA-2166",
+     "DZA-2165",
+     "DZA-2208",
+     "DZA-2197",
+     "DZA-2196",
+     "DZA-2195",
+     "DZA-2198",
+     "DZA-2200",
+     "DZA-2202",
+     "DZA-2145",
+     "DZA-2215",
+     "DZA-2207",
+     "DZA-2210",
+     "DZA-2209",
+     "DZA-2206",
+     "DZA-2199",
+     "DZA-2203",
+     "DZA-2201",
+     "DZA-2213",
+     "DZA-2214",
+     "DZA-2216",
+     "DZA-2218",
+     "DZA-2217",
+     "DZA-2220",
+     "DZA-2221",
+     "MAR-1445",
+     "MAR-1452",
+     "MAR-1447",
+     "MAR-1448",
+     "MAR-1451",
+     "MAR-1446",
+     "LBY-2882",
+     "LBY-2974",
+     "LBY-2985",
+     "LBY-2970",
+     "LBY-2966",
+     "LBY-2978",
+     "LBY-2975",
+     "LBY-2986",
+     "LBY-2982",
+     "LBY-2981",
+     "LBY-2984",
+     "LBY-2973",
+     "LBY-2976"
+    ]
+   },
+   "capital": "ITA",
+   "nation": {
+    "officialName": "Imperium Romanum",
+    "shortName": "Roma",
+    "leader": "Imperator Marcus Ulpius Valens",
+    "currency": "Denário",
+    "motto": "Senatus Populusque Romanus",
+    "regime": "Império"
+   },
+   "flag": {
+    "layout": "solid",
+    "colors": [
+     "#7a0e0e",
+     "#7a0e0e",
+     "#7a0e0e"
+    ],
+    "emblems": [
+     {
+      "type": "laurel",
+      "color": "#d4a017",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.82
+     },
+     {
+      "type": "eagle",
+      "color": "#d4a017",
+      "x": 0.5,
+      "y": 0.48,
+      "s": 0.55
+     }
+    ]
+   },
+   "start": {
+    "flags": [
+     "rome"
+    ],
+    "stability": -14,
+    "separatism": 38,
+    "reputation": -10,
+    "readiness": 10,
+    "equipment": 4,
+    "unrestIn": [
+     "GBR",
+     "EGY",
+     "ISR",
+     "PSX",
+     "SYR",
+     "TUR",
+     "DZA",
+     "ESP",
+     "ROU",
+     "MAR"
+    ]
+   },
+   "rel": {
+    "DEU": -45,
+    "NLD": -30,
+    "IRN": -55,
+    "IRQ": -45,
+    "SAU": -25,
+    "ARM": -15,
+    "GEO": -10,
+    "UKR": -15,
+    "MDA": -20,
+    "POL": -20,
+    "CZE": -25,
+    "SVK": -20,
+    "DNK": -15,
+    "SDN": -20,
+    "RUS": -15,
+    "USA": -20
+   },
+   "claimsBy": [
+    {
+     "holder": "DEU",
+     "entities": [
+      "DEU"
+     ],
+     "just": "A Germânia Magna: a conquista que Augusto não completou."
+    },
+    {
+     "holder": "GBR",
+     "provinces": [
+      "GBR-2026",
+      "GBR-2138",
+      "GBR-2017",
+      "GBR-2016",
+      "GBR-2015",
+      "GBR-2025",
+      "GBR-2023",
+      "GBR-2024",
+      "GBR-2022",
+      "GBR-2009",
+      "GBR-2006",
+      "GBR-2005",
+      "GBR-2008",
+      "GBR-2011",
+      "GBR-2746",
+      "GBR-2745",
+      "GBR-2014",
+      "GBR-2013",
+      "GBR-2012",
+      "GBR-2019",
+      "GBR-2020",
+      "GBR-2018",
+      "GBR-2021",
+      "GBR-2772",
+      "GBR-2744",
+      "GBR-2747",
+      "GBR-2007",
+      "GBR-2002",
+      "GBR-2004",
+      "GBR-2003",
+      "GBR-2001",
+      "GBR-2010"
+     ],
+     "just": "A Caledônia, além do muro de Adriano."
+    },
+    {
+     "holder": "IRQ",
+     "entities": [
+      "IRQ"
+     ],
+     "just": "A Mesopotâmia conquistada por Trajano em 116."
+    },
+    {
+     "holder": "ARM",
+     "entities": [
+      "ARM"
+     ],
+     "just": "A província da Armênia de Trajano."
+    }
+   ],
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "megali_hellas",
+   "name": "Megali Hellas",
+   "desc": "História alternativa: a \"Grande Ideia\" venceu. Uma Grécia agressiva e expansionista tomou Constantinopla, a Trácia, a costa da Jônia, o Épiro do Norte, a Macedônia do sul e partes da Bulgária, e quer mais: o Ponto, Esmirna inteira, o resto da Trácia. Os vizinhos humilhados querem vingança; as minorias anexadas, liberdade.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "GRC",
+     "CYP",
+     "CYN",
+     "ESB",
+     "WSB"
+    ],
+    "provinces": [
+     "TUR-2241",
+     "TUR-2240",
+     "TUR-2265",
+     "TUR-2242",
+     "TUR-2239",
+     "TUR-5518",
+     "TUR-2264",
+     "TUR-2238",
+     "TUR-2230",
+     "TUR-2229",
+     "TUR-2278",
+     "TUR-2277",
+     "TUR-2274",
+     "TUR-3014",
+     "ALB-1521",
+     "ALB-1525",
+     "ALB-1504",
+     "ALB-1523",
+     "BGR-2254",
+     "BGR-2232",
+     "BGR-3002",
+     "BGR-2237",
+     "BGR-2236",
+     "MKD-4845",
+     "MKD-2895",
+     "MKD-2898",
+     "MKD-2899",
+     "MKD-2894",
+     "MKD-3000",
+     "MKD-2994",
+     "MKD-2993",
+     "MKD-2996",
+     "MKD-2998",
+     "MKD-2936",
+     "MKD-2947",
+     "MKD-2903",
+     "MKD-2896",
+     "MKD-2941",
+     "MKD-2945",
+     "MKD-2946",
+     "MKD-2942",
+     "MKD-2897",
+     "MKD-2927"
+    ]
+   },
+   "capital": "TUR",
+   "capitalProv": "TUR-2265",
+   "nation": {
+    "officialName": "Megali Hellas — Reino da Grande Grécia",
+    "shortName": "Hélade",
+    "leader": "Primeiro-ministro Konstantinos Mavrogenis",
+    "currency": "Dracma",
+    "motto": "Eleftheria i thanatos",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "layout": "cantonstripes",
+    "colors": [
+     "#0d5eaf",
+     "#ffffff",
+     "#0d5eaf"
+    ],
+    "emblems": [
+     {
+      "type": "cross",
+      "color": "#ffffff",
+      "x": 0.22,
+      "y": 0.28,
+      "s": 0.5
+     },
+     {
+      "type": "eagle2",
+      "color": "#d4a017",
+      "x": 0.72,
+      "y": 0.62,
+      "s": 0.32
+     }
+    ]
+   },
+   "start": {
+    "flags": [
+     "megali"
+    ],
+    "stability": -12,
+    "separatism": 34,
+    "reputation": -15,
+    "readiness": 18,
+    "equipment": 10,
+    "defense": 6,
+    "unrestIn": [
+     "TUR",
+     "ALB",
+     "BGR",
+     "MKD"
+    ]
+   },
+   "rel": {
+    "TUR": -80,
+    "ALB": -55,
+    "BGR": -50,
+    "MKD": -50,
+    "SRB": 10,
+    "ARM": 20,
+    "ITA": -10,
+    "RUS": -5,
+    "EGY": -10,
+    "FRA": 5,
+    "GBR": 5,
+    "USA": 0,
+    "ROU": -5
+   },
+   "claimsBy": [
+    {
+     "holder": "TUR",
+     "provinces": [
+      "TUR-2301",
+      "TUR-2302",
+      "TUR-2292",
+      "TUR-2293",
+      "TUR-2296",
+      "TUR-2294",
+      "TUR-2267",
+      "TUR-2266",
+      "TUR-2271",
+      "TUR-2269",
+      "TUR-2276",
+      "TUR-2272"
+     ],
+     "just": "O Ponto e a Anatólia ocidental: as terras gregas da \"Grande Ideia\"."
+    },
+    {
+     "holder": "BGR",
+     "provinces": [
+      "BGR-2260",
+      "BGR-2235",
+      "BGR-2233",
+      "BGR-2234"
+     ],
+     "just": "A Rumélia Oriental e o litoral do Mar Negro."
+    },
+    {
+     "holder": "ALB",
+     "provinces": [
+      "ALB-1524",
+      "ALB-1495",
+      "ALB-1494"
+     ],
+     "just": "O Épiro inteiro."
+    },
+    {
+     "holder": "MKD",
+     "entities": [
+      "MKD"
+     ],
+     "just": "A Macedônia histórica."
+    }
+   ],
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "karelia_republic",
+   "name": "República da Carélia",
+   "desc": "A Carélia russa proclamou independência: florestas, lagos, uma ferrovia estratégica e uma fronteira longa com a Finlândia. O inverno dura meio ano; Moscou não reconhece e Helsinque observa com simpatia cautelosa.",
+   "alt": true,
+   "cold": true,
+   "territory": {
+    "provinces": [
+     "RUS-2353"
+    ]
+   },
+   "capital": "RUS",
+   "nation": {
+    "officialName": "República da Carélia",
+    "shortName": "Carélia",
+    "leader": "Presidente Aino Hakkarainen",
+    "currency": "Marco careliano",
+    "motto": "Metsät ja järvet",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "reg": "rus_karelia_republic_of_karelia",
+    "alt": {
+     "layout": "h3",
+     "colors": [
+      "#d52b1e",
+      "#0b3d91",
+      "#009a44"
+     ],
+     "emblems": []
+    }
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 8,
+    "infra": -6,
+    "treasury": -0.4,
+    "flags": [
+     "cold_start"
+    ]
+   },
+   "rel": {
+    "RUS": -50,
+    "FIN": 25,
+    "SWE": 10,
+    "USA": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "cold",
+    "europe"
+   ]
+  },
+  {
+   "id": "greater_finland",
+   "name": "Finlândia–Carélia Unida",
+   "desc": "Finlândia e Carélia formam um único país nórdico-báltico. Alta tecnologia, lagos, um exército de reservistas e uma fronteira de 1.300 km com a Rússia.",
+   "alt": true,
+   "cold": true,
+   "territory": {
+    "entities": [
+     "FIN"
+    ],
+    "provinces": [
+     "RUS-2353"
+    ]
+   },
+   "capital": "FIN",
+   "nation": {
+    "officialName": "República da Finlândia e Carélia",
+    "shortName": "Fino-Carélia",
+    "leader": "Presidente Eero Lindqvist",
+    "currency": "Euro",
+    "motto": "Sisu",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "nordic",
+    "colors": [
+     "#ffffff",
+     "#003580",
+     "#003580"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -4,
+    "separatism": 6,
+    "readiness": 6,
+    "flags": [
+     "cold_start"
+    ]
+   },
+   "rel": {
+    "RUS": -55,
+    "SWE": 15,
+    "NOR": 10,
+    "USA": 10,
+    "DEU": 5
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cats": [
+    "cold",
+    "europe"
+   ]
+  },
+  {
+   "id": "sakha_republic",
+   "name": "República Sakha (Iacútia)",
+   "desc": "A maior região da Rússia vira país: permafrost, diamantes, ouro, gás e as cidades mais frias do planeta. Terra imensa, população pequena e dependência total de importações de combustível e comida.",
+   "alt": true,
+   "cold": true,
+   "territory": {
+    "provinces": [
+     "RUS-2612"
+    ]
+   },
+   "capital": "RUS",
+   "nation": {
+    "officialName": "República Sakha",
+    "shortName": "Sakha",
+    "leader": "Presidente Aisen Nikolaev",
+    "currency": "Rublo sakha",
+    "motto": "Frio, diamante e vontade",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "reg": "rus_sakha_yakutia_sakha_republic_yakutia",
+    "alt": {
+     "layout": "h3",
+     "colors": [
+      "#2e75c6",
+      "#e11a2b",
+      "#ffffff"
+     ],
+     "emblems": []
+    }
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 6,
+    "infra": -18,
+    "hunger": 4,
+    "treasury": 0.4,
+    "flags": [
+     "cold_start"
+    ]
+   },
+   "rel": {
+    "RUS": -35,
+    "CHN": 10,
+    "JPN": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "siberian_republic",
+   "name": "República Siberiana",
+   "desc": "A Sibéria rompe com Moscou: petróleo, gás, uma ferrovia transcontinental e vizinhos poderosos — China, Cazaquistão e Mongólia — de olho. Oito fusos horários de neve.",
+   "alt": true,
+   "cold": true,
+   "territory": {
+    "provinces": [
+     "RUS-2400",
+     "RUS-2606",
+     "RUS-2605",
+     "RUS-2610",
+     "RUS-2397",
+     "RUS-2403",
+     "RUS-2399",
+     "RUS-2603",
+     "RUS-2167",
+     "RUS-2401",
+     "RUS-2602",
+     "RUS-2402"
+    ]
+   },
+   "capital": "RUS",
+   "nation": {
+    "officialName": "República Siberiana",
+    "shortName": "Sibéria",
+    "leader": "Presidente Dmitri Sokolov",
+    "currency": "Rublo siberiano",
+    "motto": "Terra, gelo e futuro",
+    "regime": "República federal"
+   },
+   "flag": {
+    "reg": "xx_siberia",
+    "alt": {
+     "layout": "h2",
+     "colors": [
+      "#ffffff",
+      "#078930"
+     ],
+     "emblems": [
+      {
+       "type": "star",
+       "color": "#ffd700",
+       "x": 0.5,
+       "y": 0.5,
+       "s": 0.3
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 14,
+    "infra": -8,
+    "treasury": -0.3,
+    "flags": [
+     "cold_start"
+    ]
+   },
+   "rel": {
+    "RUS": -55,
+    "CHN": 5,
+    "KAZ": 5,
+    "MNG": 10
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "alaska_free",
+   "name": "República do Alasca",
+   "desc": "O Alasca declara independência dos Estados Unidos. Petróleo, pesca, bases militares americanas e povos nativos com reivindicações próprias. Washington vê o território como estratégico demais para deixar sair.",
+   "alt": true,
+   "cold": true,
+   "territory": {
+    "provinces": [
+     "USA-3563"
+    ]
+   },
+   "capital": "USA",
+   "nation": {
+    "officialName": "República do Alasca",
+    "shortName": "Alasca",
+    "leader": "Governadora Sarah Nakamura",
+    "currency": "Dólar do Alasca",
+    "motto": "North to the future",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "reg": "usa_alaska",
+    "alt": {
+     "layout": "v2",
+     "colors": [
+      "#0b3d91",
+      "#0b3d91"
+     ],
+     "emblems": [
+      {
+       "type": "star",
+       "color": "#ffd700",
+       "x": 0.3,
+       "y": 0.35,
+       "s": 0.3
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -6,
+    "separatism": 4,
+    "treasury": 0.4,
+    "flags": [
+     "cold_start"
+    ]
+   },
+   "rel": {
+    "USA": -30,
+    "CAN": 15,
+    "RUS": -10,
+    "JPN": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "sapmi_lapland",
+   "name": "Lapônia Unida (Sápmi)",
+   "desc": "O Norte nórdico se une: Lapônia finlandesa, Troms e Finnmark, Norrbotten e Murmansk formam um país ártico de renas, minérios, bases militares e povos sami. Quatro vizinhos desconfiam.",
+   "alt": true,
+   "cold": true,
+   "territory": {
+    "provinces": [
+     "FIN-3176",
+     "NOR-900",
+     "NOR-1062",
+     "SWE-190",
+     "RUS-2333"
+    ]
+   },
+   "capital": "FIN",
+   "nation": {
+    "officialName": "República da Lapônia Unida",
+    "shortName": "Sápmi",
+    "leader": "Presidente Ánde Gaup",
+    "currency": "Coroa polar",
+    "motto": "Beaivi ja dálvi",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "nordic",
+    "colors": [
+     "#c8102e",
+     "#0b3d91",
+     "#ffd700"
+    ],
+    "emblems": [
+     {
+      "type": "circle",
+      "color": "#c8102e",
+      "x": 0.4,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 14,
+    "infra": -12,
+    "treasury": -0.2,
+    "defense": 6,
+    "flags": [
+     "cold_start"
+    ]
+   },
+   "rel": {
+    "RUS": -45,
+    "NOR": -10,
+    "SWE": -5,
+    "FIN": -10
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "cold",
+    "europe"
+   ]
+  },
+  {
+   "id": "arctic_federation",
+   "name": "Federação Ártica",
+   "desc": "Groenlândia, Islândia e Ilhas Faroé se unem numa federação do Atlântico Norte. Pesca, aviação, terras raras e a chave de uma nova rota marítima; todos os vizinhos têm algo a dizer.",
+   "alt": true,
+   "cold": true,
+   "territory": {
+    "entities": [
+     "GRL",
+     "ISL",
+     "FRO"
+    ]
+   },
+   "capital": "ISL",
+   "nation": {
+    "officialName": "Federação do Atlântico Norte",
+    "shortName": "Ártica",
+    "leader": "Primeira-ministra Katrín Olsen",
+    "currency": "Coroa ártica",
+    "motto": "Frio, fé e fiordes",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "nordic",
+    "colors": [
+     "#005eb8",
+     "#ffffff",
+     "#c8102e"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -4,
+    "separatism": 12,
+    "infra": -10,
+    "treasury": 0.2,
+    "flags": [
+     "cold_start"
+    ]
+   },
+   "rel": {
+    "DNK": 5,
+    "USA": 5,
+    "NOR": 10,
+    "RUS": -15,
+    "CAN": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "cold",
+    "europe"
+   ]
+  },
+  {
+   "id": "empire_brazil",
+   "name": "Império do Brasil restaurado",
+   "desc": "Uma monarquia constitucional foi restaurada: o Império do Brasil volta, com Cisplatina e tudo. Bandeira imperial, Poder Moderador e um parlamento dividido entre republicanos e monarquistas. Buenos Aires desconfia.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "BRA",
+     "URY"
+    ]
+   },
+   "capital": "BRA",
+   "nation": {
+    "officialName": "Império do Brasil",
+    "shortName": "Brasil Imperial",
+    "leader": "Imperador Pedro IV",
+    "currency": "Real imperial",
+    "motto": "Independência ou morte",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "reg": "imp_brazil",
+    "alt": {
+     "layout": "v3",
+     "colors": [
+      "#009c3b",
+      "#ffdf00",
+      "#009c3b"
+     ],
+     "emblems": [
+      {
+       "type": "crown",
+       "color": "#ffdf00",
+       "x": 0.5,
+       "y": 0.5,
+       "s": 0.3
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 18,
+    "legitimacy": -4,
+    "unrestIn": [
+     "URY"
+    ],
+    "flags": [
+     "empire_start"
+    ]
+   },
+   "rel": {
+    "ARG": -25,
+    "PRY": -10,
+    "USA": 0,
+    "PRT": 10
+   },
+   "orgs": [
+    "UN",
+    "MERCOSUR"
+   ],
+   "cats": [
+    "latam"
+   ]
+  },
+  {
+   "id": "amazon_republic",
+   "name": "República Amazônica",
+   "desc": "Os estados da Amazônia se separam do Brasil: a maior floresta do mundo, minério, biodiversidade, povos indígenas e garimpos ilegais. Pressão ambiental internacional e fronteiras difíceis de controlar.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "BRA-592",
+     "BRA-594",
+     "BRA-576",
+     "BRA-595",
+     "BRA-670",
+     "BRA-681",
+     "BRA-596"
+    ]
+   },
+   "capital": "BRA",
+   "nation": {
+    "officialName": "República Federativa da Amazônia",
+    "shortName": "Amazônia",
+    "leader": "Presidente Raoni Silva",
+    "currency": "Real amazônico",
+    "motto": "Floresta viva, povo livre",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "v2",
+    "colors": [
+     "#006b3c",
+     "#006b3c"
+    ],
+    "emblems": [
+     {
+      "type": "tree",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.4
+     }
+    ]
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 16,
+    "infra": -22,
+    "treasury": -0.3,
+    "hunger": 2
+   },
+   "rel": {
+    "BRA": -50,
+    "PER": 5,
+    "COL": 5,
+    "USA": 5,
+    "DEU": 10
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "latam"
+   ]
+  },
+  {
+   "id": "platine_union",
+   "name": "Províncias Unidas do Prata",
+   "desc": "O sonho do Vice-Reino do Rio da Prata: Argentina, Uruguai, Paraguai e Bolívia numa só república. Pampas, soja, lítio e rivalidades históricas entre Buenos Aires e o interior.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ARG",
+     "URY",
+     "PRY",
+     "BOL"
+    ]
+   },
+   "capital": "ARG",
+   "nation": {
+    "officialName": "Províncias Unidas do Rio da Prata",
+    "shortName": "Prata",
+    "leader": "Presidente Martín Echeverría",
+    "currency": "Peso platino",
+    "motto": "En unión y libertad",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#74acdf",
+     "#ffffff",
+     "#74acdf"
+    ],
+    "emblems": [
+     {
+      "type": "sun",
+      "color": "#f6b40e",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.26
+     }
+    ]
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 22,
+    "unrestIn": [
+     "BOL",
+     "PRY"
+    ]
+   },
+   "rel": {
+    "BRA": -15,
+    "CHL": -10,
+    "PER": 0
+   },
+   "orgs": [
+    "UN",
+    "MERCOSUR"
+   ],
+   "cats": [
+    "latam"
+   ]
+  },
+  {
+   "id": "maya_republic",
+   "name": "República Maia",
+   "desc": "Sul do México, Guatemala e Belize se unem como uma república maia e mestiça: selvas, ruínas, café, petróleo e fortes movimentos indígenas.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "MEX-2735",
+     "MEX-2737",
+     "MEX-2736",
+     "MEX-2722",
+     "MEX-2725"
+    ],
+    "entities": [
+     "GTM",
+     "BLZ"
+    ]
+   },
+   "capital": "GTM",
+   "nation": {
+    "officialName": "República Maia Unida",
+    "shortName": "Mayab",
+    "leader": "Presidenta Rigoberta Tun",
+    "currency": "Quetzal maia",
+    "motto": "Ixim ka kuxtal",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#00a651",
+     "#ffffff",
+     "#c8102e"
+    ],
+    "emblems": [
+     {
+      "type": "sun",
+      "color": "#f2c400",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.3
+     }
+    ]
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 20,
+    "infra": -10,
+    "poverty": 5,
+    "treasury": -0.3
+   },
+   "rel": {
+    "MEX": -40,
+    "USA": 0,
+    "HND": 10,
+    "SLV": 8
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "latam"
+   ]
+  },
+  {
+   "id": "mexico_empire",
+   "name": "Segundo Império Mexicano",
+   "desc": "Uma monarquia foi restaurada no México. Coroa, hacendados, Igreja e um exército profissional contra liberais e guerrilhas. Washington olha com receio.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "MEX"
+    ]
+   },
+   "capital": "MEX",
+   "nation": {
+    "officialName": "Império Mexicano",
+    "shortName": "México Imperial",
+    "leader": "Imperador Maximiliano II",
+    "currency": "Peso imperial",
+    "motto": "Equidad en la justicia",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "reg": "imp_mexico_2",
+    "alt": {
+     "layout": "h3",
+     "colors": [
+      "#006847",
+      "#ffffff",
+      "#ce1126"
+     ],
+     "emblems": [
+      {
+       "type": "eagle",
+       "color": "#8b5a2b",
+       "x": 0.5,
+       "y": 0.5,
+       "s": 0.26
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 14,
+    "legitimacy": -6,
+    "flags": [
+     "empire_start"
+    ]
+   },
+   "rel": {
+    "USA": -25,
+    "FRA": 12,
+    "ESP": 8,
+    "GTM": -5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "latam"
+   ]
+  },
+  {
+   "id": "antilles_federation",
+   "name": "Federação das Antilhas",
+   "desc": "Jamaica, Trinidad e Tobago, Barbados, Bahamas e as ilhas menores formam uma federação caribenha: turismo, furacões, remessas e a sombra dos grandes vizinhos.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "JAM",
+     "TTO",
+     "BRB",
+     "BHS",
+     "LCA",
+     "VCT",
+     "GRD",
+     "ATG",
+     "KNA",
+     "DMA"
+    ]
+   },
+   "capital": "JAM",
+   "nation": {
+    "officialName": "Federação das Antilhas",
+    "shortName": "Antilhas",
+    "leader": "Primeira-ministra Marcia Bennett",
+    "currency": "Dólar das Antilhas",
+    "motto": "Muitas ilhas, um mar",
+    "regime": "Federação parlamentar"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#00a3dd",
+     "#ffd700",
+     "#00a3dd"
+    ],
+    "emblems": [
+     {
+      "type": "sun",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.26
+     }
+    ]
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 24,
+    "infra": -6,
+    "treasury": -0.2
+   },
+   "rel": {
+    "USA": 8,
+    "GBR": 10,
+    "CUB": 5,
+    "VEN": -5
+   },
+   "orgs": [
+    "UN",
+    "CARICOM"
+   ],
+   "cats": [
+    "latam"
+   ]
+  },
+  {
+   "id": "flanders_independent",
+   "name": "Flandres independente",
+   "desc": "Flandres deixa a Bélgica: porto de Antuérpia, indústria, língua neerlandesa e uma capital, Bruxelas, disputada. Valônia e Bruxelas ficam do outro lado.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "BEL-3479",
+     "BEL-3478",
+     "BEL-3480",
+     "BEL-3",
+     "BEL-3475"
+    ]
+   },
+   "capital": "BEL",
+   "nation": {
+    "officialName": "República da Flandres",
+    "shortName": "Flandres",
+    "leader": "Primeiro-ministro Bart De Smet",
+    "currency": "Euro",
+    "motto": "Eendracht maakt macht",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "reg": "bel_flanders",
+    "alt": {
+     "layout": "solid",
+     "colors": [
+      "#fcdd09"
+     ],
+     "emblems": [
+      {
+       "type": "lionr",
+       "color": "#111111",
+       "x": 0.5,
+       "y": 0.5,
+       "s": 0.8
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -2,
+    "separatism": 4,
+    "treasury": 0.3,
+    "reputation": -2
+   },
+   "rel": {
+    "BEL": -35,
+    "NLD": 18,
+    "FRA": -5,
+    "DEU": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "bavaria_independent",
+   "name": "Estado Livre da Baviera",
+   "desc": "A Baviera deixa a Alemanha: indústria automotiva, cervejarias, Alpes e um partido regional forte. Berlim fala em traição; Viena e Zurique observam.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "DEU-1591"
+    ]
+   },
+   "capital": "DEU",
+   "nation": {
+    "officialName": "Estado Livre da Baviera",
+    "shortName": "Baviera",
+    "leader": "Ministro-presidente Stefan Huber",
+    "currency": "Euro",
+    "motto": "Mia san mia",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "reg": "deu_bavaria_lozengy_bavaria_striped_bavaria",
+    "alt": {
+     "layout": "checker",
+     "colors": [
+      "#ffffff",
+      "#0098d4"
+     ],
+     "emblems": []
+    }
+   },
+   "start": {
+    "stability": -2,
+    "separatism": 4,
+    "treasury": 0.5
+   },
+   "rel": {
+    "DEU": -30,
+    "AUT": 18,
+    "CHE": 8,
+    "ITA": 3
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "brittany_independent",
+   "name": "Bretanha independente",
+   "desc": "A Bretanha rompe com a França: língua celta, pesca, marinha mercante e um passado de resistência. Paris vê uma ameaça à unidade e à força de dissuasão no litoral.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "FRA-5327",
+     "FRA-5292",
+     "FRA-5283",
+     "FRA-5308"
+    ]
+   },
+   "capital": "FRA",
+   "nation": {
+    "officialName": "República da Bretanha",
+    "shortName": "Bretanha",
+    "leader": "Presidente Gwenaël Le Goff",
+    "currency": "Euro",
+    "motto": "Kentoc'h mervel eget bezañ saotret",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "reg": "fra_brittany_gwenn_ha_du_brittany",
+    "alt": {
+     "layout": "cantonstripes",
+     "colors": [
+      "#ffffff",
+      "#111111",
+      "#ffffff"
+     ],
+     "emblems": []
+    }
+   },
+   "start": {
+    "stability": -4,
+    "separatism": 4,
+    "reputation": -2
+   },
+   "rel": {
+    "FRA": -35,
+    "IRL": 15,
+    "GBR": 8,
+    "ESP": 3
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "danube_monarchy",
+   "name": "Monarquia do Danúbio",
+   "desc": "Áustria, Hungria, Tchéquia, Eslováquia, Eslovênia e Croácia voltam a formar uma monarquia dual no Danúbio. Valsas, nacionalismos rivais e vizinhos que lembram do século XX.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "AUT",
+     "HUN",
+     "CZE",
+     "SVK",
+     "SVN",
+     "HRV"
+    ]
+   },
+   "capital": "AUT",
+   "nation": {
+    "officialName": "Monarquia Danubiana",
+    "shortName": "Danúbio",
+    "leader": "Imperador Carlos V",
+    "currency": "Coroa danubiana",
+    "motto": "Viribus unitis",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "reg": "imp_austria_hungary",
+    "alt": {
+     "layout": "h2",
+     "colors": [
+      "#c8102e",
+      "#ffffff"
+     ],
+     "emblems": []
+    }
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 30,
+    "legitimacy": -4,
+    "unrestIn": [
+     "HUN",
+     "CZE",
+     "HRV"
+    ],
+    "flags": [
+     "empire_start"
+    ]
+   },
+   "rel": {
+    "DEU": 0,
+    "ITA": -5,
+    "SRB": -25,
+    "ROU": -10,
+    "POL": 0,
+    "RUS": -15
+   },
+   "orgs": [
+    "UN",
+    "EU"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "holy_roman_revival",
+   "name": "Sacro Império restaurado",
+   "desc": "Alemanha, Áustria, Suíça, Países Baixos, Bélgica, Luxemburgo e Tchéquia revivem o Sacro Império Romano-Germânico: um mosaico de ducados, cidades livres e uma coroa eletiva.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "DEU",
+     "AUT",
+     "CHE",
+     "NLD",
+     "BEL",
+     "LUX",
+     "CZE"
+    ]
+   },
+   "capital": "DEU",
+   "nation": {
+    "officialName": "Sacro Império Romano-Germânico",
+    "shortName": "Sacro Império",
+    "leader": "Imperador Henrique VIII",
+    "currency": "Táler imperial",
+    "motto": "Renovatio Imperii",
+    "regime": "Monarquia eletiva federal"
+   },
+   "flag": {
+    "reg": "imp_hre",
+    "alt": {
+     "layout": "h2",
+     "colors": [
+      "#ffd700",
+      "#111111"
+     ],
+     "emblems": [
+      {
+       "type": "eagle",
+       "color": "#c8102e",
+       "x": 0.5,
+       "y": 0.5,
+       "s": 0.45
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 28,
+    "unrestIn": [
+     "CHE",
+     "NLD",
+     "CZE"
+    ],
+    "flags": [
+     "empire_start"
+    ]
+   },
+   "rel": {
+    "FRA": -25,
+    "ITA": -5,
+    "POL": -8,
+    "RUS": -20
+   },
+   "orgs": [
+    "UN",
+    "EU"
+   ],
+   "cats": [
+    "europe"
+   ]
+  },
+  {
+   "id": "turkestan_federation",
+   "name": "Federação do Turquestão",
+   "desc": "Cazaquistão, Uzbequistão, Quirguistão, Tadjiquistão e Turcomenistão se unem na Rota da Seda: gás, algodão, água disputada e poderosos vizinhos — Rússia e China — de olho.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "KAZ",
+     "UZB",
+     "KGZ",
+     "TJK",
+     "TKM"
+    ]
+   },
+   "capital": "KAZ",
+   "nation": {
+    "officialName": "Federação do Turquestão",
+    "shortName": "Turquestão",
+    "leader": "Presidente Daniyar Nazarov",
+    "currency": "Tenge federal",
+    "motto": "Bir el, bir tağdır",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#00afca",
+     "#ffffff",
+     "#00afca"
+    ],
+    "emblems": [
+     {
+      "type": "sun",
+      "color": "#f2c400",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.28
+     }
+    ]
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 26,
+    "treasury": -0.2,
+    "unrestIn": [
+     "TJK",
+     "KGZ"
+    ]
+   },
+   "rel": {
+    "RUS": -10,
+    "CHN": 0,
+    "IRN": -5,
+    "USA": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "steppe_khanate",
+   "name": "Grande Canato da Estepe",
+   "desc": "Cazaquistão e Mongólia — as duas maiores terras da estepe — reúnem-se sob um canato moderno: cavalos, minérios, pastores e fronteiras enormes entre Rússia e China.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "KAZ",
+     "MNG"
+    ]
+   },
+   "capital": "KAZ",
+   "nation": {
+    "officialName": "Grande Canato da Estepe",
+    "shortName": "Canato",
+    "leader": "Grão-Cã Temür Bayanov",
+    "currency": "Tögrög",
+    "motto": "Tengri e a estepe",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "layout": "v2",
+    "colors": [
+     "#00afca",
+     "#00afca"
+    ],
+    "emblems": [
+     {
+      "type": "sun",
+      "color": "#f2c400",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.3
+     }
+    ]
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 14,
+    "hunger": 2
+   },
+   "rel": {
+    "RUS": -15,
+    "CHN": -10,
+    "TUR": 10
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "afghan_republic_reborn",
+   "name": "Afeganistão reconstruído",
+   "desc": "Afeganistão e o corredor do Vacão: montanhas, ópio, minérios de lítio e dezenas de grupos armados. A reconstrução só avança se houver segurança.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "AFG"
+    ]
+   },
+   "capital": "AFG",
+   "nation": {
+    "officialName": "República Islâmica do Afeganistão",
+    "shortName": "Afeganistão",
+    "leader": "Presidente Ahmad Wardak",
+    "currency": "Afegane",
+    "motto": "Unidade na diversidade",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "v3",
+    "colors": [
+     "#111111",
+     "#c8102e",
+     "#078930"
+    ],
+    "emblems": [
+     {
+      "type": "crescent",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.22
+     }
+    ]
+   },
+   "start": {
+    "stability": -25,
+    "infra": -25,
+    "treasury": -1,
+    "hunger": 8,
+    "poverty": 12,
+    "separatism": 28,
+    "health": -12
+   },
+   "rel": {
+    "PAK": -15,
+    "IRN": -10,
+    "USA": 5,
+    "CHN": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "asean_federation",
+   "name": "Federação do Sudeste Asiático",
+   "desc": "Dez nações do Sudeste Asiático formam uma federação: cadeias de suprimentos, mares disputados, mil línguas e a pressão de duas superpotências.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "IDN",
+     "MYS",
+     "BRN",
+     "SGP",
+     "PHL",
+     "THA",
+     "VNM",
+     "KHM",
+     "LAO",
+     "MMR"
+    ]
+   },
+   "capital": "IDN",
+   "nation": {
+    "officialName": "Federação do Sudeste Asiático",
+    "shortName": "Sudeste Federado",
+    "leader": "Presidente Anwar Santoso",
+    "currency": "Ringgit federal",
+    "motto": "Bhinneka Tunggal Ika",
+    "regime": "Federação presidencialista"
+   },
+   "flag": {
+    "layout": "h2",
+    "colors": [
+     "#c8102e",
+     "#ffffff"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.28
+     }
+    ]
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 34,
+    "unrestIn": [
+     "MMR",
+     "PHL"
+    ]
+   },
+   "rel": {
+    "CHN": -10,
+    "USA": 5,
+    "JPN": 8,
+    "IND": 3
+   },
+   "orgs": [
+    "UN",
+    "ASEAN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "nusantara_raya",
+   "name": "Nusantara Raya",
+   "desc": "Indonésia, Malásia, Brunei e Singapura formam o arquipélago unido: estreitos estratégicos, petróleo, florestas de óleo de palma e etnias entrelaçadas.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "IDN",
+     "MYS",
+     "BRN",
+     "SGP"
+    ]
+   },
+   "capital": "IDN",
+   "nation": {
+    "officialName": "República da Nusantara Raya",
+    "shortName": "Nusantara",
+    "leader": "Presidente Siti Rahman",
+    "currency": "Rupia unida",
+    "motto": "Bhinneka Tunggal Ika",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h2",
+    "colors": [
+     "#c8102e",
+     "#ffffff"
+    ],
+    "emblems": [
+     {
+      "type": "crescentstar",
+      "color": "#ffd700",
+      "x": 0.25,
+      "y": 0.3,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 22,
+    "unrestIn": [
+     "MYS"
+    ]
+   },
+   "rel": {
+    "PHL": -8,
+    "THA": -5,
+    "AUS": -5,
+    "CHN": -5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "siam_indochina",
+   "name": "Grande Sião",
+   "desc": "Tailândia, Laos e Camboja formam um reino mekong: arrozais, templos, rios compartilhados e memórias de antigos impérios.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "THA",
+     "LAO",
+     "KHM"
+    ]
+   },
+   "capital": "THA",
+   "nation": {
+    "officialName": "Reino do Grande Sião",
+    "shortName": "Sião",
+    "leader": "Rei Vajira IX",
+    "currency": "Baht",
+    "motto": "Nação, religião e rei",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "layout": "hcenter",
+    "colors": [
+     "#a51931",
+     "#f4f5f8",
+     "#2d2a4a"
+    ],
+    "emblems": [
+     {
+      "type": "wheel",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.12
+     }
+    ]
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 16,
+    "unrestIn": [
+     "KHM",
+     "LAO"
+    ]
+   },
+   "rel": {
+    "VNM": -20,
+    "MMR": -8,
+    "CHN": 0,
+    "USA": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "mindanao_free",
+   "name": "Mindanao independente",
+   "desc": "Mindanao se separa das Filipinas: ouro, bananas, minorias muçulmanas e cristãs, e um passado de insurgências. Manila não reconhece.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "PHL-2524",
+     "PHL-2591",
+     "PHL-2521",
+     "PHL-2595",
+     "PHL-5531",
+     "PHL-5530",
+     "PHL-2573",
+     "PHL-2522",
+     "PHL-2523",
+     "PHL-2520",
+     "PHL-4932",
+     "PHL-2574",
+     "PHL-2576",
+     "PHL-5527",
+     "PHL-2580",
+     "PHL-2598",
+     "PHL-5529",
+     "PHL-2596",
+     "PHL-5528",
+     "PHL-2592",
+     "PHL-2597",
+     "PHL-2511",
+     "PHL-2519",
+     "PHL-2590",
+     "PHL-2589",
+     "PHL-2579",
+     "PHL-2599"
+    ]
+   },
+   "capital": "PHL",
+   "nation": {
+    "officialName": "República de Mindanao",
+    "shortName": "Mindanao",
+    "leader": "Presidente Datu Salik",
+    "currency": "Peso mindanao",
+    "motto": "Paz e dignidade",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "reg": "xx_bangsamoro",
+    "alt": {
+     "layout": "h3",
+     "colors": [
+      "#ffffff",
+      "#078930",
+      "#c8102e"
+     ],
+     "emblems": [
+      {
+       "type": "crescentstar",
+       "color": "#ffffff",
+       "x": 0.5,
+       "y": 0.5,
+       "s": 0.3
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 14,
+    "infra": -14,
+    "treasury": -0.3
+   },
+   "rel": {
+    "PHL": -45,
+    "MYS": 12,
+    "IDN": 8,
+    "USA": 0
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "akhand_bharat",
+   "name": "Índia Unida (Akhand Bharat)",
+   "desc": "Índia, Paquistão, Bangladesh, Nepal, Butão e Sri Lanka: um subcontinente, 1,9 bilhão de pessoas, rios sagrados, religiões plurais e rivalidades de décadas.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "IND",
+     "PAK",
+     "BGD",
+     "NPL",
+     "BTN",
+     "LKA"
+    ]
+   },
+   "capital": "IND",
+   "nation": {
+    "officialName": "União do Subcontinente",
+    "shortName": "Bharat Unida",
+    "leader": "Primeiro-ministro Arjun Rao",
+    "currency": "Rupia unida",
+    "motto": "Satyameva Jayate",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#ff9933",
+     "#ffffff",
+     "#138808"
+    ],
+    "emblems": [
+     {
+      "type": "wheel",
+      "color": "#000080",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -18,
+    "separatism": 40,
+    "hunger": 4,
+    "unrestIn": [
+     "PAK",
+     "BGD",
+     "LKA"
+    ]
+   },
+   "rel": {
+    "CHN": -20,
+    "USA": 5,
+    "RUS": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "bengal_united",
+   "name": "Bengala Unida",
+   "desc": "Bangladesh e Bengala Ocidental se reúnem: delta do Ganges, juta, cheias, vinte e quatro milhões de refugiados históricos e uma identidade linguística forte.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "BGD"
+    ],
+    "provinces": [
+     "IND-3257"
+    ]
+   },
+   "capital": "BGD",
+   "nation": {
+    "officialName": "República de Bengala",
+    "shortName": "Bengala",
+    "leader": "Presidenta Meghna Sen",
+    "currency": "Taka",
+    "motto": "Amar Sonar Bangla",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "v2",
+    "colors": [
+     "#006a4e",
+     "#006a4e"
+    ],
+    "emblems": [
+     {
+      "type": "circle",
+      "color": "#f42a41",
+      "x": 0.45,
+      "y": 0.5,
+      "s": 0.32
+     }
+    ]
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 14,
+    "hunger": 3,
+    "poverty": 6
+   },
+   "rel": {
+    "IND": -35,
+    "CHN": 5,
+    "USA": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "himalayan_federation",
+   "name": "Federação do Himalaia",
+   "desc": "Nepal, Butão e Sikkim reúnem-se nas montanhas: hidrelétricas, turismo de altitude, mosteiros e dois gigantes — Índia e China — como vizinhos.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "NPL",
+     "BTN"
+    ],
+    "provinces": [
+     "IND-3259",
+     "IND-3299"
+    ]
+   },
+   "capital": "NPL",
+   "nation": {
+    "officialName": "Federação do Himalaia",
+    "shortName": "Himalaia",
+    "leader": "Primeiro-ministro Pema Sherpa",
+    "currency": "Rupia do Himalaia",
+    "motto": "Os cumes são a nossa casa",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#003893",
+     "#ffffff",
+     "#dc143c"
+    ],
+    "emblems": [
+     {
+      "type": "mountain",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.3
+     }
+    ]
+   },
+   "start": {
+    "stability": -6,
+    "separatism": 12,
+    "infra": -12
+   },
+   "rel": {
+    "IND": -12,
+    "CHN": -12,
+    "USA": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "indus_republic",
+   "name": "República do Indo",
+   "desc": "Sind, Baluchistão e Punjab formam uma república no vale do Indo: irrigação milenar, portos no Arábico, agricultura e energia — e tensões com vizinhos nucleares.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "PAK-1114",
+     "PAK-1108",
+     "PAK-1113"
+    ]
+   },
+   "capital": "PAK",
+   "nation": {
+    "officialName": "República do Indo",
+    "shortName": "Indo",
+    "leader": "Presidente Sikandar Mirani",
+    "currency": "Rupia do Indo",
+    "motto": "Fé, unidade, disciplina",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#01411c",
+     "#ffffff",
+     "#01411c"
+    ],
+    "emblems": [
+     {
+      "type": "crescentstar",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.3
+     }
+    ]
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 20,
+    "infra": -6
+   },
+   "rel": {
+    "PAK": -30,
+    "IND": -20,
+    "CHN": 8,
+    "USA": 0
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "manchuria_republic",
+   "name": "República da Manchúria",
+   "desc": "Heilongjiang, Jilin e Liaoning se separam da China: aço, soja, petróleo, Rússia e Coreia a um passo e uma economia industrial em declínio.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "CHN-1839",
+     "CHN-1828",
+     "CHN-1813"
+    ]
+   },
+   "capital": "CHN",
+   "nation": {
+    "officialName": "República da Manchúria",
+    "shortName": "Manchúria",
+    "leader": "Presidente Aisin Zhao",
+    "currency": "Yuan manchu",
+    "motto": "Terra negra, povo livre",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#ffd700",
+     "#c8102e",
+     "#0b3d91"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.26
+     }
+    ]
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 8,
+    "treasury": -0.3
+   },
+   "rel": {
+    "CHN": -45,
+    "RUS": 5,
+    "KOR": 8,
+    "JPN": 8,
+    "USA": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "greater_mongolia",
+   "name": "Grande Mongólia",
+   "desc": "Mongólia e a Mongólia Interior unidas: estepes, cobre, carvão, ventos de inverno e um grande legado histórico. Pequim vê separatismo; Moscou observa.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "MNG"
+    ],
+    "provinces": [
+     "CHN-1838"
+    ]
+   },
+   "capital": "MNG",
+   "nation": {
+    "officialName": "Grande República Mongol",
+    "shortName": "Grande Mongólia",
+    "leader": "Presidente Temüjin Batbayar",
+    "currency": "Tögrög",
+    "motto": "Eternamente azul",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "v3",
+    "colors": [
+     "#c4272f",
+     "#015197",
+     "#c4272f"
+    ],
+    "emblems": [
+     {
+      "type": "sun",
+      "color": "#f9cf02",
+      "x": 0.17,
+      "y": 0.4,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 10,
+    "treasury": -0.2
+   },
+   "rel": {
+    "CHN": -50,
+    "RUS": 0,
+    "JPN": 6,
+    "USA": 6
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "korea_japan_union",
+   "name": "União Coreano-Japonesa",
+   "desc": "Coreia e Japão unidos num Estado: tecnologia de ponta, memória histórica difícil, a China ao lado e um arsenal pesado.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "KOR",
+     "PRK",
+     "JPN"
+    ]
+   },
+   "capital": "JPN",
+   "nation": {
+    "officialName": "União do Leste Asiático",
+    "shortName": "Leste Unido",
+    "leader": "Primeiro-ministro Haruto Kim",
+    "currency": "Iene-won",
+    "motto": "Harmonia e progresso",
+    "regime": "República semipresidencialista"
+   },
+   "flag": {
+    "layout": "h2",
+    "colors": [
+     "#ffffff",
+     "#ffffff"
+    ],
+    "emblems": [
+     {
+      "type": "circle",
+      "color": "#c8102e",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.36
+     }
+    ]
+   },
+   "start": {
+    "stability": -16,
+    "separatism": 24,
+    "unrestIn": [
+     "PRK",
+     "KOR"
+    ]
+   },
+   "rel": {
+    "CHN": -25,
+    "RUS": -10,
+    "USA": 8
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "hokkaido_ezo",
+   "name": "República de Ezo (Hokkaido)",
+   "desc": "A ilha de Hokkaido se declara independente do Japão: neve, laticínios, pesca, portos para a Rússia e uma identidade ainda marcada pela cultura ainu.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "JPN-1847"
+    ]
+   },
+   "capital": "JPN",
+   "nation": {
+    "officialName": "República de Ezo",
+    "shortName": "Ezo",
+    "leader": "Presidente Takeaki Enomoto",
+    "currency": "Iene de Ezo",
+    "motto": "Norte e liberdade",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#003087",
+     "#ffffff",
+     "#003087"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#c8102e",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.26
+     }
+    ]
+   },
+   "start": {
+    "stability": -6,
+    "separatism": 4,
+    "infra": -6
+   },
+   "rel": {
+    "JPN": -30,
+    "RUS": -5,
+    "USA": 8,
+    "KOR": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "far_eastern_republic",
+   "name": "República do Extremo Oriente",
+   "desc": "Kamchatka, Magadan, Sacalina, Khabarovsk, Primorye e Tchukotka — o Extremo Oriente russo — proclamam uma república: peixe, madeira, ouro e vizinhos poderosos, no gelo.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "RUS-3468",
+     "RUS-2615",
+     "RUS-2616",
+     "RUS-2614",
+     "RUS-2611",
+     "RUS-2321"
+    ]
+   },
+   "capital": "RUS",
+   "nation": {
+    "officialName": "República do Extremo Oriente",
+    "shortName": "Extremo Oriente",
+    "leader": "Presidente Aleksei Voronin",
+    "currency": "Rublo do Pacífico",
+    "motto": "O Pacífico é nosso",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#0b3d91",
+     "#ffffff",
+     "#c8102e"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.22
+     }
+    ]
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 10,
+    "infra": -16,
+    "treasury": -0.3
+   },
+   "rel": {
+    "RUS": -45,
+    "JPN": 8,
+    "CHN": 0,
+    "KOR": 8,
+    "USA": 8
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "neo_ottoman",
+   "name": "Califado Otomano restaurado",
+   "desc": "Turquia, Síria, Líbano, Jordânia e Iraque reunidos sob uma autoridade otomana restaurada: história, petróleo, minorias e vizinhos desconfiados.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "TUR",
+     "SYR",
+     "LBN",
+     "JOR",
+     "IRQ"
+    ]
+   },
+   "capital": "TUR",
+   "nation": {
+    "officialName": "Sublime Estado Otomano",
+    "shortName": "Otomano",
+    "leader": "Sultão Abdulmejid III",
+    "currency": "Lira otomana",
+    "motto": "Devlet-i Aliyye",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "reg": "imp_ottoman",
+    "alt": {
+     "layout": "solid",
+     "colors": [
+      "#c8102e"
+     ],
+     "emblems": [
+      {
+       "type": "crescentstar",
+       "color": "#ffffff",
+       "x": 0.4,
+       "y": 0.5,
+       "s": 0.4
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -20,
+    "separatism": 38,
+    "unrestIn": [
+     "SYR",
+     "IRQ",
+     "LBN"
+    ]
+   },
+   "rel": {
+    "GRC": -25,
+    "IRN": -15,
+    "ISR": -10,
+    "RUS": -10
+   },
+   "orgs": [
+    "UN",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "greater_iran",
+   "name": "Grande Irã (Eran)",
+   "desc": "Irã, Afeganistão e Tadjiquistão unidos: o mundo persa, ouro negro, montanhas e uma civilização milenar. Árabes e turcos desconfiam.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "IRN",
+     "AFG",
+     "TJK"
+    ]
+   },
+   "capital": "IRN",
+   "nation": {
+    "officialName": "Grande Estado do Irã",
+    "shortName": "Eran",
+    "leader": "Xá-in-xá Cyrus",
+    "currency": "Rial persa",
+    "motto": "Boas palavras, bons pensamentos, boas ações",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "reg": "imp_iran",
+    "alt": {
+     "layout": "h3",
+     "colors": [
+      "#239f40",
+      "#ffffff",
+      "#da0000"
+     ],
+     "emblems": [
+      {
+       "type": "sun",
+       "color": "#f2c400",
+       "x": 0.5,
+       "y": 0.5,
+       "s": 0.25
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -16,
+    "separatism": 30,
+    "hunger": 3,
+    "unrestIn": [
+     "AFG",
+     "TJK"
+    ]
+   },
+   "rel": {
+    "SAU": -30,
+    "TUR": -10,
+    "USA": -15,
+    "RUS": 5,
+    "CHN": 8
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "arabia_federation",
+   "name": "Federação da Península Arábica",
+   "desc": "Arábia Saudita, Iêmen e Omã numa só federação: petróleo, peregrinos, o estreito de Bab-el-Mandeb e rivalidades tribais profundas.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "SAU",
+     "YEM",
+     "OMN"
+    ]
+   },
+   "capital": "SAU",
+   "nation": {
+    "officialName": "Federação da Península Arábica",
+    "shortName": "Arábia",
+    "leader": "Rei Salman II",
+    "currency": "Riyal árabe",
+    "motto": "Não há deus senão Deus",
+    "regime": "Monarquia federal"
+   },
+   "flag": {
+    "layout": "solid",
+    "colors": [
+     "#006c35"
+    ],
+    "emblems": [
+     {
+      "type": "sword",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.4
+     }
+    ]
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 28,
+    "treasury": 0.6,
+    "unrestIn": [
+     "YEM"
+    ]
+   },
+   "rel": {
+    "IRN": -40,
+    "ISR": -10,
+    "USA": 8,
+    "TUR": 0
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "mashriq_union",
+   "name": "União do Mashriq",
+   "desc": "Síria, Líbano, Jordânia, Palestina e Israel numa só república binacional: o Levante, tão pequeno quanto pesado, onde um erro vira crise global.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "SYR",
+     "LBN",
+     "JOR",
+     "ISR",
+     "PSX"
+    ]
+   },
+   "capital": "LBN",
+   "nation": {
+    "officialName": "República Unida do Levante",
+    "shortName": "Levante",
+    "leader": "Presidente Rima Haddad",
+    "currency": "Libra levantina",
+    "motto": "Cedro, oliveira e vinha",
+    "regime": "República consociativa"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#ce1126",
+     "#ffffff",
+     "#007a3d"
+    ],
+    "emblems": [
+     {
+      "type": "cedar",
+      "color": "#007a3d",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.3
+     }
+    ]
+   },
+   "start": {
+    "stability": -22,
+    "separatism": 36,
+    "treasury": -0.4,
+    "unrestIn": [
+     "SYR",
+     "PSX",
+     "LBN"
+    ]
+   },
+   "rel": {
+    "IRN": -10,
+    "TUR": -5,
+    "USA": 5,
+    "EGY": 0
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "caucasus_union",
+   "name": "Confederação do Cáucaso",
+   "desc": "Geórgia, Armênia e Azerbaijão numa confederação: oleodutos, montanhas, vinho, igrejas e antigas feridas entre vizinhos. Moscou e Ancara têm interesses.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "GEO",
+     "ARM",
+     "AZE"
+    ]
+   },
+   "capital": "GEO",
+   "nation": {
+    "officialName": "Confederação do Cáucaso",
+    "shortName": "Cáucaso",
+    "leader": "Presidente Levan Aliyan",
+    "currency": "Lari caucasiano",
+    "motto": "Força na união",
+    "regime": "Confederação parlamentar"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#c8102e",
+     "#0b3d91",
+     "#f2a900"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -16,
+    "separatism": 32,
+    "unrestIn": [
+     "ARM",
+     "AZE"
+    ]
+   },
+   "rel": {
+    "RUS": -25,
+    "TUR": 3,
+    "IRN": -3,
+    "USA": 8
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "north_caucasus_emirate",
+   "name": "Montanhas do Cáucaso Norte",
+   "desc": "Tchetchênia, Inguchétia, Daguestão, Ossétia do Norte e vizinhos formam uma república montanhesa: tradições de clã, idiomas dezenas, petróleo e a lembrança de guerras.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "RUS-2416",
+     "RUS-2303",
+     "RUS-2417",
+     "RUS-2305",
+     "RUS-2304",
+     "RUS-2280",
+     "RUS-2279"
+    ]
+   },
+   "capital": "RUS",
+   "nation": {
+    "officialName": "República Montanhesa do Cáucaso",
+    "shortName": "Cáucaso Norte",
+    "leader": "Presidente Aslan Khadzhiev",
+    "currency": "Rublo caucasiano",
+    "motto": "Liberdade ou morte",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#078930",
+     "#ffffff",
+     "#c8102e"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -18,
+    "separatism": 10,
+    "infra": -10,
+    "treasury": -0.3
+   },
+   "rel": {
+    "RUS": -60,
+    "TUR": 12,
+    "GEO": 5,
+    "AZE": 6
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "illyria_union",
+   "name": "Grande Ilíria",
+   "desc": "Albânia, Kosovo, Montenegro e Macedônia do Norte reúnem-se: montanhas, remessas de emigrantes, laços de clã e uma fronteira longa com vizinhos que não aceitam.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ALB",
+     "KOS",
+     "MNE",
+     "MKD"
+    ]
+   },
+   "capital": "ALB",
+   "nation": {
+    "officialName": "República Unida da Ilíria",
+    "shortName": "Ilíria",
+    "leader": "Presidente Arben Hoxha",
+    "currency": "Lek ilírio",
+    "motto": "Fé na terra",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "solid",
+    "colors": [
+     "#e41e20"
+    ],
+    "emblems": [
+     {
+      "type": "eagle",
+      "color": "#111111",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 24,
+    "unrestIn": [
+     "MKD",
+     "MNE"
+    ]
+   },
+   "rel": {
+    "SRB": -35,
+    "GRC": -12,
+    "BGR": -10,
+    "TUR": 8,
+    "ITA": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "adriatic_union",
+   "name": "União do Adriático",
+   "desc": "Croácia, Eslovênia, Bósnia, Montenegro e Albânia unem-se no litoral adriático: turismo, estaleiros, ilhas e diferentes religiões e histórias.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "HRV",
+     "SVN",
+     "BIH",
+     "MNE",
+     "ALB"
+    ]
+   },
+   "capital": "HRV",
+   "nation": {
+    "officialName": "União do Adriático",
+    "shortName": "Adriático",
+    "leader": "Presidente Luka Marić",
+    "currency": "Kuna unida",
+    "motto": "Mar e montanha",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#0b3d91",
+     "#ffffff",
+     "#c8102e"
+    ],
+    "emblems": [
+     {
+      "type": "anchor",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.24
+     }
+    ]
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 26,
+    "unrestIn": [
+     "BIH",
+     "ALB"
+    ]
+   },
+   "rel": {
+    "SRB": -25,
+    "ITA": 8,
+    "HUN": 3
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "greater_bulgaria",
+   "name": "Grande Bulgária",
+   "desc": "Bulgária e Macedônia do Norte unidas: o Estado dos Bálcãs do sul, vinhos, rosas, mar Negro e uma antiga disputa entre Sófia, Belgrado e Atenas.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "BGR",
+     "MKD"
+    ]
+   },
+   "capital": "BGR",
+   "nation": {
+    "officialName": "República da Grande Bulgária",
+    "shortName": "Bulgária",
+    "leader": "Presidente Boyan Petrov",
+    "currency": "Lev",
+    "motto": "A união faz a força",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#ffffff",
+     "#00966e",
+     "#d62612"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 14,
+    "unrestIn": [
+     "MKD"
+    ]
+   },
+   "rel": {
+    "SRB": -15,
+    "GRC": -12,
+    "TUR": -5,
+    "ROU": 3
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "mediterranean_union",
+   "name": "União Mediterrânea",
+   "desc": "Espanha, França, Itália, Grécia, Malta e Chipre unidos: três mil anos de comércio, praias, dívida e migração. O mare nostrum como espaço político.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ESP",
+     "FRA",
+     "ITA",
+     "GRC",
+     "MLT",
+     "CYP"
+    ]
+   },
+   "capital": "ITA",
+   "nation": {
+    "officialName": "União Mediterrânea",
+    "shortName": "Mediterrânea",
+    "leader": "Presidente Giulia Marchetti",
+    "currency": "Euro mediterrâneo",
+    "motto": "Mare nostrum",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#0b3d91",
+     "#ffffff",
+     "#c8102e"
+    ],
+    "emblems": [
+     {
+      "type": "anchor",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 30,
+    "unrestIn": [
+     "GRC",
+     "CYP"
+    ]
+   },
+   "rel": {
+    "DEU": 0,
+    "TUR": -12,
+    "RUS": -10,
+    "USA": 8
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "mare_nostrum_italy",
+   "name": "Mare Nostrum (Itália imperial)",
+   "desc": "Itália, Malta, Albânia e a costa líbia sob um único governo: pizza, porto, marinha e saudade de uma Roma moderna. Os vizinhos desconfiam do saudosismo.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ITA",
+     "MLT",
+     "ALB",
+     "LBY"
+    ]
+   },
+   "capital": "ITA",
+   "nation": {
+    "officialName": "República do Mare Nostrum",
+    "shortName": "Mare Nostrum",
+    "leader": "Presidente Marco Valeri",
+    "currency": "Lira renovada",
+    "motto": "Fiat lux",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#009246",
+     "#ffffff",
+     "#ce2b37"
+    ],
+    "emblems": [
+     {
+      "type": "eagle",
+      "color": "#8b5a2b",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.26
+     }
+    ]
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 24,
+    "unrestIn": [
+     "LBY",
+     "ALB"
+    ],
+    "reputation": -3
+   },
+   "rel": {
+    "FRA": -15,
+    "TUR": -10,
+    "EGY": -5,
+    "GRC": -8
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "scandinavia_united",
+   "name": "Escandinávia Unida",
+   "desc": "Noruega, Suécia e Dinamarca num só reino: petróleo, estado de bem-estar, frotas, saudades de Kalmar e um clima que exige previdência.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "NOR",
+     "SWE",
+     "DNK"
+    ]
+   },
+   "capital": "SWE",
+   "nation": {
+    "officialName": "Reino Unido da Escandinávia",
+    "shortName": "Escandinávia",
+    "leader": "Rainha Margarida III",
+    "currency": "Coroa escandinava",
+    "motto": "Juntos pelo Norte",
+    "regime": "Monarquia parlamentar"
+   },
+   "flag": {
+    "layout": "nordic",
+    "colors": [
+     "#c8102e",
+     "#ffffff",
+     "#00205b"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": 4,
+    "separatism": 6,
+    "treasury": 1
+   },
+   "rel": {
+    "RUS": -25,
+    "DEU": 8,
+    "GBR": 8,
+    "USA": 8
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "north_sea_empire",
+   "name": "Império do Mar do Norte",
+   "desc": "Reino Unido, Dinamarca, Noruega e Islândia reunidos num império marítimo: frotas, plataformas de petróleo e portos competindo com a Europa continental.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "GBR",
+     "DNK",
+     "NOR",
+     "ISL"
+    ]
+   },
+   "capital": "GBR",
+   "nation": {
+    "officialName": "Império do Mar do Norte",
+    "shortName": "Mar do Norte",
+    "leader": "Rei Canuto IV",
+    "currency": "Libra nórdica",
+    "motto": "Pelo mar, pela glória",
+    "regime": "Monarquia parlamentar"
+   },
+   "flag": {
+    "layout": "nordic",
+    "colors": [
+     "#00247d",
+     "#ffffff",
+     "#c8102e"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -4,
+    "separatism": 18,
+    "treasury": 0.5
+   },
+   "rel": {
+    "DEU": -8,
+    "FRA": -10,
+    "RUS": -20,
+    "USA": 6
+   },
+   "orgs": [
+    "UN",
+    "NATO"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "new_hansa",
+   "name": "Nova Liga Hanseática",
+   "desc": "Estônia, Letônia, Lituânia, Finlândia, Suécia e Dinamarca numa aliança comercial do Báltico: portos, tecnologia, balsas e a sombra de Moscou no leste.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "EST",
+     "LVA",
+     "LTU",
+     "FIN",
+     "SWE",
+     "DNK"
+    ]
+   },
+   "capital": "SWE",
+   "nation": {
+    "officialName": "Nova Liga Hanseática",
+    "shortName": "Hansa",
+    "leader": "Burgomestre-mor Karl Lindholm",
+    "currency": "Marco hanseático",
+    "motto": "Mare liberum",
+    "regime": "Confederação comercial"
+   },
+   "flag": {
+    "layout": "h2",
+    "colors": [
+     "#ffffff",
+     "#c8102e"
+    ],
+    "emblems": [
+     {
+      "type": "anchor",
+      "color": "#0b3d91",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.24
+     }
+    ]
+   },
+   "start": {
+    "stability": -4,
+    "separatism": 20,
+    "defense": 8
+   },
+   "rel": {
+    "RUS": -35,
+    "DEU": 8,
+    "POL": 5
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "baltic_union",
+   "name": "União Báltica",
+   "desc": "Estônia, Letônia e Lituânia unem-se numa república: pequenas economias digitais, fronteira com a Rússia, minorias russas e a OTAN.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "EST",
+     "LVA",
+     "LTU"
+    ]
+   },
+   "capital": "LVA",
+   "nation": {
+    "officialName": "República Unida do Báltico",
+    "shortName": "Báltico",
+    "leader": "Presidente Jānis Kalniņš",
+    "currency": "Euro",
+    "motto": "Em casa, no mar",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#8d1b3d",
+     "#ffffff",
+     "#fdb913"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -6,
+    "separatism": 16,
+    "unrestIn": [
+     "LVA",
+     "EST"
+    ],
+    "defense": 8
+   },
+   "rel": {
+    "RUS": -45,
+    "POL": 8,
+    "FIN": 10,
+    "DEU": 6
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "british_isles_union",
+   "name": "União das Ilhas Britânicas",
+   "desc": "Reino Unido e Irlanda numa só república: línguas, rugby, bancos, a questão da Irlanda do Norte resolvida... ou não.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "GBR",
+     "IRL"
+    ]
+   },
+   "capital": "GBR",
+   "nation": {
+    "officialName": "União das Ilhas Britânicas",
+    "shortName": "Ilhas Britânicas",
+    "leader": "Presidente Aoife Murray",
+    "currency": "Libra atlântica",
+    "motto": "Em paz, no mar",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "cross",
+    "colors": [
+     "#00247d",
+     "#ffffff"
+    ],
+    "emblems": [
+     {
+      "type": "shamrock",
+      "color": "#169b62",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 22,
+    "unrestIn": [
+     "IRL"
+    ]
+   },
+   "rel": {
+    "FRA": -3,
+    "DEU": 0,
+    "USA": 10
+   },
+   "orgs": [
+    "UN",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "united_ireland",
+   "name": "Irlanda unida",
+   "desc": "A Irlanda do Norte se junta à República da Irlanda: uma ilha, um Estado, aeronaves, farmacêuticas e uma minoria britânica nervosa.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "IRL"
+    ],
+    "provinces": [
+     "GBR-2083",
+     "GBR-2135",
+     "GBR-2136",
+     "GBR-2089",
+     "GBR-2085",
+     "GBR-2086",
+     "GBR-2102",
+     "GBR-2100",
+     "GBR-2773",
+     "GBR-2095",
+     "GBR-2096",
+     "GBR-2097",
+     "GBR-2082",
+     "GBR-2098",
+     "GBR-2137",
+     "GBR-2099",
+     "GBR-2093",
+     "GBR-2084",
+     "GBR-2091",
+     "GBR-2088",
+     "GBR-2087",
+     "GBR-2092",
+     "GBR-2090",
+     "GBR-2101",
+     "GBR-2094",
+     "GBR-2103"
+    ]
+   },
+   "capital": "IRL",
+   "nation": {
+    "officialName": "República da Irlanda unida",
+    "shortName": "Irlanda",
+    "leader": "Taoiseach Siobhán Doyle",
+    "currency": "Euro",
+    "motto": "Éire go brách",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "v3",
+    "colors": [
+     "#169b62",
+     "#ffffff",
+     "#ff883e"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -5,
+    "separatism": 8,
+    "unrestIn": [
+     "GBR"
+    ]
+   },
+   "rel": {
+    "GBR": -25,
+    "USA": 10,
+    "FRA": 5
+   },
+   "orgs": [
+    "UN",
+    "EU"
+   ],
+   "cats": []
+  },
+  {
+   "id": "rhenish_kingdom",
+   "name": "Reino Renano (Lotaríngia)",
+   "desc": "França, Alemanha, Bélgica, Holanda e Luxemburgo reúnem o velho coração carolíngio: indústria, rios, tratados e todo o poder de uma Europa unificada ao redor do Reno.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "FRA",
+     "DEU",
+     "BEL",
+     "NLD",
+     "LUX"
+    ]
+   },
+   "capital": "DEU",
+   "nation": {
+    "officialName": "Reino do Reno",
+    "shortName": "Lotaríngia",
+    "leader": "Rei Carlos XI",
+    "currency": "Euro renano",
+    "motto": "Concórdia e comércio",
+    "regime": "Monarquia federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#111111",
+     "#c8102e",
+     "#ffd700"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 30,
+    "unrestIn": [
+     "FRA",
+     "NLD"
+    ]
+   },
+   "rel": {
+    "GBR": -15,
+    "RUS": -15,
+    "ITA": 0,
+    "USA": 5
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "alpine_confederation",
+   "name": "Confederação Alpina",
+   "desc": "Suíça, Áustria, Liechtenstein e a Baviera unidos: montanhas, bancos, queijo, relojoaria e uma tradição de neutralidade em apuros.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "CHE",
+     "AUT",
+     "LIE"
+    ],
+    "provinces": [
+     "DEU-1591"
+    ]
+   },
+   "capital": "CHE",
+   "nation": {
+    "officialName": "Confederação Alpina",
+    "shortName": "Alpes",
+    "leader": "Presidente Hans Müller",
+    "currency": "Franco alpino",
+    "motto": "Um por todos",
+    "regime": "Confederação"
+   },
+   "flag": {
+    "layout": "cross",
+    "colors": [
+     "#c8102e",
+     "#ffffff"
+    ],
+    "emblems": [
+     {
+      "type": "mountain",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -4,
+    "separatism": 22,
+    "treasury": 0.5
+   },
+   "rel": {
+    "DEU": -10,
+    "FRA": 0,
+    "ITA": 4
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "visegrad_federation",
+   "name": "Federação de Visegrado",
+   "desc": "Polônia, Tchéquia, Eslováquia e Hungria numa federação do Leste Central: indústria automotiva, rios, castelos e uma desconfiança mútua histórica.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "POL",
+     "CZE",
+     "SVK",
+     "HUN"
+    ]
+   },
+   "capital": "POL",
+   "nation": {
+    "officialName": "Federação de Visegrado",
+    "shortName": "Visegrado",
+    "leader": "Presidente Jan Novák",
+    "currency": "Zloty federal",
+    "motto": "Quatro nações, um destino",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#ffffff",
+     "#dc143c",
+     "#0b3d91"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 26,
+    "unrestIn": [
+     "HUN",
+     "SVK"
+    ]
+   },
+   "rel": {
+    "RUS": -25,
+    "DEU": 3,
+    "UKR": 8
+   },
+   "orgs": [
+    "UN",
+    "EU",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "intermarium",
+   "name": "Intermarium",
+   "desc": "Do Báltico ao mar Negro: Polônia, Bálticos, Ucrânia, Belarus, Romênia, Hungria, Tchéquia e Eslováquia numa grande federação contra os impérios vizinhos.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "POL",
+     "LTU",
+     "LVA",
+     "EST",
+     "UKR",
+     "BLR",
+     "ROU",
+     "HUN",
+     "CZE",
+     "SVK"
+    ]
+   },
+   "capital": "POL",
+   "nation": {
+    "officialName": "Federação Intermarium",
+    "shortName": "Intermarium",
+    "leader": "Presidente Stefan Nowak",
+    "currency": "Złoty intermarium",
+    "motto": "Entre os mares, livres",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#0b3d91",
+     "#ffd700",
+     "#dc143c"
+    ],
+    "emblems": [
+     {
+      "type": "eagle",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.26
+     }
+    ]
+   },
+   "start": {
+    "stability": -18,
+    "separatism": 40,
+    "unrestIn": [
+     "BLR",
+     "UKR",
+     "HUN"
+    ]
+   },
+   "rel": {
+    "RUS": -55,
+    "DEU": 0,
+    "USA": 8
+   },
+   "orgs": [
+    "UN",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "slavic_union",
+   "name": "União Eslava Oriental",
+   "desc": "Rússia, Ucrânia e Belarus numa mesma união: trigo, gás, tropas, fronteiras e nacionalismos que não se entendem. Poder enorme, estabilidade frágil.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "RUS",
+     "UKR",
+     "BLR"
+    ]
+   },
+   "capital": "RUS",
+   "nation": {
+    "officialName": "União Eslava Oriental",
+    "shortName": "União Eslava",
+    "leader": "Presidente Viktor Sokolov",
+    "currency": "Rublo-hryvnia",
+    "motto": "Três irmãos, uma terra",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#ffffff",
+     "#0057b7",
+     "#d52b1e"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -18,
+    "separatism": 40,
+    "unrestIn": [
+     "UKR",
+     "BLR"
+    ]
+   },
+   "rel": {
+    "POL": -25,
+    "DEU": -5,
+    "USA": -15,
+    "CHN": 8
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "portugal_brazil_united",
+   "name": "Reino Unido de Portugal e Brasil",
+   "desc": "Portugal e Brasil num só reino: uma língua, dois oceanos, a corte nos trópicos e a lembrança de 1815. Lisboa e Rio disputam a capital.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "PRT",
+     "BRA"
+    ]
+   },
+   "capital": "BRA",
+   "nation": {
+    "officialName": "Reino Unido de Portugal, Brasil e Algarves",
+    "shortName": "Reino Unido",
+    "leader": "Rei João VII",
+    "currency": "Real",
+    "motto": "Pela Pátria, pela Língua",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "reg": "imp_portugal",
+    "alt": {
+     "layout": "h3",
+     "colors": [
+      "#009c3b",
+      "#ffffff",
+      "#c8102e"
+     ],
+     "emblems": [
+      {
+       "type": "crown",
+       "color": "#ffdf00",
+       "x": 0.5,
+       "y": 0.5,
+       "s": 0.28
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 26,
+    "unrestIn": [
+     "PRT"
+    ]
+   },
+   "rel": {
+    "ESP": -6,
+    "ARG": -12,
+    "GBR": 4,
+    "USA": 0
+   },
+   "orgs": [
+    "UN",
+    "NATO",
+    "MERCOSUR"
+   ],
+   "cats": []
+  },
+  {
+   "id": "hispaniola_united",
+   "name": "Hispaniola unida",
+   "desc": "Haiti e República Dominicana reunidos numa ilha: uma fronteira histórica, dois idiomas, furacões, remessas e a esperança de um Estado forte.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "HTI",
+     "DOM"
+    ]
+   },
+   "capital": "DOM",
+   "nation": {
+    "officialName": "República da Hispaniola",
+    "shortName": "Hispaniola",
+    "leader": "Presidente Rosalía Toussaint",
+    "currency": "Peso hispaniolano",
+    "motto": "Uma ilha, um povo",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h2",
+    "colors": [
+     "#00209f",
+     "#d21034"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -20,
+    "separatism": 22,
+    "poverty": 12,
+    "hunger": 6,
+    "infra": -20
+   },
+   "rel": {
+    "USA": 5,
+    "CUB": 0,
+    "FRA": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "greater_antilles",
+   "name": "Grandes Antilhas",
+   "desc": "Cuba, Hispaniola, Jamaica e Porto Rico num único país caribenho: mares, turismo, rum, ferrovias e rivalidades regionais entre as maiores ilhas.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "CUB",
+     "DOM",
+     "HTI",
+     "JAM"
+    ]
+   },
+   "capital": "CUB",
+   "nation": {
+    "officialName": "República das Grandes Antilhas",
+    "shortName": "Antilhas",
+    "leader": "Presidente Camilo Rivera",
+    "currency": "Peso antilhano",
+    "motto": "Pátria ou morte, caribe!",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#002a8f",
+     "#ffffff",
+     "#cf142b"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffffff",
+      "x": 0.2,
+      "y": 0.5,
+      "s": 0.22
+     }
+    ]
+   },
+   "start": {
+    "stability": -16,
+    "separatism": 32,
+    "poverty": 8,
+    "unrestIn": [
+     "HTI",
+     "JAM"
+    ]
+   },
+   "rel": {
+    "USA": -20,
+    "VEN": 5,
+    "RUS": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "mesoamerica_union",
+   "name": "União Mesoamericana",
+   "desc": "México, Guatemala, Belize, El Salvador e Honduras unidos em Mesoamérica: milho, ruínas, remessas e fronteiras para o norte. Cultura maia, azteca e mestiça.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "MEX",
+     "GTM",
+     "BLZ",
+     "SLV",
+     "HND"
+    ]
+   },
+   "capital": "MEX",
+   "nation": {
+    "officialName": "Estados Unidos da Mesoamérica",
+    "shortName": "Mesoamérica",
+    "leader": "Presidente Xochitl Ramírez",
+    "currency": "Peso mesoamericano",
+    "motto": "Povo e terra",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#006847",
+     "#ffffff",
+     "#ce1126"
+    ],
+    "emblems": [
+     {
+      "type": "sun",
+      "color": "#f2c400",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.28
+     }
+    ]
+   },
+   "start": {
+    "stability": -16,
+    "separatism": 32,
+    "hunger": 3,
+    "unrestIn": [
+     "GTM",
+     "HND"
+    ]
+   },
+   "rel": {
+    "USA": -10,
+    "CHN": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "sonora_republic",
+   "name": "República de Sonora",
+   "desc": "Sonora, Chihuahua e Baja California se separam do México: deserto, maquiladoras, minas, fronteira com os EUA e narcotráfico. Terra de oportunidades e de perigo.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "MEX-2712",
+     "MEX-2709",
+     "MEX-2706",
+     "MEX-2707"
+    ]
+   },
+   "capital": "MEX",
+   "nation": {
+    "officialName": "República de Sonora",
+    "shortName": "Sonora",
+    "leader": "Presidente Rodolfo Almada",
+    "currency": "Dólar de Sonora",
+    "motto": "Norte livre",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#c8102e",
+     "#ffffff",
+     "#006847"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 10,
+    "treasury": 0.2
+   },
+   "rel": {
+    "MEX": -40,
+    "USA": 8
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "cascadia_republic",
+   "name": "República da Cascádia",
+   "desc": "Washington, Oregon e Colúmbia Britânica numa república do Pacífico: tecnologia, florestas, portos, chuvas e um perfil ecológico. Washington e Ottawa não gostam.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "USA-3519",
+     "USA-3525",
+     "CAN-633"
+    ]
+   },
+   "capital": "USA",
+   "nation": {
+    "officialName": "República da Cascádia",
+    "shortName": "Cascádia",
+    "leader": "Presidente Maya Lindqvist",
+    "currency": "Dólar cascadiano",
+    "motto": "Alta et libera",
+    "regime": "República federal"
+   },
+   "flag": {
+    "reg": "xx_cascadia",
+    "alt": {
+     "layout": "h3",
+     "colors": [
+      "#0b3d91",
+      "#ffffff",
+      "#078930"
+     ],
+     "emblems": [
+      {
+       "type": "tree",
+       "color": "#3d2b1f",
+       "x": 0.5,
+       "y": 0.5,
+       "s": 0.4
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 6,
+    "treasury": 0.5
+   },
+   "rel": {
+    "USA": -25,
+    "CAN": -20,
+    "JPN": 8,
+    "KOR": 5
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "prairie_republic",
+   "name": "República das Pradarias",
+   "desc": "Alberta, Saskatchewan e Manitoba se separam do Canadá: petróleo, trigo, ventos de inverno e ressentimento contra Ottawa.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "CAN-632",
+     "CAN-631",
+     "CAN-630"
+    ]
+   },
+   "capital": "CAN",
+   "nation": {
+    "officialName": "República das Pradarias",
+    "shortName": "Pradarias",
+    "leader": "Premier Jolene Whitaker",
+    "currency": "Dólar das Pradarias",
+    "motto": "Petróleo e trigo",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#c8102e",
+     "#ffffff",
+     "#0b3d91"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -6,
+    "separatism": 6,
+    "treasury": 0.6,
+    "flags": [
+     "cold_start"
+    ]
+   },
+   "rel": {
+    "CAN": -35,
+    "USA": 12
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "canada_north",
+   "name": "Território do Norte (Yukon, Nunavut, NWT)",
+   "desc": "Os três territórios árticos canadenses se unem num país: inuítes, minérios, base militar, auroras e uma população minúscula num território enorme.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "CAN-636",
+     "CAN-634",
+     "CAN-635"
+    ]
+   },
+   "capital": "CAN",
+   "nation": {
+    "officialName": "República do Norte",
+    "shortName": "Norte",
+    "leader": "Primeira-ministra Aluki Tagak",
+    "currency": "Dólar do Norte",
+    "motto": "Nunavut Sivuniksavut",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "v2",
+    "colors": [
+     "#ffffff",
+     "#0b3d91"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -6,
+    "separatism": 6,
+    "infra": -22,
+    "treasury": -0.4,
+    "flags": [
+     "cold_start"
+    ]
+   },
+   "rel": {
+    "CAN": -20,
+    "USA": 6,
+    "DNK": 10,
+    "RUS": -10
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "patagonia_republic",
+   "name": "República da Patagônia",
+   "desc": "Chubut, Santa Cruz, Terra do Fogo, Neuquén e Rio Negro formam uma república no fim do mundo: vento, ovelhas, petróleo, lagos e a vizinhança do Chile.",
+   "alt": true,
+   "territory": {
+    "provinces": [
+     "ARG-1274",
+     "ARG-1271",
+     "ARG-1272",
+     "ARG-1276",
+     "ARG-1297"
+    ]
+   },
+   "capital": "ARG",
+   "nation": {
+    "officialName": "República da Patagônia",
+    "shortName": "Patagônia",
+    "leader": "Presidente Elena Mayhew",
+    "currency": "Peso patagônico",
+    "motto": "Ventos do sul",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#74acdf",
+     "#ffffff",
+     "#74acdf"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -6,
+    "separatism": 6,
+    "infra": -14,
+    "flags": [
+     "cold_start"
+    ]
+   },
+   "rel": {
+    "ARG": -35,
+    "CHL": 8,
+    "GBR": 4
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cold": true,
+   "cats": [
+    "cold"
+   ]
+  },
+  {
+   "id": "guianas_union",
+   "name": "União das Guianas",
+   "desc": "Guiana, Suriname e Amapá: floresta amazônica, bauxita, petróleo offshore e mosaicos étnicos do Caribe, da Índia, da África e da Holanda.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "GUY",
+     "SUR"
+    ],
+    "provinces": [
+     "BRA-681"
+    ]
+   },
+   "capital": "GUY",
+   "nation": {
+    "officialName": "União das Guianas",
+    "shortName": "Guianas",
+    "leader": "Presidente Ravi Jagdeo",
+    "currency": "Dólar das Guianas",
+    "motto": "Floresta e mar",
+    "regime": "República parlamentar"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#009e49",
+     "#ffffff",
+     "#ce1126"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -8,
+    "separatism": 16,
+    "infra": -10,
+    "treasury": 0.2
+   },
+   "rel": {
+    "VEN": -25,
+    "BRA": -10,
+    "NLD": 8,
+    "USA": 8
+   },
+   "orgs": [
+    "UN",
+    "CARICOM"
+   ],
+   "cats": []
+  },
+  {
+   "id": "bolivarian_union",
+   "name": "União Bolivariana",
+   "desc": "Venezuela, Colômbia, Equador, Peru e Bolívia unidos: petróleo, cobre, lítio, café, narcotráfico, e o sonho de Bolívar. Imensa diversidade e instabilidade constante.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "VEN",
+     "COL",
+     "ECU",
+     "PER",
+     "BOL"
+    ]
+   },
+   "capital": "COL",
+   "nation": {
+    "officialName": "União Bolivariana",
+    "shortName": "Bolívar",
+    "leader": "Presidente Simón Restrepo",
+    "currency": "Bolívar unido",
+    "motto": "Unión y libertad",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#f9d616",
+     "#0033a0",
+     "#ce1126"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -18,
+    "separatism": 40,
+    "unrestIn": [
+     "VEN",
+     "PER",
+     "BOL"
+    ]
+   },
+   "rel": {
+    "BRA": -10,
+    "CHL": -12,
+    "USA": -5
+   },
+   "orgs": [
+    "UN",
+    "ANDEAN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "nile_valley",
+   "name": "República do Vale do Nilo",
+   "desc": "Egito, Sudão e Sudão do Sul numa república nilótica: água, agricultura, desertos, antigas rivalidades e pressão por segurança hídrica.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "EGY",
+     "SDN",
+     "SDS"
+    ]
+   },
+   "capital": "EGY",
+   "nation": {
+    "officialName": "República Unida do Vale do Nilo",
+    "shortName": "Vale do Nilo",
+    "leader": "Presidente Karim Nassar",
+    "currency": "Libra nilótica",
+    "motto": "Dádiva do Nilo",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#ce1126",
+     "#ffffff",
+     "#000000"
+    ],
+    "emblems": [
+     {
+      "type": "eagle",
+      "color": "#c09300",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.22
+     }
+    ]
+   },
+   "start": {
+    "stability": -16,
+    "separatism": 28,
+    "hunger": 4,
+    "unrestIn": [
+     "SDS",
+     "SDN"
+    ]
+   },
+   "rel": {
+    "ETH": -25,
+    "ISR": -5,
+    "USA": 5,
+    "RUS": 6
+   },
+   "orgs": [
+    "UN",
+    "AU",
+    "ARAB"
+   ],
+   "cats": []
+  },
+  {
+   "id": "sahrawi_mauritania",
+   "name": "República do Saara e Mauritânia",
+   "desc": "O Saara Ocidental e a Mauritânia reúnem-se: fosfatos, ferro, costa atlântica, dunas e rotas de contrabando. Marrocos e Argélia se envolvem.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "SAH",
+     "MRT"
+    ]
+   },
+   "capital": "MRT",
+   "nation": {
+    "officialName": "República do Saara-Mauritânia",
+    "shortName": "Saara",
+    "leader": "Presidente Brahim Ghali",
+    "currency": "Uguia",
+    "motto": "Liberdade, dignidade, terra",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#000000",
+     "#ffffff",
+     "#078930"
+    ],
+    "emblems": [
+     {
+      "type": "crescentstar",
+      "color": "#c8102e",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.26
+     }
+    ]
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 16,
+    "infra": -14,
+    "hunger": 4
+   },
+   "rel": {
+    "MAR": -40,
+    "DZA": 12,
+    "ESP": 0
+   },
+   "orgs": [
+    "UN",
+    "AU"
+   ],
+   "cats": []
+  },
+  {
+   "id": "chad_basin_union",
+   "name": "União da Bacia do Chade",
+   "desc": "Chade, Níger, Camarões e Nigéria do Nordeste: um lago em retração, pastores, jihadistas, petróleo e fronteiras artificiais que cortam povos.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "TCD",
+     "NER",
+     "CMR"
+    ]
+   },
+   "capital": "TCD",
+   "nation": {
+    "officialName": "União da Bacia do Chade",
+    "shortName": "Chade",
+    "leader": "Presidente Idriss Mahamat",
+    "currency": "Franco do Chade",
+    "motto": "Unidade, trabalho, progresso",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "v3",
+    "colors": [
+     "#002664",
+     "#fecb00",
+     "#c60c30"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -22,
+    "separatism": 30,
+    "hunger": 8,
+    "poverty": 10,
+    "unrestIn": [
+     "NER",
+     "CMR"
+    ]
+   },
+   "rel": {
+    "NGA": -10,
+    "FRA": -8,
+    "RUS": 8
+   },
+   "orgs": [
+    "UN",
+    "AU"
+   ],
+   "cats": []
+  },
+  {
+   "id": "mali_empire_revived",
+   "name": "Império do Mali restaurado",
+   "desc": "Mali, Senegal, Guiné, Gâmbia e Mauritânia sob um novo mansa: ouro, universidade de Tombuctu, rios e uma civilização que já comandou o Sahel.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "MLI",
+     "SEN",
+     "GIN",
+     "GMB",
+     "MRT"
+    ]
+   },
+   "capital": "MLI",
+   "nation": {
+    "officialName": "Império do Mali",
+    "shortName": "Mali Imperial",
+    "leader": "Mansa Abubakari III",
+    "currency": "Franco do Mali",
+    "motto": "Pelo sol e pelo rio",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#14b53a",
+     "#fcd116",
+     "#ce1126"
+    ],
+    "emblems": [
+     {
+      "type": "sun",
+      "color": "#111111",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -16,
+    "separatism": 32,
+    "hunger": 6,
+    "unrestIn": [
+     "MLI",
+     "GIN"
+    ]
+   },
+   "rel": {
+    "FRA": -20,
+    "MAR": 4,
+    "RUS": 10
+   },
+   "orgs": [
+    "UN",
+    "AU"
+   ],
+   "cats": []
+  },
+  {
+   "id": "ecowas_federation",
+   "name": "Federação da África Ocidental",
+   "desc": "Nigéria, Gana, Costa do Marfim, Senegal e vizinhos numa federação: cacau, petróleo, música, jovens, golpes recorrentes e o maior mercado do continente.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "NGA",
+     "GHA",
+     "CIV",
+     "SEN",
+     "BEN",
+     "TGO",
+     "LBR",
+     "SLE",
+     "GIN",
+     "GNB",
+     "GMB"
+    ]
+   },
+   "capital": "NGA",
+   "nation": {
+    "officialName": "Federação da África Ocidental",
+    "shortName": "África Ocidental",
+    "leader": "Presidente Kwame Adeyemi",
+    "currency": "Eco",
+    "motto": "Unidade e progresso",
+    "regime": "Federação presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#008751",
+     "#ffffff",
+     "#008751"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#fcd116",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -20,
+    "separatism": 38,
+    "hunger": 4,
+    "unrestIn": [
+     "SLE",
+     "GNB",
+     "LBR"
+    ]
+   },
+   "rel": {
+    "FRA": -10,
+    "USA": 5,
+    "CHN": 5
+   },
+   "orgs": [
+    "UN",
+    "AU"
+   ],
+   "cats": []
+  },
+  {
+   "id": "congo_basin_union",
+   "name": "União da Bacia do Congo",
+   "desc": "Congo, RDC, Gabão, Guiné Equatorial e República Centro-Africana unidos: a maior floresta tropical da África, cobalto, diamantes e uma história de guerras.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "COD",
+     "COG",
+     "GAB",
+     "GNQ",
+     "CAF"
+    ]
+   },
+   "capital": "COD",
+   "nation": {
+    "officialName": "União da Bacia do Congo",
+    "shortName": "Congo",
+    "leader": "Presidente Patrice Mbeki",
+    "currency": "Franco do Congo",
+    "motto": "Justiça, paz, trabalho",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#007a5e",
+     "#fcd116",
+     "#ce1021"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#fcd116",
+      "x": 0.2,
+      "y": 0.2,
+      "s": 0.18
+     }
+    ]
+   },
+   "start": {
+    "stability": -24,
+    "separatism": 36,
+    "hunger": 8,
+    "infra": -20,
+    "unrestIn": [
+     "CAF",
+     "COD"
+    ]
+   },
+   "rel": {
+    "RWA": -20,
+    "UGA": -5,
+    "BEL": 0,
+    "CHN": 8
+   },
+   "orgs": [
+    "UN",
+    "AU"
+   ],
+   "cats": []
+  },
+  {
+   "id": "great_lakes_federation",
+   "name": "Federação dos Grandes Lagos",
+   "desc": "Ruanda, Burundi, Uganda e o leste do Congo: lagos, montanhas, café, gorilas, genocídios na memória e a esperança de reconciliação.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "RWA",
+     "BDI",
+     "UGA"
+    ]
+   },
+   "capital": "UGA",
+   "nation": {
+    "officialName": "Federação dos Grandes Lagos",
+    "shortName": "Grandes Lagos",
+    "leader": "Presidente Yoweri Kagame",
+    "currency": "Xelim dos lagos",
+    "motto": "Unidade na diversidade",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#00a1de",
+     "#fad201",
+     "#20603d"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -16,
+    "separatism": 24,
+    "hunger": 6,
+    "health": -6,
+    "unrestIn": [
+     "BDI"
+    ]
+   },
+   "rel": {
+    "COD": -25,
+    "TZA": 4,
+    "USA": 6
+   },
+   "orgs": [
+    "UN",
+    "AU"
+   ],
+   "cats": []
+  },
+  {
+   "id": "horn_federation",
+   "name": "Federação do Chifre da África",
+   "desc": "Etiópia, Eritreia, Djibuti, Somália e Somalilândia unidos: portos estratégicos no mar Vermelho, café, pastores, secas e disputas de fronteira. Uma região de alta tensão.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ETH",
+     "ERI",
+     "DJI",
+     "SOM",
+     "SOL"
+    ]
+   },
+   "capital": "ETH",
+   "nation": {
+    "officialName": "Federação do Chifre da África",
+    "shortName": "Chifre",
+    "leader": "Primeiro-ministro Abiy Tessema",
+    "currency": "Birr federal",
+    "motto": "Unidade na liberdade",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#078930",
+     "#fcdd09",
+     "#da121a"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#0f47af",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.22
+     }
+    ]
+   },
+   "start": {
+    "stability": -22,
+    "separatism": 38,
+    "hunger": 10,
+    "unrestIn": [
+     "SOM",
+     "ERI",
+     "SOL"
+    ]
+   },
+   "rel": {
+    "EGY": -25,
+    "SAU": 5,
+    "USA": 6,
+    "CHN": 8
+   },
+   "orgs": [
+    "UN",
+    "AU"
+   ],
+   "cats": []
+  },
+  {
+   "id": "abyssinian_empire",
+   "name": "Império Abissínio restaurado",
+   "desc": "A Etiópia e a Eritreia sob o Leão de Judá: montanhas, café, igreja ortodoxa antiga e nunca colonizada, exceto por um breve período. O imperador volta ao trono.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ETH",
+     "ERI"
+    ]
+   },
+   "capital": "ETH",
+   "nation": {
+    "officialName": "Império da Etiópia",
+    "shortName": "Abissínia",
+    "leader": "Imperador Haile Selassie II",
+    "currency": "Birr imperial",
+    "motto": "O Leão de Judá venceu",
+    "regime": "Monarquia constitucional"
+   },
+   "flag": {
+    "reg": "imp_ethiopia",
+    "alt": {
+     "layout": "h3",
+     "colors": [
+      "#078930",
+      "#fcdd09",
+      "#da121a"
+     ],
+     "emblems": [
+      {
+       "type": "star",
+       "color": "#0f47af",
+       "x": 0.5,
+       "y": 0.5,
+       "s": 0.22
+      }
+     ]
+    }
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 22,
+    "hunger": 6,
+    "unrestIn": [
+     "ERI"
+    ]
+   },
+   "rel": {
+    "EGY": -20,
+    "SOM": -15,
+    "USA": 5
+   },
+   "orgs": [
+    "UN",
+    "AU"
+   ],
+   "cats": []
+  },
+  {
+   "id": "swahili_coast",
+   "name": "República Suaíli",
+   "desc": "Quênia, Tanzânia e a costa de Moçambique reunidas: portos do Índico, safaris, língua comum (o suaíli) e um passado de comércio de especiarias.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "KEN",
+     "TZA"
+    ]
+   },
+   "capital": "KEN",
+   "nation": {
+    "officialName": "República Suaíli",
+    "shortName": "Suaíli",
+    "leader": "Presidente Amani Juma",
+    "currency": "Xelim suaíli",
+    "motto": "Harambee",
+    "regime": "República presidencialista"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#000000",
+     "#bb0000",
+     "#006600"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffffff",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 18,
+    "hunger": 3
+   },
+   "rel": {
+    "UGA": 3,
+    "SOM": -10,
+    "GBR": 4,
+    "CHN": 8
+   },
+   "orgs": [
+    "UN",
+    "AU",
+    "EAC"
+   ],
+   "cats": []
+  },
+  {
+   "id": "southern_african_federation",
+   "name": "Federação da África Austral",
+   "desc": "África do Sul, Namíbia, Botsuana, Essuatíni e Lesoto numa federação: minérios, vinhos, desigualdade profunda e a memória do apartheid.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ZAF",
+     "NAM",
+     "BWA",
+     "SWZ",
+     "LSO"
+    ]
+   },
+   "capital": "ZAF",
+   "nation": {
+    "officialName": "Federação da África Austral",
+    "shortName": "Austral",
+    "leader": "Presidente Thandiwe Mokoena",
+    "currency": "Rand federal",
+    "motto": "Unidade na diversidade",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#e03c31",
+     "#ffffff",
+     "#001489"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffb81c",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 20,
+    "poverty": 6,
+    "unrestIn": [
+     "LSO",
+     "SWZ"
+    ]
+   },
+   "rel": {
+    "ZWE": -5,
+    "USA": 5,
+    "CHN": 8
+   },
+   "orgs": [
+    "UN",
+    "AU",
+    "SADC"
+   ],
+   "cats": []
+  },
+  {
+   "id": "zambezia_union",
+   "name": "União do Zambeze",
+   "desc": "Zâmbia, Zimbábue, Malawi e Moçambique: cobre, tabaco, Cahora Bassa, quedas d’água e fronteiras traçadas por impérios. Um rio que une.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "ZMB",
+     "ZWE",
+     "MWI",
+     "MOZ"
+    ]
+   },
+   "capital": "ZMB",
+   "nation": {
+    "officialName": "União do Zambeze",
+    "shortName": "Zambeze",
+    "leader": "Presidente Kaunda Mwila",
+    "currency": "Kwacha",
+    "motto": "Unidade e liberdade",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#198a00",
+     "#ef7d00",
+     "#000000"
+    ],
+    "emblems": [
+     {
+      "type": "eagle",
+      "color": "#ef7d00",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -16,
+    "separatism": 26,
+    "hunger": 6,
+    "poverty": 8,
+    "unrestIn": [
+     "MOZ",
+     "ZWE"
+    ]
+   },
+   "rel": {
+    "ZAF": 3,
+    "GBR": -3,
+    "CHN": 8
+   },
+   "orgs": [
+    "UN",
+    "AU",
+    "SADC"
+   ],
+   "cats": []
+  },
+  {
+   "id": "indian_ocean_federation",
+   "name": "Federação do Oceano Índico",
+   "desc": "Madagascar, Comores, Maurício e Seicheles unem-se: ilhas, corais, baunilha, turismo, pesca e rotas marítimas vitais.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "MDG",
+     "COM",
+     "MUS",
+     "SYC"
+    ]
+   },
+   "capital": "MDG",
+   "nation": {
+    "officialName": "Federação do Oceano Índico",
+    "shortName": "Índico",
+    "leader": "Presidente Anja Ravalo",
+    "currency": "Ariary",
+    "motto": "Mar e sol",
+    "regime": "República federal"
+   },
+   "flag": {
+    "layout": "h3",
+    "colors": [
+     "#fc3d32",
+     "#ffffff",
+     "#007e3a"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": -10,
+    "separatism": 22,
+    "infra": -10
+   },
+   "rel": {
+    "FRA": 6,
+    "IND": 8,
+    "CHN": 6
+   },
+   "orgs": [
+    "UN",
+    "AU"
+   ],
+   "cats": []
+  },
+  {
+   "id": "anzac_union",
+   "name": "União ANZAC",
+   "desc": "Austrália e Nova Zelândia numa só federação do Pacífico Sul: minérios, ovelhas, universidades, surfe e a vizinhança da Ásia.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "AUS",
+     "NZL"
+    ]
+   },
+   "capital": "AUS",
+   "nation": {
+    "officialName": "União da Australásia",
+    "shortName": "Australásia",
+    "leader": "Primeira-ministra Jacinda Hughes",
+    "currency": "Dólar da Australásia",
+    "motto": "Ao longe, a nossa casa",
+    "regime": "Monarquia federal"
+   },
+   "flag": {
+    "layout": "canton",
+    "colors": [
+     "#00247d",
+     "#ffffff",
+     "#c8102e"
+    ],
+    "emblems": []
+   },
+   "start": {
+    "stability": 2,
+    "separatism": 8,
+    "treasury": 0.6
+   },
+   "rel": {
+    "CHN": -8,
+    "USA": 12,
+    "JPN": 8,
+    "IDN": 0
+   },
+   "orgs": [
+    "UN",
+    "NATO"
+   ],
+   "cats": []
+  },
+  {
+   "id": "melanesia_federation",
+   "name": "Federação da Melanésia",
+   "desc": "Papua-Nova Guiné, Fiji, Ilhas Salomão e Vanuatu unem-se: línguas por centenas, florestas, minas de ouro e cobre, ciclones e identidades locais.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "PNG",
+     "FJI",
+     "SLB",
+     "VUT"
+    ]
+   },
+   "capital": "PNG",
+   "nation": {
+    "officialName": "Federação da Melanésia",
+    "shortName": "Melanésia",
+    "leader": "Primeiro-ministro Peter Kuman",
+    "currency": "Kina",
+    "motto": "Unidade na diversidade",
+    "regime": "Federação parlamentar"
+   },
+   "flag": {
+    "layout": "h2",
+    "colors": [
+     "#ce1021",
+     "#000000"
+    ],
+    "emblems": [
+     {
+      "type": "bird",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -14,
+    "separatism": 38,
+    "infra": -20,
+    "unrestIn": [
+     "SLB",
+     "VUT"
+    ]
+   },
+   "rel": {
+    "AUS": 6,
+    "IDN": -10,
+    "CHN": 8
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "pacific_islands_union",
+   "name": "União das Ilhas do Pacífico",
+   "desc": "Dezenas de atóis e ilhas — de Kiribati a Samoa — unem-se numa república oceânica: o mar como pátria, a subida das águas e a pesca de atum.",
+   "alt": true,
+   "territory": {
+    "entities": [
+     "KIR",
+     "MHL",
+     "NRU",
+     "FSM",
+     "PLW",
+     "TON",
+     "WSM",
+     "TUV"
+    ]
+   },
+   "capital": "FSM",
+   "nation": {
+    "officialName": "União das Ilhas do Pacífico",
+    "shortName": "Pacífico Unido",
+    "leader": "Presidente Losa Tuilagi",
+    "currency": "Dólar do Pacífico",
+    "motto": "O mar nos une",
+    "regime": "Federação"
+   },
+   "flag": {
+    "layout": "h2",
+    "colors": [
+     "#0099cc",
+     "#ffffff"
+    ],
+    "emblems": [
+     {
+      "type": "star",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.2
+     }
+    ]
+   },
+   "start": {
+    "stability": -12,
+    "separatism": 40,
+    "infra": -22,
+    "treasury": -0.3
+   },
+   "rel": {
+    "AUS": 6,
+    "USA": 6,
+    "CHN": 8
+   },
+   "orgs": [
+    "UN"
+   ],
+   "cats": []
+  },
+  {
+   "id": "bir_tawil",
+   "name": "Reino de Bir Tawil (micronação)",
+   "desc": "Dois mil quilômetros quadrados de deserto entre o Egito e o Sudão que NENHUM dos dois quer: cada um diz que o território é do outro para ficar com a faixa que importa. Terra de ninguém — e agora sua. Uma população de poucas centenas, uma bandeira feita à mão, nenhum reconhecimento, nenhum porto, nenhuma estrada e um reino absurdamente soberano. Gerencie o improvável.",
+   "alt": true,
+   "micro": {
+    "minPop": 0.0004
+   },
+   "cold": false,
+   "cats": [],
+   "territory": {
+    "provinces": [
+     "BRT-0"
+    ]
+   },
+   "capital": "BRT",
+   "nation": {
+    "officialName": "Reino do Sudão do Norte (Bir Tawil)",
+    "shortName": "Bir Tawil",
+    "leader": "Rei Jeremias I",
+    "currency": "Dinar de Areia",
+    "motto": "Nenhum dos dois quer; nós queremos",
+    "regime": "Monarquia absoluta (de bolso)"
+   },
+   "flag": {
+    "layout": "v3",
+    "colors": [
+     "#c8102e",
+     "#ffffff",
+     "#111111"
+    ],
+    "emblems": [
+     {
+      "type": "crown",
+      "color": "#ffd700",
+      "x": 0.5,
+      "y": 0.45,
+      "s": 0.34
+     },
+     {
+      "type": "star",
+      "color": "#ffd700",
+      "x": 0.17,
+      "y": 0.2,
+      "s": 0.16
+     }
+    ]
+   },
+   "start": {
+    "stability": 4,
+    "separatism": 0,
+    "treasury": -0.8,
+    "debt": -45,
+    "reputation": -10,
+    "legitimacy": -14,
+    "infra": -30,
+    "health": -20,
+    "poverty": 14,
+    "hunger": 6,
+    "gdpMult": 0.9,
+    "flags": [
+     "micronation"
+    ]
+   },
+   "rel": {
+    "all": -8,
+    "EGY": -4,
+    "SDN": -4,
+    "USA": 2
+   },
+   "orgs": [],
+   "wr": [
+    "north_africa"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1136 @@
+[
+ {
+  "id": "bt2_halaib",
+  "cat": "Micronação",
+  "title": "O triângulo de Halaib reaparece nos mapas",
+  "desc": "Um cartógrafo amador publica um mapa em que o reino ocupa Bir Tawil e Halaib ao mesmo tempo. Dois ministérios de Relações Exteriores, no Cairo e em Cartum, convocam especialistas para \"esclarecer o equívoco\".",
+  "context": "A mentira certa no mapa errado vira crise.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Manter o mapa: \"a geografia é uma opinião\".",
+    "hint": "Atenção mundial; irritação regional.",
+    "now": {
+     "reputation": -1.5,
+     "influence": 1
+    },
+    "rel": {
+     "neighbors": -5
+    }
+   },
+   {
+    "text": "Corrigir o mapa e agradecer a \"advertência\".",
+    "hint": "A diplomacia respira.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Leiloar o mapa em edição limitada.",
+    "hint": "Dá dinheiro; ninguém leva a sério.",
+    "now": {
+     "treasury": 0.05,
+     "reputation": -0.5
+    },
+    "groups": {
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_camel_post",
+  "cat": "Micronação",
+  "title": "Correio nacional movido a camelo",
+  "desc": "Um empreendedor propõe criar o serviço postal do reino: cartas viajam de camelo até o oásis mais próximo, e de lá por um motoqueiro que \"provavelmente passa na quinta\".",
+  "context": "Selos raros de um país inexistente valem uma fortuna entre colecionadores.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Emitir selos e vender no exterior.",
+    "hint": "Colecionadores pagam bem.",
+    "now": {
+     "treasury": 0.08,
+     "reputation": 0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Correio gratuito, estatal e lento.",
+    "hint": "Serviço público de verdade (o único).",
+    "now": {
+     "treasury": -0.03,
+     "legitimacy": 1.5
+    }
+   },
+   {
+    "text": "Proibir: camelos são para trabalhar.",
+    "hint": "O camelo agradece.",
+    "groups": {
+     "rural": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_rally",
+  "cat": "Micronação",
+  "title": "O rali do deserto pede passagem",
+  "desc": "Uma equipe de rali pergunta se pode cruzar o território de carro, a 150 km/h, \"já que nenhum outro país aceita nos dar licença\". Pagam em dólares e em patrocínios de energéticos.",
+  "context": "Poeira, dinheiro e uma duna destruída.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Cobrar pedágio por pneu.",
+    "hint": "Receita imediata.",
+    "now": {
+     "treasury": 0.1,
+     "pollution": 0.3
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Sediar a largada oficial do rali.",
+    "hint": "Prestígio e transmissão de TV.",
+    "now": {
+     "treasury": -0.03,
+     "reputation": 2,
+     "legitimacy": 1
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Vetar: as dunas são patrimônio nacional.",
+    "hint": "A duna agradece.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_tomb",
+  "cat": "Micronação",
+  "title": "Arqueólogos acham algo sob a areia",
+  "desc": "Uma missão arqueológica encontra fragmentos de cerâmica de três mil anos. Egito e Sudão, curiosamente, ficam muito interessados — em quem ficará com os cacos.",
+  "context": "O reino ganha um passado; também ganha problemas.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Declarar patrimônio nacional e exigir cooperação científica.",
+    "hint": "Legitimidade histórica.",
+    "now": {
+     "legitimacy": 2,
+     "reputation": 1.5
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 0.3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Vender os fragmentos a um colecionador.",
+    "hint": "Dinheiro rápido; escândalo certo.",
+    "now": {
+     "treasury": 0.15,
+     "reputation": -3
+    },
+    "groups": {
+     "youth": -2
+    }
+   },
+   {
+    "text": "Devolver tudo aos museus do Cairo.",
+    "hint": "Gesto de boa vontade.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_wifi",
+  "cat": "Micronação",
+  "title": "Alguém instala internet via satélite",
+  "desc": "Um turista deixa uma antena de satélite ligada à bateria de um carro. Pela primeira vez, o reino tem acesso à rede — e metade da população descobre as redes sociais num único dia.",
+  "context": "Conexão é soberania digital.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Criar o \"Ministério da Internet\" (o turista).",
+    "hint": "Burocracia máxima.",
+    "now": {
+     "tech": 1,
+     "treasury": -0.02
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Racionar o acesso por ordem de idade.",
+    "hint": "Sábio e impopular.",
+    "now": {
+     "legitimacy": -1
+    },
+    "groups": {
+     "youth": -3
+    }
+   },
+   {
+    "text": "Vender horas de wi-fi aos viajantes.",
+    "hint": "O primeiro serviço público rentável.",
+    "now": {
+     "treasury": 0.06
+    },
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_cult",
+  "cat": "Micronação",
+  "title": "Uma seita chega buscando \"o centro do nada\"",
+  "desc": "Um grupo espiritual acredita que Bir Tawil é o único lugar da Terra sem dono e pede para montar um retiro. Meditam o dia todo e comem pouco — o que sobra mais ao rei.",
+  "context": "Fé, vazio e ótimos vídeos.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Receber o retiro e cobrar hospedagem.",
+    "hint": "Renda e paz.",
+    "now": {
+     "treasury": 0.07,
+     "qol": 0.3
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Dar-lhes cidadania em troca de doação.",
+    "hint": "Cidadãos novos; costumes novos.",
+    "now": {
+     "treasury": 0.1,
+     "legitimacy": -0.5,
+     "civil": 0.3
+    }
+   },
+   {
+    "text": "Expulsar: \"aqui só se medita com autorização\".",
+    "hint": "Cerimônia curta.",
+    "now": {
+     "reputation": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_festival",
+  "cat": "Micronação",
+  "title": "Festival de música no meio do nada",
+  "desc": "Um festival de música eletrônica quer montar palcos na areia por três dias. Prometem dez mil pessoas, geradores, água e uma conta bancária gorda.",
+  "context": "O primeiro grande evento do reino.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Autorizar com taxa e regras de lixo zero.",
+    "hint": "Boa receita; logística difícil.",
+    "now": {
+     "treasury": 0.15,
+     "pollution": 0.4,
+     "reputation": 1.5
+    },
+    "groups": {
+     "youth": 4,
+     "business": 2
+    }
+   },
+   {
+    "text": "Autorizar sem restrições.",
+    "hint": "Mais dinheiro, mais caos.",
+    "now": {
+     "treasury": 0.22,
+     "pollution": 1.2,
+     "health": -0.5
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Sem festa.",
+    "groups": {
+     "youth": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_nomads",
+  "cat": "Micronação",
+  "title": "A tribo vizinha reivindica o poço e o respeito",
+  "desc": "Um grupo de nômades tradicionais lembra que passa por ali há séculos e que o \"reino\" é uma novidade engraçada. Pedem reconhecimento de seus direitos de pastoreio e de água.",
+  "context": "Quem estava aqui primeiro?",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Garantir direitos por decreto e convidá-los ao conselho.",
+    "hint": "Justo; reduz a autoridade do rei.",
+    "now": {
+     "legitimacy": 2,
+     "civil": 1
+    },
+    "groups": {
+     "regional": 3,
+     "rural": 2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Cobrar taxa de uso do poço.",
+    "hint": "Receita e ressentimento.",
+    "now": {
+     "treasury": 0.04,
+     "legitimacy": -1.5
+    },
+    "groups": {
+     "rural": -3
+    }
+   },
+   {
+    "text": "Oferecer cidadania honorária e um título.",
+    "hint": "Barato e simpático.",
+    "now": {
+     "legitimacy": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_nft",
+  "cat": "Micronação",
+  "title": "Lotes digitais do reino à venda",
+  "desc": "Um empreendedor sugere vender \"lotes de areia\" em formato digital: cada comprador recebe um certificado e coordenadas. Já há compradores — e promessas de processar o reino.",
+  "context": "Imobiliária virtual de um deserto sem dono.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Autorizar a venda, com contrato claro.",
+    "hint": "Rende; cheira a golpe.",
+    "now": {
+     "treasury": 0.12,
+     "reputation": -1.5
+    },
+    "groups": {
+     "business": 2,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Vender só \"títulos de amigo do reino\".",
+    "hint": "Menos arriscado.",
+    "now": {
+     "treasury": 0.05,
+     "reputation": 0.3
+    }
+   },
+   {
+    "text": "Proibir: terra é terra.",
+    "hint": "Íntegro e pobre.",
+    "now": {
+     "legitimacy": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_dxpedition",
+  "cat": "Micronação",
+  "title": "Radioamadores querem transmitir de um \"país raro\"",
+  "desc": "Uma expedição de radioamadores quer operar do território por dois dias: para eles, estar no \"país 340\" é um troféu. Trazem equipamentos, dinheiro e muita antena.",
+  "context": "Pequena comunidade, grande alcance.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Receber e conceder prefixo de rádio.",
+    "hint": "O reino fala com o mundo.",
+    "now": {
+     "reputation": 1.5,
+     "tech": 0.5,
+     "treasury": 0.03
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Cobrar licença cara.",
+    "hint": "Mais dinheiro, menos amigos.",
+    "now": {
+     "treasury": 0.08,
+     "reputation": -0.5
+    }
+   },
+   {
+    "text": "Negar: sinal estrangeiro, risco de espionagem.",
+    "hint": "Paranoia.",
+    "now": {
+     "intel": 0.5
+    },
+    "groups": {
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_wedding",
+  "cat": "Micronação",
+  "title": "Casamentos no fim do mundo",
+  "desc": "Um casal de influenciadores quer casar \"no país que ninguém quer\". O rei se oferece como celebrante. A procura por casamentos explode.",
+  "context": "Turismo romântico de nicho.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Criar o \"pacote casamento real\".",
+    "hint": "Renda e fotos.",
+    "now": {
+     "treasury": 0.09,
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 3,
+     "business": 1
+    }
+   },
+   {
+    "text": "Celebrar de graça, em nome da nação.",
+    "hint": "Boa publicidade.",
+    "now": {
+     "reputation": 1.5,
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Recusar: o casamento real é só do rei.",
+    "hint": "Tradição inventada."
+   }
+  ]
+ },
+ {
+  "id": "bt2_mirage",
+  "cat": "Micronação",
+  "title": "Um lago aparece no horizonte (e some)",
+  "desc": "A população jura ter visto um lago e ao se aproximar encontra apenas miragem. Uma corrente política passa a defender \"buscar o lago\".",
+  "context": "A esperança como política de Estado.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Organizar uma expedição oficial ao lago.",
+    "hint": "Aventura e decepção.",
+    "now": {
+     "treasury": -0.03,
+     "legitimacy": -0.5,
+     "qol": -0.2
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Declarar que o lago existe \"espiritualmente\".",
+    "hint": "Propaganda criativa.",
+    "now": {
+     "legitimacy": 1
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Contratar um geólogo para investigar de verdade.",
+    "hint": "Descobre onde há água subterrânea.",
+    "now": {
+     "treasury": -0.05
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "bt2_meteorite",
+  "cat": "Micronação",
+  "title": "Um meteorito cai a dois quilômetros do palácio",
+  "desc": "A rocha espacial atrai cientistas, colecionadores e traficantes de meteoritos. Quem ficar com ela ganha prestígio — e dinheiro.",
+  "context": "O céu entregou o primeiro recurso natural do reino.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Declarar patrimônio e abrir a um museu.",
+    "hint": "Prestígio científico.",
+    "now": {
+     "reputation": 2,
+     "tech": 0.5
+    }
+   },
+   {
+    "text": "Leiloar pedaços.",
+    "hint": "Muito dinheiro; briga de leilão.",
+    "now": {
+     "treasury": 0.2,
+     "reputation": -0.5
+    }
+   },
+   {
+    "text": "Doar a uma universidade em troca de bolsas.",
+    "hint": "Capital humano.",
+    "now": {
+     "treasury": -0.02
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 0.8,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "bt2_china",
+  "cat": "Micronação",
+  "title": "Uma potência oferece um \"projeto de infraestrutura\"",
+  "desc": "Uma delegação de uma grande potência propõe construir estrada, usina solar e porto seco em troca de \"direitos especiais\" no território. Os termos cabem num guardanapo — e o guardanapo é caro.",
+  "context": "O deserto também tem pretendentes.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Aceitar tudo.",
+    "hint": "Infraestrutura e dependência.",
+    "now": {
+     "debt": 0.3
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "logistics",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "china": 5,
+     "west": -3
+    }
+   },
+   {
+    "text": "Aceitar só a usina solar.",
+    "hint": "Cauteloso.",
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "china": 2
+    }
+   },
+   {
+    "text": "Recusar: o rei não é pau-mandado.",
+    "hint": "Orgulho de areia.",
+    "now": {
+     "legitimacy": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_wikipedia",
+  "cat": "Micronação",
+  "title": "Guerra de edições na enciclopédia",
+  "desc": "Voluntários do mundo todo brigam sobre se o reino \"existe\", é \"uma brincadeira\" ou \"um território disputado\". O rei pede para o conselho nacional \"escrever a verdade\".",
+  "context": "A batalha pela narrativa é digital.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Criar um comitê de comunicação.",
+    "hint": "Profissionaliza a lenda.",
+    "now": {
+     "reputation": 1,
+     "treasury": -0.02
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Deixar a internet decidir.",
+    "hint": "O que sobrar é história."
+   },
+   {
+    "text": "Processar os editores.",
+    "hint": "Efeito Streisand garantido.",
+    "now": {
+     "reputation": -2,
+     "legitimacy": -1
+    },
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_ufo",
+  "cat": "Micronação",
+  "title": "Luzes no céu atraem caçadores de OVNIs",
+  "desc": "Turistas afirmam ter visto luzes estranhas sobre o deserto. Um canal de TV propõe um especial em horário nobre.",
+  "context": "Misterioso e lucrativo.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Transformar em atração oficial.",
+    "hint": "Turismo de nicho.",
+    "now": {
+     "treasury": 0.07,
+     "reputation": 0.8
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Dizer que foram balões do programa espacial.",
+    "hint": "Coerência histórica.",
+    "now": {
+     "legitimacy": 0.5
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Sem mistério."
+   }
+  ]
+ },
+ {
+  "id": "bt2_cat",
+  "cat": "Micronação",
+  "title": "Um gato adotado é nomeado ministro",
+  "desc": "Um gato vira-lata se tornou o animal de estimação do palácio e foi aclamado pela multidão (todos os doze). O sobrinho do rei propõe nomeá-lo ministro da Fauna.",
+  "context": "Política de estimação.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Nomear o gato com pompa.",
+    "hint": "Memes e simpatia.",
+    "now": {
+     "reputation": 0.8,
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Nomear e dar-lhe poder de veto.",
+    "hint": "Ligeiro caos.",
+    "now": {
+     "efficiency": -0.5,
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Recusar: ministros precisam falar.",
+    "hint": "Sensato."
+   }
+  ]
+ },
+ {
+  "id": "bt2_sandbags",
+  "cat": "Micronação",
+  "title": "O muro de sacos de areia da fronteira",
+  "desc": "O Marechal propõe construir uma \"grande muralha\" de sacos de areia contra invasões. Faltam sacos; sobra areia.",
+  "context": "Defesa baseada em material local.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Construir e inaugurar com cerimônia.",
+    "hint": "Símbolo de soberania.",
+    "now": {
+     "defense": 1,
+     "legitimacy": 1,
+     "treasury": -0.03
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Substituir por marcos de pedra bem-humorados.",
+    "hint": "Menos trabalho.",
+    "now": {
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Cancelar: não há inimigo, só vento.",
+    "hint": "Realista.",
+    "groups": {
+     "military": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_exile",
+  "cat": "Micronação",
+  "title": "Um líder de outra micronação pede asilo",
+  "desc": "O \"presidente\" de uma república de um apartamento, derrubado por uma assembleia de condomínio, pede abrigo político. Traz um sofá.",
+  "context": "Diplomacia de mundos estranhos.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Conceder asilo.",
+    "hint": "Ganho simbólico.",
+    "now": {
+     "reputation": 0.5,
+     "legitimacy": 0.5
+    }
+   },
+   {
+    "text": "Dar-lhe um cargo.",
+    "hint": "Mais um ministro.",
+    "now": {
+     "efficiency": -0.3
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Devolver ao condomínio.",
+    "hint": "Burocracia internacional.",
+    "now": {
+     "reputation": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_water_pipe",
+  "cat": "Micronação",
+  "title": "Contrabando de água pelo oásis",
+  "desc": "Um grupo de comerciantes instalou mangueiras clandestinas para levar água do poço a acampamentos vizinhos. Cobram caro; o reino não vê nada do lucro.",
+  "context": "Recurso escasso, mercado negro.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Regular e taxar a venda de água.",
+    "hint": "Receita e controle.",
+    "now": {
+     "treasury": 0.06,
+     "control": 1
+    },
+    "groups": {
+     "business": 1,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Expulsar os comerciantes.",
+    "hint": "Água para o povo; clima tenso.",
+    "now": {
+     "legitimacy": 1.5,
+     "control": 1
+    },
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Fingir que não viu.",
+    "hint": "Corrupção de areia.",
+    "now": {
+     "corruption": 1.2
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_loan",
+  "cat": "Micronação",
+  "title": "Um banco ofereceu empréstimo a um país que não existe",
+  "desc": "Uma fintech \"de impacto\" oferece crédito ao reino sem exigir lastro. O contrato é incompreensível, mas o juro é muito claro.",
+  "context": "Dívida de quem não tem nada.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Pegar o empréstimo para obras.",
+    "hint": "Dinheiro agora; juros depois.",
+    "now": {
+     "treasury": 0.25,
+     "debt": 0.4
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Negociar um valor menor.",
+    "hint": "Prudência.",
+    "now": {
+     "treasury": 0.1,
+     "debt": 0.15
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "O rei não assina o que não lê.",
+    "now": {
+     "legitimacy": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_polar_tourists",
+  "cat": "Micronação",
+  "title": "Uma onda de calor extremo",
+  "desc": "A temperatura chega a 52 °C. O palácio (uma tenda de lona) vira forno, e duas cabras desmaiam. O rei pede um decreto contra o sol.",
+  "context": "O deserto cobra o preço.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Construir abrigos com sombra para todos.",
+    "hint": "Salva vidas.",
+    "now": {
+     "treasury": -0.05,
+     "health": 0.5,
+     "qol": 0.5
+    }
+   },
+   {
+    "text": "Decretar horário de meio-dia livre.",
+    "hint": "Barato e simpático.",
+    "now": {
+     "health": 0.2,
+     "legitimacy": 0.5
+    }
+   },
+   {
+    "text": "Ignorar: \"o sol é de todos\".",
+    "hint": "Heroico e perigoso.",
+    "now": {
+     "health": -1,
+     "qol": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_italian",
+  "cat": "Micronação",
+  "title": "Um aviador italiano pousa e declara-se descendente de uma antiga expedição",
+  "desc": "Um piloto de ultraleve aterrissa, afirma que seu bisavô mapeou a área e exige um assento no conselho. Mostra um mapa antigo com \"Bir Tawil\" riscado e uma anotação: \"inútil\".",
+  "context": "Heranças suspeitas e charmosas.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Receber com honras e chamá-lo de embaixador.",
+    "hint": "Diplomacia romântica.",
+    "now": {
+     "reputation": 0.8
+    },
+    "rel": {
+     "all": 0.5
+    }
+   },
+   {
+    "text": "Pedir o mapa emprestado e nunca devolver.",
+    "hint": "Patrimônio histórico adquirido.",
+    "now": {
+     "legitimacy": 0.5,
+     "reputation": -0.3
+    }
+   },
+   {
+    "text": "Mandar embora.",
+    "hint": "Rude, mas eficaz."
+   }
+  ]
+ },
+ {
+  "id": "bt2_unrecognized",
+  "cat": "Micronação",
+  "title": "O dia em que alguém reconhece o reino (sem querer)",
+  "desc": "Um pequeno país insular, por engano de tradução, envia uma nota formal \"reconhecendo\" o reino. O ministério dele diz que foi erro, mas o texto vazou. A imprensa pede uma coletiva.",
+  "context": "O primeiro reconhecimento da história — talvez.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Celebrar o reconhecimento em rede nacional.",
+    "hint": "Momento histórico.",
+    "now": {
+     "reputation": 2,
+     "legitimacy": 3
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Aceitar discretamente e agradecer o \"equívoco\".",
+    "hint": "Elegante.",
+    "now": {
+     "reputation": 1,
+     "legitimacy": 1.5
+    }
+   },
+   {
+    "text": "Devolver a nota para não criar problemas.",
+    "hint": "Honestidade rara.",
+    "now": {
+     "reputation": 1.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_birthday",
+  "cat": "Micronação",
+  "title": "O aniversário do rei",
+  "desc": "O rei faz anos. O protocolo exige salvas de canhão (não há canhão), desfile (há sete pessoas) e discurso (o rei fala o dia todo).",
+  "context": "Pompa para um reino do tamanho de um terreno.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 400,
+  "options": [
+   {
+    "text": "Festa grande, em tendas e com o povo todo.",
+    "hint": "Todos comem e bebem.",
+    "now": {
+     "treasury": -0.04,
+     "legitimacy": 2,
+     "qol": 0.4
+    },
+    "groups": {
+     "youth": 2,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Cerimônia curta, com bolo.",
+    "hint": "Sensato.",
+    "now": {
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Cancelar: o rei \"está acima das datas\".",
+    "hint": "Misterioso.",
+    "now": {
+     "legitimacy": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "bt2_succession",
+  "cat": "Micronação",
+  "title": "Quem sucede o rei?",
+  "desc": "A pergunta chega com um sobrinho ansioso, um primo ambicioso e uma cabra eloquente. A lei de sucessão é um guardanapo, e o guardanapo sumiu.",
+  "context": "Todo reino precisa de um plano B.",
+  "cond": {
+   "flag": "micronation"
+  },
+  "w": 1,
+  "cd": 600,
+  "options": [
+   {
+    "text": "Instituir eleição entre os cidadãos.",
+    "hint": "Democracia em miniatura.",
+    "now": {
+     "political": 2,
+     "legitimacy": 1
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Nomear o sobrinho herdeiro.",
+    "hint": "Tradição clássica.",
+    "now": {
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "youth": -1
+    }
+   },
+   {
+    "text": "Nomear a cabra.",
+    "hint": "Surpreendentemente popular.",
+    "now": {
+     "reputation": 1,
+     "legitimacy": -0.5
+    },
+    "groups": {
+     "youth": 3
+    }
+   }
+  ]
+ }
+]

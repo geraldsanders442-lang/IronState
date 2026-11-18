@@ -1,0 +1,247 @@
+[
+{"id":"s_world_cup_bid","cat":"Esporte","title":"Sediar a Copa do Mundo?","desc":"A federação de futebol quer candidatar o país a sediar a Copa do Mundo. Exigiria doze estádios novos.","context":"Outros países ficaram com estádios vazios e dívidas.","cond":{"min":{"day":120}},"options":[
+ {"text":"Candidatar-se com tudo.","hint":"Prestígio; gasto enorme.","now":{"treasury":-0.6,"legitimacy":3},"long":[{"k":"corruption","v":2,"d":730},{"k":"reputation","v":3,"d":730}],"groups":{"workers":3,"business":3},"next":[{"id":"s_world_cup_host","days":120,"p":0.6}]},
+ {"text":"Candidatura conjunta com um vizinho.","hint":"Custo dividido.","now":{"treasury":-0.2},"rel":{"neighbors":4}},
+ {"text":"Não se candidatar.","hint":"Austeridade.","groups":{"youth":-2}}
+]},
+{"id":"s_world_cup_host","chain":true,"cat":"Esporte","title":"Vamos sediar a Copa!","desc":"A candidatura venceu. Agora é preciso entregar estádios, metrôs e aeroportos em tempo recorde — e as empreiteiras já pedem aditivos.","context":"O mundo inteiro vai olhar para o país.","default":1,"options":[
+ {"text":"Pagar os aditivos para entregar no prazo.","hint":"Evento perfeito; corrupção.","now":{"treasury":-0.5,"corruption":3,"reputation":4},"long":[{"k":"s_services","v":4,"d":365}],"groups":{"business":4}},
+ {"text":"Auditar contratos, mesmo com atrasos.","hint":"Contas limpas; risco de vexame.","now":{"corruption":-2,"reputation":-1}},
+ {"text":"Usar o evento para remover favelas próximas aos estádios.","hint":"Cidade bonita; injustiça.","now":{"housing":-3,"protest":4},"groups":{"workers":-5,"business":3}}
+]},
+{"id":"s_doping","cat":"Esporte","title":"Escândalo de doping","desc":"Uma reportagem revela um programa estatal de doping que garantiu as medalhas olímpicas do país.","context":"O comitê olímpico ameaça banir o país.","options":[
+ {"text":"Admitir e punir os responsáveis.","hint":"Vergonha honesta.","now":{"reputation":2,"legitimacy":-2},"groups":{"youth":-2}},
+ {"text":"Negar e chamar de complô estrangeiro.","hint":"Orgulho ferido.","now":{"reputation":-5,"legitimacy":1},"rel":{"west":-3}},
+ {"text":"Culpar alguns médicos isolados.","hint":"Meia verdade.","now":{"reputation":-2}}
+]},
+{"id":"s_national_team_protest","cat":"Esporte","title":"Seleção se recusa a cantar o hino","desc":"Os jogadores da seleção ficaram em silêncio durante o hino em protesto contra a repressão.","context":"O capitão é o atleta mais popular do país.","cond":{"max":{"civil":45}},"options":[
+ {"text":"Suspender os jogadores.","hint":"Autoridade; fúria popular.","now":{"protest":4,"civil":-2},"groups":{"youth":-7}},
+ {"text":"Ignorar o gesto.","hint":"Tolerância calculada.","now":{"civil":1}},
+ {"text":"Receber o capitão no palácio.","hint":"Gesto conciliador.","now":{"legitimacy":2},"groups":{"youth":4,"military":-2}}
+]},
+{"id":"s_language_law","cat":"Identidade","title":"Língua oficial única?","desc":"Nacionalistas propõem que apenas a língua majoritária seja usada em escolas, tribunais e placas.","context":"Minorias linguísticas somam um quarto da população.","options":[
+ {"text":"Língua única obrigatória.","hint":"Unidade forçada; minorias revoltadas.","now":{"civil":-3},"groups":{"regional":-8},"long":[{"k":"separatism","v":6,"d":0}]},
+ {"text":"Bilinguismo nas regiões de minorias.","hint":"Convivência.","now":{"civil":2},"groups":{"regional":5},"long":[{"k":"separatism","v":-4,"d":0}]},
+ {"text":"Deixar cada região decidir.","hint":"Descentralização.","groups":{"regional":3},"long":[{"k":"separatism","v":-1,"d":0}]}
+]},
+{"id":"s_minority_massacre","cat":"Minorias","title":"Violência contra uma minoria","desc":"Milícias atacaram vilarejos de uma minoria religiosa no interior. Há dezenas de mortos e milhares de deslocados.","context":"Os agressores dizem agir 'em defesa da nação'.","crisis":true,"default":2,"cond":{"min":{"separatism":15}},"options":[
+ {"text":"Enviar o Exército para proteger a minoria e prender os agressores.","hint":"Lei e ordem; nacionalistas irritados.","now":{"control":3,"reputation":3},"groups":{"regional":4,"rural":-3}},
+ {"text":"Mediação com líderes religiosos.","hint":"Lento.","now":{"legitimacy":1}},
+ {"text":"Culpar 'confrontos mútuos' e não intervir.","hint":"Omissão; condenação internacional.","now":{"reputation":-8,"civil":-3},"rel":{"west":-6},"long":[{"k":"separatism","v":6,"d":365}],"next":[{"id":"s_un_investigation","days":30}]}
+]},
+{"id":"s_un_investigation","chain":true,"cat":"Minorias","title":"A ONU quer investigar","desc":"O Conselho de Direitos Humanos aprovou uma missão para investigar os massacres. Pede acesso irrestrito às regiões afetadas.","context":"Recusar pode levar a sanções.","default":1,"options":[
+ {"text":"Permitir a missão.","hint":"Transparência; revelações incômodas.","now":{"reputation":4,"legitimacy":-2},"groups":{"military":-3}},
+ {"text":"Recusar a missão.","hint":"Soberania; isolamento.","now":{"reputation":-6},"rel":{"west":-8}},
+ {"text":"Permitir uma missão acompanhada por militares.","hint":"Acesso controlado.","now":{"reputation":-1}}
+]},
+{"id":"s_same_sex","cat":"Direitos civis","title":"Casamento igualitário","desc":"A Suprema Corte vai julgar se a constituição permite o casamento entre pessoas do mesmo sexo. O governo deve se posicionar.","context":"O país está dividido entre a capital e o interior.","options":[
+ {"text":"Apoiar o casamento igualitário.","hint":"Direitos; religiosos irritados.","now":{"civil":4,"reputation":3},"groups":{"youth":6,"rural":-6},"rel":{"west":3}},
+ {"text":"Defender a união civil, sem casamento.","hint":"Meio-termo.","now":{"civil":1},"groups":{"youth":1,"rural":-1}},
+ {"text":"Defender a definição tradicional na constituição.","hint":"Base conservadora mobilizada.","now":{"civil":-3},"groups":{"rural":5,"youth":-5},"rel":{"west":-3}}
+]},
+{"id":"s_abortion","cat":"Direitos civis","title":"A questão do aborto","desc":"Uma jovem morreu após um aborto clandestino. Movimentos pedem a descriminalização; líderes religiosos pedem penas maiores.","context":"O tema domina as redes e os púlpitos.","options":[
+ {"text":"Descriminalizar até 12 semanas.","hint":"Saúde pública; conflito religioso.","now":{"civil":4,"health":1},"groups":{"youth":5,"rural":-6}},
+ {"text":"Permitir em casos de estupro e risco de vida.","hint":"Compromisso.","now":{"civil":1,"health":1}},
+ {"text":"Endurecer as penas.","hint":"Tradição; mais mortes clandestinas.","now":{"civil":-3,"health":-1},"groups":{"rural":5,"youth":-5}}
+]},
+{"id":"s_drug_legalize","cat":"Costumes","title":"Legalizar a maconha?","desc":"Prisões estão lotadas de pequenos usuários. Um estudo diz que a legalização geraria impostos e reduziria o tráfico.","context":"Igrejas e policiais são contra.","options":[
+ {"text":"Legalizar e tributar.","hint":"Receita e prisões vazias; conservadores contra.","now":{"treasury":0.1,"crime":-2},"policy":{"vices":"liberal"},"groups":{"youth":4}},
+ {"text":"Descriminalizar o uso pessoal.","hint":"Meio-termo.","now":{"crime":-1,"civil":2}},
+ {"text":"Guerra total às drogas.","hint":"Repressão; prisões cheias.","now":{"civil":-2,"treasury":-0.1},"policy":{"vices":"prohibited"},"groups":{"rural":3,"youth":-4}}
+]},
+{"id":"s_cult_leader","cat":"Religião","title":"O guru milionário","desc":"Um guru carismático reuniu um milhão de seguidores, compra terras e emissoras e agora quer um partido político.","context":"Ex-seguidores denunciam abusos e lavagem cerebral.","options":[
+ {"text":"Investigá-lo por fraude e abusos.","hint":"Lei aplicada; seguidores furiosos.","now":{"protest":3,"civil":-1},"groups":{"rural":-3}},
+ {"text":"Aliar-se a ele para ganhar votos.","hint":"Base eleitoral; reputação duvidosa.","now":{"legitimacy":2,"reputation":-2},"groups":{"rural":4}},
+ {"text":"Deixar a sociedade decidir.","hint":"Liberdade religiosa.","long":[{"k":"opposition","v":2,"d":180}]}
+]},
+{"id":"s_religious_holiday","cat":"Religião","title":"Feriados religiosos","desc":"Minorias religiosas pedem que seus feriados também sejam oficiais. A maioria acha que já há feriados demais.","context":"Empresários calculam o custo de cada feriado.","options":[
+ {"text":"Reconhecer os feriados das minorias.","hint":"Inclusão; produtividade cai.","now":{"civil":2},"groups":{"regional":3,"business":-3}},
+ {"text":"Abolir todos os feriados religiosos.","hint":"Laicidade; religiosos furiosos.","now":{"civil":1},"groups":{"rural":-6,"business":4}},
+ {"text":"Deixar como está.","hint":"Nada muda."}
+]},
+{"id":"s_mosque_church","cat":"Religião","title":"O templo contestado","desc":"Duas comunidades religiosas disputam um templo antigo construído e reconstruído por ambas ao longo dos séculos.","context":"A disputa já causou brigas e um morto.","options":[
+ {"text":"Dividir o uso por horários.","hint":"Compromisso frágil.","now":{"stability":1}},
+ {"text":"Transformar em museu nacional.","hint":"Ninguém fica satisfeito; paz garantida.","now":{"civil":-1},"groups":{"rural":-2}},
+ {"text":"Entregar à comunidade majoritária.","hint":"Maioria feliz; minoria revoltada.","groups":{"rural":3,"regional":-5},"long":[{"k":"separatism","v":3,"d":240}]}
+]},
+{"id":"s_pandemic_new","cat":"Pandemia","title":"Um novo vírus","desc":"Hospitais registram casos de uma pneumonia desconhecida e muito contagiosa. A OMS ainda não se pronunciou.","context":"Agir cedo é impopular; agir tarde é mortal.","w":0.7,"cond":{"noflag":"pandemic"},"options":[
+ {"text":"Fechar fronteiras e escolas imediatamente.","hint":"Contenção precoce; economia sofre.","now":{"gdp":-0.6,"health":2},"groups":{"business":-5},"flags":{"set":["pandemic"]},"next":[{"id":"s_pandemic_wave","days":30,"p":0.4}]},
+ {"text":"Testagem em massa e isolamento dos casos.","hint":"Equilíbrio.","now":{"treasury":-0.2},"flags":{"set":["pandemic"]},"next":[{"id":"s_pandemic_wave","days":30,"p":0.6}]},
+ {"text":"Esperar para não criar pânico.","hint":"Economia aberta; risco alto.","flags":{"set":["pandemic"]},"next":[{"id":"s_pandemic_wave","days":21,"p":0.9}]}
+]},
+{"id":"s_pandemic_wave","chain":true,"crisis":true,"cat":"Pandemia","title":"A onda chegou","desc":"Os hospitais da capital estão no limite. Médicos escolhem quem vive. A mortalidade dispara entre idosos.","context":"A população exige ação e vacinas.","default":2,"options":[
+ {"text":"Confinamento nacional de dois meses.","hint":"Salva vidas; recessão.","now":{"gdp":-2,"health":3,"protest":3},"groups":{"business":-6,"workers":-3},"long":[{"k":"growth","v":-1.5,"d":90}],"next":[{"id":"s_vaccine_race","days":60}]},
+ {"text":"Hospitais de campanha e auxílio emergencial.","hint":"Gasto enorme.","now":{"treasury":-0.8,"health":2},"groups":{"workers":4},"next":[{"id":"s_vaccine_race","days":60}]},
+ {"text":"Manter tudo aberto: a economia não pode parar.","hint":"Muitas mortes.","now":{"health":-6,"pop":-0.3,"legitimacy":-5},"groups":{"business":3,"workers":-5},"next":[{"id":"s_vaccine_race","days":60}]}
+]},
+{"id":"s_vaccine_race","chain":true,"cat":"Pandemia","title":"A corrida pelas vacinas","desc":"Três potências oferecem vacinas — cada uma em troca de algo: alinhamento diplomático, contratos ou acesso a dados.","context":"Quem vacinar primeiro reabre primeiro.","default":2,"options":[
+ {"text":"Comprar a vacina ocidental, mais cara.","hint":"Eficaz; custo alto.","now":{"treasury":-0.4,"health":3},"rel":{"west":5},"flags":{"clear":["pandemic"]}},
+ {"text":"Aceitar a vacina oriental doada.","hint":"Grátis; alinhamento.","now":{"health":2},"rel":{"east":6,"west":-3},"flags":{"clear":["pandemic"]}},
+ {"text":"Produzir uma vacina nacional.","hint":"Soberania; demora.","now":{"treasury":-0.3},"long":[{"k":"tech","v":3,"d":0},{"k":"health","v":-2,"d":120}],"flags":{"clear":["pandemic"]}}
+]},
+{"id":"s_doctors_exodus","cat":"Saúde","title":"Médicos vão embora","desc":"Um terço dos médicos formados no último ano emigrou para países ricos. Hospitais do interior fecham alas.","context":"Os salários são um quinto dos pagos no exterior.","cond":{"max":{"health":65}},"options":[
+ {"text":"Dobrar os salários no interior.","hint":"Médicos ficam; custo alto.","now":{"treasury":-0.3},"long":[{"k":"health","v":3,"d":0}],"groups":{"rural":4}},
+ {"text":"Importar médicos de outro país.","hint":"Rápido; corporação médica furiosa.","now":{"health":2,"treasury":-0.1},"groups":{"bureaucracy":-2}},
+ {"text":"Serviço obrigatório para recém-formados.","hint":"Coerção.","now":{"health":2,"civil":-2},"groups":{"youth":-4}}
+]},
+{"id":"s_obesity","cat":"Saúde","title":"Epidemia de obesidade","desc":"Um em cada três adultos é obeso. Médicos pedem impostos sobre refrigerantes e ultraprocessados.","context":"A indústria de alimentos é um grande empregador.","cond":{"min":{"gdppc":8000}},"options":[
+ {"text":"Imposto sobre açúcar.","hint":"Saúde e receita.","now":{"treasury":0.1,"health":1},"groups":{"business":-3}},
+ {"text":"Campanhas educativas.","hint":"Efeito lento.","now":{"treasury":-0.05},"long":[{"k":"health","v":1,"d":0}]},
+ {"text":"Não interferir na dieta das pessoas.","hint":"Liberdade.","groups":{"business":2}}
+]},
+{"id":"s_opioids","cat":"Saúde","title":"Crise dos analgésicos","desc":"Um analgésico vendido livremente viciou centenas de milhares. Overdoses se multiplicam nas periferias.","context":"O laboratório fabricante é nacional e influente.","options":[
+ {"text":"Proibir o remédio e processar o laboratório.","hint":"Justiça; empresa afetada.","now":{"health":2,"treasury":0.1},"groups":{"business":-3}},
+ {"text":"Tratamento gratuito para dependentes.","hint":"Custo e cuidado.","now":{"treasury":-0.15},"long":[{"k":"health","v":2,"d":0}]},
+ {"text":"Repressão aos usuários.","hint":"Prisões lotadas.","now":{"crime":-1,"civil":-2}}
+]},
+{"id":"s_school_shooting","cat":"Segurança","title":"Massacre na escola","desc":"Um ex-aluno armado matou dezenove pessoas numa escola da capital. O país está em choque.","context":"Armas são fáceis de comprar no mercado ilegal e legal.","options":[
+ {"text":"Restringir fortemente as armas.","hint":"Segurança; lobby armamentista irado.","now":{"crime":-2,"civil":-1},"groups":{"rural":-3}},
+ {"text":"Segurança armada em todas as escolas.","hint":"Custo e militarização.","now":{"treasury":-0.15},"groups":{"military":2}},
+ {"text":"Foco em saúde mental.","hint":"Prevenção de longo prazo.","now":{"treasury":-0.08},"long":[{"k":"health","v":1,"d":0}]}
+]},
+{"id":"s_youth_unemployment_riots","cat":"Protestos","title":"Revolta dos jovens","desc":"Jovens desempregados incendiaram carros e lojas em subúrbios da capital após a morte de um adolescente numa abordagem policial.","context":"Os distúrbios se espalham para outras cidades.","crisis":true,"default":1,"cond":{"min":{"unemployment":10}},"options":[
+ {"text":"Toque de recolher e repressão.","hint":"Ordem; ódio acumulado.","now":{"protest":-5,"civil":-3},"groups":{"youth":-8},"long":[{"k":"revoRisk","v":4,"d":180}]},
+ {"text":"Plano emergencial de empregos para jovens.","hint":"Custo; acalma os bairros.","now":{"treasury":-0.3,"unemployment":-0.5,"protest":-3},"groups":{"youth":6}},
+ {"text":"Afastar os policiais e prometer reforma policial.","hint":"Gesto de justiça.","now":{"protest":-2,"legitimacy":2},"groups":{"youth":3,"military":-2}}
+]},
+{"id":"s_birthrate","cat":"Demografia","title":"Ninguém quer ter filhos","desc":"A taxa de natalidade caiu abaixo da metade do necessário para repor a população. Demógrafos alertam para o colapso da previdência.","context":"Jovens citam moradia cara e salários baixos.","cond":{"min":{"gdppc":12000}},"options":[
+ {"text":"Bônus generoso por filho.","hint":"Natalidade sobe um pouco; custo.","now":{"treasury":-0.3},"long":[{"k":"birth","v":3,"d":0}],"groups":{"rural":3}},
+ {"text":"Creches gratuitas e licença parental longa.","hint":"Política moderna.","now":{"treasury":-0.25},"long":[{"k":"birth","v":2,"d":0},{"k":"qol","v":1,"d":0}],"groups":{"youth":4}},
+ {"text":"Abrir as portas à imigração.","hint":"Solução rápida; tensão cultural.","policy":{"immigration":"encouraged"}}
+]},
+{"id":"s_elderly_care","cat":"Social","title":"Abandono dos idosos","desc":"Reportagens mostram asilos superlotados e idosos abandonados em hospitais. A população envelhece rapidamente.","context":"Famílias pequenas não conseguem cuidar dos pais.","options":[
+ {"text":"Rede pública de cuidadores.","hint":"Dignidade; custo crescente.","now":{"treasury":-0.25},"long":[{"k":"qol","v":2,"d":0}],"groups":{"workers":3,"rural":3}},
+ {"text":"Subsídio às famílias cuidadoras.","hint":"Mais barato.","now":{"treasury":-0.1},"groups":{"rural":2}},
+ {"text":"Deixar para o setor privado e caridade.","hint":"Sem custo; abandono continua.","now":{"qol":-1}}
+]},
+{"id":"s_homeless","cat":"Desenvolvimento urbano","title":"Acampamentos nas calçadas","desc":"Milhares de pessoas vivem em barracas no centro da capital. Comerciantes exigem remoção.","context":"Os aluguéis subiram 40% em dois anos.","cond":{"max":{"housing":55}},"options":[
+ {"text":"Moradia primeiro: alojar todos em prédios públicos.","hint":"Solução humanitária.","now":{"treasury":-0.2},"long":[{"k":"housing","v":3,"d":0},{"k":"poverty","v":-1,"d":0}]},
+ {"text":"Remoção policial.","hint":"Centro limpo; problema se espalha.","now":{"civil":-2},"groups":{"business":3,"workers":-3}},
+ {"text":"Controle de aluguéis.","hint":"Alívio imediato; menos construção.","now":{"market":-2},"groups":{"workers":4,"business":-4},"long":[{"k":"housing","v":-1,"d":365}]}
+]},
+{"id":"s_slum_fire","cat":"Desastre","title":"Incêndio na favela","desc":"Um incêndio destruiu quatro mil barracos numa favela da capital. Sobreviventes acusam especuladores imobiliários.","context":"O terreno vale muito para incorporadoras.","options":[
+ {"text":"Reconstruir no mesmo lugar, com urbanização.","hint":"Justiça social; especuladores perdem.","now":{"treasury":-0.2},"long":[{"k":"housing","v":2,"d":0}],"groups":{"workers":5,"business":-3}},
+ {"text":"Vender o terreno e realocar os moradores.","hint":"Receita; revolta.","now":{"treasury":0.2,"protest":4},"groups":{"workers":-5,"business":4}},
+ {"text":"Abrigos temporários.","hint":"Paliativo.","now":{"treasury":-0.05}}
+]},
+{"id":"s_teachers_ideology","cat":"Educação","title":"Doutrinação nas escolas?","desc":"Pais acusam professores de doutrinação política. Deputados querem câmeras nas salas de aula.","context":"Sindicatos de professores chamam a proposta de censura.","options":[
+ {"text":"Câmeras e supervisão nas aulas.","hint":"Controle; professores revoltados.","now":{"civil":-3},"groups":{"rural":3,"bureaucracy":-4,"youth":-3}},
+ {"text":"Garantir liberdade de cátedra.","hint":"Autonomia acadêmica.","now":{"civil":2},"groups":{"youth":2,"rural":-2}},
+ {"text":"Currículo nacional detalhado.","hint":"Padronização.","now":{"education":1}}
+]},
+{"id":"s_university_free","cat":"Educação","title":"Universidade gratuita para todos?","desc":"Estudantes exigem ensino superior público e gratuito. Hoje as universidades cobram mensalidades altas.","context":"Seria uma despesa permanente.","options":[
+ {"text":"Universidade gratuita.","hint":"Educação e mobilidade social; custo alto.","now":{"treasury":-0.2},"long":[{"k":"education","v":4,"d":0},{"k":"revenue","v":-0.2,"d":0}],"groups":{"youth":8}},
+ {"text":"Bolsas para estudantes pobres.","hint":"Focalizado.","now":{"treasury":-0.08},"long":[{"k":"education","v":2,"d":0}],"groups":{"youth":3}},
+ {"text":"Empréstimo estudantil.","hint":"Endividamento jovem.","long":[{"k":"education","v":1,"d":0}],"groups":{"youth":-2}}
+]},
+{"id":"s_exam_cheating","cat":"Educação","title":"Fraude no vestibular nacional","desc":"As provas do exame nacional vazaram e foram vendidas. Filhos de autoridades estão entre os aprovados suspeitos.","context":"Milhões de estudantes fizeram o exame.","options":[
+ {"text":"Anular o exame e refazer.","hint":"Justiça; caos logístico.","now":{"treasury":-0.05,"corruption":-1},"groups":{"youth":2}},
+ {"text":"Anular apenas os suspeitos.","hint":"Seletivo.","now":{"corruption":-1}},
+ {"text":"Manter os resultados.","hint":"Injustiça.","now":{"corruption":2,"legitimacy":-2},"groups":{"youth":-5}}
+]},
+{"id":"s_internet_addiction","cat":"Sociedade","title":"Viciados em telas","desc":"Psiquiatras alertam para uma epidemia de vício em jogos e redes sociais entre adolescentes.","context":"Pais pedem limites legais.","options":[
+ {"text":"Limite legal de horas para menores.","hint":"Proteção; controle estatal.","now":{"civil":-2,"health":1},"groups":{"youth":-4,"rural":2}},
+ {"text":"Proibir celulares nas escolas.","hint":"Medida pontual.","now":{"education":1},"groups":{"youth":-1}},
+ {"text":"Deixar para as famílias.","hint":"Liberdade.","groups":{"youth":1}}
+]},
+{"id":"s_famous_singer","cat":"Cultura","title":"A cantora proibida","desc":"A cantora mais famosa do país lançou uma música satirizando o governo. A canção é tocada em todos os protestos.","context":"Ela tem 30 milhões de seguidores.","options":[
+ {"text":"Proibir a música.","hint":"Efeito contrário garantido.","now":{"civil":-3,"protest":3},"groups":{"youth":-6}},
+ {"text":"Convidá-la para cantar na festa nacional.","hint":"Cooptação simpática.","now":{"legitimacy":3},"groups":{"youth":4}},
+ {"text":"Ignorar.","hint":"A música passa.","now":{"civil":1}}
+]},
+{"id":"s_heritage_dam","cat":"Cultura","title":"Ruínas descobertas","desc":"Obras de uma rodovia revelaram ruínas de uma civilização milenar. Arqueólogos pedem a paralisação da obra.","context":"A rodovia é promessa de campanha.","options":[
+ {"text":"Desviar a rodovia e criar um sítio arqueológico.","hint":"Patrimônio e turismo; atraso.","now":{"treasury":-0.1,"reputation":2},"long":[{"k":"s_services","v":1,"d":0}]},
+ {"text":"Escavar rapidamente e seguir a obra.","hint":"Meio-termo.","now":{"treasury":-0.03}},
+ {"text":"Ignorar as ruínas.","hint":"Obra no prazo; vergonha internacional.","now":{"reputation":-3}}
+]},
+{"id":"s_national_epic","cat":"Cultura","title":"O épico nacional","desc":"Um cineasta pede financiamento para um filme épico sobre a fundação da nação — com o governante como herói.","context":"O roteiro foi escrito por um assessor presidencial.","options":[
+ {"text":"Financiar generosamente.","hint":"Propaganda espetacular.","now":{"treasury":-0.08},"long":[{"k":"propaganda","v":1,"d":365}],"groups":{"youth":-2}},
+ {"text":"Financiar, mas sem interferência no roteiro.","hint":"Arte livre.","now":{"treasury":-0.05,"reputation":1}},
+ {"text":"Recusar.","hint":"Modéstia."}
+]},
+{"id":"s_language_minority_tv","cat":"Identidade","title":"TV na língua minoritária","desc":"A minoria linguística pede um canal público de TV na sua língua.","context":"Nacionalistas temem 'separatismo cultural'.","options":[
+ {"text":"Criar o canal.","hint":"Inclusão; nacionalistas irritados.","now":{"treasury":-0.03},"groups":{"regional":5},"long":[{"k":"separatism","v":-3,"d":0}]},
+ {"text":"Programação minoritária em canal existente.","hint":"Meio-termo.","groups":{"regional":2}},
+ {"text":"Recusar.","hint":"Ressentimento cresce.","groups":{"regional":-4},"long":[{"k":"separatism","v":2,"d":240}]}
+]},
+{"id":"s_refugee_camp_fire","cat":"Crise humanitária","title":"Incêndio no campo de refugiados","desc":"O maior campo de refugiados do país pegou fogo. Doze mil pessoas estão ao relento no inverno.","context":"Moradores vizinhos não querem os refugiados por perto.","cond":{"policy":{"refugees":["welcome","limited"]}},"options":[
+ {"text":"Alojá-los em quartéis e escolas.","hint":"Humanitário; vizinhos protestam.","now":{"treasury":-0.1,"reputation":3},"groups":{"rural":-3}},
+ {"text":"Pedir que países ricos os reassentem.","hint":"Diplomacia.","rel":{"west":2},"now":{"reputation":1}},
+ {"text":"Deportá-los para o país de origem.","hint":"Condenação internacional.","now":{"reputation":-8},"policy":{"refugees":"refuse"},"groups":{"rural":4}}
+]},
+{"id":"s_migrant_boat","cat":"Migração","title":"Naufrágio de migrantes","desc":"Um barco com 400 migrantes afundou perto da costa. A guarda costeira é acusada de demora no resgate.","context":"Imagens de corpos nas praias rodam o mundo.","cond":{"coast":true},"options":[
+ {"text":"Missão permanente de resgate.","hint":"Vidas salvas; mais travessias.","now":{"treasury":-0.1,"reputation":4},"long":[{"k":"migration","v":0.5,"d":365}]},
+ {"text":"Punir os traficantes de pessoas.","hint":"Foco no crime.","now":{"crime":-1}},
+ {"text":"Bloqueio naval contra novas embarcações.","hint":"Dissuasão; reputação despenca.","now":{"reputation":-6},"groups":{"military":3,"rural":3}}
+]},
+{"id":"s_diaspora_vote","cat":"Migração","title":"Votam os emigrantes?","desc":"Dois milhões de cidadãos vivem no exterior e pedem o direito de votar nas embaixadas.","context":"A diáspora tende a apoiar a oposição.","cond":{"policy":{"elections":["controlled","multiparty"]}},"options":[
+ {"text":"Conceder o voto no exterior.","hint":"Democracia; oposição fortalecida.","now":{"political":3},"groups":{"opposition":4}},
+ {"text":"Negar.","hint":"Diáspora ressentida.","now":{"political":-1},"long":[{"k":"emigration","v":0.5,"d":365}]},
+ {"text":"Conceder com cadeiras especiais no parlamento.","hint":"Representação limitada.","now":{"political":1}}
+]},
+{"id":"s_dual_citizenship","cat":"Migração","title":"Dupla cidadania","desc":"Descendentes de emigrantes em vários países querem recuperar a cidadania. Seriam milhões de novos cidadãos.","context":"Muitos trariam capital; outros só querem um passaporte.","options":[
+ {"text":"Conceder cidadania aos descendentes.","hint":"Diáspora conectada.","now":{"reserves":0.2},"long":[{"k":"migration","v":0.5,"d":365}],"groups":{"business":2}},
+ {"text":"Vender cidadania a investidores.","hint":"Receita; críticas éticas.","now":{"treasury":0.2,"corruption":1,"reputation":-1}},
+ {"text":"Manter a proibição da dupla cidadania.","hint":"Lealdade exclusiva.","groups":{"military":1}}
+]},
+{"id":"s_climate_refugees","cat":"Migração","title":"Refugiados do clima","desc":"Uma ilha vizinha está sendo engolida pelo mar. Seu governo pede que o país receba a população inteira.","context":"São 300 mil pessoas.","cond":{"coast":true},"w":0.5,"options":[
+ {"text":"Receber todos e dar cidadania.","hint":"Gesto histórico; custos.","now":{"pop":0.5,"treasury":-0.2,"reputation":6},"groups":{"rural":-3}},
+ {"text":"Receber uma parte qualificada.","hint":"Seletivo.","now":{"pop":0.1,"reputation":1}},
+ {"text":"Recusar.","hint":"Sem custo.","now":{"reputation":-4}}
+]},
+{"id":"s_gender_violence","cat":"Direitos civis","title":"Onda de feminicídios","desc":"Três mulheres foram assassinadas por ex-companheiros em uma semana. Manifestações tomam as ruas.","context":"As delegacias da mulher funcionam só em horário comercial.","options":[
+ {"text":"Pacote nacional: delegacias 24h e abrigos.","hint":"Proteção; custo.","now":{"treasury":-0.1,"civil":2,"crime":-1},"groups":{"youth":4}},
+ {"text":"Endurecer as penas.","hint":"Simbólico.","now":{"crime":-1}},
+ {"text":"Tratar como problema familiar.","hint":"Revolta.","now":{"legitimacy":-3,"protest":3},"groups":{"youth":-5}}
+]},
+{"id":"s_prison_riot","cat":"Segurança","title":"Rebelião no presídio","desc":"Presos tomaram o maior presídio do país e fazem guardas reféns. Uma facção criminosa comanda a rebelião.","context":"O presídio abriga o triplo de sua capacidade.","crisis":true,"default":1,"options":[
+ {"text":"Invasão imediata da tropa de choque.","hint":"Rápido; massacre provável.","now":{"control":2,"reputation":-4,"civil":-2}},
+ {"text":"Negociar a libertação dos reféns.","hint":"Sem mortes; parece fraqueza.","now":{"crime":1}},
+ {"text":"Negociar e anunciar reforma prisional.","hint":"Solução de fundo; custo.","now":{"treasury":-0.15,"crime":-1,"civil":1}}
+]},
+{"id":"s_gangs_truce","cat":"Segurança","title":"Trégua entre gangues","desc":"As duas maiores gangues propuseram uma trégua: param os homicídios se o governo transferir seus líderes para presídios confortáveis.","context":"Os homicídios caíram pela metade em outro país com acordo parecido.","cond":{"min":{"crime":45}},"options":[
+ {"text":"Aceitar a trégua.","hint":"Menos mortes; gangues fortalecidas.","now":{"crime":-4},"long":[{"k":"control","v":-2,"d":365},{"k":"corruption","v":1,"d":365}]},
+ {"text":"Prisão em massa de membros de gangues.","hint":"Linha dura; direitos atropelados.","now":{"crime":-6,"civil":-6,"reputation":-3},"groups":{"rural":4,"youth":-3}},
+ {"text":"Recusar e manter a estratégia atual.","hint":"Nada muda."}
+]},
+{"id":"s_lottery_winner","cat":"Sociedade","title":"A loteria fraudada","desc":"O mesmo deputado ganhou a loteria estatal 27 vezes em três anos.","context":"Ninguém acredita em sorte.","options":[
+ {"text":"Investigar e cassar o deputado.","hint":"Justiça.","now":{"corruption":-2,"legitimacy":2}},
+ {"text":"Privatizar a loteria.","hint":"Fim do problema, fim da receita.","now":{"treasury":0.1,"market":1}},
+ {"text":"Ignorar.","hint":"Piada nacional.","now":{"legitimacy":-2,"corruption":1}}
+]},
+{"id":"s_rural_exodus","cat":"Desenvolvimento urbano","title":"O interior esvazia","desc":"Aldeias inteiras do interior estão abandonadas; jovens migram para a capital, que incha sem infraestrutura.","context":"Prefeitos do interior pedem ajuda.","options":[
+ {"text":"Investir em cidades médias.","hint":"Equilíbrio regional; custo.","now":{"treasury":-0.25},"long":[{"k":"infra","v":2,"d":0}],"groups":{"rural":5,"regional":4}},
+ {"text":"Restringir a migração para a capital.","hint":"Controle autoritário.","now":{"civil":-3},"groups":{"rural":-2}},
+ {"text":"Deixar a urbanização seguir.","hint":"Capital cresce desordenadamente.","long":[{"k":"housing","v":-2,"d":365}]}
+]},
+{"id":"s_metro_fare","cat":"Desenvolvimento urbano","title":"Aumento da passagem","desc":"A passagem de ônibus e metrô vai subir 20%. Estudantes convocam protestos.","context":"Movimentos semelhantes derrubaram governos em outros países.","options":[
+ {"text":"Cancelar o aumento e subsidiar.","hint":"Paz; custo.","now":{"treasury":-0.1,"protest":-2},"groups":{"youth":4,"workers":3}},
+ {"text":"Manter o aumento.","hint":"Contas em dia; protestos.","now":{"protest":5},"groups":{"youth":-5,"workers":-3}},
+ {"text":"Tarifa zero para estudantes.","hint":"Meio-termo.","now":{"treasury":-0.05},"groups":{"youth":5}}
+]},
+{"id":"s_air_pollution","cat":"Meio ambiente","title":"A capital não respira","desc":"A poluição do ar na capital atingiu níveis vinte vezes acima do recomendado. Escolas fecham.","context":"Termelétricas a carvão e trânsito são os culpados.","cond":{"min":{"pollution":40}},"options":[
+ {"text":"Fechar termelétricas e restringir carros.","hint":"Ar limpo; energia e economia afetadas.","now":{"pollution":-6,"gdp":-0.2},"long":[{"k":"s_energy","v":-4,"d":365}],"groups":{"youth":5,"business":-4}},
+ {"text":"Rodízio de veículos.","hint":"Medida parcial.","now":{"pollution":-2},"groups":{"workers":-2}},
+ {"text":"Distribuir máscaras.","hint":"Paliativo.","now":{"treasury":-0.02,"health":-1}}
+]},
+{"id":"s_heatwave_deaths","cat":"Desastre","title":"Onda de calor mortal","desc":"Uma onda de calor de 47 °C matou centenas de idosos e trabalhadores rurais.","context":"Cientistas dizem que serão cada vez mais frequentes.","options":[
+ {"text":"Plano nacional de adaptação climática.","hint":"Prevenção; custo.","now":{"treasury":-0.2},"long":[{"k":"health","v":1,"d":0},{"k":"infra","v":1,"d":0}]},
+ {"text":"Proibir trabalho ao ar livre nas horas quentes.","hint":"Protege trabalhadores; produtividade cai.","now":{"gdp":-0.1},"groups":{"workers":4,"business":-2}},
+ {"text":"Tratar como evento isolado.","hint":"Sem custo.","now":{"legitimacy":-1}}
+]},
+{"id":"s_tribal_chiefs","cat":"Tradição","title":"Os chefes tradicionais","desc":"Chefes tradicionais pedem reconhecimento oficial e poder para julgar disputas de terra em suas aldeias.","context":"Eles têm enorme legitimidade local.","options":[
+ {"text":"Reconhecer as autoridades tradicionais.","hint":"Estabilidade local; Estado mais fraco.","now":{"control":-2,"legitimacy":3},"groups":{"rural":6,"regional":4}},
+ {"text":"Cargo honorífico, sem poder judicial.","hint":"Gesto simbólico.","groups":{"rural":2}},
+ {"text":"Abolir a autoridade tradicional.","hint":"Estado moderno; resistência.","now":{"control":2},"groups":{"rural":-6},"long":[{"k":"separatism","v":2,"d":365}]}
+]},
+{"id":"s_volunteer_service","cat":"Sociedade","title":"Serviço civil obrigatório","desc":"Um movimento propõe um ano de serviço civil obrigatório para jovens em hospitais, escolas e obras.","context":"Daria mão de obra barata ao Estado e 'formação cívica'.","options":[
+ {"text":"Instituir o serviço civil obrigatório.","hint":"Coesão; jovens contrariados.","now":{"civil":-2},"groups":{"youth":-5},"long":[{"k":"qol","v":1,"d":0},{"k":"laborSupply","v":-0.3,"d":0}]},
+ {"text":"Serviço civil voluntário com bolsa.","hint":"Opcional.","now":{"treasury":-0.05},"groups":{"youth":2}},
+ {"text":"Rejeitar.","hint":"Nada muda."}
+]},
+{"id":"s_comedian_president","cat":"Política","title":"O humorista candidato","desc":"Um comediante popular lançou candidatura de brincadeira — e lidera as pesquisas.","context":"Seu programa satiriza o governo todas as semanas.","cond":{"policy":{"elections":["controlled","multiparty"]}},"options":[
+ {"text":"Tratar com humor e debater.","hint":"Simpatia.","now":{"legitimacy":1,"political":1}},
+ {"text":"Tirar o programa do ar.","hint":"Censura.","now":{"civil":-3},"groups":{"youth":-5}},
+ {"text":"Convidá-lo para um ministério.","hint":"Cooptação genial ou desastrosa.","now":{"legitimacy":2},"groups":{"youth":3,"bureaucracy":-2}}
+]}
+]

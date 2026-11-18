@@ -1,0 +1,1189 @@
+[
+ {
+  "id": "pk_eu_energy_transition",
+  "cat": "Europa",
+  "title": "Transição energética e conta de luz",
+  "desc": "Renováveis e fim do carvão elevam tarifas; indústrias ameaçam sair.",
+  "context": "Clima versus competitividade.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Acelerar renováveis e subsidiar famílias.",
+    "hint": "Mantém o rumo.",
+    "now": {
+     "treasury": -0.4,
+     "pollution": -1
+    },
+    "groups": {
+     "youth": 3,
+     "business": -1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Adiar o fim do carvão.",
+    "hint": "Alívio.",
+    "now": {
+     "treasury": 0.1,
+     "pollution": 0.7
+    },
+    "groups": {
+     "business": 2,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Energia nuclear como ponte.",
+    "hint": "Pragmático.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "business": 1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_four_day",
+  "cat": "Europa",
+  "title": "Semana de quatro dias",
+  "desc": "Sindicatos pedem reduzir a jornada sem perder salário; testes-piloto mostram mais bem-estar e dúvidas sobre produtividade.",
+  "context": "Experimento social.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Adotar gradualmente.",
+    "hint": "Popular.",
+    "now": {
+     "qol": 0.5,
+     "growth": -0.1
+    },
+    "groups": {
+     "workers": 4,
+     "business": -2
+    }
+   },
+   {
+    "text": "Apenas pilotos.",
+    "hint": "Cauteloso.",
+    "now": {},
+    "groups": {
+     "workers": 1
+    }
+   },
+   {
+    "text": "Rejeitar.",
+    "hint": "Competitividade.",
+    "now": {},
+    "groups": {
+     "workers": -2,
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_farm_subsidy",
+  "cat": "Europa",
+  "title": "A política agrícola comum em xeque",
+  "desc": "Subsídios agrícolas consomem metade do orçamento do bloco. Reformadores e agricultores se enfrentam.",
+  "context": "Campo e Bruxelas.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforma verde da política agrícola.",
+    "hint": "Modernização.",
+    "now": {
+     "pollution": -0.5
+    },
+    "groups": {
+     "rural": -2,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Manter os subsídios.",
+    "hint": "Estabilidade rural.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Subsídios nacionais próprios.",
+    "hint": "Concorrência desleal.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "rural": 2
+    },
+    "rel": {
+     "neighbors": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_gilets",
+  "cat": "Europa",
+  "title": "Revolta contra o preço do combustível",
+  "desc": "Manifestantes de colete amarelo bloqueiam rotatórias contra impostos sobre combustível.",
+  "context": "Clima e desigualdade territorial.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Recuar no imposto.",
+    "hint": "Acalma.",
+    "now": {
+     "treasury": -0.25,
+     "protest": -1
+    },
+    "groups": {
+     "rural": 3,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Compensar com cheque verde.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Manter e reprimir bloqueios.",
+    "hint": "Radicaliza.",
+    "now": {
+     "civil": -1,
+     "protest": 1.5
+    },
+    "groups": {
+     "rural": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_strike_transport",
+  "cat": "Europa",
+  "title": "Greve geral nos transportes",
+  "desc": "Trens, metrôs e aeroportos param contra a reforma da previdência.",
+  "context": "Cotidiano paralisado.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Negociar e adiar.",
+    "hint": "Alívio.",
+    "now": {
+     "growth": 0.05
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Aprovar a reforma mesmo assim.",
+    "hint": "Firmeza.",
+    "now": {
+     "treasury": 0.3,
+     "protest": 1
+    },
+    "groups": {
+     "workers": -4,
+     "business": 2
+    }
+   },
+   {
+    "text": "Serviços mínimos obrigatórios.",
+    "hint": "Restringe greves.",
+    "now": {
+     "civil": -0.5
+    },
+    "groups": {
+     "workers": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_tech_regulation",
+  "cat": "Europa",
+  "title": "Regular as gigantes digitais",
+  "desc": "Multas bilionárias a plataformas dos EUA provocam retaliação comercial.",
+  "context": "Soberania digital.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Impor multas e regras de privacidade.",
+    "hint": "Firmeza.",
+    "now": {
+     "treasury": 0.1,
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 2,
+     "business": -1
+    },
+    "rel": {
+     "usa": -4
+    }
+   },
+   {
+    "text": "Acordo mais leve.",
+    "hint": "Evita guerra comercial.",
+    "now": {
+     "treasury": 0.05
+    },
+    "groups": {
+     "business": 1
+    },
+    "rel": {
+     "usa": 1
+    }
+   },
+   {
+    "text": "Criar plataformas europeias.",
+    "hint": "Longo prazo.",
+    "now": {
+     "treasury": -0.3,
+     "tech": 1
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_cathedral",
+  "cat": "Europa",
+  "title": "A catedral que pega fogo",
+  "desc": "Um incêndio atinge um monumento histórico e emociona a nação. Doadores bilionários se oferecem para pagar a reconstrução.",
+  "context": "Patrimônio e dinheiro.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aceitar doações com transparência.",
+    "hint": "Rápido.",
+    "now": {
+     "treasury": -0.05,
+     "legitimacy": 1.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Restaurar com dinheiro público.",
+    "hint": "Soberano.",
+    "now": {
+     "treasury": -0.3,
+     "legitimacy": 2
+    },
+    "groups": {
+     "workers": 1
+    }
+   },
+   {
+    "text": "Projeto moderno.",
+    "hint": "Polêmico.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "youth": 2,
+     "rural": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_nuclear_phaseout",
+  "cat": "Europa",
+  "title": "Fechar a última usina nuclear",
+  "desc": "O fim das usinas se aproxima, mas a crise de energia sugere prorrogar.",
+  "context": "Promessa versus realidade.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Prorrogar.",
+    "hint": "Segurança.",
+    "now": {
+     "treasury": -0.1,
+     "pollution": -0.3
+    },
+    "groups": {
+     "business": 2,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Fechar conforme planejado.",
+    "hint": "Coerência.",
+    "now": {},
+    "groups": {
+     "youth": 2,
+     "business": -1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Referendo.",
+    "hint": "Decisão popular.",
+    "now": {
+     "legitimacy": 0.5
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_far_right_surge",
+  "cat": "Europa",
+  "title": "Avanço da ultradireita",
+  "desc": "Um partido nacionalista dispara nas pesquisas explorando insegurança, imigração e custo de vida.",
+  "context": "Mudança no cenário político.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reformas contra o custo de vida.",
+    "hint": "Remove o combustível.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Endurecer a política migratória.",
+    "hint": "Absorver pauta.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Cordão sanitário.",
+    "hint": "Isola.",
+    "now": {
+     "stability": 0.2
+    },
+    "groups": {
+     "opposition": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_languages",
+  "cat": "Europa",
+  "title": "Línguas regionais e identidade",
+  "desc": "Regiões com língua própria pedem oficialização e mais autonomia fiscal.",
+  "context": "Estado plurinacional.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Ampliar o estatuto regional.",
+    "hint": "Acalma.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {
+     "regional": 3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Manter.",
+    "hint": "Neutro.",
+    "now": {},
+    "groups": {}
+   },
+   {
+    "text": "Recentralizar.",
+    "hint": "Conflito.",
+    "now": {
+     "civil": -0.5
+    },
+    "groups": {
+     "regional": -4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_airbnb",
+  "cat": "Europa",
+  "title": "Turismo e centros históricos",
+  "desc": "Moradores são expulsos por alugueis de temporada. Cidades limitam hospedagem.",
+  "context": "Turismo de massa.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Limitar aluguéis de curta duração.",
+    "hint": "Protege moradores.",
+    "now": {
+     "treasury": 0.05
+    },
+    "groups": {
+     "workers": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Taxar turistas.",
+    "hint": "Arrecada.",
+    "now": {
+     "treasury": 0.15
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Liberar.",
+    "hint": "Mercado.",
+    "now": {},
+    "groups": {
+     "business": 2,
+     "workers": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_defense_unity",
+  "cat": "Europa",
+  "title": "Exército europeu comum",
+  "desc": "Crescem propostas para uma defesa conjunta do bloco. Países neutros e atlantistas divergem.",
+  "context": "Autonomia estratégica.",
+  "cond": {
+   "regions": [
+    "europe"
+   ],
+   "notRegions": [
+    "eastern_europe"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aderir.",
+    "hint": "Integração.",
+    "now": {
+     "treasury": -0.3,
+     "defense": 1.5
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "west": -1,
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Reforçar a aliança atlântica.",
+    "hint": "Tradição.",
+    "now": {
+     "defense": 1
+    },
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "usa": 3
+    }
+   },
+   {
+    "text": "Neutralidade.",
+    "hint": "Isolamento.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_gb_nhs",
+  "cat": "Europa",
+  "title": "O serviço de saúde pública em crise",
+  "desc": "Filas, greves de enfermeiros e falta de leitos pressionam o sistema.",
+  "context": "Orgulho nacional estressado.",
+  "cond": {
+   "countries": [
+    "GBR"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Orçamento extra e salários.",
+    "hint": "Alívio.",
+    "now": {
+     "treasury": -0.5,
+     "health": 1
+    },
+    "groups": {
+     "workers": 3,
+     "bureaucracy": 2
+    }
+   },
+   {
+    "text": "Parcerias privadas.",
+    "hint": "Controvérsia.",
+    "now": {
+     "treasury": -0.1,
+     "health": 0.4
+    },
+    "groups": {
+     "business": 2,
+     "workers": -3
+    }
+   },
+   {
+    "text": "Reforma de gestão.",
+    "hint": "Lenta.",
+    "now": {
+     "health": 0.2
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_gb_union",
+  "cat": "Europa",
+  "title": "Escócia, Irlanda do Norte e o futuro da união",
+  "desc": "Movimentos pedem novos plebiscitos de independência e unificação.",
+  "context": "União em tensão.",
+  "cond": {
+   "countries": [
+    "GBR"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Autorizar o plebiscito.",
+    "hint": "Democrático.",
+    "now": {
+     "political": 1
+    },
+    "groups": {
+     "regional": 3,
+     "military": -1
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Preserva a união.",
+    "now": {
+     "stability": 0.5
+    },
+    "groups": {
+     "regional": -3
+    }
+   },
+   {
+    "text": "Mais autonomia.",
+    "hint": "Compromisso.",
+    "now": {},
+    "groups": {
+     "regional": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_fr_pensions",
+  "cat": "Europa",
+  "title": "A reforma da previdência e a rua",
+  "desc": "Milhões protestam contra o aumento da idade mínima; o governo usa um decreto para aprovar.",
+  "context": "Tradição de greves.",
+  "cond": {
+   "countries": [
+    "FRA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Retirar a reforma.",
+    "hint": "Acalma.",
+    "now": {
+     "treasury": -0.4,
+     "protest": -2
+    },
+    "groups": {
+     "workers": 4,
+     "business": -1
+    }
+   },
+   {
+    "text": "Manter e negociar compensações.",
+    "hint": "Meio-termo.",
+    "now": {
+     "protest": 0.5
+    },
+    "groups": {
+     "workers": -1
+    }
+   },
+   {
+    "text": "Impor via decreto.",
+    "hint": "Dura.",
+    "now": {
+     "treasury": 0.4,
+     "legitimacy": -2,
+     "protest": 2
+    },
+    "groups": {
+     "workers": -4,
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_fr_banlieue",
+  "cat": "Europa",
+  "title": "Revolta nas periferias",
+  "desc": "A morte de um jovem em abordagem policial incendeia subúrbios e cidades.",
+  "context": "Desigualdade e policiamento.",
+  "cond": {
+   "countries": [
+    "FRA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforma da polícia e investimento nos bairros.",
+    "hint": "Causa.",
+    "now": {
+     "treasury": -0.4,
+     "civil": 0.8
+    },
+    "groups": {
+     "youth": 3,
+     "military": -1
+    }
+   },
+   {
+    "text": "Restaurar a ordem com força.",
+    "hint": "Repressão.",
+    "now": {
+     "civil": -1.5,
+     "crime": -0.3
+    },
+    "groups": {
+     "youth": -3,
+     "military": 2
+    }
+   },
+   {
+    "text": "Diálogo com prefeitos.",
+    "hint": "Moderado.",
+    "now": {},
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_de_debt_brake",
+  "cat": "Europa",
+  "title": "O freio da dívida",
+  "desc": "A regra constitucional de limite ao déficit impede investimentos em infraestrutura em declínio.",
+  "context": "Dogma fiscal em debate.",
+  "cond": {
+   "countries": [
+    "DEU"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reformar a regra.",
+    "hint": "Mais investimento.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "business": 2,
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Manter a regra.",
+    "hint": "Disciplina.",
+    "now": {
+     "treasury": 0.1,
+     "reputation": 0.5
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Fundo especial fora do orçamento.",
+    "hint": "Truque.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_de_car_industry",
+  "cat": "Europa",
+  "title": "A indústria automotiva e os elétricos",
+  "desc": "Montadoras demitem enquanto a concorrência elétrica avança. Governos pressionam por subsídios.",
+  "context": "Coração industrial em transição.",
+  "cond": {
+   "countries": [
+    "DEU"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Subsídios e reciclagem profissional.",
+    "hint": "Suaviza.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 3,
+     "business": 2
+    }
+   },
+   {
+    "text": "Deixar o mercado.",
+    "hint": "Dor.",
+    "now": {
+     "unemployment": 0.3
+    },
+    "groups": {
+     "workers": -3
+    }
+   },
+   {
+    "text": "Proteger com tarifas.",
+    "hint": "Guerra comercial.",
+    "now": {},
+    "groups": {
+     "business": 1
+    },
+    "rel": {
+     "china": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_it_government_turnover",
+  "cat": "Europa",
+  "title": "A rotatividade dos governos",
+  "desc": "O país troca de primeiro-ministro quase a cada ano. Investidores pedem estabilidade.",
+  "context": "Parlamentarismo instável.",
+  "cond": {
+   "countries": [
+    "ITA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforma eleitoral com bônus de maioria.",
+    "hint": "Estabiliza.",
+    "now": {
+     "political": -0.3,
+     "stability": 1
+    },
+    "groups": {
+     "opposition": -2
+    }
+   },
+   {
+    "text": "Governo técnico.",
+    "hint": "Calma.",
+    "now": {
+     "stability": 0.5,
+     "legitimacy": -0.5
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Presidencialismo.",
+    "hint": "Mudança profunda.",
+    "now": {
+     "political": 0.5
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_es_siesta_climate",
+  "cat": "Europa",
+  "title": "Calor extremo e a rotina mediterrânea",
+  "desc": "Ondas de calor matam idosos e prejudicam o turismo; fala-se em adaptar horários de trabalho.",
+  "context": "Clima muda costumes.",
+  "cond": {
+   "countries": [
+    "ESP"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Plano nacional de calor e arborização urbana.",
+    "hint": "Prevenção.",
+    "now": {
+     "treasury": -0.25,
+     "health": 0.5
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Jornada adaptada no verão.",
+    "hint": "Pragmático.",
+    "now": {
+     "growth": -0.05
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Nada.",
+    "hint": "Sofrimento.",
+    "now": {
+     "health": -1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_dike_port",
+  "cat": "Europa",
+  "title": "Diques e o porto gigante",
+  "desc": "O aumento do nível do mar ameaça terras baixas; o porto exige expansão.",
+  "context": "Engenharia e comércio.",
+  "cond": {
+   "countries": [
+    "NLD",
+    "BEL",
+    "LUX"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Programa de diques inteligentes.",
+    "hint": "Proteção.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Ampliar o porto.",
+    "hint": "Receita.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "business": 3
+    }
+   },
+   {
+    "text": "Realocar áreas de risco.",
+    "hint": "Radical.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "rural": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_banking_secrecy",
+  "cat": "Europa",
+  "title": "O fim do sigilo bancário",
+  "desc": "Pressão internacional por transparência ameaça o modelo financeiro.",
+  "context": "Negócio histórico.",
+  "cond": {
+   "countries": [
+    "CHE",
+    "AUT",
+    "LIE"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Abrir os dados.",
+    "hint": "Reputação.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 2
+    },
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Resistir com exceções.",
+    "hint": "Preserva.",
+    "now": {
+     "reputation": -1.5,
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Migrar para gestão de ativos regulada.",
+    "hint": "Compromisso.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_eu_golden_visa",
+  "cat": "Europa",
+  "title": "Vistos dourados e especulação",
+  "desc": "Estrangeiros ricos compram imóveis para obter residência. Moradores não suportam preços.",
+  "context": "Capital e moradia.",
+  "cond": {
+   "countries": [
+    "PRT",
+    "ESP",
+    "GRC",
+    "ITA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Encerrar o programa.",
+    "hint": "Alívio imobiliário.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "workers": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Limitar a áreas rurais.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": 0.05
+    },
+    "groups": {}
+   },
+   {
+    "text": "Ampliar.",
+    "hint": "Receita.",
+    "now": {
+     "treasury": 0.25
+    },
+    "groups": {
+     "business": 2,
+     "workers": -2
+    }
+   }
+  ]
+ }
+]

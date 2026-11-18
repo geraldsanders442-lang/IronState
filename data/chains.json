@@ -1,0 +1,147 @@
+[
+{"id":"c_steel_bankrupt_town","chain":true,"after":[{"issue":"steel_crisis","option":2,"days":35}],"cat":"Desdobramento","title":"A cidade do aço morreu","desc":"Meses após a falência da siderúrgica, a cidade industrial tem 40% de desemprego. Lojas fecham e jovens vão embora; um movimento radical cresce nos bairros operários.","context":"Foi você quem deixou a siderúrgica quebrar.","default":2,"options":[
+ {"text":"Plano de reconversão econômica da região.","hint":"Custo; recuperação lenta.","now":{"treasury":-0.3},"long":[{"k":"unemployment","v":-0.5,"d":365}],"groups":{"workers":5}},
+ {"text":"Atrair uma empresa estrangeira com isenções.","hint":"Rápido; renúncia fiscal.","long":[{"k":"revenue","v":-0.1,"d":0},{"k":"industry","v":2,"d":0}],"groups":{"business":3,"workers":2}},
+ {"text":"Não fazer nada.","hint":"Radicalização.","long":[{"k":"revoRisk","v":4,"d":240}],"groups":{"workers":-5}}
+]},
+{"id":"c_steel_nationalized_losses","chain":true,"after":[{"issue":"steel_crisis","option":1,"days":60}],"cat":"Desdobramento","title":"A siderúrgica estatal dá prejuízo","desc":"A siderúrgica nacionalizada perde dinheiro todos os meses. Diretores indicados pelo partido contratam parentes.","context":"O Tesouro cobre os rombos.","default":0,"options":[
+ {"text":"Continuar cobrindo os prejuízos.","hint":"Empregos mantidos.","now":{"treasury":-0.2},"groups":{"workers":2}},
+ {"text":"Gestão profissional e metas.","hint":"Eficiência; cabides de emprego cortados.","now":{"efficiency":2,"corruption":-2},"groups":{"bureaucracy":-3}},
+ {"text":"Reprivatizar a preço baixo.","hint":"Fim do rombo.","now":{"treasury":0.1,"market":2},"groups":{"business":3,"workers":-4}}
+]},
+{"id":"c_journalist_freed","chain":true,"after":[{"issue":"minister_scandal","option":2,"days":40,"p":0.7}],"cat":"Desdobramento","title":"O jornalista preso virou símbolo","desc":"O jornalista que divulgou o vídeo do ministro está em greve de fome na prisão. Seu rosto aparece em cartazes por todo o país.","context":"Organizações internacionais pedem sua libertação.","default":1,"options":[
+ {"text":"Libertá-lo.","hint":"Recuo; alívio.","now":{"civil":2,"reputation":3},"groups":{"youth":3}},
+ {"text":"Mantê-lo preso.","hint":"Se ele morrer, será mártir.","now":{"reputation":-5,"protest":4},"groups":{"youth":-5},"long":[{"k":"revoRisk","v":3,"d":180}]},
+ {"text":"Transferi-lo para prisão domiciliar.","hint":"Meio-termo.","now":{"reputation":1}}
+]},
+{"id":"c_state_press_bored","chain":true,"after":[{"issue":"press_law","option":0,"days":60}],"cat":"Desdobramento","title":"Ninguém acredita mais nos jornais","desc":"Com a imprensa estatizada, boatos se espalham por aplicativos de mensagens. Um rumor falso sobre falta de remédios causou corrida às farmácias.","context":"A desinformação ocupa o vazio da informação.","default":2,"options":[
+ {"text":"Bloquear aplicativos de mensagens.","hint":"Silêncio digital.","now":{"civil":-3,"tech":-1},"groups":{"youth":-5,"business":-3}},
+ {"text":"Permitir alguns veículos independentes.","hint":"Abertura parcial.","policy":{"press":"regulated"}},
+ {"text":"Criar um canal oficial de checagem.","hint":"Propaganda defensiva.","now":{"treasury":-0.03,"legitimacy":1}}
+]},
+{"id":"c_teachers_quality","chain":true,"after":[{"issue":"teachers_strike","option":2,"days":90}],"cat":"Desdobramento","title":"Os substitutos não sabem ensinar","desc":"Os professores substitutos contratados para quebrar a greve não têm formação. As notas nacionais despencaram.","context":"Pais reclamam; empresários temem a mão de obra futura.","default":1,"options":[
+ {"text":"Recontratar os professores demitidos.","hint":"Recuo caro.","now":{"treasury":-0.1,"education":2},"groups":{"workers":3}},
+ {"text":"Formação acelerada para os substitutos.","hint":"Melhora lenta.","now":{"treasury":-0.05},"long":[{"k":"education","v":1,"d":365}]},
+ {"text":"Ensino à distância com aulas gravadas.","hint":"Barato; desigual.","now":{"education":-1,"tech":1}}
+]},
+{"id":"c_refugees_integrated","chain":true,"after":[{"issue":"refugee_wave","option":0,"days":120}],"cat":"Desdobramento","title":"Os refugiados um ano depois","desc":"Muitos refugiados acolhidos abriram negócios e trabalham em hospitais. Mas bairros onde se concentram registram atritos com moradores.","context":"Partidos nacionalistas exploram os atritos.","default":2,"options":[
+ {"text":"Programa de integração: língua e emprego.","hint":"Integração bem-sucedida.","now":{"treasury":-0.1},"long":[{"k":"productivity","v":1,"d":0}],"groups":{"rural":1}},
+ {"text":"Espalhar os refugiados pelo país.","hint":"Menos guetos; resistência local.","groups":{"rural":-2}},
+ {"text":"Deixar acontecer.","hint":"Tensão latente.","long":[{"k":"protest","v":2,"d":180}]}
+]},
+{"id":"c_oil_curse","chain":true,"after":[{"issue":"oil_discovery","option":0,"days":120},{"issue":"oil_discovery","option":1,"days":120}],"cat":"Desdobramento","title":"A maldição do petróleo","desc":"Os dólares do petróleo valorizaram a moeda e as fábricas não conseguem exportar. Políticos disputam os royalties.","context":"Economistas chamam isso de 'doença holandesa'.","default":1,"options":[
+ {"text":"Criar um fundo soberano com os royalties.","hint":"Poupança; menos gasto agora.","now":{"reserves":0.5},"long":[{"k":"inflation","v":-0.5,"d":365}]},
+ {"text":"Distribuir os royalties à população.","hint":"Popular; inflação.","now":{"poverty":-2,"inflation":1},"groups":{"workers":5,"rural":4}},
+ {"text":"Financiar grandes obras.","hint":"Infraestrutura; corrupção.","now":{"treasury":0.2},"long":[{"k":"infra","v":2,"d":0},{"k":"corruption","v":2,"d":365}]}
+]},
+{"id":"c_conscripts_desert","chain":true,"after":[{"issue":"conscription_debate","option":0,"days":45}],"cat":"Desdobramento","title":"Os novos recrutas","desc":"O primeiro contingente do serviço militar universal chegou aos quartéis. Faltam camas, uniformes e fuzis; vídeos de trotes violentos vazaram.","context":"As famílias dos recrutas estão furiosas.","default":1,"options":[
+ {"text":"Investir na estrutura dos quartéis.","hint":"Custo; serviço digno.","now":{"treasury":-0.2,"readiness":2},"groups":{"youth":2}},
+ {"text":"Punir os oficiais responsáveis pelos trotes.","hint":"Justiça; militares incomodados.","groups":{"military":-2,"youth":3}},
+ {"text":"Nada: o serviço militar forma caráter.","hint":"Revolta juvenil.","groups":{"youth":-5,"military":2}}
+]},
+{"id":"c_strike_martyr","chain":true,"after":[{"issue":"general_strike_threat","option":1,"days":30}],"cat":"Desdobramento","title":"O sindicalista morto na prisão","desc":"Um dos líderes sindicais presos morreu sob custódia. A polícia fala em infarto; a família mostra marcas de tortura.","context":"As centrais convocam uma greve geral por tempo indeterminado.","crisis":true,"default":1,"options":[
+ {"text":"Investigação independente e libertação dos presos.","hint":"Recuo para evitar o caos.","now":{"civil":3,"protest":-4},"groups":{"workers":4,"military":-2}},
+ {"text":"Manter a versão oficial.","hint":"Greve geral prolongada.","now":{"protest":8},"long":[{"k":"growth","v":-1.5,"d":60},{"k":"revoRisk","v":5,"d":180}],"groups":{"workers":-8}},
+ {"text":"Culpar um carcereiro e prendê-lo.","hint":"Bode expiatório.","now":{"protest":2}}
+]},
+{"id":"c_square_massacre","chain":true,"after":[{"issue":"protest_square","option":0,"days":14}],"cat":"Desdobramento","title":"O aniversário da praça","desc":"Duas semanas após a dispersão violenta da Praça Central, as famílias dos mortos convocam vigílias em todas as cidades.","context":"O governo estrangeiro mais próximo concedeu asilo a líderes do movimento.","default":1,"options":[
+ {"text":"Proibir as vigílias.","hint":"Repressão em cadeia.","now":{"civil":-3,"protest":-2},"long":[{"k":"revoRisk","v":5,"d":240}],"groups":{"youth":-5}},
+ {"text":"Permitir as vigílias e decretar luto oficial.","hint":"Gesto de reconciliação.","now":{"legitimacy":2,"protest":2},"groups":{"youth":3,"military":-2}},
+ {"text":"Indenizar as famílias discretamente.","hint":"Compra de silêncio.","now":{"treasury":-0.05}}
+]},
+{"id":"c_wealth_flight","chain":true,"after":[{"issue":"tax_evasion","option":0,"days":60}],"cat":"Desdobramento","title":"Fuga de capitais","desc":"Após o imposto sobre fortunas, três grandes famílias mudaram residência para o exterior e levaram seus investimentos.","context":"A arrecadação do novo imposto ficou abaixo do previsto.","default":2,"options":[
+ {"text":"Imposto de saída sobre quem emigrar com patrimônio.","hint":"Fecha a porta; mercados irritados.","now":{"treasury":0.1},"groups":{"business":-5}},
+ {"text":"Revogar o imposto.","hint":"Recuo; trabalhadores frustrados.","groups":{"business":4,"workers":-4},"long":[{"k":"inequality","v":2,"d":0}]},
+ {"text":"Manter e aceitar a perda.","hint":"Princípio.","long":[{"k":"growth","v":-0.2,"d":240}]}
+]},
+{"id":"c_generals_coup_hint","chain":true,"after":[{"issue":"army_budget","option":2,"days":45,"p":0.7}],"cat":"Desdobramento","title":"Reunião secreta no quartel-general","desc":"Informantes relatam que o Chefe do Estado-Maior se reuniu com empresários e líderes da oposição numa fazenda.","context":"Desde que você recusou o orçamento militar, os generais não atendem seus telefonemas.","crisis":true,"default":2,"options":[
+ {"text":"Destituir o Chefe do Estado-Maior.","hint":"Golpe preventivo; risco imediato.","now":{"coupRisk":-6,"readiness":-4},"groups":{"military":-5}},
+ {"text":"Aprovar o orçamento militar afinal.","hint":"Recuo caro.","now":{"treasury":-0.4,"coupRisk":-4},"groups":{"military":8}},
+ {"text":"Mobilizar a guarda presidencial e esperar.","hint":"Tensão.","long":[{"k":"coupRisk","v":4,"d":60}]}
+]},
+{"id":"c_border_war_brink","chain":true,"after":[{"issue":"border_incident","option":1,"days":20}],"cat":"Desdobramento","title":"À beira da guerra","desc":"O vizinho rival respondeu ao bombardeio mobilizando reservistas. Tanques se concentram na fronteira.","context":"Uma potência regional oferece mediação.","crisis":true,"default":1,"options":[
+ {"text":"Mobilizar também.","hint":"Escalada.","now":{"readiness":5},"rel":{"rival":-10},"groups":{"military":4,"workers":-2}},
+ {"text":"Aceitar a mediação.","hint":"Distensão.","rel":{"rival":8},"now":{"reputation":2},"groups":{"military":-2}},
+ {"text":"Pedir garantias a uma grande potência.","hint":"Proteção externa.","rel":{"west":3,"east":3},"long":[{"k":"defense","v":3,"d":180}]}
+]},
+{"id":"c_china_port_debt","chain":true,"after":[{"issue":"china_port","option":0,"days":180}],"cat":"Desdobramento","title":"O porto e a dívida","desc":"O megaporto chinês funciona, mas a dívida venceu. Pequim propõe usar parte do porto para 'escalas técnicas' de sua marinha.","context":"Washington considera isso inaceitável.","default":1,"options":[
+ {"text":"Aceitar as escalas navais.","hint":"Dívida aliviada; Ocidente furioso.","now":{"debt":-1},"rel":{"CHN":10,"USA":-15,"west":-5}},
+ {"text":"Pagar a parcela com reservas.","hint":"Soberania preservada.","now":{"reserves":-0.8}},
+ {"text":"Pedir socorro ao FMI.","hint":"Condições duras.","now":{"treasury":0.5,"debt":0.5},"groups":{"workers":-3}}
+]},
+{"id":"c_land_reform_harvest","chain":true,"after":[{"issue":"land_reform","option":0,"days":150}],"cat":"Desdobramento","title":"A primeira colheita dos assentados","desc":"A primeira safra das terras redistribuídas foi menor do que a dos antigos latifúndios, mas milhares de famílias saíram da miséria.","context":"Os ex-proprietários financiam campanhas contra a reforma.","default":0,"options":[
+ {"text":"Crédito e assistência técnica aos assentados.","hint":"Produtividade sobe.","now":{"treasury":-0.1},"long":[{"k":"s_food","v":4,"d":0}],"groups":{"rural":4}},
+ {"text":"Indenizar os antigos donos para pacificá-los.","hint":"Paz agrária; custo.","now":{"treasury":-0.2},"groups":{"regional":4}},
+ {"text":"Expandir a reforma para mais regiões.","hint":"Radicalização.","now":{"inequality":-2},"groups":{"rural":5,"regional":-6,"business":-4}}
+]},
+{"id":"c_internet_vpn","chain":true,"after":[{"issue":"internet_shutdown","option":0,"days":30}],"cat":"Desdobramento","title":"Todo mundo usa VPN","desc":"Com as redes bloqueadas, milhões de jovens passaram a usar VPNs. Os protestos agora são organizados em redes criptografadas.","context":"A polícia não consegue mais monitorar nada.","default":1,"options":[
+ {"text":"Criminalizar VPNs.","hint":"Repressão digital.","now":{"civil":-3,"intel":1},"groups":{"youth":-5,"business":-3}},
+ {"text":"Desbloquear as redes.","hint":"Recuo.","now":{"civil":2},"groups":{"youth":4},"policy":{"surveillance":"moderate"}},
+ {"text":"Infiltrar agentes nas redes criptografadas.","hint":"Espionagem.","now":{"intel":3,"civil":-1}}
+]},
+{"id":"c_imf_riots","chain":true,"after":[{"issue":"imf_offer","option":0,"days":45}],"cat":"Desdobramento","title":"Revolta contra a austeridade","desc":"Os cortes exigidos pelo FMI chegaram: preço do pão, passagens e remédios subiram. Multidões atacam bancos e prédios públicos.","context":"O FMI insiste que recuar comprometeria o acordo.","crisis":true,"default":1,"options":[
+ {"text":"Manter os cortes e reprimir.","hint":"Acordo preservado; violência.","now":{"protest":-3,"civil":-3},"long":[{"k":"revoRisk","v":5,"d":240}],"groups":{"workers":-6}},
+ {"text":"Suspender parte dos cortes.","hint":"Paz; FMI desconfia.","now":{"protest":-4,"treasury":-0.3},"groups":{"workers":4}},
+ {"text":"Romper com o FMI.","hint":"Soberania; mercados em pânico.","now":{"reputation":-4},"long":[{"k":"creditLimit","v":-0.2,"d":730}],"groups":{"workers":5,"business":-5}}
+]},
+{"id":"c_autonomy_referendum","chain":true,"after":[{"issue":"separatist_party","option":0,"days":120}],"cat":"Desdobramento","title":"Agora querem independência","desc":"Com a autonomia federal, o partido separatista governa a província e já convoca um plebiscito de independência.","context":"A constituição não prevê secessão.","crisis":true,"default":1,"options":[
+ {"text":"Proibir o plebiscito e intervir na província.","hint":"Unidade à força.","now":{"control":4,"civil":-3},"groups":{"regional":-8},"long":[{"k":"separatism","v":6,"d":365}]},
+ {"text":"Negociar mais autonomia fiscal em troca de desistência.","hint":"Compromisso caro.","now":{"treasury":-0.2},"long":[{"k":"separatism","v":-5,"d":365}],"groups":{"regional":5}},
+ {"text":"Permitir o plebiscito.","hint":"Democrático; pode perder a província.","now":{"reputation":4,"political":3},"long":[{"k":"separatism","v":10,"d":120}]}
+]},
+{"id":"c_tech_giant_data","chain":true,"after":[{"issue":"tech_giant","option":0,"days":120}],"cat":"Desdobramento","title":"Os dados vazaram","desc":"A gigante tecnológica que recebeu acesso aos dados dos usuários sofreu um vazamento: informações de 20 milhões de cidadãos estão à venda.","context":"A empresa diz que a culpa é de hackers.","default":0,"options":[
+ {"text":"Multa recorde e lei de proteção de dados.","hint":"Direitos; empresa ameaça sair.","now":{"treasury":0.2,"civil":3},"groups":{"business":-3,"youth":3}},
+ {"text":"Multa simbólica.","hint":"Empresa fica.","now":{"civil":-1}},
+ {"text":"Expulsar a empresa do país.","hint":"Soberania digital; empregos perdidos.","now":{"unemployment":0.3},"long":[{"k":"tech","v":-2,"d":0}],"rel":{"USA":-4}}
+]},
+{"id":"c_journalist_killer_found","chain":true,"after":[{"issue":"journalist_death","option":0,"days":60}],"cat":"Desdobramento","title":"A investigação chegou ao Exército","desc":"Os peritos estrangeiros concluíram: o jornalista foi morto por uma unidade de inteligência militar.","context":"Os generais exigem que o relatório seja engavetado.","crisis":true,"default":1,"options":[
+ {"text":"Publicar o relatório e julgar os culpados.","hint":"Justiça; militares em ebulição.","now":{"reputation":6,"legitimacy":3},"groups":{"military":-8},"long":[{"k":"coupRisk","v":5,"d":180}]},
+ {"text":"Julgamento militar secreto.","hint":"Meio-termo opaco.","now":{"reputation":-1},"groups":{"military":-2}},
+ {"text":"Engavetar o relatório.","hint":"Generais satisfeitos; escândalo vaza depois.","now":{"reputation":-5},"groups":{"military":4},"rel":{"west":-5}}
+]},
+{"id":"c_river_cleanup","chain":true,"after":[{"issue":"pollution_river","option":1,"days":90}],"cat":"Desdobramento","title":"O acordo secreto vazou","desc":"O acordo sigiloso com a mineradora que envenenou o rio foi publicado por hackers, junto com mensagens de ministros.","context":"Comunidades ribeirinhas ainda bebem água contaminada.","default":0,"options":[
+ {"text":"Anular o acordo e processar a mineradora.","hint":"Tardio, mas justo.","now":{"corruption":-2,"legitimacy":1},"groups":{"business":-3}},
+ {"text":"Defender o acordo como pragmático.","hint":"Desgaste.","now":{"legitimacy":-3}},
+ {"text":"Demitir os ministros citados.","hint":"Bodes expiatórios.","now":{"legitimacy":1},"groups":{"bureaucracy":-3}}
+]},
+{"id":"c_coup_colonels_trial","chain":true,"after":[{"issue":"coup_rumors","option":0,"days":30}],"cat":"Desdobramento","title":"O julgamento dos coronéis","desc":"Os coronéis presos por conspiração serão julgados. A defesa afirma que eles só discutiam salários atrasados.","context":"Oficiais leais acompanham o julgamento com atenção.","default":1,"options":[
+ {"text":"Penas exemplares.","hint":"Dissuasão; medo nos quartéis.","now":{"coupRisk":-4},"groups":{"military":-4}},
+ {"text":"Penas leves e reintegração.","hint":"Reconciliação militar.","groups":{"military":4},"long":[{"k":"coupRisk","v":2,"d":120}]},
+ {"text":"Absolvição por falta de provas.","hint":"Justiça independente.","now":{"civil":1},"groups":{"military":3}}
+]},
+{"id":"c_cartel_army","chain":true,"after":[{"issue":"drug_cartel","option":0,"days":60}],"cat":"Desdobramento","title":"O Exército nas ruas","desc":"A ocupação militar das cidades do cartel reduziu os homicídios, mas há denúncias de execuções e soldados cobrando propina.","context":"Os prefeitos pedem que as tropas fiquem.","default":0,"options":[
+ {"text":"Manter as tropas e criar corregedoria militar.","hint":"Controle com fiscalização.","now":{"treasury":-0.1},"long":[{"k":"crime","v":-3,"d":180}]},
+ {"text":"Retirar as tropas e enviar polícia federal.","hint":"Transição; risco de retorno do cartel.","now":{"civil":2},"long":[{"k":"crime","v":2,"d":180}]},
+ {"text":"Dar carta branca às tropas.","hint":"Linha dura.","now":{"crime":-3,"civil":-4,"reputation":-3}}
+]},
+{"id":"c_anticorr_backlash","chain":true,"after":[{"issue":"anticorruption_purge","option":0,"days":45}],"cat":"Desdobramento","title":"Os governadores se rebelam","desc":"Governadores investigados pela campanha anticorrupção se uniram e ameaçam suspender o repasse de impostos à capital.","context":"Eles controlam as polícias estaduais.","crisis":true,"default":1,"options":[
+ {"text":"Intervenção federal nos estados rebeldes.","hint":"Autoridade; conflito institucional.","now":{"control":3,"political":-2},"groups":{"regional":-8}},
+ {"text":"Acordo: investigações seguem, sem prisões preventivas.","hint":"Compromisso.","groups":{"regional":2},"long":[{"k":"corruption","v":1,"d":240}]},
+ {"text":"Recuar e encerrar a campanha.","hint":"Paz com as elites.","now":{"corruption":3,"legitimacy":-3},"groups":{"regional":5}}
+]},
+{"id":"c_nuclear_inspectors","chain":true,"after":[{"issue":"nuclear_program","option":1,"days":120}],"cat":"Desdobramento","title":"Os inspetores batem à porta","desc":"Imagens de satélite revelaram as instalações do programa nuclear secreto. A agência internacional exige inspeções imediatas.","context":"Potências ameaçam sanções e até ataques preventivos.","crisis":true,"default":1,"options":[
+ {"text":"Recusar as inspeções.","hint":"Programa continua; sanções.","now":{"reputation":-8},"rel":{"west":-12},"long":[{"k":"defense","v":3,"d":0}],"next":[{"id":"w_nuclear_test","days":120,"p":0.6}]},
+ {"text":"Inspeções limitadas, escondendo partes do programa.","hint":"Jogo arriscado.","now":{"reputation":-2},"rel":{"west":-3}},
+ {"text":"Abrir tudo e negociar.","hint":"Fim das suspeitas; programa congelado.","now":{"reputation":5},"rel":{"west":8},"groups":{"military":-5},"flags":{"clear":["nuclear"]}}
+]},
+{"id":"c_immigrants_backlash","chain":true,"after":[{"issue":"immigration_wave","option":0,"days":90}],"cat":"Desdobramento","title":"Choque nos canteiros de obra","desc":"Brigas entre trabalhadores locais e imigrantes deixaram mortos num canteiro de obras. Um partido anti-imigração cresce nas pesquisas.","context":"As empresas dependem da mão de obra imigrante.","default":2,"options":[
+ {"text":"Cotas por setor para proteger empregos locais.","hint":"Compromisso.","policy":{"immigration":"quotas"},"groups":{"workers":3}},
+ {"text":"Campanha contra a xenofobia.","hint":"Princípios.","now":{"treasury":-0.03,"civil":1},"groups":{"workers":-2}},
+ {"text":"Reforço policial nos canteiros.","hint":"Ordem.","now":{"crime":-1}}
+]},
+{"id":"c_bubble_banks","chain":true,"after":[{"issue":"bubble_burst","option":1,"days":45}],"cat":"Desdobramento","title":"Os bancos estão quebrando","desc":"Sem ajuda após o estouro da bolha, dois bancos grandes estão à beira da falência. Poupadores fazem filas.","context":"O contágio pode atingir todo o sistema.","crisis":true,"default":0,"options":[
+ {"text":"Garantir os depósitos e intervir nos bancos.","hint":"Custo alto; sistema salvo.","now":{"treasury":-0.6},"groups":{"workers":3}},
+ {"text":"Deixar quebrar.","hint":"Depressão econômica.","now":{"gdp":-2,"unemployment":2},"groups":{"workers":-6,"business":-6}},
+ {"text":"Fusão forçada com bancos estatais.","hint":"Estatização.","now":{"treasury":-0.3,"market":-3}}
+]},
+{"id":"c_church_power","chain":true,"after":[{"issue":"church_schools","option":0,"days":120}],"cat":"Desdobramento","title":"O clero quer mais","desc":"Com a religião oficial, líderes religiosos exigem proibir o divórcio e censurar filmes 'imorais'.","context":"O apoio rural depende deles.","default":2,"options":[
+ {"text":"Atender às exigências.","hint":"Teocratização.","now":{"civil":-4},"groups":{"rural":5,"youth":-6},"policy":{"vices":"prohibited"}},
+ {"text":"Recusar com firmeza.","hint":"Atrito com o clero.","groups":{"rural":-4,"youth":2}},
+ {"text":"Conceder apenas a censura de filmes.","hint":"Meio-termo.","now":{"civil":-1},"groups":{"rural":2}}
+]},
+{"id":"c_famine_migration","chain":true,"after":[{"issue":"famine_warning","option":3,"days":30}],"cat":"Desdobramento","title":"Os famintos marcham para a capital","desc":"Dezenas de milhares de camponeses famintos caminham em direção à capital. Trazem crianças e cartazes com o rosto do governante.","context":"A fome negada virou crise política.","crisis":true,"default":1,"options":[
+ {"text":"Abrir os armazéns do Estado.","hint":"Comida distribuída; reconhece a crise.","now":{"treasury":-0.3,"hunger":-4},"groups":{"rural":6}},
+ {"text":"Bloquear as estradas com o Exército.","hint":"Tragédia.","now":{"civil":-5,"reputation":-8},"groups":{"rural":-10},"long":[{"k":"revoRisk","v":8,"d":240}]},
+ {"text":"Pedir ajuda internacional urgente.","hint":"Humilhação útil.","now":{"hunger":-3,"legitimacy":-2},"rel":{"all":3}}
+]}
+]

@@ -1,0 +1,731 @@
+[
+ {
+  "id": "pk_na_trade_block",
+  "cat": "América do Norte",
+  "title": "O pacto comercial renegociado",
+  "desc": "O bloco econômico da América do Norte é revisto: cotas, regras de origem e salários mínimos.",
+  "context": "Integração em jogo.",
+  "cond": {
+   "regions": [
+    "north_america"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aceitar as novas regras.",
+    "hint": "Estabilidade.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "workers": 2,
+     "business": -1
+    }
+   },
+   {
+    "text": "Exigir concessões agrícolas.",
+    "hint": "Tensão.",
+    "now": {},
+    "groups": {
+     "rural": 3
+    },
+    "rel": {
+     "neighbors": -3
+    }
+   },
+   {
+    "text": "Sair do pacto.",
+    "hint": "Radical.",
+    "now": {
+     "growth": -0.5
+    },
+    "groups": {
+     "business": -3
+    },
+    "rel": {
+     "neighbors": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_fentanyl",
+  "cat": "América do Norte",
+  "title": "A crise dos opioides",
+  "desc": "Overdoses e drogas sintéticas matam dezenas de milhares. Estados culpam fabricantes e cartéis.",
+  "context": "Saúde e segurança.",
+  "cond": {
+   "regions": [
+    "north_america"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Tratamento e ações contra fabricantes.",
+    "hint": "Saúde.",
+    "now": {
+     "treasury": -0.3,
+     "health": 0.7
+    },
+    "groups": {
+     "youth": 2,
+     "business": -1
+    }
+   },
+   {
+    "text": "Segurança de fronteira.",
+    "hint": "Dura.",
+    "now": {
+     "crime": -0.3
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Descriminalizar uso.",
+    "hint": "Polêmica.",
+    "now": {
+     "civil": 0.5,
+     "health": 0.3
+    },
+    "groups": {
+     "youth": 2,
+     "rural": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_wildfire",
+  "cat": "América do Norte",
+  "title": "Incêndios florestais históricos",
+  "desc": "Fumaça cobre cidades e destrói comunidades.",
+  "context": "Clima extremo.",
+  "cond": {
+   "regions": [
+    "north_america"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Manejo e brigadas permanentes.",
+    "hint": "Prevenção.",
+    "now": {
+     "treasury": -0.35
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Auxílio emergencial.",
+    "hint": "Reativo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Seguro privado.",
+    "hint": "Mercado.",
+    "now": {},
+    "groups": {
+     "business": 1,
+     "rural": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_cost_healthcare",
+  "cat": "América do Norte",
+  "title": "Saúde cara demais",
+  "desc": "Cidadãos se endividam por tratamentos. Debate entre sistema público e privado se intensifica.",
+  "context": "Preço da saúde.",
+  "cond": {
+   "regions": [
+    "north_america"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Ampliar a cobertura pública.",
+    "hint": "Mais acesso.",
+    "now": {
+     "treasury": -0.5,
+     "health": 1
+    },
+    "groups": {
+     "workers": 3,
+     "business": -2
+    }
+   },
+   {
+    "text": "Regular preços de remédios.",
+    "hint": "Moderado.",
+    "now": {
+     "health": 0.3
+    },
+    "groups": {
+     "workers": 1,
+     "business": -1
+    }
+   },
+   {
+    "text": "Manter o sistema.",
+    "hint": "Mercado.",
+    "now": {},
+    "groups": {
+     "business": 1,
+     "workers": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_gun_violence",
+  "cat": "América do Norte",
+  "title": "Violência armada e tiroteios",
+  "desc": "Um massacre em escola reacende o debate sobre controle de armas.",
+  "context": "Liberdade e segurança.",
+  "cond": {
+   "regions": [
+    "north_america"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Verificação de antecedentes e limites.",
+    "hint": "Menos mortes.",
+    "now": {
+     "crime": -0.3,
+     "civil": -0.2
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -3
+    }
+   },
+   {
+    "text": "Segurança armada nas escolas.",
+    "hint": "Alternativa.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": 2,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Nada muda.",
+    "hint": "Lobby.",
+    "now": {},
+    "groups": {
+     "rural": 1,
+     "youth": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_polarization",
+  "cat": "América do Norte",
+  "title": "Polarização política extrema",
+  "desc": "Famílias rompem laços e instituições perdem a confiança. Há pedidos de reforma dos distritos e do financiamento.",
+  "context": "Democracia dividida.",
+  "cond": {
+   "regions": [
+    "north_america"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforma eleitoral e financiamento público.",
+    "hint": "Reduz.",
+    "now": {
+     "political": 1
+    },
+    "groups": {
+     "opposition": 1,
+     "business": -1
+    }
+   },
+   {
+    "text": "Fortalecer a mídia local.",
+    "hint": "Lento.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Piora.",
+    "now": {
+     "stability": -1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_na_arctic_border",
+  "cat": "América do Norte",
+  "title": "Fronteira ártica e rotas marítimas",
+  "desc": "O degelo abre rotas e recursos; países disputam passagem e minerais.",
+  "context": "A nova fronteira.",
+  "cond": {
+   "regions": [
+    "north_america"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforçar presença no Ártico.",
+    "hint": "Soberania.",
+    "now": {
+     "treasury": -0.3,
+     "defense": 1
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Acordos de cooperação.",
+    "hint": "Diplomacia.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {}
+   },
+   {
+    "text": "Exploração privada.",
+    "hint": "Dinheiro.",
+    "now": {
+     "treasury": 0.2,
+     "pollution": 0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_immigration_wave",
+  "cat": "América do Norte",
+  "title": "Migrantes pedindo asilo",
+  "desc": "Milhares de pessoas se acumulam na fronteira sul. Cidades vizinhas reclamam do custo e estados discordam.",
+  "context": "Imigração em disputa.",
+  "cond": {
+   "regions": [
+    "north_america"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Processamento rápido e vistos de trabalho.",
+    "hint": "Pragmático.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 1
+    },
+    "groups": {
+     "business": 2,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Fechar fronteira.",
+    "hint": "Duro.",
+    "now": {
+     "reputation": -1.5
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Acordo regional.",
+    "hint": "Complexo.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_us_tariff_war",
+  "cat": "América do Norte",
+  "title": "Guerra de tarifas",
+  "desc": "O governo impõe tarifas a grandes parceiros; produtores agrícolas pagam o preço de retaliações.",
+  "context": "Protecionismo em ação.",
+  "cond": {
+   "countries": [
+    "USA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Manter as tarifas e subsidiar o campo.",
+    "hint": "Firmeza.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 1,
+     "rural": 2
+    },
+    "rel": {
+     "all": -2
+    }
+   },
+   {
+    "text": "Acordo com concessões.",
+    "hint": "Distensão.",
+    "now": {},
+    "groups": {
+     "business": 2
+    },
+    "rel": {
+     "all": 2
+    }
+   },
+   {
+    "text": "Aumentar tarifas.",
+    "hint": "Escalada.",
+    "now": {
+     "inflation": 0.5
+    },
+    "groups": {
+     "workers": 1,
+     "business": -2
+    },
+    "rel": {
+     "all": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_us_supreme",
+  "cat": "América do Norte",
+  "title": "A Suprema Corte e o equilíbrio de poder",
+  "desc": "Uma vaga na corte pode inclinar a maioria por décadas. A nomeação provoca guerra política.",
+  "context": "Poder judicial.",
+  "cond": {
+   "countries": [
+    "USA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Nomear um conservador.",
+    "hint": "Base satisfeita.",
+    "now": {
+     "political": -0.3
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Nomear um moderado.",
+    "hint": "Concilia.",
+    "now": {
+     "political": 0.5
+    },
+    "groups": {}
+   },
+   {
+    "text": "Nomear um progressista.",
+    "hint": "Base contrária.",
+    "now": {
+     "political": 0.3
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_us_debt_ceiling",
+  "cat": "América do Norte",
+  "title": "O teto da dívida",
+  "desc": "Congresso e Executivo brigam pelo limite da dívida, ameaçando calote e paralisação do governo.",
+  "context": "Teatro fiscal de alto risco.",
+  "cond": {
+   "countries": [
+    "USA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Elevar sem condições.",
+    "hint": "Evita crise.",
+    "now": {
+     "debt": 0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Condicionar a cortes.",
+    "hint": "Disputa.",
+    "now": {
+     "treasury": 0.3,
+     "protest": 0.5
+    },
+    "groups": {
+     "workers": -2,
+     "business": 1
+    }
+   },
+   {
+    "text": "Deixar chegar ao limite.",
+    "hint": "Perigoso.",
+    "now": {
+     "reputation": -3,
+     "stability": -1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_us_silicon",
+  "cat": "América do Norte",
+  "title": "Big Tech e antitruste",
+  "desc": "Gigantes digitais enfrentam processos por monopólio. Congresso pede divisão das empresas.",
+  "context": "Poder econômico.",
+  "cond": {
+   "countries": [
+    "USA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Dividir empresas.",
+    "hint": "Radical.",
+    "now": {
+     "tech": -0.3,
+     "reputation": 0.5
+    },
+    "groups": {
+     "business": -3,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Multas e regras.",
+    "hint": "Moderado.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Deixar como está.",
+    "hint": "Livre.",
+    "now": {},
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ca_oil_sands",
+  "cat": "América do Norte",
+  "title": "Areias betuminosas e o clima",
+  "desc": "A exploração alimenta a economia de uma região e a pegada de carbono do país.",
+  "context": "Petróleo e promessas.",
+  "cond": {
+   "countries": [
+    "CAN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Teto de emissões.",
+    "hint": "Clima.",
+    "now": {
+     "pollution": -0.8
+    },
+    "groups": {
+     "regional": -3,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Expandir com captura de carbono.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": 0.3,
+     "pollution": 0.3
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Expandir sem restrições.",
+    "hint": "Lucro.",
+    "now": {
+     "treasury": 0.4,
+     "pollution": 1,
+     "reputation": -1
+    },
+    "groups": {
+     "business": 3,
+     "youth": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ca_first_nations",
+  "cat": "América do Norte",
+  "title": "Povos originários e reconciliação",
+  "desc": "Descobertas de sepulturas em antigos internatos reabrem a discussão sobre reparação.",
+  "context": "Dívida histórica.",
+  "cond": {
+   "countries": [
+    "CAN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Fundo de reparação e devolução de terras.",
+    "hint": "Reparação.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": 2,
+     "civil": 1
+    },
+    "groups": {
+     "rural": 1,
+     "regional": 3
+    }
+   },
+   {
+    "text": "Reconhecimento simbólico.",
+    "hint": "Insuficiente.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {
+     "regional": 1
+    }
+   },
+   {
+    "text": "Silêncio.",
+    "hint": "Perde confiança.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "regional": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_na_remit_nearshore",
+  "cat": "América do Norte",
+  "title": "O boom do nearshoring",
+  "desc": "Empresas deixam a Ásia e vêm para perto. Faltam energia, água e infraestrutura industrial.",
+  "context": "Oportunidade e gargalos.",
+  "cond": {
+   "countries": [
+    "MEX",
+    "GTM",
+    "CUB"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Parques industriais e energia limpa.",
+    "hint": "Aproveita.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "business": 3,
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Incentivos fiscais.",
+    "hint": "Rápido.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "business": 3
+    }
+   },
+   {
+    "text": "Nada.",
+    "hint": "Perde chance.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ }
+]

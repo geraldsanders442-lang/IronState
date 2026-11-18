@@ -1,0 +1,117 @@
+# Iron State — sandbox geopolítico
+
+Jogo single-player de navegador: crie uma nação a partir de territórios reais, defina sua ideologia em 20 perguntas, governe em turnos semanais e sobreviva num mundo de ~250 países que agem por conta própria.
+
+## Como jogar
+
+**Abra `IronState.html` com dois cliques.** É um arquivo único (≈5 MB) com código, mapas, bandeiras e dados embutidos; funciona offline e salva no navegador.
+
+Alternativa para desenvolvimento (arquivos separados): `node serve.mjs` e acesse http://localhost:8080.
+
+Turnos: clique em **Próxima semana ▶** (ou Enter). O jogo mostra as notícias da semana e abre as novas questões; não há relógio correndo.
+
+## Sistemas
+
+- **Mapa real** (Natural Earth 10m): 258 entidades, 4.603 províncias, zoom/arraste, busca, camadas de relações, comércio, guerras e organizações; mapa nacional no painel com métricas regionais.
+- **Criação**: 26 cenários (personalizado, país existente, URSS restaurada, Grande Síria, Federação Balcânica, pós-guerra civil, Groenlândia independente, África Oriental, América Central, Grã-Colômbia, União Ibérica, República das Duas Nações, União Nórdica, Federação Turânica, Confederação do Sahel, Curdistão, União do Magrebe, União do Golfo, Coreia reunificada, Indochina, Grande Romênia, Confederação Peru-Boliviana, Catalunha, Escócia, Quebec e Califórnia independentes), seleção por país ou província, estimativas de território, bandeiras atuais/históricas/personalizadas.
+- **Identidade**: 20 perguntas → 13 eixos ideológicos → classificação específica e híbrida (ex.: “Marxismo-Leninismo Pró-Eurásia”, “Nacional-Bolchevismo”), com explicação; as respostas definem leis, orçamento, grupos, relações e metas iniciais.
+- **Turnos semanais**: 4 cartões de questões por semana com prazo e regra padrão, eventos aleatórios, desdobramentos, manchetes e resumo semanal. As questões dependem do estado do país (crises, cortes, guerras, programas) e muitas são modelos preenchidos com seus vizinhos, rivais, aliados, blocos e guerras reais da partida.
+- **Nomes regionais**: ministros, generais, opositores e líderes estrangeiros recebem nomes da cultura do país (polonês na Polônia, árabe no Magrebe, japonês no Japão…).
+- **Mundo autônomo**: países propõem acordos, pedem ajuda, oferecem armas, emitem ultimatos, financiam oposição/golpes/separatistas, sancionam e fazem guerras entre si.
+- **Diplomacia**: organizações reais (ONU, OTAN, UE, Mercosul, BRICS, UA, ASEAN, OTSC…), blocos personalizados, tratados, empréstimos com juros e calote, doações, obras no exterior, apoio a guerras.
+- **Operações secretas**: financiar partidos afins (podem vencer eleições e alinhar o país a você), milícias de minorias e movimentos irredentistas, enviar armas; risco de descoberta; levantes podem separar províncias (que se unem a você se forem reivindicadas, ou viram um Estado cliente). Também é possível incitar um aliado contra um inimigo comum.
+- **Revoltas regionais**: províncias suas reivindicadas por outro país, se insatisfeitas, entram em insurgência (incentivada pelo rival) e podem exigir esmagamento, autonomia ou referendo.
+- **Economia ativa**: 16 programas econômicos (PAC, choque liberal, plano quinquenal, austeridade, zonas francas, polo tecnológico, estímulo ao consumo, privatização…) com efeitos durante e depois; cortes abruptos geram greves, e gastar abaixo do mínimo em saúde, educação, assistência, segurança, administração, defesa ou infraestrutura causa sucateamento e crises.
+- **Armas nucleares**: países que já têm a bomba, programas secretos (seus e da IA), descoberta e sanções, teste ou ambiguidade, dissuasão, ameaças nucleares e o risco de escalada.
+- **Ataque nuclear contra você**: a ogiva cai sobre áreas populosas (a capital é alvo preferencial) e mata parte da população; atingida a capital, o líder pode morrer (abrigos e evacuação ajudam) e, se sobreviver, aponta no mapa a nova capital. Durante 3 semanas só aparecem questões da catástrofe; depois vêm as sequelas (radiação na região, câncer, emigração, queda de natalidade e de crescimento por anos).
+- **Bandeiras**: símbolos desenhados para o jogo e emblemas importados do Wikimedia Commons (águias albanesa, polonesa, bizantina, foice e martelo em várias versões, fasces, jugo e flechas, tryzub, cruz sérvia, sol de Vergina e outros — créditos e licenças em `docs/emblem-sources.md`), com cores originais ou pintados em uma só cor; 12 categorias (animais, heráldica, religião, política, armas, "pesados" como caveiras, forca, bombas e símbolo radioativo, natureza, objetos), 29 divisões, até 10 elementos com cor, contorno, rotação, largura, opacidade, espelhamento e camadas, bandeira aleatória e troca de bandeira durante a partida (Opções). Suástica e insígnias do Terceiro Reich continuam excluídas.
+- **Mundo em guerra**: IAs entram em guerra entre si (por reivindicações, rivalidade ou incitação sua), ocupam províncias progressivamente, anexam território e sofrem sanções de outras potências.
+- **Guerra**: objetivos, frentes por província, operações anfíbias, coalizões, cercos à capital com evacuação, ocupação, cessão, Estado cliente, anexação, Estados sucessores e chance real (circunstancial) de captura do governante.
+- **Conteúdo**: 558 questões (307 novas, incluindo 23 da crise nuclear e suas sequelas, 57 de ideologia e regime, 33 do cotidiano e 26 de partidos, regiões e blocos; vizinhança, blocos, potências, territórios disputados, operações secretas, programa nuclear, política interna e serviços públicos), 58 desdobramentos, 73 eventos, 6 personagens recorrentes, 17 tipos de missão, rankings mundiais mensais.
+
+## Novidades desta versão
+
+- **Jornal da semana** com manchete, fotos reais do Wikimedia Commons (com autor e licença na legenda), pesquisa de opinião, alertas do gabinete e censura conforme a lei de imprensa ("rádio estrangeira" mostra o que o jornal estatal esconde). Tudo pode ser desligado em Opções e tem reserva offline.
+- **Som e trilha** sintetizados no navegador; trilha muda com guerra e crise.
+- **Conselheiros**: alertas antecipados (caixa, dívida, inflação, fome, golpe, revolução, guerra) com caminhos sugeridos. Questões por semana configuráveis e opção de o gabinete decidir as menores. Desdobramentos mostram de qual decisão vieram.
+- **Política**: partidos, parlamento com hemiciclo, intenção de voto, campanhas e eleições jogáveis, coalizões, leis barradas sem maioria (ou votos comprados), autogolpe; facções do regime com exigências; gabinete com 8 pastas (competência, lealdade, corrupção, perfil); governante que envelhece, adoece e morre, com herdeiro; golpes e revoluções viram crises de 4 semanas que podem terminar em **guerra civil** (o país racha no mapa); editor de constituição.
+- **Economia**: 12 tipos de obra por província no mapa; preços mundiais de petróleo, gás, trigo, aço, chips e ouro com choques; empresas estatais e privadas com oligarcas; regimes cambiais, desvalorização e colapso do câmbio fixo.
+- **Guerra**: corpos de exército com generais (perícia, traços, fama — generais famosos e pouco leais viram ameaça), ordens de ofensiva e defesa, marinha e aviação com superioridade aérea e naval, campanhas de bombardeio, bloqueio naval, mapa do teatro e **conferência de paz no mapa**.
+- **Mundo vivo**: líderes estrangeiros com traços e memória do que você fez; cúpulas de negociação; votações na ONU; espionagem (infiltrar, roubar tecnologia, sabotar, comprar jornalistas, relatórios); eleições, golpes e revoluções nos outros países (novo modo de mapa "Regimes"); tensão mundial; crises globais (pandemia, crash financeiro, colapso climático, guerra no Golfo, ciberataque).
+- **Pesquisa**: 16 tecnologias em três eras.
+- **Sociedade**: povos e religiões predominantes por região (aproximação), imprensa com linha editorial que pesa na legitimidade.
+- **Modos de jogo**: Sandbox, Ironman, Dinastia, 6 Desafios, Desafio diário (mesma semente para todos), Roguelite (temporadas de 1 ano com Legado e vantagens) e Ascensão ao poder (comece na oposição). Pontuação e histórico de partidas.
+- **Ferramentas**: tutorial guiado, Enciclopédia com busca, editor de questões e mods (exportar/importar JSON), interface em inglês (as questões continuam em português), layout para celular, tamanho de texto, cores para daltonismo e alto contraste, sorteio reproduzível por semente, simulador de balanceamento (`node tools/balance.mjs` → `docs/balance-report.md`).
+
+## Mundo caótico, governo autônomo e financiamento
+
+- **Mundo caótico** (liga/desliga no fim da criação do país, ou em Opções): a IA fica bem mais ativa. Países expansionistas invadem vizinhos mais fracos, regiões proclamam independência e novos Estados surgem no mapa — mais de 40 movimentos reais (Curdistão, Catalunha, País Basco, Escócia, Québec, Tibete, Turquestão Oriental, Biafra, Azawad, Ichkéria, Texas, Sicília, Padânia…) com nome, bandeira e políticas próprias, além de um gerador regional (nomes como "Emirado de…", "República Popular de…", "Estado Livre de…" e bandeiras no estilo da região). Os novos países pedem reconhecimento, comerciam, formam **alianças militares regionais**, convidam você e entram em guerra (secessões podem ser esmagadas ou sobreviver).
+- **Cenário "Crise separatista"**: escolha um país; na primeira semana uma região (o movimento real, quando existe) se declara independente. Retomar pela força, negociar um referendo em um ano, oferecer autonomia ou reconhecer.
+- **Gabinete autônomo**: cada ministro recebe um mandato ("permitir que execute o plano X": equilibrar contas, estímulo, ajuste, desenvolvimento regional, industrialização, exportação, rearmamento, lei e ordem…) e age sozinho toda semana — ajusta verbas, redistribui o investimento regional, inicia obras e programas, fecha acordos. Você tem a palavra final; ao mudar algo numa pasta, o ministro respeita sua ordem por 12 semanas, mas **contesta mudanças bruscas** (ainda mais se contrariarem a linha ideológica do governo). Em regimes fechados, contestar é raro e arriscado — e você pode "calar" o ministro.
+- **Conselheiros** (economista-chefe, estrategista político, segurança nacional, assessor internacional): contratados e **treinados** desde o início, com salário e efeito real. O economista apresenta **planos** quando a economia piora (inflação, contas, recessão, desigualdade regional).
+- **Bancadas regionais**: pedidos de obras aparecem como 📢 no mapa nacional e na própria carta (minimapa); aprovar cria a obra concreta na província, prometer exige cumprir em 12 semanas.
+- **Financiamento de investimentos**: fundo nacional (enche com superávits, rende juros, esgota-se), emissão de moeda (teto de 1,5% do PIB/ano, gera inflação) e títulos (teto de 3%/ano dentro do limite de crédito) abastecem uma carteira que só paga investimentos — obras, iniciativas, programas, compras militares e investimentos setoriais com retorno decrescente.
+- **Ritmo da economia** ajustável (Realista, Acelerado, Rápido) e questões que se repetem bem menos (intervalo maior, peso por repetição e por categoria). +50 questões novas (economia, sociedade, política, meio ambiente, defesa, mundo e mundo caótico).
+- **Símbolos regionais autênticos** importados do Wikimedia Commons (Soyombo, Faravahar, Khanda, Ashoka Chakra, Dharmachakra, leões das neves do Tibete, águia de Saladino, falcão de Quraish, shahada, yaz amazigh, trinácria, cabeça de mouro, leão de Flandres, galo valão, cruz de Bolnisi, flechas circassianas, lobo de Ichkéria, kultrun mapuche, chakana, Gye Nyame, pássaro do Zimbábue, sol assírio, sol sami…; 30 no total), com autor e licença em `docs/emblem-sources.md`.
+
+## Regiões, líderes regionais e mundos alternativos
+
+- **Orçamento mais folgado**: tesouro inicial maior, uma *dotação discricionária* (parte do orçamento que sempre chega ao tesouro, por dificuldade), custo menor das decisões e ministros que não esvaziam o caixa sozinhos (reserva e teto anual de obras autônomas). Ela aparece como despesa na página Orçamento.
+- **Líderes regionais** (Política › Líderes regionais): modelo de governo regional *nomeados* (leais, mas podem ser impopulares ou corruptos), *eleitos* (legítimos, com eleições a cada 4 anos; os de oposição podem fomentar o separatismo, exigir referendo ou declarar independência) ou *administração direta* (mais controle e economia no orçamento, mas obras locais e serviços regionais pioram). Cada governador recebe verba do orçamento, tem lealdade, popularidade, corrupção e autonomia, executa obras locais, pede obras ao jogador (que pode financiá-las) e pode ser destituído — com protestos, crises regionais e reações externas que dependem da liberdade política e da força do governo.
+- **Macro-regiões** (Mapa-múndi › Macro-regiões): camada extra de território. Agrupe províncias de qualquer país em fronteiras customizadas; use-as como objetivo e foco de guerra, como atalho na conferência de paz e como termo de paz ("Anexar a macro-região").
+- **Bandeiras regionais, de movimentos e imperiais** do Wikimedia Commons (`data/flags/regional.json`, créditos em `docs/flag-sources.md`): estados dos EUA e do Brasil, regiões da Finlândia e da Rússia, Flandres, Catalunha, Escócia, Califórnia, Chipre do Norte, Tibete, Biafra… São usadas quando uma região se torna independente (secessões, mundo caótico, rebeliões) e aparecem nas abas *Imperiais* e *Regionais* do editor de bandeiras (impérios do Brasil, México, Rússia, Alemanha, Áustria-Hungria, Qing…). Baixe e atualize com `node tools/fetch-regional-flags.mjs` (retomável; respeita os limites do Commons) e `node tools/build-regional-flags.mjs`.
+- **Cenários por região**: países frios (Carélia, Sakha, Sibéria, Alasca, Lapônia, Federação Ártica), latino-americanos (Império do Brasil restaurado, Amazônia, Prata, Maia, México imperial, Antilhas) e europeus (Flandres, Baviera, Bretanha, Danúbio, Sacro Império), com filtros no assistente e questões exclusivas (clima extremo, caudilhos e cartéis, gás e refugiados). Condições novas em questões: `regions`, `cold`, `scn`, `wscn`. Geradores: `tools/add-regional-scenarios.mjs`, `tools/gen-regional-content.mjs`.
+- **35 regiões do mundo** (`js/sim/worldregions.js`): Ásia Central, Sudeste Asiático, Sul da Ásia, Extremo Oriente, Oriente Médio, Golfo, Levante, Cáucaso, Balcãs, Mediterrâneo, Nórdicos, Bálticos, Ilhas Britânicas, Europa Ocidental/Central/Oriental, Ibéria, América do Norte, Caribe, América Central, Andes, Cone Sul, Amazônia, Norte da África, Sahel, África Ocidental/Central/Oriental, Chifre, África Austral, Oceano Índico, Oceania, Ilhas do Pacífico… Um país pode estar em várias. Servem de condição de questões e eventos (`cond.wr`/`notWr`), de filtro de cenários no assistente e de atalho para macro-regiões.
+- **112 cenários do jogador** (65 novos por região: federações, impérios restaurados, separações e uniões em todos os continentes) e **mais 116 questões e 29 eventos aleatórios regionais** (`tools/add-region-scenarios.mjs`, `tools/gen-wr-content.mjs`). Todos os cenários são iniciados e rodados por `tests/regions-test.mjs`.
+- **Municípios** (`js/sim/munis.js`): microrregiões geradas dentro de cada província (3 a 28 por província, com nome, população e área). Aparecem só na escolha de território (modo *Municípios*: selecione parte de uma província e ela vira uma província menor) e no teatro de guerra, onde cada frente avança município a município. O mapa do jogo continua em províncias; seleções parciais são salvas e recriadas ao carregar. Teste: `tests/munis-test.mjs`.
+- **Uniões estilo URSS**: no *Mundo Vermelho* e na *Guerra Fria Eterna* vários países são fundidos num só Estado (União Soviética com Báltico, Cáucaso e Ásia Central; Iugoslávia; Tchecoslováquia; e, no Mundo Vermelho, uniões Nórdica, Ibérica, Mesoamericana, Indochinesa, do Subcontinente e outras). O mapa político tinge os blocos (vermelho x azul).
+- **Cenários mundiais** (assistente › Cenários mundiais): o mundo inteiro vive uma história alternativa — *Mundo Vermelho* (socialista), *Imperialista*, *Fim da História* (liberal), *Teocrático*, *Uniões Continentais*, *Guerra Fria Eterna*, *Mundo das Corporações* e *Colapso Climático* —, com governos reescritos, alianças temáticas, eventos exclusivos e a opção de o mundo ser acolhedor, neutro ou hostil com você. Gerador: `tools/gen-world-scenarios.mjs`.
+
+## Estrutura
+
+- `js/sim/` — regras (sem DOM): `politics.js` partidos/eleições/facções/gabinete/governante/levantes/constituição, `markets.js` obras/commodities/empresas/câmbio, `armies.js` corpos/generais/marinha/aviação/paz, `worldlife.js` líderes/memória/ONU/cúpulas/espionagem/tensão/crises/pesquisa, `society.js`, `modes.js`, `advisor.js`, `model.js` economia, `world.js` mundo/território/IA/rankings, `war.js` guerra, `diplomacy.js`, `covert.js` operações secretas/revoltas/guerras entre IAs, `nuclear.js`, `programs.js` programas econômicos e sucateamento, `names.js` nomes por cultura, `ideology.js`, `characters.js`, `missions.js`, `game.js` (turnos, salvamento).
+- `js/ui/` — interface: `worldmap.js` (mapa SVG), `mapviews.js`, `setup.js` (assistente), páginas.
+- `data/` — conteúdo em JSON: `content.json` lista os arquivos de questões/eventos; `world/` registro, perfis, relações, organizações, reivindicações e cenários; `geo/` geometria pré-processada; `flags/` bandeiras e manifesto.
+- `tools/` — scripts de construção e validação (precisam de `npm install` em `tools/`):
+  - `node tools/build-geo.mjs` — reprocessa Natural Earth (`tools/raw/`).
+  - `node tools/build-registry.mjs` — gera o registro de entidades.
+  - `node tools/build-flags.mjs` — empacota bandeiras.
+  - `node tools/validate-world.mjs` — valida o banco geopolítico e gera `docs/validation-report.md`.
+  - `node tools/validate-content.mjs` — valida questões, eventos e desdobramentos.
+  - `node tools/build-single.mjs` — gera `IronState.html`.
+  - `node tools/fetch-commons-emblems.mjs` e `node tools/build-emblems.mjs` — baixam do Wikimedia Commons (só licenças livres) e convertem os emblemas listados em `tools/commons-emblems.list.mjs`.
+  - `node tools/add-scenarios.mjs` — (re)grava os cenários alternativos adicionais em `data/world/scenarios.json`.
+- `tests/sim-test.mjs` — simulação headless: `node tests/sim-test.mjs [random|first|idle|war|diplo|covert] [dias] [cenário] [país]`.
+- `tests/covert-test.mjs` — testes dirigidos de levante, partido no poder, insurgência, bomba, programas e cortes.
+- `tests/politics-test.mjs`, `tests/modes-test.mjs`, `tests/determinism-test.mjs` — política, modos de jogo e sorteio reproduzível.
+- `tests/nuke-test.mjs` — ataque nuclear: perda de população, crise de 3 semanas, morte do líder e troca de capital.
+- `tests/tpl-test.mjs [país] [semanas]` — lista as questões com modelo que aparecem e acusa marcadores não preenchidos.
+
+## Fontes e licenças
+
+- **Fotos das notícias (online)**: Wikimedia Commons, buscadas na hora por tema; cada foto mostra título, autor e licença com link para a página do arquivo.
+
+- **Geografia**: Natural Earth 10m Admin 0, Admin 1 e Populated Places — domínio público. População por província e PIB regional são estimativas (cidades + área); PIB e população nacionais vêm do Natural Earth (estimativas ~2019).
+- **Bandeiras atuais**: pacote [flag-icons](https://github.com/lipis/flag-icons) (MIT), derivado do Wikimedia Commons; ver `data/flags/manifest.json`. Bandeiras históricas foram desenhadas para o projeto; bandeiras do Terceiro Reich foram excluídas.
+- **Perfis, relações, organizações e reivindicações**: compilados pelo autor a partir de informação amplamente divulgada até 2026; marcados com nível de confiança e `review: true` — são abstrações de jogo, não dados oficiais. Pares sem registro começam neutros. Relatório completo em `docs/validation-report.md`.
+- **Questões**: originais, inspiradas no formato de NationStates (cujos textos são protegidos por direitos autorais e não foram importados).
+
+## Escolhas de projeto
+
+- Territórios são desenhados por província e as fronteiras nacionais só onde o dono muda, para que guerras, cessões e secessões alterem o mapa sem geometria em tempo de execução.
+- Crimeia e Sevastopol: o Admin 1 do Natural Earth as atribui à Rússia; o jogo as registra como ucranianas de jure e ocupadas, como a maior parte da comunidade internacional.
+- A IA de países é baseada em regras ponderadas por interesse (relação, afinidade ideológica, poder, reivindicações), não em planejamento complexo.
+- Cenários de história alternativa são sandbox e não representam fronteiras reconhecidas.
+
+## Sistemas de profundidade (módulos novos)
+
+- **Mundo customizado / País fraturado** (aba em *Cenários mundiais*): `js/sim/customworld.js` + `js/ui/customworld-ui.js`. Presets (Rússia fragmentada, Brasil dividido...), fratura automática em N nações, edição de nome, bandeira, líder, regime e papel (aliada, rival, antagonista, neutra) e atribuição de províncias no mapa. Mundos podem ser salvos no navegador.
+- **Ordem e êxodo** (`js/sim/order.js`): crimes por tipo, autonomia da polícia, alienação e patriotismo, base aliada, fuga clandestina (barcos em ilhas; fronteiras em continentes, com mortes por frio, calor, floresta, montanha ou rio), grupos armados internos e crimes de guerra com advertência da ONU, tropas de paz e mandados.
+- **Propaganda e discursos** (`js/sim/propaganda.js`): orçamento por canal, filmes, campanhas (unidade nacional, apagar nacionalismo regional), discursos com público, tema, tom e promessas, credibilidade e cobrança da imprensa por promessas não cumpridas.
+- **Regiões e vocações** (`js/sim/vocations.js`): economia rural, tecnológica e industrial por região, definida pelas obras; regiões separatistas bem cuidadas crescem e pedem autonomia.
+- **Desenvolvimento** (`js/sim/dev.js`): índice de qualidade institucional move o crescimento; armadilha da pobreza; reformas importadas (opção `risk`) podem fracassar.
+- **Campanha** (`js/sim/campaign.js`, `js/ui/campaign-ui.js`): wargame reduzido com suprimentos, ciência, medalhas e três modos de comando (automático, estrategista, general).
+- **Conteúdo**: `node tools/gen-arcs2.mjs` (arcos em `tools/arcs2/*.mjs` → `data/issues_depth.json`) e `node tools/gen-wscn-arcs.mjs` (45 questões por mundo). Condições novas: `state` (authoritarian, dystopia, utopia, taxhaven, failed, rich...), `island`, `alien`, `crimeGang`, `policeAuto`, `fledDead`, `armed`, `warCrimes`, `brokenPromises` etc.
+- Ícones no estilo Lucide em `js/ui/lucide.js`.
+- **Alcance o poder (v2)** (`js/sim/ascent2.js`, `js/ui/ascent-ui.js`): origem do movimento, 6 facções, pontos de ação semanais (11 ações), propaganda com orçamento reduzido e discursos, pressão e repressão do regime, 16 eventos, rotas ao poder com chance de sucesso (eleição, golpe, insurreição) e herança para o governo (promessas viram obrigações).
+- Líderes: reduzidos a ~10% de mulheres, com títulos Rainha/Imperatriz/Primeira-ministra (names.js: leaderName/genderize). Mundo customizado agora combina com cenários mundiais. 22 entidades (12 países e 10 regiões) com 21 questões dedicadas cada (tools/arcs2/p1-p3).

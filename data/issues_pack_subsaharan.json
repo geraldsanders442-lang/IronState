@@ -1,0 +1,1552 @@
+[
+ {
+  "id": "pk_af_mobile_money",
+  "cat": "África",
+  "title": "Dinheiro móvel e inclusão financeira",
+  "desc": "Milhões pagam e recebem por celular sem conta em banco. Bancos e operadoras brigam pelas tarifas.",
+  "context": "A África leva a fintech ao campo.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Regular e incentivar a concorrência.",
+    "hint": "Inclusão com segurança.",
+    "now": {
+     "tech": 1
+    },
+    "groups": {
+     "workers": 2,
+     "youth": 2,
+     "business": 1
+    }
+   },
+   {
+    "text": "Taxar as transações.",
+    "hint": "Receita; freia o uso.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "workers": -2
+    }
+   },
+   {
+    "text": "Deixar o mercado agir.",
+    "hint": "Rápido e desigual.",
+    "now": {},
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_coup_belt",
+  "cat": "África",
+  "title": "O contágio dos golpes militares",
+  "desc": "Países vizinhos caem para juntas militares aclamadas nas ruas. Oficiais do seu exército seguem o noticiário com interesse.",
+  "context": "A onda de golpes na região.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aumentar soldos e fiscalizar a alta oficialidade.",
+    "hint": "Reduz o risco.",
+    "now": {
+     "treasury": -0.25,
+     "coupRisk": -2
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Reformas e diálogo político.",
+    "hint": "Mais sólido.",
+    "now": {
+     "political": 1,
+     "legitimacy": 1
+    },
+    "groups": {
+     "opposition": 1,
+     "military": -1
+    }
+   },
+   {
+    "text": "Pedir proteção a uma potência estrangeira.",
+    "hint": "Seguro e dependente.",
+    "now": {
+     "coupRisk": -1.5,
+     "reputation": -1
+    },
+    "groups": {
+     "military": -1
+    },
+    "rel": {
+     "russia": 3,
+     "west": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_cobalt",
+  "cat": "África",
+  "title": "A corrida do cobalto",
+  "desc": "Empresas disputam as minas de cobalto e cobre, com trabalho informal e infantil nas galerias.",
+  "context": "Minerais para as baterias do mundo.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Rastrear a cadeia e proibir trabalho infantil.",
+    "hint": "Reputação e menor oferta.",
+    "now": {
+     "reputation": 1.5,
+     "treasury": -0.1
+    },
+    "groups": {
+     "workers": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Concessão a uma potência em troca de infraestrutura.",
+    "hint": "Obras e dívida.",
+    "now": {
+     "treasury": 0.3,
+     "debt": 0.4
+    },
+    "groups": {
+     "business": 2
+    },
+    "rel": {
+     "china": 4
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Estatizar as minas.",
+    "hint": "Receita e fuga de investidores.",
+    "now": {
+     "treasury": 0.3,
+     "reputation": -1
+    },
+    "groups": {
+     "workers": 2,
+     "business": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_ebola",
+  "cat": "África",
+  "title": "Surto de febre hemorrágica",
+  "desc": "Um surto mortal aparece numa vila remota e já chega à capital. Rumores de bruxaria dificultam a resposta.",
+  "context": "Saúde frágil, desconfiança alta.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Quarentena com apoio internacional.",
+    "hint": "Controla.",
+    "now": {
+     "treasury": -0.3,
+     "health": 0.8,
+     "reputation": 1
+    },
+    "groups": {
+     "rural": -1
+    }
+   },
+   {
+    "text": "Campanha com líderes locais e religiosos.",
+    "hint": "Funciona melhor.",
+    "now": {
+     "treasury": -0.1,
+     "health": 0.5
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Minimizar para não afastar turistas.",
+    "hint": "Epidemia piora.",
+    "now": {
+     "health": -1.5,
+     "legitimacy": -2
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_af_land_grab",
+  "cat": "África",
+  "title": "Terras vendidas a investidores estrangeiros",
+  "desc": "Milhares de hectares de terra fértil são arrendados a fundos de outros países. Camponeses perdem acesso.",
+  "context": "Segurança alimentar dos outros.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Cancelar os contratos.",
+    "hint": "Protege a terra.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "rural": 4,
+     "business": -2
+    }
+   },
+   {
+    "text": "Exigir parceria com pequenos produtores.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "rural": 1,
+     "business": 1
+    }
+   },
+   {
+    "text": "Manter os contratos.",
+    "hint": "Receita; revolta.",
+    "now": {
+     "treasury": 0.25
+    },
+    "groups": {
+     "rural": -4,
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_drought_sahel",
+  "cat": "África",
+  "title": "Seca e pastores em conflito",
+  "desc": "A seca empurra pastores nômades para terras de agricultores, e os choques viram massacres.",
+  "context": "Clima e identidade.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Corredores de pastoreio e mediação.",
+    "hint": "Reduz o conflito.",
+    "now": {
+     "treasury": -0.2,
+     "crime": -0.2
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Armar milícias locais.",
+    "hint": "Rápido e perigoso.",
+    "now": {
+     "crime": 0.3,
+     "control": 0.5
+    },
+    "groups": {
+     "rural": -1,
+     "military": 1
+    }
+   },
+   {
+    "text": "Enviar o exército.",
+    "hint": "Contém.",
+    "now": {
+     "treasury": -0.25,
+     "control": 1.5
+    },
+    "groups": {
+     "military": 2,
+     "rural": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_oil_curse",
+  "cat": "África",
+  "title": "A maldição do petróleo",
+  "desc": "A receita do petróleo alimenta a corrupção e a elite, enquanto o povo continua pobre. Pedem um fundo soberano transparente.",
+  "context": "Riqueza que não chega.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Criar fundo soberano auditado.",
+    "hint": "Boa governança.",
+    "now": {
+     "corruption": -1,
+     "treasury": 0.1
+    },
+    "groups": {
+     "youth": 2,
+     "bureaucracy": -1
+    }
+   },
+   {
+    "text": "Distribuir dinheiro direto aos cidadãos.",
+    "hint": "Popular.",
+    "now": {
+     "treasury": -0.4,
+     "poverty": -0.6
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Manter como está.",
+    "hint": "A elite agradece.",
+    "now": {
+     "corruption": 0.5
+    },
+    "groups": {
+     "business": 1,
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_aids",
+  "cat": "África",
+  "title": "Antirretrovirais e estigma",
+  "desc": "O programa de tratamento de HIV depende de doadores que ameaçam cortar a ajuda. Estigma afasta pacientes.",
+  "context": "Saúde pública e cooperação.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Produção local de genéricos.",
+    "hint": "Autonomia.",
+    "now": {
+     "treasury": -0.3,
+     "health": 1
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Aprofundar a parceria internacional.",
+    "hint": "Imediato.",
+    "now": {
+     "health": 0.5,
+     "reputation": 0.5
+    },
+    "groups": {}
+   },
+   {
+    "text": "Reduzir o programa.",
+    "hint": "Mortes evitáveis.",
+    "now": {
+     "treasury": 0.15,
+     "health": -1.5
+    },
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_urban_slums",
+  "cat": "África",
+  "title": "Megacidades e favelas",
+  "desc": "Lagos, Kinshasa e outras capitais crescem sem planejamento; transporte, esgoto e energia colapsam.",
+  "context": "A região urbaniza mais rápido do mundo.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Plano metropolitano de transporte e saneamento.",
+    "hint": "Caro e estratégico.",
+    "now": {
+     "treasury": -0.5,
+     "qol": 0.8
+    },
+    "groups": {
+     "workers": 3,
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Regularizar assentamentos informais.",
+    "hint": "Dignidade barata.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Remover as favelas.",
+    "hint": "Brutal.",
+    "now": {
+     "civil": -1.5,
+     "reputation": -1.5
+    },
+    "groups": {
+     "workers": -4,
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_football_afcon",
+  "cat": "África",
+  "title": "Sediar a copa africana de futebol",
+  "desc": "O país foi escolhido para receber o torneio continental. Estádios, estradas e segurança custam caro; o orgulho é enorme.",
+  "context": "Esporte e prestígio.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Investir pesado em estádios e infraestrutura.",
+    "hint": "Legado e dívida.",
+    "now": {
+     "treasury": -0.5,
+     "reputation": 2,
+     "legitimacy": 2
+    },
+    "groups": {
+     "youth": 3,
+     "business": 2
+    }
+   },
+   {
+    "text": "Usar estádios existentes.",
+    "hint": "Barato.",
+    "now": {
+     "treasury": -0.15,
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Recusar a sede.",
+    "hint": "Responsável.",
+    "now": {},
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_chinese_loans",
+  "cat": "África",
+  "title": "Dívida com credores asiáticos",
+  "desc": "Empréstimos para ferrovias e portos vencem e o fluxo de caixa não cobre. Credores falam em ativos como garantia.",
+  "context": "Armadilha ou parceria?",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Renegociar com todos os credores.",
+    "hint": "Respira.",
+    "now": {
+     "treasury": 0.2,
+     "reputation": 0.5
+    },
+    "groups": {},
+    "rel": {
+     "china": 1
+    }
+   },
+   {
+    "text": "Entregar o porto em concessão.",
+    "hint": "Alivia; soberania.",
+    "now": {
+     "treasury": 0.4,
+     "debt": -0.5
+    },
+    "groups": {
+     "military": -1
+    },
+    "rel": {
+     "china": 3
+    }
+   },
+   {
+    "text": "Calote seletivo.",
+    "hint": "Radical.",
+    "now": {
+     "debt": -0.8,
+     "reputation": -3
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_af_colonial_borders",
+  "cat": "África",
+  "title": "Fronteiras traçadas por europeus",
+  "desc": "Grupos étnicos divididos por fronteiras coloniais pedem autonomia ou fusão com vizinhos.",
+  "context": "O peso da partilha do continente.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Federalizar o Estado.",
+    "hint": "Acomoda.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {
+     "regional": 4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Reprimir o separatismo.",
+    "hint": "Firme.",
+    "now": {
+     "control": 1.5,
+     "civil": -1
+    },
+    "groups": {
+     "military": 2,
+     "regional": -4
+    }
+   },
+   {
+    "text": "Cooperação transfronteiriça.",
+    "hint": "Pragmática.",
+    "now": {},
+    "groups": {
+     "regional": 2
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_elections_digital",
+  "cat": "África",
+  "title": "Contagem eletrônica e desconfiança",
+  "desc": "A oposição denuncia fraude na urna eletrônica recém-adotada. Observadores divergem.",
+  "context": "Credibilidade da eleição.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Auditoria independente e recontagem.",
+    "hint": "Restaura a confiança.",
+    "now": {
+     "political": 1,
+     "legitimacy": 1
+    },
+    "groups": {
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Encerrar a contestação na Justiça.",
+    "hint": "Rápido.",
+    "now": {
+     "political": -0.5
+    },
+    "groups": {
+     "opposition": -3
+    }
+   },
+   {
+    "text": "Voltar às cédulas de papel.",
+    "hint": "Caro e confiável.",
+    "now": {
+     "treasury": -0.2,
+     "political": 0.5
+    },
+    "groups": {
+     "opposition": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_solar_minigrids",
+  "cat": "África",
+  "title": "Mini-redes solares para vilas",
+  "desc": "Startups oferecem energia solar em aldeias sem eletricidade, pagando por celular. O governo pensa em regular.",
+  "context": "Eletrificação por baixo.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Subsidiar a expansão.",
+    "hint": "Energia para todos.",
+    "now": {
+     "treasury": -0.25,
+     "qol": 0.6
+    },
+    "groups": {
+     "rural": 4
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Tarifar e regular.",
+    "hint": "Estruturado.",
+    "now": {
+     "treasury": 0.05
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Priorizar a rede nacional.",
+    "hint": "Lento.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "rural": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_poaching",
+  "cat": "África",
+  "title": "Caça ilegal de elefantes e rinocerontes",
+  "desc": "Quadrilhas armadas ameaçam os parques nacionais, que são a base do turismo.",
+  "context": "Fauna e dinheiro.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Guardas treinados e drones.",
+    "hint": "Eficiente.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 1
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Parceria com comunidades para dividir lucros.",
+    "hint": "Mais duradouro.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Perda da fauna.",
+    "now": {
+     "reputation": -1.5
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_af_wagner_security",
+  "cat": "África",
+  "title": "Mercenários estrangeiros oferecem segurança",
+  "desc": "Uma empresa militar privada promete esmagar rebeldes em troca de minas e contratos.",
+  "context": "Segurança terceirizada.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Contratar a empresa.",
+    "hint": "Resultados e perda de soberania.",
+    "now": {
+     "control": 2,
+     "reputation": -2
+    },
+    "groups": {
+     "military": -2
+    },
+    "rel": {
+     "russia": 4,
+     "west": -3
+    }
+   },
+   {
+    "text": "Reforçar o exército e pedir ajuda da ONU.",
+    "hint": "Legítimo, lento.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Negociar com os rebeldes.",
+    "hint": "Risco.",
+    "now": {
+     "stability": -0.5
+    },
+    "groups": {
+     "regional": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_schooling_girls",
+  "cat": "África",
+  "title": "Meninas fora da escola",
+  "desc": "Casamentos precoces e falta de banheiros tiram milhões de meninas das escolas.",
+  "context": "Educação e futuro.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Bolsas, merenda e banheiros.",
+    "hint": "Funciona.",
+    "now": {
+     "treasury": -0.3,
+     "education": 1.2
+    },
+    "groups": {
+     "youth": 3,
+     "rural": 1
+    }
+   },
+   {
+    "text": "Lei contra o casamento precoce.",
+    "hint": "Simbólico sem fiscalização.",
+    "now": {
+     "education": 0.5,
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 2,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Deixar com as comunidades.",
+    "hint": "Sem custo.",
+    "now": {},
+    "groups": {
+     "rural": 1,
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_cashew_export",
+  "cat": "África",
+  "title": "Agregar valor ao que exporta",
+  "desc": "O país vende castanha, cacau ou algodão em estado bruto. Há pedido para proibir exportação sem processamento.",
+  "context": "Industrialização pelo agro.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Proibir exportação bruta.",
+    "hint": "Atrai fábricas; risco de retaliação.",
+    "now": {
+     "growth": 0.1
+    },
+    "groups": {
+     "workers": 2,
+     "rural": -1
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Incentivos fiscais ao processamento.",
+    "hint": "Suave.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 0.8,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Manter a exportação livre.",
+    "hint": "Dólares agora.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "rural": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_witchcraft",
+  "cat": "África",
+  "title": "Acusações de bruxaria e linchamentos",
+  "desc": "Idosos e crianças são atacados após acusações de bruxaria.",
+  "context": "Crenças e violência.",
+  "cond": {
+   "regions": [
+    "sub_saharan_africa"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Campanhas educativas e penalidades.",
+    "hint": "Proteção.",
+    "now": {
+     "civil": 0.5,
+     "crime": -0.2
+    },
+    "groups": {
+     "rural": -1,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Envolver líderes religiosos no combate.",
+    "hint": "Eficaz.",
+    "now": {
+     "civil": 0.3
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Não interferir.",
+    "hint": "Violência continua.",
+    "now": {
+     "crime": 0.3,
+     "reputation": -1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_ng_oil_theft",
+  "cat": "África",
+  "title": "Roubo de petróleo no delta",
+  "desc": "Quadrilhas furam oleodutos e vendem combustível. O país perde bilhões e o delta se contamina.",
+  "context": "O petróleo escorre.",
+  "cond": {
+   "countries": [
+    "NGA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Operação militar e monitoramento por satélite.",
+    "hint": "Reduz o roubo.",
+    "now": {
+     "treasury": 0.3,
+     "control": 1.5,
+     "pollution": -0.3
+    },
+    "groups": {
+     "military": 2,
+     "regional": -2
+    }
+   },
+   {
+    "text": "Contratos de segurança com ex-militantes.",
+    "hint": "Pacifica, é caro.",
+    "now": {
+     "treasury": -0.1,
+     "control": 0.5
+    },
+    "groups": {
+     "regional": 3
+    }
+   },
+   {
+    "text": "Reforma do setor e transparência.",
+    "hint": "Estrutural.",
+    "now": {
+     "corruption": -0.5
+    },
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ng_nollywood",
+  "cat": "África",
+  "title": "O cinema e a música como exportação",
+  "desc": "Os filmes e o afrobeats viram potências globais. Músicos pedem apoio contra a pirataria.",
+  "context": "Soft power africano.",
+  "cond": {
+   "countries": [
+    "NGA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Fundo de incentivo e proteção autoral.",
+    "hint": "Marca-país.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 1.5
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Isenções fiscais.",
+    "hint": "Barato.",
+    "now": {
+     "treasury": -0.05
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Deixar o mercado.",
+    "hint": "Livre.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_ng_fuel_subsidy",
+  "cat": "África",
+  "title": "Fim do subsídio à gasolina",
+  "desc": "O subsídio custa bilhões, mas sua retirada dobra os preços e incendeia protestos.",
+  "context": "O dilema do combustível barato.",
+  "cond": {
+   "countries": [
+    "NGA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Retirar com compensações.",
+    "hint": "Disciplina fiscal.",
+    "now": {
+     "treasury": 0.5,
+     "inflation": 1.5,
+     "protest": 1.5
+    },
+    "groups": {
+     "workers": -4,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Retirada gradual.",
+    "hint": "Suave.",
+    "now": {
+     "treasury": 0.2,
+     "inflation": 0.5
+    },
+    "groups": {
+     "workers": -1
+    }
+   },
+   {
+    "text": "Manter o subsídio.",
+    "hint": "Paz e déficit.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_za_loadshedding",
+  "cat": "África",
+  "title": "Apagões programados",
+  "desc": "Cortes diários de energia paralisam fábricas e comércio. A estatal elétrica está quebrada.",
+  "context": "Crise de energia.",
+  "cond": {
+   "countries": [
+    "ZAF"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Abrir à geração privada e solar.",
+    "hint": "Resolve a longo prazo.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "business": 3,
+     "workers": -1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Resgatar a estatal.",
+    "hint": "Caro.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "workers": 2,
+     "business": -1
+    }
+   },
+   {
+    "text": "Racionar e esperar.",
+    "hint": "Perda econômica.",
+    "now": {
+     "growth": -0.4,
+     "legitimacy": -2
+    },
+    "groups": {
+     "business": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_za_land_reform",
+  "cat": "África",
+  "title": "Reforma agrária sem compensação?",
+  "desc": "O debate sobre devolução de terras ao povo negro reacende, com receio de queda de produção.",
+  "context": "História e economia.",
+  "cond": {
+   "countries": [
+    "ZAF"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Redistribuir com compensação justa.",
+    "hint": "Equilibrado.",
+    "now": {
+     "treasury": -0.4,
+     "inequality": -0.3
+    },
+    "groups": {
+     "rural": 3,
+     "business": -1
+    }
+   },
+   {
+    "text": "Desapropriar sem indenização.",
+    "hint": "Radical.",
+    "now": {
+     "inequality": -0.5,
+     "reputation": -2,
+     "growth": -0.2
+    },
+    "groups": {
+     "rural": 4,
+     "business": -4
+    }
+   },
+   {
+    "text": "Programas de apoio a pequenos produtores.",
+    "hint": "Lento.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "rural": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_za_xenophobia",
+  "cat": "África",
+  "title": "Violência contra imigrantes",
+  "desc": "Ataques a comerciantes estrangeiros ocorrem em bairros pobres, alimentados por desemprego.",
+  "context": "Tensão social.",
+  "cond": {
+   "countries": [
+    "ZAF"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Policiamento e campanhas de convivência.",
+    "hint": "Contém.",
+    "now": {
+     "treasury": -0.15,
+     "crime": -0.2
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Restringir novos vistos.",
+    "hint": "Aliviar tensão; imagem.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "workers": 1,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Acordo regional de migração laboral.",
+    "hint": "Estrutural.",
+    "now": {},
+    "groups": {
+     "business": 1
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_et_nile_dam",
+  "cat": "África",
+  "title": "A grande barragem no Nilo",
+  "desc": "A represa gigante promete eletricidade para milhões, mas preocupa países a jusante que dependem do rio.",
+  "context": "Água, energia e diplomacia.",
+  "cond": {
+   "countries": [
+    "ETH"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Encher o reservatório conforme o cronograma.",
+    "hint": "Energia já.",
+    "now": {
+     "qol": 0.5
+    },
+    "groups": {
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 3,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "neighbors": -6
+    }
+   },
+   {
+    "text": "Acordo de enchimento gradual.",
+    "hint": "Diplomacia.",
+    "now": {},
+    "groups": {},
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Adiar o enchimento.",
+    "hint": "Concessão.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "workers": -1
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_et_ethnic_federal",
+  "cat": "África",
+  "title": "Federalismo étnico em tensão",
+  "desc": "Estados regionais organizados por etnia disputam terras e poder. Milícias se armam.",
+  "context": "Modelo político em crise.",
+  "cond": {
+   "countries": [
+    "ETH"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Negociar uma nova divisão de poder.",
+    "hint": "Reduz o conflito.",
+    "now": {
+     "stability": 0.5
+    },
+    "groups": {
+     "regional": 3
+    }
+   },
+   {
+    "text": "Centralizar a segurança.",
+    "hint": "Controle.",
+    "now": {
+     "control": 2,
+     "civil": -1
+    },
+    "groups": {
+     "military": 2,
+     "regional": -4
+    }
+   },
+   {
+    "text": "Referendos locais.",
+    "hint": "Democrático e arriscado.",
+    "now": {
+     "political": 1,
+     "stability": -1
+    },
+    "groups": {
+     "regional": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_east_community",
+  "cat": "África",
+  "title": "Mercado comum da África Oriental",
+  "desc": "Um bloco regional propõe moeda única e passaporte comum. Produtores e sindicatos divergem.",
+  "context": "Integração regional.",
+  "cond": {
+   "countries": [
+    "KEN",
+    "TZA",
+    "UGA",
+    "RWA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aderir à moeda única.",
+    "hint": "Comércio e perda de soberania.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": 2,
+     "workers": -1
+    },
+    "rel": {
+     "neighbors": 4
+    }
+   },
+   {
+    "text": "Só livre circulação de bens.",
+    "hint": "Moderado.",
+    "now": {},
+    "groups": {
+     "business": 1
+    },
+    "rel": {
+     "neighbors": 1
+    }
+   },
+   {
+    "text": "Ficar fora.",
+    "hint": "Autonomia.",
+    "now": {},
+    "groups": {},
+    "rel": {
+     "neighbors": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_west_ecowas",
+  "cat": "África",
+  "title": "A união regional ameaçada",
+  "desc": "A comunidade econômica da África Ocidental ameaça sanções a golpistas e vê países saírem do bloco.",
+  "context": "Cooperação ou fragmentação.",
+  "cond": {
+   "countries": [
+    "GHA",
+    "SEN",
+    "CIV",
+    "MLI",
+    "NER",
+    "BFA",
+    "GIN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Apoiar sanções à junta.",
+    "hint": "Princípios.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": -2,
+     "west": 2
+    }
+   },
+   {
+    "text": "Mediar pelo diálogo.",
+    "hint": "Evita rupturas.",
+    "now": {},
+    "groups": {},
+    "rel": {
+     "neighbors": 1
+    }
+   },
+   {
+    "text": "Sair do bloco e criar aliança nova.",
+    "hint": "Soberania.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "neighbors": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_af_central_forest",
+  "cat": "África",
+  "title": "A floresta do Congo e o carbono",
+  "desc": "Mercados de carbono oferecem bilhões para preservar florestas. Comunidades temem perder terras.",
+  "context": "Floresta e dinheiro.",
+  "cond": {
+   "countries": [
+    "COD",
+    "AGO",
+    "GAB",
+    "COG",
+    "GNQ"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Vender créditos com repartição para comunidades.",
+    "hint": "Receita e justiça.",
+    "now": {
+     "treasury": 0.25,
+     "pollution": -0.5
+    },
+    "groups": {
+     "rural": 2,
+     "business": 1
+    }
+   },
+   {
+    "text": "Vender sem repartição.",
+    "hint": "Mais caixa; conflitos.",
+    "now": {
+     "treasury": 0.35,
+     "reputation": -1
+    },
+    "groups": {
+     "rural": -3
+    }
+   },
+   {
+    "text": "Recusar e explorar madeira.",
+    "hint": "Renda agora.",
+    "now": {
+     "treasury": 0.2,
+     "pollution": 1.2,
+     "reputation": -2
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ }
+]

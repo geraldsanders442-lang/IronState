@@ -1,0 +1,1479 @@
+[
+ {
+  "id": "bl_budget_fight",
+  "cat": "Blocos e alianças",
+  "title": "Briga pelo orçamento do {bloc}",
+  "desc": "Os membros do {bloc} discutem quem paga a conta da secretaria e dos fundos comuns. {blocMember} se recusa a aumentar a contribuição.",
+  "context": "Como fundador, esperam que {nation} pague mais.",
+  "tpl": {
+   "bloc": "own",
+   "blocMember": "any"
+  },
+  "w": 1.3,
+  "options": [
+   {
+    "text": "Bancar a maior parte do orçamento.",
+    "hint": "Liderança comprada; custo.",
+    "now": {
+     "treasury": -0.4,
+     "influence": 3
+    },
+    "rel": {
+     "$bloc": 4
+    }
+   },
+   {
+    "text": "Exigir contribuições proporcionais ao PIB.",
+    "hint": "Justo; atrito com {blocMember}.",
+    "rel": {
+     "$blocMember": -8
+    }
+   },
+   {
+    "text": "Cortar o orçamento do bloco pela metade.",
+    "hint": "Economia; o bloco perde força.",
+    "rel": {
+     "$bloc": -4
+    },
+    "act": {
+     "type": "blocMod",
+     "bloc": "$bloc",
+     "mods": {
+      "growth": -0.05
+     }
+    }
+   }
+  ]
+ },
+ {
+  "id": "bl_member_exit",
+  "cat": "Blocos e alianças",
+  "title": "{blocMember} ameaça deixar o {bloc}",
+  "desc": "O governo de {blocMember} diz que o {bloc} \"só serve aos interesses de {nation}\" e ameaça sair em 60 dias.",
+  "context": "Uma saída abriria precedente.",
+  "tpl": {
+   "bloc": "own",
+   "blocMember": "any"
+  },
+  "options": [
+   {
+    "text": "Oferecer fundos de compensação.",
+    "hint": "Mantém o membro; custo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "rel": {
+     "$blocMember": 12
+    }
+   },
+   {
+    "text": "Deixar ir — e cobrar tarifas depois.",
+    "hint": "Disciplina pelo medo.",
+    "rel": {
+     "$bloc": -2
+    },
+    "act": {
+     "type": "expel",
+     "bloc": "$bloc",
+     "id": "$blocMember"
+    }
+   },
+   {
+    "text": "Reformar o bloco dando mais voz aos pequenos.",
+    "hint": "Fortalece a coesão; você perde controle.",
+    "now": {
+     "influence": -2
+    },
+    "rel": {
+     "$bloc": 6
+    }
+   }
+  ]
+ },
+ {
+  "id": "bl_common_currency",
+  "cat": "Blocos e alianças",
+  "title": "Uma moeda comum para o {bloc}?",
+  "desc": "Economistas propõem que o {bloc} adote uma moeda única, administrada por um banco central conjunto em {capital}.",
+  "context": "Integração profunda — e perda de política monetária.",
+  "tpl": {
+   "bloc": "own"
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Lançar a moeda comum.",
+    "hint": "Comércio e prestígio; menos controle.",
+    "groups": {
+     "business": 6,
+     "workers": -2
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.06,
+      "d": 0
+     },
+     {
+      "k": "inflation",
+      "v": -1.5,
+      "d": 0
+     },
+     {
+      "k": "creditLimit",
+      "v": 0.1,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$bloc": 6
+    },
+    "act": {
+     "type": "blocMod",
+     "bloc": "$bloc",
+     "mods": {
+      "growth": 0.2
+     }
+    }
+   },
+   {
+    "text": "Começar com câmbio fixo entre as moedas.",
+    "hint": "Passo intermediário.",
+    "long": [
+     {
+      "k": "inflation",
+      "v": -0.5,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$bloc": 2
+    }
+   },
+   {
+    "text": "Manter moedas nacionais.",
+    "hint": "Soberania monetária."
+   }
+  ]
+ },
+ {
+  "id": "bl_expand",
+  "cat": "Blocos e alianças",
+  "title": "{outsideBloc} ou nós?",
+  "desc": "Vários vizinhos estão divididos entre aderir ao {bloc} ou ao concorrente {outsideBloc}. Seus diplomatas querem uma campanha de recrutamento.",
+  "context": "Blocos maiores dão mais mercado e mais votos.",
+  "tpl": {
+   "bloc": "own",
+   "outsideBloc": "any"
+  },
+  "options": [
+   {
+    "text": "Oferecer acesso preferencial e créditos a quem aderir.",
+    "hint": "Expansão; custo.",
+    "now": {
+     "treasury": -0.4,
+     "influence": 3
+    },
+    "rel": {
+     "neighbors": 4
+    }
+   },
+   {
+    "text": "Campanha de propaganda contra o {outsideBloc}.",
+    "hint": "Barato; polariza.",
+    "long": [
+     {
+      "k": "influence",
+      "v": 1,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "neighbors": 1
+    }
+   },
+   {
+    "text": "Deixar que cada país escolha livremente.",
+    "hint": "Respeito.",
+    "now": {
+     "reputation": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "bl_defense_test",
+  "cat": "Blocos e alianças",
+  "title": "{blocMember} pede tropas do {bloc}",
+  "desc": "{blocMember}, membro do {bloc}, sofre incursões de grupos armados na fronteira e pede tropas de {nation} sob a bandeira do bloco.",
+  "context": "A credibilidade do bloco está em jogo.",
+  "tpl": {
+   "bloc": "own",
+   "blocMember": "any"
+  },
+  "options": [
+   {
+    "text": "Enviar uma brigada.",
+    "hint": "Credibilidade e influência; custo.",
+    "now": {
+     "treasury": -0.3,
+     "readiness": -2,
+     "influence": 3
+    },
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "$blocMember": 14,
+     "$bloc": 4
+    }
+   },
+   {
+    "text": "Enviar equipamento e instrutores.",
+    "hint": "Apoio sem risco.",
+    "now": {
+     "treasury": -0.15
+    },
+    "rel": {
+     "$blocMember": 6
+    }
+   },
+   {
+    "text": "Recusar: o problema é interno.",
+    "hint": "Sem custo; o bloco enfraquece.",
+    "rel": {
+     "$blocMember": -12,
+     "$bloc": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "bl_hq",
+  "cat": "Blocos e alianças",
+  "title": "Sede do {bloc}",
+  "desc": "Os membros do {bloc} discutem a construção de uma sede permanente com parlamento regional e tribunal.",
+  "context": "Instituições dão vida longa ao bloco.",
+  "tpl": {
+   "bloc": "own"
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Construir a sede em {capital}.",
+    "hint": "Prestígio; custo alto.",
+    "now": {
+     "treasury": -0.6,
+     "influence": 4
+    },
+    "long": [
+     {
+      "k": "reputation",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Sede rotativa entre os membros.",
+    "hint": "Igualitário.",
+    "rel": {
+     "$bloc": 5
+    }
+   },
+   {
+    "text": "Nenhuma sede: o bloco é só um tratado.",
+    "hint": "Barato."
+   }
+  ]
+ },
+ {
+  "id": "bl_tariff_outsider",
+  "cat": "Blocos e alianças",
+  "title": "Tarifa externa comum do {bloc}",
+  "desc": "Indústrias do {bloc} pedem uma tarifa externa comum alta para proteger o mercado regional da concorrência de {power}.",
+  "context": "Protecionismo regional ou abertura?",
+  "tpl": {
+   "bloc": "own",
+   "power": "any"
+  },
+  "options": [
+   {
+    "text": "Tarifa alta comum.",
+    "hint": "Indústria regional; {power} retalia.",
+    "groups": {
+     "workers": 3,
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 1.5,
+      "d": 0
+     },
+     {
+      "k": "importAccess",
+      "v": -0.04,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": -8,
+     "$bloc": 5
+    }
+   },
+   {
+    "text": "Tarifa moderada.",
+    "hint": "Equilíbrio.",
+    "long": [
+     {
+      "k": "industry",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Bloco aberto ao mundo.",
+    "hint": "Comércio; indústria sofre.",
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.03,
+      "d": 0
+     },
+     {
+      "k": "industry",
+      "v": -0.5,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "bl_member_dictator",
+  "cat": "Blocos e alianças",
+  "title": "Golpe em um membro do {bloc}",
+  "desc": "Um general derrubou o governo eleito de {blocMember}, membro do {bloc}. As regras do bloco preveem suspensão.",
+  "context": "Coerência ou pragmatismo?",
+  "tpl": {
+   "bloc": "own",
+   "blocMember": "any"
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Suspender {blocMember} do bloco.",
+    "hint": "Coerência; perde um membro.",
+    "now": {
+     "reputation": 3
+    },
+    "act": {
+     "type": "expel",
+     "bloc": "$bloc",
+     "id": "$blocMember"
+    }
+   },
+   {
+    "text": "Reconhecer a junta e seguir em frente.",
+    "hint": "Pragmatismo.",
+    "now": {
+     "reputation": -3
+    },
+    "rel": {
+     "$blocMember": 8
+    }
+   },
+   {
+    "text": "Intervir militarmente para restaurar o governo.",
+    "hint": "Ousado; custoso.",
+    "now": {
+     "treasury": -0.4,
+     "influence": 4,
+     "readiness": -3
+    },
+    "rel": {
+     "$blocMember": -10,
+     "$bloc": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "bl_free_movement",
+  "cat": "Blocos e alianças",
+  "title": "Livre circulação no {bloc}",
+  "desc": "Cidadãos dos países do {bloc} querem viajar e trabalhar livremente em toda a região.",
+  "context": "Mais mão de obra e mais concorrência.",
+  "tpl": {
+   "bloc": "own"
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Livre circulação total.",
+    "hint": "Mão de obra; tensão com nativos.",
+    "groups": {
+     "business": 5,
+     "workers": -3
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": 0.8,
+      "d": 0
+     },
+     {
+      "k": "migration",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": 0.15,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$bloc": 6
+    }
+   },
+   {
+    "text": "Só turismo sem visto.",
+    "hint": "Moderado.",
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.05,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$bloc": 2
+    }
+   },
+   {
+    "text": "Manter vistos.",
+    "hint": "Controle.",
+    "groups": {
+     "workers": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "bl_bloc_army",
+  "cat": "Blocos e alianças",
+  "title": "Um exército comum do {bloc}?",
+  "desc": "O Estado-Maior propõe unificar comandos com os membros do {bloc} em uma força conjunta de reação rápida.",
+  "context": "Defesa coletiva de verdade exige soldados de verdade.",
+  "tpl": {
+   "bloc": "own"
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Criar a força conjunta sob comando de {nation}.",
+    "hint": "Projeção e liderança; custo.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "military": 5
+    },
+    "long": [
+     {
+      "k": "projection",
+      "v": 4,
+      "d": 0
+     },
+     {
+      "k": "defense",
+      "v": 3,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$bloc": 3
+    }
+   },
+   {
+    "text": "Só exercícios anuais.",
+    "hint": "Barato.",
+    "long": [
+     {
+      "k": "readiness",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Não: cada um cuida de si.",
+    "hint": "Autonomia."
+   }
+  ]
+ },
+ {
+  "id": "org_rules_violation",
+  "cat": "Blocos e alianças",
+  "title": "O {bloc} nos acusa de violar regras",
+  "desc": "A comissão do {bloc} abriu processo contra {nation} por subsídios ilegais à indústria e ameaça multas.",
+  "context": "Pertencer tem preço.",
+  "tpl": {
+   "bloc": "real"
+  },
+  "w": 1.2,
+  "options": [
+   {
+    "text": "Cumprir e cortar os subsídios.",
+    "hint": "Bom membro; indústria sofre.",
+    "groups": {
+     "business": -3
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": -1,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$bloc": 6
+    }
+   },
+   {
+    "text": "Negociar um prazo de transição.",
+    "hint": "Ganha tempo.",
+    "rel": {
+     "$bloc": 1
+    }
+   },
+   {
+    "text": "Ignorar e pagar as multas.",
+    "hint": "Mantém a política; custo e atrito.",
+    "now": {
+     "treasury": -0.3
+    },
+    "rel": {
+     "$bloc": -6
+    }
+   },
+   {
+    "text": "Ameaçar sair do {bloc}.",
+    "hint": "Jogada de alto risco.",
+    "now": {
+     "legitimacy": 2
+    },
+    "rel": {
+     "$bloc": -12
+    },
+    "next": [
+     {
+      "id": "org_exit_vote",
+      "days": 30,
+      "p": 0.6
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "org_exit_vote",
+  "cat": "Blocos e alianças",
+  "title": "Plebiscito: ficar no {bloc}?",
+  "desc": "A ameaça virou movimento. Partidos pedem plebiscito sobre a saída do {bloc}.",
+  "context": "O resultado pode redefinir nossa política externa.",
+  "tpl": {
+   "bloc": "real"
+  },
+  "chain": true,
+  "default": 2,
+  "options": [
+   {
+    "text": "Convocar o plebiscito e defender a saída.",
+    "hint": "Soberania; choque econômico.",
+    "now": {
+     "legitimacy": 3
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.4,
+      "d": 365
+     }
+    ],
+    "act": {
+     "type": "leaveOrg",
+     "bloc": "$bloc"
+    }
+   },
+   {
+    "text": "Convocar e defender a permanência.",
+    "hint": "Estabilidade.",
+    "now": {
+     "political": 2
+    },
+    "rel": {
+     "$bloc": 6
+    }
+   },
+   {
+    "text": "Recusar o plebiscito.",
+    "hint": "Evita o risco; ressentimento.",
+    "now": {
+     "political": -2,
+     "protest": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "org_bailout_member",
+  "cat": "Blocos e alianças",
+  "title": "Resgate de {blocMember}",
+  "desc": "{blocMember} está à beira da falência. Os membros da organização pedem que {nation} contribua para um pacote de resgate.",
+  "context": "Solidariedade custa caro.",
+  "tpl": {
+   "blocMember": "any"
+  },
+  "options": [
+   {
+    "text": "Contribuir generosamente.",
+    "hint": "Gratidão e influência.",
+    "now": {
+     "treasury": -0.5,
+     "influence": 2
+    },
+    "rel": {
+     "$blocMember": 15
+    }
+   },
+   {
+    "text": "Contribuir com condições de austeridade.",
+    "hint": "Disciplina; ressentimento lá.",
+    "now": {
+     "treasury": -0.3
+    },
+    "rel": {
+     "$blocMember": -4
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Economia; fama de egoísta.",
+    "rel": {
+     "$blocMember": -10
+    }
+   }
+  ]
+ },
+ {
+  "id": "org_invite_outside",
+  "cat": "Blocos e alianças",
+  "title": "Convite do {outsideBloc}",
+  "desc": "Diplomatas do {outsideBloc} sondam se {nation} aceitaria aderir à organização. Vários vizinhos já são membros.",
+  "context": "Novos mercados ou novas amarras?",
+  "tpl": {
+   "outsideBloc": "any"
+  },
+  "w": 1.2,
+  "options": [
+   {
+    "text": "Abrir negociações de adesão.",
+    "hint": "Pode levar à adesão.",
+    "rel": {
+     "neighbors": 2
+    },
+    "act": {
+     "type": "joinOrg",
+     "bloc": "$outsideBloc"
+    }
+   },
+   {
+    "text": "Agradecer e recusar.",
+    "hint": "Autonomia."
+   }
+  ]
+ },
+ {
+  "id": "org_vote_sanctions",
+  "cat": "Blocos e alianças",
+  "title": "Votação de sanções no {bloc}",
+  "desc": "O {bloc} vota sanções coletivas contra {power} por violações de direitos humanos. Nosso voto pode ser decisivo.",
+  "context": "Toda escolha tem um preço.",
+  "tpl": {
+   "bloc": "real",
+   "power": "hostile"
+  },
+  "options": [
+   {
+    "text": "Votar pelas sanções.",
+    "hint": "Coesão no bloco; {power} retalia.",
+    "rel": {
+     "$power": -12,
+     "$bloc": 5
+    }
+   },
+   {
+    "text": "Abster-se.",
+    "hint": "Neutralidade.",
+    "rel": {
+     "$bloc": -2
+    }
+   },
+   {
+    "text": "Votar contra e bloquear.",
+    "hint": "Amigo de {power}; atrito no bloco.",
+    "rel": {
+     "$power": 12,
+     "$bloc": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_base_request",
+  "cat": "Grandes potências",
+  "title": "{power} quer uma base militar",
+  "desc": "{power} pede autorização para instalar uma base aérea e naval em nosso território, com aluguel generoso.",
+  "context": "Proteção e dinheiro — e um alvo pintado no mapa.",
+  "tpl": {
+   "power": "friendly"
+  },
+  "options": [
+   {
+    "text": "Autorizar a base.",
+    "hint": "Receita e proteção; rivais de {power} reagem.",
+    "groups": {
+     "youth": -3,
+     "military": 2
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.15,
+      "d": 0
+     },
+     {
+      "k": "defense",
+      "v": 5,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 18,
+     "neighbors": -3
+    }
+   },
+   {
+    "text": "Só acordo de uso temporário.",
+    "hint": "Meio-termo.",
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.05,
+      "d": 730
+     }
+    ],
+    "rel": {
+     "$power": 6
+    }
+   },
+   {
+    "text": "Recusar: soberania não se aluga.",
+    "hint": "Orgulho; {power} esfria.",
+    "now": {
+     "legitimacy": 2
+    },
+    "rel": {
+     "$power": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_pressure",
+  "cat": "Grandes potências",
+  "title": "{power} exige que escolhamos um lado",
+  "desc": "O embaixador de {power} foi direto: ou nos afastamos dos rivais dele, ou perderemos investimentos e acesso a mercados.",
+  "context": "Pressão de uma superpotência.",
+  "tpl": {
+   "power": "any"
+  },
+  "cond": {
+   "min": {
+    "day": 90
+   }
+  },
+  "options": [
+   {
+    "text": "Ceder e alinhar com {power}.",
+    "hint": "Investimentos; rivais irritados.",
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.2,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$power": 14,
+     "all": -1
+    }
+   },
+   {
+    "text": "Resistir e diversificar parceiros.",
+    "hint": "Autonomia; retaliação econômica.",
+    "now": {
+     "legitimacy": 2
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": -0.03,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$power": -12
+    }
+   },
+   {
+    "text": "Prometer muito, fazer pouco.",
+    "hint": "Ganha tempo.",
+    "rel": {
+     "$power": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_investment_trap",
+  "cat": "Grandes potências",
+  "title": "Mega-empréstimo de {power}",
+  "desc": "{power} oferece um empréstimo gigantesco para portos e estradas — com garantia em concessões de minas e terras.",
+  "context": "Infraestrutura já; a conta vem depois.",
+  "tpl": {
+   "power": "any"
+  },
+  "options": [
+   {
+    "text": "Aceitar o empréstimo.",
+    "hint": "Obras e crescimento; dependência e dívida.",
+    "now": {
+     "debt": 3,
+     "treasury": 1.5
+    },
+    "long": [
+     {
+      "k": "logistics",
+      "v": 4,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": 0.3,
+      "d": 730
+     }
+    ],
+    "rel": {
+     "$power": 12
+    },
+    "next": [
+     {
+      "id": "pw_debt_trap",
+      "days": 365,
+      "p": 0.5
+     }
+    ]
+   },
+   {
+    "text": "Aceitar só metade, sem garantias em recursos.",
+    "hint": "Menos obra, menos risco.",
+    "now": {
+     "debt": 1.5,
+     "treasury": 0.8
+    },
+    "long": [
+     {
+      "k": "logistics",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 4
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Sem dívida.",
+    "rel": {
+     "$power": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_debt_trap",
+  "cat": "Grandes potências",
+  "title": "{power} cobra a conta",
+  "desc": "Com parcelas atrasadas, {power} exige o controle de um porto por 99 anos como pagamento.",
+  "context": "A armadilha da dívida se fecha.",
+  "tpl": {
+   "power": "any"
+  },
+  "chain": true,
+  "default": 1,
+  "options": [
+   {
+    "text": "Entregar o porto.",
+    "hint": "Dívida aliviada; soberania arranhada.",
+    "now": {
+     "debt": -2,
+     "legitimacy": -4
+    },
+    "groups": {
+     "military": -4
+    },
+    "rel": {
+     "$power": 10
+    }
+   },
+   {
+    "text": "Renegociar com austeridade.",
+    "hint": "Doloroso.",
+    "now": {
+     "treasury": -0.6
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Dar calote.",
+    "hint": "Sanções e isolamento.",
+    "now": {
+     "reputation": -6,
+     "debt": -2
+    },
+    "rel": {
+     "$power": -25
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_sanctioner_talks",
+  "cat": "Grandes potências",
+  "title": "{sanctioner} sinaliza diálogo",
+  "desc": "Enviados de {sanctioner}, que nos sanciona, propõem conversas secretas para suspender as sanções em troca de concessões.",
+  "context": "O preço pode ser alto — ou aceitável.",
+  "tpl": {
+   "sanctioner": "any"
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Aceitar concessões políticas.",
+    "hint": "Fim das sanções provável; base irritada.",
+    "now": {
+     "political": 3,
+     "civil": 2
+    },
+    "rel": {
+     "$sanctioner": 20
+    },
+    "act": {
+     "type": "partner",
+     "id": "$sanctioner",
+     "key": "improve"
+    }
+   },
+   {
+    "text": "Oferecer concessões econômicas.",
+    "hint": "Abre mercado para {sanctioner}.",
+    "groups": {
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "market",
+      "v": 3,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$sanctioner": 12
+    }
+   },
+   {
+    "text": "Recusar: as sanções nos tornaram mais fortes.",
+    "hint": "Orgulho e autarquia.",
+    "now": {
+     "legitimacy": 3
+    },
+    "rel": {
+     "$sanctioner": -5
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_sanctions_evasion",
+  "cat": "Grandes potências",
+  "title": "Furar as sanções de {sanctioner}",
+  "desc": "Empresários propõem uma rede de empresas de fachada para contornar as sanções de {sanctioner}, via paraísos fiscais.",
+  "context": "Funciona — até ser descoberto.",
+  "tpl": {
+   "sanctioner": "any"
+  },
+  "cond": {
+   "min": {
+    "sanctions": 0.5
+   }
+  },
+  "options": [
+   {
+    "text": "Montar a rede.",
+    "hint": "Alivia sanções; corrupção e risco.",
+    "long": [
+     {
+      "k": "sanctionShield",
+      "v": 0.3,
+      "d": 365
+     },
+     {
+      "k": "corruption",
+      "v": 2,
+      "d": 365
+     }
+    ],
+    "next": [
+     {
+      "id": "pw_evasion_caught",
+      "days": 120,
+      "p": 0.4
+     }
+    ]
+   },
+   {
+    "text": "Comércio em moedas alternativas com países amigos.",
+    "hint": "Mais lento; legítimo.",
+    "long": [
+     {
+      "k": "sanctionShield",
+      "v": 0.15,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "east": 3
+    }
+   },
+   {
+    "text": "Não: respeitamos a lei internacional.",
+    "hint": "Imagem.",
+    "now": {
+     "reputation": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_evasion_caught",
+  "cat": "Grandes potências",
+  "title": "Rede de evasão exposta",
+  "desc": "Jornalistas investigativos revelaram a rede de empresas de fachada. {sanctioner} promete punição.",
+  "context": "O escândalo é global.",
+  "tpl": {
+   "sanctioner": "any"
+  },
+  "chain": true,
+  "default": 0,
+  "options": [
+   {
+    "text": "Negar e proteger os envolvidos.",
+    "hint": "Mantém a rede parcialmente.",
+    "now": {
+     "reputation": -4
+    },
+    "rel": {
+     "$sanctioner": -8
+    }
+   },
+   {
+    "text": "Prender os operadores e culpá-los.",
+    "hint": "Bodes expiatórios.",
+    "now": {
+     "corruption": -2
+    },
+    "groups": {
+     "business": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_ai_war_side",
+  "cat": "Grandes potências",
+  "title": "Guerra entre {aiA} e {aiB}",
+  "desc": "{aiA} e {aiB} estão em guerra. Ambos pedem armas, dinheiro e apoio diplomático de {nation}.",
+  "context": "Escolher um lado pode decidir a guerra — e criar inimigos.",
+  "tpl": {
+   "aiWar": "any"
+  },
+  "w": 1.8,
+  "options": [
+   {
+    "text": "Armar {aiA}.",
+    "hint": "Fortalece {aiA}; {aiB} vira inimigo.",
+    "rel": {
+     "$aiA": 12,
+     "$aiB": -15
+    },
+    "act": {
+     "type": "aiWarSupport",
+     "war": "$aiWar",
+     "side": "A",
+     "v": 0.2,
+     "cost": 0.003
+    }
+   },
+   {
+    "text": "Armar {aiB}.",
+    "hint": "Fortalece {aiB}; {aiA} vira inimigo.",
+    "rel": {
+     "$aiB": 12,
+     "$aiA": -15
+    },
+    "act": {
+     "type": "aiWarSupport",
+     "war": "$aiWar",
+     "side": "B",
+     "v": 0.2,
+     "cost": 0.003
+    }
+   },
+   {
+    "text": "Vender armas aos dois lados.",
+    "hint": "Lucro; desprezo dos dois.",
+    "now": {
+     "treasury": 0.4
+    },
+    "long": [
+     {
+      "k": "milIndustry",
+      "v": 2,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$aiA": -4,
+     "$aiB": -4
+    }
+   },
+   {
+    "text": "Oferecer mediação de paz.",
+    "hint": "Prestígio.",
+    "now": {
+     "reputation": 3,
+     "influence": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_ai_war_refugees",
+  "cat": "Grandes potências",
+  "title": "A guerra de {aiA} transborda",
+  "desc": "A guerra entre {aiA} e {aiB} derrubou preços de exportação e encareceu combustíveis. Empresários pedem medidas.",
+  "context": "O mundo é interligado.",
+  "tpl": {
+   "aiWar": "any"
+  },
+  "options": [
+   {
+    "text": "Subsidiar combustíveis temporariamente.",
+    "hint": "Alivia; custa.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -1,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Aproveitar e ocupar mercados abandonados.",
+    "hint": "Exportações sobem.",
+    "groups": {
+     "business": 4
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.04,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Nada a fazer.",
+    "hint": "Sem custo.",
+    "long": [
+     {
+      "k": "inflation",
+      "v": 0.5,
+      "d": 120
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pw_enemy_ally_aid",
+  "cat": "Grandes potências",
+  "title": "{ally} oferece ajuda contra {enemy}",
+  "desc": "Nosso aliado {ally} oferece enviar voluntários e armamento na guerra contra {enemy}, em troca de bases depois do conflito.",
+  "context": "Ajuda agora, dívida depois.",
+  "tpl": {
+   "ally": "any",
+   "enemy": "any"
+  },
+  "cond": {
+   "war": true
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Aceitar tudo.",
+    "hint": "Força na guerra; bases estrangeiras depois.",
+    "now": {
+     "equipment": 6,
+     "readiness": 4
+    },
+    "groups": {
+     "military": 3
+    },
+    "long": [
+     {
+      "k": "defense",
+      "v": 3,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$ally": 8
+    }
+   },
+   {
+    "text": "Só armas, sem tropas.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "equipment": 4
+    },
+    "rel": {
+     "$ally": 3
+    }
+   },
+   {
+    "text": "Agradecer: venceremos sozinhos.",
+    "hint": "Orgulho.",
+    "now": {
+     "legitimacy": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_enemy_peace_feelers",
+  "cat": "Grandes potências",
+  "title": "Sondagens de paz de {enemy}",
+  "desc": "Um intermediário traz uma mensagem: {enemy} aceitaria uma trégua se recuarmos às linhas de antes da guerra.",
+  "context": "O povo está cansado; os generais querem vencer.",
+  "tpl": {
+   "enemy": "any"
+  },
+  "cond": {
+   "war": true
+  },
+  "options": [
+   {
+    "text": "Aceitar negociar.",
+    "hint": "A guerra pode acabar.",
+    "now": {
+     "warWeariness": -5
+    },
+    "groups": {
+     "military": -4
+    },
+    "rel": {
+     "$enemy": 10
+    }
+   },
+   {
+    "text": "Exigir rendição incondicional.",
+    "hint": "Orgulho; mais guerra.",
+    "now": {
+     "legitimacy": 1
+    },
+    "groups": {
+     "military": 4
+    }
+   },
+   {
+    "text": "Usar as conversas para ganhar tempo e rearmar.",
+    "hint": "Astuto; desconfiança.",
+    "now": {
+     "readiness": 3
+    },
+    "rel": {
+     "$enemy": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_great_power_summit",
+  "cat": "Grandes potências",
+  "title": "Cúpula com {power}",
+  "desc": "O líder de {power} convida {leader} para uma visita de Estado com pompa.",
+  "context": "Fotos com uma superpotência valem votos e contratos.",
+  "tpl": {
+   "power": "friendly"
+  },
+  "options": [
+   {
+    "text": "Visita completa com acordos comerciais.",
+    "hint": "Aproximação; rivais de {power} notam.",
+    "now": {
+     "legitimacy": 2
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$power": 12
+    }
+   },
+   {
+    "text": "Visita curta e protocolar.",
+    "hint": "Cortesia.",
+    "rel": {
+     "$power": 4
+    }
+   },
+   {
+    "text": "Recusar o convite.",
+    "hint": "Distância.",
+    "rel": {
+     "$power": -6
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_hostile_power_cyber",
+  "cat": "Grandes potências",
+  "title": "Ataque hacker atribuído a {power}",
+  "desc": "Hackers ligados a {power} derrubaram o sistema bancário por 36 horas e vazaram e-mails de ministros.",
+  "context": "O país está paralisado e humilhado.",
+  "tpl": {
+   "power": "hostile"
+  },
+  "options": [
+   {
+    "text": "Retaliação cibernética.",
+    "hint": "Olho por olho.",
+    "now": {
+     "intel": 2,
+     "treasury": -0.1
+    },
+    "rel": {
+     "$power": -10
+    }
+   },
+   {
+    "text": "Investir pesado em cibersegurança.",
+    "hint": "Defesa de longo prazo.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "intel",
+      "v": 4,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Denunciar na ONU.",
+    "hint": "Diplomacia.",
+    "rel": {
+     "$power": -5,
+     "west": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pw_nuclear_umbrella",
+  "cat": "Grandes potências",
+  "title": "Guarda-chuva nuclear de {power}",
+  "desc": "{power} oferece incluir {nation} sob sua proteção nuclear, em troca de abrir mão para sempre de armas atômicas.",
+  "context": "Segurança garantida — por outro.",
+  "tpl": {
+   "power": "friendly"
+  },
+  "cond": {
+   "nuclear": false,
+   "noflag": "nukeUmbrella"
+  },
+  "options": [
+   {
+    "text": "Aceitar o guarda-chuva.",
+    "hint": "Defesa e garantia; dependência.",
+    "long": [
+     {
+      "k": "defense",
+      "v": 6,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 15
+    },
+    "flags": {
+     "set": [
+      "nukeUmbrella"
+     ]
+    }
+   },
+   {
+    "text": "Recusar: manteremos todas as opções.",
+    "hint": "Autonomia.",
+    "rel": {
+     "$power": -5
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,804 @@
+[
+ {
+  "id": "pk_sea_haze",
+  "cat": "Sudeste Asiático",
+  "title": "A névoa da queimada de turfa",
+  "desc": "Queimadas agrícolas cobrem a região de fumaça tóxica por semanas, afetando países vizinhos.",
+  "context": "Poluição transfronteiriça.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Proibir queimadas e punir empresas.",
+    "hint": "Firme.",
+    "now": {
+     "pollution": -1,
+     "treasury": -0.1
+    },
+    "groups": {
+     "rural": -2,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Subsidiar alternativas.",
+    "hint": "Branda.",
+    "now": {
+     "treasury": -0.25,
+     "pollution": -0.5
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Ignorar protestos regionais.",
+    "hint": "Atrito.",
+    "now": {
+     "pollution": 1
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sea_typhoon",
+  "cat": "Sudeste Asiático",
+  "title": "Tufões em cadeia",
+  "desc": "Tempestades devastam ilhas e cidades costeiras; arrozais submergem.",
+  "context": "Clima extremo.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Cidades resilientes e alerta precoce.",
+    "hint": "Prevenção.",
+    "now": {
+     "treasury": -0.4,
+     "qol": 0.5
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Auxílio emergencial.",
+    "hint": "Imediato.",
+    "now": {
+     "treasury": -0.25
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Pedir ajuda internacional.",
+    "hint": "Rápido.",
+    "now": {},
+    "groups": {},
+    "rel": {
+     "all": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sea_south_china_sea",
+  "cat": "Sudeste Asiático",
+  "title": "O mar em disputa",
+  "desc": "Navios de potências rivais cercam recifes e ilhas. Pescadores são expulsos.",
+  "context": "Soberania marítima.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforçar guarda costeira com parceiros.",
+    "hint": "Firmeza.",
+    "now": {
+     "treasury": -0.3,
+     "defense": 1
+    },
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "china": -3,
+     "west": 2
+    }
+   },
+   {
+    "text": "Código de conduta regional.",
+    "hint": "Diplomacia.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Acomodar-se à potência vizinha.",
+    "hint": "Paz e perda.",
+    "now": {
+     "treasury": 0.2,
+     "reputation": -1
+    },
+    "groups": {
+     "military": -1
+    },
+    "rel": {
+     "china": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sea_palm_oil",
+  "cat": "Sudeste Asiático",
+  "title": "O boom do óleo de palma",
+  "desc": "A cultura enriquece o país, mas derruba florestas; compradores europeus impõem restrições.",
+  "context": "Comércio e ambiente.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Certificação sustentável.",
+    "hint": "Acesso a mercados.",
+    "now": {
+     "treasury": -0.1,
+     "pollution": -0.5,
+     "reputation": 1
+    },
+    "groups": {
+     "rural": -1,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Ampliar plantações.",
+    "hint": "Receita.",
+    "now": {
+     "treasury": 0.3,
+     "pollution": 1,
+     "reputation": -1.5
+    },
+    "groups": {
+     "business": 2,
+     "rural": 2
+    }
+   },
+   {
+    "text": "Voltar-se para mercados asiáticos.",
+    "hint": "Diversificação.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": 1
+    },
+    "rel": {
+     "west": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sea_buddhist_monks",
+  "cat": "Sudeste Asiático",
+  "title": "Os monges e a política",
+  "desc": "Monges influentes pedem leis religiosas e criticam minorias. A tensão cresce nas cidades.",
+  "context": "Fé e poder.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Dialogar sem restringir direitos.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "civil": 0.3
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Apoiar as demandas.",
+    "hint": "Popular entre maioria.",
+    "now": {
+     "civil": -1.5,
+     "reputation": -1.5
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Limitar discurso de ódio.",
+    "hint": "Firme.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {
+     "rural": -2,
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sea_migrant_workers",
+  "cat": "Sudeste Asiático",
+  "title": "Trabalhadores migrantes e remessas",
+  "desc": "Milhões trabalham no exterior; casos de exploração chocam a opinião pública.",
+  "context": "Dependência de remessas.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Acordos bilaterais de proteção.",
+    "hint": "Protege.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Estimular retorno com crédito.",
+    "hint": "Reintegra.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Fechar os olhos.",
+    "hint": "Receita.",
+    "now": {
+     "treasury": 0.15,
+     "reputation": -1
+    },
+    "groups": {
+     "workers": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sea_street_food",
+  "cat": "Sudeste Asiático",
+  "title": "Comida de rua e a modernização das cidades",
+  "desc": "A prefeitura quer limpar as calçadas de barracas; vendedores resistem.",
+  "context": "Cultura e ordem.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Regularizar e criar zonas de feiras.",
+    "hint": "Mantém a cultura.",
+    "now": {
+     "treasury": -0.05
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Remover vendedores.",
+    "hint": "Ordem.",
+    "now": {
+     "civil": -0.5
+    },
+    "groups": {
+     "workers": -4,
+     "business": 1
+    }
+   },
+   {
+    "text": "Turismo gastronômico.",
+    "hint": "Dinheiro.",
+    "now": {
+     "treasury": 0.05
+    },
+    "groups": {
+     "workers": 1,
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sea_digital_economy",
+  "cat": "Sudeste Asiático",
+  "title": "Economia digital e superapps",
+  "desc": "Superapps de transporte e pagamentos dominam o dia a dia. Reguladores temem monopólios.",
+  "context": "Tecnologia de massa.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Regular e abrir dados.",
+    "hint": "Concorrência.",
+    "now": {
+     "tech": 0.5
+    },
+    "groups": {
+     "business": -1,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Apoiar campeões nacionais.",
+    "hint": "Eficiência.",
+    "now": {
+     "tech": 1,
+     "treasury": -0.1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Taxar o setor.",
+    "hint": "Receita.",
+    "now": {
+     "treasury": 0.15
+    },
+    "groups": {
+     "business": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sea_dengue",
+  "cat": "Sudeste Asiático",
+  "title": "Surtos de dengue",
+  "desc": "A doença aumenta com o calor e a chuva, sobrecarregando hospitais.",
+  "context": "Saúde tropical.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Campanha de vacinação e controle de mosquitos.",
+    "hint": "Eficaz.",
+    "now": {
+     "treasury": -0.25,
+     "health": 0.8
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Educação comunitária.",
+    "hint": "Barato.",
+    "now": {
+     "treasury": -0.05,
+     "health": 0.3
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Esperar o fim da estação.",
+    "hint": "Cinismo.",
+    "now": {
+     "health": -0.8
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sea_ethnic_rebels",
+  "cat": "Sudeste Asiático",
+  "title": "Rebeldes étnicos nas montanhas",
+  "desc": "Grupos armados controlam áreas fronteiriças e financiam-se com mineração e drogas.",
+  "context": "Guerra civil de baixa intensidade.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Cessar-fogo e autonomia regional.",
+    "hint": "Reduz.",
+    "now": {
+     "stability": 1
+    },
+    "groups": {
+     "regional": 3,
+     "military": -1
+    }
+   },
+   {
+    "text": "Ofensiva militar.",
+    "hint": "Violenta.",
+    "now": {
+     "control": 2,
+     "civil": -1.5,
+     "reputation": -1.5
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Programas de desenvolvimento local.",
+    "hint": "Longo prazo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "regional": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sea_coup_history",
+  "cat": "Sudeste Asiático",
+  "title": "Generais e eleições",
+  "desc": "Os militares ameaçam intervir caso o resultado eleitoral seja considerado ameaçador à ordem.",
+  "context": "Tutela dos quartéis.",
+  "cond": {
+   "regions": [
+    "southeast_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Negociar garantias ao exército.",
+    "hint": "Estável.",
+    "now": {
+     "political": -0.5,
+     "coupRisk": -1.5
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Reformar a relação civil-militar.",
+    "hint": "Arriscado.",
+    "now": {
+     "political": 1,
+     "coupRisk": 2
+    },
+    "groups": {
+     "military": -3
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Aposta.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sg_housing_heat",
+  "cat": "Sudeste Asiático",
+  "title": "Cidade-Estado e o custo da terra",
+  "desc": "A falta de espaço eleva preços e pressiona a política de habitação pública e imigração.",
+  "context": "Pequeno, rico e lotado.",
+  "cond": {
+   "countries": [
+    "SGP"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Novos conjuntos e bairros-satélites.",
+    "hint": "Alívio.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 2,
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Restringir imigração.",
+    "hint": "Populista.",
+    "now": {
+     "reputation": -0.5
+    },
+    "groups": {
+     "workers": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Subsídios à compra.",
+    "hint": "Caro.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_id_capital_move",
+  "cat": "Sudeste Asiático",
+  "title": "A nova capital na selva",
+  "desc": "Mudar a capital de uma cidade que afunda para a ilha de Bornéu custará bilhões e ameaça florestas.",
+  "context": "Megaprojeto.",
+  "cond": {
+   "countries": [
+    "IDN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Seguir o cronograma.",
+    "hint": "Visão.",
+    "now": {
+     "treasury": -0.6,
+     "pollution": 0.5
+    },
+    "groups": {
+     "business": 2,
+     "regional": 2
+    }
+   },
+   {
+    "text": "Faseado.",
+    "hint": "Mais moderado.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "regional": 1
+    }
+   },
+   {
+    "text": "Salvar a atual com diques.",
+    "hint": "Defensivo.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_vn_manufacturing",
+  "cat": "Sudeste Asiático",
+  "title": "Fábricas migram para o país",
+  "desc": "Marcas globais trazem linhas de produção. Falta energia e mão de obra qualificada.",
+  "context": "Oportunidade industrial.",
+  "cond": {
+   "countries": [
+    "VNM"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Zonas industriais e escolas técnicas.",
+    "hint": "Aproveita.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 2,
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Impostos mais altos.",
+    "hint": "Receita.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Seleção de setores estratégicos.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_ph_drug_war",
+  "cat": "Sudeste Asiático",
+  "title": "Guerra às drogas e execuções extrajudiciais",
+  "desc": "A política dura contra o tráfico deixa milhares de mortos e é condenada no exterior.",
+  "context": "Segurança e direitos.",
+  "cond": {
+   "countries": [
+    "PHL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Manter a linha dura.",
+    "hint": "Popular.",
+    "now": {
+     "crime": -0.5,
+     "civil": -2,
+     "reputation": -3
+    },
+    "groups": {
+     "military": 2,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Política de saúde pública.",
+    "hint": "Mudança.",
+    "now": {
+     "civil": 1,
+     "reputation": 1.5
+    },
+    "groups": {
+     "youth": 2,
+     "military": -1
+    }
+   },
+   {
+    "text": "Investigação independente.",
+    "hint": "Cautela.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_th_monarchy_law",
+  "cat": "Sudeste Asiático",
+  "title": "Crítica à monarquia e lesa-majestade",
+  "desc": "Jovens pedem reformas na monarquia e leis que punem críticas são usadas contra manifestantes.",
+  "context": "Tabu político.",
+  "cond": {
+   "countries": [
+    "THA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reformar a lei.",
+    "hint": "Abertura.",
+    "now": {
+     "civil": 1.5,
+     "stability": -1
+    },
+    "groups": {
+     "youth": 4,
+     "military": -3,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Aplicar a lei com rigor.",
+    "hint": "Repressão.",
+    "now": {
+     "civil": -2,
+     "reputation": -2
+    },
+    "groups": {
+     "youth": -5,
+     "military": 2
+    }
+   },
+   {
+    "text": "Diálogo nacional.",
+    "hint": "Gradual.",
+    "now": {
+     "political": 0.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ }
+]

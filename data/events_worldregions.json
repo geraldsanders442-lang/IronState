@@ -1,0 +1,791 @@
+[
+ {
+  "id": "wev_monsoon_flood",
+  "cat": "Desastre",
+  "title": "Enchentes da monção",
+  "headline": "Enchentes da monção deixam milhões desabrigados e arrasam lavouras",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "south_asia",
+    "southeast_asia"
+   ]
+  },
+  "long": [
+   {
+    "k": "s_food",
+    "v": -5,
+    "d": 90
+   },
+   {
+    "k": "qol",
+    "v": -1,
+    "d": 120
+   }
+  ],
+  "groups": {
+   "rural": -4
+  },
+  "next": [
+   {
+    "id": "famine_warning",
+    "days": 35,
+    "p": 0.3
+   }
+  ]
+ },
+ {
+  "id": "wev_typhoon_coast",
+  "cat": "Desastre",
+  "title": "Tufão no litoral",
+  "headline": "Tufão atinge o litoral e interrompe portos e indústrias",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "east_asia",
+    "southeast_asia"
+   ]
+  },
+  "now": {
+   "treasury": -0.2
+  },
+  "long": [
+   {
+    "k": "growth",
+    "v": -0.2,
+    "d": 60
+   }
+  ],
+  "groups": {
+   "workers": -2
+  }
+ },
+ {
+  "id": "wev_sandstorm",
+  "cat": "Clima",
+  "title": "Tempestade de areia",
+  "headline": "Tempestade de areia fecha aeroportos e escolas por dias",
+  "tone": "warn",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "middle_east",
+    "gulf",
+    "north_africa",
+    "sahel"
+   ]
+  },
+  "long": [
+   {
+    "k": "qol",
+    "v": -0.8,
+    "d": 30
+   },
+   {
+    "k": "growth",
+    "v": -0.1,
+    "d": 30
+   }
+  ]
+ },
+ {
+  "id": "wev_locusts",
+  "cat": "Agricultura",
+  "title": "Nuvens de gafanhotos",
+  "headline": "Nuvens de gafanhotos avançam sobre as lavouras da região",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "east_africa",
+    "horn_africa",
+    "south_asia"
+   ]
+  },
+  "long": [
+   {
+    "k": "s_food",
+    "v": -6,
+    "d": 120
+   }
+  ],
+  "groups": {
+   "rural": -5
+  }
+ },
+ {
+  "id": "wev_volcano",
+  "cat": "Desastre",
+  "title": "Erupção vulcânica",
+  "headline": "Erupção vulcânica cobre cidades de cinzas e interrompe voos",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "southeast_asia",
+    "pacific_islands",
+    "central_america",
+    "andes"
+   ]
+  },
+  "now": {
+   "treasury": -0.15
+  },
+  "groups": {
+   "rural": -3
+  }
+ },
+ {
+  "id": "wev_quake_med",
+  "cat": "Desastre",
+  "title": "Terremoto histórico",
+  "headline": "Terremoto abala vilarejos históricos e obriga mutirão de resgate",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "balkans",
+    "mediterranean"
+   ]
+  },
+  "now": {
+   "treasury": -0.3,
+   "legitimacy": -1
+  },
+  "groups": {
+   "rural": -3
+  }
+ },
+ {
+  "id": "wev_heat_med",
+  "cat": "Clima",
+  "title": "Onda de calor",
+  "headline": "Onda de calor bate recordes e lota hospitais",
+  "tone": "warn",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "mediterranean",
+    "iberia",
+    "balkans"
+   ]
+  },
+  "long": [
+   {
+    "k": "health",
+    "v": -1,
+    "d": 40
+   },
+   {
+    "k": "s_energy",
+    "v": -2,
+    "d": 40
+   }
+  ]
+ },
+ {
+  "id": "wev_cold_snap",
+  "cat": "Clima",
+  "title": "Frio extremo",
+  "headline": "Frio extremo congela canos e pressiona a rede elétrica",
+  "tone": "warn",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "nordic",
+    "baltic",
+    "eastern_europe",
+    "central_asia"
+   ]
+  },
+  "now": {
+   "treasury": -0.1
+  },
+  "long": [
+   {
+    "k": "s_energy",
+    "v": -3,
+    "d": 45
+   }
+  ]
+ },
+ {
+  "id": "wev_hurricane_season",
+  "cat": "Desastre",
+  "title": "Temporada de furacões",
+  "headline": "Furacão destrói escolas e plantações no litoral",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "caribbean",
+    "central_america"
+   ]
+  },
+  "now": {
+   "treasury": -0.25
+  },
+  "groups": {
+   "rural": -4
+  },
+  "long": [
+   {
+    "k": "infra",
+    "v": -1,
+    "d": 150
+   }
+  ]
+ },
+ {
+  "id": "wev_tourism_boom",
+  "cat": "Economia",
+  "title": "Boom de turismo",
+  "headline": "Chegada recorde de turistas aquece hotéis e restaurantes",
+  "tone": "good",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "mediterranean",
+    "caribbean",
+    "southeast_asia",
+    "indian_ocean"
+   ]
+  },
+  "now": {
+   "treasury": 0.25
+  },
+  "groups": {
+   "business": 3
+  },
+  "long": [
+   {
+    "k": "growth",
+    "v": 0.1,
+    "d": 120
+   }
+  ]
+ },
+ {
+  "id": "wev_carnival",
+  "cat": "Cultura",
+  "title": "Carnaval e festas populares",
+  "headline": "Festas populares arrastam milhões às ruas e animam a economia",
+  "tone": "good",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "south_america",
+    "caribbean",
+    "central_america"
+   ]
+  },
+  "now": {
+   "treasury": 0.1,
+   "legitimacy": 1
+  },
+  "groups": {
+   "youth": 3,
+   "workers": 2
+  }
+ },
+ {
+  "id": "wev_football_glory",
+  "cat": "Esporte",
+  "title": "Triunfo no futebol",
+  "headline": "Seleção vence campeonato e o país inteiro comemora",
+  "tone": "good",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "south_america",
+    "subsaharan",
+    "western_europe",
+    "iberia",
+    "central_america"
+   ]
+  },
+  "now": {
+   "legitimacy": 2
+  },
+  "groups": {
+   "youth": 3,
+   "workers": 2
+  }
+ },
+ {
+  "id": "wev_oil_discovery",
+  "cat": "Economia",
+  "title": "Descoberta de petróleo",
+  "headline": "Geólogos anunciam grandes reservas de petróleo e gás",
+  "tone": "good",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "west_africa",
+    "east_africa",
+    "central_africa",
+    "central_asia",
+    "caribbean",
+    "amazon"
+   ]
+  },
+  "now": {
+   "treasury": 0.2
+  },
+  "long": [
+   {
+    "k": "revenue",
+    "v": 0.1,
+    "d": 365
+   }
+  ],
+  "groups": {
+   "business": 3
+  }
+ },
+ {
+  "id": "wev_tech_hub",
+  "cat": "Tecnologia",
+  "title": "Polo de startups",
+  "headline": "Polo de startups atrai investidores e jovens talentos",
+  "tone": "good",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "south_asia",
+    "east_asia",
+    "east_africa",
+    "baltic",
+    "nordic"
+   ]
+  },
+  "long": [
+   {
+    "k": "tech",
+    "v": 1.5,
+    "d": 365
+   },
+   {
+    "k": "growth",
+    "v": 0.1,
+    "d": 365
+   }
+  ],
+  "groups": {
+   "youth": 3
+  }
+ },
+ {
+  "id": "wev_brain_drain",
+  "cat": "Demografia",
+  "title": "Fuga de cérebros",
+  "headline": "Médicos e engenheiros fazem as malas para países ricos",
+  "tone": "warn",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "eastern_europe",
+    "balkans",
+    "south_asia",
+    "andes",
+    "west_africa"
+   ]
+  },
+  "long": [
+   {
+    "k": "productivity",
+    "v": -0.5,
+    "d": 180
+   },
+   {
+    "k": "emigration",
+    "v": 0.3,
+    "d": 180
+   }
+  ]
+ },
+ {
+  "id": "wev_border_incident",
+  "cat": "Segurança",
+  "title": "Incidente de fronteira",
+  "headline": "Tiros trocados na fronteira elevam a tensão com o vizinho",
+  "tone": "warn",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "south_asia",
+    "caucasus",
+    "balkans",
+    "east_africa",
+    "middle_east"
+   ]
+  },
+  "now": {
+   "readiness": 1
+  },
+  "groups": {
+   "military": 2
+  },
+  "rel": {
+   "neighbors": -3
+  }
+ },
+ {
+  "id": "wev_coup_rumour",
+  "cat": "Política",
+  "title": "Boatos de golpe",
+  "headline": "Boatos de golpe levam tropas às ruas da capital",
+  "tone": "warn",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "sahel",
+    "west_africa",
+    "central_africa",
+    "central_asia"
+   ]
+  },
+  "long": [
+   {
+    "k": "coupRisk",
+    "v": 3,
+    "d": 90
+   }
+  ],
+  "groups": {
+   "military": 1
+  }
+ },
+ {
+  "id": "wev_pandemic_scare",
+  "cat": "Saúde",
+  "title": "Surto de doença",
+  "headline": "Surto de doença infecciosa lota hospitais regionais",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "subsaharan",
+    "south_asia",
+    "southeast_asia"
+   ]
+  },
+  "now": {
+   "treasury": -0.2,
+   "health": -1
+  }
+ },
+ {
+  "id": "wev_mining_rush",
+  "cat": "Economia",
+  "title": "Corrida mineral",
+  "headline": "Preço dos minerais dispara e atrai investimentos",
+  "tone": "good",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "andes",
+    "southern_africa",
+    "oceania",
+    "central_africa"
+   ]
+  },
+  "now": {
+   "treasury": 0.2
+  },
+  "long": [
+   {
+    "k": "industry",
+    "v": 1,
+    "d": 240
+   }
+  ],
+  "groups": {
+   "business": 3
+  }
+ },
+ {
+  "id": "wev_wine_harvest",
+  "cat": "Agricultura",
+  "title": "Safra histórica de vinho e azeite",
+  "headline": "Safra histórica de vinho e azeite enche os armazéns",
+  "tone": "good",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "mediterranean",
+    "caucasus",
+    "southern_cone",
+    "iberia"
+   ]
+  },
+  "now": {
+   "treasury": 0.1
+  },
+  "groups": {
+   "rural": 3
+  }
+ },
+ {
+  "id": "wev_wildfire_smoke",
+  "cat": "Clima",
+  "title": "Fumaça de queimadas",
+  "headline": "Fumaça de queimadas encobre cidades e fecha escolas",
+  "tone": "warn",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "southeast_asia",
+    "amazon",
+    "oceania"
+   ]
+  },
+  "long": [
+   {
+    "k": "health",
+    "v": -0.8,
+    "d": 40
+   }
+  ],
+  "now": {
+   "pollution": 1
+  }
+ },
+ {
+  "id": "wev_fishing_conflict",
+  "cat": "Comércio",
+  "title": "Conflito de pesca",
+  "headline": "Frotas de pesca disputam cotas e causam bloqueios portuários",
+  "tone": "warn",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "british_isles",
+    "nordic",
+    "mediterranean",
+    "pacific_islands",
+    "southeast_asia"
+   ]
+  },
+  "groups": {
+   "rural": -2
+  },
+  "rel": {
+   "neighbors": -2
+  }
+ },
+ {
+  "id": "wev_migration_wave",
+  "cat": "Migração",
+  "title": "Onda migratória",
+  "headline": "Nova onda de migrantes pressiona cidades de fronteira",
+  "tone": "warn",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "mediterranean",
+    "central_america",
+    "middle_east",
+    "north_africa",
+    "balkans"
+   ]
+  },
+  "long": [
+   {
+    "k": "migration",
+    "v": 0.5,
+    "d": 120
+   }
+  ],
+  "now": {
+   "treasury": -0.1
+  }
+ },
+ {
+  "id": "wev_cyber_attack_region",
+  "cat": "Segurança",
+  "title": "Ataque cibernético",
+  "headline": "Ataque cibernético paralisa serviços públicos por horas",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "baltic",
+    "nordic",
+    "east_asia",
+    "central_europe",
+    "western_europe"
+   ]
+  },
+  "now": {
+   "intel": -1
+  },
+  "long": [
+   {
+    "k": "growth",
+    "v": -0.1,
+    "d": 30
+   }
+  ]
+ },
+ {
+  "id": "wev_independence_day",
+  "cat": "Cultura",
+  "title": "Dia da independência",
+  "headline": "Desfiles e festas lembram a independência nacional",
+  "tone": "good",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "central_asia",
+    "caucasus",
+    "baltic",
+    "balkans",
+    "subsaharan",
+    "caribbean"
+   ]
+  },
+  "now": {
+   "legitimacy": 1.5
+  },
+  "groups": {
+   "military": 2,
+   "youth": 1
+  }
+ },
+ {
+  "id": "wev_solar_wind_boom",
+  "cat": "Energia",
+  "title": "Recorde de energia renovável",
+  "headline": "Energia solar e eólica batem recordes de produção",
+  "tone": "good",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "iberia",
+    "north_africa",
+    "nordic",
+    "oceania",
+    "middle_east"
+   ]
+  },
+  "long": [
+   {
+    "k": "s_energy",
+    "v": 2,
+    "d": 240
+   },
+   {
+    "k": "pollution",
+    "v": -0.5,
+    "d": 240
+   }
+  ],
+  "groups": {
+   "youth": 2
+  }
+ },
+ {
+  "id": "wev_flood_rhine",
+  "cat": "Desastre",
+  "title": "Enchentes de rios europeus",
+  "headline": "Rios transbordam e alagam cidades históricas",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "western_europe",
+    "central_europe"
+   ]
+  },
+  "now": {
+   "treasury": -0.2
+  },
+  "groups": {
+   "rural": -2
+  }
+ },
+ {
+  "id": "wev_drought_south",
+  "cat": "Clima",
+  "title": "Seca prolongada",
+  "headline": "Seca prolongada reduz reservatórios e safras",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "southern_africa",
+    "southern_cone",
+    "iberia"
+   ]
+  },
+  "long": [
+   {
+    "k": "s_food",
+    "v": -4,
+    "d": 120
+   },
+   {
+    "k": "s_energy",
+    "v": -2,
+    "d": 120
+   }
+  ],
+  "groups": {
+   "rural": -3
+  }
+ },
+ {
+  "id": "wev_earthquake_pacific",
+  "cat": "Desastre",
+  "title": "Terremoto e tsunami",
+  "headline": "Terremoto no mar gera alerta de tsunami em todo o litoral",
+  "tone": "bad",
+  "w": 0.7,
+  "cd": 220,
+  "cond": {
+   "wr": [
+    "pacific_islands",
+    "east_asia",
+    "andes",
+    "central_america"
+   ]
+  },
+  "now": {
+   "treasury": -0.3
+  },
+  "groups": {
+   "rural": -3
+  }
+ }
+]

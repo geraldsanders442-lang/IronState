@@ -1,0 +1,2726 @@
+[
+ {
+  "id": "gn_eco_gig",
+  "cat": "Economia",
+  "title": "Motoristas de aplicativo param o país",
+  "desc": "Entregadores e motoristas de aplicativo bloqueiam avenidas exigindo salário mínimo por hora e seguro contra acidentes. As plataformas ameaçam sair do país.",
+  "context": "A economia sob demanda cresceu mais rápido que as leis.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Regulamentar: piso por hora e seguro obrigatório.",
+    "hint": "Protege os trabalhadores; encarece o serviço.",
+    "now": {
+     "unemployment": 0.1,
+     "poverty": -0.2
+    },
+    "groups": {
+     "workers": 4,
+     "business": -3,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Manter como \"autônomos\" e criar um fundo voluntário.",
+    "hint": "Equilíbrio frágil.",
+    "now": {
+     "treasury": -0.05
+    },
+    "groups": {
+     "workers": 1,
+     "business": 1
+    }
+   },
+   {
+    "text": "Reprimir os bloqueios.",
+    "hint": "Restaura a ordem; revolta crescente.",
+    "now": {
+     "civil": -1,
+     "legitimacy": -2
+    },
+    "groups": {
+     "workers": -4,
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_eco_crypto_mining",
+  "cat": "Economia",
+  "title": "Mineradores de criptomoedas devoram a energia",
+  "desc": "Fazendas de mineração se instalaram perto de usinas baratas e já consomem energia de cidades inteiras. Moradores sofrem apagões.",
+  "context": "Energia barata virou ímã de especuladores.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Proibir a mineração em larga escala.",
+    "hint": "Alivia a rede; investidores reclamam.",
+    "now": {
+     "reputation": 0
+    },
+    "groups": {
+     "business": -2,
+     "youth": -1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Taxar pesadamente o consumo.",
+    "hint": "Receita extra; reduz o excesso.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Atrair mais, como estratégia nacional.",
+    "hint": "Divisas e empregos de tecnologia; risco de apagões.",
+    "now": {
+     "treasury": 0.15
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": -2,
+      "d": 180
+     },
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "youth": 2,
+     "workers": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_eco_minwage",
+  "cat": "Economia",
+  "title": "O salário mínimo em debate",
+  "desc": "Sindicatos pedem aumento real do salário mínimo; empresários alertam para demissões e informalidade.",
+  "context": "O número mais disputado do orçamento das famílias.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Aumento forte, acima da inflação.",
+    "hint": "Renda sobe; custo para as empresas.",
+    "now": {
+     "poverty": -0.6,
+     "inflation": 0.3,
+     "unemployment": 0.2
+    },
+    "groups": {
+     "workers": 5,
+     "business": -4
+    }
+   },
+   {
+    "text": "Reajuste só pela inflação.",
+    "hint": "Neutro.",
+    "groups": {
+     "workers": 0
+    }
+   },
+   {
+    "text": "Congelar para estimular contratações.",
+    "hint": "Barateia o trabalho; piora a vida dos mais pobres.",
+    "now": {
+     "poverty": 0.4,
+     "unemployment": -0.2
+    },
+    "groups": {
+     "workers": -5,
+     "business": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_eco_bank",
+  "cat": "Economia",
+  "title": "Um banco grande vacila",
+  "desc": "Um dos maiores bancos do país revela um rombo escondido. Poupadores correm para sacar. O mercado espera a sua decisão.",
+  "context": "Salvar um banco custa; deixá-lo cair pode custar mais.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Salvar com dinheiro público.",
+    "hint": "Evita o pânico; custa caro e premia a imprudência.",
+    "now": {
+     "treasury": -0.8,
+     "stability": 2
+    },
+    "groups": {
+     "business": 3,
+     "workers": -3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Intervir e vender a bons compradores.",
+    "hint": "Preserva depósitos, mas os acionistas perdem.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Deixar quebrar e garantir só os pequenos poupadores.",
+    "hint": "Disciplina o mercado; risco de contágio.",
+    "now": {
+     "growth": -0.3,
+     "stability": -1
+    },
+    "groups": {
+     "business": -3,
+     "workers": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_eco_housing",
+  "cat": "Economia",
+  "title": "Aluguéis fora de controle",
+  "desc": "Os aluguéis dispararam e jovens não conseguem sair da casa dos pais. Há ocupações e protestos nas grandes cidades.",
+  "context": "A moradia virou o tema do momento.",
+  "cond": {
+   "max": {
+    "housing": 60
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Programa massivo de habitação popular.",
+    "hint": "Caro, lento, popular.",
+    "now": {
+     "treasury": -0.5
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 3,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "youth": 4,
+     "workers": 3,
+     "business": -1
+    }
+   },
+   {
+    "text": "Controle de aluguéis.",
+    "hint": "Alívio imediato; menos oferta no futuro.",
+    "now": {
+     "inequality": -0.3
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": -1,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "youth": 3,
+     "business": -4
+    }
+   },
+   {
+    "text": "Liberar a construção e cortar burocracia.",
+    "hint": "Mais oferta; efeito demora.",
+    "long": [
+     {
+      "k": "housing",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 3,
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_eco_import_tariff",
+  "cat": "Economia",
+  "title": "Pressão para proteger a indústria nacional",
+  "desc": "Fábricas fecham diante de importações baratas. Empresários e sindicatos pedem tarifas, mas consumidores temem preços mais altos.",
+  "context": "Protecionismo ou abertura?",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Elevar tarifas sobre os setores ameaçados.",
+    "hint": "Salva empregos; encarece produtos.",
+    "now": {
+     "inflation": 0.3,
+     "unemployment": -0.2
+    },
+    "rel": {
+     "all": -1
+    },
+    "groups": {
+     "workers": 3,
+     "business": 2,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Subsidiar a modernização, sem tarifas.",
+    "hint": "Custa dinheiro; preserva o livre comércio.",
+    "now": {
+     "treasury": -0.35
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 1.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 3
+    }
+   },
+   {
+    "text": "Manter a abertura.",
+    "hint": "Preços baixos; desindustrialização.",
+    "now": {
+     "inflation": -0.1
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": -1,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "workers": -3,
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_eco_startup",
+  "cat": "Tecnologia",
+  "title": "Uma startup nacional vira gigante",
+  "desc": "Uma empresa de tecnologia do país vale bilhões e quer sede em um paraíso fiscal. Funcionários e acionistas aguardam o governo.",
+  "context": "Orgulho nacional, mas a empresa é móvel.",
+  "cond": {
+   "min": {
+    "tech": 35
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Isenção fiscal para ficar.",
+    "hint": "Mantém a empresa e empregos; contribuintes pagam.",
+    "now": {
+     "treasury": -0.15
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 3,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Exigir contrapartidas (fábrica e pesquisa locais).",
+    "hint": "Exige mais; pode afugentá-la.",
+    "long": [
+     {
+      "k": "productivity",
+      "v": 0.6,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "workers": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Deixar partir.",
+    "hint": "Sem custo; perde prestígio.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_eco_informal",
+  "cat": "Economia",
+  "title": "A economia informal passa da metade",
+  "desc": "Milhões trabalham sem carteira e sem pagar impostos. A arrecadação sofre e os direitos trabalhistas não chegam a quem mais precisa.",
+  "context": "Formalizar é caro; ignorar é pior.",
+  "cond": {
+   "min": {
+    "poverty": 15
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Simplificar impostos e abrir contas para microempreendedores.",
+    "hint": "Formaliza aos poucos.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.15,
+      "d": 0
+     },
+     {
+      "k": "taxCapacity",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 2,
+     "workers": 1
+    }
+   },
+   {
+    "text": "Fiscalização dura.",
+    "hint": "Receita rápida; arruína pequenos negócios.",
+    "now": {
+     "treasury": 0.15,
+     "poverty": 0.3
+    },
+    "groups": {
+     "workers": -4,
+     "business": -1
+    }
+   },
+   {
+    "text": "Deixar como está.",
+    "hint": "Paz com o povo; Estado frágil.",
+    "groups": {
+     "workers": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_eco_trade_deal",
+  "cat": "Economia",
+  "title": "Um grande tratado comercial regional",
+  "desc": "Seis países vizinhos propõem uma zona de livre comércio com moeda de conta comum.",
+  "context": "Mercado grande, soberania menor.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Assinar o tratado.",
+    "hint": "Exportações e investimentos sobem; indústrias frágeis sofrem.",
+    "now": {
+     "reputation": 1
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.04,
+      "d": 0
+     },
+     {
+      "k": "importAccess",
+      "v": 0.03,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "neighbors": 4
+    },
+    "groups": {
+     "business": 3,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Assinar com exceções para setores sensíveis.",
+    "hint": "Ganho menor; menos riscos.",
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.02,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Autonomia; isolamento comercial.",
+    "rel": {
+     "neighbors": -3
+    },
+    "groups": {
+     "workers": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_eco_inheritance",
+  "cat": "Economia",
+  "title": "Imposto sobre grandes fortunas e heranças",
+  "desc": "Uma campanha popular exige taxar as maiores fortunas para financiar saúde e educação. A elite ameaça levar o dinheiro para fora.",
+  "context": "Desigualdade em debate.",
+  "cond": {
+   "min": {
+    "inequality": 40
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Criar o imposto.",
+    "hint": "Receita e justiça fiscal; fuga de capitais.",
+    "now": {
+     "treasury": 0.4,
+     "inequality": -1
+    },
+    "groups": {
+     "workers": 4,
+     "youth": 3,
+     "business": -6
+    }
+   },
+   {
+    "text": "Reduzir isenções e combater a evasão.",
+    "hint": "Menos conflito, menos receita.",
+    "now": {
+     "treasury": 0.2,
+     "inequality": -0.4
+    },
+    "groups": {
+     "business": -2,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Rejeitar.",
+    "hint": "A elite agradece.",
+    "now": {
+     "inequality": 0.2
+    },
+    "groups": {
+     "business": 3,
+     "workers": -3,
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_soc_schoolfood",
+  "cat": "Sociedade",
+  "title": "Merenda escolar e obesidade infantil",
+  "desc": "Pesquisas mostram crianças mal nutridas e também com excesso de peso. Nutricionistas pedem mudanças na merenda e nos refrigerantes vendidos nas escolas.",
+  "context": "Saúde que começa na escola.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Merenda saudável universal e proibição de ultraprocessados.",
+    "hint": "Caro e eficaz.",
+    "now": {
+     "treasury": -0.3,
+     "health": 1.5,
+     "hunger": -0.2
+    },
+    "groups": {
+     "youth": 2,
+     "workers": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Campanhas educativas.",
+    "hint": "Barato, resultado modesto.",
+    "now": {
+     "treasury": -0.05,
+     "health": 0.4
+    }
+   },
+   {
+    "text": "Deixar as famílias decidirem.",
+    "hint": "Sem custo.",
+    "now": {
+     "health": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_soc_elderly",
+  "cat": "Sociedade",
+  "title": "Asilos lotados e idosos abandonados",
+  "desc": "Reportagens mostram asilos sem recursos e idosos sozinhos. As famílias não conseguem pagar cuidadores.",
+  "context": "A população envelhece.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Rede pública de cuidados de longa duração.",
+    "hint": "Dignidade; custo permanente.",
+    "now": {
+     "treasury": -0.4,
+     "qol": 1
+    },
+    "groups": {
+     "workers": 3,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Crédito e incentivo a cuidadores familiares.",
+    "hint": "Mais barato.",
+    "now": {
+     "treasury": -0.1,
+     "qol": 0.4
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Deixar a cargo das famílias e igrejas.",
+    "hint": "Sem custo.",
+    "now": {
+     "qol": -0.5
+    },
+    "groups": {
+     "workers": -2,
+     "rural": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_soc_universities",
+  "cat": "Educação",
+  "title": "Universidades públicas em greve",
+  "desc": "Professores e funcionários param as universidades exigindo reposição salarial e verbas para pesquisa. Estudantes ocupam reitorias.",
+  "context": "A educação superior em crise.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Reajuste e fundo de pesquisa.",
+    "hint": "Encerra a greve; custo alto.",
+    "now": {
+     "treasury": -0.4,
+     "education": 1
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 0.8,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "youth": 4,
+     "bureaucracy": 2
+    }
+   },
+   {
+    "text": "Reajuste parcial e metas de desempenho.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": -0.2,
+     "education": 0.4
+    },
+    "groups": {
+     "youth": 1,
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Cortar verbas e cobrar mensalidades.",
+    "hint": "Economiza; elitiza o ensino.",
+    "now": {
+     "treasury": 0.2,
+     "education": -1
+    },
+    "groups": {
+     "youth": -5,
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "inequality",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "gn_soc_drugs",
+  "cat": "Sociedade",
+  "title": "Descriminalizar o uso de drogas?",
+  "desc": "Médicos e juristas defendem tratar o vício como saúde pública; conservadores veem permissividade. As prisões estão lotadas de usuários.",
+  "context": "Política de drogas em transformação.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Descriminalizar o uso e investir em tratamento.",
+    "hint": "Menos presos, mais saúde; polêmica.",
+    "now": {
+     "crime": -0.5,
+     "health": 0.6,
+     "civil": 1
+    },
+    "groups": {
+     "youth": 4,
+     "rural": -3,
+     "military": -1
+    }
+   },
+   {
+    "text": "Manter a repressão e endurecer penas.",
+    "hint": "Linha dura.",
+    "now": {
+     "civil": -1,
+     "crime": 0.2
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Liberar apenas a cannabis medicinal.",
+    "hint": "Meio-termo.",
+    "now": {
+     "health": 0.3
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_soc_abortion",
+  "cat": "Sociedade",
+  "title": "O debate sobre direitos reprodutivos",
+  "desc": "Movimentos opostos mobilizam multidões: um pede ampliar direitos, outro restringi-los. O parlamento se divide.",
+  "context": "Um tema que racha famílias.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Ampliar o acesso legal e seguro.",
+    "hint": "Aplaudido por jovens e movimentos de mulheres.",
+    "now": {
+     "civil": 1.5,
+     "health": 0.4
+    },
+    "groups": {
+     "youth": 4,
+     "rural": -4,
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Restringir mais.",
+    "hint": "Agrada os conservadores.",
+    "now": {
+     "civil": -1.5
+    },
+    "groups": {
+     "rural": 4,
+     "youth": -5
+    }
+   },
+   {
+    "text": "Manter a lei atual e evitar o tema.",
+    "hint": "Neutro; ninguém fica satisfeito."
+   }
+  ]
+ },
+ {
+  "id": "gn_soc_prison",
+  "cat": "Segurança",
+  "title": "Rebelião e superlotação nos presídios",
+  "desc": "Uma rebelião deixou mortos e reféns. As prisões abrigam o triplo da capacidade e viraram escritórios do crime.",
+  "context": "Sistema penal em colapso.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Construir presídios e separar facções.",
+    "hint": "Caro; recupera o controle.",
+    "now": {
+     "treasury": -0.4,
+     "crime": -0.5,
+     "control": 2
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Penas alternativas e liberdade condicional para pequenos delitos.",
+    "hint": "Reduz lotação; polêmico.",
+    "now": {
+     "crime": 0.1,
+     "civil": 1
+    },
+    "groups": {
+     "youth": 2,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Reforçar a repressão e isolar líderes.",
+    "hint": "Rápido; pode radicalizar.",
+    "now": {
+     "control": 1,
+     "civil": -1
+    },
+    "groups": {
+     "military": 2,
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_soc_misinfo",
+  "cat": "Sociedade",
+  "title": "Desinformação inunda as redes",
+  "desc": "Boatos sobre vacinas e eleições viralizam e geram ataques a postos de saúde. As plataformas se recusam a agir.",
+  "context": "Verdade e liberdade em choque.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Lei de transparência e responsabilização das plataformas.",
+    "hint": "Combate boatos; risco de censura.",
+    "now": {
+     "health": 0.3,
+     "civil": -0.5,
+     "reputation": -1
+    },
+    "groups": {
+     "youth": -2,
+     "opposition": -2
+    }
+   },
+   {
+    "text": "Campanhas públicas e agências de checagem.",
+    "hint": "Menos intrusivo, menos eficaz.",
+    "now": {
+     "treasury": -0.1,
+     "health": 0.3
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Não interferir.",
+    "hint": "Liberdade total; danos reais.",
+    "now": {
+     "health": -0.4,
+     "stability": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_soc_sport",
+  "cat": "Cultura",
+  "title": "A seleção nacional vence o campeonato mundial",
+  "desc": "O país explode em festa depois de um título inesperado. O presidente é convidado a receber os atletas.",
+  "context": "Aproveitar a euforia?",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Feriado nacional e grande homenagem.",
+    "hint": "Popularidade imediata; um dia de produção a menos.",
+    "now": {
+     "treasury": -0.1,
+     "legitimacy": 2,
+     "growth": -0.05
+    },
+    "groups": {
+     "youth": 3,
+     "workers": 3
+    }
+   },
+   {
+    "text": "Investir em esporte de base.",
+    "hint": "Legado duradouro.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 0.8,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Cerimônia simples.",
+    "hint": "Discreto.",
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_soc_museum",
+  "cat": "Cultura",
+  "title": "Devolver peças roubadas dos museus",
+  "desc": "Países de origem exigem artefatos históricos guardados há séculos em museus nacionais. A opinião pública se divide.",
+  "context": "Memória e orgulho.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Devolver as peças.",
+    "hint": "Gesto de reparação; críticas de tradicionalistas.",
+    "now": {
+     "reputation": 2
+    },
+    "groups": {
+     "youth": 2,
+     "rural": -1
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Emprestar com acordos de cooperação.",
+    "hint": "Meio-termo.",
+    "now": {
+     "reputation": 0.6
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Preserva o acervo; imagem pior.",
+    "now": {
+     "reputation": -1.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_soc_language",
+  "cat": "Cultura",
+  "title": "Língua oficial e escolas",
+  "desc": "Um projeto propõe tornar uma segunda língua obrigatória nas escolas; outros defendem preservar línguas minoritárias.",
+  "context": "Identidade e futuro.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Ensino bilíngue obrigatório.",
+    "hint": "Abre portas; custa formação de professores.",
+    "now": {
+     "treasury": -0.2,
+     "education": 0.8
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Proteger e ensinar línguas minoritárias.",
+    "hint": "Reduz tensão cultural.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {
+     "regional": 3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Manter só a língua oficial.",
+    "hint": "Unidade e simplicidade.",
+    "groups": {
+     "regional": -2,
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_pol_leak",
+  "cat": "Política",
+  "title": "Vazamento de documentos secretos",
+  "desc": "Um jornalista publica centenas de documentos do governo: contratos suspeitos e conversas privadas de ministros.",
+  "context": "Transparência à força.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Abrir uma investigação independente.",
+    "hint": "Preserva a credibilidade; revela mais.",
+    "now": {
+     "corruption": -1,
+     "legitimacy": 1
+    },
+    "groups": {
+     "opposition": 2,
+     "bureaucracy": -2
+    }
+   },
+   {
+    "text": "Processar o jornalista e a fonte.",
+    "hint": "Contém o caso; imagem péssima.",
+    "now": {
+     "civil": -1.5,
+     "reputation": -2
+    },
+    "groups": {
+     "opposition": -3,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Negar tudo e dizer que são falsificações.",
+    "hint": "Arrisca ser desmentido depois.",
+    "now": {
+     "legitimacy": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_pol_votereform",
+  "cat": "Política",
+  "title": "Reforma do sistema eleitoral",
+  "desc": "Partidos pequenos exigem voto proporcional; os grandes preferem o sistema atual. Uma comissão de especialistas propõe mudanças.",
+  "context": "A regra do jogo.",
+  "cond": {
+   "min": {
+    "political": 35
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Adotar o voto proporcional.",
+    "hint": "Mais pluralismo; governos de coalizão.",
+    "now": {
+     "political": 2
+    },
+    "groups": {
+     "opposition": 3
+    }
+   },
+   {
+    "text": "Manter o sistema atual.",
+    "hint": "Estabilidade para quem governa.",
+    "groups": {
+     "opposition": -2
+    }
+   },
+   {
+    "text": "Voto distrital misto.",
+    "hint": "Compromisso.",
+    "now": {
+     "political": 1
+    },
+    "groups": {
+     "opposition": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_pol_term",
+  "cat": "Política",
+  "title": "Reeleição e limite de mandatos",
+  "desc": "Aliados sugerem estender o mandato presidencial; opositores falam em golpe constitucional.",
+  "context": "Poder e prazo.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Propor a emenda.",
+    "hint": "Mais tempo no poder; legitimidade em xeque.",
+    "now": {
+     "legitimacy": -3,
+     "political": -2
+    },
+    "groups": {
+     "opposition": -4,
+     "military": 2,
+     "youth": -3
+    },
+    "long": [
+     {
+      "k": "revoRisk",
+      "v": 2,
+      "d": 240
+     }
+    ]
+   },
+   {
+    "text": "Respeitar o limite e preparar sucessor.",
+    "hint": "Imagem democrática.",
+    "now": {
+     "legitimacy": 2,
+     "political": 1
+    },
+    "groups": {
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Referendo popular sobre o tema.",
+    "hint": "Decisão do povo; resultado incerto.",
+    "now": {
+     "legitimacy": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_pol_judges",
+  "cat": "Política",
+  "title": "O Supremo contra o governo",
+  "desc": "A suprema corte anula uma lei emblemática do governo. Aliados pedem mudar a composição do tribunal.",
+  "context": "Separação de poderes em teste.",
+  "cond": {
+   "min": {
+    "political": 30
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Acatar a decisão.",
+    "hint": "Respeita as instituições; perde a pauta.",
+    "now": {
+     "political": 1.5,
+     "legitimacy": 1
+    },
+    "groups": {
+     "opposition": 2,
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Ampliar o número de juízes.",
+    "hint": "Controla o tribunal; custa a reputação.",
+    "now": {
+     "political": -2,
+     "reputation": -2
+    },
+    "groups": {
+     "opposition": -4,
+     "military": 1
+    }
+   },
+   {
+    "text": "Reescrever a lei dentro das exigências da corte.",
+    "hint": "Saída discreta.",
+    "now": {
+     "legitimacy": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_pol_corruption_wave",
+  "cat": "Política",
+  "title": "Operação anticorrupção prende aliados",
+  "desc": "Uma operação da polícia federal prende empresários e dois deputados da base governista.",
+  "context": "Limpeza ou perseguição?",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Apoiar a operação.",
+    "hint": "Credibilidade; base abalada.",
+    "now": {
+     "corruption": -1.5,
+     "legitimacy": 2
+    },
+    "groups": {
+     "bureaucracy": -3,
+     "youth": 3,
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Frear a operação nos bastidores.",
+    "hint": "Protege aliados; escândalo se vazar.",
+    "now": {
+     "corruption": 1,
+     "legitimacy": -2
+    },
+    "groups": {
+     "bureaucracy": 2,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Exigir limites e respeito a garantias.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "civil": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_pol_regions_tax",
+  "cat": "Política",
+  "title": "Estados querem ficar com mais impostos",
+  "desc": "Governadores exigem uma fatia maior da arrecadação nacional e ameaçam reduzir serviços.",
+  "context": "Federalismo em tensão.",
+  "cond": {
+   "min": {
+    "separatism": 15
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aumentar o repasse às regiões.",
+    "hint": "Acalma; o governo central perde caixa.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "regional": 5,
+     "bureaucracy": -2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -1.5,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Manter o pacto e oferecer obras.",
+    "hint": "Barato e menos eficaz.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "regional": 2
+    }
+   },
+   {
+    "text": "Rejeitar.",
+    "hint": "Firmeza; conflito.",
+    "groups": {
+     "regional": -4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "gn_pol_oppleader",
+  "cat": "Política",
+  "title": "Líder da oposição é preso",
+  "desc": "O principal rival do governo foi detido sob acusação de corrupção. Seus apoiadores dizem que é perseguição; a imprensa cobra provas.",
+  "context": "Decisão que o mundo observa.",
+  "cond": {
+   "max": {
+    "political": 70
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Garantir julgamento justo e público.",
+    "hint": "Imagem respeitável.",
+    "now": {
+     "political": 1,
+     "reputation": 1
+    },
+    "groups": {
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Manter a prisão sem alarde.",
+    "hint": "Elimina o rival; críticas.",
+    "now": {
+     "political": -1.5,
+     "reputation": -2
+    },
+    "groups": {
+     "opposition": -4,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Soltá-lo e acusar a polícia de excesso.",
+    "hint": "Gesto de moderação.",
+    "now": {
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "opposition": 2,
+     "military": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_pol_censorship",
+  "cat": "Política",
+  "title": "Jornais criticam o governo de forma dura",
+  "desc": "Colunistas e redes sociais compararam o governo a ditaduras do passado. Aliados pedem ação contra os críticos.",
+  "context": "Resistir à tentação de calar.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Responder com argumentos e ignorar.",
+    "hint": "Preserva a democracia.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {
+     "opposition": 1,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Processar os veículos por difamação.",
+    "hint": "Efeito inibidor.",
+    "now": {
+     "civil": -1.5,
+     "reputation": -1.5
+    },
+    "groups": {
+     "opposition": -2,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Criar uma agência de comunicação estatal.",
+    "hint": "Mais propaganda oficial.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "bureaucracy": 1,
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_env_drought",
+  "cat": "Meio ambiente",
+  "title": "Racionamento de água",
+  "desc": "Reservatórios no mínimo histórico. A população reclama das torneiras vazias e a indústria pede prioridade.",
+  "context": "A água virou questão de Estado.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Racionar por região e punir desperdício.",
+    "hint": "Distribui o sacrifício.",
+    "now": {
+     "qol": -0.5,
+     "legitimacy": -0.5
+    },
+    "groups": {
+     "workers": -1
+    }
+   },
+   {
+    "text": "Obras de transposição e dessalinização.",
+    "hint": "Solução definitiva; muito caro.",
+    "now": {
+     "treasury": -0.6
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 1.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "rural": 3,
+     "business": 2
+    }
+   },
+   {
+    "text": "Priorizar a indústria e a agricultura.",
+    "hint": "Economia protegida; casas sofrem.",
+    "now": {
+     "qol": -1,
+     "legitimacy": -2
+    },
+    "groups": {
+     "business": 3,
+     "workers": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_env_floods",
+  "cat": "Meio ambiente",
+  "title": "Enchentes arrasam bairros inteiros",
+  "desc": "Chuvas históricas deixaram milhares de desabrigados e destruíram pontes. A prefeitura culpa a falta de drenagem.",
+  "context": "Reconstruir ou realocar?",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Reconstruir e realocar famílias de áreas de risco.",
+    "hint": "Caro e duradouro.",
+    "now": {
+     "treasury": -0.5,
+     "qol": 0.5,
+     "legitimacy": 2
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 1.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Auxílio emergencial e reconstrução rápida no mesmo lugar.",
+    "hint": "Barato; o risco permanece.",
+    "now": {
+     "treasury": -0.25,
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Declarar calamidade e pedir ajuda internacional.",
+    "hint": "Traz doadores.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 0.5
+    },
+    "rel": {
+     "all": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_env_plastic",
+  "cat": "Meio ambiente",
+  "title": "Praias cobertas de plástico",
+  "desc": "Turistas voltam indignados: o litoral está tomado por lixo e redes de pesca. Pescadores perdem renda.",
+  "context": "Mar sujo, imagem suja.",
+  "cond": {
+   "coast": true
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Proibir plásticos descartáveis e pagar reciclagem.",
+    "hint": "Resultado visível; custo à indústria.",
+    "now": {
+     "pollution": -1,
+     "treasury": -0.1
+    },
+    "groups": {
+     "youth": 3,
+     "business": -2
+    }
+   },
+   {
+    "text": "Mutirões de limpeza e educação ambiental.",
+    "hint": "Efeito temporário.",
+    "now": {
+     "pollution": -0.3
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Priorizar outros temas.",
+    "hint": "Sem custo.",
+    "now": {
+     "pollution": 0.5
+    },
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_env_solar",
+  "cat": "Meio ambiente",
+  "title": "O boom da energia solar",
+  "desc": "Empresas oferecem parques solares enormes em troca de contratos longos. Há ainda a opção de subsidiar painéis em telhados.",
+  "context": "Matriz energética em disputa.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Leilões de grandes parques solares.",
+    "hint": "Energia barata e limpa.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "pollution",
+      "v": -1,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 3
+    }
+   },
+   {
+    "text": "Subsídio a painéis residenciais.",
+    "hint": "Distribui renda e energia.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "workers": 2,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Manter a matriz atual.",
+    "hint": "Sem mudança."
+   }
+  ]
+ },
+ {
+  "id": "gn_env_deforest",
+  "cat": "Meio ambiente",
+  "title": "Desmatamento acelera",
+  "desc": "Satélites mostram a floresta desaparecendo. Madeireiros e fazendeiros avançam; ambientalistas ameaçam denunciar o país.",
+  "context": "Floresta em pé ou terra para produzir?",
+  "cond": {
+   "min": {
+    "pollution": 0
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Fiscalização severa e multas.",
+    "hint": "Reduz o desmate; irrita o campo.",
+    "now": {
+     "pollution": -0.8,
+     "reputation": 2
+    },
+    "groups": {
+     "rural": -4,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Pagar para preservar (compensação a produtores).",
+    "hint": "Funciona; custa.",
+    "now": {
+     "treasury": -0.3,
+     "pollution": -0.5,
+     "reputation": 1
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Liberar mais áreas para produção.",
+    "hint": "Renda de curto prazo; imagem global pior.",
+    "now": {
+     "pollution": 1.5,
+     "reputation": -3
+    },
+    "groups": {
+     "rural": 4,
+     "youth": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_env_ev",
+  "cat": "Meio ambiente",
+  "title": "Carros elétricos: subsidiar ou não?",
+  "desc": "Fabricantes pedem incentivos para instalar linhas de montagem elétricas. Críticos lembram que os ricos serão os maiores beneficiados.",
+  "context": "Transição ou favor?",
+  "cond": {
+   "min": {
+    "industry": 30
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Subsídios e rede de recarga.",
+    "hint": "Atrai fábricas; reduz poluição.",
+    "now": {
+     "treasury": -0.4,
+     "pollution": -0.6
+    },
+    "long": [
+     {
+      "k": "industry",
+      "v": 1.5,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 3,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Só transporte público elétrico.",
+    "hint": "Mais equidade.",
+    "now": {
+     "treasury": -0.3,
+     "pollution": -0.5
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Não intervir.",
+    "hint": "Mercado decide."
+   }
+  ]
+ },
+ {
+  "id": "gn_tech_ai",
+  "cat": "Tecnologia",
+  "title": "Inteligência artificial ameaça empregos",
+  "desc": "Bancos, call centers e fábricas anunciam demissões com a automação. Sindicatos pedem regras; empresas pedem liberdade.",
+  "context": "A nova revolução industrial.",
+  "cond": {
+   "min": {
+    "tech": 30
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Imposto sobre automação e requalificação.",
+    "hint": "Financia a transição; reduz o ritmo.",
+    "now": {
+     "treasury": 0.2,
+     "unemployment": -0.1
+    },
+    "long": [
+     {
+      "k": "productivity",
+      "v": -0.3,
+      "d": 240
+     }
+    ],
+    "groups": {
+     "workers": 4,
+     "business": -3
+    }
+   },
+   {
+    "text": "Apoiar a adoção e criar programas de reciclagem profissional.",
+    "hint": "Produtividade e treinamento.",
+    "now": {
+     "treasury": -0.25
+    },
+    "long": [
+     {
+      "k": "productivity",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 3,
+     "workers": 1
+    }
+   },
+   {
+    "text": "Não fazer nada.",
+    "hint": "Mercado ajusta; custo social.",
+    "now": {
+     "unemployment": 0.4
+    },
+    "groups": {
+     "workers": -4,
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_tech_privacy",
+  "cat": "Tecnologia",
+  "title": "Reconhecimento facial nas ruas",
+  "desc": "A polícia pede câmeras com reconhecimento facial em todo o centro. Defensores da privacidade alertam para vigilância em massa.",
+  "context": "Segurança contra privacidade.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Autorizar com controle judicial.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "crime": -0.3,
+     "civil": -0.5
+    },
+    "groups": {
+     "military": 1,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Autorizar amplamente.",
+    "hint": "Mais segurança; Estado vigilante.",
+    "now": {
+     "crime": -0.6,
+     "civil": -2
+    },
+    "long": [
+     {
+      "k": "repression",
+      "v": 1,
+      "d": 240
+     }
+    ],
+    "groups": {
+     "military": 2,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Proibir.",
+    "hint": "Privacidade preservada.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "youth": 2,
+     "military": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_tech_cyber",
+  "cat": "Tecnologia",
+  "title": "Ciberataque paralisa um hospital",
+  "desc": "Um ataque de sequestro de dados trava hospitais e prefeituras. Os criminosos pedem resgate em criptomoedas.",
+  "context": "A fragilidade digital do Estado.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Recusar o resgate e reconstruir com agência de cibersegurança.",
+    "hint": "Boa política de longo prazo.",
+    "now": {
+     "treasury": -0.3,
+     "health": -0.5,
+     "intel": 1
+    },
+    "long": [
+     {
+      "k": "intel",
+      "v": 1.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Pagar o resgate em silêncio.",
+    "hint": "Resolve rápido; incentiva novos ataques.",
+    "now": {
+     "treasury": -0.1,
+     "corruption": 0.5
+    },
+    "long": [
+     {
+      "k": "intel",
+      "v": -0.5,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Culpar um país vizinho.",
+    "hint": "Distrai; tensão externa.",
+    "rel": {
+     "neighbors": -4
+    },
+    "groups": {
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_tech_space",
+  "cat": "Tecnologia",
+  "title": "Um programa espacial nacional",
+  "desc": "Cientistas propõem lançar um satélite próprio e, depois, uma missão lunar. O custo é alto, mas o orgulho também.",
+  "context": "Prestígio ou luxo?",
+  "cond": {
+   "min": {
+    "tech": 40,
+    "industry": 35
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Aprovar o programa espacial.",
+    "hint": "Prestígio e tecnologia de ponta.",
+    "now": {
+     "treasury": -0.7,
+     "reputation": 2
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "milIndustry",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "youth": 3,
+     "military": 2,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Só satélites de comunicação e observação.",
+    "hint": "Útil e barato.",
+    "now": {
+     "treasury": -0.25
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "intel",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Recusar: há prioridades na Terra.",
+    "hint": "Economiza.",
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_tech_5g",
+  "cat": "Tecnologia",
+  "title": "A guerra das redes 5G",
+  "desc": "Duas potências pressionam o país para excluir o fornecedor do rival das redes 5G. As operadoras estão no meio.",
+  "context": "Tecnologia como geopolítica.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Excluir o fornecedor chinês.",
+    "hint": "Agrada o Ocidente; encarece a rede.",
+    "now": {
+     "treasury": -0.15
+    },
+    "rel": {
+     "west": 3,
+     "china": -4
+    }
+   },
+   {
+    "text": "Excluir o fornecedor ocidental.",
+    "hint": "Preço baixo; tensão com o Ocidente.",
+    "rel": {
+     "west": -4,
+     "china": 3
+    }
+   },
+   {
+    "text": "Abrir à concorrência com regras de segurança.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "intel": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_tech_broadband",
+  "cat": "Tecnologia",
+  "title": "Internet para o interior",
+  "desc": "Milhões ainda estão sem banda larga. Um plano de fibra e satélites custa caro, mas promete alavancar o interior.",
+  "context": "Inclusão digital.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Plano nacional de conectividade.",
+    "hint": "Educação e renda no campo.",
+    "now": {
+     "treasury": -0.5
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 1.5,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 365
+     }
+    ],
+    "groups": {
+     "rural": 4,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Parcerias com operadoras e subsídios.",
+    "hint": "Mais barato; cobertura menor.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "education",
+      "v": 0.6,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "rural": 2,
+     "business": 1
+    }
+   },
+   {
+    "text": "Deixar o mercado agir.",
+    "hint": "Interior continua isolado.",
+    "groups": {
+     "rural": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_sec_terror",
+  "cat": "Segurança",
+  "title": "Atentado terrorista em uma estação lotada",
+  "desc": "Uma bomba matou dezenas em hora de pico. Uma organização extremista reivindica a autoria. O país pede ação imediata.",
+  "context": "Segurança e liberdade em choque.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Leis antiterror e vigilância ampliada.",
+    "hint": "Sensação de segurança; liberdades reduzidas.",
+    "now": {
+     "civil": -2,
+     "legitimacy": 1,
+     "crime": -0.3
+    },
+    "long": [
+     {
+      "k": "intel",
+      "v": 1.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "military": 3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Investigação policial e cooperação internacional.",
+    "hint": "Respeita direitos; resultados mais lentos.",
+    "now": {
+     "treasury": -0.15,
+     "intel": 1
+    },
+    "rel": {
+     "all": 1
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Operação militar contra a base do grupo.",
+    "hint": "Resposta forte; riscos políticos.",
+    "now": {
+     "readiness": 1,
+     "legitimacy": 2,
+     "reputation": -1
+    },
+    "groups": {
+     "military": 4,
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_sec_border",
+  "cat": "Segurança",
+  "title": "Contrabando e tráfico na fronteira",
+  "desc": "Contrabandistas dominam trilhas na fronteira, com armas e drogas. Moradores dizem que a polícia só aparece nas reportagens.",
+  "context": "Fronteiras porosas.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Reforçar com tropas e drones.",
+    "hint": "Eficaz e caro.",
+    "now": {
+     "treasury": -0.4,
+     "control": 2,
+     "crime": -0.4
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Cooperar com o vizinho em patrulhas conjuntas.",
+    "hint": "Bom para as relações.",
+    "now": {
+     "treasury": -0.15,
+     "crime": -0.2
+    },
+    "rel": {
+     "neighbors": 4
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Sem custo.",
+    "now": {
+     "crime": 0.3,
+     "control": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_sec_conscription",
+  "cat": "Defesa",
+  "title": "Serviço militar obrigatório",
+  "desc": "Generais pedem retomar o serviço militar obrigatório; jovens e famílias reagem.",
+  "context": "Prontidão ou liberdade.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Restabelecer o serviço obrigatório.",
+    "hint": "Efetivo e coesão; jovens protestam.",
+    "now": {
+     "readiness": 3,
+     "troops": 8
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": -0.2,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "military": 4,
+     "youth": -6
+    }
+   },
+   {
+    "text": "Reforçar o exército profissional com salários melhores.",
+    "hint": "Mais caro, mais aceito.",
+    "now": {
+     "treasury": -0.4,
+     "readiness": 1.5
+    },
+    "groups": {
+     "military": 3,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Manter o modelo atual.",
+    "hint": "Sem mudanças."
+   }
+  ]
+ },
+ {
+  "id": "gn_sec_veterans",
+  "cat": "Defesa",
+  "title": "Veteranos esquecidos",
+  "desc": "Veteranos de guerra protestam por pensões, atendimento médico e emprego. A imprensa mostra um deles dormindo na rua.",
+  "context": "Quem luta merece mais.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Programa completo para veteranos.",
+    "hint": "Honra e custo.",
+    "now": {
+     "treasury": -0.3,
+     "legitimacy": 1.5
+    },
+    "groups": {
+     "military": 4,
+     "workers": 1
+    }
+   },
+   {
+    "text": "Pensão mínima e vagas em empresas estatais.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Ignorar os protestos.",
+    "hint": "Sem custo; a corporação se ressente.",
+    "groups": {
+     "military": -4
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 1.5,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "gn_sec_arms_export",
+  "cat": "Defesa",
+  "title": "Exportar armas para um regime controverso",
+  "desc": "Uma empresa nacional fechou um contrato bilionário com um governo acusado de violar direitos humanos. O Ministério das Relações Exteriores hesita.",
+  "context": "Dinheiro ou princípios.",
+  "cond": {
+   "min": {
+    "milIndustry": 25
+   }
+  },
+  "w": 1,
+  "options": [
+   {
+    "text": "Liberar a exportação.",
+    "hint": "Receitas e empregos; manchas na imagem.",
+    "now": {
+     "treasury": 0.4,
+     "reputation": -3
+    },
+    "groups": {
+     "business": 3,
+     "military": 2,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Vetar o contrato.",
+    "hint": "Coerência; perde dinheiro.",
+    "now": {
+     "reputation": 2
+    },
+    "groups": {
+     "youth": 3,
+     "business": -2
+    }
+   },
+   {
+    "text": "Liberar só equipamentos não letais.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": 0.15,
+     "reputation": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_sec_disaster_army",
+  "cat": "Defesa",
+  "title": "O exército nas ruas contra a violência",
+  "desc": "Governadores pedem que as Forças Armadas assumam o policiamento de uma capital tomada pelo crime.",
+  "context": "Uso interno das forças.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Enviar tropas por tempo limitado.",
+    "hint": "Resultados rápidos; riscos de abusos.",
+    "now": {
+     "crime": -1,
+     "control": 2,
+     "civil": -0.5
+    },
+    "groups": {
+     "military": 2,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Fortalecer a polícia civil e a inteligência.",
+    "hint": "Demorado, mais saudável.",
+    "now": {
+     "treasury": -0.3,
+     "crime": -0.3
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -0.8,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Preserva a separação civil-militar.",
+    "now": {
+     "crime": 0.2
+    },
+    "groups": {
+     "military": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_wld_refugees_far",
+  "cat": "Mundo",
+  "title": "Uma guerra distante enche os campos de refugiados",
+  "desc": "Uma guerra em outro continente gera milhões de deslocados. A ONU pede que todos os países recebam alguns milhares.",
+  "context": "A solidariedade tem preço.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Aceitar uma cota e apoiar a integração.",
+    "hint": "Imagem humanitária.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 3
+    },
+    "groups": {
+     "youth": 2,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Contribuir só com dinheiro.",
+    "hint": "Ajuda sem receber gente.",
+    "now": {
+     "treasury": -0.15,
+     "reputation": 1
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Sem custo; críticas.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "rural": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_wld_summit",
+  "cat": "Mundo",
+  "title": "Sede de uma cúpula internacional",
+  "desc": "O país foi convidado a sediar uma importante cúpula de líderes. Hotéis, segurança e protestos são parte do pacote.",
+  "context": "Prestígio custa caro.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Sediar com grande pompa.",
+    "hint": "Prestígio e turismo; custo.",
+    "now": {
+     "treasury": -0.35,
+     "reputation": 3,
+     "legitimacy": 1
+    },
+    "rel": {
+     "all": 2
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Sediar de forma enxuta.",
+    "hint": "Metade do custo.",
+    "now": {
+     "treasury": -0.15,
+     "reputation": 1.5
+    }
+   },
+   {
+    "text": "Declinar.",
+    "hint": "Economiza.",
+    "now": {
+     "reputation": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_wld_oil_cartel",
+  "cat": "Mundo",
+  "title": "Cartel de produtores pede adesão",
+  "desc": "Os grandes exportadores de energia querem cortar a produção para elevar preços e convidam o país a participar.",
+  "context": "Clube exclusivo e caro.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Aderir ao cartel.",
+    "hint": "Receita extra; fricção com consumidores.",
+    "now": {
+     "treasury": 0.4
+    },
+    "rel": {
+     "west": -3
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Observador.",
+    "hint": "Meia-porta.",
+    "now": {
+     "treasury": 0.1
+    }
+   },
+   {
+    "text": "Rejeitar e vender mais.",
+    "hint": "Concorrência; boa relação com consumidores.",
+    "rel": {
+     "west": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_wld_border_dispute",
+  "cat": "Mundo",
+  "title": "Disputa por uma ilha desabitada",
+  "desc": "O vizinho enviou um navio-pesquisa a uma ilha reivindicada pelos dois países. Pescadores e almirantes pedem ação.",
+  "context": "Soberania e petróleo possível.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Patrulhar com a marinha.",
+    "hint": "Mostra firmeza; risco de choque.",
+    "now": {
+     "readiness": 1
+    },
+    "rel": {
+     "neighbors": -6
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Propor exploração conjunta.",
+    "hint": "Solução criativa.",
+    "now": {
+     "reputation": 1.5
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Levar ao tribunal internacional.",
+    "hint": "Lento, mas legítimo.",
+    "now": {
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_wld_aid_bridge",
+  "cat": "Mundo",
+  "title": "Uma potência oferece financiar a nova ponte",
+  "desc": "Uma grande potência propõe financiar uma ponte e um porto, mas com empresas e mão de obra dela e juros altos.",
+  "context": "Presente grego?",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Aceitar o financiamento.",
+    "hint": "Infraestrutura rápida; dívida e dependência.",
+    "now": {
+     "debt": 0.5,
+     "treasury": 0.1
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1.5,
+      "d": 0
+     },
+     {
+      "k": "exportAccess",
+      "v": 0.02,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "china": 4
+    }
+   },
+   {
+    "text": "Exigir contratar empresas locais.",
+    "hint": "Negocia melhores termos.",
+    "now": {
+     "debt": 0.3
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "industry",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Evita a dívida."
+   }
+  ]
+ },
+ {
+  "id": "gn_wld_spy",
+  "cat": "Mundo",
+  "title": "Espião estrangeiro é descoberto",
+  "desc": "Um funcionário do ministério foi flagrado repassando documentos a uma embaixada. A imprensa pede expulsão.",
+  "context": "Diplomacia da sombra.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Expulsar o embaixador.",
+    "hint": "Mostra firmeza; crise diplomática.",
+    "now": {
+     "reputation": 0.5
+    },
+    "rel": {
+     "all": -1
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Protestar discretamente e reforçar a contrainteligência.",
+    "hint": "Sem barulho.",
+    "now": {
+     "intel": 1.5,
+     "treasury": -0.1
+    }
+   },
+   {
+    "text": "Abafar para não irritar o parceiro.",
+    "hint": "Evita problemas agora.",
+    "now": {
+     "intel": -1
+    },
+    "groups": {
+     "military": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_wld_pandemic_prep",
+  "cat": "Saúde",
+  "title": "Um novo vírus preocupa a OMS",
+  "desc": "A Organização Mundial da Saúde alerta para um vírus respiratório que se espalha em outro continente. Especialistas pedem preparar o país.",
+  "context": "Prevenir ou esperar?",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Estocar insumos, reforçar vigilância e leitos.",
+    "hint": "Caro agora; vale muito depois.",
+    "now": {
+     "treasury": -0.4,
+     "health": 1
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 1.5,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "workers": 1,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Vigilância nas fronteiras e comunicação.",
+    "hint": "Medidas leves.",
+    "now": {
+     "treasury": -0.1,
+     "health": 0.3
+    }
+   },
+   {
+    "text": "Esperar para ver.",
+    "hint": "Sem custo; pode custar caro.",
+    "now": {
+     "health": -0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_wld_olympics",
+  "cat": "Mundo",
+  "title": "Candidatura aos Jogos Olímpicos",
+  "desc": "O comitê nacional quer disputar a sede dos Jogos. A candidatura promete turismo e obras; economistas alertam para o histórico de prejuízos.",
+  "context": "Festa ou armadilha?",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Candidatar-se com plano de legado.",
+    "hint": "Prestígio; risco financeiro.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 1.5
+    },
+    "groups": {
+     "youth": 3,
+     "business": 2
+    }
+   },
+   {
+    "text": "Candidatar-se só em parceria regional.",
+    "hint": "Divide o custo.",
+    "now": {
+     "treasury": -0.15,
+     "reputation": 1
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Declinar.",
+    "hint": "Foco em saúde e escola.",
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "gn_wld_diaspora",
+  "cat": "Mundo",
+  "title": "Diáspora quer votar e investir",
+  "desc": "Milhões de nacionais vivem no exterior. Seus líderes pedem representação no parlamento e incentivos para investir de volta.",
+  "context": "Cidadãos de longe.",
+  "cond": {},
+  "w": 1,
+  "options": [
+   {
+    "text": "Dar representação e incentivos.",
+    "hint": "Capital e influência; muda o jogo político.",
+    "now": {
+     "treasury": -0.1
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 365
+     },
+     {
+      "k": "influence",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "groups": {
+     "business": 2,
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Só incentivos de investimento.",
+    "hint": "Mais simples.",
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.08,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Nada além do atual.",
+    "hint": "Sem mudança."
+   }
+  ]
+ }
+]

@@ -1,0 +1,2259 @@
+[
+ {
+  "id": "pk_sa_monsoon",
+  "cat": "Sul da Ásia",
+  "title": "A monção falha",
+  "desc": "As chuvas chegam fracas e tardias. Safras secam, rios baixam e o preço dos alimentos dispara.",
+  "context": "Bilhões dependem da monção.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Estoques reguladores e irrigação emergencial.",
+    "hint": "Protege os pobres.",
+    "now": {
+     "treasury": -0.4,
+     "hunger": -0.3
+    },
+    "groups": {
+     "rural": 3,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Importar grãos.",
+    "hint": "Rápido e caro.",
+    "now": {
+     "treasury": -0.3,
+     "inflation": -0.2
+    },
+    "groups": {
+     "rural": -1,
+     "workers": 1
+    }
+   },
+   {
+    "text": "Deixar o mercado ajustar.",
+    "hint": "Fome localizada.",
+    "now": {
+     "hunger": 0.8,
+     "protest": 1
+    },
+    "groups": {
+     "rural": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_floods",
+  "cat": "Sul da Ásia",
+  "title": "Enchentes do delta",
+  "desc": "Rios transbordam e submergem milhões de moradias. O governo é cobrado pela falta de diques e alertas.",
+  "context": "Um dos territórios mais vulneráveis do planeta.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Abrigos ciclônicos e sistema de alerta.",
+    "hint": "Salva vidas.",
+    "now": {
+     "treasury": -0.4,
+     "qol": 0.5
+    },
+    "groups": {
+     "rural": 3,
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Auxílio de emergência.",
+    "hint": "Imediato.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Pedir ajuda internacional.",
+    "hint": "Parceiros.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {},
+    "rel": {
+     "all": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_caste",
+  "cat": "Sul da Ásia",
+  "title": "Cotas e castas",
+  "desc": "Protestos e contra-protestos disputam cotas em universidades e empregos públicos, mexendo com estruturas ancestrais.",
+  "context": "Identidade social e Estado.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Ampliar as cotas.",
+    "hint": "Inclusão; resistência das castas dominantes.",
+    "now": {
+     "inequality": -0.5,
+     "stability": -0.5
+    },
+    "groups": {
+     "workers": 2,
+     "youth": 1,
+     "bureaucracy": -1
+    }
+   },
+   {
+    "text": "Cotas por renda.",
+    "hint": "Compromisso.",
+    "now": {
+     "inequality": -0.2
+    },
+    "groups": {}
+   },
+   {
+    "text": "Manter como está.",
+    "hint": "Sem mudança.",
+    "now": {},
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_water_treaty",
+  "cat": "Sul da Ásia",
+  "title": "O tratado das águas dos rios",
+  "desc": "Um vizinho constrói barragens a montante e ameaça reduzir o fluxo dos rios que abastecem seus campos.",
+  "context": "Água como arma geopolítica.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Protestar e buscar arbitragem internacional.",
+    "hint": "Legítimo.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": -2
+    }
+   },
+   {
+    "text": "Construir seus próprios reservatórios.",
+    "hint": "Seguro e caro.",
+    "now": {
+     "treasury": -0.4,
+     "defense": 0.5
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Acordo bilateral de compartilhamento.",
+    "hint": "Pacífico.",
+    "now": {},
+    "groups": {},
+    "rel": {
+     "neighbors": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_border_dispute",
+  "cat": "Sul da Ásia",
+  "title": "Tensão em uma fronteira montanhosa",
+  "desc": "Patrulhas se encontram em altitudes extremas e há trocas de acusações. Soldados morrem de frio mais do que de balas.",
+  "context": "Fronteiras disputadas e geladas.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforçar tropas e infraestrutura.",
+    "hint": "Dissuasão.",
+    "now": {
+     "treasury": -0.4,
+     "defense": 2
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "neighbors": -3
+    }
+   },
+   {
+    "text": "Diálogo militar de alto nível.",
+    "hint": "Reduz a tensão.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {
+     "military": -1
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Mediação de uma terceira potência.",
+    "hint": "Lento.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_cricket",
+  "cat": "Sul da Ásia",
+  "title": "Final de críquete entre rivais",
+  "desc": "A partida entre dois países rivais para a região. Autoridades temem tumultos e há pedidos de boicote político.",
+  "context": "Esporte como diplomacia (ou não).",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Receber a seleção rival e usar como gesto.",
+    "hint": "Soft power.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 2
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Boicotar.",
+    "hint": "Nacionalismo.",
+    "now": {},
+    "groups": {
+     "military": 1,
+     "youth": -1
+    },
+    "rel": {
+     "neighbors": -3
+    }
+   },
+   {
+    "text": "Jogar em terceiro país.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": -0.05
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_textile",
+  "cat": "Sul da Ásia",
+  "title": "Fábricas têxteis e a tragédia",
+  "desc": "Um incêndio em uma fábrica têxtil deixa centenas de mortos. Marcas ocidentais são cobradas por condições de trabalho.",
+  "context": "A confecção sustenta a economia.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Inspeções rigorosas e salário mínimo setorial.",
+    "hint": "Segurança e custo.",
+    "now": {
+     "treasury": -0.1,
+     "unemployment": 0.1
+    },
+    "groups": {
+     "workers": 4,
+     "business": -3
+    }
+   },
+   {
+    "text": "Código voluntário com marcas internacionais.",
+    "hint": "Parceria.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "workers": 1
+    }
+   },
+   {
+    "text": "Minimizar para não afugentar compradores.",
+    "hint": "Reputação em jogo.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "workers": -4,
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_it_hub",
+  "cat": "Sul da Ásia",
+  "title": "Polos de tecnologia e fuga de talentos",
+  "desc": "Engenheiros vão trabalhar no exterior ou em empresas estrangeiras. O governo planeja incentivar polos locais.",
+  "context": "Capital humano valioso.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Zonas de tecnologia com incentivos.",
+    "hint": "Atrai empresas.",
+    "now": {
+     "treasury": -0.3,
+     "tech": 1
+    },
+    "groups": {
+     "youth": 3,
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Investir em universidades técnicas.",
+    "hint": "Longo prazo.",
+    "now": {
+     "treasury": -0.3,
+     "education": 1
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Deixar emigrarem: remessas ajudam.",
+    "hint": "Receita fácil.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_religion_conflict",
+  "cat": "Sul da Ásia",
+  "title": "Violência entre comunidades religiosas",
+  "desc": "Um boato nas redes sociais provoca ataques entre comunidades de fés diferentes. Dezenas de mortos.",
+  "context": "Convivência frágil.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Toque de recolher e prisão dos instigadores.",
+    "hint": "Controle.",
+    "now": {
+     "civil": -1,
+     "stability": 1
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Diálogo inter-religioso e conselhos locais.",
+    "hint": "Reconstrói.",
+    "now": {
+     "stability": 0.5,
+     "civil": 0.5
+    },
+    "groups": {
+     "regional": 1
+    }
+   },
+   {
+    "text": "Culpar um lado.",
+    "hint": "Piora.",
+    "now": {
+     "stability": -2,
+     "legitimacy": -2
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_dowry",
+  "cat": "Sul da Ásia",
+  "title": "Casamento infantil e dote",
+  "desc": "Reformadoras pedem leis mais duras e educação para meninas; setores tradicionais resistem.",
+  "context": "Direitos das mulheres e costumes.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Endurecer a lei e bolsa para meninas.",
+    "hint": "Mudança de longo prazo.",
+    "now": {
+     "treasury": -0.15,
+     "education": 1,
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 3,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Campanhas educativas.",
+    "hint": "Brando.",
+    "now": {
+     "treasury": -0.05,
+     "education": 0.3
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Não interferir nas tradições.",
+    "hint": "Preserva costumes.",
+    "now": {},
+    "groups": {
+     "rural": 1,
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_pollution_delhi",
+  "cat": "Sul da Ásia",
+  "title": "Smog sufoca as capitais",
+  "desc": "O ar das grandes cidades fica irrespirável: queima de palha, escapamentos, obras. Escolas fecham.",
+  "context": "Saúde pública em risco.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Proibir queimadas e subsidiar máquinas.",
+    "hint": "Combate a causa.",
+    "now": {
+     "treasury": -0.3,
+     "pollution": -1.2,
+     "health": 0.5
+    },
+    "groups": {
+     "rural": -1,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Restringir veículos e fechar obras.",
+    "hint": "Rápido.",
+    "now": {
+     "pollution": -0.7,
+     "growth": -0.1
+    },
+    "groups": {
+     "business": -2,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Declarar emergência sanitária.",
+    "hint": "Alívio parcial.",
+    "now": {
+     "health": 0.2
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_microfinance",
+  "cat": "Sul da Ásia",
+  "title": "Microcrédito e endividamento",
+  "desc": "O microcrédito liberta famílias, mas também as endivida. Agentes de cobrança assediam devedoras.",
+  "context": "Inovação com sombra.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Regulamentar juros e cobrança.",
+    "hint": "Proteção.",
+    "now": {
+     "poverty": -0.1
+    },
+    "groups": {
+     "workers": 2,
+     "business": -1
+    }
+   },
+   {
+    "text": "Ampliar o crédito.",
+    "hint": "Mais negócios.",
+    "now": {
+     "poverty": -0.2,
+     "inequality": 0.1
+    },
+    "groups": {
+     "workers": 1,
+     "business": 1
+    }
+   },
+   {
+    "text": "Perdoar dívidas de pequenos devedores.",
+    "hint": "Alívio e risco moral.",
+    "now": {
+     "treasury": -0.25,
+     "poverty": -0.4
+    },
+    "groups": {
+     "workers": 3,
+     "business": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_remittance_gulf",
+  "cat": "Sul da Ásia",
+  "title": "Trabalhadores no Golfo",
+  "desc": "Milhões trabalham no Golfo Pérsico em condições duras, enviando remessas essenciais. Casos de abuso chegam à imprensa.",
+  "context": "Dependência econômica.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Exigir contratos e proteção consular.",
+    "hint": "Protege.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 1
+    },
+    "groups": {
+     "workers": 3
+    },
+    "rel": {
+     "all": -1
+    }
+   },
+   {
+    "text": "Silêncio para não perder vagas.",
+    "hint": "Pragmático.",
+    "now": {
+     "treasury": 0.1,
+     "reputation": -1
+    },
+    "groups": {
+     "workers": -3
+    }
+   },
+   {
+    "text": "Programa de qualificação e retorno.",
+    "hint": "Longo prazo.",
+    "now": {
+     "treasury": -0.2,
+     "education": 0.5
+    },
+    "groups": {
+     "workers": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_nuclear_rivalry",
+  "cat": "Sul da Ásia",
+  "title": "Corrida nuclear regional",
+  "desc": "Testes de mísseis do rival aumentam a pressão para modernizar o arsenal e a doutrina.",
+  "context": "Dissuasão e custo.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Modernizar mísseis e comando.",
+    "hint": "Dissuasão.",
+    "now": {
+     "treasury": -0.6,
+     "defense": 3
+    },
+    "groups": {
+     "military": 4,
+     "workers": -1
+    },
+    "rel": {
+     "neighbors": -3
+    }
+   },
+   {
+    "text": "Propor medidas de confiança e linha direta.",
+    "hint": "Estabiliza.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "military": -1
+    },
+    "rel": {
+     "neighbors": 3
+    }
+   },
+   {
+    "text": "Aceitar a ambiguidade.",
+    "hint": "Meio-termo.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_diaspora_wedding",
+  "cat": "Sul da Ásia",
+  "title": "O casamento do século",
+  "desc": "A festa de uma família bilionária hipnotiza o país e expõe a desigualdade. Convidados chegam em jatos particulares.",
+  "context": "Opulência e pobreza lado a lado.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aproveitar para atrair turismo.",
+    "hint": "Imagem global.",
+    "now": {
+     "reputation": 0.5,
+     "treasury": 0.05
+    },
+    "groups": {
+     "business": 2,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Criticar o excesso e pedir impostos sobre luxo.",
+    "hint": "Populismo saudável.",
+    "now": {
+     "treasury": 0.1,
+     "inequality": -0.1
+    },
+    "groups": {
+     "workers": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Neutro.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_himalaya_glacier",
+  "cat": "Sul da Ásia",
+  "title": "Geleiras do Himalaia recuam",
+  "desc": "Cientistas alertam: o degelo ameaça a água de centenas de milhões de pessoas e provoca enchentes súbitas.",
+  "context": "Clima e geopolítica.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Plano regional de adaptação.",
+    "hint": "Visão futura.",
+    "now": {
+     "treasury": -0.3,
+     "pollution": -0.3
+    },
+    "groups": {
+     "youth": 2
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Investir só em barragens.",
+    "hint": "Resposta técnica.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Ignorar por ora.",
+    "hint": "Sem custo.",
+    "now": {},
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_tea_workers",
+  "cat": "Sul da Ásia",
+  "title": "Plantações de chá e salários",
+  "desc": "Trabalhadores de grandes plantações de chá pedem aumento e moradia. Proprietários ameaçam fechar fazendas.",
+  "context": "Herança colonial na produção.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Piso salarial setorial.",
+    "hint": "Justiça.",
+    "now": {
+     "poverty": -0.2
+    },
+    "groups": {
+     "workers": 3,
+     "business": -2
+    }
+   },
+   {
+    "text": "Cooperativas dos trabalhadores.",
+    "hint": "Longo prazo.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "workers": 3,
+     "rural": 2
+    }
+   },
+   {
+    "text": "Não interferir.",
+    "hint": "Mercado.",
+    "now": {},
+    "groups": {
+     "workers": -2,
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_election_violence",
+  "cat": "Sul da Ásia",
+  "title": "Eleições e violência",
+  "desc": "A campanha eleitoral é marcada por assassinatos de candidatos e disputas entre facções armadas.",
+  "context": "Democracia sob pressão.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Forças federais e observadores internacionais.",
+    "hint": "Segurança.",
+    "now": {
+     "treasury": -0.15,
+     "political": 0.5
+    },
+    "groups": {
+     "military": 1,
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Adiar o pleito.",
+    "hint": "Evita sangue; custa a legitimidade.",
+    "now": {
+     "political": -1,
+     "legitimacy": -1
+    },
+    "groups": {
+     "opposition": -3
+    }
+   },
+   {
+    "text": "Seguir como previsto.",
+    "hint": "Risco.",
+    "now": {
+     "stability": -1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_refugee_neighbor",
+  "cat": "Sul da Ásia",
+  "title": "Refugiados cruzam a fronteira",
+  "desc": "Uma minoria perseguida do país vizinho foge para o seu território em massa. Os campos não têm água.",
+  "context": "Humanitário e político.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Abrir campos com apoio da ONU.",
+    "hint": "Humanitário.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 2
+    },
+    "groups": {
+     "youth": 2,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Fechar a fronteira.",
+    "hint": "Duro.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Pressionar o vizinho a garantir direitos.",
+    "hint": "Diplomacia.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {},
+    "rel": {
+     "neighbors": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_indus_tourism",
+  "cat": "Sul da Ásia",
+  "title": "Montanhismo e turismo religioso",
+  "desc": "Picos famosos e peregrinações atraem multidões, mas lotam trilhas e geram lixo e avalanches.",
+  "context": "Turismo sagrado.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Cotas e taxa ambiental.",
+    "hint": "Sustentável.",
+    "now": {
+     "treasury": 0.1,
+     "pollution": -0.3
+    },
+    "groups": {
+     "youth": 1,
+     "rural": 1
+    }
+   },
+   {
+    "text": "Ampliar infraestrutura.",
+    "hint": "Mais gente, mais risco.",
+    "now": {
+     "treasury": -0.2,
+     "pollution": 0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Fechar picos sensíveis.",
+    "hint": "Preserva.",
+    "now": {},
+    "groups": {
+     "business": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_ngo_foreign",
+  "cat": "Sul da Ásia",
+  "title": "Lei das ONGs estrangeiras",
+  "desc": "O governo suspeita que ONGs financiadas do exterior interfiram na política e propõe restringir seus recursos.",
+  "context": "Soberania e sociedade civil.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Restringir os recursos estrangeiros.",
+    "hint": "Controle; críticas.",
+    "now": {
+     "civil": -1,
+     "reputation": -1.5
+    },
+    "groups": {
+     "opposition": -2,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Exigir transparência.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "civil": 0
+    },
+    "groups": {
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Manter livre.",
+    "hint": "Imagem democrática.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_trade_china",
+  "cat": "Sul da Ásia",
+  "title": "O corredor econômico",
+  "desc": "Uma grande potência propõe financiar um corredor de transporte e energia cruzando o território, com dívidas e dependência.",
+  "context": "Infraestrutura com letra miúda.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aceitar o corredor.",
+    "hint": "Obras e dívida.",
+    "now": {
+     "treasury": 0.3,
+     "debt": 0.5
+    },
+    "groups": {
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "china": 5,
+     "india": -3
+    }
+   },
+   {
+    "text": "Aceitar com cláusulas locais.",
+    "hint": "Negociação.",
+    "now": {
+     "treasury": 0.1,
+     "debt": 0.3
+    },
+    "groups": {},
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "china": 2
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Autonomia.",
+    "now": {},
+    "groups": {},
+    "rel": {
+     "china": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_hindi_language",
+  "cat": "Sul da Ásia",
+  "title": "Disputa linguística",
+  "desc": "Uma proposta de língua nacional obrigatória nas escolas incendia regiões que falam outros idiomas.",
+  "context": "Identidade e unidade.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Currículo multilíngue.",
+    "hint": "Calma.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "regional": 3
+    }
+   },
+   {
+    "text": "Impor uma língua única.",
+    "hint": "Unidade e revolta.",
+    "now": {
+     "stability": -1,
+     "separatism": 0.5
+    },
+    "groups": {
+     "regional": -4,
+     "military": 1
+    }
+   },
+   {
+    "text": "Deixar os estados decidirem.",
+    "hint": "Federalismo.",
+    "now": {},
+    "groups": {
+     "regional": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_wetland_urban",
+  "cat": "Sul da Ásia",
+  "title": "Cidades que afundam",
+  "desc": "O crescimento urbano ocupa pântanos e planícies de inundação. A capital sofre alagamentos e escassez de água.",
+  "context": "Urbanização acelerada.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Plano de drenagem e áreas de proteção.",
+    "hint": "Eficaz.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 2,
+     "business": -1
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Mudar a capital administrativa.",
+    "hint": "Ousado.",
+    "now": {
+     "treasury": -0.7,
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "business": 2,
+     "regional": 2
+    }
+   },
+   {
+    "text": "Remendos locais.",
+    "hint": "Barato.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_telecom_digital",
+  "cat": "Sul da Ásia",
+  "title": "Identidade digital para todos",
+  "desc": "Um sistema biométrico unificado promete acabar com fraudes em programas sociais, mas assusta defensores da privacidade.",
+  "context": "Estado digital e vigilância.",
+  "cond": {
+   "regions": [
+    "south_asia"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Implementar e proteger os dados por lei.",
+    "hint": "Eficiência.",
+    "now": {
+     "treasury": -0.2,
+     "corruption": -0.8,
+     "civil": -0.3
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Sistema opcional.",
+    "hint": "Menos eficiente.",
+    "now": {
+     "treasury": -0.1,
+     "corruption": -0.2
+    },
+    "groups": {}
+   },
+   {
+    "text": "Cancelar.",
+    "hint": "Privacidade preservada.",
+    "now": {},
+    "groups": {
+     "youth": 1,
+     "bureaucracy": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_in_farm_laws",
+  "cat": "Sul da Ásia",
+  "title": "Protesto dos agricultores",
+  "desc": "Milhares de agricultores acampam nos arredores da capital contra leis de liberalização do mercado agrícola.",
+  "context": "A maior mobilização rural em décadas.",
+  "cond": {
+   "countries": [
+    "IND"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Revogar as leis.",
+    "hint": "Acalma; perde reformas.",
+    "now": {
+     "stability": 1,
+     "growth": -0.05
+    },
+    "groups": {
+     "rural": 5,
+     "business": -2
+    }
+   },
+   {
+    "text": "Negociar garantias de preço mínimo.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Manter e dispersar acampamentos.",
+    "hint": "Confronto.",
+    "now": {
+     "civil": -1,
+     "protest": 1.5
+    },
+    "groups": {
+     "rural": -5
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_in_digital_payments",
+  "cat": "Sul da Ásia",
+  "title": "A revolução dos pagamentos digitais",
+  "desc": "Plataformas públicas de pagamento por celular transformam o comércio, mas excluem quem não tem smartphone.",
+  "context": "Tecnologia como infraestrutura pública.",
+  "cond": {
+   "countries": [
+    "IND"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Expandir com agentes comunitários.",
+    "hint": "Inclusão.",
+    "now": {
+     "treasury": -0.1,
+     "tech": 1
+    },
+    "groups": {
+     "rural": 2,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Impulsionar a rede e restringir dinheiro vivo.",
+    "hint": "Eficiência e polêmica.",
+    "now": {
+     "tech": 1,
+     "civil": -0.3
+    },
+    "groups": {
+     "youth": 1,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Manter híbrido.",
+    "hint": "Seguro.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_in_kashmir",
+  "cat": "Sul da Ásia",
+  "title": "A questão da região disputada",
+  "desc": "Uma onda de violência no território disputado leva ao bloqueio da internet e a prisões em massa.",
+  "context": "Segurança, autonomia e direitos.",
+  "cond": {
+   "countries": [
+    "IND"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Diálogo político com lideranças locais.",
+    "hint": "Reduz tensão.",
+    "now": {
+     "civil": 0.5,
+     "stability": 0.5
+    },
+    "groups": {
+     "regional": 3,
+     "military": -1
+    }
+   },
+   {
+    "text": "Reforçar a presença militar.",
+    "hint": "Controle.",
+    "now": {
+     "control": 2,
+     "civil": -1.5,
+     "reputation": -1
+    },
+    "groups": {
+     "military": 2,
+     "regional": -3
+    }
+   },
+   {
+    "text": "Investir em emprego e infraestrutura.",
+    "hint": "Longo prazo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "regional": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_in_space",
+  "cat": "Sul da Ásia",
+  "title": "A missão à Lua",
+  "desc": "O programa espacial prepara pouso lunar com orçamento modesto. Críticos dizem que o dinheiro faria falta na saúde.",
+  "context": "Orgulho e custo.",
+  "cond": {
+   "countries": [
+    "IND"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aprovar a missão.",
+    "hint": "Prestígio e tecnologia.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 2,
+     "tech": 1
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Reduzir o escopo.",
+    "hint": "Economia.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 0.5
+    },
+    "groups": {}
+   },
+   {
+    "text": "Cancelar.",
+    "hint": "Prioridade social.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "youth": -2,
+     "workers": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_in_pharma_generic",
+  "cat": "Sul da Ásia",
+  "title": "Farmácia do mundo",
+  "desc": "Fabricantes de remédios genéricos pressionam por mais acordos e menos exigências regulatórias, enquanto casos de qualidade preocupam.",
+  "context": "Exportação de saúde.",
+  "cond": {
+   "countries": [
+    "IND"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforçar a fiscalização de qualidade.",
+    "hint": "Credibilidade.",
+    "now": {
+     "treasury": -0.1,
+     "health": 0.3,
+     "reputation": 1
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Acelerar aprovações.",
+    "hint": "Mais exportação.",
+    "now": {
+     "treasury": 0.2,
+     "reputation": -0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Parcerias com a OMS.",
+    "hint": "Prestígio.",
+    "now": {
+     "reputation": 1.5
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_in_railways",
+  "cat": "Sul da Ásia",
+  "title": "A malha ferroviária e os acidentes",
+  "desc": "Um grave acidente de trem reabre o debate sobre a segurança, a modernização e a privatização das ferrovias.",
+  "context": "Artéria do país.",
+  "cond": {
+   "countries": [
+    "IND"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Modernização massiva e sinalização.",
+    "hint": "Segurança.",
+    "now": {
+     "treasury": -0.6,
+     "qol": 0.3
+    },
+    "groups": {
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Concessões ao setor privado.",
+    "hint": "Investimento.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": 3,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Só consertos.",
+    "hint": "Barato.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_in_bollywood",
+  "cat": "Sul da Ásia",
+  "title": "O cinema e a censura",
+  "desc": "Um filme sobre tema sensível provoca protestos; grupos exigem proibição enquanto diretores falam em liberdade criativa.",
+  "context": "Cultura popular e política.",
+  "cond": {
+   "countries": [
+    "IND"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Liberar com classificação indicativa.",
+    "hint": "Liberdade.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Proibir a exibição.",
+    "hint": "Atende aos protestos.",
+    "now": {
+     "civil": -1,
+     "reputation": -1
+    },
+    "groups": {
+     "youth": -3,
+     "rural": 1
+    }
+   },
+   {
+    "text": "Cortes negociados.",
+    "hint": "Meio-termo.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_pk_military_politics",
+  "cat": "Sul da Ásia",
+  "title": "Os generais e a política",
+  "desc": "O exército pressiona nos bastidores por influência em decisões econômicas e de segurança; o governo civil reclama.",
+  "context": "Tutela militar.",
+  "cond": {
+   "countries": [
+    "PAK"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Compartilhar poder em um conselho de segurança.",
+    "hint": "Evita confronto.",
+    "now": {
+     "stability": 1,
+     "political": -0.5
+    },
+    "groups": {
+     "military": 3,
+     "opposition": -1
+    }
+   },
+   {
+    "text": "Impor controle civil.",
+    "hint": "Risco de crise.",
+    "now": {
+     "political": 1,
+     "coupRisk": 2
+    },
+    "groups": {
+     "military": -4,
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Cede aos poucos.",
+    "now": {
+     "political": -0.3
+    },
+    "groups": {
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_pk_flood_relief",
+  "cat": "Sul da Ásia",
+  "title": "As grandes inundações",
+  "desc": "Um terço do país fica submerso. Milhões de desabrigados e o setor agrícola devastado.",
+  "context": "Clima e fragilidade fiscal.",
+  "cond": {
+   "countries": [
+    "PAK"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Apelo internacional e fundo de reconstrução.",
+    "hint": "Ajuda externa.",
+    "now": {
+     "treasury": 0.3,
+     "reputation": 1
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Mobilizar o exército em socorro.",
+    "hint": "Rápido.",
+    "now": {
+     "treasury": -0.25
+    },
+    "groups": {
+     "military": 2,
+     "rural": 2
+    }
+   },
+   {
+    "text": "Reconstrução lenta.",
+    "hint": "Sem recursos.",
+    "now": {
+     "qol": -1
+    },
+    "groups": {
+     "rural": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_pk_madrasa",
+  "cat": "Sul da Ásia",
+  "title": "Escolas religiosas e o currículo",
+  "desc": "O governo propõe integrar escolas religiosas ao currículo nacional; líderes religiosos resistem.",
+  "context": "Educação e extremismo.",
+  "cond": {
+   "countries": [
+    "PAK"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Integrar com apoio financeiro.",
+    "hint": "Reduz o radicalismo.",
+    "now": {
+     "treasury": -0.2,
+     "education": 0.8
+    },
+    "groups": {
+     "rural": -1,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Reforçar escolas públicas.",
+    "hint": "Alternativa.",
+    "now": {
+     "treasury": -0.3,
+     "education": 1
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Deixar como está.",
+    "hint": "Paz com clérigos.",
+    "now": {},
+    "groups": {
+     "rural": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_pk_imf",
+  "cat": "Sul da Ásia",
+  "title": "Resgate do FMI e preços de combustíveis",
+  "desc": "Para fechar um acordo com o FMI, o governo precisa cortar subsídios e aumentar impostos.",
+  "context": "Crise de balanço de pagamentos.",
+  "cond": {
+   "countries": [
+    "PAK"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aceitar o ajuste.",
+    "hint": "Estabiliza.",
+    "now": {
+     "treasury": 0.4,
+     "inflation": 0.5
+    },
+    "groups": {
+     "workers": -4,
+     "business": 1
+    }
+   },
+   {
+    "text": "Negociar condições mais leves.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "workers": -1
+    }
+   },
+   {
+    "text": "Buscar crédito de aliados.",
+    "hint": "Alternativa.",
+    "now": {
+     "treasury": 0.3
+    },
+    "groups": {},
+    "rel": {
+     "china": 3,
+     "west": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_pk_cricket_star",
+  "cat": "Sul da Ásia",
+  "title": "Um astro do críquete na política",
+  "desc": "Um ex-capitão do time nacional lidera uma campanha anticorrupção popular, com jovens apaixonados e elite inquieta.",
+  "context": "Popularidade e poder.",
+  "cond": {
+   "countries": [
+    "PAK"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aproximar-se dele.",
+    "hint": "Absorve apoio.",
+    "now": {
+     "legitimacy": 1.5
+    },
+    "groups": {
+     "youth": 3,
+     "bureaucracy": -1
+    }
+   },
+   {
+    "text": "Investigar suas finanças.",
+    "hint": "Reação.",
+    "now": {
+     "corruption": -0.2
+    },
+    "groups": {
+     "youth": -3
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Neutro.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_bd_garment_minwage",
+  "cat": "Sul da Ásia",
+  "title": "Salário mínimo dos têxteis",
+  "desc": "Operários das confecções param as fábricas por um salário mínimo maior. Marcas globais ameaçam migrar para outros países.",
+  "context": "O setor responde por quase toda a exportação.",
+  "cond": {
+   "countries": [
+    "BGD"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aumento moderado.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "poverty": -0.2
+    },
+    "groups": {
+     "workers": 3,
+     "business": -1
+    }
+   },
+   {
+    "text": "Congelar para proteger o emprego.",
+    "hint": "Mantém marcas.",
+    "now": {
+     "poverty": 0.2
+    },
+    "groups": {
+     "workers": -4,
+     "business": 2
+    }
+   },
+   {
+    "text": "Aumento forte com ajuda às fábricas.",
+    "hint": "Caro.",
+    "now": {
+     "treasury": -0.3,
+     "poverty": -0.4
+    },
+    "groups": {
+     "workers": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_bd_sea_level",
+  "cat": "Sul da Ásia",
+  "title": "Cidades costeiras sob a água",
+  "desc": "O mar avança e salga a terra. Milhões migram para Daca, cada vez mais lotada.",
+  "context": "Primeiro país em risco climático.",
+  "cond": {
+   "countries": [
+    "BGD"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Programa de adaptação e relocação planejada.",
+    "hint": "Visão.",
+    "now": {
+     "treasury": -0.5,
+     "qol": 0.5
+    },
+    "groups": {
+     "rural": 2,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Exigir compensação climática internacional.",
+    "hint": "Diplomacia ativa.",
+    "now": {
+     "reputation": 1.5
+    },
+    "groups": {},
+    "rel": {
+     "west": 1
+    }
+   },
+   {
+    "text": "Deixar as pessoas migrarem.",
+    "hint": "Cidades colapsam.",
+    "now": {
+     "qol": -1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_bd_rohingya",
+  "cat": "Sul da Ásia",
+  "title": "Campos de refugiados em massa",
+  "desc": "Centenas de milhares de refugiados de um país vizinho vivem em campos precários na fronteira, e a tensão com a população local aumenta.",
+  "context": "Peso humanitário.",
+  "cond": {
+   "countries": [
+    "BGD"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Pedir apoio da ONU e promover educação.",
+    "hint": "Responsável.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 1.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Pressionar pelo retorno.",
+    "hint": "Duro.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "neighbors": -2
+    }
+   },
+   {
+    "text": "Reassentar em ilha.",
+    "hint": "Controverso.",
+    "now": {
+     "reputation": -1.5,
+     "treasury": -0.15
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_sa_small_neighbors",
+  "cat": "Sul da Ásia",
+  "title": "Entre dois gigantes",
+  "desc": "Seu país pequeno está entre duas potências asiáticas que oferecem empréstimos, obras e bases. Cada aceite incomoda o outro.",
+  "context": "O jogo da equidistância.",
+  "cond": {
+   "countries": [
+    "LKA",
+    "NPL",
+    "BTN",
+    "MDV"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aceitar obras de ambos.",
+    "hint": "Equilíbrio arriscado.",
+    "now": {
+     "treasury": 0.3,
+     "debt": 0.4
+    },
+    "groups": {
+     "business": 2
+    },
+    "rel": {
+     "china": 3,
+     "india": 3
+    }
+   },
+   {
+    "text": "Alinhar-se a uma potência.",
+    "hint": "Proteção e dependência.",
+    "now": {
+     "treasury": 0.3
+    },
+    "groups": {},
+    "rel": {
+     "china": 5,
+     "india": -4
+    }
+   },
+   {
+    "text": "Neutralidade rigorosa.",
+    "hint": "Sem benefícios.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_lk_tea_collapse",
+  "cat": "Sul da Ásia",
+  "title": "Crise de combustível e alimentos",
+  "desc": "Fila nos postos e prateleiras vazias após falta de divisas. A população exige a renúncia do governo.",
+  "context": "Colapso econômico no paraíso.",
+  "cond": {
+   "countries": [
+    "LKA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Pedir ajuda do FMI e reestruturar a dívida.",
+    "hint": "Caminho doloroso.",
+    "now": {
+     "treasury": 0.4,
+     "protest": 1
+    },
+    "groups": {
+     "workers": -3,
+     "business": 1
+    }
+   },
+   {
+    "text": "Empréstimos de parceiros.",
+    "hint": "Rápido.",
+    "now": {
+     "treasury": 0.3,
+     "debt": 0.5
+    },
+    "groups": {},
+    "rel": {
+     "china": 3,
+     "india": 2
+    }
+   },
+   {
+    "text": "Manter a política e reprimir.",
+    "hint": "Explosão.",
+    "now": {
+     "protest": 3,
+     "stability": -3
+    },
+    "groups": {
+     "workers": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_lk_postwar",
+  "cat": "Sul da Ásia",
+  "title": "Reconciliação após a guerra civil",
+  "desc": "Famílias de desaparecidos exigem verdade e justiça pelos crimes cometidos durante o conflito.",
+  "context": "Cicatrizes não curadas.",
+  "cond": {
+   "countries": [
+    "LKA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Comissão da verdade com apoio externo.",
+    "hint": "Reconhece o passado.",
+    "now": {
+     "civil": 1,
+     "reputation": 1.5
+    },
+    "groups": {
+     "regional": 3,
+     "military": -2
+    }
+   },
+   {
+    "text": "Desenvolvimento econômico no norte.",
+    "hint": "Pragmático.",
+    "now": {
+     "treasury": -0.25
+    },
+    "groups": {
+     "regional": 2
+    }
+   },
+   {
+    "text": "Silêncio oficial.",
+    "hint": "Ressentimento.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "regional": -3,
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_np_earthquake_himalaya",
+  "cat": "Sul da Ásia",
+  "title": "Terremoto e reconstrução",
+  "desc": "Anos depois de um grande sismo, milhares ainda vivem em abrigos temporários; doadores cobram prestação de contas.",
+  "context": "Reconstrução emperrada.",
+  "cond": {
+   "countries": [
+    "NPL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Agência independente de reconstrução.",
+    "hint": "Eficiência.",
+    "now": {
+     "treasury": -0.3,
+     "corruption": -0.5
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Distribuir subsídios por distrito.",
+    "hint": "Rápido e disperso.",
+    "now": {
+     "treasury": -0.25
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Aguardar mais doações.",
+    "hint": "Imóvel.",
+    "now": {},
+    "groups": {
+     "rural": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_np_hydro_export",
+  "cat": "Sul da Ásia",
+  "title": "Exportar hidreletricidade",
+  "desc": "O país tem enorme potencial de energia hidrelétrica e pode vender aos vizinhos, que disputam o controle dos contratos.",
+  "context": "Água que vira dinheiro.",
+  "cond": {
+   "countries": [
+    "NPL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Contratos de longo prazo com ambos os vizinhos.",
+    "hint": "Diplomacia e renda.",
+    "now": {
+     "treasury": 0.4
+    },
+    "groups": {
+     "business": 2
+    },
+    "rel": {
+     "neighbors": 1
+    }
+   },
+   {
+    "text": "Foco no mercado interno.",
+    "hint": "Soberania.",
+    "now": {
+     "qol": 0.3
+    },
+    "groups": {
+     "workers": 1
+    }
+   },
+   {
+    "text": "Parceria com investidor externo.",
+    "hint": "Rápido.",
+    "now": {
+     "treasury": 0.3,
+     "debt": 0.2
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_bt_happiness",
+  "cat": "Sul da Ásia",
+  "title": "Felicidade nacional bruta",
+  "desc": "Economistas pedem metas mais claras para o índice de felicidade, que guia as políticas e atrai turistas.",
+  "context": "Identidade de Estado.",
+  "cond": {
+   "countries": [
+    "BTN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Transformar em política de Estado com metas.",
+    "hint": "Marca e rumo.",
+    "now": {
+     "qol": 0.5,
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Manter como símbolo.",
+    "hint": "Sem custos.",
+    "now": {},
+    "groups": {}
+   },
+   {
+    "text": "Substituir por PIB.",
+    "hint": "Perde identidade.",
+    "now": {
+     "growth": 0.1,
+     "reputation": -0.5
+    },
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ }
+]

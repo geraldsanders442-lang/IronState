@@ -1,0 +1,2794 @@
+[
+ {
+  "id": "id_party_congress",
+  "cat": "Ideologia e regime",
+  "title": "O Congresso do Partido",
+  "desc": "Delegados de todo o país chegam a {capital} para o Congresso do Partido. A ala de {person} quer \"aprofundar a revolução\"; a de {person2}, reformas de mercado.",
+  "context": "A linha decidida aqui vale por cinco anos.",
+  "cond": {
+   "max": {
+    "ax_econ": -30
+   }
+  },
+  "w": 1.4,
+  "cd": 700,
+  "options": [
+   {
+    "text": "Linha dura: mais planejamento e disciplina.",
+    "hint": "Coesão ideológica; economia rígida.",
+    "groups": {
+     "workers": 3,
+     "business": -6
+    },
+    "long": [
+     {
+      "k": "market",
+      "v": -6,
+      "d": 0
+     },
+     {
+      "k": "control",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Reforma e abertura, à moda chinesa.",
+    "hint": "Crescimento; desigualdade e corrupção.",
+    "groups": {
+     "business": 6
+    },
+    "long": [
+     {
+      "k": "market",
+      "v": 8,
+      "d": 0
+     },
+     {
+      "k": "inequality",
+      "v": 3,
+      "d": 0
+     }
+    ],
+    "act": {
+     "type": "program",
+     "id": "fdi"
+    }
+   },
+   {
+    "text": "Expurgar as duas alas e governar acima delas.",
+    "hint": "Poder pessoal; medo no partido.",
+    "now": {
+     "political": -4
+    },
+    "groups": {
+     "bureaucracy": -5
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": -3,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "id_kolkhoz",
+  "cat": "Ideologia e regime",
+  "title": "Coletivizar o campo?",
+  "desc": "Planejadores propõem fundir as pequenas propriedades em fazendas coletivas mecanizadas.",
+  "context": "A história da coletivização tem capítulos terríveis.",
+  "cond": {
+   "max": {
+    "ax_econ": -30
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Coletivização total e rápida.",
+    "hint": "Controle estatal; queda na produção e revolta rural.",
+    "now": {
+     "protest": 5
+    },
+    "groups": {
+     "rural": -12,
+     "workers": 2
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": -1.5,
+      "d": 730
+     },
+     {
+      "k": "market",
+      "v": -8,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Cooperativas voluntárias com crédito barato.",
+    "hint": "Lento e aceito.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "rural": 4
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Deixar o campo como está.",
+    "hint": "Sem conflito."
+   }
+  ]
+ },
+ {
+  "id": "id_black_market",
+  "cat": "Economia",
+  "title": "O mercado negro floresce",
+  "desc": "Filas nos armazéns estatais; nos fundos dos prédios, tudo se vende em moeda estrangeira.",
+  "context": "O plano não chega às prateleiras.",
+  "cond": {
+   "max": {
+    "market": 35
+   }
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Legalizar pequenos negócios privados.",
+    "hint": "Abastecimento melhora; ideólogos protestam.",
+    "groups": {
+     "business": 4,
+     "bureaucracy": -3
+    },
+    "long": [
+     {
+      "k": "market",
+      "v": 5,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": 0.4,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Repressão aos especuladores.",
+    "hint": "Prisões; o mercado negro fica mais caro.",
+    "now": {
+     "civil": -2,
+     "control": 2
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Aumentar as importações de bens de consumo.",
+    "hint": "Prateleiras cheias; reservas caem.",
+    "now": {
+     "reserves": -0.8,
+     "protest": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_dissident_writer",
+  "cat": "Ideologia e regime",
+  "title": "O romance proibido",
+  "desc": "Um romance de {person}, que retrata os campos de trabalho, circula em cópias datilografadas e foi publicado no exterior.",
+  "context": "Censurar ou tolerar?",
+  "cond": {
+   "max": {
+    "political": 35
+   }
+  },
+  "options": [
+   {
+    "text": "Exilar o autor.",
+    "hint": "Silencia aqui; vira celebridade lá fora.",
+    "now": {
+     "reputation": -3,
+     "political": -1
+    }
+   },
+   {
+    "text": "Publicar o livro oficialmente com cortes.",
+    "hint": "Gesto de abertura.",
+    "now": {
+     "political": 3,
+     "reputation": 2
+    },
+    "groups": {
+     "opposition": 3,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Prender o autor e quem tiver cópias.",
+    "hint": "Medo; mártir literário.",
+    "now": {
+     "civil": -4,
+     "reputation": -5
+    },
+    "groups": {
+     "youth": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_personality_cult",
+  "cat": "Ideologia e regime",
+  "title": "Retratos em toda parte",
+  "desc": "O Departamento de Propaganda quer retratos de {leader} em todas as salas de aula, fábricas e quartéis.",
+  "context": "O culto ao líder une — e sufoca.",
+  "cond": {
+   "min": {
+    "ax_auth": 40
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Aprovar o culto oficial.",
+    "hint": "Propaganda forte; ridículo externo.",
+    "now": {
+     "reputation": -3
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 4,
+      "d": 0
+     },
+     {
+      "k": "legitimacy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Só nos prédios oficiais.",
+    "hint": "Moderado.",
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Proibir o culto à personalidade.",
+    "hint": "Gesto de modéstia.",
+    "now": {
+     "reputation": 2
+    },
+    "groups": {
+     "bureaucracy": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_internationalism",
+  "cat": "Ideologia e regime",
+  "title": "Exportar a revolução?",
+  "desc": "Partidos irmãos em outros países pedem armas e dinheiro. O comitê internacional quer uma linha clara.",
+  "context": "Solidariedade internacional ou socialismo num só país?",
+  "cond": {
+   "max": {
+    "ax_econ": -30
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Financiar partidos irmãos em todo o mundo.",
+    "hint": "Influência ideológica; ira das potências.",
+    "now": {
+     "treasury": -0.4,
+     "influence": 3
+    },
+    "rel": {
+     "west": -6,
+     "east": 3
+    }
+   },
+   {
+    "text": "Socialismo num só país: primeiro nós.",
+    "hint": "Foco interno.",
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Apoiar só movimentos nos vizinhos.",
+    "hint": "Esfera regional.",
+    "now": {
+     "influence": 2
+    },
+    "rel": {
+     "neighbors": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_gulag",
+  "cat": "Ideologia e regime",
+  "title": "Os campos de reeducação",
+  "desc": "Relatórios internos mostram superlotação e mortes nos campos de \"reeducação\" de presos políticos.",
+  "context": "Um segredo que pode explodir.",
+  "cond": {
+   "max": {
+    "civil": 25
+   }
+  },
+  "w": 1.2,
+  "options": [
+   {
+    "text": "Fechar os campos e anistiar os presos.",
+    "hint": "Alívio; os libertos falarão.",
+    "now": {
+     "civil": 6,
+     "political": 4,
+     "reputation": 4
+    },
+    "groups": {
+     "opposition": 8,
+     "bureaucracy": -4
+    }
+   },
+   {
+    "text": "Melhorar as condições, manter os campos.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": -0.1,
+     "civil": 1
+    }
+   },
+   {
+    "text": "Ampliar os campos.",
+    "hint": "Mais repressão; se vazar, isolamento.",
+    "now": {
+     "civil": -5,
+     "reputation": -6
+    },
+    "long": [
+     {
+      "k": "opposition",
+      "v": -4,
+      "d": 365
+     },
+     {
+      "k": "revoRisk",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "id_greater_nation",
+  "cat": "Ideologia e regime",
+  "title": "O mapa da Grande {nation}",
+  "desc": "Livros escolares novos trazem o mapa da \"Grande {nation}\", incluindo terras hoje em {nb}.",
+  "context": "Mapas são declarações de intenção.",
+  "tpl": {
+   "nb": "any"
+  },
+  "cond": {
+   "min": {
+    "ax_nation": 35,
+    "ax_auth": 20
+   }
+  },
+  "w": 1.5,
+  "options": [
+   {
+    "text": "Adotar o mapa oficialmente.",
+    "hint": "Nacionalistas vibram; {nb} se alarma.",
+    "now": {
+     "legitimacy": 2
+    },
+    "groups": {
+     "military": 4
+    },
+    "rel": {
+     "$nb": -15
+    },
+    "flags": {
+     "set": [
+      "casusBelli"
+     ]
+    }
+   },
+   {
+    "text": "Mapa só nos livros de história.",
+    "hint": "Ambíguo.",
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Recolher os livros.",
+    "hint": "Prudência diplomática; nacionalistas furiosos.",
+    "groups": {
+     "military": -3
+    },
+    "rel": {
+     "$nb": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_paramilitary_youth",
+  "cat": "Ideologia e regime",
+  "title": "A juventude uniformizada",
+  "desc": "O movimento nacional quer criar uma organização juvenil paramilitar obrigatória, com acampamentos e treinamento.",
+  "context": "Disciplina ou doutrinação?",
+  "cond": {
+   "min": {
+    "ax_nation": 35,
+    "ax_auth": 20
+   }
+  },
+  "options": [
+   {
+    "text": "Criar a organização obrigatória.",
+    "hint": "Reservas treinadas; jovens perdem liberdade.",
+    "now": {
+     "troops": 5,
+     "civil": -4
+    },
+    "groups": {
+     "youth": -6,
+     "military": 6
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Escotismo patriótico voluntário.",
+    "hint": "Leve.",
+    "groups": {
+     "youth": 1
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Não.",
+    "hint": "Liberdade.",
+    "groups": {
+     "military": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_corporatism",
+  "cat": "Ideologia e regime",
+  "title": "O Estado corporativo",
+  "desc": "Ideólogos do regime propõem substituir sindicatos e associações patronais por \"corporações\" que unam patrões e operários sob tutela do Estado.",
+  "context": "Fim da luta de classes — por decreto.",
+  "cond": {
+   "min": {
+    "ax_auth": 30
+   },
+   "max": {
+    "ax_econ": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Implantar o corporativismo.",
+    "hint": "Controle e paz trabalhista forçada.",
+    "now": {
+     "control": 3,
+     "political": -3
+    },
+    "groups": {
+     "workers": -6,
+     "business": 2
+    },
+    "policy": {
+     "unions": "controlled"
+    }
+   },
+   {
+    "text": "Conselhos tripartites consultivos.",
+    "hint": "Diálogo social.",
+    "groups": {
+     "workers": 2,
+     "business": 2
+    }
+   },
+   {
+    "text": "Manter sindicatos livres.",
+    "hint": "Pluralismo.",
+    "groups": {
+     "workers": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_militia_squads",
+  "cat": "Ideologia e regime",
+  "title": "As milícias do movimento",
+  "desc": "Grupos de camisas-pretas ligados ao partido governista espancam opositores e quebram jornais. A polícia assiste.",
+  "context": "Força de choque útil — ou ameaça ao próprio governo?",
+  "cond": {
+   "min": {
+    "ax_nation": 35,
+    "ax_auth": 20
+   }
+  },
+  "w": 1.3,
+  "options": [
+   {
+    "text": "Integrá-las ao Estado como milícia oficial.",
+    "hint": "Mais força; abusos e um poder paralelo.",
+    "now": {
+     "control": 4,
+     "civil": -5,
+     "reputation": -5
+    },
+    "groups": {
+     "opposition": -8
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Dissolver as milícias.",
+    "hint": "Estado de direito; base radical traída.",
+    "now": {
+     "civil": 3
+    },
+    "groups": {
+     "military": 2
+    },
+    "long": [
+     {
+      "k": "protest",
+      "v": 3,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Tolerar em silêncio.",
+    "hint": "Medo difuso.",
+    "now": {
+     "political": -3
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "id_minority_laws",
+  "cat": "Ideologia e regime",
+  "title": "Leis contra a minoria",
+  "desc": "Deputados nacionalistas propõem proibir a minoria étnica de ocupar cargos públicos e possuir terras.",
+  "context": "Medidas assim já levaram países ao abismo.",
+  "cond": {
+   "min": {
+    "ax_nation": 50,
+    "separatism": 10
+   }
+  },
+  "w": 0.8,
+  "options": [
+   {
+    "text": "Rejeitar e defender a igualdade.",
+    "hint": "Coesão e imagem; nacionalistas irritados.",
+    "now": {
+     "civil": 2,
+     "reputation": 3
+    },
+    "groups": {
+     "regional": 3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Versão \"moderada\": cotas para a maioria.",
+    "hint": "Discriminação parcial.",
+    "now": {
+     "civil": -3,
+     "reputation": -3
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 4,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Aprovar as leis.",
+    "hint": "Perseguição: separatismo, fuga e sanções.",
+    "now": {
+     "civil": -8,
+     "reputation": -10
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 10,
+      "d": 0
+     },
+     {
+      "k": "emigration",
+      "v": 2,
+      "d": 730
+     }
+    ],
+    "rel": {
+     "west": -10
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_irredentist_rally",
+  "cat": "Ideologia e regime",
+  "title": "Comício irredentista",
+  "desc": "Cem mil pessoas marcham em {capital} exigindo \"a volta\" de {targetProv}, hoje em {target}.",
+  "context": "A rua cobra o governo.",
+  "tpl": {
+   "target": "any"
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Discursar no comício.",
+    "hint": "Popularidade; {target} se arma.",
+    "now": {
+     "legitimacy": 4
+    },
+    "groups": {
+     "military": 4
+    },
+    "rel": {
+     "$target": -12
+    }
+   },
+   {
+    "text": "Prometer negociações.",
+    "hint": "Acalma.",
+    "now": {
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Proibir o comício.",
+    "hint": "Ordem; nacionalistas acusam traição.",
+    "now": {
+     "legitimacy": -3,
+     "civil": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_foreign_ngos",
+  "cat": "Política interna",
+  "title": "Agentes estrangeiros?",
+  "desc": "O governo propõe que ONGs com financiamento externo se registrem como \"agentes estrangeiros\".",
+  "context": "Proteção da soberania ou mordaça?",
+  "cond": {
+   "max": {
+    "political": 60
+   }
+  },
+  "options": [
+   {
+    "text": "Aprovar a lei.",
+    "hint": "Controle; doadores fogem.",
+    "now": {
+     "political": -4,
+     "reputation": -3
+    },
+    "long": [
+     {
+      "k": "aid",
+      "v": -1,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "west": -4
+    }
+   },
+   {
+    "text": "Exigir só transparência contábil.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "corruption": -1
+    }
+   },
+   {
+    "text": "Arquivar.",
+    "hint": "Sociedade civil livre.",
+    "now": {
+     "political": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_restore_monarchy",
+  "cat": "Ideologia e regime",
+  "title": "Restaurar a monarquia?",
+  "desc": "O herdeiro da antiga casa real, {person}, volta do exílio e é recebido por multidões. Monarquistas pedem plebiscito.",
+  "context": "Uma coroa pode unir — ou dividir.",
+  "cond": {
+   "min": {
+    "ax_trad": 30
+   }
+  },
+  "w": 0.7,
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Plebiscito sobre a monarquia constitucional.",
+    "hint": "Legitimidade simbólica; republicanos reagem.",
+    "now": {
+     "legitimacy": 3,
+     "political": 2
+    },
+    "groups": {
+     "rural": 4,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Dar ao herdeiro um papel cerimonial.",
+    "hint": "Simpatia sem riscos.",
+    "now": {
+     "stability": 1
+    }
+   },
+   {
+    "text": "Expulsá-lo do país.",
+    "hint": "A república não se discute.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "rural": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_theocracy_council",
+  "cat": "Ideologia e regime",
+  "title": "Conselho dos clérigos",
+  "desc": "Líderes religiosos propõem um conselho com poder de veto sobre leis \"contrárias à fé\".",
+  "context": "Deus no parlamento.",
+  "cond": {
+   "min": {
+    "ax_relig": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Criar o conselho com veto.",
+    "hint": "Religiosos fiéis; liberdade cai.",
+    "now": {
+     "civil": -5,
+     "political": -3
+    },
+    "groups": {
+     "rural": 8,
+     "youth": -6
+    },
+    "policy": {
+     "religion": "state"
+    }
+   },
+   {
+    "text": "Conselho apenas consultivo.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Laicidade.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "rural": -5
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_filibuster",
+  "cat": "Política interna",
+  "title": "Obstrução no parlamento",
+  "desc": "A oposição obstrui há seis semanas o orçamento com discursos de 20 horas.",
+  "context": "A democracia emperrada.",
+  "cond": {
+   "min": {
+    "political": 50
+   }
+  },
+  "options": [
+   {
+    "text": "Negociar emendas com a oposição.",
+    "hint": "Aprova com concessões.",
+    "now": {
+     "treasury": -0.2,
+     "political": 1
+    },
+    "groups": {
+     "opposition": 4
+    }
+   },
+   {
+    "text": "Mudar o regimento e acabar com a obstrução.",
+    "hint": "Rápido; precedente perigoso.",
+    "now": {
+     "political": -2
+    },
+    "groups": {
+     "opposition": -5
+    }
+   },
+   {
+    "text": "Governar por medida provisória.",
+    "hint": "Eficaz; abuso.",
+    "now": {
+     "political": -3,
+     "legitimacy": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_lobby_scandal",
+  "cat": "Política interna",
+  "title": "O lobby das armas",
+  "desc": "Vazamentos mostram que fabricantes de armas financiaram metade dos deputados da comissão de Defesa.",
+  "context": "O dinheiro fala alto.",
+  "cond": {
+   "min": {
+    "political": 50
+   }
+  },
+  "options": [
+   {
+    "text": "Proibir doações de empresas a campanhas.",
+    "hint": "Limpeza; partidos sem caixa.",
+    "now": {
+     "corruption": -3
+    },
+    "groups": {
+     "business": -4
+    }
+   },
+   {
+    "text": "Abrir CPI.",
+    "hint": "Transparência; paralisa o Congresso.",
+    "now": {
+     "political": 2,
+     "stability": -1
+    }
+   },
+   {
+    "text": "Abafar.",
+    "hint": "Silêncio.",
+    "long": [
+     {
+      "k": "corruption",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "id_referendum_mania",
+  "cat": "Política interna",
+  "title": "Plebiscitos para tudo?",
+  "desc": "Um movimento quer que toda lei importante passe por consulta popular.",
+  "context": "Democracia direta ou paralisia?",
+  "cond": {
+   "min": {
+    "political": 50
+   }
+  },
+  "options": [
+   {
+    "text": "Plebiscitos obrigatórios para emendas constitucionais.",
+    "hint": "Legitimidade; governo amarrado.",
+    "now": {
+     "political": 4,
+     "legitimacy": 3
+    },
+    "long": [
+     {
+      "k": "efficiency",
+      "v": -2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Democracia representativa.",
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "id_euthanasia",
+  "cat": "Sociedade",
+  "title": "Morte assistida",
+  "desc": "Um caso comove o país: {person}, paralisado, pede o direito de morrer com assistência médica.",
+  "context": "Dignidade ou santidade da vida?",
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Legalizar com salvaguardas.",
+    "hint": "Liberais apoiam; religiosos protestam.",
+    "now": {
+     "civil": 3
+    },
+    "groups": {
+     "rural": -5,
+     "youth": 4
+    }
+   },
+   {
+    "text": "Manter proibido.",
+    "hint": "Tradição.",
+    "groups": {
+     "rural": 3,
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ec_crypto",
+  "cat": "Economia",
+  "title": "Moeda digital como moeda oficial?",
+  "desc": "Um empresário propõe adotar uma criptomoeda como moeda legal, como \"farol da inovação\".",
+  "context": "Inovação ou cassino nacional?",
+  "cond": {
+   "min": {
+    "tech": 35
+   }
+  },
+  "options": [
+   {
+    "text": "Adotar como moeda paralela.",
+    "hint": "Investidores de risco chegam; FMI furioso.",
+    "now": {
+     "reputation": -3
+    },
+    "groups": {
+     "youth": 4
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": 1,
+      "d": 365
+     },
+     {
+      "k": "tech",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Criar uma moeda digital do banco central.",
+    "hint": "Controle e eficiência.",
+    "now": {
+     "civil": -1
+    },
+    "long": [
+     {
+      "k": "taxCapacity",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Proibir criptomoedas.",
+    "hint": "Estabilidade.",
+    "groups": {
+     "youth": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "ec_rare_earths",
+  "cat": "Economia",
+  "title": "Terras raras descobertas",
+  "desc": "Geólogos encontram uma das maiores jazidas de terras raras do mundo na {region}. {power} já oferece parceria.",
+  "context": "O mineral do século XXI.",
+  "tpl": {
+   "power": "any",
+   "region": "any"
+  },
+  "w": 0.6,
+  "cd": 2000,
+  "options": [
+   {
+    "text": "Estatal de mineração nacional.",
+    "hint": "Renda e controle; lento.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "workers": 3
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.4,
+      "d": 0
+     },
+     {
+      "k": "s_raw",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Concessão a {power}.",
+    "hint": "Dinheiro rápido; dependência.",
+    "now": {
+     "treasury": 1.5
+    },
+    "long": [
+     {
+      "k": "s_raw",
+      "v": 1,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 15
+    }
+   },
+   {
+    "text": "Leilão internacional aberto.",
+    "hint": "Melhor preço; disputa entre potências.",
+    "now": {
+     "treasury": 1
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.2,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "all": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "ec_strike_general",
+  "cat": "Economia",
+  "title": "Greve geral",
+  "desc": "As centrais sindicais param o país contra a reforma da previdência.",
+  "context": "Tudo parado: portos, fábricas, ônibus.",
+  "cond": {
+   "min": {
+    "protest": 30
+   },
+   "max": {
+    "g_workers": 50
+   }
+  },
+  "options": [
+   {
+    "text": "Recuar da reforma.",
+    "hint": "Paz social; contas pioram.",
+    "now": {
+     "protest": -6
+    },
+    "groups": {
+     "workers": 6
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": -0.2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Negociar uma versão suave.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Decretar a greve ilegal.",
+    "hint": "Confronto aberto.",
+    "now": {
+     "civil": -3,
+     "protest": 4
+    },
+    "groups": {
+     "workers": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "ec_automation_port",
+  "cat": "Economia",
+  "title": "Porto automatizado",
+  "desc": "Uma empresa estrangeira quer automatizar o maior porto do país: eficiência dobrada, 8 mil estivadores demitidos.",
+  "context": "Progresso tem vítimas.",
+  "cond": {
+   "coast": true
+  },
+  "options": [
+   {
+    "text": "Aprovar.",
+    "hint": "Comércio e eficiência; desemprego local.",
+    "groups": {
+     "workers": -5,
+     "business": 4
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.04,
+      "d": 0
+     },
+     {
+      "k": "unemployment",
+      "v": 0.4,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Aprovar com requalificação obrigatória.",
+    "hint": "Equilíbrio caro.",
+    "now": {
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.03,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Vetar.",
+    "hint": "Empregos preservados.",
+    "groups": {
+     "workers": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "ec_tourism_boom",
+  "cat": "Economia",
+  "title": "Turismo de massa",
+  "desc": "Navios de cruzeiro despejam 20 mil turistas por dia na cidade histórica. Moradores não conseguem mais pagar aluguel.",
+  "context": "Dinheiro que expulsa.",
+  "cond": {
+   "coast": true,
+   "min": {
+    "stability": 50
+   }
+  },
+  "options": [
+   {
+    "text": "Taxa turística e limite de navios.",
+    "hint": "Equilíbrio.",
+    "groups": {
+     "business": -2
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.05,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Deixar o turismo crescer.",
+    "hint": "Crescimento; moradores revoltados.",
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.2,
+      "d": 365
+     },
+     {
+      "k": "housing",
+      "v": -2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ec_brain_return",
+  "cat": "Economia",
+  "title": "Diáspora quer voltar",
+  "desc": "Milhares de emigrantes qualificados dizem que voltariam com incentivos fiscais.",
+  "context": "Recuperar quem partiu.",
+  "cond": {
+   "min": {
+    "stability": 45
+   }
+  },
+  "options": [
+   {
+    "text": "Isenção fiscal de 5 anos para quem voltar.",
+    "hint": "Talentos voltam; quem ficou reclama.",
+    "long": [
+     {
+      "k": "migration",
+      "v": 1,
+      "d": 730
+     },
+     {
+      "k": "tech",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "revenue",
+      "v": -0.05,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Não.",
+    "hint": "Sem custo."
+   }
+  ]
+ },
+ {
+  "id": "ec_sovereign_fund",
+  "cat": "Economia",
+  "title": "Fundo soberano",
+  "desc": "Com o superávit, economistas propõem um fundo soberano para as gerações futuras.",
+  "context": "Poupar ou gastar?",
+  "cond": {
+   "min": {
+    "treasuryRatio": 4
+   }
+  },
+  "options": [
+   {
+    "text": "Criar o fundo.",
+    "hint": "Reservas e credibilidade.",
+    "now": {
+     "treasury": -1,
+     "reserves": 1
+    },
+    "long": [
+     {
+      "k": "creditLimit",
+      "v": 0.1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Gastar em obras e programas sociais.",
+    "hint": "Popular.",
+    "now": {
+     "treasury": -1
+    },
+    "groups": {
+     "workers": 4,
+     "regional": 4
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Reduzir impostos.",
+    "hint": "Empresários felizes.",
+    "groups": {
+     "business": 6
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": -0.3,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": 0.3,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ec_food_prices",
+  "cat": "Economia",
+  "title": "O preço do pão",
+  "desc": "O preço do pão subiu 40% em três meses. Padarias fecham e há filas.",
+  "context": "O pão é o termômetro político.",
+  "cond": {
+   "min": {
+    "inflation": 8
+   }
+  },
+  "options": [
+   {
+    "text": "Subsidiar o trigo.",
+    "hint": "Preço estável; custo alto.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 4,
+     "rural": 2
+    },
+    "long": [
+     {
+      "k": "inflation",
+      "v": -0.5,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Tabelar o preço.",
+    "hint": "Alívio; desabastecimento.",
+    "groups": {
+     "business": -4
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": -0.4,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Deixar o mercado agir.",
+    "hint": "Revolta popular possível.",
+    "now": {
+     "protest": 6
+    },
+    "groups": {
+     "workers": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "cu_flag_protest",
+  "cat": "Cultura e símbolos",
+  "title": "Protestos contra a bandeira",
+  "desc": "A nova bandeira nacional, com seus símbolos sombrios, provoca protestos de estudantes e críticas na imprensa estrangeira.",
+  "context": "Símbolos importam.",
+  "cond": {
+   "flag": "heavyFlag"
+  },
+  "w": 2,
+  "options": [
+   {
+    "text": "Manter a bandeira com orgulho.",
+    "hint": "A base adora; o mundo torce o nariz.",
+    "now": {
+     "reputation": -2,
+     "legitimacy": 1
+    },
+    "groups": {
+     "military": 3,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Criar uma versão \"civil\" mais neutra.",
+    "hint": "Meio-termo.",
+    "now": {
+     "reputation": 1
+    },
+    "flags": {
+     "clear": [
+      "heavyFlag"
+     ]
+    }
+   },
+   {
+    "text": "Prender quem queimar a bandeira.",
+    "hint": "Respeito pela força.",
+    "now": {
+     "civil": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "cu_anthem",
+  "cat": "Cultura e símbolos",
+  "title": "Um novo hino",
+  "desc": "Compositores disputam o novo hino nacional. Os finalistas: uma marcha militar e uma canção folclórica.",
+  "context": "O som de uma nação.",
+  "w": 0.6,
+  "cd": 2000,
+  "options": [
+   {
+    "text": "A marcha militar.",
+    "hint": "Disciplina e orgulho.",
+    "now": {
+     "legitimacy": 1
+    },
+    "groups": {
+     "military": 4,
+     "youth": -1
+    }
+   },
+   {
+    "text": "A canção folclórica.",
+    "hint": "Raízes e unidade.",
+    "groups": {
+     "rural": 4,
+     "regional": 2
+    }
+   },
+   {
+    "text": "Manter o hino antigo.",
+    "hint": "Tradição."
+   }
+  ]
+ },
+ {
+  "id": "cu_statue_fall",
+  "cat": "Cultura e símbolos",
+  "title": "A estátua do ditador",
+  "desc": "Manifestantes derrubaram a estátua de um antigo ditador em praça pública. Veteranos e saudosistas exigem punição.",
+  "context": "A memória está em disputa.",
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Remover todas as estátuas para um museu.",
+    "hint": "Reconciliação crítica.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "youth": 4,
+     "military": -3
+    }
+   },
+   {
+    "text": "Reerguer a estátua e punir os vândalos.",
+    "hint": "Ordem e tradição.",
+    "now": {
+     "civil": -2
+    },
+    "groups": {
+     "military": 3,
+     "youth": -5
+    }
+   },
+   {
+    "text": "Deixar o pedestal vazio.",
+    "hint": "Ambiguidade."
+   }
+  ]
+ },
+ {
+  "id": "cu_history_war",
+  "cat": "Cultura e símbolos",
+  "title": "Guerra de memórias com {nb}",
+  "desc": "Historiadores de {nb} acusam nosso país de um massacre no século passado. Nossos livros contam outra história.",
+  "context": "O passado não passa.",
+  "tpl": {
+   "nb": "any"
+  },
+  "options": [
+   {
+    "text": "Comissão conjunta de historiadores.",
+    "hint": "Reconciliação.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "$nb": 8
+    }
+   },
+   {
+    "text": "Negar categoricamente.",
+    "hint": "Orgulho; {nb} se ofende.",
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "$nb": -10
+    }
+   },
+   {
+    "text": "Pedido oficial de desculpas.",
+    "hint": "Grande gesto; nacionalistas furiosos.",
+    "now": {
+     "legitimacy": -2
+    },
+    "groups": {
+     "military": -5
+    },
+    "rel": {
+     "$nb": 18,
+     "all": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "cu_language_media",
+  "cat": "Cultura e símbolos",
+  "title": "Cotas de música nacional",
+  "desc": "Artistas pedem que rádios toquem 50% de música nacional.",
+  "context": "Proteção cultural ou censura de mercado?",
+  "w": 0.6,
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Cota de 50%.",
+    "hint": "Indústria cultural agradece.",
+    "groups": {
+     "youth": -2
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": 0.02,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Incentivos fiscais à produção nacional.",
+    "hint": "Sem imposição.",
+    "now": {
+     "treasury": -0.1
+    }
+   },
+   {
+    "text": "Mercado livre.",
+    "hint": "Liberdade."
+   }
+  ]
+ },
+ {
+  "id": "cu_olympics",
+  "cat": "Cultura e símbolos",
+  "title": "Sediar as Olimpíadas?",
+  "desc": "O comitê olímpico sugere que {capital} se candidate aos Jogos.",
+  "context": "Prestígio global — e elefantes brancos.",
+  "cond": {
+   "min": {
+    "stability": 55
+   }
+  },
+  "w": 0.5,
+  "cd": 3000,
+  "options": [
+   {
+    "text": "Candidatura ambiciosa.",
+    "hint": "Prestígio e obras; dívidas.",
+    "now": {
+     "treasury": -1,
+     "reputation": 4
+    },
+    "long": [
+     {
+      "k": "logistics",
+      "v": 2,
+      "d": 0
+     },
+     {
+      "k": "growth",
+      "v": 0.2,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Não.",
+    "hint": "Prudência."
+   }
+  ]
+ },
+ {
+  "id": "cu_film_banned",
+  "cat": "Cultura e símbolos",
+  "title": "Filme proibido",
+  "desc": "Um filme premiado no exterior mostra a corrupção na polícia. O Ministério da Cultura quer proibi-lo.",
+  "context": "Arte incomoda.",
+  "cond": {
+   "min": {
+    "corruption": 35
+   }
+  },
+  "options": [
+   {
+    "text": "Liberar o filme.",
+    "hint": "Liberdade.",
+    "now": {
+     "political": 2
+    },
+    "groups": {
+     "youth": 3,
+     "bureaucracy": -2
+    }
+   },
+   {
+    "text": "Proibir.",
+    "hint": "Censura; o filme vira cult clandestino.",
+    "now": {
+     "political": -3
+    },
+    "groups": {
+     "youth": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "wo_nb_coup_plea",
+  "cat": "Mundo",
+  "title": "{nb} pede ajuda contra golpistas",
+  "desc": "O governo de {nb}, nosso amigo, enfrenta uma rebelião militar e pede tropas.",
+  "context": "Intervir pode salvar um aliado — ou criar um atoleiro.",
+  "tpl": {
+   "nb": "friendly"
+  },
+  "options": [
+   {
+    "text": "Enviar tropas.",
+    "hint": "Aliado salvo; risco e custo.",
+    "now": {
+     "treasury": -0.5,
+     "readiness": -3
+    },
+    "rel": {
+     "$nb": 20
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 15
+    }
+   },
+   {
+    "text": "Enviar armas e assessores.",
+    "hint": "Ajuda indireta.",
+    "now": {
+     "treasury": -0.2
+    },
+    "rel": {
+     "$nb": 8
+    }
+   },
+   {
+    "text": "Ficar de fora.",
+    "hint": "Neutralidade.",
+    "rel": {
+     "$nb": -8
+    }
+   }
+  ]
+ },
+ {
+  "id": "wo_nb_border_wall",
+  "cat": "Mundo",
+  "title": "{nb} constrói um muro",
+  "desc": "{nb} começou a erguer um muro na fronteira com {nation} \"contra contrabando e imigração\".",
+  "context": "Muros separam famílias e mercados.",
+  "tpl": {
+   "nb": "any"
+  },
+  "options": [
+   {
+    "text": "Protestar formalmente.",
+    "hint": "Diplomacia.",
+    "rel": {
+     "$nb": -4
+    }
+   },
+   {
+    "text": "Construir o nosso muro também.",
+    "hint": "Reciprocidade.",
+    "now": {
+     "treasury": -0.4,
+     "control": 2
+    },
+    "rel": {
+     "$nb": -6
+    }
+   },
+   {
+    "text": "Negociar passagens livres para moradores da fronteira.",
+    "hint": "Solução prática.",
+    "groups": {
+     "regional": 3
+    },
+    "rel": {
+     "$nb": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "wo_nb_election_rig",
+  "cat": "Mundo",
+  "title": "Fraude eleitoral em {nb}",
+  "desc": "Observadores denunciam fraude escancarada em {nb}. A oposição de lá pede reconhecimento de vitória.",
+  "context": "Quem reconhecer quem?",
+  "tpl": {
+   "nb": "autocracy"
+  },
+  "options": [
+   {
+    "text": "Reconhecer a oposição como governo legítimo.",
+    "hint": "Rompe com o regime de {nb}.",
+    "rel": {
+     "$nb": -20,
+     "west": 3
+    },
+    "act": {
+     "type": "covertBoost",
+     "id": "$nb",
+     "party": 20
+    }
+   },
+   {
+    "text": "Pedir recontagem.",
+    "hint": "Equilíbrio.",
+    "rel": {
+     "$nb": -3
+    }
+   },
+   {
+    "text": "Parabenizar o governo reeleito.",
+    "hint": "Pragmatismo.",
+    "rel": {
+     "$nb": 8,
+     "west": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "wo_power_tech_war",
+  "cat": "Mundo",
+  "title": "Guerra tecnológica",
+  "desc": "{power} exige que banamos equipamentos de telecomunicação de seu rival, sob ameaça de cortar chips e softwares.",
+  "context": "Escolher fornecedores é escolher lados.",
+  "tpl": {
+   "power": "any"
+  },
+  "cond": {
+   "min": {
+    "tech": 30
+   }
+  },
+  "options": [
+   {
+    "text": "Banir os equipamentos.",
+    "hint": "Agrada {power}; rede mais cara.",
+    "now": {
+     "treasury": -0.3
+    },
+    "rel": {
+     "$power": 10,
+     "east": -5
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Rede barata; retaliação de {power}.",
+    "long": [
+     {
+      "k": "tech",
+      "v": -1,
+      "d": 365
+     }
+    ],
+    "rel": {
+     "$power": -10
+    }
+   },
+   {
+    "text": "Desenvolver tecnologia nacional.",
+    "hint": "Autonomia cara.",
+    "now": {
+     "treasury": -0.6
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "wo_bloc_army_request",
+  "cat": "Mundo",
+  "title": "{bloc} quer nossas tropas",
+  "desc": "Os membros do {bloc} pedem um contingente nosso para uma força de paz numa guerra civil distante.",
+  "context": "Prestígio custa soldados.",
+  "tpl": {
+   "bloc": "any"
+  },
+  "options": [
+   {
+    "text": "Enviar um batalhão.",
+    "hint": "Prestígio; risco de baixas.",
+    "now": {
+     "readiness": -2,
+     "influence": 3
+    },
+    "rel": {
+     "$bloc": 6
+    }
+   },
+   {
+    "text": "Enviar médicos e engenheiros.",
+    "hint": "Ajuda sem combate.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 2
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Sem custo.",
+    "rel": {
+     "$bloc": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "wo_ai_war_arms_buyer",
+  "cat": "Mundo",
+  "title": "{aiA} quer comprar armas",
+  "desc": "Em guerra com {aiB}, {aiA} oferece pagar em dobro por munição e blindados.",
+  "context": "Lucro de guerra.",
+  "tpl": {
+   "aiWar": "any"
+  },
+  "options": [
+   {
+    "text": "Vender.",
+    "hint": "Dinheiro; {aiB} vira inimigo.",
+    "now": {
+     "treasury": 0.8,
+     "equipment": -3
+    },
+    "rel": {
+     "$aiA": 10,
+     "$aiB": -15
+    },
+    "act": {
+     "type": "aiWarSupport",
+     "war": "$aiWar",
+     "side": "A",
+     "v": 0.1,
+     "cost": 0
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Neutralidade."
+   }
+  ]
+ },
+ {
+  "id": "wo_ai_war_mediation2",
+  "cat": "Mundo",
+  "title": "Prisioneiros de {aiA} e {aiB}",
+  "desc": "Os dois lados da guerra entre {aiA} e {aiB} aceitariam trocar prisioneiros em território neutro.",
+  "context": "Um gesto humanitário com holofotes.",
+  "tpl": {
+   "aiWar": "any"
+  },
+  "w": 0.7,
+  "options": [
+   {
+    "text": "Oferecer {capital} para a troca.",
+    "hint": "Prestígio.",
+    "now": {
+     "reputation": 3,
+     "influence": 1
+    },
+    "rel": {
+     "$aiA": 3,
+     "$aiB": 3
+    }
+   },
+   {
+    "text": "Não se envolver.",
+    "hint": "Neutro."
+   }
+  ]
+ },
+ {
+  "id": "wo_claimant_border_census",
+  "cat": "Mundo",
+  "title": "Censo em {claimProv}",
+  "desc": "{claimant} anuncia que fará um \"censo\" de seus cidadãos em {claimProv}, território nosso que reivindica.",
+  "context": "Contar pessoas é marcar território.",
+  "tpl": {
+   "claimant": "any"
+  },
+  "options": [
+   {
+    "text": "Proibir e expulsar os recenseadores.",
+    "hint": "Soberania.",
+    "now": {
+     "control": 2
+    },
+    "rel": {
+     "$claimant": -8
+    }
+   },
+   {
+    "text": "Fazer nosso próprio censo com observadores.",
+    "hint": "Legitimidade.",
+    "now": {
+     "reputation": 2,
+     "treasury": -0.1
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Sem crise; o rival avança.",
+    "long": [
+     {
+      "k": "separatism",
+      "v": 2,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "wo_sanctioner_humanitarian",
+  "cat": "Mundo",
+  "title": "Remédios bloqueados por {sanctioner}",
+  "desc": "As sanções de {sanctioner} bloquearam a importação de remédios para câncer. Pacientes protestam.",
+  "context": "Sanções atingem os mais fracos.",
+  "tpl": {
+   "sanctioner": "any"
+  },
+  "options": [
+   {
+    "text": "Comprar por contrabando a preço alto.",
+    "hint": "Remédios chegam; corrupção.",
+    "now": {
+     "treasury": -0.3
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Campanha internacional contra as sanções.",
+    "hint": "Simpatia mundial.",
+    "now": {
+     "reputation": 2
+    },
+    "rel": {
+     "all": 2,
+     "$sanctioner": -4
+    }
+   },
+   {
+    "text": "Produzir genéricos nacionalmente.",
+    "hint": "Lento; autonomia.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 1,
+      "d": 0
+     },
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "so_birth_rate",
+  "cat": "Sociedade",
+  "title": "O país envelhece",
+  "desc": "A taxa de natalidade caiu para 1,2 filho por mulher. Escolas fecham; asilos lotam.",
+  "context": "Demografia é destino.",
+  "cond": {
+   "min": {
+    "gdppc": 8000
+   }
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Bônus generoso por filho.",
+    "hint": "Natalidade sobe devagar; caro.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "rural": 3
+    },
+    "long": [
+     {
+      "k": "birth",
+      "v": 1.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Imigração planejada.",
+    "hint": "Mão de obra; tensão cultural.",
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": 0.8,
+      "d": 0
+     }
+    ],
+    "policy": {
+     "immigration": "encouraged"
+    }
+   },
+   {
+    "text": "Aumentar a idade de aposentadoria.",
+    "hint": "Contas melhoram; idosos revoltados.",
+    "now": {
+     "protest": 4
+    },
+    "long": [
+     {
+      "k": "revenue",
+      "v": 0.2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "so_drug_war",
+  "cat": "Sociedade",
+  "title": "Guerra às drogas",
+  "desc": "Cartéis controlam rotas de cocaína e corrompem prefeitos. O Exército pede autorização para atacar.",
+  "context": "Guerra ou política de saúde?",
+  "cond": {
+   "min": {
+    "crime": 50
+   }
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Guerra total com o Exército.",
+    "hint": "Prisões e mortes; violência explode.",
+    "now": {
+     "control": 3,
+     "civil": -3
+    },
+    "groups": {
+     "military": 4
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -2,
+      "d": 180
+     },
+     {
+      "k": "crime",
+      "v": 3,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Descriminalizar o consumo, atacar o dinheiro.",
+    "hint": "Abordagem moderna.",
+    "groups": {
+     "rural": -3
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -2,
+      "d": 0
+     }
+    ],
+    "policy": {
+     "vices": "regulated"
+    }
+   },
+   {
+    "text": "Acordo tácito com os cartéis.",
+    "hint": "Paz comprada.",
+    "long": [
+     {
+      "k": "corruption",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "crime",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "so_housing_crisis",
+  "cat": "Sociedade",
+  "title": "Ninguém consegue alugar",
+  "desc": "O aluguel médio consome 60% do salário nas grandes cidades. Jovens moram com os pais até os 35.",
+  "context": "A crise da moradia.",
+  "cond": {
+   "max": {
+    "housing": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Programa massivo de habitação pública.",
+    "hint": "Caro; resolve.",
+    "now": {
+     "treasury": -0.8
+    },
+    "groups": {
+     "youth": 6,
+     "workers": 4
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 6,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Congelar aluguéis.",
+    "hint": "Alívio; menos construção.",
+    "groups": {
+     "youth": 4,
+     "business": -4
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": -2,
+      "d": 730
+     }
+    ]
+   },
+   {
+    "text": "Liberar a construção em altura.",
+    "hint": "Mercado resolve aos poucos.",
+    "groups": {
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 3,
+      "d": 0
+     },
+     {
+      "k": "congestion",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "so_gangs_prison",
+  "cat": "Sociedade",
+  "title": "Facções comandam as prisões",
+  "desc": "Uma rebelião em presídio terminou com 40 mortos. As facções dão ordens de dentro das celas.",
+  "context": "O Estado perdeu as cadeias.",
+  "cond": {
+   "min": {
+    "crime": 45
+   }
+  },
+  "options": [
+   {
+    "text": "Presídios de segurança máxima.",
+    "hint": "Caro; eficaz.",
+    "now": {
+     "treasury": -0.4
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Penas alternativas para crimes leves.",
+    "hint": "Esvazia as cadeias.",
+    "now": {
+     "civil": 2
+    },
+    "long": [
+     {
+      "k": "crime",
+      "v": -1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Intervenção militar nas prisões.",
+    "hint": "Rápido; abusos.",
+    "now": {
+     "civil": -3,
+     "control": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "so_climate_refugees",
+  "cat": "Sociedade",
+  "title": "Refugiados do clima",
+  "desc": "Secas e enchentes empurram milhares de camponeses para as cidades.",
+  "context": "O clima já mudou.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Plano nacional de adaptação.",
+    "hint": "Caro; prepara o país.",
+    "now": {
+     "treasury": -0.5
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 0.5,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Assentamentos rurais.",
+    "hint": "Mantém o povo no campo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "rural": 5
+    }
+   },
+   {
+    "text": "Nada.",
+    "hint": "Favelas crescem.",
+    "long": [
+     {
+      "k": "housing",
+      "v": -2,
+      "d": 365
+     },
+     {
+      "k": "crime",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "so_gender_quota",
+  "cat": "Sociedade",
+  "title": "Paridade no parlamento",
+  "desc": "Movimentos de mulheres exigem metade das cadeiras do parlamento.",
+  "context": "Representação ou mérito?",
+  "cond": {
+   "min": {
+    "political": 35
+   }
+  },
+  "cd": 1500,
+  "options": [
+   {
+    "text": "Aprovar a paridade.",
+    "hint": "Modernização; conservadores reclamam.",
+    "now": {
+     "political": 2,
+     "reputation": 2
+    },
+    "groups": {
+     "rural": -3,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Cota de 30% nas listas.",
+    "hint": "Meio-termo.",
+    "now": {
+     "political": 1
+    }
+   },
+   {
+    "text": "Rejeitar.",
+    "hint": "Tradição.",
+    "groups": {
+     "youth": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "so_internet_shutdown",
+  "cat": "Sociedade",
+  "title": "Desligar a internet?",
+  "desc": "Protestos convocados por redes sociais se espalham. O serviço de segurança quer desligar a internet por três dias.",
+  "context": "O botão de pânico digital.",
+  "cond": {
+   "min": {
+    "protest": 45
+   }
+  },
+  "options": [
+   {
+    "text": "Desligar tudo.",
+    "hint": "Protestos desorganizados; economia e imagem sofrem.",
+    "now": {
+     "protest": -6,
+     "civil": -5,
+     "reputation": -5
+    },
+    "long": [
+     {
+      "k": "growth",
+      "v": -0.3,
+      "d": 60
+     }
+    ]
+   },
+   {
+    "text": "Bloquear só as redes sociais.",
+    "hint": "Meio-termo.",
+    "now": {
+     "protest": -3,
+     "civil": -2
+    }
+   },
+   {
+    "text": "Não desligar.",
+    "hint": "Liberdade; protestos crescem.",
+    "now": {
+     "protest": 3,
+     "political": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "so_deepfake",
+  "cat": "Sociedade",
+  "title": "O vídeo falso",
+  "desc": "Um vídeo falso, feito com IA, mostra {leader} aceitando propina. Viralizou em horas.",
+  "context": "A verdade virou opinião.",
+  "cond": {
+   "min": {
+    "tech": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Desmentir com perícia independente.",
+    "hint": "Credibilidade.",
+    "now": {
+     "legitimacy": 1
+    }
+   },
+   {
+    "text": "Lei contra \"notícias falsas\".",
+    "hint": "Arma contra mentiras — e contra críticos.",
+    "now": {
+     "political": -3
+    },
+    "long": [
+     {
+      "k": "propaganda",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Responder com vídeos contra a oposição.",
+    "hint": "Guerra suja.",
+    "now": {
+     "political": -1
+    },
+    "groups": {
+     "opposition": -4
+    },
+    "long": [
+     {
+      "k": "protest",
+      "v": 2,
+      "d": 120
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "so_pension_age",
+  "cat": "Sociedade",
+  "title": "Os aposentados nas ruas",
+  "desc": "Idosos bloqueiam avenidas contra o atraso de três meses nas pensões.",
+  "context": "Quem trabalhou a vida toda exige.",
+  "cond": {
+   "max": {
+    "treasuryRatio": 1
+   }
+  },
+  "options": [
+   {
+    "text": "Pagar os atrasados com dívida nova.",
+    "hint": "Paz; dívida.",
+    "now": {
+     "debt": 1,
+     "protest": -3
+    }
+   },
+   {
+    "text": "Pagar só os mais pobres.",
+    "hint": "Focalizado.",
+    "now": {
+     "treasury": -0.2
+    }
+   },
+   {
+    "text": "Prometer e não pagar.",
+    "hint": "Raiva.",
+    "now": {
+     "legitimacy": -3,
+     "protest": 4
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_officer_corps",
+  "cat": "Ideologia e regime",
+  "title": "Oficiais com ideias próprias",
+  "desc": "Uma loja secreta de coronéis, liderada por {person}, discute \"salvar a pátria dos políticos\".",
+  "context": "Os quartéis falam de política.",
+  "cond": {
+   "min": {
+    "coupRisk": 25
+   }
+  },
+  "w": 1.4,
+  "options": [
+   {
+    "text": "Infiltrar e prender os líderes.",
+    "hint": "Neutraliza; tensão nos quartéis.",
+    "now": {
+     "intel": 1
+    },
+    "groups": {
+     "military": -4
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": -6,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Aumentar soldos e promoções.",
+    "hint": "Compra lealdade.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "military": 6
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": -3,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Arriscado.",
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 5,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_nuclear_sub",
+  "cat": "Ideologia e regime",
+  "title": "Submarinos nucleares",
+  "desc": "A Marinha quer submarinos de propulsão nuclear para dissuadir potências maiores.",
+  "context": "O luxo naval mais caro.",
+  "tpl": {
+   "power": "friendly"
+  },
+  "cond": {
+   "coast": true,
+   "min": {
+    "milIndustry": 40
+   }
+  },
+  "options": [
+   {
+    "text": "Programa nacional.",
+    "hint": "Projeção; décadas e bilhões.",
+    "now": {
+     "treasury": -1
+    },
+    "groups": {
+     "military": 6
+    },
+    "long": [
+     {
+      "k": "projection",
+      "v": 5,
+      "d": 0
+     },
+     {
+      "k": "milIndustry",
+      "v": 3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Comprar de {power}.",
+    "hint": "Rápido; dependência.",
+    "now": {
+     "treasury": -0.8
+    },
+    "long": [
+     {
+      "k": "projection",
+      "v": 4,
+      "d": 0
+     }
+    ],
+    "rel": {
+     "$power": 10
+    }
+   },
+   {
+    "text": "Não.",
+    "hint": "Economia.",
+    "groups": {
+     "military": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_drone_army",
+  "cat": "Ideologia e regime",
+  "title": "Exército de drones",
+  "desc": "Engenheiros militares propõem trocar parte da artilharia por enxames de drones baratos.",
+  "context": "A guerra mudou.",
+  "cond": {
+   "min": {
+    "tech": 35
+   }
+  },
+  "options": [
+   {
+    "text": "Investir pesado em drones.",
+    "hint": "Modernização; resistências internas.",
+    "now": {
+     "treasury": -0.4,
+     "equipment": 5
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Projeto-piloto.",
+    "hint": "Cautela.",
+    "now": {
+     "treasury": -0.1,
+     "equipment": 1
+    }
+   },
+   {
+    "text": "Manter a doutrina tradicional.",
+    "hint": "Generais satisfeitos.",
+    "groups": {
+     "military": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_foreign_legion",
+  "cat": "Ideologia e regime",
+  "title": "Uma legião estrangeira",
+  "desc": "Generais propõem recrutar estrangeiros com promessa de cidadania após cinco anos de serviço.",
+  "context": "Soldados sem pátria por uma pátria nova.",
+  "cond": {
+   "max": {
+    "readiness": 55
+   }
+  },
+  "options": [
+   {
+    "text": "Criar a legião.",
+    "hint": "Efetivo extra; mercenarismo.",
+    "now": {
+     "troops": 6,
+     "treasury": -0.2
+    },
+    "long": [
+     {
+      "k": "readiness",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Não.",
+    "hint": "Exército nacional.",
+    "groups": {
+     "military": 1
+    }
+   }
+  ]
+ }
+]

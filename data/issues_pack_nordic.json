@@ -1,0 +1,2333 @@
+[
+ {
+  "id": "pk_nd_welfare_model",
+  "cat": "Países Nórdicos",
+  "title": "O modelo nórdico sob pressão",
+  "desc": "O envelhecimento e a imigração pressionam o Estado de bem-estar. Há quem peça mais impostos; outros, cortes.",
+  "context": "A joia da coroa dos nórdicos.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Manter a universalidade com impostos mais altos.",
+    "hint": "Fiel ao modelo.",
+    "now": {
+     "treasury": 0.3,
+     "poverty": -0.1
+    },
+    "groups": {
+     "workers": 3,
+     "business": -2
+    }
+   },
+   {
+    "text": "Introduzir copagamentos e foco.",
+    "hint": "Eficiência e polêmica.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": 2,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Aumentar a produtividade com tecnologia.",
+    "hint": "Futuro.",
+    "now": {
+     "treasury": -0.1,
+     "tech": 1
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_ski_climate",
+  "cat": "Países Nórdicos",
+  "title": "O inverno que não chega",
+  "desc": "Invernos mais curtos e quentes ameaçam o turismo de esqui e a pesca no gelo. Comunidades locais perdem renda.",
+  "context": "Clima e tradição.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Adaptar: turismo de quatro estações.",
+    "hint": "Diversifica.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "regional": 2,
+     "business": 1
+    }
+   },
+   {
+    "text": "Neve artificial a todo custo.",
+    "hint": "Caro e poluente.",
+    "now": {
+     "treasury": -0.2,
+     "pollution": 0.5
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Apoiar a transição de emprego.",
+    "hint": "Justa.",
+    "now": {
+     "treasury": -0.2,
+     "unemployment": -0.1
+    },
+    "groups": {
+     "workers": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_sami",
+  "cat": "Países Nórdicos",
+  "title": "Direitos do povo sami",
+  "desc": "Pastores de renas protestam contra parques eólicos e minas em terras de pastagem; o parlamento sami pede poder de veto.",
+  "context": "Direitos indígenas versus transição verde.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Garantir consulta e poder de veto parcial.",
+    "hint": "Reconhecimento.",
+    "now": {
+     "civil": 1,
+     "reputation": 1
+    },
+    "groups": {
+     "regional": 3,
+     "business": -2
+    }
+   },
+   {
+    "text": "Compensações e realocação de parques.",
+    "hint": "Compromisso.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "regional": 1
+    }
+   },
+   {
+    "text": "Priorizar a energia limpa.",
+    "hint": "Conflito.",
+    "now": {
+     "civil": -0.5,
+     "reputation": -1.5
+    },
+    "groups": {
+     "regional": -3,
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_defense_nato",
+  "cat": "Países Nórdicos",
+  "title": "Defesa e a vizinhança russa",
+  "desc": "A tensão com a vizinha ao leste faz crescer o apoio à aliança militar ocidental e a gastos de defesa.",
+  "context": "Neutralidade em xeque.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforçar a defesa e a cooperação militar.",
+    "hint": "Prontidão.",
+    "now": {
+     "treasury": -0.5,
+     "defense": 2,
+     "readiness": 2
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "russia": -4,
+     "west": 3
+    }
+   },
+   {
+    "text": "Defesa total civil e reserva.",
+    "hint": "Tradição nórdica.",
+    "now": {
+     "treasury": -0.2,
+     "defense": 1
+    },
+    "groups": {
+     "military": 1,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Neutralidade e diálogo.",
+    "hint": "Menos tensão.",
+    "now": {},
+    "groups": {},
+    "rel": {
+     "russia": 1,
+     "west": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_immigration_integration",
+  "cat": "Países Nórdicos",
+  "title": "Integração de imigrantes",
+  "desc": "Bairros segregados e desemprego entre recém-chegados alimentam partidos de extrema direita. O governo repensa a política.",
+  "context": "O debate mais tenso da região.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Investir em idioma, emprego e moradia.",
+    "hint": "Integração.",
+    "now": {
+     "treasury": -0.3,
+     "unemployment": -0.1
+    },
+    "groups": {
+     "youth": 2,
+     "workers": 1,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Restringir novas entradas.",
+    "hint": "Agrada a base.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Cotas de moradia e escolas mistas.",
+    "hint": "Polêmica.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_wind_farms",
+  "cat": "Países Nórdicos",
+  "title": "Parques eólicos na paisagem",
+  "desc": "Aldeias reclamam do ruído e da poluição visual das turbinas; empresas querem expandir.",
+  "context": "Energia limpa e paisagem.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Compensar comunidades e expandir.",
+    "hint": "Transição.",
+    "now": {
+     "treasury": -0.1,
+     "pollution": -0.5
+    },
+    "groups": {
+     "business": 2,
+     "regional": 1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Limitar a áreas offshore.",
+    "hint": "Mais caro.",
+    "now": {
+     "treasury": -0.2,
+     "pollution": -0.3
+    },
+    "groups": {
+     "regional": 2
+    }
+   },
+   {
+    "text": "Congelar novos parques.",
+    "hint": "Agradece aos vizinhos.",
+    "now": {},
+    "groups": {
+     "business": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_gender_parity",
+  "cat": "Países Nórdicos",
+  "title": "Licença parental e igualdade",
+  "desc": "A divisão da licença entre pais gera debate: reservar mais meses para os homens ou deixar as famílias decidirem?",
+  "context": "Modelo de igualdade.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Ampliar cotas de licença para pais.",
+    "hint": "Mais igualdade.",
+    "now": {
+     "treasury": -0.15,
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 2,
+     "workers": 1,
+     "business": -1
+    }
+   },
+   {
+    "text": "Liberdade para as famílias.",
+    "hint": "Neutro.",
+    "now": {},
+    "groups": {}
+   },
+   {
+    "text": "Reduzir o custo para empresas.",
+    "hint": "Agrada à indústria.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": 2,
+     "workers": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_fishing_quota",
+  "cat": "Países Nórdicos",
+  "title": "Cotas de pesca no Mar do Norte",
+  "desc": "Frotas disputam cotas de bacalhau; cientistas pedem redução drástica para salvar o estoque.",
+  "context": "Mar, comida e identidade.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reduzir cotas e apoiar pescadores.",
+    "hint": "Sustentável.",
+    "now": {
+     "treasury": -0.15,
+     "pollution": -0.3
+    },
+    "groups": {
+     "regional": -1,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Manter com fiscalização.",
+    "hint": "Neutro.",
+    "now": {},
+    "groups": {
+     "regional": 1
+    }
+   },
+   {
+    "text": "Ampliar cotas.",
+    "hint": "Lucro de curto prazo.",
+    "now": {
+     "treasury": 0.1,
+     "pollution": 0.5
+    },
+    "groups": {
+     "regional": 2,
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_royal_family",
+  "cat": "Países Nórdicos",
+  "title": "A família real e os gastos",
+  "desc": "Escândalos e gastos da monarquia reacendem o debate republicano.",
+  "context": "Tradição e custo.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reduzir a lista civil.",
+    "hint": "Austeridade simbólica.",
+    "now": {
+     "treasury": 0.05,
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "youth": 2,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Apoiar a coroa.",
+    "hint": "Estabilidade.",
+    "now": {
+     "legitimacy": 0.3
+    },
+    "groups": {
+     "rural": 2,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Referendo sobre a monarquia.",
+    "hint": "Ousado.",
+    "now": {
+     "political": 0.5
+    },
+    "groups": {
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_tech_unicorn",
+  "cat": "Países Nórdicos",
+  "title": "Unicórnios e impostos",
+  "desc": "Uma empresa nórdica de tecnologia vale bilhões, mas pensa em mudar de sede para um país de impostos menores.",
+  "context": "Competição fiscal.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Incentivos para ficar.",
+    "hint": "Mantém empregos.",
+    "now": {
+     "treasury": -0.15
+    },
+    "groups": {
+     "business": 3,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Imposto de saída.",
+    "hint": "Combate a fuga.",
+    "now": {
+     "treasury": 0.2,
+     "reputation": -0.5
+    },
+    "groups": {
+     "business": -3
+    }
+   },
+   {
+    "text": "Deixar partir.",
+    "hint": "Princípios.",
+    "now": {},
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_oil_fund",
+  "cat": "Países Nórdicos",
+  "title": "O fundo soberano do petróleo",
+  "desc": "Cresce a pressão para gastar mais do fundo em investimentos domésticos e saúde.",
+  "context": "Dinheiro para as gerações futuras.",
+  "cond": {
+   "countries": [
+    "NOR"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Respeitar a regra de gasto.",
+    "hint": "Disciplina.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "workers": -1
+    }
+   },
+   {
+    "text": "Gastar um pouco mais em infraestrutura.",
+    "hint": "Alívio.",
+    "now": {
+     "treasury": 0.4,
+     "inflation": 0.1
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Investir em transição energética.",
+    "hint": "Aposta.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_arctic_council",
+  "cat": "Países Nórdicos",
+  "title": "Conselho Ártico e novas rotas",
+  "desc": "O degelo abre rotas marítimas e recursos. Outras potências querem voz no Ártico.",
+  "context": "Geopolítica gelada.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Fortalecer a cooperação ártica.",
+    "hint": "Estabilidade.",
+    "now": {
+     "reputation": 1.5
+    },
+    "groups": {},
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Reforçar patrulhas e bases.",
+    "hint": "Soberania.",
+    "now": {
+     "treasury": -0.3,
+     "defense": 1
+    },
+    "groups": {
+     "military": 2
+    },
+    "rel": {
+     "russia": -2
+    }
+   },
+   {
+    "text": "Permitir exploração privada.",
+    "hint": "Dinheiro.",
+    "now": {
+     "treasury": 0.2,
+     "pollution": 0.5
+    },
+    "groups": {
+     "business": 2,
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_nuclear_waste",
+  "cat": "Países Nórdicos",
+  "title": "Repositório de resíduos nucleares",
+  "desc": "Uma comunidade aceita receber o depósito de rejeitos por milhares de anos; críticos falam em risco intergeracional.",
+  "context": "Energia limpa e resíduos eternos.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aprovar o repositório com monitoramento.",
+    "hint": "Solução técnica.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "business": 1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Aguardar tecnologias melhores.",
+    "hint": "Cautela.",
+    "now": {},
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Exportar resíduos.",
+    "hint": "Complicado.",
+    "now": {
+     "reputation": -1,
+     "treasury": 0.1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_school_ranking",
+  "cat": "Países Nórdicos",
+  "title": "Queda nos rankings de educação",
+  "desc": "Resultados de testes internacionais caem. Professores culpam burocracia; economistas pedem reformas.",
+  "context": "Orgulho educacional em jogo.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Mais autonomia e formação de professores.",
+    "hint": "Eleva a qualidade.",
+    "now": {
+     "treasury": -0.25,
+     "education": 1
+    },
+    "groups": {
+     "youth": 2,
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Provas padronizadas.",
+    "hint": "Métricas.",
+    "now": {
+     "education": 0.3
+    },
+    "groups": {
+     "youth": -1,
+     "bureaucracy": -1
+    }
+   },
+   {
+    "text": "Reduzir turmas.",
+    "hint": "Caro.",
+    "now": {
+     "treasury": -0.35,
+     "education": 0.8
+    },
+    "groups": {
+     "youth": 2,
+     "workers": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_hygge_housing",
+  "cat": "Países Nórdicos",
+  "title": "Moradia nas grandes cidades",
+  "desc": "Preços de imóveis disparam em Copenhague, Estocolmo e Oslo, empurrando jovens para fora.",
+  "context": "Casa própria vira privilégio.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Construção pública e cooperativas.",
+    "hint": "Equilibrado.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "youth": 3,
+     "workers": 2,
+     "business": -1
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Liberar zoneamento.",
+    "hint": "Mais oferta.",
+    "now": {},
+    "groups": {
+     "business": 2,
+     "youth": 1
+    },
+    "long": [
+     {
+      "k": "housing",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Subsídio ao aluguel.",
+    "hint": "Rápido.",
+    "now": {
+     "treasury": -0.25
+    },
+    "groups": {
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_social_trust",
+  "cat": "Países Nórdicos",
+  "title": "Confiança e corrupção",
+  "desc": "Um escândalo de nepotismo abala a imagem de transparência. O público esperava mais.",
+  "context": "A virtude escandinava ferida.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Auditoria independente e demissões.",
+    "hint": "Cuidado com a reputação.",
+    "now": {
+     "corruption": -0.8,
+     "legitimacy": 1.5
+    },
+    "groups": {
+     "bureaucracy": -2,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Mudança de regras internas.",
+    "hint": "Brando.",
+    "now": {
+     "corruption": -0.3
+    },
+    "groups": {
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Minimizar o caso.",
+    "hint": "Perigoso.",
+    "now": {
+     "legitimacy": -2
+    },
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_eu_euro",
+  "cat": "Países Nórdicos",
+  "title": "Ficar fora do euro?",
+  "desc": "A moeda comum volta ao debate, com defensores da integração e céticos preocupados com autonomia.",
+  "context": "Soberania monetária.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Adotar a moeda comum.",
+    "hint": "Estabilidade.",
+    "now": {
+     "reputation": 1,
+     "inflation": -0.2
+    },
+    "groups": {
+     "business": 2,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Manter a moeda nacional.",
+    "hint": "Flexibilidade.",
+    "now": {},
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Referendo.",
+    "hint": "Decisão popular.",
+    "now": {
+     "legitimacy": 0.5
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_gaming_industry",
+  "cat": "Países Nórdicos",
+  "title": "A indústria de jogos",
+  "desc": "Estúdios de jogos eletrônicos viram exportação importante. Pedem incentivos fiscais e vistos para profissionais.",
+  "context": "Economia criativa nórdica.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Criar incentivos.",
+    "hint": "Impulsiona a tecnologia.",
+    "now": {
+     "treasury": -0.1,
+     "tech": 1
+    },
+    "groups": {
+     "youth": 3,
+     "business": 2
+    }
+   },
+   {
+    "text": "Vistos rápidos para talentos.",
+    "hint": "Barato.",
+    "now": {
+     "tech": 0.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Nada especial.",
+    "hint": "Neutro.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_midnight_sun_shift",
+  "cat": "Países Nórdicos",
+  "title": "Horário de verão e luz do dia",
+  "desc": "A escuridão do inverno e o sol da meia-noite do verão fazem a população querer mudar o relógio.",
+  "context": "Vida no extremo norte.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Abolir a mudança de horário.",
+    "hint": "Simples.",
+    "now": {},
+    "groups": {
+     "workers": 1,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Manter.",
+    "hint": "Tradição.",
+    "now": {},
+    "groups": {}
+   },
+   {
+    "text": "Coordenar com o continente.",
+    "hint": "Integração.",
+    "now": {
+     "reputation": 0.3
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_extreme_right",
+  "cat": "Países Nórdicos",
+  "title": "Partido anti-imigração no parlamento",
+  "desc": "Um partido populista cresce prometendo reduzir imigração e \"proteger a identidade\".",
+  "context": "Pressão no sistema.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Cordão sanitário.",
+    "hint": "Isola o partido.",
+    "now": {
+     "stability": 0.3
+    },
+    "groups": {
+     "opposition": 1,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Integrar a coalizão com restrições.",
+    "hint": "Normaliza.",
+    "now": {
+     "civil": -0.5
+    },
+    "groups": {
+     "rural": 2,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Combater com políticas de integração e emprego.",
+    "hint": "Raiz.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "workers": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_viking_tourism",
+  "cat": "Países Nórdicos",
+  "title": "Turismo histórico e vikings",
+  "desc": "A cultura viking vira atração internacional, com festivais e réplicas de navios. Historiadores reclamam do exagero.",
+  "context": "Passado como produto.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Investir em museus e festivais.",
+    "hint": "Marca-país.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 1.5
+    },
+    "groups": {
+     "youth": 1,
+     "business": 1
+    }
+   },
+   {
+    "text": "Preservar com rigor acadêmico.",
+    "hint": "Seriedade.",
+    "now": {
+     "treasury": -0.05
+    },
+    "groups": {}
+   },
+   {
+    "text": "Deixar o mercado.",
+    "hint": "Rápido.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_sea_wind_grid",
+  "cat": "Países Nórdicos",
+  "title": "Rede elétrica nórdica integrada",
+  "desc": "Países do bloco discutem interconexões e preços da energia. Regiões com energia barata temem perder.",
+  "context": "Mercado elétrico regional.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Integrar totalmente.",
+    "hint": "Eficiência.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": 2,
+     "regional": -1
+    },
+    "rel": {
+     "neighbors": 2
+    }
+   },
+   {
+    "text": "Limitar exportações.",
+    "hint": "Protege preços locais.",
+    "now": {},
+    "groups": {
+     "workers": 1
+    },
+    "rel": {
+     "neighbors": -2
+    }
+   },
+   {
+    "text": "Preço interno regulado.",
+    "hint": "Híbrido.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_no_oil_phaseout",
+  "cat": "Países Nórdicos",
+  "title": "Fim do petróleo no mar do Norte?",
+  "desc": "Pressão ambiental pede reduzir a exploração enquanto milhares de empregos e a economia dependem dela.",
+  "context": "Riqueza e responsabilidade.",
+  "cond": {
+   "countries": [
+    "NOR"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Planejar redução gradual.",
+    "hint": "Equilibrado.",
+    "now": {
+     "treasury": -0.1,
+     "pollution": -0.5
+    },
+    "groups": {
+     "youth": 2,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Manter exploração.",
+    "hint": "Lucro e críticas.",
+    "now": {
+     "treasury": 0.3,
+     "pollution": 0.5,
+     "reputation": -1
+    },
+    "groups": {
+     "business": 2,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Acelerar renováveis.",
+    "hint": "Aposta.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "youth": 3,
+     "workers": -2
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_no_ev_nation",
+  "cat": "Países Nórdicos",
+  "title": "O país dos carros elétricos",
+  "desc": "A maior parte dos carros novos já é elétrica. Isso reduz a receita de impostos sobre combustíveis.",
+  "context": "Vitória ambiental, buraco fiscal.",
+  "cond": {
+   "countries": [
+    "NOR"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Criar pedágios e impostos por quilômetro.",
+    "hint": "Repara a receita.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "workers": -1,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Manter incentivos.",
+    "hint": "Continua a transição.",
+    "now": {
+     "treasury": -0.2,
+     "pollution": -0.5
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Retirar incentivos de forma gradual.",
+    "hint": "Suave.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_se_gang_violence",
+  "cat": "Países Nórdicos",
+  "title": "Violência de gangues em cidades",
+  "desc": "Tiroteios entre gangues e atentados com explosivos chocam um país acostumado a baixa criminalidade.",
+  "context": "O fim da inocência.",
+  "cond": {
+   "countries": [
+    "SWE"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Penas maiores e policiamento intensivo.",
+    "hint": "Linha dura.",
+    "now": {
+     "treasury": -0.25,
+     "crime": -0.5,
+     "civil": -0.5
+    },
+    "groups": {
+     "military": 1,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Programas sociais em bairros vulneráveis.",
+    "hint": "Prevenção.",
+    "now": {
+     "treasury": -0.3,
+     "crime": -0.2
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Zonas de vigilância especial.",
+    "hint": "Controle.",
+    "now": {
+     "crime": -0.3,
+     "civil": -0.8
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_se_neutrality",
+  "cat": "Países Nórdicos",
+  "title": "Fim de dois séculos de neutralidade",
+  "desc": "Com a mudança do cenário de segurança, o país debate se deve aderir a alianças militares.",
+  "context": "Tradição histórica versus novo mundo.",
+  "cond": {
+   "countries": [
+    "SWE"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aderir à aliança militar.",
+    "hint": "Segurança coletiva.",
+    "now": {
+     "defense": 3,
+     "reputation": 1
+    },
+    "groups": {
+     "military": 3,
+     "youth": -1
+    },
+    "rel": {
+     "russia": -5,
+     "west": 4
+    }
+   },
+   {
+    "text": "Parcerias bilaterais.",
+    "hint": "Meio-termo.",
+    "now": {
+     "defense": 1
+    },
+    "groups": {},
+    "rel": {
+     "west": 1
+    }
+   },
+   {
+    "text": "Manter a neutralidade.",
+    "hint": "Tradição.",
+    "now": {},
+    "groups": {
+     "youth": 1
+    },
+    "rel": {
+     "russia": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_fi_border_russia",
+  "cat": "Países Nórdicos",
+  "title": "A fronteira de 1.300 km",
+  "desc": "A longa fronteira com a Rússia exige decisões sobre cercas, tropas e travessias, além de refugiados e tráfego de mercadorias.",
+  "context": "Vigilância permanente.",
+  "cond": {
+   "countries": [
+    "FIN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Cerca e reforço militar.",
+    "hint": "Segurança.",
+    "now": {
+     "treasury": -0.4,
+     "defense": 2
+    },
+    "groups": {
+     "military": 3
+    },
+    "rel": {
+     "russia": -4
+    }
+   },
+   {
+    "text": "Fechar passagens e manter diálogo.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "defense": 1
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "russia": -1
+    }
+   },
+   {
+    "text": "Reabrir comércio.",
+    "hint": "Menos tensão.",
+    "now": {
+     "treasury": 0.1
+    },
+    "groups": {
+     "business": 1
+    },
+    "rel": {
+     "russia": 2,
+     "west": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_fi_sauna_heat",
+  "cat": "Países Nórdicos",
+  "title": "Saunas e a crise de energia",
+  "desc": "A cultura da sauna, uma tradição nacional, consome energia em meio a uma crise do setor elétrico.",
+  "context": "Costumes no frio.",
+  "cond": {
+   "countries": [
+    "FIN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Pedir à população que reduza o uso.",
+    "hint": "Voluntário.",
+    "now": {},
+    "groups": {
+     "youth": -1
+    }
+   },
+   {
+    "text": "Subsidiar a eletricidade.",
+    "hint": "Cultura preservada.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "workers": 2,
+     "youth": 1
+    }
+   },
+   {
+    "text": "Aumentar a produção nuclear.",
+    "hint": "Solução estrutural.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "business": 1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 2,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_fi_education_pisa",
+  "cat": "Países Nórdicos",
+  "title": "Ensino e tecnologia",
+  "desc": "O modelo finlandês de educação é referência mundial, mas professores alertam para queda de motivação.",
+  "context": "Fama a defender.",
+  "cond": {
+   "countries": [
+    "FIN"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforçar a formação de professores.",
+    "hint": "Mantém o padrão.",
+    "now": {
+     "treasury": -0.2,
+     "education": 1
+    },
+    "groups": {
+     "youth": 2,
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Trazer mais tecnologia.",
+    "hint": "Modernização.",
+    "now": {
+     "treasury": -0.2,
+     "tech": 1
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Cortar custos.",
+    "hint": "Risco.",
+    "now": {
+     "treasury": 0.15,
+     "education": -0.7
+    },
+    "groups": {
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_dk_cartoon_crisis",
+  "cat": "Países Nórdicos",
+  "title": "Charges polêmicas e reação internacional",
+  "desc": "Uma publicação satírica provoca protestos e ameaças no exterior; embaixadas são cercadas.",
+  "context": "Liberdade de expressão e relações externas.",
+  "cond": {
+   "countries": [
+    "DNK"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Defender a liberdade de imprensa e pedir calma.",
+    "hint": "Princípios.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "youth": 2
+    },
+    "rel": {
+     "all": -2
+    }
+   },
+   {
+    "text": "Pedir desculpas diplomáticas.",
+    "hint": "Reduz tensão.",
+    "now": {
+     "civil": -0.5,
+     "reputation": 0.5
+    },
+    "groups": {
+     "youth": -2
+    },
+    "rel": {
+     "all": 1
+    }
+   },
+   {
+    "text": "Reforçar a segurança de jornalistas.",
+    "hint": "Prático.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_dk_greenland",
+  "cat": "Países Nórdicos",
+  "title": "O território autônomo e o interesse das potências",
+  "desc": "Uma potência estrangeira demonstra interesse em minerais e bases no vasto território ártico.",
+  "context": "Soberania e geopolítica.",
+  "cond": {
+   "countries": [
+    "DNK"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Reforçar a autonomia e investimento local.",
+    "hint": "Aproxima.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "regional": 3
+    }
+   },
+   {
+    "text": "Rejeitar firmemente.",
+    "hint": "Soberania.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "military": 1
+    },
+    "rel": {
+     "usa": -2
+    }
+   },
+   {
+    "text": "Parceria de defesa e minerais.",
+    "hint": "Lucro e dependência.",
+    "now": {
+     "treasury": 0.3
+    },
+    "groups": {
+     "business": 2,
+     "regional": -1
+    },
+    "rel": {
+     "usa": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_dk_wind_global",
+  "cat": "Países Nórdicos",
+  "title": "Líder mundial em energia eólica",
+  "desc": "Fabricantes de turbinas querem apoio para expandir fábricas e exportações.",
+  "context": "Indústria verde.",
+  "cond": {
+   "countries": [
+    "DNK"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Subsidiar P&D e exportação.",
+    "hint": "Aposta forte.",
+    "now": {
+     "treasury": -0.3,
+     "tech": 1
+    },
+    "groups": {
+     "business": 3
+    },
+    "long": [
+     {
+      "k": "exportAccess",
+      "v": 0.02,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Condicionar a empregos locais.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Deixar o mercado.",
+    "hint": "Livre.",
+    "now": {},
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_is_volcano",
+  "cat": "Países Nórdicos",
+  "title": "Erupção vulcânica perto de cidades",
+  "desc": "Uma nova fissura ameaça casas, a usina de energia geotérmica e voos internacionais.",
+  "context": "A natureza dita a agenda.",
+  "cond": {
+   "countries": [
+    "ISL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Evacuar e construir barreiras.",
+    "hint": "Protege.",
+    "now": {
+     "treasury": -0.3,
+     "qol": 0.3
+    },
+    "groups": {
+     "regional": 2
+    }
+   },
+   {
+    "text": "Monitoramento e planos de contingência.",
+    "hint": "Moderado.",
+    "now": {
+     "treasury": -0.1
+    },
+    "groups": {}
+   },
+   {
+    "text": "Usar a erupção como atração turística.",
+    "hint": "Ousado.",
+    "now": {
+     "treasury": 0.1,
+     "reputation": 0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_is_tourism_boom",
+  "cat": "Países Nórdicos",
+  "title": "Turistas demais, ilha pequena",
+  "desc": "Milhões de visitantes sobrecarregam cachoeiras, geleiras e a população local.",
+  "context": "Sucesso demais.",
+  "cond": {
+   "countries": [
+    "ISL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Taxa de entrada e limites.",
+    "hint": "Sustenta.",
+    "now": {
+     "treasury": 0.15,
+     "pollution": -0.2
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Expandir infraestrutura.",
+    "hint": "Mais renda.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Nada.",
+    "hint": "Deixa piorar.",
+    "now": {
+     "pollution": 0.5
+    },
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_is_banking_crash",
+  "cat": "Países Nórdicos",
+  "title": "Lembrando o colapso bancário",
+  "desc": "Um novo escândalo bancário reabre feridas do colapso passado. Cresce o apelo por controle estatal do crédito.",
+  "context": "Memória da crise.",
+  "cond": {
+   "countries": [
+    "ISL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Fortalecer a supervisão.",
+    "hint": "Prudência.",
+    "now": {
+     "corruption": -0.5
+    },
+    "groups": {
+     "business": -1,
+     "workers": 1
+    }
+   },
+   {
+    "text": "Criar banco público.",
+    "hint": "Estatismo.",
+    "now": {
+     "treasury": -0.3
+    },
+    "groups": {
+     "workers": 2,
+     "business": -2
+    }
+   },
+   {
+    "text": "Confiar no mercado.",
+    "hint": "Esquecimento.",
+    "now": {},
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_autonomy",
+  "cat": "Países Nórdicos",
+  "title": "Mais autonomia para a ilha",
+  "desc": "Lideranças locais exigem mais poder sobre pesca, recursos e relações exteriores.",
+  "context": "Território autônomo em movimento.",
+  "cond": {
+   "countries": [
+    "FRO",
+    "GRL",
+    "ALA"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Ampliar a autonomia.",
+    "hint": "Reduz tensão.",
+    "now": {
+     "civil": 0.5
+    },
+    "groups": {
+     "regional": 4
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Manter o status quo.",
+    "hint": "Estável.",
+    "now": {},
+    "groups": {
+     "regional": -1
+    }
+   },
+   {
+    "text": "Referendo sobre independência.",
+    "hint": "Ousado.",
+    "now": {
+     "political": 0.5,
+     "stability": -1
+    },
+    "groups": {
+     "regional": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_covid_rules",
+  "cat": "Países Nórdicos",
+  "title": "Cuidado com as epidemias",
+  "desc": "Um novo surto testa o modelo de confiança: restrições voluntárias ou obrigatórias?",
+  "context": "Saúde pública e liberdade.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Recomendações e confiança.",
+    "hint": "Estilo nórdico.",
+    "now": {
+     "health": 0.3,
+     "civil": 0.3
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Restrições obrigatórias.",
+    "hint": "Mais eficaz.",
+    "now": {
+     "health": 0.8,
+     "civil": -0.8,
+     "growth": -0.2
+    },
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Vacinação em massa e testagem.",
+    "hint": "Misto.",
+    "now": {
+     "treasury": -0.2,
+     "health": 0.7
+    },
+    "groups": {
+     "workers": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_black_metal",
+  "cat": "Países Nórdicos",
+  "title": "Cultura e música como exportação",
+  "desc": "A música e o design nórdicos movimentam bilhões. O setor pede apoio estatal.",
+  "context": "Soft power sonoro.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Fundo de exportação cultural.",
+    "hint": "Marca-país.",
+    "now": {
+     "treasury": -0.1,
+     "reputation": 1.5
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Isenções fiscais para artistas.",
+    "hint": "Barato.",
+    "now": {
+     "treasury": -0.05
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Deixar o mercado.",
+    "hint": "Sem custo.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_aging_workers",
+  "cat": "Países Nórdicos",
+  "title": "A força de trabalho que envelhece",
+  "desc": "Há menos jovens e mais aposentados. Empresas pedem migração qualificada; sindicatos pedem aumento de produtividade.",
+  "context": "Demografia fria.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Atrair talentos globais.",
+    "hint": "Soluciona e divide.",
+    "now": {
+     "unemployment": -0.1
+    },
+    "groups": {
+     "business": 2,
+     "rural": -1
+    },
+    "long": [
+     {
+      "k": "laborSupply",
+      "v": 0.3,
+      "d": 0
+     }
+    ]
+   },
+   {
+    "text": "Aumentar a idade de aposentadoria.",
+    "hint": "Impopular.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "workers": -3
+    }
+   },
+   {
+    "text": "Incentivar natalidade.",
+    "hint": "Lento.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "youth": 1
+    },
+    "long": [
+     {
+      "k": "birth",
+      "v": 1,
+      "d": 0
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_data_centers",
+  "cat": "Países Nórdicos",
+  "title": "Data centers atraídos pelo frio",
+  "desc": "Gigantes da tecnologia querem construir centros de dados no clima gelado e na energia limpa e barata.",
+  "context": "Frio é ativo digital.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Aprovar com regras de energia e reaproveitamento de calor.",
+    "hint": "Sinergia.",
+    "now": {
+     "treasury": 0.1,
+     "tech": 1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Limitar para proteger a rede.",
+    "hint": "Cautela.",
+    "now": {},
+    "groups": {
+     "workers": 1
+    }
+   },
+   {
+    "text": "Isenções totais.",
+    "hint": "Atrai muito.",
+    "now": {
+     "treasury": -0.15,
+     "tech": 1
+    },
+    "groups": {
+     "business": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_wolves",
+  "cat": "Países Nórdicos",
+  "title": "O retorno dos lobos",
+  "desc": "A população de lobos cresce e ataques ao gado aparecem; ambientalistas e fazendeiros se enfrentam.",
+  "context": "Natureza versus campo.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Proteger e indenizar criadores.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "treasury": -0.1,
+     "pollution": -0.2
+    },
+    "groups": {
+     "rural": 1,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Abater por cotas.",
+    "hint": "Controle.",
+    "now": {
+     "reputation": -0.5
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -2
+    }
+   },
+   {
+    "text": "Barreiras e cães-guarda.",
+    "hint": "Técnico.",
+    "now": {
+     "treasury": -0.05
+    },
+    "groups": {
+     "rural": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_sovereign_ai",
+  "cat": "Países Nórdicos",
+  "title": "Inteligência artificial e o setor público",
+  "desc": "Municípios usam algoritmos para triagem de benefícios e vigilância de bem-estar. Surgem erros e acusações de discriminação.",
+  "context": "Eficiência e justiça.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Auditoria e transparência algorítmica.",
+    "hint": "Protege.",
+    "now": {
+     "treasury": -0.1,
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Ampliar o uso.",
+    "hint": "Eficiência.",
+    "now": {
+     "treasury": 0.1,
+     "civil": -0.5
+    },
+    "groups": {
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Proibir decisões automatizadas.",
+    "hint": "Cautela.",
+    "now": {
+     "tech": -0.3
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "pk_nd_brewery",
+  "cat": "Países Nórdicos",
+  "title": "Álcool e monopólios estatais",
+  "desc": "O monopólio estatal de bebidas é criticado por preços altos e defendido por motivos de saúde pública.",
+  "context": "Tradição de controle.",
+  "cond": {
+   "countries": [
+    "NOR",
+    "SWE",
+    "FIN",
+    "DNK",
+    "ISL",
+    "FRO",
+    "ALA",
+    "GRL"
+   ]
+  },
+  "w": 1,
+  "cd": 420,
+  "options": [
+   {
+    "text": "Manter o monopólio.",
+    "hint": "Saúde pública.",
+    "now": {
+     "health": 0.2
+    },
+    "groups": {
+     "youth": -1,
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Liberalizar a venda.",
+    "hint": "Mais liberdade.",
+    "now": {
+     "treasury": -0.1,
+     "health": -0.3
+    },
+    "groups": {
+     "youth": 2,
+     "business": 2
+    }
+   },
+   {
+    "text": "Reduzir preços.",
+    "hint": "Compromisso.",
+    "now": {},
+    "groups": {}
+   }
+  ]
+ }
+]
