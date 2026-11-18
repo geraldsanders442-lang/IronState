@@ -7,6 +7,7 @@ import { regionalBest, regionalProvinces } from './regflags.js';
 import { regionalFlag } from './newstates.js';
 import { nationalVariant } from './flagstyle.js';
 import { POSTURES } from './ideofam.js';
+import { ptName, ofRegion } from './ptnames.js';
 
 const hashS = str => { let h = 2166136261; for (const c of String(str)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return ((h >>> 0) % 100000) / 100000; };
 
@@ -23,7 +24,7 @@ export const REGIMES = {
 };
 // Nomes em português das regiões com bandeira regional.
 const PT = { 'Andalucía': 'Andaluzia', 'Aragón': 'Aragão', 'Canary Is.': 'Canárias', 'Islas Baleares': 'Ilhas Baleares', 'Foral de Navarra': 'Navarra', Asturias: 'Astúrias', Valenciana: 'Comunidade Valenciana', Sachsen: 'Saxônia', Hamburg: 'Hamburgo', 'Baden-Württemberg': 'Baden-Württemberg', 'Nordrhein-Westfalen': 'Renânia do Norte-Vestfália', Lombardia: 'Lombardia', 'Trentino-Alto Adige': 'Tirol do Sul (Alto Ádige)', 'Cataluña': 'Catalunha', 'País Vasco': 'Euskadi (País Basco)', Galicia: 'Galiza', Bayern: 'Baviera', Sardegna: 'Sardenha', Sicily: 'Sicília', Chechnya: 'Chechênia', 'Sakha (Yakutia)': 'Sakha (Iacútia)', Bashkortostan: 'Bascortostão', Moskva: 'Moscou', 'City of St. Petersburg': 'São Petersburgo', Rostov: 'Rostov', Volgograd: 'Volgogrado', Murmansk: 'Murmansk', Leningrad: 'Leningrado', Dagestan: 'Daguestão', Karelia: 'Karélia', Tatarstan: 'Tartaristão', 'Gorno-Altay': 'Altai', Komi: 'Komi', Crimea: 'Crimeia', 'North Ossetia': 'Ossétia do Norte', Tuva: 'Tuva', Udmurt: 'Udmúrtia', Ingush: 'Inguchétia', Mordovia: 'Mordóvia', Khakass: 'Khakássia', 'Kabardin-Balkar': 'Kabardino-Balcária', Adygey: 'Adiguésia', Kalmyk: 'Calmúquia', Buryat: 'Buriácia', 'Karachay-Cherkess': 'Carachai-Circássia', Chuvash: 'Chuváchia', Kaliningrad: 'Kaliningrado', Sevastopol: 'Sebastopol', 'Mariy-El': 'Mari El', 'North Karelia': 'Carélia do Norte', 'Southern Savonia': 'Savônia do Sul', 'Northern Savonia': 'Savônia do Norte', 'Central Finland': 'Finlândia Central', Lapland: 'Lapônia', Ostrobothnia: 'Ostrobótnia', Uusimaa: 'Uusimaa' };
-export const regionName = n => PT[n] || n;
+export const regionName = n => ptName(PT[n] || n);
 // Identidade regional de um grupo de províncias: nome real e bandeira regional (quando existirem).
 export function regionalIdentity(data, pids) { const b = regionalBest(data, pids); return b ? { key: b.key, name: regionName(b.name), a3: b.a3 } : null; }
 export const ROLES = { rival: 'Rival', antagonist: 'Antagonista', ally: 'Aliada', neutral: 'Neutra' };
@@ -70,7 +71,7 @@ export function fracture(data, parentId, n, seed = '') {
     let ident = regionalIdentity(data, g); if (ident && usedKeys.has(ident.key)) ident = null; if (ident) usedKeys.add(ident.key);
     let anyReg = ident ? null : regionalBest(data, g, 0); if (anyReg && usedKeys.has(anyReg.key)) anyReg = null; if (anyReg) usedKeys.add(anyReg.key);
     const nm = ident ? ident.name : `${base} do ${names[i]}`;
-    return { id, parent: parentId, name: nm, formal: ident ? `República de ${nm}` : nm, leader: leaderName(cult), regime: reg, role: 'neutral', provs: g, flagSpec: ident ? { reg: ident.key } : anyReg ? { reg: anyReg.key } : autoFlag(id, cult, parentId), auto: true, region: ident?.key || null };
+    return { id, parent: parentId, name: nm, formal: ident ? ofRegion('República de', nm) : nm, leader: leaderName(cult), regime: reg, role: 'neutral', provs: g, flagSpec: ident ? { reg: ident.key } : anyReg ? { reg: anyReg.key } : autoFlag(id, cult, parentId), auto: true, region: ident?.key || null };
   });
 }
 
@@ -78,7 +79,7 @@ export function fracture(data, parentId, n, seed = '') {
 function fromRegion(data, key, extra = []) {
   const provs = [...new Set([...regionalProvinces(data, key), ...extra.filter(p => data.geo.prov[p])])]; if (!provs.length) return null;
   const meta = data.regionalFlags?.meta?.[key], a3 = meta?.a3 || data.geo.prov[provs[0]].a3, nm = regionName(meta?.name || key);
-  return { id: 'CW_' + key, parent: a3, name: nm, formal: 'República de ' + nm, leader: leaderName(cultureOf(data, a3)), regime: 'democracy', role: 'neutral', provs, flagSpec: { reg: key }, auto: true, region: key };
+  return { id: 'CW_' + key, parent: a3, name: nm, formal: ofRegion('República de', nm), leader: leaderName(cultureOf(data, a3)), regime: 'democracy', role: 'neutral', provs, flagSpec: { reg: key }, auto: true, region: key };
 }
 const RUS_KEYS = ['rus_tatarstan', 'rus_dagestan', 'rus_chechnya_chechen_republic', 'rus_sakha_yakutia_sakha_republic_yakutia', 'rus_bashkortostan', 'rus_karelia_republic_of_karelia', 'rus_buryatia_republic_of_buryatia', 'rus_komi_republic_komi', 'rus_north_ossetia_alania_north_ossetia', 'rus_ingushetia_republic_of_ingushetia', 'rus_kabardino_balkaria', 'rus_karachay_cherkessia', 'rus_adygea', 'rus_kalmykia_republic_of_kalmykia', 'rus_tuva', 'rus_altai_republic', 'rus_khakassia', 'rus_udmurtia_udmurt_republic', 'rus_mari_el', 'rus_chuvashia_chuvash_republic', 'rus_mordovia', 'rus_crimea_republic_of_crimea'];
 // Divide um país em suas regiões históricas com bandeira real; o restante vira o núcleo (com a bandeira nacional).

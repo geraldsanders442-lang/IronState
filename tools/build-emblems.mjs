@@ -8,7 +8,7 @@ const manifest = JSON.parse(readFileSync(new URL('manifest.json', RAW), 'utf8'))
 const MAX = 300000;
 const out = {}, report = [];
 // Revisados no navegador e descartados (recorte quebrado ou não é o símbolo pedido).
-const SKIP = new Set(['a_italy', 'a_france', 'a_finland', 'a_sweden', 'a_norway', 'a_kenya', 'a_hungary', 'r_wolf_ichkeria', 'a_southafrica', 'f_fasces', 'n_garuda', 'c_hs_circle', 'c_torch_juche', 'n_judah']);
+const SKIP = new Set(['a_finland', 'a_sweden', 'a_norway', 'a_kenya', 'a_hungary', 'r_wolf_ichkeria', 'a_southafrica', 'f_fasces', 'n_garuda', 'c_hs_circle', 'c_torch_juche', 'n_judah']);
 
 const num = s => parseFloat(s);
 function viewBox(svgTag) {

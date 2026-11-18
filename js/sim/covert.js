@@ -2,6 +2,7 @@ import { clamp, chance, rand, random } from './util.js';
 import { PLY, entOf, ownerOf, provincesOf, setOwner, territoryChanged, aiPower, relAI, shiftRelAI, playerNeighbors, defenseAllies } from './world.js';
 import { militaryPower } from './model.js';
 import { regionalFlagFor } from './regflags.js';
+import { ofRegion, ptName } from './ptnames.js';
 
 const day = s => Math.floor(s.time.min / 1440);
 const nm = (s, data, id) => id === PLY ? s.nation.shortName : entOf(s, data, id)?.name || id;
@@ -133,6 +134,10 @@ export function weeklyAiWarFronts(s, data, ctx) {
       const pid = cand.sort((x, y) => (data.geo.prov[y].pop || 0) - (data.geo.prov[x].pop || 0))[0];
       if (pid) { s.world.occ[pid] = winner; occ.push(pid); territoryChanged(s); ctx.news(`${nm(s, data, winner)} ocupa ${data.geo.prov[pid].n} (${nm(s, data, loser)}).`, 'war'); }
     }
+    // Contraofensiva: quando a frente recua, o lado invadido retoma o que perdeu (a última conquista primeiro).
+    for (const [list, by, allowed] of [[w.occA, w.a[0], w.front > 0 ? step : 0], [w.occB, w.b[0], w.front < 0 ? step : 0]]) {
+      if (list.length > allowed + 1 && chance(0.5)) { const pid = list.pop(); if (s.world.occ[pid] === by) { delete s.world.occ[pid]; territoryChanged(s); ctx.news(`Contraofensiva: ${nm(s, data, ownerOf(s, data, pid))} retoma ${data.geo.prov[pid].n} das tropas de ${nm(s, data, by)}.`, 'war'); } }
+    }
     w._wasActive = true;
   }
   for (const w of s.world.wars) {
@@ -154,10 +159,10 @@ export function newClientState(s, data, pids, from, ctx) {
   const n = Object.keys(s.world.ents).length + 1;
   const id = 'REB' + n;
   const big = pids.reduce((b, p) => (data.geo.prov[p].pop || 0) > (data.geo.prov[b].pop || 0) ? p : b, pids[0]);
-  const name = `República de ${data.geo.prov[big].n}`;
+  const name = ofRegion('República de', data.geo.prov[big].n);
   const base = entOf(s, data, from);
   const rk = regionalFlagFor(data, pids);
-  s.world.ents[id] = { ...base, id, name, nameEn: name, iso2: null, cat: 'partially_recognized', parent: null, recognition: `Separada de ${base?.name || from} com apoio de ${s.nation.shortName}`, capital: { name: data.geo.prov[big].n, prov: big }, profile: profileFromAxes(s.nation.ideology.axes, base?.profile), flag: rk ? { reg: rk, alt: null } : { layout: 'h3', colors: ['#7a1d12', '#f2f2f2', '#1d2b45'], emblems: [{ type: 'star', color: '#c9a227', x: 0.5, y: 0.5, s: 0.3 }] } };
+  s.world.ents[id] = { ...base, id, name, nameEn: name, iso2: null, cat: 'partially_recognized', parent: null, recognition: `Separada de ${base?.name || from} com apoio de ${s.nation.shortName}`, capital: { name: ptName(data.geo.prov[big].n), prov: big }, profile: profileFromAxes(s.nation.ideology.axes, base?.profile), flag: rk ? { reg: rk, alt: null } : { layout: 'h3', colors: ['#7a1d12', '#f2f2f2', '#1d2b45'], emblems: [{ type: 'star', color: '#c9a227', x: 0.5, y: 0.5, s: 0.3 }] } };
   const popM = pids.reduce((a, p) => a + (data.geo.prov[p].pop || 0), 0) / 1e6;
   s.world.c[id] = { id, pop: 0, gdp: 0, troops: popM * 2, equip: 30, ready: 40, logi: 25, intel: 20, stab: 35, growth: 2, share: 1, dep: false, aggr: 0, nego: 50, mobil: false, debt: 40, capitalProv: big, puppetOf: PLY };
   s.partners[id] = { rel: 70, trust: 60, trade: true, pact: true, sanctionsOn: false, sanctionsBy: false, broken: false, cd: {} };

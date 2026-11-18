@@ -78,7 +78,7 @@ export function weeklyWorldWar(s, data, ctx) {
 
   // 1) Faíscas: rivalidades vizinhas que explodem, mais frequentes com a tensão mundial alta.
   if (act.length < (W.chaos ? 12 : 4) && chance(0.02 + (W.tension || 0) / 4000)) {
-    const ids = Object.keys(W.c).filter(id => !W.c[id].dep && W.c[id].gdp > 15 && !inAnyWar(W, id));
+    const ids = Object.keys(W.c).filter(id => !W.c[id].dep && W.c[id].gdp > 15 && !inAnyWar(W, id) && (W.c[id].exh || 0) < 35 && (W.c[id].overext || 0) < 0.12);
     const a = ids.length ? pick(ids) : null, A = a && W.c[a];
     if (A) {
       const tg = (entOf(s, data, a)?.nb || []).filter(x => x !== PLY && W.c[x] && !W.c[x].dep && !inAnyWar(W, x) && relAI(s, data, a, x) < -20 && aiPower(A) > aiPower(W.c[x]) * 1.15 && !(W.c[x].nuclear && !A.nuclear));

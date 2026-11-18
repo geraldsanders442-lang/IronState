@@ -18,6 +18,7 @@ import { cabinetAct } from './cabinet.js';
 import { endGame } from './regime.js';
 import { armedAct, peaceAct } from './order.js';
 import { extraAct } from './extras.js';
+import { attritionAct } from './attrition.js';
 
 const day = s => Math.floor(s.time.min / 1440);
 export const partnerName = (s, data, id) => id === PLY ? s.nation.shortName : ent(s, data, id)?.name || id;
@@ -364,6 +365,7 @@ export function executeAct(s, data, act, ctx) {
     case 'warEvent': return warEventAct(s, data, act);
     case 'gov': return governorsAct(s, data, act, ctx);
     case 'refugees': case 'mediate': return worldWarAct(s, data, act, ctx);
+    case 'attr': return attritionAct(s, data, act, ctx);
     case 'unvote': return unVoteAct(s, act);
     case 'ascent': return ascentAct(s, act);
     case 'recognize': case 'joinAlliance': case 'separatist': return chaosAct(s, data, act, ctx);

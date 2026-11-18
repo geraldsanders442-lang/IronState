@@ -31,6 +31,7 @@ import { wrOfIds } from './worldregions.js';
 import { worldData, initWorldScenario, weeklyWorldScenario } from './worldscen.js';
 import { applySplits } from './munis.js';
 import { initGeopol, weeklyGeopol, labAct, computeMeters } from './geopol.js';
+import { weeklyAttrition } from './attrition.js';
 import { weeklyGovernors, initGovernors, setGovMode, setAutonomy, removeLeader, appointNew, fundWork } from './governors.js';
 import { initCabinet2, weeklyCabinet, cabinetAct, setMandate, hireAdvisor, fireAdvisor, advisorCandidates, train, notePolicyChange, noteEconChange } from './cabinet.js';
 import { initFinance, weeklyFinance, investCash, payInvest, raiseFunds, sectorInvest } from './finance.js';
@@ -364,6 +365,7 @@ export class Game {
       weeklyWarDip(s, data, c);
       weeklyForces(s, data, c);
       weeklyAiWarFronts(s, data, c);
+      weeklyAttrition(s, data, c);
       if (!micro) weeklyWorldWar(s, data, c);
       weeklyWorldScenario(s, data, c);
       weeklyCovert(s, data, c);

@@ -337,7 +337,8 @@ export function weeklyWorld(s, data, ctx) {
     c.stab = clamp(c.stab + ((war ? 45 : 62) - c.stab) * 0.02 + rand(-0.6, 0.6), 5, 95);
     const mi = entOf(s, data, id)?.profile?.milIntensity ?? 0.6;
     c.ready = clamp(c.ready + ((c.mobil ? 80 : 30 + mi * 15) - c.ready) * 0.03, 5, 95);
-    c.troops = Math.max(1, c.troops + (c.pop * 3 * mi * (c.mobil ? 1.6 : 1) - c.troops) * 0.02);
+    // Reposição de tropas: mais lenta em guerra, e menor com cansaço de guerra e territórios hostis para guarnecer.
+    c.troops = Math.max(1, c.troops + (c.pop * 3 * mi * (c.mobil ? 1.6 : 1) * (1 - (c.exh || 0) / 250) * (1 - (c.overext || 0) * 0.5) - c.troops) * (war ? 0.011 : 0.02));
   }
   aiWars(s, data, ctx);
   loansWeekly(s, data, ctx);
@@ -443,13 +444,18 @@ function offerCard(kind, id, nm, x) {
 }
 
 // ---------- Guerras entre países de IA ----------
+// Moral de combate: cansaço de guerra e sobre-extensão enfraquecem; quem tem o território invadido resiste mais.
+function warMorale(s, data, c) {
+  const own = provincesOf(s, data, c.id), occ = own.length ? own.filter(p => s.world.occ[p]).length / own.length : 0, exh = c.exh || 0;
+  return (1 - exh / 230) * (1 - (c.overext || 0) * 0.9) * (1 + (exh < 60 ? occ * 0.45 : 0));
+}
 function aiWars(s, data, ctx) {
   const W = s.world;
   for (const w of W.wars) {
     if (!w.active || !w.ai) continue;
     const A = w.a.map(i => W.c[i]).filter(Boolean), B = w.b.map(i => W.c[i]).filter(Boolean);
     if (!A.length || !B.length) { w.active = false; continue; }
-    const pa = A.reduce((t, c) => t + aiPower(c), 0) * (1 + (w.supportA || 0)), pb = B.reduce((t, c) => t + aiPower(c), 0) * 1.15 * (1 + (w.supportB || 0));
+    const pa = A.reduce((t, c) => t + aiPower(c) * warMorale(s, data, c), 0) * (1 + (w.supportA || 0)), pb = B.reduce((t, c) => t + aiPower(c) * warMorale(s, data, c), 0) * 1.15 * (1 + (w.supportB || 0));
     w.ratio = pa / Math.max(0.1, pb);
     w.front = clamp((w.front || 0) + clamp((w.ratio - 1) * 1.2, -1.5, 1.5) + rand(-1, 1), -100, 100);
     for (const c of [...A, ...B]) { c.troops *= 0.999; c.stab = clamp(c.stab - 0.08, 5, 95); }

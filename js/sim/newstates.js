@@ -4,7 +4,8 @@ import { clamp, chance, rand, pick, random } from './util.js';
 import { PLY, entOf, ownerOf, provincesOf, isAlive, components, relAI, shiftRelAI } from './world.js';
 import { transfer } from './war.js';
 import { cultureOf } from './names.js';
-import { regionalFlagFor } from './regflags.js';
+import { regionalFlagFor, regionalBest } from './regflags.js';
+import { ptName, ofRegion } from './ptnames.js';
 import { nationalVariant } from './flagstyle.js';
 
 const day = s => Math.floor(s.time.min / 1440);
@@ -187,26 +188,35 @@ export function stateExists(s, data, name, regKey, movementId) {
   }
   return null;
 }
+// Um país extinto que corresponde a este novo Estado (mesmo movimento, mesma região/bandeira regional ou mesmo nome).
+function deadTwin(s, data, key, name, short, mvId) {
+  const W = s.world, n = norm(name), sh = norm(short);
+  const pool = [...Object.values(W.ents || {}), ...Object.values(data.reg).filter(e => e.custom || e.flag?.reg)];
+  return pool.find(e => e && e.id && !W.c[e.id] && e.flag && ((mvId && e.movement === mvId) || (key && (e.region === key || e.flag.reg === key)) || (n && norm(e.name) === n) || (sh && (norm(e.short) === sh || norm(e.name) === sh)))) || null;
+}
 export function foundState(s, data, ctx, { pids, from, movement, why = 'declara independência' }) {
   const W = s.world;
   pids = pids.filter(p => ownerOf(s, data, p) === from);
   if (!pids.length) return null;
   if (from !== PLY && movement && stateExists(s, data, movement.name, regionalFlagFor(data, pids, movement.id), movement.id)) return null;
   W.ents ||= {}; W.newStates ||= [];
-  const id = 'NEW' + (W.newStates.length + 1);
+  let id = 'NEW' + (W.newStates.length + 1);
   const base = entOf(s, data, from), culture = movement?.culture || base?.culture || (from === PLY ? s.nation.culture : cultureOf(data, base?.origin || base?.secededFrom || from)) || 'en';
-  const cap = biggest(data, pids), rgName = regionName(data, pids);
+  const cap = biggest(data, pids), rgRaw = regionName(data, pids), rgName = ptName(rgRaw);
   let name, flag, profile, ideo;
   if (movement) ({ name, flag, profile, ideo } = { name: movement.name, flag: structuredClone(movement.flag), profile: { ...movement.profile, resources: base?.profile?.resources || [] }, ideo: movement.ideo });
-  else { const g = genericProfile(base, culture); ideo = g.ideo; profile = g.profile; name = `${pick(styleOf(culture).pre)} ${rgName}`; const o3 = base?.origin || (from === PLY ? s.nation.components?.[0]?.id : from); flag = (chance(0.6) && nationalVariant(o3)) || regionalFlag(culture, g.emblem); }
+  else { const g = genericProfile(base, culture); ideo = g.ideo; profile = g.profile; name = ofRegion(pick(styleOf(culture).pre), rgRaw); const o3 = base?.origin || (from === PLY ? s.nation.components?.[0]?.id : from); flag = (chance(0.6) && nationalVariant(o3)) || regionalFlag(culture, g.emblem); }
   // Bandeira real da região (Commons), quando existe; a gerada fica de reserva.
-  const rk = regionalFlagFor(data, pids, movement?.id);
-  if (rk) flag = { reg: rk, alt: flag };
+  let rk = regionalFlagFor(data, pids, movement?.id);
+  // País que já existiu (ex.: a Galiza anexada que se rebela de novo): volta com o mesmo id, nome e bandeira.
+  const prev = deadTwin(s, data, rk || regionalBest(data, pids, 0.3)?.key || null, movement ? movement.name : null, rgName, movement?.id);
+  if (prev) { id = prev.id; flag = structuredClone(prev.flag); rk = rk || prev.region || prev.flag?.reg || null; if (!movement) name = prev.name; }
+  else if (rk) flag = { reg: rk, alt: flag };
   // Mesmo nome ou mesma bandeira regional de um país que já existe: não cria uma república repetida.
   if (from !== PLY && stateExists(s, data, name, rk, movement?.id)) return null;
-  if (Object.values(W.ents).some(e => e.name === name)) name += ' ' + ['Livre', 'Unida', 'Nova'][W.newStates.length % 3];
-  W.ents[id] = { id, name, nameEn: name, short: movement?.short || rgName, iso2: null, cat: 'partially_recognized', parent: null, capital: { name: data.geo.prov[cap].n, prov: cap }, profile, flag, culture, ideo,
-    region: rk || null, origin: base?.origin || (from === PLY ? null : from), regions: base?.regions || s.nation.regions, recognition: `Proclamou independência de ${base?.name || s.nation.shortName}`, secededFrom: from, born: day(s), movement: movement?.id };
+  if (!prev && Object.values(W.ents).some(e => e.name === name)) name += ' ' + ['Livre', 'Unida', 'Nova'][W.newStates.length % 3];
+  W.ents[id] = { id, name, nameEn: name, short: movement?.short || rgName, iso2: null, cat: 'partially_recognized', parent: null, capital: { name: ptName(data.geo.prov[cap].n), prov: cap }, profile, flag, culture, ideo,
+    region: rk || null, revived: prev ? (prev.revived || 0) + 1 : undefined, origin: base?.origin || (from === PLY ? null : from), regions: base?.regions || s.nation.regions, recognition: `Proclamou independência de ${base?.name || s.nation.shortName}`, secededFrom: from, born: day(s), movement: movement?.id };
   const popM = pids.reduce((a, p) => a + (data.geo.prov[p].pop || 0), 0) / 1e6;
   const pc = s.world.c[from];
   W.c[id] = { id, pop: 0, gdp: 0, troops: Math.max(1, popM * 2.5 * profile.milIntensity), equip: pc ? pc.equip * 0.6 : s.st.equipment * 0.6, ready: 45, logi: 25, intel: 20, stab: 38, growth: pc ? pc.growth + 0.5 : 2.5, share: 1, dep: false,
@@ -216,8 +226,9 @@ export function foundState(s, data, ctx, { pids, from, movement, why = 'declara 
   transfer(s, data, pids, id);
   W.claims.push({ id: 'ind_' + id, claimant: from, holder: id, provs: [...pids], type: 'sovereignty', just: `${base?.name || s.nation.shortName} não reconhece a independência de ${name}.`, strat: 55, dom: 85, risk: 75, status: 'active', src: 'secession' });
   shiftRelAI(s, id, from, -60);
-  W.newStates.push({ id, day: day(s), from, name });
-  ctx.news?.(`${name} ${why} e se separa de ${base?.name || s.nation.shortName}. Nova bandeira: ${ideo}.`, 'war');
+  if (W.leaders) W.leaders[id] = null;
+  W.newStates.push({ id, day: day(s), from, name, revived: !!prev });
+  ctx.news?.(prev ? `${name} volta a existir: ${why}, separando-se de ${base?.name || s.nation.shortName}.` : `${name} ${why} e se separa de ${base?.name || s.nation.shortName}. Nova bandeira: ${ideo}.`, 'war');
   return id;
 }
 

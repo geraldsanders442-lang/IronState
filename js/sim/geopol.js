@@ -15,6 +15,7 @@ const hashS = str => { let h = 2166136261; for (const c of String(str)) { h ^= c
 
 export { FAMILIES, famOfProfile, playerFam, compat, ideoRel, POSTURES } from './ideofam.js';
 import { FAMILIES, famOfProfile, playerFam, compat, ideoRel, POSTURES } from './ideofam.js';
+import { labCountryAct, warSummary } from './attrition.js';
 export const famOf = (s, data, id) => id === PLY ? playerFam(s) : famOfProfile(entOf(s, data, id)?.profile);
 const labMul = (s, k) => s?.world?.lab?.[k] ?? 1;
 
@@ -247,16 +248,18 @@ export function computeMeters(s, data) {
   const tension = W.tension ?? 30;
   const chaos = clamp(wars * 3.5 + recent * 3 + newS * 3 + tension * 0.3 + (W.crisis ? 8 : 0) + (W.lab?.chaos ?? 35) * 0.12, 0, 100);
   const M = W.meters = { chaos, tension, wars, nationalism: pop ? natW / pop : 50, polarization: pairs ? hostile / pairs * 100 : 0, democracy: ids.length ? dem / ids.length * 100 : 0, hdi: pop ? hdiW / pop : 0.7, poverty: pop ? povW / pop : 15, freedom: pop ? libW / pop : 50, countries: ids.length, alliances: (W.alliances || []).length, newStates: (W.newStates || []).length, fams };
+  const WS = warSummary(s, data);
+  Object.assign(M, { dead: WS.mil + WS.civ, milDead: WS.mil, civDead: WS.civ, refugees: WS.ref, destruction: WS.destruction, devastated: WS.devastated, insurg: WS.insurg, revolts: WS.revolts, gdpLost: WS.lost });
   M.era = classifyWorld(M, fams, ids.length);
   if (W.eraNow !== M.era.id) { if (W.eraNow) (W.eraLog ||= []).unshift({ day: d, id: M.era.id, name: M.era.name }); W.eraNow = M.era.id; }
-  (W.meterHist ||= []).push([d, Math.round(M.chaos), Math.round(M.tension), M.wars, Math.round(M.nationalism), Math.round(M.polarization), Math.round(M.democracy), Math.round(M.hdi * 1000) / 10, Math.round(M.poverty * 10) / 10, Math.round(M.freedom)]);
+  (W.meterHist ||= []).push([d, Math.round(M.chaos), Math.round(M.tension), M.wars, Math.round(M.nationalism), Math.round(M.polarization), Math.round(M.democracy), Math.round(M.hdi * 1000) / 10, Math.round(M.poverty * 10) / 10, Math.round(M.freedom), Math.round(M.destruction * 100) / 100, Math.round(M.dead), Math.round(M.refugees), M.insurg]);
   if (W.meterHist.length > 260) W.meterHist.shift();
   // Observatório: série mensal por país (PIB, estabilidade, poder, população, províncias) e das famílias ideológicas.
   if (s.spectator && (!W.obsHist || d - (W.obsHist.days.at(-1) ?? -99) >= 28)) {
     const H = W.obsHist ||= { days: [], c: {}, fams: [], prov: {} };
     H.days.push(d); H.fams.push({ ...fams });
     const pc = {}; for (const pid in data.geo.prov) { const o = ownerOf(s, data, pid); pc[o] = (pc[o] || 0) + 1; }
-    for (const id of Object.keys(W.c)) { const c = W.c[id]; if (c.dep) continue; (H.c[id] ||= []).push([d, Math.round(c.gdp), Math.round(c.stab), +aiPower(c).toFixed(1), +c.pop.toFixed(1), pc[id] || 0]); if (H.c[id].length > 120) H.c[id].shift(); }
+    for (const id of Object.keys(W.c)) { const c = W.c[id]; if (c.dep) continue; (H.c[id] ||= []).push([d, Math.round(c.gdp), Math.round(c.stab), +aiPower(c).toFixed(1), +c.pop.toFixed(1), pc[id] || 0, Math.round(c.exh || 0), Math.round((c.dmg || 0) * 1000) / 10]); if (H.c[id].length > 120) H.c[id].shift(); }
     if (H.days.length > 120) { H.days.shift(); H.fams.shift(); }
   }
   return M;
@@ -266,8 +269,9 @@ export function computeMeters(s, data) {
 // IDH aproximado pela renda per capita (escala logarítmica), com perdas por guerra e instabilidade.
 export function socialOf(c, atWar) {
   const pc = Math.max(150, c.gdp * 1e3 / Math.max(0.01, c.pop));
-  const hdi = clamp(0.25 + 0.25 * Math.log10(pc / 100) - (atWar ? 0.04 : 0) - Math.max(0, 40 - c.stab) * 0.002, 0.25, 0.97);
-  const poverty = clamp(90 - 23 * Math.log10(pc) + (atWar ? 7 : 0) + Math.max(0, 40 - c.stab) * 0.25, 0.5, 85);
+  const dm = c.dmg || 0; // infraestrutura destruída derruba saúde, escolas e renda
+  const hdi = clamp(0.25 + 0.25 * Math.log10(pc / 100) - (atWar ? 0.04 : 0) - Math.max(0, 40 - c.stab) * 0.002 - dm * 0.2, 0.25, 0.97);
+  const poverty = clamp(90 - 23 * Math.log10(pc) + (atWar ? 7 : 0) + Math.max(0, 40 - c.stab) * 0.25 + dm * 35, 0.5, 85);
   return { hdi, poverty, gdppc: pc };
 }
 
@@ -275,6 +279,8 @@ export function socialOf(c, atWar) {
 export const ERAS = {
   worldwar: { name: 'Guerra mundial', color: '#7a1d12', desc: 'Conflitos simultâneos em vários continentes e tensão máxima entre as potências.' },
   chaos: { name: 'Anarquia global', color: '#a93226', desc: 'Estados se desfazendo, golpes e secessões em série: a ordem internacional colapsou.' },
+  ruins: { name: 'Mundo em ruínas', color: '#6e2c00', desc: 'Guerras longas devastaram regiões inteiras: cidades destruídas, milhões de refugiados e economias para reconstruir.' },
+  insurgency: { name: 'Era das insurgências', color: '#7d6608', desc: 'As fronteiras mudaram à força e os povos conquistados não aceitam: guerrilhas e levantes em toda parte.' },
   orwell: { name: 'Distopia orwelliana ("1984")', color: '#2c2c2c', desc: 'Regimes totalitários dominam o planeta; quase não há liberdade e os blocos vivem em guerra permanente.' },
   dystopia: { name: 'Distopia', color: '#5b2c6f', desc: 'Pobreza em massa, regimes fechados e instabilidade em toda parte.' },
   nationalist: { name: 'Era dos nacionalismos', color: '#3b3f8f', desc: 'Fronteiras contestadas, irredentismo e governos nacionalistas em alta.' },
@@ -291,6 +297,8 @@ export function classifyWorld(M, fams = {}, n = 1) {
   let id;
   if (M.wars >= 10 || (M.tension >= 85 && M.wars >= 5)) id = 'worldwar';
   else if (M.chaos >= 80) id = 'chaos';
+  else if ((M.destruction || 0) >= 3 || (M.refugees || 0) > 40000) id = 'ruins';
+  else if ((M.insurg || 0) >= 20 && M.wars < 6) id = 'insurgency';
   else if (M.freedom < 32 && M.democracy < 25 && (M.polarization > 35 || M.wars >= 3)) id = 'orwell';
   else if (M.poverty > 30 || (M.hdi < 0.55 && M.chaos > 50)) id = 'dystopia';
   else if (share('socialist') > 0.35) id = 'red';
@@ -359,6 +367,7 @@ function aiWarDecisions(s, data, ctx) {
   for (let i = 0; i < 10; i++) {
     const a = ids[Math.floor(random() * ids.length)]; if (!a) return;
     const A = W.c[a], post = POSTURES[postureOf(s, data, a)];
+    if ((A.exh || 0) > 35 || (A.overext || 0) > 0.12) continue; // ainda lambendo as feridas ou ocupado demais com territórios rebeldes
     if (post.war < 0.3 && !chance(0.2)) continue;
     const fa = famOf(s, data, a);
     for (const b of aiNeighborsOf(s, data, a)) {
@@ -501,6 +510,7 @@ export function labAct(s, data, act, ctx) {
     case 'destabilize': { const c = W.c[act.id]; if (!c) return ''; c.stab = clamp(c.stab - 30, 5, 95); return mark(`Crise interna em ${nm(s, data, act.id)}: estabilidade despenca.`); }
     case 'tension': W.tension = clamp((W.tension ?? 30) + +act.v, 0, 100); return mark(`Tensão mundial ${act.v > 0 ? 'elevada' : 'reduzida'}.`);
     case 'crisis': { const C = CRISES[act.id]; if (!C || W.crisis) return W.crisis ? 'Já há uma crise global em curso.' : ''; W.crisis = { id: act.id, weeks: C.weeks, start: d }; s.flags['gc_' + act.id] = 1; for (const c of Object.values(W.c)) c.gdp *= 1 + (C.mods.growth || 0) / 100; W.tension = clamp((W.tension ?? 30) + 6, 0, 100); ctx.news?.(C.news, 'war'); return mark(C.name + ' desencadeada.'); }
+    case 'country': return labCountryAct(s, data, act, ctx, mark);
     case 'nat': { const c = W.c[act.id]; if (!c) return ''; c.nat = clamp(+act.v, 0, 100); W._ethClaimsVer = -1; return ''; }
   }
   return '';
