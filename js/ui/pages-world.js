@@ -217,8 +217,8 @@ export function rankingsPage(el, game) {
   const s = game.s, data = game.data, R = s.world.rankings || {};
   const fmt = (k, v) => k === 'gdp' ? money(v, 'US$') : k === 'pop' ? num(v, 1) + ' mi' : k === 'area' ? num(v / 1000, 0) + ' mil km²' : k === 'gdppc' ? num(v, 0) : num(v, 1);
   const row = (k, id, v, i) => `<tr class="${id === PLY ? 'me' : ''}"><td>${i + 1}</td><td>${id === PLY ? flagHTML(s.nation.flag, 16) + ' ' + esc(s.nation.shortName) : fl(game, id, 16) + ' ' + esc(entName(s, data, id))}</td><td class="num">${fmt(k, v)}</td></tr>`;
-  // Uma tabela só, com rolagem; o país do jogador em negrito.
-  const rankRows = (r, k) => `<div class="rank-scroll"><table class="data rank-table">${(r.all || r.top).map(([id, v], i) => row(k, id, v, i)).join('')}</table></div>`;
+  // Modo clássico: top 10 e, se você estiver fora dele, a sua posição logo abaixo (como era antes).
+  const rankRows = (r, k) => `<table class="data rank-table">${r.top.map(([id, v], i) => row(k, id, v, i)).join('')}${r.pos > 10 ? `<tr class="me"><td>${r.pos}</td><td>${flagHTML(s.nation.flag, 16)} ${esc(s.nation.shortName)}</td><td class="num">${fmt(k, r.value)}</td></tr>` : ''}</table>`;
   el.innerHTML = `<h2>Rankings mundiais</h2><div class="muted small" style="margin-bottom:8px">Calculados mensalmente a partir dos dados da simulação de todos os países. Indicadores sem dados reais por país (pobreza, desigualdade, dívida e aprovação de países de IA) são estimativas por faixa de renda e região.</div>
     <div class="grid g3">${Object.entries(RANK_INFO).map(([k, info]) => { const r = R[k]; if (!r) return ''; return `<div class="panel"><h3>${esc(info[0])}</h3><div class="small">Você: <b>${r.pos}º</b> de ${r.of}</div>
       ${rankRows(r, k)}<div data-rh="${k}"></div></div>`; }).join('')}</div>`;
