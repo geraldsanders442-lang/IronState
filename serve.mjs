@@ -9,7 +9,7 @@ const types = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/ja
 
 createServer(async (req, res) => {
   const path = normalize(decodeURIComponent(req.url.split('?')[0])).replace(/^(\.\.[/\\])+/, '');
-  const file = join(root, path === '/' || path === '\\' ? 'index.html' : path);
+  const file = join(root, path === '/' || path === '\\' ? 'dev.html' : path);
   if (!file.startsWith(root)) { res.writeHead(403).end(); return; }
   try {
     const body = await readFile(file);

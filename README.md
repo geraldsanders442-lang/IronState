@@ -4,7 +4,7 @@ Jogo single-player de navegador: crie uma nação a partir de territórios reais
 
 ## Como jogar
 
-**Abra `IronState.html` com dois cliques.** É um arquivo único (≈5 MB) com código, mapas, bandeiras e dados embutidos; funciona offline e salva no navegador.
+**Abra `index.html` com dois cliques** (ou jogue pelo site do GitHub Pages). É um arquivo único (≈32 MB) com código, mapas, bandeiras e dados embutidos; funciona offline e salva no navegador.
 
 Alternativa para desenvolvimento (arquivos separados): `node serve.mjs` e acesse http://localhost:8080.
 
@@ -78,7 +78,7 @@ Turnos: clique em **Próxima semana ▶** (ou Enter). O jogo mostra as notícias
   - `node tools/build-flags.mjs` — empacota bandeiras.
   - `node tools/validate-world.mjs` — valida o banco geopolítico e gera `docs/validation-report.md`.
   - `node tools/validate-content.mjs` — valida questões, eventos e desdobramentos.
-  - `node tools/build-single.mjs` — gera `IronState.html`.
+  - `node tools/build-single.mjs` — gera `index.html` (o jogo completo; também uma cópia local `IronState.html`). O modelo de desenvolvimento é `dev.html` (`node serve.mjs` → http://localhost:8080).
   - `node tools/fetch-commons-emblems.mjs` e `node tools/build-emblems.mjs` — baixam do Wikimedia Commons (só licenças livres) e convertem os emblemas listados em `tools/commons-emblems.list.mjs`.
   - `node tools/add-scenarios.mjs` — (re)grava os cenários alternativos adicionais em `data/world/scenarios.json`.
 - `tests/sim-test.mjs` — simulação headless: `node tests/sim-test.mjs [random|first|idle|war|diplo|covert] [dias] [cenário] [país]`.
