@@ -4,6 +4,7 @@ import { fmtDate } from '../sim/util.js';
 import { GROUPS } from '../sim/constants.js';
 import { PORTFOLIOS, SYSTEMS, coalitionSeats, electionMode } from '../sim/politics.js';
 import { MANDATES, ADVISORS, advisorSalary, trainCost } from '../sim/cabinet.js';
+import { autonomyOf, minRisk, ideoDistance } from '../sim/ministers.js';
 import { GOV_MODES, STANCE_NAMES, LEADER_TRAITS, GOV_WORKS, govRegions, transferAnnual } from '../sim/governors.js';
 import { BUILDINGS, buildCost } from '../sim/markets.js';
 import { regionalFlagFor } from '../sim/regflags.js';
@@ -77,6 +78,11 @@ function cabinet(body, game) {
       <td><select data-mandate="${k}" title="${esc(MANDATES[k]?.[md]?.[1] || '')}">${Object.entries(MANDATES[k] || {}).map(([mk, mv]) => `<option value="${mk}" ${mk === md ? 'selected' : ''}>${esc(mv[0])}</option>`).join('')}</select>${held(k) ? '<div class="small muted">aguardando sua ordem recente</div>' : ''}</td>
       <td class="row" style="gap:3px;flex-wrap:nowrap"><button class="small" data-train="minister:${k}" ${tr ? 'disabled' : ''} title="8 semanas · ${tc}">Treinar</button><button class="small" data-swap="${k}">Trocar</button></td></tr>`; }).join('')}</table>
     <p class="small muted">Competência aumenta os efeitos da pasta e a chance de o ministro agir bem; ministros corruptos superfaturam obras. Treinar custa ${tc} e leva 8 semanas (+6 a +12 de competência).</p></div>
+  <div class="panel"><h3>Autonomia e risco de rebeldia</h3>
+    <p class="small muted">Quanto mais poder você delega (mandatos e chefe de gabinete), mais cada ministro age por conta própria. Com pouca lealdade, muita ambição e ideias distantes das suas, ele pode mudar a sua agenda, desviar verba, conspirar e até derrubar o governo.</p>
+    ${P.plot ? `<div class="panel tight" style="border-left:5px solid #b3261e;background:#fff3f0"><b>Conspiração em curso</b> articulada por ${esc(P.plot.who)} (${Math.round(P.plot.prog)}%).</div>` : ''}
+    <table class="data small"><tr><th>Pasta</th><th class="num">Autonomia</th><th class="num">Ambição</th><th class="num">Distância ideológica</th><th class="num">Risco</th></tr>${Object.entries(PORTFOLIOS).map(([k, pf]) => { const m = P.cabinet[k], r = minRisk(s, k); return `<tr><td>${esc(pf.name)}</td><td class="num">${Math.round(autonomyOf(s, k) * 100)}%</td><td class="num">${Math.round(m.amb ?? 20)}</td><td class="num">${Math.round(ideoDistance(s, m) * 100)}%</td><td class="num ${r > 0.6 ? 'bad' : r > 0.35 ? 'warn' : ''}">${Math.round(r * 100)}%</td></tr>`; }).join('')}</table>
+    ${(P.minLog || []).length ? `<div class="log-list" style="max-height:120px;margin-top:6px">${P.minLog.map(l => `<div><span class="muted small">${fmtDate(l.day)}</span> ${esc(l.text)}</div>`).join('')}</div>` : ''}</div>
   <div class="panel"><h3>Conselheiros</h3><div class="grid g2">${Object.entries(ADVISORS).map(([role, A]) => { const a = P.advisors?.[role], tr = training('advisor', role); return `<div class="panel tight"><b>${esc(A.name)}</b><div class="small muted">${esc(A.desc)}</div>
       ${a ? `<div style="margin-top:4px">${esc(a.name)} <span class="small muted">(${esc(a.trait)})</span> · competência <b>${a.skill}</b>${tr ? ' <span class="small c-warn">em treinamento</span>' : ''}<div class="small muted">salário ${money(advisorSalary(s, a))}/ano</div></div>
         <div class="row" style="gap:4px;margin-top:4px"><button class="small" data-train="advisor:${role}" ${tr ? 'disabled' : ''}>Treinar (${tc})</button><button class="small" data-hire="${role}">Substituir</button><button class="small" data-fire="${role}">Dispensar</button></div>`

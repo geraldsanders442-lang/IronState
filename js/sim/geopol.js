@@ -3,7 +3,7 @@
 // minorias étnicas e povos sem Estado (Mapuches, Sámi, Cabilas, Tâmeis, Maias...) com irredentismo e separatismo,
 // alianças ideológicas e guerras entre IAs. Vale para o jogo normal, o mundo customizado e o Observatório.
 import { clamp, chance, rand, pick, random } from './util.js';
-import { PLY, entOf, ownerOf, provincesOf, relAI, shiftRelAI, aiPower, playerNeighbors } from './world.js';
+import { PLY, entOf, ownerOf, provincesOf, relAI, shiftRelAI, aiPower, playerNeighbors, territoryChanged } from './world.js';
 import { secessionMult } from './cohesion.js';
 import { startAiWar, foundState, aiNeighborsOf, MOVEMENTS, movementProvinces } from './newstates.js';
 import { cultureOf } from './names.js';
@@ -120,6 +120,18 @@ function heirOfBase(s, data, a3, cache) {
   return (cache[a3] = best && bn >= m._t * 0.35 ? best : null);
 }
 
+// Um Estado "tem" um povo quando seu nome ou movimento o evoca (Curdistão, Reino da Palestina...) e ele controla boa parte das terras desse povo.
+// Evita que um mundo customizado com um Curdistão ainda trate os curdos como "povo sem Estado".
+const nrm = x => String(x || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/k/g, 'c').replace(/[^a-z0-9]+/g, ' ').trim();
+const stemsOf = g => { const out = new Set(); for (const w of [g.people, g.name, g.short, g.id]) for (const tk of nrm(w).split(' ')) if (tk.length >= 4) out.add(tk.slice(0, 4)); return [...out].filter(x => !['povo', 'povos', 'regi', 'nati', 'peop'].includes(x)); };
+export function holdsPeople(s, data, holder, g, provsHeld, provsTotal) {
+  const e = entOf(s, data, holder); if (!e) return false;
+  if (e.movement && e.movement === g.id) return true;
+  if (provsTotal && provsHeld / provsTotal < 0.3) return false;
+  const text = nrm([e.name, e.short, e.formal, e.nameEn, e.region].filter(Boolean).join(' '));
+  return stemsOf(g).some(st => text.includes(st));
+}
+
 // Índice de minorias: quem detém províncias de que povo, e quem é o Estado-mãe desse povo.
 const ETH_CACHE = new WeakMap(); // fora do estado salvo (contém referências aos dados)
 export function ethnicIndex(s, data) {
@@ -168,7 +180,8 @@ export function ethnicIndex(s, data) {
   for (const g of statelessGroups(data)) {
     const by = {};
     for (const pid of ethnicProvinces(data, g)) (by[ownerOf(s, data, pid)] ||= []).push(pid);
-    for (const holder in by) if (!entOf(s, data, holder)?.movement || entOf(s, data, holder).movement !== g.id) stateless.push({ group: g.id, people: g.people, name: g.name, holder, provs: by[holder], g });
+    const all = ethnicProvinces(data, g).length;
+    for (const holder in by) if ((!entOf(s, data, holder)?.movement || entOf(s, data, holder).movement !== g.id) && !holdsPeople(s, data, holder, g, by[holder].length, all)) stateless.push({ group: g.id, people: g.people, name: g.name, holder, provs: by[holder], g });
   }
   const out = { ver: W.ver, data, minorities, stateless }; ETH_CACHE.set(W, out); return out;
 }
@@ -182,7 +195,15 @@ export function initGeopol(s, data, lab = {}) {
   W.lab = { chaos: W.chaos ? 70 : 35, ideo: 1, ethnic: 1, wars: 1, realConflicts: true, ...(W.lab || {}), ...lab };
   for (const id in W.c) { const c = W.c[id]; if (!c.posture) c.posture = defaultPosture(s, data, id); }
   s.nation.posture ||= s.nation.ideology?.axes?.global < -50 ? 'isolationist' : s.nation.ideology?.axes?.expand > 50 ? 'expansionist' : 'aligned';
-  if (!W.lab.realConflicts) for (const w of W.wars) if (w.ai && !w.chaos && !w.lab) w.active = false;
+  if (!W.lab.realConflicts) {
+    for (const w of W.wars) if (w.ai && !w.chaos && !w.lab) w.active = false;
+    // Sem conflitos reais: some também o que os sustenta — ocupações de fato e as reivindicações dos pares que estavam em guerra (ex.: Rússia × Ucrânia).
+    const db = data.claimsDb || {}, pairs = new Set((db.wars || []).flatMap(w => [w.a + '|' + w.b, w.b + '|' + w.a]));
+    for (const pid of Object.keys(W.occ)) if (W.occ[pid] !== PLY && db.occupied?.[pid]) delete W.occ[pid];
+    W.claims = W.claims.filter(c => !pairs.has(c.claimant + '|' + c.holder) && !(c.provs || []).some(p => db.occupied?.[p] && c.type === 'sovereignty'));
+    territoryChanged(s);
+  }
+  cleanOccupation(s);
   // Guerras reais só continuam se os dois lados ainda existem com a maior parte do território.
   for (const w of W.wars) if (w.active && w.ai && !w.since) for (const id of [...w.a, ...w.b]) { const c = W.c[id]; if (!c || (c.share ?? 1) < 0.5) w.active = false; }
   fixClaims(s, data);
@@ -227,6 +248,8 @@ function ethnicClaims(s, data, init) {
   for (const m of E.minorities) {
     if (m.kin !== PLY && !W.c[m.kin]) continue;
     if (m.holder !== PLY && !W.c[m.holder]) continue;
+    // Sem conflitos reais, os pares que estavam em guerra no mundo real (Rússia × Ucrânia...) não ganham reivindicações étnicas que reacendam a disputa.
+    if (W.lab && !W.lab.realConflicts && (data.claimsDb?.wars || []).some(w => (w.a === m.kin && w.b === m.holder) || (w.b === m.kin && w.a === m.holder))) continue;
     const id = 'eth_' + m.group + '_' + m.holder;
     const natK = nationalismOf(s, data, m.kin), share = m.lost ? 1 : 0.6;
     const existing = W.claims.find(c => c.id === id);
@@ -272,7 +295,7 @@ export function computeMeters(s, data) {
     const H = W.obsHist ||= { days: [], c: {}, fams: [], prov: {} };
     H.days.push(d); H.fams.push({ ...fams });
     const pc = {}; for (const pid in data.geo.prov) { const o = ownerOf(s, data, pid); pc[o] = (pc[o] || 0) + 1; }
-    for (const id of Object.keys(W.c)) { const c = W.c[id]; if (c.dep) continue; (H.c[id] ||= []).push([d, Math.round(c.gdp), Math.round(c.stab), +aiPower(c).toFixed(1), +c.pop.toFixed(1), pc[id] || 0, Math.round(c.exh || 0), Math.round((c.dmg || 0) * 1000) / 10]); if (H.c[id].length > 120) H.c[id].shift(); }
+    for (const id of Object.keys(W.c)) { const c = W.c[id]; if (c.dep) continue; (H.c[id] ||= []).push([d, Math.round(c.gdp), Math.round(c.stab), +aiPower(c).toFixed(1), +c.pop.toFixed(1), pc[id] || 0, Math.round(c.exh || 0), Math.round((c.dmg || 0) * 1000) / 10, Object.keys(FAMILIES).indexOf(famOf(s, data, id)), W.wars.some(w => w.active && [...w.a, ...w.b].includes(id)) ? 1 : 0]); if (H.c[id].length > 120) H.c[id].shift(); }
     if (H.days.length > 120) { H.days.shift(); H.fams.shift(); }
   }
   return M;
@@ -478,9 +501,16 @@ function worldPulse(s, data, ctx) {
   }
 }
 
+// Ocupações cujo ocupante já não existe (país dissolvido ou inexistente no mundo customizado) deixam de valer.
+export function cleanOccupation(s) {
+  const W = s.world; let n = 0;
+  for (const pid of Object.keys(W.occ)) { const by = W.occ[pid]; if (by !== PLY && !W.c[by]) { delete W.occ[pid]; n++; } }
+  if (n) territoryChanged(s);
+}
 export function weeklyGeopol(s, data, ctx) {
   const W = s.world;
   if (!W.geoInit) initGeopol(s, data);
+  if (W.ver !== W._occVer) { W._occVer = W.ver; cleanOccupation(s); }
   if (W.ver !== W._ethClaimsVer) { W._ethClaimsVer = W.ver; fixClaims(s, data); ethnicClaims(s, data, false); }
   for (const id in W.c) if (!W.c[id].posture) W.c[id].posture = defaultPosture(s, data, id);
   worldPulse(s, data, ctx);

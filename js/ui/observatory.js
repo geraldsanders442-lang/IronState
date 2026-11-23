@@ -7,6 +7,7 @@ import { WorldMap } from './worldmap.js';
 import { entityFlag, flagHTML, mountFlagEditor, regionalFlags, historicalFlags, hasIsoFlag, defaultFlag } from './flag.js';
 import { pagedGrid } from './paginate.js';
 import { tintOf } from './mapviews.js';
+import { TL_REGIONS, regionOf, frames as tlFrames, milestones as tlMilestones, focusBox } from '../sim/timelapse.js';
 import { mountLine, barsHTML, pieSVG, PALETTE } from './charts.js';
 import { fmtDate, dateOf, fmtMonth } from '../sim/util.js';
 import { PLY, ownerOf, aiPower, relAI, provincesOf, RANK_INFO } from '../sim/world.js';
@@ -14,14 +15,15 @@ import { entName } from '../sim/war.js';
 import { leaderOf } from '../sim/worldlife.js';
 import { FAMILIES, POSTURES, famOf, postureOf, nationalismOf, ethnicIndex, compat, socialOf, ERAS } from '../sim/geopol.js';
 import { fmtK, warSummary } from '../sim/attrition.js';
+import { makeExtras } from './obs-extra.js';
 
 const SPEEDS = [[30, '1 mês / 30 s'], [15, '1 mês / 15 s'], [6, '1 mês / 6 s'], [2, 'Turbo (2 s)']];
-const MAPMODES = [['political', 'Político'], ['ideology', 'Ideologias'], ['posture', 'Política externa'], ['wars', 'Guerras'], ['alliances', 'Alianças'], ['ethnic', 'Etnias e tensões'], ['devast', 'Destruição e insurgência'], ['relations', 'Relações'], ['before', 'Mapa inicial']];
+const MAPMODES = [['political', 'Político'], ['ideology', 'Ideologias'], ['posture', 'Política externa'], ['wars', 'Guerras'], ['alliances', 'Alianças'], ['ethnic', 'Etnias e tensões'], ['persec', 'Perseguições'], ['devast', 'Destruição e insurgência'], ['relations', 'Relações'], ['before', 'Mapa inicial']];
 const PCOL = { isolationist: '#8d99ae', neutral: '#cfd8c4', aligned: '#7fb3d5', interventionist: '#e59866', expansionist: '#b03a2e' };
 const ALC = ['#2e86ab', '#e4572e', '#76b041', '#9b5de5', '#f4a259', '#17bebb', '#bc4b51', '#5b8e7d', '#f15bb5', '#ffc914', '#8d6a9f', '#3d5a80'];
 const NAV = [
-  ['Observatório', [['painel', 'Painel', 'overview'], ['mapa', 'Mapa-múndi', 'map'], ['jornal', 'Jornal', 'reports'], ['graficos', 'Gráficos e dados', 'stats']]],
-  ['Mundo', [['paises', 'Países', 'encyclopedia'], ['guerras', 'Guerras', 'military'], ['diplomacia', 'Diplomacia e alianças', 'diplomacy'], ['ideologias', 'Ideologias', 'politics'], ['etnias', 'Etnias e tensões', 'regions'], ['rankings', 'Rankings', 'rankings']]],
+  ['Observatório', [['painel', 'Painel', 'overview'], ['mapa', 'Mapa-múndi', 'map'], ['jornal', 'Jornal', 'reports'], ['graficos', 'Gráficos e dados', 'stats'], ['ano', 'Ano em revista', 'reports'], ['corrida', 'Corrida de rankings', 'rankings']]],
+  ['Mundo', [['paises', 'Países', 'encyclopedia'], ['guerras', 'Guerras', 'military'], ['diplomacia', 'Diplomacia e alianças', 'diplomacy'], ['ideologias', 'Ideologias', 'politics'], ['etnias', 'Etnias e tensões', 'regions'], ['rankings', 'Rankings', 'rankings'], ['acompanhar', 'Acompanhar países', 'politics'], ['duelo', 'Comparar países', 'analysis']]],
   ['Laboratório', [['relatorio', 'Relatório do experimento', 'reports'], ['lab', 'Regras e intervenções', 'research'], ['comparar', 'Antes × depois', 'analysis'], ['config', 'Configurações', 'options']]],
 ];
 const mix = (hex, f) => { const n = parseInt(String(hex || '#cccccc').slice(1), 16); return '#' + [n >> 16, (n >> 8) & 255, n & 255].map(v => Math.round(v + (255 - v) * f).toString(16).padStart(2, '0')).join(''); };
@@ -36,6 +38,9 @@ export function mountObservatory(game, { onExit }) {
   const fl = (id, w = 16) => entityFlag(ent(id), w, D().reg);
   const alive = () => Object.keys(W().c).filter(id => !W().c[id].dep);
   let map = null, mapEl = null, timer = null;
+  const X = { S, D, W, nm, fl, alive, O, go: p => go(p), game };
+  const extra = makeExtras(X);
+  game.on('chron', (ids, text, type) => extra.onChron(ids, text, type));
 
   // ---------- Barra superior, ticker e menu (classes do modo clássico) ----------
   function renderTop() {
@@ -105,6 +110,7 @@ export function mountObservatory(game, { onExit }) {
         case 'wars': return warA.has(own) ? '#b8342a' : warB.has(own) ? '#d98c2b' : '#e6e1cf';
         case 'alliances': return alIdx[own] != null ? ALC[alIdx[own] % ALC.length] : '#e6e1cf';
         case 'ethnic': return ethP[pid] || '#e9e6dc';
+        case 'persec': { const p = Wd.minor?.[own]; if (!p || p.over) return '#e6e1cf'; return ['#e6e1cf', '#f1d98a', '#eaa04a', '#c8502e', '#5b0f0f'][p.level] || '#e6e1cf'; }
         case 'devast': { const R = Wd.res?.[pid], Dm = Wd.dmg?.[pid]; if (R && R[0] >= 35) return R[0] >= 70 ? '#5b2c6f' : '#a569bd'; if (Dm && Dm[0] >= 3) return Dm[0] >= 50 ? '#641e16' : Dm[0] >= 25 ? '#b03a2e' : Dm[0] >= 10 ? '#e59866' : '#f5cba7'; return '#e9e6dc'; }
         case 'relations': { if (!O.sel) return tintOf(own); if (own === O.sel) return '#ffd54a'; const r = relAI(s, data, O.sel, own); return r >= 60 ? '#2e8b3e' : r >= 25 ? '#a9d6a0' : r > -25 ? '#e6e1cf' : r > -60 ? '#e7a39a' : '#b8342a'; }
         default: { if (e.born && e.flag?.colors) return mix(e.flag.colors.find(c => !/^#f{3,6}$/i.test(c)) || e.flag.colors[0], 0.5); if (e.custom && e.flag?.colors) return mix(e.flag.colors[0], 0.45); return tintOf(own); }
@@ -151,6 +157,7 @@ export function mountObservatory(game, { onExit }) {
     const L = O.mode === 'ideology' ? Object.entries(FAMILIES).map(([k, f]) => [f.color, `${f.name} (${W().meters?.fams?.[k] || 0})`])
       : O.mode === 'posture' ? Object.entries(POSTURES).map(([k, p]) => [PCOL[k], p.name])
       : O.mode === 'wars' ? [['#b8342a', 'Atacantes'], ['#d98c2b', 'Defensores'], ['#e6e1cf', 'Em paz']]
+      : O.mode === 'persec' ? [['#f1d98a', 'Batidas policiais'], ['#eaa04a', 'Pogroms'], ['#c8502e', 'Expulsões em massa'], ['#5b0f0f', 'Genocídio'], ['#e6e1cf', 'Sem perseguição']]
       : O.mode === 'ethnic' ? [['#e08a2b', 'Povos sem Estado (Mapuches, Curdos, Sámi...)'], ['#c0392b', 'Minorias reivindicadas pelo Estado-mãe'], ['#e6a3a3', 'Outras minorias']]
       : O.mode === 'devast' ? [['#641e16', 'Destruição ≥ 50%'], ['#b03a2e', '25–50%'], ['#e59866', '10–25%'], ['#f5cba7', 'até 10%'], ['#5b2c6f', 'Insurgência forte'], ['#a569bd', 'Resistência à ocupação']]
       : O.mode === 'relations' ? [['#2e8b3e', 'Aliado'], ['#a9d6a0', 'Amistoso'], ['#e6e1cf', 'Neutro'], ['#e7a39a', 'Tenso'], ['#b8342a', 'Hostil'], ['#ffd54a', O.sel ? nm(O.sel) : 'Clique num país']]
@@ -172,7 +179,72 @@ export function mountObservatory(game, { onExit }) {
   }
 
   // ---------- Páginas ----------
+  // ---------- Time lapse regional ----------
+  // Reconstrói o mapa a partir do registro de mudanças de dono; só a região escolhida fica em foco, e cada quadro só recolore.
+  function mountTimelapse(box) {
+    const data = D(), Wd = W(), st = Wd.obsStart; if (!box || !st) return;
+    const T = (O.tl ||= { region: 'europe', k: 0, playing: false, speed: 1 });
+    T.playing = false;
+    const histName = id => Wd.c[id] ? nm(id) : st.names?.[id] || Wd.ents?.[id]?.name || data.reg[id]?.name || id;
+    const before = pid => st.owner[pid] || data.geo.prov[pid].a3;
+    const R = regionOf(data, T.region), F = tlFrames(Wd, game.day, 150), ev = tlMilestones(Wd, data, R, st.day), c = Wd.tl?.c || [];
+    box.innerHTML = `<div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap"><h3 style="margin:0">Time lapse</h3>
+      <div class="row" style="gap:6px;flex-wrap:wrap"><select data-tlreg>${Object.entries(TL_REGIONS).map(([k, r]) => `<option value="${k}" ${k === T.region ? 'selected' : ''}>${esc(r.name)} — time lapse</option>`).join('')}</select>
+        <select data-tlmode>${[['terr', 'Fronteiras'], ['fam', 'Ideologias'], ['war', 'Guerras'], ['stab', 'Estabilidade'], ['pc', 'Renda per capita']].map(([k, n]) => `<option value="${k}" ${k === (T.mode || 'terr') ? 'selected' : ''}>${n}</option>`).join('')}</select>
+        <button class="primary small" data-tlplay>▶ Reproduzir</button><button class="small" data-tlstop>⏮ Início</button>
+        <select data-tlspeed>${[[0.5, 'Lento'], [1, 'Normal'], [2, 'Rápido'], [4, 'Muito rápido']].map(([v, n]) => `<option value="${v}" ${v === T.speed ? 'selected' : ''}>${n}</option>`).join('')}</select></div></div>
+      <div class="row" style="gap:8px;margin:6px 0;flex-wrap:nowrap"><b data-tlclock style="min-width:150px"></b><input type="range" data-tlslide min="0" max="${F.length - 1}" value="${Math.min(T.k, F.length - 1)}" style="flex:1"><span class="small muted" data-tlcount></span></div>
+      <div class="grid" style="grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)"><div data-tlmap class="obs-cmpmap" style="min-height:300px"></div>
+        <div><div class="small"><b>Marcos em ${esc(R.name)}</b></div><div class="log-list" data-tlev style="max-height:300px">${ev.length ? ev.slice(0, 60).map(e => `<div data-tlgo="${e.day}" style="cursor:pointer"><span class="muted small">${fmtDate(e.day)}</span> ${e.kind === 'war' ? '⚔' : e.kind === 'state' ? '⚑' : '◆'} ${esc(e.text)}</div>`).join('') : '<span class="muted small">Nenhum marco registrado ainda.</span>'}</div></div></div>
+      <div class="small muted" style="margin-top:4px">${(Wd.tl?.c.length || 0) / 3} mudanças de fronteira registradas desde o início da observação. Cada quadro só recolore o mapa — nada pesado é guardado.</div>`;
+    const own = {}; let applied = 0;
+    const ownerAt = pid => own[pid] ?? before(pid);
+    const mapBox = box.querySelector('[data-tlmap]');
+    const Hc = Wd.obsHist?.c || {}, FK = Object.keys(FAMILIES);
+    const rowAt = (id, day) => { const a = Hc[id]; if (!a) return null; let r = null; for (const x of a) { if (x[0] <= day) r = x; else break; } return r || a[0]; };
+    const heat = (v, lo, hi) => { const t = Math.max(0, Math.min(1, (v - lo) / (hi - lo))); const c = [[192, 57, 43], [233, 196, 106], [46, 139, 62]]; const [p, q] = t < 0.5 ? [c[0], c[1]] : [c[1], c[2]], u = t < 0.5 ? t * 2 : (t - 0.5) * 2; return `rgb(${p.map((x, i) => Math.round(x + (q[i] - x) * u)).join(',')})`; };
+    let curDay = st.day;
+    const colorAt = (pid, o) => {
+      if (o === PLY) return '#d8d8d0'; const mode = T.mode || 'terr'; if (mode === 'terr') return tintOf(o);
+      const r = rowAt(o, curDay); if (!r) return '#e6e1cf';
+      if (mode === 'fam') return FAMILIES[FK[r[8]]]?.color || '#e6e1cf';
+      if (mode === 'war') return r[9] ? '#b8342a' : '#e6e1cf';
+      if (mode === 'stab') return heat(r[2], 20, 80);
+      return heat(Math.log10(Math.max(100, r[1] * 1000 / Math.max(0.01, r[4]))), 2.6, 4.7);
+    };
+    const wm = new WorldMap(mapBox, data.geo, { owner: ownerAt, color: colorAt, labels: true, search: false, labelOf: id => id === PLY ? '' : histName(id), tip: (pid, o) => `<b>${esc(histName(o))}</b><br>${esc(data.geo.prov[pid].n)}` });
+    const slide = box.querySelector('[data-tlslide]'), clock = box.querySelector('[data-tlclock]'), count = box.querySelector('[data-tlcount]');
+    function show(k, force) {
+      k = Math.max(0, Math.min(F.length - 1, k));
+      if (k < T.k || force) { for (const p in own) delete own[p]; applied = 0; }
+      const upto = F[k].upto; let changed = false;
+      for (; applied < upto; applied += 3) { own[Wd.tl.P[c[applied + 1]]] = Wd.tl.O[c[applied + 2]]; changed = true; }
+      T.k = k; slide.value = k; clock.textContent = fmtDate(F[k].day, true); curDay = F[k].day;
+      if (changed || force || (T.mode && T.mode !== 'terr')) { wm.recolor(); const set = new Set(R.pids.map(ownerAt)); count.textContent = `${set.size} Estados na região`; }
+    }
+    requestAnimationFrame(() => { const fb = R.ids && focusBox(data, R.pids); if (fb) wm.zoomToBox(fb, 0.15); show(T.k, true); });
+    let timer = null;
+    const stop = () => { T.playing = false; clearInterval(timer); timer = null; const pb = box.querySelector('[data-tlplay]'); if (pb) pb.textContent = '▶ Reproduzir'; };
+    const play = () => {
+      if (T.k >= F.length - 1) show(0, true);
+      T.playing = true; setPlaying(false); box.querySelector('[data-tlplay]').textContent = '⏸ Pausar';
+      timer = setInterval(() => { if (!box.isConnected) return stop(); if (T.k >= F.length - 1) return stop(); show(T.k + 1); }, 1000 / (6 * T.speed));
+    };
+    box.querySelector('[data-tlplay]').onclick = () => T.playing ? stop() : play();
+    box.querySelector('[data-tlstop]').onclick = () => { stop(); show(0, true); };
+    slide.oninput = () => { stop(); show(+slide.value); };
+    box.querySelector('[data-tlmode]').onchange = e => { T.mode = e.target.value; show(T.k, true); };
+    box.querySelector('[data-tlspeed]').onchange = e => { T.speed = +e.target.value; if (T.playing) { stop(); play(); } };
+    box.querySelector('[data-tlreg]').onchange = e => { stop(); T.region = e.target.value; T.k = 0; mountTimelapse(box); };
+    box.onclick = e => { const g = e.target.closest('[data-tlgo]'); if (!g) return; stop(); const d = +g.dataset.tlgo; show(Math.max(0, F.findIndex(f => f.day >= d)), true); };
+  }
+
   const PAGES = {
+    ano(el) { extra.pageYear(el); },
+    corrida(el) { extra.pageRace(el); },
+    acompanhar(el) { extra.pageWatch(el); },
+    diario(el) { extra.pageDiary(el); },
+    duelo(el) { extra.pageDuel(el); },
     painel(el) {
       const s = S(), Wd = W(), M = Wd.meters || {}, H = headlines(31, 9), wars = Wd.wars.filter(w => w.active);
       const status = M.wars >= 8 || M.tension > 75 ? ['Mundo em guerra', 'c-bad'] : M.wars >= 3 || M.tension > 55 ? ['Tenso', 'c-warn'] : ['Estável', 'c-good'];
@@ -354,7 +426,7 @@ export function mountObservatory(game, { onExit }) {
       const opts = ids.map(id => `<option value="${id}">${esc(nm(id))}</option>`).join('');
       const sl = (k, n, min, max, step, hint) => `<div class="panel tight"><div class="row" style="justify-content:space-between"><b>${n}</b><b data-oslv="${k}">${k === 'chaos' ? Math.round(L[k] ?? 35) : (+(L[k] ?? 1)).toFixed(1) + '×'}</b></div><input type="range" min="${min}" max="${max}" step="${step}" value="${L[k] ?? (k === 'chaos' ? 35 : 1)}" data-olab="${k}" style="width:100%"><div class="small muted">${hint}</div></div>`;
       el.innerHTML = `<h2>Laboratório</h2><p class="small muted">Ajuste as regras do mundo enquanto ele roda. Cada intervenção aparece no registro abaixo.</p>
-        <div class="panel"><h3>Regras do mundo</h3><div class="grid g2">${sl('chaos', 'Caos (agressividade da IA)', 0, 100, 5, '0 = mundo estável · 60+ = mundo caótico: secessões, expansionismo e guerras frequentes')}${sl('ideo', 'Peso da ideologia', 0, 2, 0.1, 'Quanto socialistas, monarquias, democracias e nacionalistas se atraem ou se odeiam')}${sl('ethnic', 'Peso das etnias e do nacionalismo', 0, 2, 0.1, 'Irredentismo, minorias e povos sem Estado')}${sl('persecution', 'Perseguição a minorias', 0, 2, 0.1, 'Frequência e gravidade de batidas, pogroms e expulsões (0 = nunca)')}${sl('wars', 'Propensão a guerras', 0, 2, 0.1, 'Multiplica a chance de a IA iniciar conflitos')}</div></div>
+        <div class="panel"><h3>Regras do mundo</h3><div class="grid g2">${sl('chaos', 'Caos (agressividade da IA)', 0, 100, 5, '0 = mundo estável · 60+ = mundo caótico: secessões, expansionismo e guerras frequentes')}${sl('ideo', 'Peso da ideologia', 0, 2, 0.1, 'Quanto socialistas, monarquias, democracias e nacionalistas se atraem ou se odeiam')}${sl('ethnic', 'Peso das etnias e do nacionalismo', 0, 2, 0.1, 'Irredentismo, minorias e povos sem Estado')}${sl('persecution', 'Perseguição a minorias', 0, 2, 0.1, 'Frequência de batidas policiais e pogroms (0 = nunca)')}${sl('genocide', 'Genocídios e expulsões em massa', 0, 2, 0.1, '0 = nunca · 1 = normal · 2 = bem mais comuns. Em mundos customizados o padrão é 0,5')}${sl('wars', 'Propensão a guerras', 0, 2, 0.1, 'Multiplica a chance de a IA iniciar conflitos')}</div></div>
         <div class="grid g2"><div class="panel"><h3>Provocar guerra</h3><div class="row" style="gap:6px;flex-wrap:wrap"><label class="small">Atacante<br><select data-olw="a">${opts}</select></label><label class="small">Alvo<br><select data-olw="b">${opts}</select></label><button class="primary" data-oact="war2" style="align-self:flex-end">Declarar guerra</button></div></div>
           <div class="panel"><h3>Relações entre dois países</h3><div class="row" style="gap:6px;flex-wrap:wrap"><label class="small">País<br><select data-olr="a">${opts}</select></label><label class="small">e<br><select data-olr="b">${opts}</select></label><span style="align-self:flex-end"><button data-oact="rel2up">+30</button> <button data-oact="rel2down">−30</button></span></div></div></div>
         <div class="panel"><h3>Eventos globais</h3><div class="row" style="gap:6px;flex-wrap:wrap"><button data-oact="peaceall">🕊 Paz mundial</button><button data-oact="tup">Tensão +15</button><button data-oact="tdown">Tensão −15</button>${[['pandemic', '🦠 Pandemia'], ['crash', '📉 Crise financeira'], ['climate', '🔥 Colapso climático'], ['cyber', '💻 Ciberataque']].map(([k, n]) => `<button data-oact="crisis:${k}">${n}</button>`).join('')}</div><p class="small muted">Para mexer em um país específico (regime, política externa, golpe, revolução, independência de povos), abra a ficha dele em <a href="#" data-ogo="paises">Países</a>.</p></div>
@@ -370,6 +442,7 @@ export function mountObservatory(game, { onExit }) {
       const name = id => Wd.c[id] ? nm(id) : st.names?.[id] || data.reg[id]?.name || id;
       const nowTop = [...al].sort((a, b) => Wd.c[b].gdp - Wd.c[a].gdp).slice(0, 10);
       el.innerHTML = `<h2>Antes × depois</h2><p class="small muted">De ${fmtDate(st.day, true)} a ${fmtDate(game.day, true)}.</p>
+        <div class="panel" data-tl></div>
         <div class="grid g2"><div class="panel tight"><b>Início</b><div data-mb class="obs-cmpmap"></div></div><div class="panel tight"><b>Agora</b><div data-mn class="obs-cmpmap"></div></div></div>
         <div class="grid g3"><div class="panel"><h3>Países: ${st.countries.length} → ${al.length}</h3><div class="small"><b>Desapareceram (${gone.length}):</b> ${gone.map(id => esc(name(id))).join(', ') || '—'}</div><div class="small" style="margin-top:4px"><b>Surgiram (${born.length}):</b> ${born.map(id => fl(id, 14) + ' ' + esc(name(id))).join(', ') || '—'}</div></div>
           <div class="panel"><h3>Território (províncias)</h3><table class="data small">${delta.filter(x => x[1] > 0).slice(0, 8).map(([id, d]) => `<tr><td>${fl(id, 14)} ${esc(name(id))}</td><td class="num c-good">+${d}</td></tr>`).join('')}${delta.filter(x => x[1] < 0).slice(-8).reverse().map(([id, d]) => `<tr><td>${fl(id, 14)} ${esc(name(id))}</td><td class="num c-bad">${d}</td></tr>`).join('')}</table></div>
@@ -377,6 +450,7 @@ export function mountObservatory(game, { onExit }) {
         <div class="panel"><h3>Mudanças de regime</h3><table class="data small">${(Wd.regimeLog || []).slice(0, 40).map(r => `<tr><td>${fmtDate(r.day)}</td><td>${esc(r.text)}</td></tr>`).join('') || '<tr><td class="muted">Nenhuma.</td></tr>'}</table></div>`;
       const mk = (box, own) => new WorldMap(box, data.geo, { owner: own, color: (pid, o) => o === PLY ? '#d8d8d0' : tintOf(o), labels: true, search: false, labelOf: id => id === PLY ? '' : name(id), tip: (pid, o) => `<b>${esc(name(o))}</b><br>${esc(data.geo.prov[pid].n)}` });
       requestAnimationFrame(() => { mk(el.querySelector('[data-mb]'), before); mk(el.querySelector('[data-mn]'), now); });
+      mountTimelapse(el.querySelector('[data-tl]'));
     },
     relatorio(el) { reportPage(el); },
     config(el) {
@@ -509,9 +583,14 @@ export function mountObservatory(game, { onExit }) {
     main.onclick = main.onchange = main.oninput = null;
     if (O.page !== 'etnias' && O.modeBack) { O.mode = O.modeBack; O.modeBack = null; }
     (PAGES[O.page] || PAGES.painel)(main);
+    if (O.page === 'painel') { main.insertAdjacentHTML('afterbegin', extra.quietBanner()); extra.bindQuiet(main); }
+    else if (O.page === 'pais' && W().c[O.arg]) { const g = main.querySelector('[data-och="pow"]')?.closest('.grid'); if (g) g.insertAdjacentHTML('afterend', extra.newsPanel(O.arg)); extra.bindCountry(main, O.arg); }
+    else if (O.page === 'guerras') { main.insertAdjacentHTML('beforeend', '<div data-ocauses></div>'); extra.causesPanel(main); }
+    else if (O.page === 'lab') { main.insertAdjacentHTML('beforeend', extra.scenariosPanel() + extra.comparePanel()); extra.bindScenarios(main); extra.bindCompare(main); }
+    else if (O.page === 'config') { main.insertAdjacentHTML('beforeend', extra.exportPanel()); extra.bindExport(main); }
   }
   function go(p) { const [page, arg] = p.split(':'); O.page = page; O.arg = arg ?? null; renderPage(); window.scrollTo(0, 0); }
-  function refresh() { renderTop(); renderTicker(); const y = window.scrollY; renderPage(); window.scrollTo(0, y); }
+  function refresh() { renderTop(); renderTicker(); if (O.page === 'comparar' && O.tl?.playing) return; const y = window.scrollY; renderPage(); window.scrollTo(0, y); }
 
   // ---------- Tempo ----------
   function archiveMonth(fromDay) {

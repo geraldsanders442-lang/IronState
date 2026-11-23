@@ -26,6 +26,8 @@ import { weeklyExtras, installExtras } from './extras.js';
 import { weeklyWorldHealth } from './health.js';
 import { weeklyWorldTrade } from './tariffs.js';
 import { weeklyWorldMinorities } from './minority.js';
+import { syncTimelapse } from './timelapse.js';
+import { recordNews, ageChronicles } from './chronicle.js';
 import { genderize } from './names.js';
 import { weeklyWarDip } from './wardip.js';
 import { ensureRights, weeklyRights, rightsAct, deport, naturalize, arrest, banParty, unbanParty, amnesty, crushRegion, concedeRegion, setIccRecognition } from './rights.js';
@@ -149,6 +151,7 @@ export class Game {
     if (!text) return;
     this.s.log.unshift({ day: this.day, min: this.s.time.min % 1440, text, type });
     if (this.s.log.length > 400) this.s.log.length = 400;
+    if (this.s.spectator) { const ids = recordNews(this.s, this.data, text, type); if (ids.length) this.emit('chron', ids, text, type); } // crônica por país (Observatório)
     this.emit('log', text, type);
   }
   notify(title, text, kind = 'warn') { this.emit('notify', title, text, kind); }
@@ -378,6 +381,7 @@ export class Game {
       weeklyPrograms(s, c);
       weeklyMarkets(s, data, c);
       if (!s.spectator) { weeklySociety(s, data, c); weeklyRights(s, data, c); weeklyExtras(s, data, c); weeklyMode(s, c); }
+      if (s.spectator) { syncTimelapse(s, data); ageChronicles(s); } // por último: pega as mudanças de fronteira de toda a semana
       this.afterTerritory();
       if (!s.spectator) {
         weeklyCast(s, data, c);

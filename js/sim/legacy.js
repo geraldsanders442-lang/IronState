@@ -41,6 +41,11 @@ export function legacyIndex(s) {
   v -= (s.flags.atrocity ? 14 : 0) + (s.flags.defaulted ? 6 : 0) + (s.flags.lostWar ? 6 : 0);
   v += s.flags.wonWar ? 4 : 0;
   if (VIOLENT.includes(s.over?.ending)) v -= 8;
+  // Governos muito curtos não deixam legado; crimes de massa o condenam para sempre.
+  const dd = s.over?.day ?? day(s);
+  if (dd < 90) v = Math.min(v, 22); else if (dd < 182) v = Math.min(v, 30); else if (dd < 365) v = Math.min(v, 42);
+  if (s.min?.genocide) v = Math.min(v - 25, 18); else if ((s.min?.expelled || 0) > 100000) v -= 12;
+  if (s.over?.ending === 'cabinet') v -= 6;
   if (['nuclear', 'vaporized'].includes(s.over?.ending)) v -= 18;
   if (s.over?.ending === 'democracy' || s.over?.ending === 'retired') v += 8;
   return clamp(Math.round(v), 0, 100);
@@ -63,11 +68,50 @@ function epitaph(s) {
   return `Ruas, escolas e um aeroporto de ${n.shortName} receberam o nome de ${n.leader}. Mesmo entre os adversários, poucos negam que o país mudou durante o seu governo.`;
 }
 
+// ---------- Classificações do governo ----------
+// Cada governo ganha rótulos conforme o que de fato aconteceu; o primeiro com 'head' pode trocar o título da nota.
+export function classifyReign(s, data) {
+  const days = s.over?.day ?? day(s), years = days / 365, f = s.final || { from: s.history[0], to: s.history.at(-1) }, a = f.from, b = f.to, st = s.st;
+  const R = s.rights || {}, M = s.min || {}, H = s.hlt, T = s.tx;
+  const wars = s.wars || [], gained = wars.reduce((t, w) => t + (w.gained?.length || 0), 0), lostP = wars.reduce((t, w) => t + (w.lost?.length || 0), 0);
+  const people = Math.max(1, s.econ.pop * 1e6), end = s.over?.ending;
+  const T_ = []; const add = (w, name, text, tone = 'neutral', head) => T_.push({ w, name, text, tone, head });
+  if (days < 90) add(100, 'Governo relâmpago', `${s.nation.leader} ficou tão pouco tempo no cargo (${f0(days)} dias) que nem houve tempo de se formar um legado: os livros o citam em uma linha, pelo fim rápido.`, 'bad', { title: 'Governo relâmpago: lembrado só pelo fim', g: 'F', color: '#7a1d12' });
+  else if (days < 182) add(90, 'Governo efêmero', `Em ${f0(days)} dias, o governo mal começou a governar. Sobrou a memória do fim rápido e de promessas que ninguém viu cumpridas.`, 'bad', { title: 'Governo efêmero, sem legado', g: 'F', color: '#8a3a2a' });
+  else if (days < 365) add(60, 'Governo curto', 'Menos de um ano no poder: o suficiente para marcar a manchete, não a história.', 'bad');
+  if (M.genocide) add(98, 'Governo genocida', `${f0(M.killed)} pessoas foram mortas por ordem ou omissão do governo. O legado é assombroso: memoriais, tribunais e a lembrança de um país que não consegue falar do que aconteceu sem calar.`, 'bad', { title: 'Legado assombroso: governo genocida', g: 'F', color: '#3a0b0b' });
+  else if ((M.expelled || 0) + (M.fled || 0) > 200000 && (M.groups || []).some(g => g.stance === 'expel' || g.expelled > 0)) add(88, 'Limpeza étnica', `Mais de ${f0((M.expelled || 0) + (M.fled || 0))} pessoas foram expulsas ou fugiram da perseguição a seus povos. Os campos de refugiados e as casas vazias viraram o símbolo do governo.`, 'bad', { title: 'Governo da expulsão em massa', g: 'F', color: '#5a1a12' });
+  if ((R.executions || 0) > 400 && (R.abuse || 0) > 60) add(82, 'Regime de terror', `${f0(R.executions)} execuções e violações em série fizeram do governo sinônimo de medo.`, 'bad');
+  else if ((R.abuse || 0) > 70) add(70, 'Estado opressor', 'Prisões, tortura e censura de rotina: o aparato de segurança foi o verdadeiro governo.', 'bad');
+  if (M.groups && !M.genocide && M.groups.length > 1 && M.groups.every(g => g.stance === 'protect' || g.stance === 'neutral') && M.groups.some(g => g.stance === 'protect' && g.prot > 55)) add(64, 'Protetor das minorias', 'As minorias do país tiveram proteção legal e polícia sob controle civil: um dos pontos altos do governo.', 'good');
+  if ((s.pol?.minLog || []).length >= 4 || end === 'cabinet') add(end === 'cabinet' ? 96 : 72, end === 'cabinet' ? 'Deposto pelo próprio gabinete' : 'Governo refém dos ministros', end === 'cabinet' ? 'Foi o gabinete, não o povo, que derrubou o governo: o poder foi delegado demais, a gente errada.' : 'Ministros agiam sozinhos, a agenda mudava sem o governante e o gabinete virou um poder paralelo.', 'bad', end === 'cabinet' ? { title: 'Deposto por quem governava em seu nome', g: 'F', color: '#7a1d12' } : undefined);
+  if (st.corruption > 70) add(66, 'Cleptocracia', 'A corrupção virou método: dinheiro público sumiu em contratos, cargos e contas no exterior.', 'bad');
+  if (years >= 20) add(75, 'Reinado longo', `${f1(years)} anos no poder: uma geração inteira só conheceu este governante.`, 'neutral');
+  else if (years >= 10) add(58, 'Governo longevo', `${f1(years)} anos de governo deram tempo de deixar marcas profundas — para o bem e para o mal.`, 'neutral');
+  const dpc = pct(b.gdppc, a.gdppc);
+  if (dpc > 70) add(80, 'Milagre econômico', `A renda per capita subiu ${f1(dpc)}%: a economia se transformou.`, 'good');
+  else if (dpc < -25) add(78, 'Década perdida', `A renda per capita caiu ${f1(-dpc)}%: empobrecimento que as famílias lembram pelo nome do governante.`, 'bad');
+  if (H && (H.le - H.le0 >= 4 || H.san - (H.hist?.[0]?.[1] ?? H.san) >= 15)) add(68, 'Governo da saúde pública', `Água, esgoto e vacinas: a expectativa de vida subiu ${f1(H.le - H.le0)} anos e o saneamento chegou a ${f0(H.san)}% da população.`, 'good');
+  if (H && H.le - H.le0 <= -3) add(62, 'Governo da doença', 'Falta de saneamento e de saúde pública cobrou vidas: a expectativa de vida caiu e surtos marcaram o período.', 'bad');
+  if (wars.length >= 3) add(72, 'Governo de guerra', `${wars.length} guerras em um só mandato: o país viveu em estado de exceção.`, 'bad');
+  if (!wars.length && years >= 5 && st.reputation > 60) add(60, 'Pacificador', 'Anos sem guerra e uma reputação respeitada: o governo evitou os conflitos que muitos esperavam.', 'good');
+  if (gained >= 8) add(66, 'Expansionista', `${gained} províncias conquistadas redesenharam o mapa.`, 'neutral');
+  if (lostP >= 8 || (s.world?.newStates || []).filter(x => x.from === PLY).length >= 2) add(70, 'O governo que perdeu pedaços do país', 'Províncias perdidas ou separadas na sua gestão: o mapa ficou menor do que o governante encontrou.', 'bad');
+  if (T && (T.overturned || 0) >= 3) add(52, 'Governo derrubado pelo lobby', 'Impostos e tarifas anunciados com pompa foram revogados por pressão empresarial ou pelo Congresso.', 'neutral');
+  if (T && T.tar?.length >= 3) add(50, 'Governo protecionista', 'Tarifas altas e proteção da indústria nacional marcaram a política econômica.', 'neutral');
+  if (s.flags.defaulted) add(56, 'Calote', 'O país deixou de pagar a dívida: a reputação financeira custou anos para se recompor.', 'bad');
+  if (st.control > 75 && (s.d?.repression || 0) > 45 && st.civil < 35) add(54, 'Ditadura estável', 'Controle total e liberdade mínima: ordem imposta, sem alternativas.', 'bad');
+  if ((st.civil + st.political) / 2 - ((a.civil + a.political) / 2) > 15) add(62, 'Abertura democrática', 'O país ficou claramente mais livre do que foi encontrado.', 'good');
+  if (s.comeback && !s.comeback.failed) add(50, 'Volta por cima', 'Voltou ao poder depois de cair: poucos governantes tiveram uma segunda chance.', 'neutral');
+  const sorted = T_.sort((x, y) => y.w - x.w), head = sorted.find(t => t.head)?.head || null;
+  return { tags: sorted.slice(0, 7).map(({ name, text, tone }) => ({ name, text, tone })), head };
+}
+
 // ---------- Texto do legado ----------
 export function legacy(s, data, entName) {
   const n = s.nation, over = s.over || {}, end = over.ending, days = over.day ?? day(s), years = days / 365;
   const f = s.final || { from: s.history[0], to: s.history.at(-1) }, a = f.from, b = f.to;
-  const idx = legacyIndex(s), G = gradeOf(idx), pop = popularity(s);
+  const idx = legacyIndex(s), cls = classifyReign(s, data), G0 = gradeOf(idx), G = cls.head ? { ...G0, title: cls.head.title, g: cls.head.g || G0.g, color: cls.head.color || G0.color } : G0, pop = popularity(s);
   const P = [];
   // 1. O governo
   P.push(`${n.leader} governou ${n.officialName} por ${f0(days)} dias (${f1(years)} anos), de ${fmtDate(0)} a ${fmtDate(days)}${s.mode && s.mode !== 'sandbox' ? `, no modo ${s.mode}` : ''}. ${n.alt ? 'Foi um governo de história alternativa, fora dos mapas tradicionais. ' : ''}${s.achievements.length ? `Entre as realizações reconhecidas estão: ${s.achievements.map(x => x.id).length} marcos nacionais.` : 'O governo terminou sem nenhum grande marco oficial.'}`);
@@ -101,8 +145,9 @@ export function legacy(s, data, entName) {
     F: `A avaliação é severa: manuais de história usam o governo de ${n.leader} como exemplo do que não fazer.`,
   }[G.g];
   const tries = s.comeback ? (s.comeback.failed ? ` Sua tentativa de retornar ao poder (${fmtDate(s.comeback.day)}) fracassou.` : ` Em ${fmtDate(s.comeback.day)} voltou ao poder, ainda que em um país menor.`) : '';
+  if (cls.tags.length) P.push(`Como o governo será classificado: ${cls.tags.slice(0, 4).map(t => t.name.toLowerCase()).join(', ')}. ${cls.tags.slice(0, 2).map(t => t.text).join(' ')}`);
   P.push(`${verdict}${tries}`);
-  return { idx, grade: G, popularity: Math.round(pop), paragraphs: P, marks: chosen.map(l => `${fmtDate(l.day)} — ${l.text}`), epitaph: epitaph(s), dead: DEAD.includes(end), violent: VIOLENT.includes(end) };
+  return { idx, grade: G, tags: cls.tags, popularity: Math.round(pop), paragraphs: P, marks: chosen.map(l => `${fmtDate(l.day)} — ${l.text}`), epitaph: epitaph(s), dead: DEAD.includes(end), violent: VIOLENT.includes(end) };
 }
 
 // ---------- Tentar a sorte ----------

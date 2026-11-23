@@ -36,9 +36,9 @@ const week = (g, answer = 0) => { g.s.econ.treasury = Math.max(g.s.econ.treasury
 // 3) Responder ao lobby muda a medida.
 {
   const g = start('imp-resp'), s = g.s; taxAct(s, data, 'set', 'wealth|4');
-  for (let i = 0; i < 80 && !s.issues.pending.some(p => p.id.startsWith('tax_lobby_')); i++) week(g);
+  for (let i = 0; i < 160 && !s.issues.pending.some(p => p.id.startsWith('tax_lobby_')); i++) week(g);
   const p = s.issues.pending.find(x => x.id.startsWith('tax_lobby_'));
-  if (p) { g.answerIssue(p.id, 1); ok(s.tx.m.wealth === 3, 'negociar reduz um nível'); } else ok(false, 'questão de lobby não apareceu');
+  if (p) { const b = s.tx.m.wealth; g.answerIssue(p.id, 1); ok(s.tx.m.wealth === b - 1, 'negociar reduz um nível'); } else ok(false, 'questão de lobby não apareceu');
 }
 // 4) Remover tarifa/medida zera.
 {

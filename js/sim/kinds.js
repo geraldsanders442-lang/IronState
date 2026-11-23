@@ -50,6 +50,32 @@ export function extraValue(s, k) {
     case 'baseAliada': return o.base ?? 20;
     case 'devQ': return s.dev?.q ?? 50;
     case 'peacekeepers': return s.peace?.troops || 0;
+    // Saúde e saneamento
+    case 'sanitation': return s.hlt?.san ?? 70;
+    case 'water': return s.hlt?.water ?? 85;
+    case 'hygiene': return s.hlt?.hyg ?? 60;
+    case 'openDef': return s.hlt?.od ?? 5;
+    case 'lifeExp': return s.hlt?.le ?? 72;
+    case 'hdi': return (s.hlt?.hdi ?? 0.7) * 100;
+    case 'u5m': return s.hlt?.u5m ?? 20;
+    case 'outbreak': return s.hlt?.outbreak ? 1 : 0;
+    // Impostos e tarifas
+    case 'taxMeasures': return Object.values(s.tx?.m || {}).filter(Boolean).length;
+    case 'tariffs': return (s.tx?.tar || []).filter(t => t.level).length;
+    case 'taxRevenue': return (s.tx?.rev || 0) / Math.max(0.01, s.econ.gdp) * 100;
+    case 'taxLobby': return Math.max(0, ...Object.values(s.tx?.lobby || {}), ...(s.tx?.tar || []).map(t => t.lobby || 0));
+    case 'retaliation': return Object.keys(s.tx?.retal || {}).length;
+    // Povos e minorias
+    case 'minPers': return Math.max(0, ...(s.min?.groups || []).filter(g => g.id !== s.min.favored).map(g => g.pers));
+    case 'minTension': return Math.max(0, ...(s.min?.groups || []).filter(g => g.id !== s.min.favored).map(g => g.tension));
+    case 'minKilled': return (s.min?.killed || 0) / 1000;
+    case 'minExpelled': return ((s.min?.expelled || 0) + (s.min?.fled || 0)) / 1000;
+    case 'minOutrage': return s.min?.outrage ?? 0;
+    // Gabinete
+    case 'minAmb': return Math.max(0, ...Object.values(s.pol?.cabinet || {}).map(m => m.amb ?? 20));
+    case 'delegated': return Object.values(s.pol?.mandates || {}).filter(v => v && v !== 'off').length + (s.chief?.on ? 2 : 0);
+    case 'cabinetPlot': return s.pol?.plot ? 1 : 0;
+    case 'ministerLoyalty': { const v = Object.values(s.pol?.cabinet || {}).map(m => m.loyalty); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 60; }
   }
   return undefined;
 }

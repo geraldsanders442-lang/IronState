@@ -5,6 +5,8 @@
 import { clamp, chance, rand, pick, random } from './util.js';
 import { PLY, aiPower, shiftRelAI } from './world.js';
 import { aiNeighborsOf, startAiWar } from './newstates.js';
+import { entityGroups, slug } from './peoples.js';
+import { famOf, nationalismOf } from './geopol.js';
 import { ensureOrd, spawnArmedGroup } from './order.js';
 import { ensureRights, liberty } from './rights.js';
 
@@ -30,23 +32,7 @@ const KIND = {
 };
 
 // ---------- Dados do país ----------
-const slug = t => String(t).toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
-function groupsFor(s, data) {
-  const comps = s.nation.components?.length ? s.nation.components : [{ id: s.nation.scenario, share: 1 }];
-  const M = data.minorities?.countries || {}, acc = [];
-  for (const c of comps) {
-    const rows = M[c.id] || fallbackGroups(data, c.id), w = c.share || 1 / comps.length;
-    for (const r of rows) { const g = acc.find(x => x.name === r.name); if (g) g.share += r.share * w; else acc.push({ ...r, share: r.share * w }); }
-  }
-  acc.sort((a, b) => b.share - a.share);
-  const top = acc.slice(0, 7), tot = top.reduce((a, g) => a + g.share, 0) || 1;
-  return top.map(g => ({ ...g, share: +(g.share / tot * 100).toFixed(2) }));
-}
-function fallbackGroups(data, id) {
-  const inc = data.reg?.[id]?.income, rich = inc === 'High income' || inc === 'high';
-  return rich ? [{ name: 'Maioria nacional', noun: 'nacionais', share: 88, kind: 'majority', kin: [] }, { name: 'Imigrantes e seus descendentes', noun: 'imigrantes', share: 10, kind: 'immigrant', kin: [] }, { name: 'Povos originários', noun: 'povos originários', share: 2, kind: 'indigenous', kin: [] }]
-    : [{ name: 'Maioria nacional', noun: 'nacionais', share: 82, kind: 'majority', kin: [] }, { name: 'Minorias étnicas e religiosas', noun: 'minorias', share: 14, kind: 'ethnic', kin: [] }, { name: 'Povos indígenas e tradicionais', noun: 'indígenas', share: 4, kind: 'indigenous', kin: [] }];
-}
+function groupsFor(s, data) { return entityGroups(s, data, PLY).map(g => ({ name: g.name, noun: g.noun, share: g.share, kind: g.kind, kin: g.kin, key: g.key })); }
 
 export function ensureMin(s, data) {
   if (s.min) return s.min;
@@ -146,7 +132,7 @@ export function weeklyMinorities(s, data, ctx) {
   m.mods = mods;
   grp(s, 'opposition', persW * 0.4);
   // Efeito direto no Direito Humanitário.
-  if (R) { R.abuse = clamp(R.abuse + persW * 0.08 + (totDead > 0 ? 0.5 : 0), 0, 100); R.heat = Math.max(0, R.heat + (totDead > 0 ? 0.55 : totExp > 0 ? 0.12 : persW > 0.04 ? 0.03 : 0)); }
+  if (R) { R.abuse = clamp(R.abuse + persW * 0.08 + (totDead > 0 ? 0.5 : 0) + clamp(totExp / Math.max(1, people) * 4000 + totDead / Math.max(1, people) * 12000, 0, 8), 0, 100); R.heat = Math.max(0, R.heat + (totDead > 0 ? 0.55 : totExp > 0 ? 0.12 : persW > 0.04 ? 0.03 : 0)); }
   m.outrage = clamp(m.outrage + persW * 3 + (totDead > 0 ? 3 : 0) + (totExp > 0 ? 0.8 : 0) - 0.4, 0, 100);
   // Polícia e Forças Armadas: motins e brigas internas.
   const guard = m.groups.some(g => g.stance === 'protect' && g.id !== m.favored);
@@ -304,55 +290,72 @@ export function minAct(s, data, op, arg) {
 }
 
 // ---------- Mundo: perseguições em outros países (modo observador e jogo normal) ----------
+// Só regimes duros perseguem de verdade; democracias liberais no máximo têm incidentes policiais. Genocídio é raríssimo: exige regime
+// ultranacionalista ou de junta/teocracia, pouca liberdade, crise (guerra, caos ou instabilidade) e há no máximo um em curso por vez.
+const FAM_HARD = { nationalist: 1.5, junta: 1.35, theocratic: 1.2, monarchist: 0.7, socialist: 0.6, hybrid: 0.55, liberal: 0.04, socdem: 0.04 };
+// Controle de genocídios e expulsões (laboratório; 0 = nunca, 1 = normal, 2 = bem mais). Em mundos customizados o padrão é 0,5.
+export const genoSlider = s => s.world.lab?.genocide ?? (s.world.cwdef ? 0.5 : 1);
+const levelCap = (s, data, id) => {
+  const g = genoSlider(s), base = levelCapBase(s, data, id);
+  return g <= 0 ? Math.min(base, 2) : g < 0.4 ? Math.min(base, 3) : base;
+};
+const levelCapBase = (s, data, id) => {
+  const fam = famOf(s, data, id), e = s.world.ents?.[id] || data.reg[id], lib = e?.profile?.liberty ?? 50, nat = nationalismOf(s, data, id), c = s.world.c[id];
+  const crisis = s.world.wars?.some(w => w.active && [...w.a, ...w.b].includes(id)) || s.world.chaos || (c?.stab ?? 60) < 40;
+  if (fam === 'liberal' || fam === 'socdem') return lib < 45 ? 2 : 1;
+  if (['nationalist', 'junta', 'theocratic'].includes(fam)) return nat > 75 && lib < 30 && crisis ? 4 : lib < 55 ? 3 : 2;
+  return nat > 70 && lib < 30 ? 3 : 2;
+};
 export function weeklyWorldMinorities(s, data, ctx) {
   const W = s.world; if (!W?.c) return;
-  const M = data.minorities?.countries || {}, d = day(s), lab = W.lab?.persecution ?? 1;
-  W.minor ||= {};
+  const d = day(s), lab = W.lab?.persecution ?? 1; W.minor ||= {};
+  const gs = genoSlider(s), genoNow = () => Object.values(W.minor).filter(p => !p.over && p.level >= 4).length;
+  const harshNow = () => Object.values(W.minor).filter(p => !p.over && p.level >= 3).length, harshMax = Math.max(1, Math.round(Object.keys(W.c).length / 60 * Math.max(0.3, gs)));
   // 1) Evolução das perseguições em curso.
   for (const id of Object.keys(W.minor)) {
     const P = W.minor[id], c = W.c[id]; if (!c) { delete W.minor[id]; continue; }
-    if (P.over) continue;
-    if ((d - P.last) < 14) continue; P.last = d;
-    const n = nm(s, data, id);
-    const up = chance(0.28 * lab * (c.stab < 55 ? 1.2 : 0.8)), down = chance(0.14 + (c.stab < 25 ? 0.1 : 0));
-    if (up && P.level < 4) P.level++; else if (down && P.level > 0) P.level--;
-    const dead = Math.round(c.pop * 1e6 * (P.share / 100) * [0, 0.0006, 0.004, 0.02, 0.07][P.level] * rand(0.6, 1.4));
-    const fled = Math.round(c.pop * 1e6 * (P.share / 100) * [0, 0.001, 0.01, 0.06, 0.12][P.level] * rand(0.6, 1.4));
+    if (P.over || (d - P.last) < 14) continue; P.last = d;
+    const n = nm(s, data, id), cap = levelCap(s, data, id);
+    const up = chance(0.07 * lab * (c.stab < 55 ? 1.3 : 0.8)), down = chance(0.16 + (c.stab < 25 ? 0.08 : 0) + (P.level > cap ? 0.5 : 0));
+    if (up && P.level < cap) {
+      if (P.level + 1 >= 4) { if (genoNow() < Math.max(1, Math.floor(gs)) && d - (W.genoLast ?? -9999) > 1000 / Math.max(0.2, gs) && chance(0.35 * Math.min(1, gs))) { P.level = 4; W.genoLast = d; } }
+      else if (P.level + 1 >= 3) { if (harshNow() < harshMax && chance(Math.min(1, 0.5 + gs / 2))) P.level++; }
+      else P.level++;
+    }
+    else if (down && P.level > 0) P.level--;
+    if (P.level > cap) P.level = cap;
+    const dead = Math.round(c.pop * 1e6 * (P.share / 100) * [0, 0.0004, 0.002, 0.012, 0.05][P.level] * rand(0.6, 1.3));
+    const fled = Math.round(c.pop * 1e6 * (P.share / 100) * [0, 0.0006, 0.006, 0.04, 0.1][P.level] * rand(0.6, 1.3));
     P.dead += dead; P.fled += fled; c.pop = Math.max(0.01, c.pop - (dead + fled) / 1e6);
-    c.stab = clamp(c.stab + (P.level <= 1 ? 0.4 : -0.6 * P.level), 5, 95);
-    if (P.level === 0) { P.over = true; ctx.news?.(`A perseguição aos ${P.noun} em ${n} diminui após pressão internacional.`, 'good'); continue; }
-    const txt = [null, `A polícia de ${n} faz batidas violentas em bairros de ${P.noun}.`, `Pogroms contra os ${P.noun} em ${n}: ${fmt(P.dead)} mortos até agora.`, `Expulsões em massa de ${P.noun} em ${n}: ${fmt(P.fled)} refugiados cruzam a fronteira.`, `Genocídio em curso contra os ${P.noun} em ${n}: ${fmt(P.dead)} mortos, organismos internacionais pedem intervenção.`][P.level];
-    if (txt && (up || chance(0.4))) ctx.news?.(txt, P.level >= 3 ? 'bad' : 'warn');
-    // Refugiados pesam nos vizinhos.
-    if (fled > 0) for (const nb of aiNeighborsOf(s, data, id).filter(x => x !== PLY).slice(0, 2)) { const nc = W.c[nb]; if (nc) { nc.stab = clamp(nc.stab - fled / 4e6, 5, 95); nc.pop += fled / 3e6; } }
-    // Países simpatizantes reagem: sanções, tensão e, nos casos graves, guerra.
+    c.stab = clamp(c.stab + (P.level <= 1 ? 0.3 : -0.5 * P.level), 5, 95);
+    if (P.level === 0) { P.over = true; P.end = d; ctx.news?.(`A perseguição aos ${P.noun} em ${n} diminui após pressão interna e internacional.`, 'good'); continue; }
+    const txt = [null, `A polícia de ${n} faz batidas violentas em bairros de ${P.noun}.`, `Pogroms contra os ${P.noun} em ${n}: ${fmt(P.dead)} mortos até agora.`, `Expulsões em massa de ${P.noun} em ${n}: ${fmt(P.fled)} refugiados cruzam a fronteira.`, `Genocídio em curso contra os ${P.noun} em ${n}: ${fmt(P.dead)} mortos; organismos internacionais pedem intervenção.`][P.level];
+    if (txt && (up || chance(0.3))) ctx.news?.(txt, P.level >= 3 ? 'bad' : 'warn');
+    if (fled > 0) for (const nb of aiNeighborsOf(s, data, id).filter(x => x !== PLY).slice(0, 2)) { const nc = W.c[nb]; if (nc) { nc.stab = clamp(nc.stab - fled / 5e6, 5, 95); nc.pop += fled / 3e6; } }
     for (const kin of P.kin) {
-      const kc = W.c[kin]; if (!kc || kin === id) continue;
-      if (kin === PLY) continue;
-      if (P.level >= 2) shiftRelAI(s, kin, id, -4 * P.level * lab);
-      if (P.level >= 3 && !P.warred && chance(0.05 * lab) && aiPower(kc) > aiPower(c) * 0.45) { P.warred = true; startAiWar(s, data, ctx, kin, id, `${nm(s, data, kin)} intervém em defesa dos ${P.noun} perseguidos em ${n}`); }
+      const kc = W.c[kin]; if (!kc || kin === id || kin === PLY) continue;
+      if (P.level >= 2) shiftRelAI(s, kin, id, -3 * P.level * lab);
+      if (P.level >= 3 && !P.warred && chance(0.04 * lab) && aiPower(kc) > aiPower(c) * 0.5) { P.warred = true; startAiWar(s, data, ctx, kin, id, `${nm(s, data, kin)} intervém em defesa dos ${P.noun} perseguidos em ${n}`); }
     }
-    if (P.level >= 3 && chance(0.2)) {
-      const libs = Object.keys(W.c).filter(x => x !== id && !W.c[x].dep && W.c[x].gdp > 1500);
-      if (libs.length) { const a = pick(libs); (W.sanc ||= {})[a + '>' + id] = d; ctx.news?.(`${nm(s, data, a)} impõe sanções a ${n} pela perseguição aos ${P.noun}.`, 'warn'); }
-    }
+    if (P.level >= 3 && chance(0.15)) { const libs = Object.keys(W.c).filter(x => x !== id && !W.c[x].dep && W.c[x].gdp > 1500); if (libs.length) { const a = pick(libs); (W.sanc ||= {})[a + '>' + id] = d; ctx.news?.(`${nm(s, data, a)} impõe sanções a ${n} pela perseguição aos ${P.noun}.`, 'warn'); } }
   }
-  // 2) Novas perseguições.
+  // 2) Novas perseguições: poucas, e só onde o regime e o contexto permitem.
   if (d % 7 !== 0 && !s.spectator) return;
-  if (!chance((s.spectator ? 0.07 : 0.03) * lab)) return;
-  const pool = Object.keys(W.c).filter(id => !W.c[id].dep && id !== PLY && (!W.minor[id] || W.minor[id].over));
+  if (!chance((s.spectator ? 0.016 : 0.006) * lab)) return;
+  const pool = Object.keys(W.c).filter(id => !W.c[id].dep && id !== PLY && (!W.minor[id] || (W.minor[id].over && d - (W.minor[id].end ?? 0) > 365)));
   const weights = pool.map(id => {
-    const e = W.ents?.[id] || data.reg[id], lib = e?.profile?.liberty ?? 50, c = W.c[id];
-    const rows = M[e?.origin || e?.secededFrom || id]; if (!rows || rows.length < 2) return 0;
-    return Math.max(0.02, (1 - lib / 100) * 1.2 + (1 - c.stab / 100) * 0.6) * (W.chaos ? 1.4 : 1);
+    const e = W.ents?.[id] || data.reg[id], lib = e?.profile?.liberty ?? 50, c = W.c[id], fam = famOf(s, data, id);
+    const h = FAM_HARD[fam] ?? 0.5; if (levelCap(s, data, id) < 1) return 0;
+    return h * Math.max(0.02, (1 - lib / 100) * 1.1 + (1 - c.stab / 100) * 0.5) * (W.chaos ? 1.25 : 1) * (0.4 + nationalismOf(s, data, id) / 100);
   });
   const tot = weights.reduce((a, b) => a + b, 0); if (tot <= 0) return;
   const id = pool[pickWeightedIdx(weights, tot)]; if (id == null) return;
-  const e = W.ents?.[id] || data.reg[id], rows = M[e?.origin || e?.secededFrom || id].filter(g => g.kind !== 'majority' && g.share >= 0.2);
-  if (!rows.length) return;
-  const g = pick(rows), n = nm(s, data, id);
-  W.minor[id] = { name: g.name, noun: g.noun, kind: g.kind, share: g.share, kin: g.kin.filter(k => W.c[k]), level: 1, dead: 0, fled: 0, since: d, last: d };
-  W.c[id].stab = clamp(W.c[id].stab + 0.5, 5, 95);
+  const groups = entityGroups(s, data, id).filter((g, i) => i > 0 && g.share >= 0.3 && g.kind !== 'majority');
+  if (!groups.length) return;
+  // O grupo alvo: os mais hostilizados pela sociedade, ponderando preconceito e tamanho.
+  const gw = groups.map(g => (KIND[g.kind]?.prej ?? 0.45) * Math.sqrt(g.share));
+  const g = groups[pickWeightedIdx(gw, gw.reduce((a, b) => a + b, 0))], n = nm(s, data, id);
+  W.minor[id] = { key: g.key, name: g.name, noun: g.noun, kind: g.kind, share: g.share, kin: g.kin.filter(k => W.c[k] && k !== id), level: 1, dead: 0, fled: 0, since: d, last: d };
   ctx.news?.(`${pick([`A polícia de ${n} é acusada de atacar os ${g.noun}`, `Ondas de violência contra os ${g.noun} em ${n}`, `Governo de ${n} endurece contra os ${g.noun}`])}: ${pick(['organizações de direitos humanos denunciam abusos.', 'prisões e batidas em massa.', 'comunidades temem a escalada.'])}`, 'warn');
 }
 function pickWeightedIdx(w, tot) { let r = random() * tot; for (let i = 0; i < w.length; i++) { r -= w[i]; if (r <= 0) return i; } return w.length - 1; }

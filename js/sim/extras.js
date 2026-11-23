@@ -11,6 +11,7 @@ import { weeklyShocks, shockAct } from './shocks.js';
 import { ensureHealth, weeklyHealth, healthAct } from './health.js';
 import { ensureTax, weeklyTax, taxAct, taxLobbyAct } from './tariffs.js';
 import { ensureMin, weeklyMinorities, minAct, minCardAct } from './minority.js';
+import { weeklyMinisters, minsAct } from './ministers.js';
 
 export function weeklyExtras(s, data, ctx) {
   if (s.flags.micronation || s.ascent) return;
@@ -26,6 +27,7 @@ export function weeklyExtras(s, data, ctx) {
   weeklyHealth(s, data, ctx);
   weeklyTax(s, data, ctx);
   weeklyMinorities(s, data, ctx);
+  weeklyMinisters(s, data, ctx);
 }
 
 export function extraAct(s, data, act, ctx) {
@@ -33,6 +35,7 @@ export function extraAct(s, data, act, ctx) {
   if (act.op === 'shock') return shockAct(s, act);
   if (act.op === 'taxLobby') return taxLobbyAct(s, data, act, ctx);
   if (act.op === 'minAct') return minCardAct(s, data, act, ctx);
+  if (act.op === 'minsAct') return minsAct(s, data, act, ctx);
   const reg = s.regions.find(r => r.id === act.id);
   if (reg && act.op.startsWith('aut')) {
     const clamp = (v, a, b) => Math.max(a, Math.min(b, v));

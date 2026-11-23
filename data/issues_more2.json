@@ -1,0 +1,4491 @@
+[
+ {
+  "id": "mx_min_popular",
+  "cat": "Gabinete",
+  "title": "O ministro mais popular que o governante",
+  "desc": "Pesquisas mostram que um ministro tem mais aprovação do que você. Jornais já o chamam de \"o verdadeiro presidente\" e ele não desmente.",
+  "context": "Quanto mais poder você delega, mais ele cresce.",
+  "cond": {
+   "min": {
+    "delegated": 3,
+    "minAmb": 40
+   }
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Elogiar o ministro e dividir o palco.",
+    "hint": "Ele fica leal por ora, mas ganha ainda mais projeção.",
+    "now": {
+     "legitimacy": -0.6
+    },
+    "groups": {
+     "bureaucracy": 3
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 1.5,
+      "d": 90
+     }
+    ]
+   },
+   {
+    "text": "Tirar dele as áreas mais visíveis.",
+    "hint": "Corta o brilho dele, mas ele fica ressentido.",
+    "now": {
+     "stability": -0.8
+    },
+    "groups": {
+     "bureaucracy": -3
+    }
+   },
+   {
+    "text": "Ignorar e seguir o jogo.",
+    "hint": "O ministro continua crescendo.",
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 2.5,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Promover para vice e dividir responsabilidades.",
+    "hint": "Transforma o rival em sócio, e em herdeiro.",
+    "now": {
+     "efficiency": 1
+    },
+    "groups": {
+     "bureaucracy": 4
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 1,
+      "d": 120
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_min_interview",
+  "cat": "Gabinete",
+  "title": "Ministro critica o governo em entrevista",
+  "desc": "Em um programa de TV, um ministro de sua confiança diz que \"a política do governo está errada\" e que, se dependesse dele, mudaria tudo. A oposição vibra.",
+  "context": "Ele tem carta branca e se sente à vontade.",
+  "cond": {
+   "min": {
+    "delegated": 2
+   }
+  },
+  "cd": 300,
+  "options": [
+   {
+    "text": "Exigir retratação pública.",
+    "hint": "Afirma autoridade; ele pode se ressentir.",
+    "now": {
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "opposition": -1
+    }
+   },
+   {
+    "text": "Demitir na hora.",
+    "hint": "Corta o problema, mas cria um adversário solto.",
+    "now": {
+     "stability": -1
+    },
+    "groups": {
+     "bureaucracy": -2
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 1,
+      "d": 60
+     }
+    ]
+   },
+   {
+    "text": "Convocar um debate interno e mudar um ponto da política.",
+    "hint": "Absorve a crítica, mas o governo parece fraco.",
+    "now": {
+     "legitimacy": -0.8
+    },
+    "groups": {
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Fingir que foi combinado.",
+    "hint": "Evita crise, mas ele se fortalece.",
+    "groups": {
+     "business": 1
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 1,
+      "d": 90
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_min_unions",
+  "cat": "Gabinete",
+  "title": "Ministro fecha acordo com os sindicatos sem avisar",
+  "desc": "Sem consultá-lo, o ministro negociou aumento salarial e estabilidade no emprego com as centrais sindicais, em troca de apoio. O custo bate no orçamento.",
+  "cond": {
+   "min": {
+    "delegated": 3
+   }
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Honrar o acordo.",
+    "hint": "Paz social; o caixa sente.",
+    "now": {
+     "treasury": -0.5,
+     "stability": 1
+    },
+    "groups": {
+     "workers": 6,
+     "business": -3
+    }
+   },
+   {
+    "text": "Rever o acordo e pagar o custo político.",
+    "hint": "Mantém as contas, mas queima a relação com os sindicatos.",
+    "now": {
+     "protest": 2
+    },
+    "groups": {
+     "workers": -6,
+     "business": 2
+    }
+   },
+   {
+    "text": "Renegociar metade.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "workers": 2,
+     "business": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_foreign_gift",
+  "cat": "Gabinete",
+  "title": "Presente de uma potência estrangeira ao ministro",
+  "desc": "Uma embaixada deu uma viagem de luxo e um fundo \"de consultoria\" ao seu ministro das Relações Exteriores. Ele passou a defender a aproximação com essa potência.",
+  "cond": {
+   "min": {
+    "delegated": 2,
+    "ministerLoyalty": 0
+   },
+   "max": {
+    "ministerLoyalty": 62
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Abrir investigação.",
+    "hint": "Pode revelar influência externa; a potência se ofende.",
+    "now": {
+     "reputation": 1
+    },
+    "long": [
+     {
+      "k": "corruption",
+      "v": -1,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Afastá-lo da pasta.",
+    "hint": "Reduz o risco; ele vira um inimigo dentro do governo.",
+    "now": {
+     "stability": -0.5
+    },
+    "groups": {
+     "bureaucracy": -2
+    }
+   },
+   {
+    "text": "Aproveitar a aproximação.",
+    "hint": "Ganha parceiro poderoso, perde independência.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "military": -2
+    },
+    "long": [
+     {
+      "k": "influence",
+      "v": -1,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_min_resign",
+  "cat": "Gabinete",
+  "title": "Ministros ameaçam renunciar em bloco",
+  "desc": "Cansados de serem desautorizados ou ignorados, os ministros avisam que renunciarão juntos se você não garantir mais espaço para decidir.",
+  "cond": {
+   "max": {
+    "ministerLoyalty": 55
+   },
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Dar mais autonomia a todos.",
+    "hint": "Aplaca o gabinete e aumenta a ambição de cada um.",
+    "now": {
+     "efficiency": 1
+    },
+    "groups": {
+     "bureaucracy": 4
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 2,
+      "d": 150
+     }
+    ]
+   },
+   {
+    "text": "Chamar o blefe.",
+    "hint": "Se renunciarem, o governo para; se não, você sai mais forte.",
+    "now": {
+     "legitimacy": 0.5
+    },
+    "long": [
+     {
+      "k": "stability",
+      "v": -1,
+      "d": 60
+     }
+    ]
+   },
+   {
+    "text": "Trocar os mais barulhentos e premiar os leais.",
+    "hint": "Racha o grupo e enfraquece a ameaça.",
+    "now": {
+     "stability": -1
+    },
+    "groups": {
+     "bureaucracy": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_chief_power",
+  "cat": "Gabinete",
+  "title": "O chefe de gabinete virou o centro do governo",
+  "desc": "Diplomatas, ministros e empresários procuram agora o chefe de gabinete, não você. Ele decide quem entra, o que chega à sua mesa e quem é ouvido.",
+  "cond": {
+   "min": {
+    "delegated": 5
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Reduzir o nível de delegação.",
+    "hint": "Retoma o comando; o governo fica mais lento.",
+    "now": {
+     "efficiency": -1.5
+    },
+    "groups": {
+     "bureaucracy": -2
+    }
+   },
+   {
+    "text": "Fortalecê-lo ainda mais.",
+    "hint": "Mais eficiência, menos você.",
+    "now": {
+     "efficiency": 1.5
+    },
+    "groups": {
+     "bureaucracy": 3
+    },
+    "long": [
+     {
+      "k": "legitimacy",
+      "v": -1,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Criar um conselho para vigiá-lo.",
+    "hint": "Equilíbrio, com mais burocracia.",
+    "now": {
+     "efficiency": -0.5
+    },
+    "groups": {
+     "bureaucracy": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_decree",
+  "cat": "Gabinete",
+  "title": "Ministro assina decreto em seu nome",
+  "desc": "Um ministro assinou um decreto polêmico alegando que seguia \"o espírito do seu governo\". Você só soube pelo Diário Oficial.",
+  "cond": {
+   "min": {
+    "delegated": 3,
+    "minAmb": 35
+   }
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Revogar o decreto.",
+    "hint": "Reafirma o seu controle e irrita o ministro.",
+    "now": {
+     "legitimacy": 0.4
+    },
+    "groups": {
+     "bureaucracy": -2
+    }
+   },
+   {
+    "text": "Manter e assumir a autoria.",
+    "hint": "Evita rachar o governo; perde coerência.",
+    "now": {
+     "legitimacy": -0.8
+    },
+    "groups": {
+     "opposition": 3
+    }
+   },
+   {
+    "text": "Exigir que passe pela Casa Civil.",
+    "hint": "Cria um filtro; a máquina diminui o ritmo.",
+    "now": {
+     "efficiency": -0.8
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_general",
+  "cat": "Gabinete",
+  "title": "O general no ministério quer mais voz",
+  "desc": "O ministro da Defesa, um general respeitado, avisa que os quartéis só aceitam as próximas decisões se ele participar de todas as reuniões sobre política externa.",
+  "cond": {
+   "min": {
+    "delegated": 2,
+    "g_military": 40
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Aceitar: ele entra no conselho de segurança.",
+    "hint": "Os militares se acalmam; a política fica mais dura.",
+    "now": {
+     "stability": 1
+    },
+    "groups": {
+     "military": 5
+    },
+    "long": [
+     {
+      "k": "civil",
+      "v": -1,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Recusar com firmeza.",
+    "hint": "Afirma o controle civil, com risco de atrito.",
+    "groups": {
+     "military": -4
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 2,
+      "d": 120
+     }
+    ]
+   },
+   {
+    "text": "Oferecer uma comissão consultiva sem poder real.",
+    "hint": "Dribla o pedido.",
+    "groups": {
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_leak",
+  "cat": "Gabinete",
+  "title": "Vazamento: ministro negocia emprego futuro com empresas",
+  "desc": "Reportagem mostra um ministro que trabalhava com autonomia total negociando um cargo em uma grande empresa que depende das decisões da pasta dele.",
+  "cond": {
+   "min": {
+    "corruption": 35,
+    "delegated": 2
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Demitir e abrir inquérito.",
+    "hint": "Fecha a crise e dá um recado ao gabinete.",
+    "now": {
+     "legitimacy": 1,
+     "reputation": 1
+    },
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Pedir explicações e manter.",
+    "hint": "O escândalo se arrasta.",
+    "now": {
+     "legitimacy": -1
+    },
+    "groups": {
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Criar um código de conduta para ministros.",
+    "hint": "Resposta institucional, com resistência dos próprios ministros.",
+    "now": {
+     "corruption": -1
+    },
+    "groups": {
+     "bureaucracy": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_ideology",
+  "cat": "Gabinete",
+  "title": "Um ministro dissidente na sua ideologia",
+  "desc": "O ministro de uma pasta-chave defende abertamente uma linha ideológica oposta à sua e usa a autonomia para encher os cargos intermediários com aliados.",
+  "cond": {
+   "min": {
+    "delegated": 3
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Substituí-lo por alguém alinhado.",
+    "hint": "Reforça a sua linha; a facção dele reage.",
+    "now": {
+     "stability": -1
+    },
+    "groups": {
+     "bureaucracy": -2
+    }
+   },
+   {
+    "text": "Governar de forma pluralista: manter e ouvir.",
+    "hint": "Melhora a imagem de diálogo, mas sua agenda se dilui.",
+    "now": {
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "opposition": -2
+    },
+    "long": [
+     {
+      "k": "efficiency",
+      "v": -0.5,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Limitar o mandato dele a funções técnicas.",
+    "hint": "Tira o poder de decisão, mantém o nome.",
+    "groups": {
+     "bureaucracy": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_sabotage",
+  "cat": "Gabinete",
+  "title": "Ministro sabota a sua agenda",
+  "desc": "Uma política que você anunciou emperra em silêncio: o ministro encarregado a atrasa, \"interpreta\" as regras e cria obstáculos.",
+  "cond": {
+   "min": {
+    "delegated": 3,
+    "minAmb": 45
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Expor o boicote publicamente.",
+    "hint": "Pressiona o ministro; expõe a divisão do governo.",
+    "now": {
+     "legitimacy": -0.5
+    },
+    "groups": {
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Trocar o ministro.",
+    "hint": "Resolve; abre brecha para a facção dele.",
+    "now": {
+     "stability": -1
+    },
+    "groups": {
+     "bureaucracy": -2
+    }
+   },
+   {
+    "text": "Assumir você mesmo a pasta por um tempo.",
+    "hint": "Retoma o controle e cansa o governante.",
+    "now": {
+     "efficiency": 1
+    },
+    "long": [
+     {
+      "k": "protest",
+      "v": 0.5,
+      "d": 90
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_min_coalition",
+  "cat": "Gabinete",
+  "title": "Partidos aliados exigem mais ministérios",
+  "desc": "Os partidos da base querem ministérios com orçamento e poder. Dizem que, sem isso, votam com a oposição.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Entregar um ministério com mandato amplo.",
+    "hint": "Compra paz e perde controle.",
+    "now": {
+     "stability": 1
+    },
+    "groups": {
+     "bureaucracy": 3
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 1,
+      "d": 150
+     }
+    ]
+   },
+   {
+    "text": "Oferecer cargos menores.",
+    "hint": "Satisfaz parcialmente.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Recusar e governar sem a base.",
+    "hint": "Mantém a coerência; o Congresso pode travar.",
+    "now": {
+     "stability": -1
+    },
+    "groups": {
+     "opposition": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_hlt_cholera",
+  "cat": "Saúde",
+  "title": "Surto de diarreia infantil nos bairros sem esgoto",
+  "desc": "Hospitais recebem dezenas de crianças com diarreia grave. Equipes de saúde apontam água contaminada e falta de esgoto nos bairros mais pobres.",
+  "cond": {
+   "max": {
+    "sanitation": 75
+   },
+   "min": {
+    "day": 100
+   }
+  },
+  "cd": 300,
+  "options": [
+   {
+    "text": "Distribuir cloro e água tratada e abrir postos de reidratação.",
+    "hint": "Resposta rápida; salva vidas, custa pouco.",
+    "now": {
+     "treasury": -0.2,
+     "health": 1.5
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Lançar um plano de esgoto para os bairros afetados.",
+    "hint": "Resolve a causa, em anos.",
+    "now": {
+     "treasury": -0.6
+    },
+    "groups": {
+     "workers": 3,
+     "business": -1
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Culpar o prefeito e a população.",
+    "hint": "Sem custo, com revolta.",
+    "now": {
+     "legitimacy": -1
+    },
+    "groups": {
+     "workers": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_hlt_water_rural",
+  "cat": "Saúde",
+  "title": "Poços contaminados no campo",
+  "desc": "No interior, famílias bebem água de poços rasos próximos às fossas. Exames mostram contaminação fecal em quase todos.",
+  "cond": {
+   "max": {
+    "water": 88
+   },
+   "min": {
+    "day": 120
+   }
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Programa de poços protegidos e cloração.",
+    "hint": "Barato e eficaz.",
+    "now": {
+     "treasury": -0.4,
+     "health": 1
+    },
+    "groups": {
+     "rural": 5
+    }
+   },
+   {
+    "text": "Cisternas e caminhões-pipa emergenciais.",
+    "hint": "Alivia agora; depende de custeio.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Esperar o plano de longo prazo.",
+    "hint": "Nada muda por ora.",
+    "groups": {
+     "rural": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_hlt_handwash",
+  "cat": "Saúde",
+  "title": "Campanha de lavagem de mãos nas escolas",
+  "desc": "Especialistas propõem instalar pias com sabão em todas as escolas e treinar professores: a medida mais barata contra doenças infantis.",
+  "cond": {
+   "max": {
+    "hygiene": 80
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Aprovar a campanha completa.",
+    "hint": "Barata e popular entre pais; efeito lento.",
+    "now": {
+     "treasury": -0.15,
+     "health": 0.8
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Fazer só nas escolas mais pobres.",
+    "hint": "Focaliza o gasto.",
+    "now": {
+     "treasury": -0.07,
+     "health": 0.4
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Priorizar obras visíveis, não \"pias\".",
+    "hint": "Perde um ganho barato de saúde.",
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_hlt_privatize_water",
+  "cat": "Saúde",
+  "title": "Privatizar a água e o esgoto?",
+  "desc": "Uma empresa estrangeira oferece investir bilhões na rede de água e esgoto em troca de uma concessão de 30 anos, com reajuste automático das tarifas.",
+  "cond": {
+   "max": {
+    "sanitation": 85
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Aceitar a concessão.",
+    "hint": "Cobertura sobe com capital externo; tarifas também.",
+    "now": {
+     "treasury": 0.8,
+     "health": 1
+    },
+    "groups": {
+     "business": 4,
+     "workers": -4
+    },
+    "long": [
+     {
+      "k": "poverty",
+      "v": 0.4,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Manter público e investir com dívida.",
+    "hint": "Mais controle, menos capital.",
+    "now": {
+     "treasury": -0.6
+    },
+    "groups": {
+     "workers": 3,
+     "business": -2
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 0.7,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Parceria público-privada com metas.",
+    "hint": "Cobertura com teto de tarifa; negociação longa.",
+    "now": {
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 0.5,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_hlt_vaccine_refusal",
+  "cat": "Saúde",
+  "title": "Movimento contra a vacinação ganha força",
+  "desc": "Boatos nas redes derrubam a cobertura vacinal. Casos de doenças já controladas reaparecem em algumas cidades.",
+  "cond": {
+   "min": {
+    "day": 150
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Campanha nacional com agentes de saúde nas casas.",
+    "hint": "Recupera cobertura; custa tempo e dinheiro.",
+    "now": {
+     "treasury": -0.4,
+     "health": 1.2
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Tornar a vacinação obrigatória para matrícula escolar.",
+    "hint": "Eficaz e polêmico.",
+    "now": {
+     "health": 1.5,
+     "civil": -1
+    },
+    "groups": {
+     "rural": -2
+    }
+   },
+   {
+    "text": "Confiar na informação e não intervir.",
+    "hint": "Surtos e mortes crescem.",
+    "now": {
+     "health": -1.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_hlt_slum_toilets",
+  "cat": "Saúde",
+  "title": "Banheiros públicos nas favelas",
+  "desc": "Moradores de uma grande favela dividem poucos banheiros. ONGs propõem construí-los com a comunidade, com gestão local.",
+  "cond": {
+   "max": {
+    "openDef": 100,
+    "sanitation": 80
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Financiar o programa com a comunidade.",
+    "hint": "Reduz a defecação a céu aberto e dá voz aos moradores.",
+    "now": {
+     "treasury": -0.3,
+     "health": 1
+    },
+    "groups": {
+     "workers": 3,
+     "regional": 2
+    }
+   },
+   {
+    "text": "Contratar uma empreiteira.",
+    "hint": "Mais rápido, menos engajamento.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Adiar: prioridade é o centro da cidade.",
+    "hint": "Os bairros pobres seguem esquecidos.",
+    "groups": {
+     "workers": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_hlt_hospital_overload",
+  "cat": "Saúde",
+  "title": "Hospitais lotados",
+  "desc": "Prontos-socorros operam acima do limite e pacientes esperam em corredores por dias. Médicos ameaçam entrar em greve.",
+  "cond": {
+   "max": {
+    "health": 55
+   }
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Contratar mais médicos e abrir leitos.",
+    "hint": "Alívio sustentado, custo alto.",
+    "now": {
+     "treasury": -0.8,
+     "health": 1.5
+    },
+    "groups": {
+     "workers": 3
+    }
+   },
+   {
+    "text": "Convênio com hospitais privados.",
+    "hint": "Rápido, caro e controverso.",
+    "now": {
+     "treasury": -0.5,
+     "health": 0.8
+    },
+    "groups": {
+     "business": 3,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Pedir paciência.",
+    "hint": "A greve sai.",
+    "now": {
+     "health": -1,
+     "protest": 1.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_hlt_drought_water",
+  "cat": "Saúde",
+  "title": "Racionamento de água em tempos de seca",
+  "desc": "A seca esvazia os reservatórios. Bairros inteiros ficam dias sem água e a higiene doméstica despenca.",
+  "cond": {
+   "min": {
+    "day": 200
+   },
+   "max": {
+    "water": 95
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Racionamento justo e obras emergenciais.",
+    "hint": "Distribui o custo; ninguém fica sem.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "workers": 1
+    }
+   },
+   {
+    "text": "Priorizar a indústria e a agroexportação.",
+    "hint": "Protege a produção; a população sofre.",
+    "now": {
+     "health": -1,
+     "protest": 1.5
+    },
+    "groups": {
+     "business": 3,
+     "workers": -3
+    }
+   },
+   {
+    "text": "Dessalinização e reuso: investir pesado.",
+    "hint": "Resolve a longo prazo; muito caro.",
+    "now": {
+     "treasury": -1.2
+    },
+    "long": [
+     {
+      "k": "health",
+      "v": 0.8,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_tax_lobby_tobacco",
+  "cat": "Economia",
+  "title": "A indústria do cigarro ataca o imposto",
+  "desc": "Fabricantes de cigarro bancam estudos que apontam \"explosão do contrabando\" e ameaçam demitir milhares de trabalhadores se a carga tributária subir.",
+  "cond": {
+   "min": {
+    "taxMeasures": 1
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Manter e combater o contrabando na fronteira.",
+    "hint": "Saúde pública e receita; exige polícia e controle.",
+    "now": {
+     "treasury": -0.1,
+     "health": 0.6
+    },
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Reduzir o imposto em um nível.",
+    "hint": "Acalma o setor; perde saúde e receita.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "business": 3
+    }
+   },
+   {
+    "text": "Destinar a receita à saúde e ao combate ao tabagismo.",
+    "hint": "Vincula o dinheiro e ganha apoio.",
+    "now": {
+     "health": 0.8
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tax_steel_tariff",
+  "cat": "Economia",
+  "title": "Pedido de tarifa contra o aço importado",
+  "desc": "Siderúrgicas e sindicatos pedem tarifa alta sobre o aço estrangeiro barato. Construtoras e montadoras se opõem: o aço vai ficar caro.",
+  "cond": {
+   "min": {
+    "day": 150
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Aplicar tarifa de 25%.",
+    "hint": "Protege a siderurgia; encarece obras e carros.",
+    "now": {
+     "inflation": 0.4
+    },
+    "groups": {
+     "workers": 3,
+     "business": -2
+    },
+    "long": [
+     {
+      "k": "s_industrial",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Negociar cotas com os exportadores.",
+    "hint": "Equilibra; demora e irrita os dois lados.",
+    "groups": {
+     "workers": 1,
+     "business": 1
+    }
+   },
+   {
+    "text": "Recusar: manter o mercado aberto.",
+    "hint": "Aço barato; fábricas locais sofrem.",
+    "now": {
+     "unemployment": 0.5
+    },
+    "groups": {
+     "workers": -3,
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tax_retaliation",
+  "cat": "Economia",
+  "title": "Retaliação comercial contra as nossas exportações",
+  "desc": "Um grande parceiro responde às suas tarifas com tarifas próprias sobre produtos do seu país. Exportadores de carne, soja e manufaturas veem pedidos sumirem.",
+  "cond": {
+   "min": {
+    "retaliation": 1
+   }
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Suspender as tarifas para reabrir o comércio.",
+    "hint": "Alívio imediato; parece recuo.",
+    "now": {
+     "growth": 0.3
+    },
+    "groups": {
+     "business": 4,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Apelar a organismos internacionais e buscar novos mercados.",
+    "hint": "Estratégia de longo prazo; lenta.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Dobrar a aposta com mais tarifas.",
+    "hint": "Escalada e dor para todos.",
+    "now": {
+     "growth": -0.4,
+     "inflation": 0.5
+    },
+    "groups": {
+     "workers": 2,
+     "business": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tax_wealth_flight",
+  "cat": "Economia",
+  "title": "Fuga de capitais após o imposto sobre fortunas",
+  "desc": "Grandes patrimônios migram para paraísos fiscais. Bancos avisam que a saída de dinheiro pressiona o câmbio e o crédito.",
+  "cond": {
+   "min": {
+    "taxMeasures": 1
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Controlar a saída de capitais.",
+    "hint": "Segura o dinheiro; afasta investidores.",
+    "now": {
+     "reputation": -1,
+     "civil": -0.5
+    },
+    "groups": {
+     "business": -3
+    }
+   },
+   {
+    "text": "Reduzir a alíquota e dar anistia a quem repatriar.",
+    "hint": "Recupera parte do dinheiro e perde o discurso.",
+    "now": {
+     "treasury": 0.4
+    },
+    "groups": {
+     "business": 3,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Manter e aprofundar a fiscalização.",
+    "hint": "Mais receita no longo prazo; mais lobby agora.",
+    "groups": {
+     "workers": 2,
+     "business": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tax_vat_regressive",
+  "cat": "Economia",
+  "title": "O imposto sobre o consumo pesa mais sobre os pobres",
+  "desc": "Estudos mostram que o IVA consome 20% da renda de famílias pobres, contra 8% das ricas. Movimentos sociais pedem isenção de itens básicos.",
+  "cond": {
+   "min": {
+    "taxMeasures": 1
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Isentar alimentos, remédios e transporte.",
+    "hint": "Alívio para os pobres; perde receita.",
+    "now": {
+     "treasury": -0.5,
+     "poverty": -0.6
+    },
+    "groups": {
+     "workers": 3,
+     "rural": 3
+    }
+   },
+   {
+    "text": "Devolver parte do imposto às famílias de baixa renda.",
+    "hint": "Focalizado; burocrático.",
+    "now": {
+     "treasury": -0.3,
+     "poverty": -0.4
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Manter: é a base da arrecadação.",
+    "hint": "Receita estável; protesto contido.",
+    "now": {
+     "protest": 1
+    },
+    "groups": {
+     "workers": -3,
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tax_smuggling",
+  "cat": "Economia",
+  "title": "Contrabando cresce na fronteira",
+  "desc": "Quadrilhas passam cigarros, bebidas e combustíveis pela fronteira para fugir dos impostos. Comerciantes locais pedem ação.",
+  "cond": {
+   "min": {
+    "taxMeasures": 2
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Reforçar a fiscalização e a polícia de fronteira.",
+    "hint": "Reduz o contrabando; custa e pode abusar.",
+    "now": {
+     "treasury": -0.3,
+     "control": 1
+    },
+    "groups": {
+     "regional": -2
+    }
+   },
+   {
+    "text": "Reduzir os impostos nas regiões de fronteira.",
+    "hint": "Tira o incentivo; perde receita.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "regional": 3
+    }
+   },
+   {
+    "text": "Acordo com o país vizinho para harmonizar as taxas.",
+    "hint": "Resolve a longo prazo.",
+    "now": {
+     "reputation": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tax_bigtech",
+  "cat": "Economia",
+  "title": "Big techs ameaçam deixar o país",
+  "desc": "As plataformas digitais dizem que o imposto sobre serviços digitais inviabiliza o negócio local. O governo do país de origem ameaça tarifas.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Manter o imposto.",
+    "hint": "Receita e soberania; risco de retaliação.",
+    "now": {
+     "treasury": 0.4
+    },
+    "groups": {
+     "youth": -1,
+     "business": -1
+    }
+   },
+   {
+    "text": "Suspender até a OCDE definir uma regra global.",
+    "hint": "Alivia a tensão e perde receita.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Trocar o imposto por regras de dados e concorrência.",
+    "hint": "Mudança de abordagem; resultado incerto.",
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tax_carbon",
+  "cat": "Meio ambiente",
+  "title": "O imposto de carbono e os caminhoneiros",
+  "desc": "Transportadoras bloqueiam estradas contra o aumento do diesel causado pelo imposto de carbono. O abastecimento começa a falhar.",
+  "cond": {
+   "min": {
+    "taxMeasures": 1
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Compensar os caminhoneiros e manter o imposto.",
+    "hint": "Verde e caro.",
+    "now": {
+     "treasury": -0.4,
+     "pollution": -0.5
+    },
+    "groups": {
+     "business": 1,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Suspender o aumento por um ano.",
+    "hint": "Estrada liberada; meta ambiental adiada.",
+    "now": {
+     "reputation": -0.5,
+     "pollution": 0.3
+    },
+    "groups": {
+     "business": 2,
+     "rural": 2
+    }
+   },
+   {
+    "text": "Reprimir o bloqueio.",
+    "hint": "Destrava as estradas; piora a imagem.",
+    "now": {
+     "civil": -1.5,
+     "protest": 1
+    },
+    "groups": {
+     "military": 1,
+     "workers": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tax_inheritance",
+  "cat": "Economia",
+  "title": "Imposto sobre grandes heranças",
+  "desc": "Uma comissão propõe taxar heranças acima de um valor alto para financiar educação. Famílias empresárias falam em \"confisco\".",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Aprovar com isenção para pequenos patrimônios.",
+    "hint": "Mais igualdade; resistência dos ricos.",
+    "now": {
+     "treasury": 0.3,
+     "inequality": -0.5
+    },
+    "groups": {
+     "workers": 2,
+     "business": -3
+    }
+   },
+   {
+    "text": "Adiar para depois da eleição.",
+    "hint": "Evita o confronto por ora.",
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Engavetar.",
+    "hint": "Sem mudança.",
+    "now": {
+     "inequality": 0.2
+    },
+    "groups": {
+     "business": 2,
+     "workers": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_language",
+  "cat": "Direitos",
+  "title": "Língua minoritária nas escolas",
+  "desc": "Uma minoria pede aulas na sua língua e documentos oficiais traduzidos. Setores nacionalistas veem ameaça à unidade.",
+  "cond": {
+   "min": {
+    "minorities": 3
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Reconhecer a língua como oficial regional.",
+    "hint": "Reduz a tensão; a maioria nacionalista reclama.",
+    "now": {
+     "civil": 1,
+     "separatism": -1
+    },
+    "groups": {
+     "regional": 4,
+     "rural": -2
+    }
+   },
+   {
+    "text": "Permitir aulas só em escolas privadas.",
+    "hint": "Meio-termo que desagrada a ambos.",
+    "groups": {
+     "regional": 1
+    }
+   },
+   {
+    "text": "Proibir e reforçar o idioma oficial.",
+    "hint": "Mais coesão na superfície; ressentimento.",
+    "now": {
+     "civil": -1.5,
+     "separatism": 1.5
+    },
+    "groups": {
+     "regional": -4,
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_indigenous_land",
+  "cat": "Direitos",
+  "title": "Terras indígenas e mineração",
+  "desc": "Uma mineradora quer explorar uma área reivindicada por um povo indígena. A região tem ouro, e a empresa promete empregos e royalties.",
+  "cond": {
+   "min": {
+    "day": 150
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Demarcar a terra e vetar a mineração.",
+    "hint": "Direitos e imagem; menos receita.",
+    "now": {
+     "reputation": 1.5,
+     "civil": 1
+    },
+    "groups": {
+     "business": -3,
+     "regional": 2
+    }
+   },
+   {
+    "text": "Autorizar com consulta e participação nos lucros.",
+    "hint": "Meio-termo com fiscalização.",
+    "now": {
+     "treasury": 0.4
+    },
+    "groups": {
+     "business": 2,
+     "regional": 1
+    }
+   },
+   {
+    "text": "Liberar a mineração sem consulta.",
+    "hint": "Receita e conflito.",
+    "now": {
+     "treasury": 0.8,
+     "reputation": -2,
+     "civil": -1
+    },
+    "groups": {
+     "business": 4,
+     "regional": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_roma_raids",
+  "cat": "Direitos",
+  "title": "Operações policiais em bairros de minorias",
+  "desc": "A polícia faz batidas violentas em bairros de uma minoria depois de um crime atribuído a um de seus membros. Vídeos circulam e a comunidade ameaça ir às ruas.",
+  "cond": {
+   "min": {
+    "policeAuto": 50
+   }
+  },
+  "cd": 400,
+  "options": [
+   {
+    "text": "Suspender a operação e investigar os policiais.",
+    "hint": "Controla a polícia; a base reclama.",
+    "now": {
+     "civil": 1.5,
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "military": -2,
+     "opposition": -1
+    }
+   },
+   {
+    "text": "Apoiar a polícia.",
+    "hint": "Agrada parte da população; tensão alta.",
+    "now": {
+     "civil": -1.5,
+     "protest": 1.5
+    },
+    "groups": {
+     "military": 3,
+     "regional": -3
+    }
+   },
+   {
+    "text": "Criar uma ouvidoria independente.",
+    "hint": "Mudança institucional lenta.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "military": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_immigrant_work",
+  "cat": "Direitos",
+  "title": "Imigrantes explorados em fábricas e fazendas",
+  "desc": "Fiscais encontram imigrantes em condições análogas à escravidão em fábricas e plantações. Empresários dizem que sem eles a produção para.",
+  "cond": {
+   "min": {
+    "imm": 3
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Autuar as empresas e regularizar os trabalhadores.",
+    "hint": "Justiça; custo e lobby.",
+    "now": {
+     "reputation": 1.5,
+     "civil": 1
+    },
+    "groups": {
+     "business": -3,
+     "workers": 1
+    }
+   },
+   {
+    "text": "Aumentar a fiscalização, sem regularizar.",
+    "hint": "Solução parcial; imigrantes ficam vulneráveis.",
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Ignorar: a produção importa.",
+    "hint": "Mantém o custo baixo; imagem manchada.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "business": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_hate_speech",
+  "cat": "Direitos",
+  "title": "Discurso de ódio nas redes contra uma minoria",
+  "desc": "Contas anônimas espalham ataques e mentiras contra uma minoria. Há agressões nas ruas depois de uma onda de postagens.",
+  "cond": {
+   "min": {
+    "day": 150
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Criar uma lei contra o discurso de ódio.",
+    "hint": "Protege a minoria; críticos falam em censura.",
+    "now": {
+     "civil": -0.5
+    },
+    "groups": {
+     "youth": 2,
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Exigir que as plataformas removam o conteúdo.",
+    "hint": "Mais rápido; pressão sobre as empresas.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Não intervir: liberdade de expressão.",
+    "hint": "A violência continua.",
+    "now": {
+     "civil": 0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_segregated_schools",
+  "cat": "Direitos",
+  "title": "Escolas segregadas de fato",
+  "desc": "Um relatório mostra que crianças de uma minoria estudam em escolas pior equipadas e distantes. Prefeitos locais culpam o \"padrão natural\".",
+  "cond": {
+   "min": {
+    "minorities": 4
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Integrar as escolas com transporte e reforço.",
+    "hint": "Educação mais justa; briga com pais e prefeitos.",
+    "now": {
+     "education": 1,
+     "treasury": -0.4
+    },
+    "groups": {
+     "rural": -2,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Investir nas escolas das minorias.",
+    "hint": "Menos conflito, mais gasto.",
+    "now": {
+     "education": 0.8,
+     "treasury": -0.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Nada a fazer: é questão local.",
+    "hint": "Desigualdade persiste.",
+    "now": {
+     "inequality": 0.4
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_pogrom",
+  "cat": "Segurança",
+  "title": "Multidão ataca bairros de uma minoria",
+  "desc": "Depois de boatos, multidões queimam casas e comércios de uma minoria. A polícia local demora a agir.",
+  "cond": {
+   "min": {
+    "minPers": 45
+   }
+  },
+  "cd": 300,
+  "options": [
+   {
+    "text": "Enviar tropas e proteger o bairro.",
+    "hint": "Salva vidas e frustra os agressores; atrito com a polícia local.",
+    "now": {
+     "control": 2,
+     "civil": 1
+    },
+    "groups": {
+     "military": -1,
+     "regional": 2
+    }
+   },
+   {
+    "text": "Pedir calma sem agir.",
+    "hint": "A violência segue; sua imagem desaba.",
+    "now": {
+     "legitimacy": -2,
+     "reputation": -2
+    }
+   },
+   {
+    "text": "Culpar a minoria pelas provocações.",
+    "hint": "Agrada agressores; crime internacional em potencial.",
+    "now": {
+     "reputation": -4,
+     "civil": -3
+    },
+    "groups": {
+     "military": 2,
+     "rural": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_refugee_camp",
+  "cat": "Direitos",
+  "title": "Campo de refugiados na fronteira",
+  "desc": "Milhares de pessoas de uma minoria perseguida chegam à sua fronteira, vindas de um vizinho. Cidades locais pedem ajuda.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Abrir as fronteiras e criar abrigos.",
+    "hint": "Humanitário e caro; tensão com o vizinho.",
+    "now": {
+     "treasury": -0.7,
+     "reputation": 3
+    },
+    "groups": {
+     "rural": -2,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Aceitar um número limitado.",
+    "hint": "Meio-termo.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Fechar a fronteira.",
+    "hint": "Evita custos e gera uma crise humanitária.",
+    "now": {
+     "reputation": -3
+    },
+    "groups": {
+     "military": 2,
+     "rural": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_min_kin_pressure",
+  "cat": "Crise internacional",
+  "title": "Um país vizinho se diz protetor da minoria",
+  "desc": "O governo vizinho afirma que protegerá \"seus irmãos\" que vivem no seu território e envia ajuda direta a líderes da comunidade.",
+  "cond": {
+   "min": {
+    "minorities": 4
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Acusar interferência e expulsar diplomatas.",
+    "hint": "Firmeza; tensão sobe.",
+    "now": {
+     "reputation": -0.5
+    },
+    "groups": {
+     "military": 2
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": 1,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Oferecer direitos culturais à minoria.",
+    "hint": "Tira o argumento do vizinho.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "regional": 3,
+     "rural": -1
+    },
+    "long": [
+     {
+      "k": "separatism",
+      "v": -1,
+      "d": 180
+     }
+    ]
+   },
+   {
+    "text": "Negociar um acordo bilateral de proteção.",
+    "hint": "Diplomacia lenta.",
+    "now": {
+     "reputation": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_truckers",
+  "cat": "Economia",
+  "title": "Greve dos caminhoneiros",
+  "desc": "Caminhoneiros param estradas por causa do diesel. Prateleiras esvaziam em dois dias e o setor agrícola avisa que a safra vai apodrecer.",
+  "cond": {
+   "min": {
+    "inflation": 3,
+    "day": 200
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Subsidiar o diesel.",
+    "hint": "Acaba o bloqueio; custa caro.",
+    "now": {
+     "treasury": -0.9,
+     "inflation": -0.3
+    },
+    "groups": {
+     "workers": 2,
+     "business": 2
+    }
+   },
+   {
+    "text": "Negociar um fundo de estabilização.",
+    "hint": "Mais estável e lento.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "business": 1
+    }
+   },
+   {
+    "text": "Usar o Exército para desbloquear.",
+    "hint": "Abre as estradas e racha com a categoria.",
+    "now": {
+     "civil": -1,
+     "protest": 2
+    },
+    "groups": {
+     "military": 2,
+     "workers": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_blackout",
+  "cat": "Economia",
+  "title": "Apagão em várias cidades",
+  "desc": "Falha em linhas de transmissão deixa milhões sem luz por dias. Fábricas param, hospitais usam geradores.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Investir na rede e em usinas.",
+    "hint": "Resolve de forma duradoura.",
+    "now": {
+     "treasury": -0.9,
+     "growth": 0.1
+    },
+    "groups": {
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Racionar a energia por um tempo.",
+    "hint": "Evita novos apagões; irrita.",
+    "now": {
+     "growth": -0.3,
+     "protest": 1
+    },
+    "groups": {
+     "workers": -2
+    }
+   },
+   {
+    "text": "Culpar a gestão anterior.",
+    "hint": "Sem custo, sem solução.",
+    "now": {
+     "legitimacy": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_housing_bubble",
+  "cat": "Economia",
+  "title": "Bolha imobiliária no centro das cidades",
+  "desc": "Preços de imóveis dobraram em cinco anos. Jovens não conseguem morar perto do trabalho e fundos compram quarteirões inteiros.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Controlar aluguéis e taxar imóveis vazios.",
+    "hint": "Alívio para inquilinos; investidores reagem.",
+    "now": {
+     "housing": 1.5
+    },
+    "groups": {
+     "youth": 4,
+     "business": -3
+    }
+   },
+   {
+    "text": "Construir moradia popular em larga escala.",
+    "hint": "Efeito lento; custo alto.",
+    "now": {
+     "treasury": -1,
+     "housing": 2
+    },
+    "groups": {
+     "workers": 3,
+     "business": 1
+    }
+   },
+   {
+    "text": "Deixar o mercado resolver.",
+    "hint": "A bolha pode estourar.",
+    "now": {
+     "housing": -1
+    },
+    "groups": {
+     "business": 2,
+     "youth": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_crypto",
+  "cat": "Economia",
+  "title": "Criptomoedas e fuga de dólares",
+  "desc": "Famílias trocam o dinheiro local por criptomoedas e pressionam o câmbio. Há golpes e casos de lavagem de dinheiro.",
+  "cond": {
+   "min": {
+    "day": 150
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Regulamentar e tributar as corretoras.",
+    "hint": "Receita e controle; um pouco de burocracia.",
+    "now": {
+     "treasury": 0.3,
+     "reputation": 0.5
+    },
+    "groups": {
+     "business": -1,
+     "youth": -1
+    }
+   },
+   {
+    "text": "Proibir.",
+    "hint": "Tenta frear a fuga; vira clandestino.",
+    "now": {
+     "civil": -1
+    },
+    "groups": {
+     "youth": -3
+    }
+   },
+   {
+    "text": "Criar uma moeda digital do banco central.",
+    "hint": "Modernização com custo.",
+    "now": {
+     "treasury": -0.3,
+     "efficiency": 0.5
+    },
+    "groups": {
+     "business": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_pension",
+  "cat": "Economia",
+  "title": "Rombo na previdência",
+  "desc": "A população envelhece, a previdência consome o orçamento e economistas pedem reforma já. Os sindicatos prometem greve geral.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Reformar: elevar a idade mínima.",
+    "hint": "Equilibra as contas; revolta dos mais velhos.",
+    "now": {
+     "treasury": 0.9,
+     "protest": 2
+    },
+    "groups": {
+     "workers": -5,
+     "business": 3
+    }
+   },
+   {
+    "text": "Aumentar contribuições dos mais ricos.",
+    "hint": "Preserva direitos; reação do empresariado.",
+    "now": {
+     "treasury": 0.5
+    },
+    "groups": {
+     "workers": 2,
+     "business": -4
+    }
+   },
+   {
+    "text": "Adiar de novo.",
+    "hint": "O rombo cresce.",
+    "now": {
+     "debt": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_min_wage",
+  "cat": "Economia",
+  "title": "Reajuste do salário mínimo",
+  "desc": "Centrais sindicais pedem 15% de aumento no salário mínimo; empresários dizem que isso destrói empregos formais.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 450,
+  "options": [
+   {
+    "text": "Aprovar o aumento.",
+    "hint": "Mais renda; custo para pequenos empresários.",
+    "now": {
+     "poverty": -0.8,
+     "inflation": 0.3
+    },
+    "groups": {
+     "workers": 4,
+     "business": -3
+    }
+   },
+   {
+    "text": "Aumento só pela inflação.",
+    "hint": "Mantém o poder de compra.",
+    "groups": {
+     "workers": 1
+    }
+   },
+   {
+    "text": "Congelar.",
+    "hint": "Contas equilibradas; popularidade em queda.",
+    "now": {
+     "poverty": 0.4
+    },
+    "groups": {
+     "workers": -4,
+     "business": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_remote",
+  "cat": "Economia",
+  "title": "Trabalho remoto muda as cidades",
+  "desc": "Milhares trabalham de casa. Centros urbanos esvaziam, bairros periféricos prosperam e o transporte público perde passageiros.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Incentivar a descentralização com banda larga no interior.",
+    "hint": "Reequilibra o território.",
+    "now": {
+     "treasury": -0.5,
+     "growth": 0.1
+    },
+    "groups": {
+     "rural": 3,
+     "regional": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Subsidiar o transporte e o centro.",
+    "hint": "Preserva o modelo; caro.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "workers": 1
+    }
+   },
+   {
+    "text": "Deixar o mercado se ajustar.",
+    "hint": "Mudança desordenada."
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_tourism",
+  "cat": "Economia",
+  "title": "Turismo em excesso numa cidade histórica",
+  "desc": "A cidade histórica recebe 10 vezes mais turistas do que moradores. Preços sobem, moradores se mudam e o patrimônio sofre.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Limitar o número de visitantes e cobrar entrada.",
+    "hint": "Protege o patrimônio e gera receita.",
+    "now": {
+     "treasury": 0.3
+    },
+    "groups": {
+     "business": -2,
+     "regional": 1
+    }
+   },
+   {
+    "text": "Promover destinos alternativos no interior.",
+    "hint": "Distribui a renda.",
+    "now": {
+     "treasury": -0.2
+    },
+    "groups": {
+     "regional": 3
+    }
+   },
+   {
+    "text": "Deixar crescer.",
+    "hint": "Dinheiro hoje, problemas amanhã.",
+    "now": {
+     "treasury": 0.4
+    },
+    "groups": {
+     "business": 3,
+     "workers": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_fishing",
+  "cat": "Economia",
+  "title": "Pesca predatória e a frota estrangeira",
+  "desc": "Barcos estrangeiros pescam em suas águas. Pescadores locais voltam com redes vazias e pedem a Marinha.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Patrulhar e apreender os barcos.",
+    "hint": "Protege a pesca; risco de incidente.",
+    "now": {
+     "reputation": -0.5
+    },
+    "groups": {
+     "rural": 3,
+     "military": 1
+    }
+   },
+   {
+    "text": "Negociar cotas e licenças pagas.",
+    "hint": "Receita; menos confronto.",
+    "now": {
+     "treasury": 0.4
+    },
+    "groups": {
+     "rural": -1
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Os peixes e os votos acabam.",
+    "groups": {
+     "rural": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_informal",
+  "cat": "Economia",
+  "title": "O setor informal engole a economia",
+  "desc": "Mais da metade dos trabalhadores está sem carteira. O Estado perde impostos e eles ficam sem proteção.",
+  "cond": {
+   "min": {
+    "day": 300
+   },
+   "max": {
+    "taxCapacity": 60
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Simplificar impostos para pequenos negócios.",
+    "hint": "Formaliza aos poucos.",
+    "now": {
+     "treasury": 0.3,
+     "unemployment": -0.3
+    },
+    "groups": {
+     "business": 2,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Fiscalização dura.",
+    "hint": "Mais arrecadação e mais desemprego.",
+    "now": {
+     "treasury": 0.5,
+     "unemployment": 0.8,
+     "protest": 1
+    },
+    "groups": {
+     "workers": -3,
+     "business": -1
+    }
+   },
+   {
+    "text": "Tolerar.",
+    "hint": "A economia segue como está."
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_import_food",
+  "cat": "Economia",
+  "title": "Preço do pão dispara",
+  "desc": "O trigo importado fica mais caro e padarias reajustam o pão em 30%. Filas, panelaços e especulação.",
+  "cond": {
+   "min": {
+    "inflation": 4
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Subsidiar o pão e controlar preços.",
+    "hint": "Alívio rápido; custo e escassez.",
+    "now": {
+     "treasury": -0.5,
+     "inflation": -0.3
+    },
+    "groups": {
+     "workers": 3,
+     "business": -2
+    }
+   },
+   {
+    "text": "Liberar importações de outros países.",
+    "hint": "Aumenta a oferta.",
+    "now": {
+     "inflation": -0.4
+    },
+    "groups": {
+     "rural": -2,
+     "business": 1
+    }
+   },
+   {
+    "text": "Incentivar o trigo local.",
+    "hint": "Resolve em anos.",
+    "now": {
+     "treasury": -0.4
+    },
+    "groups": {
+     "rural": 3
+    },
+    "long": [
+     {
+      "k": "s_food",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_eco_olympics",
+  "cat": "Economia",
+  "title": "Candidatura aos Jogos Olímpicos",
+  "desc": "Uma comissão sugere sediar os Jogos. Haverá obras, turismo e orgulho nacional... e risco de elefantes brancos.",
+  "cond": {
+   "min": {
+    "day": 400
+   }
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Candidatar-se.",
+    "hint": "Prestígio e obras; custo alto.",
+    "now": {
+     "treasury": -1,
+     "reputation": 2
+    },
+    "groups": {
+     "business": 3,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Recusar e investir em educação.",
+    "hint": "Menos glamour.",
+    "now": {
+     "education": 0.5,
+     "treasury": -0.3
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Propor jogos regionais menores.",
+    "hint": "Meio-termo.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tec_ai_jobs",
+  "cat": "Tecnologia",
+  "title": "Inteligência artificial e empregos",
+  "desc": "Empresas substituem atendentes, contadores e tradutores por sistemas de IA. Sindicatos pedem uma moratória e jovens pedem formação.",
+  "cond": {
+   "min": {
+    "tech": 30,
+    "day": 300
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Programa nacional de requalificação.",
+    "hint": "Amortece o choque.",
+    "now": {
+     "treasury": -0.6,
+     "unemployment": -0.2
+    },
+    "groups": {
+     "workers": 3,
+     "youth": 2
+    }
+   },
+   {
+    "text": "Taxar a automação e financiar a renda básica.",
+    "hint": "Redistribui os ganhos; empresas reclamam.",
+    "now": {
+     "treasury": 0.3,
+     "poverty": -0.5
+    },
+    "groups": {
+     "workers": 4,
+     "business": -3
+    }
+   },
+   {
+    "text": "Deixar o mercado decidir.",
+    "hint": "Produtividade sobe, empregos somem.",
+    "now": {
+     "unemployment": 0.8,
+     "growth": 0.3
+    },
+    "groups": {
+     "business": 3,
+     "workers": -4
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tec_social_media",
+  "cat": "Tecnologia",
+  "title": "Redes sociais e a crise de saúde mental",
+  "desc": "Estudos ligam o uso intenso de redes sociais por jovens à ansiedade. Pais pedem regras. Plataformas dizem que tomam cuidados.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Proibir redes para menores de 14.",
+    "hint": "Protege jovens; aplicação difícil.",
+    "now": {
+     "health": 0.5,
+     "civil": -0.5
+    },
+    "groups": {
+     "youth": -3,
+     "rural": 2
+    }
+   },
+   {
+    "text": "Exigir controles dos pais e limites de tempo.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "health": 0.3
+    },
+    "groups": {
+     "youth": -1
+    }
+   },
+   {
+    "text": "Campanha de educação digital nas escolas.",
+    "hint": "Suave e lenta.",
+    "now": {
+     "education": 0.4
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tec_surveillance",
+  "cat": "Tecnologia",
+  "title": "Câmeras com reconhecimento facial",
+  "desc": "Uma empresa oferece câmeras com reconhecimento facial para a capital. A polícia promete menos crimes; ativistas, um Estado de vigilância.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Instalar em toda a cidade.",
+    "hint": "Menos crime e menos privacidade.",
+    "now": {
+     "crime": -2,
+     "civil": -2
+    },
+    "groups": {
+     "military": 2,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Usar só em locais críticos, com limites legais.",
+    "hint": "Meio-termo.",
+    "now": {
+     "crime": -1,
+     "civil": -0.5
+    }
+   },
+   {
+    "text": "Proibir o reconhecimento facial.",
+    "hint": "Privacidade; mais crime.",
+    "now": {
+     "civil": 1,
+     "crime": 0.5
+    },
+    "groups": {
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tec_hack",
+  "cat": "Tecnologia",
+  "title": "Ciberataque paralisa os serviços",
+  "desc": "Hackers criptografam os computadores de hospitais e prefeituras e exigem resgate. Cirurgias são adiadas.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Recusar pagar e reconstruir os sistemas.",
+    "hint": "Dói agora; evita incentivo.",
+    "now": {
+     "treasury": -0.5,
+     "efficiency": -1
+    }
+   },
+   {
+    "text": "Pagar o resgate discretamente.",
+    "hint": "Rápido; financia o crime.",
+    "now": {
+     "treasury": -0.3,
+     "reputation": -1
+    }
+   },
+   {
+    "text": "Criar uma agência nacional de cibersegurança.",
+    "hint": "Investimento estrutural.",
+    "now": {
+     "treasury": -0.6,
+     "intel": 3
+    },
+    "groups": {
+     "bureaucracy": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tec_ev",
+  "cat": "Tecnologia",
+  "title": "Carros elétricos e as montadoras",
+  "desc": "A transição para carros elétricos ameaça as fábricas de motores a combustão. Há incentivos disponíveis para quem investir.",
+  "cond": {
+   "min": {
+    "industry": 30,
+    "day": 300
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Incentivar a produção local de elétricos.",
+    "hint": "Futuro verde; custo agora.",
+    "now": {
+     "treasury": -0.7,
+     "pollution": -0.5
+    },
+    "groups": {
+     "business": 2,
+     "workers": -1
+    },
+    "long": [
+     {
+      "k": "tech",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Proteger as montadoras tradicionais.",
+    "hint": "Preserva empregos hoje.",
+    "now": {
+     "pollution": 0.3
+    },
+    "groups": {
+     "workers": 2,
+     "business": 1
+    }
+   },
+   {
+    "text": "Abrir o mercado a importados.",
+    "hint": "Preços menores; indústria local sofre.",
+    "now": {
+     "inflation": -0.2
+    },
+    "groups": {
+     "workers": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tec_deepfake",
+  "cat": "Tecnologia",
+  "title": "Deepfake atinge o governo",
+  "desc": "Um vídeo falso com a sua voz anunciando medidas impopulares viraliza. Parte da população acredita.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Desmentir com fatos e punir os autores.",
+    "hint": "Responde à altura; exige tempo.",
+    "now": {
+     "legitimacy": 0.5,
+     "civil": -0.3
+    }
+   },
+   {
+    "text": "Lei de identificação de conteúdo sintético.",
+    "hint": "Resposta institucional.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "O boato corre.",
+    "now": {
+     "legitimacy": -1.5
+    },
+    "groups": {
+     "opposition": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_tec_rural_internet",
+  "cat": "Tecnologia",
+  "title": "Internet no campo",
+  "desc": "Escolas rurais sem sinal ficam para trás. Uma empresa de satélites propõe uma parceria para cobrir o país.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Parceria com a empresa de satélites.",
+    "hint": "Cobertura rápida; dependência externa.",
+    "now": {
+     "treasury": -0.4,
+     "education": 0.5
+    },
+    "groups": {
+     "rural": 4
+    }
+   },
+   {
+    "text": "Rede pública de fibra.",
+    "hint": "Mais soberania, mais caro e mais lento.",
+    "now": {
+     "treasury": -1
+    },
+    "groups": {
+     "rural": 3
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Esperar a iniciativa privada.",
+    "hint": "O campo segue isolado.",
+    "groups": {
+     "rural": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_env_flood",
+  "cat": "Meio ambiente",
+  "title": "Enchentes arrasam bairros inteiros",
+  "desc": "Chuvas extremas inundam bairros de baixa renda e áreas rurais. Milhares ficam desabrigados.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Ajuda de emergência e plano de realocação.",
+    "hint": "Protege vidas; custa caro.",
+    "now": {
+     "treasury": -0.9,
+     "qol": 0.5
+    },
+    "groups": {
+     "workers": 3,
+     "rural": 2
+    }
+   },
+   {
+    "text": "Obras de drenagem e diques.",
+    "hint": "Resposta estrutural.",
+    "now": {
+     "treasury": -1.2
+    },
+    "groups": {
+     "business": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Pedir doações e ajuda externa.",
+    "hint": "Mais barato; imagem de fraqueza.",
+    "now": {
+     "reputation": -0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_env_plastic",
+  "cat": "Meio ambiente",
+  "title": "Plástico nos rios e praias",
+  "desc": "Praias lotadas de plástico e rios entupidos viram assunto internacional e afugentam turistas.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Proibir plásticos descartáveis.",
+    "hint": "Resolve parte; custa para as empresas.",
+    "now": {
+     "pollution": -1,
+     "treasury": -0.1
+    },
+    "groups": {
+     "business": -2,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Taxar embalagens e financiar a reciclagem.",
+    "hint": "Receita e menos lixo.",
+    "now": {
+     "pollution": -0.7,
+     "treasury": 0.2
+    },
+    "groups": {
+     "business": -1
+    }
+   },
+   {
+    "text": "Mutirões de limpeza.",
+    "hint": "Efeito visual, nenhuma causa atacada.",
+    "now": {
+     "pollution": -0.2
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_env_illegal_mining",
+  "cat": "Meio ambiente",
+  "title": "Garimpo ilegal contamina rios",
+  "desc": "Garimpeiros usam mercúrio nos rios. Comunidades ribeirinhas adoecem e peixes desaparecem.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Operação militar contra os garimpos.",
+    "hint": "Destrói a operação; custa e gera atritos.",
+    "now": {
+     "treasury": -0.5,
+     "pollution": -1
+    },
+    "groups": {
+     "military": 1,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Legalizar com regras ambientais.",
+    "hint": "Receita e controle; difícil de fiscalizar.",
+    "now": {
+     "treasury": 0.3
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Fingir que não vê.",
+    "hint": "O problema cresce.",
+    "now": {
+     "health": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_env_nuclear_power",
+  "cat": "Meio ambiente",
+  "title": "Usina nuclear civil",
+  "desc": "Uma proposta de energia nuclear promete eletricidade estável e limpa, mas há medo de acidentes e dúvidas sobre o lixo radioativo.",
+  "cond": {
+   "min": {
+    "tech": 40,
+    "day": 300
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Construir a usina.",
+    "hint": "Energia estável; investimento enorme e polêmica.",
+    "now": {
+     "treasury": -1.5,
+     "pollution": -1
+    },
+    "groups": {
+     "business": 2,
+     "youth": -1
+    },
+    "long": [
+     {
+      "k": "s_energy",
+      "v": 1.5,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Apostar em solar e eólica.",
+    "hint": "Verde, mas intermitente.",
+    "now": {
+     "treasury": -0.7,
+     "pollution": -0.8
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Continuar com o gás e o carvão.",
+    "hint": "Barato hoje, pior amanhã.",
+    "now": {
+     "pollution": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_env_glacier",
+  "cat": "Meio ambiente",
+  "title": "Seca nas montanhas",
+  "desc": "O derretimento das geleiras e as secas ameaçam a água das cidades vizinhas.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Plano nacional de água e reservatórios.",
+    "hint": "Resiliência de longo prazo.",
+    "now": {
+     "treasury": -1
+    },
+    "groups": {
+     "rural": 2
+    },
+    "long": [
+     {
+      "k": "infra",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Acordo regional sobre a gestão das bacias.",
+    "hint": "Diplomacia da água.",
+    "now": {
+     "reputation": 1
+    }
+   },
+   {
+    "text": "Esperar.",
+    "hint": "Mais cedo ou mais tarde, falta água.",
+    "now": {
+     "health": -0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pol_electoral",
+  "cat": "Política",
+  "title": "Reforma eleitoral: voto distrital ou proporcional?",
+  "desc": "Há pressão para mudar o sistema eleitoral. Cada modelo favorece partidos diferentes e pode mudar a cara do Congresso.",
+  "cond": {
+   "min": {
+    "day": 400
+   }
+  },
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Voto distrital.",
+    "hint": "Aproxima o eleitor do representante; reduz partidos pequenos.",
+    "now": {
+     "legitimacy": 0.3
+    },
+    "groups": {
+     "opposition": -2
+    }
+   },
+   {
+    "text": "Manter o proporcional.",
+    "hint": "Mais pluralismo; fragmentação.",
+    "groups": {
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Referendo sobre o sistema.",
+    "hint": "Legitima, demora e custa.",
+    "now": {
+     "treasury": -0.2,
+     "legitimacy": 0.6
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pol_media",
+  "cat": "Política",
+  "title": "Conglomerado de mídia pró-governo",
+  "desc": "Um empresário aliado compra jornais, TVs e rádios. A oposição fala em \"monopólio\" e a imprensa independente se sente ameaçada.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Lei antimonopólio de mídia.",
+    "hint": "Mais pluralismo; irrita o aliado.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "business": -2,
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Deixar crescer.",
+    "hint": "Cobertura amistosa, credibilidade em queda.",
+    "now": {
+     "legitimacy": 0.5,
+     "civil": -1
+    },
+    "groups": {
+     "business": 2,
+     "opposition": -2
+    }
+   },
+   {
+    "text": "Criar uma TV pública independente.",
+    "hint": "Contraponto; custa dinheiro.",
+    "now": {
+     "treasury": -0.4,
+     "civil": 0.5
+    },
+    "groups": {
+     "youth": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pol_judges",
+  "cat": "Política",
+  "title": "O Supremo derruba uma lei sua",
+  "desc": "A Corte Suprema declara inconstitucional uma lei central do seu governo. Aliados sugerem aumentar o número de juízes.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Acatar a decisão.",
+    "hint": "Respeito às instituições; perde a agenda.",
+    "now": {
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "opposition": -1
+    }
+   },
+   {
+    "text": "Aumentar o número de juízes e nomear aliados.",
+    "hint": "Controla a Corte; crise institucional.",
+    "now": {
+     "civil": -2,
+     "reputation": -1.5
+    },
+    "groups": {
+     "opposition": 4
+    }
+   },
+   {
+    "text": "Reescrever a lei com ajustes.",
+    "hint": "Caminho de meio.",
+    "now": {
+     "efficiency": -0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pol_referendum",
+  "cat": "Política",
+  "title": "Plebiscito sobre uma questão polêmica",
+  "desc": "Movimentos sociais coletam assinaturas para um plebiscito sobre um tema polarizador. Você pode apoiar, boicotar ou antecipar a votação.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Apoiar e participar.",
+    "hint": "Democracia direta; resultado incerto.",
+    "now": {
+     "legitimacy": 0.8
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Boicotar e pedir abstenção.",
+    "hint": "Tenta esvaziar; arrisca perder a base.",
+    "now": {
+     "legitimacy": -0.5
+    },
+    "groups": {
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Antecipar e escolher a data.",
+    "hint": "Vantagem tática; acusações de manipulação.",
+    "now": {
+     "civil": -0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pol_corruption_probe",
+  "cat": "Política",
+  "title": "Operação anticorrupção mira aliados",
+  "desc": "A Polícia Federal prende deputados da sua base por desvio de verbas. A operação toma a imprensa e o Congresso ameaça travar sua pauta.",
+  "cond": {
+   "min": {
+    "corruption": 40,
+    "day": 250
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Apoiar a operação.",
+    "hint": "Boa imagem; perde votos no Congresso.",
+    "now": {
+     "corruption": -1.5,
+     "legitimacy": 1
+    },
+    "groups": {
+     "opposition": -1,
+     "bureaucracy": -2
+    }
+   },
+   {
+    "text": "Pressionar para frear a operação.",
+    "hint": "Protege aliados; escândalo.",
+    "now": {
+     "corruption": 1,
+     "legitimacy": -2
+    },
+    "groups": {
+     "opposition": 3
+    }
+   },
+   {
+    "text": "Pedir investigação independente e separar os casos.",
+    "hint": "Posição de equilíbrio.",
+    "now": {
+     "legitimacy": 0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pol_vote_obligatory",
+  "cat": "Política",
+  "title": "Voto obrigatório ou voluntário?",
+  "desc": "Um projeto propõe tornar o voto voluntário. Defensores dizem que melhora a qualidade do debate; críticos, que exclui os mais pobres.",
+  "cond": {
+   "min": {
+    "day": 400
+   }
+  },
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Manter obrigatório.",
+    "hint": "Alta participação."
+   },
+   {
+    "text": "Tornar voluntário.",
+    "hint": "Menos participação popular.",
+    "now": {
+     "legitimacy": -0.5
+    },
+    "groups": {
+     "workers": -2,
+     "business": 1
+    }
+   },
+   {
+    "text": "Obrigatório, com multa simbólica.",
+    "hint": "Meio-termo.",
+    "groups": {
+     "workers": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pol_amnesty",
+  "cat": "Política",
+  "title": "Pedido de anistia para presos políticos",
+  "desc": "Famílias e organizações de direitos humanos pedem anistia para presos políticos. Setores militares avisam que reagirão.",
+  "cond": {
+   "min": {
+    "prisoners": 1
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Conceder a anistia.",
+    "hint": "Direitos e imagem; reação da linha dura.",
+    "now": {
+     "civil": 2,
+     "reputation": 2
+    },
+    "groups": {
+     "military": -3,
+     "opposition": 3
+    }
+   },
+   {
+    "text": "Anistia parcial, apenas para casos leves.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "civil": 1
+    },
+    "groups": {
+     "military": -1
+    }
+   },
+   {
+    "text": "Negar.",
+    "hint": "Mantém a ordem; custa imagem.",
+    "now": {
+     "reputation": -1.5
+    },
+    "groups": {
+     "military": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_wld_summit",
+  "cat": "Diplomacia",
+  "title": "Convite para uma cúpula internacional",
+  "desc": "Uma cúpula reúne chefes de Estado. Você pode ir, enviar o ministro ou recusar, em um momento delicado.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 500,
+  "options": [
+   {
+    "text": "Ir pessoalmente.",
+    "hint": "Prestígio e contatos.",
+    "now": {
+     "reputation": 1.5,
+     "influence": 1
+    },
+    "groups": {
+     "opposition": 1
+    }
+   },
+   {
+    "text": "Enviar o ministro das Relações Exteriores.",
+    "hint": "Presença sem riscos.",
+    "now": {
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Soberania ostensiva; isolamento.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_wld_spy_scandal",
+  "cat": "Diplomacia",
+  "title": "Escândalo de espionagem",
+  "desc": "A imprensa revela que o seu serviço de inteligência espionava aliados e rivais. Embaixadores são convocados.",
+  "cond": {
+   "min": {
+    "intel": 40,
+    "day": 250
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Admitir e prometer reformas.",
+    "hint": "Fecha a crise; dá munição à oposição.",
+    "now": {
+     "reputation": 0.5,
+     "intel": -2
+    },
+    "groups": {
+     "opposition": 2
+    }
+   },
+   {
+    "text": "Negar e atacar o vazamento.",
+    "hint": "Pode funcionar; pode piorar.",
+    "now": {
+     "reputation": -1.5
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Oferecer troca de informações com os aliados.",
+    "hint": "Transforma a crise em acordo.",
+    "now": {
+     "intel": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_wld_aid",
+  "cat": "Diplomacia",
+  "title": "Ajuda humanitária após um terremoto no exterior",
+  "desc": "Um terremoto devasta um país distante. Os governos enviam ajuda. Você pode se destacar ou ficar fora.",
+  "cond": {
+   "min": {
+    "day": 200
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Enviar equipes e dinheiro.",
+    "hint": "Prestígio e gratidão.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": 2.5
+    },
+    "groups": {
+     "workers": -1
+    }
+   },
+   {
+    "text": "Doar o mínimo.",
+    "hint": "Sem custo, sem fama.",
+    "now": {
+     "reputation": 0.3
+    }
+   },
+   {
+    "text": "Declinar: temos nossos problemas.",
+    "hint": "Economiza; imagem fria.",
+    "now": {
+     "reputation": -1
+    },
+    "groups": {
+     "rural": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_wld_border_fishing",
+  "cat": "Diplomacia",
+  "title": "Disputa por uma ilha desabitada",
+  "desc": "Um país vizinho hasteia a bandeira numa ilha desabitada com possível petróleo. A mídia exige resposta.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Enviar a Marinha.",
+    "hint": "Firmeza; risco de confronto.",
+    "now": {
+     "reputation": -0.5,
+     "readiness": 2
+    },
+    "groups": {
+     "military": 3
+    }
+   },
+   {
+    "text": "Levar à Corte Internacional.",
+    "hint": "Legalismo; resposta lenta.",
+    "now": {
+     "reputation": 1.5
+    },
+    "groups": {
+     "military": -1
+    }
+   },
+   {
+    "text": "Acordo de exploração conjunta.",
+    "hint": "Pragmático.",
+    "now": {
+     "treasury": 0.3,
+     "reputation": 1
+    },
+    "groups": {
+     "military": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_wld_embargo",
+  "cat": "Diplomacia",
+  "title": "Embargo comercial de um bloco",
+  "desc": "Um bloco poderoso ameaça embargar produtos do seu país se você não alterar uma política. Exportadores em pânico.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Ceder em parte.",
+    "hint": "Evita o embargo; perde autonomia.",
+    "now": {
+     "reputation": -0.5,
+     "growth": 0.2
+    },
+    "groups": {
+     "business": 3,
+     "military": -2
+    }
+   },
+   {
+    "text": "Resistir e buscar outros parceiros.",
+    "hint": "Mais independência; custo de transição.",
+    "now": {
+     "growth": -0.3
+    },
+    "groups": {
+     "business": -2,
+     "military": 1
+    }
+   },
+   {
+    "text": "Contra-atacar com tarifas.",
+    "hint": "Escalada.",
+    "now": {
+     "growth": -0.5,
+     "inflation": 0.3
+    },
+    "groups": {
+     "workers": 2,
+     "business": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_wld_climate_summit",
+  "cat": "Diplomacia",
+  "title": "Meta de emissões na conferência do clima",
+  "desc": "Na conferência do clima, esperam que você assuma metas ambiciosas de emissões. Isso custa à indústria.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Assumir metas ambiciosas.",
+    "hint": "Imagem e financiamento verde; custo industrial.",
+    "now": {
+     "reputation": 2,
+     "pollution": -0.6,
+     "treasury": -0.2
+    },
+    "groups": {
+     "business": -2,
+     "youth": 3
+    }
+   },
+   {
+    "text": "Metas moderadas.",
+    "hint": "Equilíbrio.",
+    "now": {
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Recusar: crescimento primeiro.",
+    "hint": "Indústria agradece; críticas mundiais.",
+    "now": {
+     "reputation": -2,
+     "growth": 0.2
+    },
+    "groups": {
+     "business": 2,
+     "youth": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_cul_museum",
+  "cat": "Cultura",
+  "title": "Museus pedem a devolução de peças históricas",
+  "desc": "Museus estrangeiros guardam tesouros nacionais levados no passado. Historiadores pedem a devolução.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Exigir a devolução formal.",
+    "hint": "Orgulho nacional; atrito diplomático.",
+    "now": {
+     "reputation": 0.5
+    },
+    "groups": {
+     "youth": 2,
+     "military": 1
+    }
+   },
+   {
+    "text": "Aceitar empréstimos rotativos.",
+    "hint": "Pragmático.",
+    "now": {
+     "reputation": 0.5
+    }
+   },
+   {
+    "text": "Deixar para lá.",
+    "hint": "Sem custo, sem glória.",
+    "groups": {
+     "youth": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_cul_film",
+  "cat": "Cultura",
+  "title": "Filme nacional concorre ao maior prêmio do cinema",
+  "desc": "Uma produção local entra na disputa por um prêmio internacional. A festa pode virar orgulho nacional... ou polêmica sobre o tema do filme.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Apoiar com campanha e verba pública.",
+    "hint": "Orgulho e turismo.",
+    "now": {
+     "treasury": -0.2,
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 3
+    }
+   },
+   {
+    "text": "Manter distância.",
+    "hint": "Neutro."
+   },
+   {
+    "text": "Criticar o filme como \"ofensivo\".",
+    "hint": "Agrada um lado, afasta artistas.",
+    "now": {
+     "reputation": -0.5
+    },
+    "groups": {
+     "youth": -3,
+     "rural": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_rel_school",
+  "cat": "Religião",
+  "title": "Ensino religioso nas escolas públicas",
+  "desc": "Líderes religiosos pedem aulas de religião obrigatórias; grupos laicos exigem escolas neutras.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Tornar obrigatório.",
+    "hint": "Agrada o clero; polarização.",
+    "now": {
+     "civil": -0.8
+    },
+    "groups": {
+     "rural": 3,
+     "youth": -3
+    }
+   },
+   {
+    "text": "Opcional e plural.",
+    "hint": "Equilíbrio.",
+    "groups": {
+     "rural": 1
+    }
+   },
+   {
+    "text": "Proibir nas escolas públicas.",
+    "hint": "Estado laico; reação religiosa.",
+    "now": {
+     "civil": 0.8
+    },
+    "groups": {
+     "rural": -3,
+     "youth": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_rel_pilgrimage",
+  "cat": "Religião",
+  "title": "Uma grande peregrinação ameaça a ordem",
+  "desc": "Milhões de fiéis marcham em direção a um santuário. O sistema de saúde e o transporte não suportam a multidão.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Reforçar a infraestrutura e a segurança.",
+    "hint": "Evento seguro; caro.",
+    "now": {
+     "treasury": -0.5
+    },
+    "groups": {
+     "rural": 2
+    }
+   },
+   {
+    "text": "Restringir o número de peregrinos.",
+    "hint": "Controla riscos; fiéis reclamam.",
+    "now": {
+     "civil": -0.4
+    },
+    "groups": {
+     "rural": -2
+    }
+   },
+   {
+    "text": "Deixar a organização à igreja.",
+    "hint": "Barato e arriscado.",
+    "now": {
+     "health": -0.4
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_dem_birth",
+  "cat": "Sociedade",
+  "title": "Natalidade em queda livre",
+  "desc": "A taxa de natalidade cai ano após ano. Escolas fecham no interior e a população envelhece.",
+  "cond": {
+   "min": {
+    "day": 400
+   }
+  },
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Bônus-bebê e creches gratuitas.",
+    "hint": "Estimula famílias; caro e lento.",
+    "now": {
+     "treasury": -0.7
+    },
+    "groups": {
+     "workers": 2,
+     "youth": 2
+    },
+    "long": [
+     {
+      "k": "birth",
+      "v": 1,
+      "d": 365
+     }
+    ]
+   },
+   {
+    "text": "Atrair imigrantes qualificados.",
+    "hint": "Rápido; gera debate.",
+    "now": {
+     "growth": 0.2
+    },
+    "groups": {
+     "rural": -2,
+     "business": 2
+    }
+   },
+   {
+    "text": "Nada: o mercado se ajusta.",
+    "hint": "Os problemas se acumulam."
+   }
+  ]
+ },
+ {
+  "id": "mx_dem_exodus_brain",
+  "cat": "Sociedade",
+  "title": "Fuga de cérebros",
+  "desc": "Médicos, engenheiros e pesquisadores recebem ofertas no exterior e vão embora.",
+  "cond": {
+   "min": {
+    "day": 300
+   },
+   "max": {
+    "qol": 60
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Salários competitivos e bolsas de retorno.",
+    "hint": "Segura talentos; custa.",
+    "now": {
+     "treasury": -0.6,
+     "education": 0.3
+    },
+    "groups": {
+     "youth": 3,
+     "bureaucracy": 1
+    }
+   },
+   {
+    "text": "Exigir anos de serviço público após a formatura.",
+    "hint": "Retém; revolta jovens.",
+    "now": {
+     "civil": -0.5
+    },
+    "groups": {
+     "youth": -3
+    }
+   },
+   {
+    "text": "Aceitar a emigração e buscar remessas.",
+    "hint": "Remessas ajudam, mas o país perde capital humano.",
+    "now": {
+     "tech": -0.4,
+     "treasury": 0.2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_spo_worldcup",
+  "cat": "Esporte",
+  "title": "A seleção nacional vai à final",
+  "desc": "O país inteiro para para ver a seleção na final do campeonato mundial. Há quem queira decretar feriado.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Decretar feriado nacional.",
+    "hint": "Alegria; custo na produção.",
+    "now": {
+     "growth": -0.1,
+     "stability": 1
+    },
+    "groups": {
+     "workers": 4,
+     "business": -2
+    }
+   },
+   {
+    "text": "Transmitir em telões e liberar parte do expediente.",
+    "hint": "Meio-termo.",
+    "now": {
+     "stability": 0.5
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Manter o expediente normal.",
+    "hint": "Sem custo; sem festa.",
+    "groups": {
+     "workers": -3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_spo_doping",
+  "cat": "Esporte",
+  "title": "Escândalo de doping de Estado",
+  "desc": "Investigadores internacionais dizem que atletas nacionais eram dopados com apoio de órgãos públicos.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Aceitar as conclusões e punir os responsáveis.",
+    "hint": "Custa orgulho; protege a imagem.",
+    "now": {
+     "reputation": 1
+    },
+    "groups": {
+     "military": -1
+    }
+   },
+   {
+    "text": "Chamar de campanha política.",
+    "hint": "Mantém o orgulho nacional; sanções esportivas.",
+    "now": {
+     "reputation": -2
+    },
+    "groups": {
+     "military": 1
+    }
+   },
+   {
+    "text": "Investigação interna independente.",
+    "hint": "Ganha tempo.",
+    "now": {
+     "reputation": 0.3
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_sec_gangs",
+  "cat": "Segurança",
+  "title": "Facções disputam o controle das prisões",
+  "desc": "Rebeliões em presídios mostram que facções dominam o sistema. Dentro das cadeias, o Estado perdeu o controle.",
+  "cond": {
+   "min": {
+    "crime": 35,
+    "day": 200
+   }
+  },
+  "cd": 600,
+  "options": [
+   {
+    "text": "Construir presídios federais de segurança máxima.",
+    "hint": "Isola líderes; caro.",
+    "now": {
+     "treasury": -1,
+     "crime": -1.5
+    },
+    "groups": {
+     "military": 2
+    }
+   },
+   {
+    "text": "Investir em ressocialização e trabalho.",
+    "hint": "Resultado lento.",
+    "now": {
+     "treasury": -0.4,
+     "crime": -0.7
+    },
+    "groups": {
+     "youth": 1
+    }
+   },
+   {
+    "text": "Negociar discretamente com os líderes.",
+    "hint": "Paz frágil; corrupção.",
+    "now": {
+     "crime": -0.5,
+     "corruption": 1.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_sec_police_strike",
+  "cat": "Segurança",
+  "title": "Greve da polícia",
+  "desc": "Policiais se recusam a trabalhar exigindo reajuste. Saques e assaltos aumentam.",
+  "cond": {
+   "min": {
+    "policeAuto": 40,
+    "day": 200
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Atender às exigências.",
+    "hint": "Fim da greve; custo e precedente.",
+    "now": {
+     "treasury": -0.7,
+     "crime": -1
+    },
+    "groups": {
+     "military": 2
+    },
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 1,
+      "d": 90
+     }
+    ]
+   },
+   {
+    "text": "Chamar o Exército.",
+    "hint": "Mantém a ordem; racha com a polícia.",
+    "now": {
+     "crime": 1,
+     "civil": -0.8
+    },
+    "groups": {
+     "military": 2,
+     "workers": -1
+    }
+   },
+   {
+    "text": "Punir os grevistas.",
+    "hint": "Mostra força; crime sobe.",
+    "now": {
+     "crime": 2,
+     "protest": 1
+    },
+    "groups": {
+     "military": -2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_sec_terror",
+  "cat": "Segurança",
+  "title": "Ameaça terrorista em eventos públicos",
+  "desc": "Serviços de inteligência alertam sobre um atentado. Cancelar eventos custa dinheiro; ignorar pode custar vidas.",
+  "cond": {
+   "min": {
+    "intel": 25,
+    "day": 250
+   }
+  },
+  "cd": 700,
+  "options": [
+   {
+    "text": "Cancelar os eventos e reforçar a segurança.",
+    "hint": "Evita o pior; frustra a população.",
+    "now": {
+     "treasury": -0.3,
+     "stability": -0.5
+    },
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Manter os eventos com segurança discreta.",
+    "hint": "Risco calculado."
+   },
+   {
+    "text": "Fazer prisões preventivas.",
+    "hint": "Pode evitar o atentado; abusos.",
+    "now": {
+     "civil": -1.5
+    },
+    "groups": {
+     "military": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_sci_space",
+  "cat": "Ciência",
+  "title": "Programa espacial nacional",
+  "desc": "Cientistas pedem um programa espacial para satélites e prestígio. Os críticos falam em \"luxo\" num país com pobreza.",
+  "cond": {
+   "min": {
+    "tech": 35,
+    "day": 400
+   }
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Criar a agência espacial.",
+    "hint": "Prestígio e tecnologia; caro.",
+    "now": {
+     "treasury": -1.2,
+     "tech": 0.8,
+     "reputation": 1
+    },
+    "groups": {
+     "youth": 2
+    }
+   },
+   {
+    "text": "Parceria com uma agência estrangeira.",
+    "hint": "Mais barato; menos autonomia.",
+    "now": {
+     "treasury": -0.4,
+     "tech": 0.4
+    }
+   },
+   {
+    "text": "Priorizar a saúde e a educação.",
+    "hint": "Gastos sociais.",
+    "now": {
+     "health": 0.5,
+     "education": 0.5
+    },
+    "groups": {
+     "workers": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_sci_pandemic",
+  "cat": "Saúde",
+  "title": "Um novo vírus aparece no país vizinho",
+  "desc": "Um surto de um vírus desconhecido assusta o mundo. Os vizinhos fecham fronteiras.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Fechar as fronteiras e testar em massa.",
+    "hint": "Contém o vírus; economia sofre.",
+    "now": {
+     "treasury": -0.6,
+     "growth": -0.3,
+     "health": 0.8
+    },
+    "groups": {
+     "business": -2
+    }
+   },
+   {
+    "text": "Monitorar sem restrições.",
+    "hint": "Preserva a economia; risco alto.",
+    "now": {
+     "health": -0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Parceria internacional de pesquisa e vacinas.",
+    "hint": "Investimento de longo prazo.",
+    "now": {
+     "treasury": -0.4,
+     "reputation": 1.5
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pow_succession",
+  "cat": "Poder",
+  "title": "Quem será o seu sucessor?",
+  "desc": "Aliados começam a discutir a sua sucessão, e dois nomes disputam o seu favor. Cada um representa uma linha diferente.",
+  "cond": {
+   "min": {
+    "day": 500
+   }
+  },
+  "cd": 1200,
+  "options": [
+   {
+    "text": "Apoiar o herdeiro ideológico.",
+    "hint": "Garante a continuidade; rivalidade interna.",
+    "now": {
+     "stability": 0.5
+    },
+    "groups": {
+     "bureaucracy": 2
+    }
+   },
+   {
+    "text": "Apoiar o pragmático.",
+    "hint": "Mais votos; menos pureza.",
+    "now": {
+     "legitimacy": 0.5
+    },
+    "groups": {
+     "business": 2
+    }
+   },
+   {
+    "text": "Não escolher ninguém.",
+    "hint": "Evita a disputa agora; deixa o vácuo.",
+    "long": [
+     {
+      "k": "coupRisk",
+      "v": 1.5,
+      "d": 180
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mx_pow_cult_personality",
+  "cat": "Poder",
+  "title": "Culto à personalidade",
+  "desc": "Aliados sugerem estátuas, avenidas com seu nome e um livro obrigatório nas escolas. Dizem que isso consolida o governo.",
+  "cond": {
+   "min": {
+    "day": 400
+   }
+  },
+  "cd": 1000,
+  "options": [
+   {
+    "text": "Aprovar a campanha.",
+    "hint": "Reforça o poder; ridículo nas redes.",
+    "now": {
+     "legitimacy": 2,
+     "civil": -1
+    },
+    "groups": {
+     "youth": -3,
+     "military": 2
+    }
+   },
+   {
+    "text": "Recusar com modéstia.",
+    "hint": "Imagem de humildade.",
+    "now": {
+     "legitimacy": 0.5
+    }
+   },
+   {
+    "text": "Aprovar só o essencial.",
+    "hint": "Meio-termo.",
+    "now": {
+     "legitimacy": 0.8
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pow_family",
+  "cat": "Poder",
+  "title": "Escândalo envolve a sua família",
+  "desc": "Reportagens mostram que parentes seus fecharam contratos com o governo. A oposição pede explicações.",
+  "cond": {
+   "min": {
+    "corruption": 30,
+    "day": 300
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Afastar os parentes e abrir contas.",
+    "hint": "Limpa a imagem; dói em casa.",
+    "now": {
+     "legitimacy": 1,
+     "corruption": -0.5
+    },
+    "groups": {
+     "opposition": -2
+    }
+   },
+   {
+    "text": "Negar tudo.",
+    "hint": "O escândalo cresce.",
+    "now": {
+     "legitimacy": -2
+    },
+    "groups": {
+     "opposition": 3
+    }
+   },
+   {
+    "text": "Culpar a imprensa.",
+    "hint": "Agrada a base, piora a imagem.",
+    "now": {
+     "civil": -0.5,
+     "legitimacy": -0.8
+    },
+    "groups": {
+     "opposition": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_pow_bunker",
+  "cat": "Poder",
+  "title": "Os serviços de segurança pedem uma \"linha direta\" com você",
+  "desc": "A chefia da inteligência quer acesso direto, sem passar pelos ministros, \"para decidir rápido em crises\".",
+  "cond": {
+   "min": {
+    "intel": 30,
+    "day": 300
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Conceder.",
+    "hint": "Mais controle sobre a máquina; menos transparência.",
+    "now": {
+     "intel": 2,
+     "civil": -0.8
+    },
+    "groups": {
+     "bureaucracy": -2,
+     "military": 2
+    }
+   },
+   {
+    "text": "Negar: a cadeia de comando fica.",
+    "hint": "Preserva as instituições.",
+    "groups": {
+     "bureaucracy": 2
+    }
+   },
+   {
+    "text": "Criar um conselho de segurança.",
+    "hint": "Organiza.",
+    "now": {
+     "intel": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_ec_mining_royalties",
+  "cat": "Economia",
+  "title": "Royalties da mineração: para quem vão?",
+  "desc": "Estados produtores querem ficar com a maior parte dos royalties; os demais dizem que o recurso é nacional.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Dar maior parte aos estados produtores.",
+    "hint": "Satisfaz o regional; rivalidade entre regiões.",
+    "groups": {
+     "regional": 4,
+     "rural": -1
+    }
+   },
+   {
+    "text": "Fundo nacional distribuído por população.",
+    "hint": "Equitativo; os produtores resistem.",
+    "now": {
+     "inequality": -0.3
+    },
+    "groups": {
+     "regional": -3,
+     "workers": 2
+    }
+   },
+   {
+    "text": "Dividir meio a meio.",
+    "hint": "Compromisso.",
+    "groups": {
+     "regional": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_ec_oil_fund",
+  "cat": "Economia",
+  "title": "O que fazer com a riqueza do petróleo?",
+  "desc": "Um aumento súbito do petróleo enche o caixa. Há quem queira gastar já, e quem prefira poupar para o futuro.",
+  "cond": {
+   "min": {
+    "day": 300
+   }
+  },
+  "cd": 900,
+  "options": [
+   {
+    "text": "Criar um fundo soberano.",
+    "hint": "Segurança de longo prazo.",
+    "now": {
+     "reserves": 1,
+     "treasury": 0.3
+    },
+    "groups": {
+     "workers": -1,
+     "business": 1
+    }
+   },
+   {
+    "text": "Investir em infraestrutura já.",
+    "hint": "Crescimento; risco de desperdício.",
+    "now": {
+     "treasury": -0.4,
+     "growth": 0.3
+    },
+    "groups": {
+     "workers": 2
+    }
+   },
+   {
+    "text": "Aumentar salários e subsídios.",
+    "hint": "Popularidade imediata.",
+    "now": {
+     "inflation": 0.4,
+     "treasury": -0.5
+    },
+    "groups": {
+     "workers": 4,
+     "business": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_ec_free_zone",
+  "cat": "Economia",
+  "title": "Zona franca de exportação",
+  "desc": "Investidores pedem isenções fiscais numa zona costeira. Sindicatos temem salários baixos e condições duras.",
+  "cond": {
+   "min": {
+    "day": 250
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Criar a zona.",
+    "hint": "Empregos e exportações; precariedade.",
+    "now": {
+     "growth": 0.2,
+     "unemployment": -0.5
+    },
+    "groups": {
+     "business": 3,
+     "workers": -2
+    }
+   },
+   {
+    "text": "Criar com regras trabalhistas rígidas.",
+    "hint": "Melhor equilíbrio; menos atrativa.",
+    "now": {
+     "growth": 0.1,
+     "unemployment": -0.3
+    },
+    "groups": {
+     "business": 1,
+     "workers": 1
+    }
+   },
+   {
+    "text": "Recusar.",
+    "hint": "Preserva o modelo atual.",
+    "groups": {
+     "business": -2,
+     "workers": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "mx_hlt_traditional",
+  "cat": "Saúde",
+  "title": "Médicos tradicionais e o sistema de saúde",
+  "desc": "Comunidades rurais confiam em curandeiros e parteiras tradicionais. Médicos pedem proibição; antropólogos pedem integração.",
+  "cond": {
+   "min": {
+    "day": 250
+   },
+   "max": {
+    "health": 65
+   }
+  },
+  "cd": 800,
+  "options": [
+   {
+    "text": "Integrar e treinar as parteiras e curandeiros.",
+    "hint": "Melhora o cuidado nas aldeias.",
+    "now": {
+     "health": 0.8,
+     "treasury": -0.2
+    },
+    "groups": {
+     "rural": 3
+    }
+   },
+   {
+    "text": "Proibir práticas sem diploma.",
+    "hint": "Padroniza; deixa vácuos de cuidado.",
+    "now": {
+     "health": -0.4,
+     "civil": -0.5
+    },
+    "groups": {
+     "rural": -3
+    }
+   },
+   {
+    "text": "Ignorar.",
+    "hint": "Sem mudanças."
+   }
+  ]
+ }
+]

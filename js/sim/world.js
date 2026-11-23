@@ -173,8 +173,10 @@ export function aiPower(c) {
 export function initWorld(s, data, sel, scen, ts) {
   const W = s.world = { owner: {}, occ: {}, deJure: {}, c: {}, rel: {}, wars: [], blocs: [], loans: [], orgs: {}, claims: [], news: [], rankings: {}, rankHist: {}, ver: 0, cd: {} };
   const db = data.claimsDb;
-  for (const pid in db.deJure) if (!pid.startsWith('_') && data.geo.prov[pid]) { W.owner[pid] = db.deJure[pid]; W.deJure[pid] = true; }
-  for (const pid in db.occupied) if (!pid.startsWith('_') && data.geo.prov[pid]) W.occ[pid] = db.occupied[pid].by;
+  // Províncias que o mundo customizado (ou um cenário) já redistribuiu têm o país novo como dono: a tabela do mundo real (de jure e ocupação) não pode sobrescrevê-lo.
+  const remade = pid => { const p = data.geo.prov[pid]; return !!p && !!p.o3 && p.o3 !== p.a3; };
+  for (const pid in db.deJure) if (!pid.startsWith('_') && data.geo.prov[pid] && !remade(pid)) { W.owner[pid] = db.deJure[pid]; W.deJure[pid] = true; }
+  for (const pid in db.occupied) if (!pid.startsWith('_') && data.geo.prov[pid] && !remade(pid)) W.occ[pid] = db.occupied[pid].by;
   const absorbed = new Set(ts.comps.filter(c => c.full).map(c => c.id));
   for (const pid of sel) { W.owner[pid] = PLY; if (absorbed.has(W.occ[pid])) delete W.occ[pid]; }
   for (const pid in W.occ) if (absorbed.has(W.occ[pid])) W.occ[pid] = PLY;

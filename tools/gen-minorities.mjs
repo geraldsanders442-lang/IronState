@@ -3,7 +3,9 @@
 // Tipos: majority (grupo dominante), ethnic, indigenous, african (descendentes de africanos), immigrant, religious, roma, settler (minoria de colonos/brancos).
 import { writeFileSync } from 'node:fs';
 const C = {};
-const T = (a3, rows) => { C[a3] = rows.map(([name, noun, share, kind, kin = []]) => ({ name, noun, share, kind, kin })); };
+const slug = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+// key: identidade do grupo entre países (une, por exemplo, "Árabes israelenses" e "Palestinos"); por padrão deriva do plural.
+const T = (a3, rows) => { C[a3] = rows.map(([name, noun, share, kind, kin = [], key]) => ({ name, noun, share, kind, kin, key: key || slug(noun) })); };
 const M = (name, noun, share) => [name, noun, share, 'majority'];
 
 T('USA', [M('Brancos não hispânicos', 'brancos', 58), ['Negros americanos', 'negros', 13, 'african', ['NGA', 'GHA', 'BRA']], ['Latinos e imigrantes', 'latinos', 19, 'immigrant', ['MEX', 'COL', 'SLV']], ['Povos indígenas americanos', 'indígenas', 1.3, 'indigenous'], ['Asiático-americanos', 'asiáticos', 6, 'ethnic', ['CHN', 'IND']]]);
@@ -39,7 +41,8 @@ T('DZA', [M('Árabes argelinos', 'árabes', 75), ['Amazighes (cabilas)', 'cabila
 T('MAR', [M('Árabes marroquinos', 'árabes', 60), ['Amazighes (berberes)', 'amazighes', 40, 'indigenous', ['DZA']]]);
 T('LBY', [M('Árabes líbios', 'árabes', 85), ['Amazighes', 'amazighes', 5, 'indigenous'], ['Tuaregues e tebus', 'tuaregues', 4, 'ethnic', ['NER', 'TCD']]]);
 T('EGY', [M('Egípcios muçulmanos', 'egípcios', 90), ['Coptas (cristãos)', 'coptas', 10, 'religious', ['USA', 'GRC']]]);
-T('ISR', [M('Judeus israelenses', 'judeus', 74), ['Árabes israelenses', 'árabes', 21, 'ethnic', ['JOR', 'EGY', 'TUR']], ['Drusos e beduínos', 'drusos', 2, 'ethnic', ['SYR', 'LBN']]]);
+T('ISR', [['Judeus israelenses', 'judeus', 74, 'majority', [], 'jewish'], ['Árabes israelenses e palestinos', 'palestinos', 21, 'ethnic', ['JOR', 'EGY', 'TUR', 'PSX'], 'arab_pal'], ['Drusos e beduínos', 'drusos', 2, 'ethnic', ['SYR', 'LBN']]]);
+T('PSX', [['Palestinos', 'palestinos', 86, 'majority', ['JOR', 'EGY', 'TUR'], 'arab_pal'], ['Colonos israelenses', 'judeus', 13, 'settler', ['ISR', 'USA'], 'jewish'], ['Cristãos palestinos', 'cristãos', 1, 'religious', ['GRC', 'USA']]]);
 T('LBN', [['Muçulmanos xiitas', 'xiitas', 31, 'majority', ['IRN']], ['Muçulmanos sunitas', 'sunitas', 31, 'religious', ['SAU', 'TUR']], ['Cristãos maronitas e outros', 'cristãos', 32, 'religious', ['FRA', 'USA']], ['Drusos', 'drusos', 5, 'religious']]);
 T('SYR', [M('Árabes sunitas', 'sunitas', 60), ['Alauitas', 'alauitas', 12, 'religious', ['IRN', 'RUS']], ['Curdos', 'curdos', 9, 'ethnic', ['IRQ', 'TUR']], ['Cristãos', 'cristãos', 8, 'religious', ['RUS', 'FRA']]]);
 T('IRQ', [['Árabes xiitas', 'xiitas', 60, 'majority', ['IRN']], ['Árabes sunitas', 'sunitas', 17, 'religious', ['SAU', 'TUR']], ['Curdos', 'curdos', 17, 'ethnic', ['TUR', 'IRN']], ['Yazidis, cristãos e turcomanos', 'yazidis', 3, 'religious', ['FRA', 'USA']]]);

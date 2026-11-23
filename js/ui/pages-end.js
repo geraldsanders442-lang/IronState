@@ -65,7 +65,7 @@ export function showLegacy(game, restart, parent) {
   const G = L.grade;
   const m = modal(`<div class="ending"><div style="display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap">
       <div style="width:96px;height:96px;border-radius:50%;background:${G.color};color:#fff;display:flex;align-items:center;justify-content:center;font:700 54px Georgia">${G.g}</div>
-      <div style="text-align:left"><div class="small muted">Seu legado</div><h1 style="margin:0">${esc(G.title)}</h1><div class="small">Índice histórico ${L.idx}/100 · popularidade ao fim ${L.popularity}/100 · ${s.score ?? 0} pontos</div><div class="small">${rankLine}</div></div></div></div>
+      <div style="text-align:left"><div class="small muted">Seu legado</div><h1 style="margin:0">${esc(G.title)}</h1>${(L.tags || []).length ? `<div class="row" style="gap:4px;flex-wrap:wrap;margin:4px 0">${L.tags.map(t => `<span class="tag ${t.tone === 'good' ? 'good' : t.tone === 'bad' ? 'bad' : ''}" title="${esc(t.text)}">${esc(t.name)}</span>`).join('')}</div>` : ''}<div class="small">Índice histórico ${L.idx}/100 · popularidade ao fim ${L.popularity}/100 · ${s.score ?? 0} pontos</div><div class="small">${rankLine}</div></div></div></div>
     <div style="max-width:760px;margin:10px auto;line-height:1.65">${L.paragraphs.map(p => `<p>${esc(p)}</p>`).join('')}
       ${L.marks.length ? `<h3>Marcos do governo</h3><ul class="small">${L.marks.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
       <div class="panel" style="border-left:5px solid ${L.dead ? '#555' : G.color};margin-top:10px"><h3 style="border:none;margin:0 0 4px">${L.dead ? 'Sepultamento e memória' : 'Memória'}</h3><p style="margin:0;font-style:italic">${esc(L.epitaph)}</p></div></div>

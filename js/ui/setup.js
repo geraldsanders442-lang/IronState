@@ -339,13 +339,14 @@ export function mountSetup(el, { game, onStart, onContinue }) {
       <div class="grid g2">${sl('obsChaos', 'Caos inicial', 0, 100, 5, W.obsChaos ?? 45, 'Mundo calmo (0) ou caótico (60+): secessões, expansionismo e guerras')}
       ${sl('obsIdeo', 'Peso da ideologia', 0, 2, 0.1, W.obsIdeo ?? 1, 'Socialistas × monarquias × democracias × nacionalistas')}
       ${sl('obsEthnic', 'Peso das etnias e do nacionalismo', 0, 2, 0.1, W.obsEthnic ?? 1, 'Irredentismo, minorias, povos sem Estado (Mapuches, Curdos, Sámi…)')}
+      ${sl('obsGeno', 'Genocídios e expulsões em massa', 0, 2, 0.1, W.obsGeno ?? (W.customWorld ? 0.5 : 1), '0 = nunca · 1 = normal · 2 = bem mais comuns')}
       <label class="small" style="align-self:center"><input type="checkbox" data-obsreal ${W.obsReal === false ? '' : 'checked'}> Manter os conflitos reais em curso (ex.: Rússia × Ucrânia)</label></div>
       <button class="primary" data-obs-start style="margin-top:8px;font-size:15px">▶ Iniciar observação</button></div>`;
   }
   function startObserver() {
     const nation = { officialName: 'Observatório Mundial', shortName: 'Observatório', leader: 'Observador', capital: 'Estação Polar', currency: '—', motto: 'Ver sem intervir (ou quase)', regime: 'Observador' };
     const cfg = { spectator: true, mode: 'observer', scenario: 'custom', provinces: ['ATA+99?'], answers: data.identity.questions.map(() => 1), difficulty: 'normal', flag: { layout: 'solid', colors: ['#1d2b45'], emblems: [{ type: 'globe', alt: 'circle', color: '#ffffff', x: 0.5, y: 0.5, s: 0.5 }] },
-      worldScenario: W.worldScenario, customWorld: W.customWorld || null, worldHostile: 'ideology', nation, lab: { chaos: W.obsChaos ?? 45, ideo: W.obsIdeo ?? 1, ethnic: W.obsEthnic ?? 1, realConflicts: W.obsReal !== false } };
+      worldScenario: W.worldScenario, customWorld: W.customWorld || null, worldHostile: 'ideology', nation, lab: { chaos: W.obsChaos ?? 45, ideo: W.obsIdeo ?? 1, ethnic: W.obsEthnic ?? 1, genocide: W.obsGeno ?? (W.customWorld ? 0.5 : 1), realConflicts: W.obsReal !== false } };
     const pg = new Game(BASE, null);
     try { pg.start(cfg); } catch (e) { console.error(e); return toast('Não foi possível iniciar o Observatório: ' + esc(e.message), 'bad'); }
     pg.s.world.chaos = (W.obsChaos ?? 45) >= 60;
