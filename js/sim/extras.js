@@ -8,10 +8,13 @@ import { ascAction } from './ascent2.js';
 import { dipAct, treatyAct } from './wardip.js';
 import { chiefAct, chiefPick, delegable, noteDecision, weeklyChief } from './chief.js';
 import { weeklyShocks, shockAct } from './shocks.js';
+import { ensureHealth, weeklyHealth, healthAct } from './health.js';
+import { ensureTax, weeklyTax, taxAct, taxLobbyAct } from './tariffs.js';
+import { ensureMin, weeklyMinorities, minAct, minCardAct } from './minority.js';
 
 export function weeklyExtras(s, data, ctx) {
   if (s.flags.micronation || s.ascent) return;
-  ensureDev(s); ensureProp(s); ensureOrd(s); ensureCamp(s);
+  ensureDev(s); ensureProp(s); ensureOrd(s); ensureCamp(s); ensureHealth(s, data); ensureTax(s); ensureMin(s, data);
   for (const r of s.regions) ensureVoc(r, s);
   weeklyDev(s);
   weeklyOrder(s, data, ctx);
@@ -20,11 +23,16 @@ export function weeklyExtras(s, data, ctx) {
   weeklyCampaign(s, data, ctx);
   weeklyChief(s);
   weeklyShocks(s, data, ctx);
+  weeklyHealth(s, data, ctx);
+  weeklyTax(s, data, ctx);
+  weeklyMinorities(s, data, ctx);
 }
 
 export function extraAct(s, data, act, ctx) {
   if (act.op === 'treaty') return treatyAct(s, data, act, ctx);
   if (act.op === 'shock') return shockAct(s, act);
+  if (act.op === 'taxLobby') return taxLobbyAct(s, data, act, ctx);
+  if (act.op === 'minAct') return minCardAct(s, data, act, ctx);
   const reg = s.regions.find(r => r.id === act.id);
   if (reg && act.op.startsWith('aut')) {
     const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -57,6 +65,9 @@ export function installExtras(Game) {
     return n;
   };
   P.campAct = function (op, arg) { return this.wrap(campAct(this.s, this.data, op, arg)); };
+  P.minAct = function (op, arg) { return this.wrap(minAct(this.s, this.data, op, arg)); };
+  P.taxAct = function (op, arg) { return this.wrap(taxAct(this.s, this.data, op, arg)); };
+  P.healthAct = function (op, arg) { return this.wrap(healthAct(this.s, this.data, op, arg)); };
   // Reformas com risco: troca a opção por seu resultado de fracasso, se o dado cair mal.
   P.riskOpt = function (opt) {
     if (!opt.risk) return opt;

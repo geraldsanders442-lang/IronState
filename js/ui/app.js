@@ -1,9 +1,10 @@
-import { $, esc, num, money, ctx, initTips, toast, modal, ICONS, tone, signed } from './dom.js';
+import { $, esc, num, money, ctx, initTips, toast, modal, ICONS, tone, signed, announce } from './dom.js';
+import { installA11y } from './a11y.js';
 import { Game, prepareData } from '../sim/game.js';
 import { fmtDate } from '../sim/util.js';
 import { debtRatio } from '../sim/model.js';
 import { mountSetup } from './setup.js';
-import { flagHTML as flagSVG, setFlagData } from './flag.js';
+import { flagHTML as flagSVG, setFlagData, addFlagBodies, onFlagsReady } from './flag.js';
 import { resetMaps, mountNation } from './mapviews.js';
 import { PAGES, NAV } from './pages.js';
 import { showVictory, showTerms, showGameOver } from './pages-end.js';
@@ -20,7 +21,7 @@ import { warStanding } from '../sim/campaign.js';
 import { mountObservatory } from './observatory.js';
 let obsInst = null;
 
-const DATA_FILES = ['initiatives', 'policies', 'identity', 'geo/countries.geo', 'geo/provinces.geo', 'geo/edges.geo', 'world/registry', 'world/relations', 'world/organizations', 'world/claims', 'world/scenarios', 'flags/current', 'flags/historical', 'flags/emblems-commons', 'world/world_scenarios', 'flags/regional'];
+const DATA_FILES = ['initiatives', 'policies', 'identity', 'geo/countries.geo', 'geo/provinces.geo', 'geo/edges.geo', 'world/registry', 'world/relations', 'world/organizations', 'world/claims', 'world/scenarios', 'flags/current', 'flags/historical', 'world/world_scenarios', 'flags/regional', 'health', 'minorities'];
 
 let game, page = 'overview', cardOpen = false, batching = false, notes = [], pendingTerms = false, pendingElection = null;
 
@@ -31,9 +32,12 @@ async function loadData() {
   const [issueSets, eventSets] = await Promise.all([Promise.all(content.issues.map(get)), Promise.all(content.events.map(get))]);
   const mods = loadMods().issues || [];
   const issues = [...issueSets.flat(), ...mods.map(x => ({ w: 1, ...x }))], events = eventSets.flat();
-  const [initiatives, policies, identity, gc, gp, ge, registry, relations, orgs, claims, scenarios, flagsCur, flagsHist, emblemsExt, worldScen, flagsReg] = await Promise.all(DATA_FILES.map(get));
-  setFlagData(flagsCur, flagsHist, emblemsExt, flagsReg);
-  return prepareData({ issues, events, initiatives, policies, identity, geo: { countries: gc, provinces: gp, edges: ge }, registry, relations, orgs, claims, scenarios, worldScenarios: worldScen, regionalFlags: flagsReg });
+  const [initiatives, policies, identity, gc, gp, ge, registry, relations, orgs, claims, scenarios, flagsCur, flagsHist, worldScen, flagsReg, health, minorities] = await Promise.all(DATA_FILES.map(get));
+  setFlagData(flagsCur, flagsHist, null, flagsReg);
+  // Corpos das bandeiras regionais e emblemas do Commons (pesados): chegam depois da primeira tela, sem travar a abertura.
+  const lazy = () => Promise.all([get('flags/regional.svg'), get('flags/emblems-commons')]).then(([bodies, emb]) => addFlagBodies(bodies, emb)).catch(() => {});
+  (globalThis.requestIdleCallback || (f => setTimeout(f, 300)))(lazy);
+  return prepareData({ issues, events, initiatives, policies, identity, geo: { countries: gc, provinces: gp, edges: ge }, registry, relations, orgs, claims, scenarios, worldScenarios: worldScen, regionalFlags: flagsReg, health, minorities });
 }
 
 function showSetup() {
@@ -82,7 +86,9 @@ function startGame() {
 }
 
 export function restart() { game.newCampaign(); showSetup(); }
-export function go(p) { page = p; renderPage(); window.scrollTo(0, 0); }
+const pageName = id => { for (const [, items] of NAV) { const f = items.find(x => x[0] === id); if (f) return f[1]; } return id; };
+export function go(p) { page = p; renderPage(); window.scrollTo(0, 0); const mn = $('#main'); if (mn) { mn.setAttribute('aria-label', pageName(p)); mn.focus?.({ preventScroll: true }); } announce(`Página: ${pageName(p)}.`); }
+onFlagsReady(() => { try { if (game?.s && !$('#app').hidden) rerender(); } catch {} });
 export function rerender() { renderTop(); renderNav(); renderPage(); }
 
 function renderAll() { renderTop(); renderNav(); renderPage(); renderTicker(); }
@@ -152,7 +158,7 @@ function renderNav() {
 }
 
 // Na Ascensão ao poder o jogador ainda é oposição: as páginas de governo ficam trancadas até ele assumir.
-const ASCENT_LOCKED = new Set(['budget', 'initiatives', 'economy', 'laws', 'rights', 'urban', 'research', 'politics', 'society', 'diplomacy', 'military', 'propaganda', 'order', 'regions', 'chief']);
+const ASCENT_LOCKED = new Set(['budget', 'initiatives', 'economy', 'laws', 'rights', 'urban', 'research', 'politics', 'society', 'diplomacy', 'military', 'propaganda', 'order', 'regions', 'chief', 'health', 'tax', 'ethnic']);
 function ascentLocked(main) { return ascentHub(main, game); }
 function ascentLockedOld(main) {
   const A = game.s.ascent, n = game.s.nation;
@@ -233,6 +239,7 @@ function nextWeek() {
   batching = false;
   rerender(); renderTicker();
   if (!t || game.s.over) return;
+  announce(`Nova semana: ${fmtDate(game.day)}. ${game.s.issues.pending.length} questões pendentes. ${game.s.log[0]?.text || ''}`);
   const nk = game.s.nukeCrisis, fresh = nk?.round === 1 && nk.roundDay === game.day;
   updateMusic();
   const extraTop = `${fresh ? `<div class="panel tight" style="background:#2b0b07;color:#ffd7c2;border-left:6px solid #ff5a1f"><b style="font-size:18px">☢ ATAQUE NUCLEAR CONTRA ${esc(nk.city.toUpperCase())}</b><div class="small">${esc(game.data.reg[nk.by]?.name || '')} detonou uma ogiva sobre ${esc(nk.city)} (${esc(nk.regionName)}). Mortos estimados: ${nk.dead >= 1 ? num(nk.dead, 1) + ' milhão(ões)' : num(nk.dead * 1000, 0) + ' mil'}.${nk.capital ? ` A capital foi destruída.${game.s.nukeVictims?.length ? ' Mortos no governo: ' + esc(game.s.nukeVictims.join(', ')) + '.' : ''}` : ''} Nas próximas 3 semanas, o país só tratará da catástrofe.</div></div>` : nk?.roundDay === game.day ? `<div class="panel tight" style="border-left:6px solid #ff5a1f"><b>☢ Crise nuclear — semana ${nk.round} de 3.</b> <span class="small">As demais pautas estão suspensas.</span></div>` : ''}`;
@@ -259,6 +266,7 @@ function bind() {
     const g = e.target.closest('[data-go]');
     if (g && !game.s?.spectator) { e.preventDefault(); go(g.dataset.go); }
   });
+  installA11y({ go, nextWeek, pageName });
   document.addEventListener('keydown', e => {
     if (!game?.s || $('#app').hidden || ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
     if (e.code === 'Enter' && $('#modal').hidden) nextWeek();

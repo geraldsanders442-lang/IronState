@@ -7,6 +7,6 @@ export function loadData() {
   return prepareData({
     issues: content.issues.flatMap(f => j(f + '.json')), events: content.events.flatMap(f => j(f + '.json')), initiatives: j('initiatives.json'), policies: j('policies.json'), identity: j('identity.json'),
     geo: { countries: j('geo/countries.geo.json'), provinces: j('geo/provinces.geo.json'), edges: j('geo/edges.geo.json') },
-    registry: j('world/registry.json'), relations: j('world/relations.json'), orgs: j('world/organizations.json'), claims: j('world/claims.json'), scenarios: j('world/scenarios.json'), worldScenarios: j('world/world_scenarios.json'), regionalFlags: j('flags/regional.json'),
+    registry: j('world/registry.json'), relations: j('world/relations.json'), orgs: j('world/organizations.json'), claims: j('world/claims.json'), scenarios: j('world/scenarios.json'), worldScenarios: j('world/world_scenarios.json'), regionalFlags: j('flags/regional.json'), health: j('health.json'), minorities: j('minorities.json'),
   });
 }

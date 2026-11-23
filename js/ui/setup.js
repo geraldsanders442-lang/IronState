@@ -11,7 +11,8 @@ import { cultureOf, personName, leaderName } from '../sim/names.js';
 import { WORLD_REGIONS, wrOf } from '../sim/worldregions.js';
 import { munisOf, applySplits, splitId, splitName } from '../sim/munis.js';
 import { pagedGrid } from './paginate.js';
-import { customPanelHTML, openEditor, loadCustom, saveCustom, presetWorld, exportWorld, importWorld } from './customworld-ui.js';
+import { onFlagsReady } from './flag.js';
+import { customPanelHTML, openEditor, loadCustom, saveCustom, presetWorld, exportWorld, importWorld, exportAll, encodeWorld, importCode } from './customworld-ui.js';
 import { customData, regionalIdentity } from '../sim/customworld.js';
 import { MODES, CHALLENGES, PERKS, dailyConfig, loadMeta, saveMeta } from '../sim/modes.js';
 
@@ -78,6 +79,8 @@ export function mountSetup(el, { game, onStart, onContinue }) {
     W.capitalProv = sc.capitalProv || null;
   }
 
+  // Quando as bandeiras pesadas terminam de carregar, redesenha a etapa (sem interromper quem está digitando).
+  onFlagsReady(() => { if (el.isConnected && !el.hidden && !el.contains(document.activeElement?.matches?.('input,textarea,select') ? document.activeElement : null)) render(); });
   function render() {
     el.innerHTML = `<div class="setup-head"><h1>IRON STATE</h1><div class="muted">Sandbox geopolítico — crie uma nação, defina no que ela acredita e tente sobreviver num mundo de potências</div>
       <div class="wizard-steps">${STEPS.map((n, i) => `<span class="${i === W.step ? 'on' : i < W.step ? 'done' : ''}">${i + 1}. ${n}</span>`).join('')}</div></div><div data-body></div>
@@ -136,6 +139,12 @@ export function mountSetup(el, { game, onStart, onContinue }) {
         if (k === 'export') return W.customWorld && exportWorld(W.customWorld);
         if (k.startsWith('exportsaved:')) { e.stopPropagation(); const d = loadCustom()[+k.slice(12)]; if (d) exportWorld(d); return; }
         if (k.startsWith('delsaved:')) { e.stopPropagation(); const L = loadCustom(), d = L[+k.slice(9)]; if (d && confirm(`Apagar "${d.name}" dos mundos salvos?`)) { L.splice(+k.slice(9), 1); saveCustom(L); render(); } return; }
+        if (k === 'saveactive') { const d = W.customWorld; if (!d) return; const L = loadCustom(), i = L.findIndex(x => x.name === d.name); if (i >= 0) L[i] = structuredClone(d); else L.push(structuredClone(d)); return saveCustom(L) ? (toast(`Mundo "${esc(d.name)}" salvo (${L.length} no total).`, 'good'), render()) : toast('Não foi possível salvar: armazenamento do navegador cheio. Use Exportar JSON.', 'bad'); }
+        if (k === 'exportall') return exportAll(loadCustom());
+        if (k === 'copycode') { const d = W.customWorld; if (!d) return; return encodeWorld(d).then(c => { (navigator.clipboard?.writeText(c) || Promise.reject()).then(() => toast('Código copiado. Cole em outro navegador com "Colar código".', 'good'), () => { prompt('Copie o código abaixo:', c); }); }); }
+        if (k === 'pastecode') { const c = prompt('Cole o código do mundo (começa com IS1:)'); if (c) importCode(BASE, c, d => { const L = loadCustom(), i = L.findIndex(x => x.name === d.name); if (i >= 0) L[i] = d; else L.push(d); saveCustom(L); setCustom(d); render(); }); return; }
+        if (k.startsWith('dupsaved:')) { e.stopPropagation(); const L = loadCustom(), d = L[+k.slice(9)]; if (d) { let n = d.name + ' (cópia)', j = 2; while (L.some(x => x.name === n)) n = `${d.name} (cópia ${j++})`; L.push({ ...structuredClone(d), name: n }); saveCustom(L); render(); } return; }
+        if (k.startsWith('rensaved:')) { e.stopPropagation(); const L = loadCustom(), d = L[+k.slice(9)]; if (d) { const n = prompt('Novo nome do mundo:', d.name); if (n && n.trim() && !L.some((x, j) => j !== +k.slice(9) && x.name === n.trim())) { d.name = n.trim(); saveCustom(L); render(); } else if (n) toast('Nome vazio ou já usado.', 'warn'); } return; }
         if (k === 'import') return importWorld(BASE, d => { const L = loadCustom(), i = L.findIndex(x => x.name === d.name); if (i >= 0) L[i] = d; else L.push(d); saveCustom(L); setCustom(d); render(); });
         if (k === 'new') return open({ id: 'custom', name: 'Meu mundo', desc: '', nations: [] });
         if (k.startsWith('preset:')) { const d = presetWorld(BASE, k.slice(7)); if (d) { d.pid = k.slice(7); setCustom(d); toast('Preset carregado. Abra "Editar" para ajustar nações, bandeiras e papéis.', 'good'); } return render(); }

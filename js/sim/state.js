@@ -2,6 +2,7 @@ import { DIFFICULTY, GROUPS, SPEND } from './constants.js';
 import { clamp } from './util.js';
 import { territoryStats, simProfile, initWorld, PLY, relRecord as relRecordOf } from './world.js';
 import { classify } from './ideology.js';
+import { SEP_PRIOR } from './cohesion.js';
 
 // Cria uma campanha a partir das províncias escolhidas, das 20 respostas e do cenário.
 export function newGame(cfg, data) {
@@ -53,6 +54,11 @@ export function newGame(cfg, data) {
     over: null, monthStart: null, yearStart: null, settings: { autoPause: true, pauseMonthly: false, popupIssues: true }, sector: {},
   };
   s.regions = buildRegions(data, pids, ts, capProv, start);
+  // Propensão histórica a separatismo do território (ver cohesion.js): países coesos começam com regiões bem mais tranquilas.
+  { const tot = ts.comps.reduce((a, c) => a + (c.share || 0), 0) || 1, pr = ts.comps.reduce((a, c) => a + (SEP_PRIOR[c.id] ?? 0.7) * (c.share || 0), 0) / tot;
+    s.nation.sepPrior = +pr.toFixed(3);
+    if (ts.comps.length <= 1) for (const r of s.regions) r.sep = clamp(r.sep * Math.min(1.2, pr * 1.4), 0, 1);
+    s.st.separatism = clamp(s.st.separatism * clamp(0.4 + pr * 0.6, 0.4, 1.2), 0, 100); }
   // Rivalidades entre os países unificados viram nacionalismo e separatismo internos.
   let tensionW = 0;
   for (const r of s.regions) {

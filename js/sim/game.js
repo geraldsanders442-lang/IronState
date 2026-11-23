@@ -23,6 +23,9 @@ import { initForces, weeklyForces, assign, recruitCorps, buyNavy, buyAir, replac
 import { initMarkets, weeklyMarkets, startBuilding, privatize, nationalize, setFx, devalue } from './markets.js';
 import { macrosOf, saveMacro, deleteMacro } from './macros.js';
 import { weeklyExtras, installExtras } from './extras.js';
+import { weeklyWorldHealth } from './health.js';
+import { weeklyWorldTrade } from './tariffs.js';
+import { weeklyWorldMinorities } from './minority.js';
 import { genderize } from './names.js';
 import { weeklyWarDip } from './wardip.js';
 import { ensureRights, weeklyRights, rightsAct, deport, naturalize, arrest, banParty, unbanParty, amnesty, crushRegion, concedeRegion, setIccRecognition } from './rights.js';
@@ -52,6 +55,8 @@ export function prepareData(raw) {
   d.events = raw.events || [];
   d.worldScenarios = raw.worldScenarios?.scenarios || [];
   d.regionalFlags = raw.regionalFlags || null;
+  d.health = raw.health || null;
+  d.minorities = raw.minorities || null;
   d.issueById = Object.fromEntries([...raw.issues, ...d.events.filter(e => e.options)].map(i => [i.id, i]));
   // Desdobramentos declarados com "after" são anexados às opções de origem.
   for (const x of raw.issues) for (const a of x.after || []) { const o = d.issueById[a.issue]?.options?.[a.option]; if (o && !(o.next || []).some(n => n.id === x.id)) (o.next ||= []).push({ id: x.id, days: a.days ?? 30, p: a.p ?? 1 }); }
@@ -358,7 +363,7 @@ export class Game {
       const micro = !!s.flags.micronation; // Bir Tawil: sem crises mundiais sérias
       if (micro) for (const id in s.partners) { const p = s.partners[id]; p.rel = Math.min(p.rel, -2); p.pact = false; }
       if (!micro) weeklyChaos(s, data, c);
-      if (!micro) weeklyGeopol(s, data, c);
+      if (!micro) { weeklyGeopol(s, data, c); weeklyWorldHealth(s, data, c); weeklyWorldTrade(s, data, c); weeklyWorldMinorities(s, data, c); }
       weeklySeparatist(s, data, c);
       if (!micro) weeklyWorldLife(s, data, c);
       weeklyWar(s, data, c);
@@ -897,7 +902,7 @@ installExtras(Game);
 // Ascensão ao poder: enquanto o jogador lidera a oposição, quem governa é o regime atual —
 // orçamento, leis, diplomacia, forças armadas e economia ficam fora do alcance dele.
 export const ASCENT_LOCK_MSG = 'Você ainda não governa: conquiste o poder (eleição, golpe ou revolução) para comandar o país.';
-for (const m of 'rightsDeport rightsNaturalize rightsArrest rightsBan rightsUnban rightsAmnesty rightsCrush rightsConcede rightsIcc setMandate hireAdvisor fireAdvisor train raiseFunds sectorInvest covert incite startProgram cancelProgram startNuke nuclearThreat milAction declareWar warAction negotiate buyInitiative cancelInitiative setTax setSpend setRegionInvest setPolicy partnerAction summit spy setResearch joinOrg leaveOrg imfLoan createBloc inviteToBloc expelFromBloc joinAllyWar pressAction assignCorps recruitCorps buyNavy buyAir replaceGeneral airCampaign blockade customPeace build privatize nationalize setFx devalue appoint amendConstitution'.split(' ')) {
+for (const m of 'healthAct taxAct minAct rightsDeport rightsNaturalize rightsArrest rightsBan rightsUnban rightsAmnesty rightsCrush rightsConcede rightsIcc setMandate hireAdvisor fireAdvisor train raiseFunds sectorInvest covert incite startProgram cancelProgram startNuke nuclearThreat milAction declareWar warAction negotiate buyInitiative cancelInitiative setTax setSpend setRegionInvest setPolicy partnerAction summit spy setResearch joinOrg leaveOrg imfLoan createBloc inviteToBloc expelFromBloc joinAllyWar pressAction assignCorps recruitCorps buyNavy buyAir replaceGeneral airCampaign blockade customPeace build privatize nationalize setFx devalue appoint amendConstitution'.split(' ')) {
   const f = Game.prototype[m];
   if (f) Game.prototype[m] = function (...a) { if (this.s?.ascent) { this.notify?.('Na oposição', ASCENT_LOCK_MSG, 'warn'); return { ok: false, msg: ASCENT_LOCK_MSG }; } return f.apply(this, a); };
 }

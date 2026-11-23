@@ -7,7 +7,7 @@ let RNG = null;
 export function bindRng(holder) { RNG = holder || null; }
 export function seedFrom(text) { let h = 2166136261; for (const ch of String(text)) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
 export function random() {
-  if (!RNG) return Math.random();
+  if (!RNG) { if (globalThis.__IRON_RNG_LEAKS__) globalThis.__IRON_RNG_LEAKS__.push(new Error().stack.split(String.fromCharCode(10)).slice(2, 6).join(" <- ")); return Math.random(); }
   let x = (RNG.rng = (RNG.rng + 0x6D2B79F5) | 0);
   x = Math.imul(x ^ (x >>> 15), x | 1);
   x ^= x + Math.imul(x ^ (x >>> 7), x | 61);

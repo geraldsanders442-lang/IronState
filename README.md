@@ -1,19 +1,21 @@
 # Iron State — sandbox geopolítico
 
-Jogo single-player de navegador: crie uma nação a partir de territórios reais, defina sua ideologia em 20 perguntas, governe em turnos semanais e sobreviva num mundo de ~250 países que agem por conta própria.
+Jogo single-player de navegador: crie uma nação a partir de territórios reais, defina sua ideologia em 21 perguntas, governe em turnos semanais e sobreviva num mundo de ~250 países que agem por conta própria.
 
 ## Como jogar
 
-**Abra `index.html` com dois cliques** (ou jogue pelo site do GitHub Pages). É um arquivo único (≈32 MB) com código, mapas, bandeiras e dados embutidos; funciona offline e salva no navegador.
+**Site (GitHub Pages):** o `index.html` é pequeno e carrega o código empacotado (`assets/app.min.js`, ~1 MB) e os dados de `data/*.json` sob demanda (o Pages já serve tudo comprimido). As bandeiras regionais (~13 MB) e os emblemas do Commons (~12 MB) chegam em segundo plano, depois da primeira tela. Para publicar: `node tools/build-site.mjs`, depois commit de `index.html` e `assets/`.
 
-Alternativa para desenvolvimento (arquivos separados): `node serve.mjs` e acesse http://localhost:8080.
+**Offline com dois cliques:** `node tools/build-single.mjs` gera `IronState.html` (~32 MB, tudo embutido; fica fora do git). Funciona sem rede e salva no navegador.
+
+**Desenvolvimento:** `node serve.mjs` e acesse http://localhost:8080 (módulos separados, sem empacotar).
 
 Turnos: clique em **Próxima semana ▶** (ou Enter). O jogo mostra as notícias da semana e abre as novas questões; não há relógio correndo.
 
 ## Sistemas
 
 - **Mapa real** (Natural Earth 10m): 258 entidades, 4.603 províncias, zoom/arraste, busca, camadas de relações, comércio, guerras e organizações; mapa nacional no painel com métricas regionais.
-- **Criação**: 26 cenários (personalizado, país existente, URSS restaurada, Grande Síria, Federação Balcânica, pós-guerra civil, Groenlândia independente, África Oriental, América Central, Grã-Colômbia, União Ibérica, República das Duas Nações, União Nórdica, Federação Turânica, Confederação do Sahel, Curdistão, União do Magrebe, União do Golfo, Coreia reunificada, Indochina, Grande Romênia, Confederação Peru-Boliviana, Catalunha, Escócia, Quebec e Califórnia independentes), seleção por país ou província, estimativas de território, bandeiras atuais/históricas/personalizadas.
+- **Criação**: 109 cenários (personalizado, país existente, URSS restaurada, Grande Síria, Federação Balcânica, pós-guerra civil, Groenlândia independente, África Oriental, América Central, Grã-Colômbia, União Ibérica, República das Duas Nações, União Nórdica, Federação Turânica, Confederação do Sahel, Curdistão, União do Magrebe, União do Golfo, Coreia reunificada, Indochina, Grande Romênia, Confederação Peru-Boliviana, Catalunha, Escócia, Quebec e Califórnia independentes), seleção por país ou província, estimativas de território, bandeiras atuais/históricas/personalizadas.
 - **Identidade**: 20 perguntas → 13 eixos ideológicos → classificação específica e híbrida (ex.: “Marxismo-Leninismo Pró-Eurásia”, “Nacional-Bolchevismo”), com explicação; as respostas definem leis, orçamento, grupos, relações e metas iniciais.
 - **Turnos semanais**: 4 cartões de questões por semana com prazo e regra padrão, eventos aleatórios, desdobramentos, manchetes e resumo semanal. As questões dependem do estado do país (crises, cortes, guerras, programas) e muitas são modelos preenchidos com seus vizinhos, rivais, aliados, blocos e guerras reais da partida.
 - **Nomes regionais**: ministros, generais, opositores e líderes estrangeiros recebem nomes da cultura do país (polonês na Polônia, árabe no Magrebe, japonês no Japão…).
@@ -28,7 +30,7 @@ Turnos: clique em **Próxima semana ▶** (ou Enter). O jogo mostra as notícias
 - **Mundo em guerra**: IAs entram em guerra entre si (por reivindicações, rivalidade ou incitação sua), ocupam províncias progressivamente, anexam território e sofrem sanções de outras potências.
 - **Custo das guerras**: baixas militares e civis, refugiados e destruição de infraestrutura por província (proporcional à intensidade e ao tempo de combate, com reconstrução lenta); cansaço de guerra que enfraquece exércitos e força cessar-fogos; territórios conquistados resistem enquanto o antigo dono existir (guerrilha, levantes, sobre-extensão) — nenhum país cresce sem limite. Questões de pós-guerra: reconstrução, insurgência em terras anexadas, minas, veteranos, crimes de guerra e deslocados.
 - **Guerra**: objetivos, frentes por província, operações anfíbias, coalizões, cercos à capital com evacuação, ocupação, cessão, Estado cliente, anexação, Estados sucessores e chance real (circunstancial) de captura do governante.
-- **Conteúdo**: 558 questões (307 novas, incluindo 23 da crise nuclear e suas sequelas, 57 de ideologia e regime, 33 do cotidiano e 26 de partidos, regiões e blocos; vizinhança, blocos, potências, territórios disputados, operações secretas, programa nuclear, política interna e serviços públicos), 58 desdobramentos, 73 eventos, 6 personagens recorrentes, 17 tipos de missão, rankings mundiais mensais.
+- **Conteúdo**: 2.431 decisões hoje (1.665 questões, 766 desdobramentos e 102 eventos aleatórios; ver `node tools/validate-content.mjs`). Na primeira versão eram 558 questões (307 novas, incluindo 23 da crise nuclear e suas sequelas, 57 de ideologia e regime, 33 do cotidiano e 26 de partidos, regiões e blocos; vizinhança, blocos, potências, territórios disputados, operações secretas, programa nuclear, política interna e serviços públicos), 58 desdobramentos, 73 eventos, 6 personagens recorrentes, 17 tipos de missão, rankings mundiais mensais.
 
 ## Novidades desta versão
 
@@ -79,7 +81,11 @@ Turnos: clique em **Próxima semana ▶** (ou Enter). O jogo mostra as notícias
   - `node tools/build-flags.mjs` — empacota bandeiras.
   - `node tools/validate-world.mjs` — valida o banco geopolítico e gera `docs/validation-report.md`.
   - `node tools/validate-content.mjs` — valida questões, eventos e desdobramentos.
-  - `node tools/build-single.mjs` — gera `index.html` (o jogo completo; também uma cópia local `IronState.html`). O modelo de desenvolvimento é `dev.html` (`node serve.mjs` → http://localhost:8080).
+  - `node tools/build-site.mjs` — gera o site dividido (`index.html` pequeno + `assets/app.min.js`); os dados ficam em `data/` e são buscados sob demanda. É o que o GitHub Pages serve.
+  - `node tools/build-single.mjs` — gera `IronState.html`, cópia local com tudo embutido (fora do git). O modelo de desenvolvimento é `dev.html` (`node serve.mjs` → http://localhost:8080).
+  - `node tools/fetch-health.mjs` — baixa do Banco Mundial (JMP OMS/UNICEF) saneamento, água, higiene, expectativa de vida e mortalidade para `data/health.json`.
+  - `node tools/gen-minorities.mjs` — grupos étnicos, religiosos e de imigrantes por país para `data/minorities.json`.
+  - `node tools/fetch-regional-flags.mjs` + `node tools/build-regional-flags.mjs` — bandeiras regionais do Commons (`BUDGET_KB`, `MAXFILE_KB` limitam o tamanho); geram `data/flags/regional.json` (metadados) e `regional.svg.json` (corpos, carregados sob demanda).
   - `node tools/fetch-commons-emblems.mjs` e `node tools/build-emblems.mjs` — baixam do Wikimedia Commons (só licenças livres) e convertem os emblemas listados em `tools/commons-emblems.list.mjs`.
   - `node tools/add-scenarios.mjs` — (re)grava os cenários alternativos adicionais em `data/world/scenarios.json`.
 - `tests/sim-test.mjs` — simulação headless: `node tests/sim-test.mjs [random|first|idle|war|diplo|covert] [dias] [cenário] [país]`.
@@ -116,3 +122,12 @@ Turnos: clique em **Próxima semana ▶** (ou Enter). O jogo mostra as notícias
 - Ícones no estilo Lucide em `js/ui/lucide.js`.
 - **Alcance o poder (v2)** (`js/sim/ascent2.js`, `js/ui/ascent-ui.js`): origem do movimento, 6 facções, pontos de ação semanais (11 ações), propaganda com orçamento reduzido e discursos, pressão e repressão do regime, 16 eventos, rotas ao poder com chance de sucesso (eleição, golpe, insurreição) e herança para o governo (promessas viram obrigações).
 - Líderes: reduzidos a ~10% de mulheres, com títulos Rainha/Imperatriz/Primeira-ministra (names.js: leaderName/genderize). Mundo customizado agora combina com cenários mundiais. 22 entidades (12 países e 10 regiões) com 21 questões dedicadas cada (tools/arcs2/p1-p3).
+
+## Novidades recentes
+
+- **Saúde e saneamento** (`js/sim/health.js`, página *Saúde e saneamento*): cobertura de saneamento, água potável e lavagem de mãos, defecação a céu aberto, expectativa de vida, mortalidade infantil e IDH (fórmula do PNUD). Os pontos de partida são dados reais do Banco Mundial/JMP por país; zonas rurais ficam atrás das cidades. Quatro programas com níveis de financiamento, região prioritária, campanhas de higiene e vacinação e resposta a surtos de cólera, febre tifoide e disenteria. Nos outros países, surtos aparecem no jornal (ligados ao saneamento real de cada um).
+- **Impostos e tarifas** (`js/sim/tariffs.js`, página *Impostos e tarifas*): tarifas por país ou por produto, impostos seletivos (cigarro, álcool, açúcar, combustível, luxo, jogos, carbono), sobre classes (grandes fortunas, empresas, classe média, consumo, heranças) e sobre setores (petróleo e mineração, bancos, big techs, agronegócio, imóveis). Cada medida rende receita e custa inflação, crescimento, humor dos grupos ou contrabando. Há retaliação comercial, lobby que vira questão (resistir, negociar, revogar, comprar silêncio) e, com parlamento autônomo e sem maioria, o Congresso derruba medidas sozinho. As IAs também travam guerras comerciais (visíveis no Observatório).
+- **Povos e minorias** (`js/sim/minority.js`, página *Povos e minorias*): cada país tem seus grupos (negros e indígenas nos EUA, ciganos na Romênia, imigrantes na França, Boers na África do Sul...). Com a polícia autônoma demais, as minorias sofrem batidas, pogroms, fuga, expulsão e, por ordem do governo, genocídio: estabilidade e controle sobem de início, mas vêm protestos, milícias, motins na polícia e nas Forças Armadas, sanções, TPI e guerra de países simpatizantes. Dá para se identificar com uma minoria e se voltar contra a antiga maioria. No Observatório, perseguições aparecem na página *Etnias e tensões* e no laboratório (controle *Perseguição a minorias*).
+- **Coesão nacional** (`js/sim/cohesion.js`): separatismo e secessão dependem do histórico de cada país (Catalunha e Curdistão pesam; Angola e Japão quase nada), da estabilidade, da prosperidade (IDH) e do medo do Estado.
+- **Carregamento**: listas longas (cenários e bandeiras) usam paginação com "Mostrar mais" e carregamento ao rolar (`js/ui/paginate.js`); bandeiras regionais e emblemas do Commons chegam em segundo plano.
+- Testes novos: `tests/health-test.mjs`, `tests/tax-test.mjs`, `tests/minority-test.mjs`; o teste de determinismo agora falha se algum sorteio escapar do gerador da partida.

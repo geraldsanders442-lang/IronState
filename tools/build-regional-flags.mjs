@@ -64,7 +64,8 @@ for (const c of cands) {
   const { names, t, ctx, pri, ...keep } = c.r;
   meta[c.r.key] = { ...keep, title: c.m.title, url: c.m.url, license: c.m.license, artist: c.m.artist };
 }
-writeFileSync(new URL('../data/flags/regional.json', import.meta.url), JSON.stringify({ _doc: 'Bandeiras regionais, de movimentos e imperiais do Wikimedia Commons (licenças livres). Veja docs/flag-sources.md.', flags, meta }));
+writeFileSync(new URL('../data/flags/regional.json', import.meta.url), JSON.stringify({ _doc: 'Bandeiras regionais, de movimentos e imperiais do Wikimedia Commons (licenças livres). Veja docs/flag-sources.md.', meta }));
+writeFileSync(new URL('../data/flags/regional.svg.json', import.meta.url), JSON.stringify({ _doc: 'Corpo SVG das bandeiras regionais (carregado sob demanda); metadados em regional.json.', flags }));
 const md = ['# Bandeiras regionais e imperiais — fontes e licenças', '', 'Importadas do Wikimedia Commons por `tools/fetch-regional-flags.mjs` (somente licenças livres: domínio público, CC0, CC BY, CC BY-SA, GFDL). Minificadas por `tools/build-regional-flags.mjs`.', '', '| Chave | Nome | Arquivo | Licença | Autoria |', '|---|---|---|---|---|'];
 for (const k of Object.keys(meta)) { const m = meta[k]; md.push(`| ${k} | ${m.name} | [${m.title.replace(/\|/g, '/')}](${m.url}) | ${String(m.license).replace(/\|/g, '/')} | ${String(m.artist || '—').replace(/\|/g, '/').slice(0, 90)} |`); }
 writeFileSync(new URL('../docs/flag-sources.md', import.meta.url), md.join('\n') + '\n');

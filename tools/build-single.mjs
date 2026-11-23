@@ -9,7 +9,7 @@ const json = p => JSON.parse(read('data/' + p + '.json'));
 
 const content = json('content');
 const files = ['content', ...content.issues, ...content.events, 'initiatives', 'policies', 'identity', 'geo/countries.geo', 'geo/provinces.geo', 'geo/edges.geo',
-  'world/registry', 'world/relations', 'world/organizations', 'world/claims', 'world/scenarios', 'flags/current', 'flags/historical', 'flags/emblems-commons', 'world/world_scenarios', 'flags/regional'];
+  'world/registry', 'world/relations', 'world/organizations', 'world/claims', 'world/scenarios', 'flags/current', 'flags/historical', 'flags/emblems-commons', 'world/world_scenarios', 'flags/regional', 'flags/regional.svg', 'health', 'minorities'];
 const data = Object.fromEntries(files.map(f => [f, json(f)]));
 
 const bundle = await build({ entryPoints: [fileURLToPath(new URL('js/ui/app.js', root))], bundle: true, format: 'iife', minify: true, write: false, target: 'es2020', legalComments: 'none' });
@@ -20,6 +20,5 @@ const safe = s => s.replace(/<\/script/gi, '<\\/script').replace(/<!--/g, '<\\!-
 html = html.replace('<link rel="stylesheet" href="css/style.css">', `<style>\n${css}\n</style>`);
 html = html.replace('<script type="module" src="js/ui/app.js"></script>', () =>
   `<script>window.__IRON_DATA__=${safe(JSON.stringify(data))};</script>\n<script>${safe(js)}</script>`);
-writeFileSync(new URL('index.html', root), html); // o site (GitHub Pages) abre o index.html
-writeFileSync(new URL('IronState.html', root), html); // cópia local para abrir com dois cliques (fora do git)
-console.log('index.html + IronState.html', (Buffer.byteLength(html) / 1024 / 1024).toFixed(2) + ' MB', '| arquivos de dados:', files.length);
+writeFileSync(new URL('IronState.html', root), html); // cópia local para abrir com dois cliques (fora do git); o site do GitHub Pages usa tools/build-site.mjs
+console.log('IronState.html', (Buffer.byteLength(html) / 1024 / 1024).toFixed(2) + ' MB', '| arquivos de dados:', files.length);

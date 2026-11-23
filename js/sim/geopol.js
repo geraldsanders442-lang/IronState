@@ -4,6 +4,7 @@
 // alianças ideológicas e guerras entre IAs. Vale para o jogo normal, o mundo customizado e o Observatório.
 import { clamp, chance, rand, pick, random } from './util.js';
 import { PLY, entOf, ownerOf, provincesOf, relAI, shiftRelAI, aiPower, playerNeighbors } from './world.js';
+import { secessionMult } from './cohesion.js';
 import { startAiWar, foundState, aiNeighborsOf, MOVEMENTS, movementProvinces } from './newstates.js';
 import { cultureOf } from './names.js';
 import { CRISES } from './worldlife.js';
@@ -150,6 +151,18 @@ export function ethnicIndex(s, data) {
     if (minorities.some(m => m.kin === kin && m.holder === holder && m.provs.some(p => byPair[k].includes(p)))) continue;
     const base = data.reg[b];
     minorities.push({ base: b, group: 'base_' + b, people: `população de ${base?.name || b}`, kin, holder, provs: byPair[k], pop: byPair[k].reduce((a, p) => a + (P[p].pop || 0), 0), lost: true });
+  }
+  // 2b) Povos absorvidos: o país inteiro foi engolido por uma união ou conquista (URSS, Iugoslávia, anexações) e o Estado-mãe deixou de existir.
+  // Sem isto, ucranianos, georgianos, armênios, bálticos etc. sumiam das minorias e do separatismo nos mundos de uniões.
+  for (const b of Object.keys(heir._cnt || {})) {
+    if (b === 'ATA' || b === 'undefined') continue;
+    const h = heirOfBase(s, data, b, heir); if (!h || h === b || !W.c[h]) continue;
+    const he = entOf(s, data, h); if ((he?.origin || h) === b || he?.secededFrom === b) continue;
+    const base = data.reg[b]; if (!base) continue;
+    const provs = Object.keys(P).filter(pid => baseOf(data, pid) === b && ownerOf(s, data, pid) === h); if (!provs.length) continue;
+    if (minorities.some(m => m.base === b && m.holder === h)) continue;
+    const mv = { id: 'lib_' + b, name: base.name, short: base.name, culture: cultureOf(data, b), ideo: 'independência nacional', flag: base.iso2 ? { iso: String(base.iso2).toLowerCase() } : { layout: 'h3', colors: ['#7a1d12', '#f2f2f2', '#1d2b45'], emblems: [] }, profile: { ...(base.profile || {}) } };
+    stateless.push({ group: 'abs_' + b, people: `povo de ${base.name}`, name: base.name, holder: h, provs, absorbed: true, g: { id: 'abs_' + b, people: `povo de ${base.name}`, name: base.name, short: base.name, culture: mv.culture, ideo: mv.ideo, flag: mv.flag, profile: mv.profile, movement: mv } });
   }
   // 3) Povos sem Estado.
   for (const g of statelessGroups(data)) {
@@ -400,9 +413,9 @@ function ethnicUnrest(s, data, ctx) {
   }
   for (const m of E.minorities) { const c = W.c[m.holder]; if (c) c.stab = clamp(c.stab - 0.02 * (nationalismOf(s, data, m.kin) / 50) * k, 5, 95); }
   if (!(W.chaos || s.spectator) || d - (W.lastEthnicSecession || -999) < 60) return;
-  const pool = E.stateless.filter(x => W.c[x.holder] && x.holder !== PLY && provincesOf(s, data, x.holder).length - x.provs.length >= 2 && W.c[x.holder].stab < 50 + k * 8);
+  const pool = E.stateless.filter(x => W.c[x.holder] && x.holder !== PLY && provincesOf(s, data, x.holder).length - x.provs.length >= 2 && W.c[x.holder].stab < 50 + k * 8 && secessionMult(s, data, x.holder) >= 0.15);
   const x = pool[Math.floor(random() * pool.length)];
-  if (!x || !chance(0.02 * k * k)) return;
+  if (!x || !chance(0.02 * k * k * secessionMult(s, data, x.holder) * (x.absorbed ? 1.6 : 1))) return;
   const g = x.g, mv = g.movement || { id: g.id, name: g.name, short: g.short, culture: g.culture, ideo: g.ideo, flag: g.flag, profile: g.profile };
   const id = foundState(s, data, ctx, { pids: x.provs, from: x.holder, movement: mv, why: `(${g.people}) declara independência` });
   if (id) { W.lastEthnicSecession = d; const pc = W.c[x.holder]; if (pc && chance(0.55)) startAiWar(s, data, ctx, x.holder, id, `${nm(s, data, x.holder)} tenta esmagar a independência de ${nm(s, data, id)}`); }

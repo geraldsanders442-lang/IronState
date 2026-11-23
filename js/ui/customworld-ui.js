@@ -3,7 +3,7 @@
 import { esc, num, modal, toast } from './dom.js';
 import { li } from './lucide.js';
 import { WorldMap } from './worldmap.js';
-import { flagHTML, mountFlagEditor } from './flag.js';
+import { flagHTML, mountFlagEditor, onFlagsReady } from './flag.js';
 import { pagedGrid } from './paginate.js';
 import { REGIMES, ROLES, PRESETS, presetWorld, fracture, autoFlag, autoRoles, loadCustom, saveCustom, regionalIdentity } from '../sim/customworld.js';
 import { POSTURES, FAMILIES, famOfProfile, ideoRel } from '../sim/ideofam.js';
@@ -18,10 +18,10 @@ export function customPanelHTML(W, list) {
   const cur = W.customWorld;
   return `<div class="panel"><h3>${li('split', 18)} Mundo customizado / País fraturado</h3>
     <p class="small muted">Crie nações novas dividindo países (a Rússia fragmentada, um Brasil do Norte, do Nordeste e do Sul...). Cada nação tem nome, bandeira, líder, regime e papel (aliada, rival, antagonista ou neutra). Você também pode deixar tudo no automático.</p>
-    ${cur ? `<div class="small"><b>Ativo:</b> ${esc(W.customWorld.name)} (${W.customWorld.nations.length} nações) <button class="small" data-cw="edit">Editar</button> <button class="small" data-cw="off">Desativar</button> <button class="small" data-cw="export">⬇ Exportar JSON</button></div>` : ''}
+    ${cur ? `<div class="small"><b>Ativo:</b> ${esc(W.customWorld.name)} (${W.customWorld.nations.length} nações) <button class="small" data-cw="edit">Editar</button> <button class="small" data-cw="off">Desativar</button> <button class="small" data-cw="saveactive" title="Guardar nos seus mundos salvos (neste navegador)">💾 Salvar</button> <button class="small" data-cw="export">⬇ Exportar JSON</button> <button class="small" data-cw="copycode" title="Copia um código curto para colar em outro navegador ou mandar a um amigo">📋 Copiar código</button></div>` : ''}
     <div class="small"><b>Presets</b></div><div class="scen-grid">${PRESETS.map(p => `<div class="scen ${cur && W.customWorld.pid === p.id ? 'on' : ''}" data-cw="preset:${p.id}"><h4>${li('split', 14)} ${esc(p.name)}</h4><div class="small">${esc(p.desc)}</div></div>`).join('')}</div>
-    ${list.length ? `<div class="small" style="margin-top:6px"><b>Seus mundos salvos</b></div><div class="scen-grid">${list.map((d, i) => `<div class="scen" data-cw="saved:${i}"><h4>${esc(d.name)}</h4><div class="small">${d.nations.length} nações</div><div class="row" style="gap:4px;margin-top:4px"><button class="small" data-cw="exportsaved:${i}" title="Baixar este mundo como arquivo JSON">⬇ JSON</button><button class="small" data-cw="delsaved:${i}" title="Apagar dos mundos salvos">✕</button></div></div>`).join('')}</div>` : ''}
-    <div style="margin-top:8px"><button class="primary" data-cw="new">${li('plus', 14)} Criar mundo do zero</button> <button data-cw="import" title="Carregar um mundo exportado (.json)">⬆ Importar JSON</button></div></div>`;
+    ${list.length ? `<div class="small" style="margin-top:6px"><b>Seus mundos salvos</b></div><div class="scen-grid">${list.map((d, i) => `<div class="scen" data-cw="saved:${i}"><h4>${esc(d.name)}</h4><div class="small">${d.nations.length} nações</div><div class="row" style="gap:4px;margin-top:4px"><button class="small" data-cw="exportsaved:${i}" title="Baixar este mundo como arquivo JSON">⬇ JSON</button><button class="small" data-cw="dupsaved:${i}" title="Duplicar para editar sem perder o original">⧉</button><button class="small" data-cw="rensaved:${i}" title="Renomear">✎</button><button class="small" data-cw="delsaved:${i}" title="Apagar dos mundos salvos">✕</button></div></div>`).join('')}</div>` : ''}
+    <div style="margin-top:8px"><button class="primary" data-cw="new">${li('plus', 14)} Criar mundo do zero</button> <button data-cw="import" title="Carregar um ou mais mundos exportados (.json)">⬆ Importar JSON</button> <button data-cw="pastecode" title="Colar um código copiado de outro navegador">📥 Colar código</button>${list.length ? ' <button data-cw="exportall" title="Baixa todos os seus mundos salvos em um só arquivo (cópia de segurança)">⬇ Exportar todos</button>' : ''}</div></div>`;
 }
 
 export function openEditor(data, def, { onUse, onSave }) {
@@ -226,11 +226,50 @@ export function openEditor(data, def, { onUse, onSave }) {
   };
   const clean = () => ({ ...E.def, id: 'custom', nations: E.def.nations.filter(n => n.provs.length).map(n => ({ ...n, parent: n.parent || prov[n.provs[0]]?.a3 })) });
   draw();
+  const offFlags = onFlagsReady(() => { if (!root.isConnected) return offFlags(); if (!root.contains(document.activeElement?.matches?.('input,textarea') ? document.activeElement : null)) draw(); });
 }
 
 export { loadCustom, saveCustom, presetWorld };
 
 // ---------- Exportar / importar mundos como JSON ----------
+// Cópia de segurança: todos os mundos salvos em um só arquivo.
+export function exportAll(list) {
+  const out = { format: 'ironstate-customworlds', version: 1, exported: new Date().toISOString(), worlds: list };
+  const blob = new Blob([JSON.stringify(out)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'ironstate-meus-mundos.json';
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  toast(`${list.length} mundo(s) exportado(s).`, 'good');
+}
+// Código curto (JSON comprimido em base64) para compartilhar um mundo por texto.
+const toB64 = u8 => { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode(...u8.subarray(i, i + 0x8000)); return btoa(s); };
+const fromB64 = b => Uint8Array.from(atob(b), c => c.charCodeAt(0));
+export async function encodeWorld(def) {
+  const raw = new TextEncoder().encode(JSON.stringify({ format: 'ironstate-customworld', version: 1, world: def }));
+  if (typeof CompressionStream === 'undefined') return 'IS0:' + toB64(raw);
+  const cs = new Response(new Blob([raw]).stream().pipeThrough(new CompressionStream('gzip')));
+  return 'IS1:' + toB64(new Uint8Array(await cs.arrayBuffer()));
+}
+export async function decodeWorld(code) {
+  const t = String(code || '').trim(), tag = t.slice(0, 4), body = t.slice(4);
+  if (tag === 'IS0:') return JSON.parse(new TextDecoder().decode(fromB64(body)));
+  if (tag !== 'IS1:') throw new Error('código inválido (deve começar com IS1:)');
+  const ds = new Response(new Blob([fromB64(body)]).stream().pipeThrough(new DecompressionStream('gzip')));
+  return JSON.parse(await ds.text());
+}
+// Valida um mundo vindo de fora: descarta províncias inexistentes e nações vazias; devolve { def, dropped }.
+export function sanitizeWorld(data, raw, fallbackName = 'Mundo importado') {
+  const def = raw?.world || raw; if (!Array.isArray(def?.nations)) throw new Error('o arquivo não contém nações');
+  const P = data.geo.prov; let dropped = 0;
+  const nations = def.nations.filter(n => n && n.id && Array.isArray(n.provs)).map(n => ({ ...n, provs: n.provs.filter(p => P[p]) })).filter(n => { if (!n.provs.length) { dropped++; return false; } return true; });
+  if (!nations.length) throw new Error('nenhuma nação com províncias válidas');
+  // Uma província só pode pertencer a uma nação.
+  const seen = new Set(); for (const n of nations) n.provs = n.provs.filter(p => !seen.has(p) && seen.add(p));
+  return { def: { ...def, id: 'custom', name: def.name || fallbackName, nations }, dropped };
+}
+export async function importCode(data, code, onLoad) {
+  try { const { def, dropped } = sanitizeWorld(data, await decodeWorld(code)); onLoad(def); toast(`Mundo "${esc(def.name)}" importado do código${dropped ? ` (${dropped} nação(ões) inválida(s) ignorada(s))` : ''}.`, 'good'); }
+  catch (e) { toast('Código inválido: ' + esc(e.message), 'bad'); }
+}
 export function exportWorld(def) {
   const out = { format: 'ironstate-customworld', version: 1, exported: new Date().toISOString(), world: def };
   const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
@@ -243,19 +282,18 @@ export function exportWorld(def) {
 }
 // Abre o seletor de arquivo e devolve o mundo validado (ou null).
 export function importWorld(data, onLoad) {
-  const inp = document.createElement('input'); inp.type = 'file'; inp.accept = '.json,application/json';
+  const inp = document.createElement('input'); inp.type = 'file'; inp.accept = '.json,application/json'; inp.multiple = true;
   inp.onchange = async () => {
-    const f = inp.files?.[0]; if (!f) return;
-    try {
-      const raw = JSON.parse(await f.text()), def = raw?.world || raw;
-      if (!Array.isArray(def?.nations)) throw new Error('o arquivo não contém nações');
-      const P = data.geo.prov;
-      def.nations = def.nations.filter(n => n && n.id && Array.isArray(n.provs)).map(n => ({ ...n, provs: n.provs.filter(p => P[p]) })).filter(n => n.provs.length);
-      if (!def.nations.length) throw new Error('nenhuma nação com províncias válidas');
-      def.id = 'custom'; def.name = def.name || f.name.replace(/\.json$/i, '');
-      onLoad(def);
-      toast(`Mundo "${esc(def.name)}" importado (${def.nations.length} nações).`, 'good');
-    } catch (e) { toast('Não foi possível importar: ' + esc(e.message), 'bad'); }
+    for (const f of [...(inp.files || [])]) {
+      try {
+        const raw = JSON.parse(await f.text());
+        // Arquivo de cópia de segurança com vários mundos, ou um mundo só.
+        const list = Array.isArray(raw?.worlds) ? raw.worlds : [raw];
+        let n = 0, drop = 0;
+        for (const w of list) { const { def, dropped } = sanitizeWorld(data, w, f.name.replace(/\.json$/i, '')); onLoad(def); n++; drop += dropped; }
+        toast(`${n} mundo(s) importado(s) de ${esc(f.name)}${drop ? ` (${drop} nação(ões) inválida(s) ignorada(s))` : ''}.`, 'good');
+      } catch (e) { toast('Não foi possível importar ' + esc(f.name) + ': ' + esc(e.message), 'bad'); }
+    }
   };
   inp.click();
 }

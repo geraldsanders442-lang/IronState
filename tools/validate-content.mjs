@@ -1,5 +1,5 @@
 // Valida questões, desdobramentos e eventos: chaves de efeito, leis, grupos, países, cadeias e IDs.
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 const j = f => JSON.parse(readFileSync(new URL('../data/' + f + '.json', import.meta.url), 'utf8'));
 const manifest = j('content');
 const issues = manifest.issues.flatMap(f => j(f)), events = manifest.events.flatMap(f => j(f));
@@ -48,7 +48,9 @@ for (const x of all) {
   for (const a of x.after || []) { const src = ids.get(a.issue); if (!src) errs.push(`${x.id}: after -> questão inexistente ${a.issue}`); else if (!src.options?.[a.option]) errs.push(`${x.id}: after -> opção ${a.option} inexistente em ${a.issue}`); }
 }
 const chainTargets = new Set([...all.flatMap(x => optionsOf(x).flatMap(o => (o.next || []).map(n => n.id))), ...events.flatMap(e => (e.next || []).map(n => n.id))]);
-for (const x of all) if (x.chain && !chainTargets.has(x.id) && !(x.after || []).length) warn.push(`${x.id}: desdobramento nunca disparado`);
+// Inícios de cadeia disparados direto pelo código da simulação (ordem pública, vocações etc.) não são órfãos.
+const simSrc = readdirSync(new URL('../js/sim/', import.meta.url)).filter(f => f.endsWith('.js')).map(f => readFileSync(new URL('../js/sim/' + f, import.meta.url), 'utf8')).join('\n');
+for (const x of all) if (x.chain && !chainTargets.has(x.id) && !(x.after || []).length && !simSrc.includes(x.id)) warn.push(`${x.id}: desdobramento nunca disparado`);
 const chainsCount = all.filter(x => x.chain && x.options).length;
 const report = { issues: issues.filter(x => !x.chain).length, followUps: chainsCount, choiceEvents: events.filter(e => e.options).length, randomEvents: events.filter(e => !e.chain).length, totalDecisions: all.filter(x => x.options).length, errors: errs.length, warnings: warn.length };
 console.log(report);

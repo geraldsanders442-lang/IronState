@@ -8,13 +8,15 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+  <div id="live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
   <div id="setup" hidden></div>
   <div id="app" hidden>
-    <header id="topbar"></header>
+    <header id="topbar" role="banner"></header>
     <div id="ticker"></div>
     <div id="layout">
-      <nav id="sidebar"></nav>
-      <main id="main"></main>
+      <nav id="sidebar" aria-label="Menu principal"></nav>
+      <main id="main" tabindex="-1"></main>
     </div>
   </div>
   <div id="nav-backdrop"></div>

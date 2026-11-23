@@ -38,16 +38,27 @@ export const SWATCHES = ['#ffffff', '#111111', '#c8102e', '#8a1c1c', '#e4572e', 
 export const defaultFlag = () => structuredClone(PRESETS.andean);
 
 let FLAGS = { current: {}, historical: {}, regional: {}, regMeta: {}, entReg: {} };
-export function setFlagData(current, historical, extra, regional) {
-  FLAGS = { current: current || {}, historical: historical?.flags || {}, regional: regional?.flags || {}, regMeta: regional?.meta || {}, entReg: {} };
-  for (const [k, m] of Object.entries(regional?.meta || {})) if (m.ent && regional.flags[k]) FLAGS.entReg[m.ent] = k;
+const readyFns = new Set();
+// Chamada quando os corpos das bandeiras regionais e os emblemas pesados chegam (carregamento sob demanda): quem exibe bandeiras se redesenha.
+export function onFlagsReady(fn) { readyFns.add(fn); return () => readyFns.delete(fn); }
+export function addFlagBodies(regional, extra) {
+  if (regional?.flags) Object.assign(FLAGS.regional, regional.flags);
+  if (extra) applyEmblems(extra);
+  for (const fn of [...readyFns]) { try { fn(); } catch {} }
+}
+function applyEmblems(extra) {
   for (const [k, v] of Object.entries(extra?.emblems || {})) EMBLEMS[k] = { ...v, ext: true };
   // O desenho embutido da foice e martelo é fino demais: usa o do Commons quando disponível (todas as bandeiras que citam 'hammersickle' passam a usá-lo).
   if (EMBLEMS.c_hs_red && EMBLEMS.hammersickle) EMBLEMS.hammersickle = { ...EMBLEMS.c_hs_red, name: EMBLEMS.hammersickle.name, cat: EMBLEMS.hammersickle.cat };
 }
+export function setFlagData(current, historical, extra, regional) {
+  FLAGS = { current: current || {}, historical: historical?.flags || {}, regional: regional?.flags || {}, regMeta: regional?.meta || {}, entReg: {} };
+  for (const [k, m] of Object.entries(regional?.meta || {})) if (m.ent) FLAGS.entReg[m.ent] = k;
+  if (extra) applyEmblems(extra);
+}
 export const emblemCredits = () => Object.entries(EMBLEMS).filter(([, e]) => e.ext).map(([k, e]) => ({ key: k, name: e.name, ...e.src }));
 export const historicalFlags = () => FLAGS.historical;
-export const regionalFlags = () => Object.entries(FLAGS.regMeta).filter(([k]) => FLAGS.regional[k]).map(([key, m]) => ({ key, ...m }));
+export const regionalFlags = () => Object.entries(FLAGS.regMeta).map(([key, m]) => ({ key, ...m }));
 export const hasIsoFlag = code => !!FLAGS.current[String(code || '').toLowerCase()];
 
 // Aceita {iso:'rs'}, {hist:'ussr'} ou uma especificação do editor.

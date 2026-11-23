@@ -7,6 +7,7 @@ import { cultureOf } from './names.js';
 import { regionalFlagFor, regionalBest } from './regflags.js';
 import { ptName, ofRegion } from './ptnames.js';
 import { nationalVariant } from './flagstyle.js';
+import { secessionMult } from './cohesion.js';
 
 const day = s => Math.floor(s.time.min / 1440);
 const norm = x => String(x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -256,7 +257,9 @@ function pickSecession(s, data) {
     if (owner === PLY || !W.c[owner] || W.c[owner].dep || n < pids.length * 0.5) continue;
     const c = W.c[owner], left = provincesOf(s, data, owner).length;
     if (left - n < 2) continue;
-    opts.push({ m, from: owner, pids: pids.filter(p => ownerOf(s, data, p) === owner), w: 1 + (60 - c.stab) / 20 + (W.wars.some(w => w.active && [...w.a, ...w.b].includes(owner)) ? 2 : 0) });
+    const cm = secessionMult(s, data, owner);
+    if (cm < 0.12) continue;
+    opts.push({ m, from: owner, pids: pids.filter(p => ownerOf(s, data, p) === owner), w: (1 + (60 - c.stab) / 20 + (W.wars.some(w => w.active && [...w.a, ...w.b].includes(owner)) ? 2 : 0)) * cm });
   }
   // Genérico: países instáveis e grandes perdem uma periferia.
   for (const id in W.c) {
@@ -264,6 +267,7 @@ function pickSecession(s, data) {
     if (c.dep || !e || id.startsWith('NEW') || c.stab > 56) continue;
     const mine = provincesOf(s, data, id);
     if (mine.length < 8) continue;
+    const cmg = secessionMult(s, data, id); if (cmg < 0.25) continue;
     const capP = c.capitalProv || e.capital?.prov || mine[0];
     const cc = data.geo.prov[capP]?.c || [0, 0];
     const far = [...mine].sort((a, b) => Math.hypot(...data.geo.prov[b].c.map((v, i) => v - cc[i])) - Math.hypot(...data.geo.prov[a].c.map((v, i) => v - cc[i])));
@@ -275,7 +279,7 @@ function pickSecession(s, data) {
     }
     group = components(data, group)[0];
     if (group.includes(capP)) continue;
-    opts.push({ m: null, from: id, pids: group, w: 0.3 + (56 - c.stab) / 25 });
+    opts.push({ m: null, from: id, pids: group, w: (0.3 + (56 - c.stab) / 25) * cmg });
   }
   if (!opts.length) return null;
   let r = random() * opts.reduce((a, o) => a + o.w, 0);
@@ -304,7 +308,8 @@ export function weeklyChaos(s, data, ctx) {
   // 1) Fragmentação: movimentos proclamam independência.
   if (d - (W.lastSecession || -999) > 28 && chance(0.09)) {
     const o = pickSecession(s, data);
-    if (o) {
+    // Mesmo escolhido, o país só se parte se a coesão deixar: estáveis, prósperos ou temidos resistem.
+    if (o && chance(clamp(secessionMult(s, data, o.from) * 1.3, 0.05, 1))) {
       const id = foundState(s, data, ctx, { pids: o.pids, from: o.from, movement: o.m });
       if (id) {
         W.lastSecession = d;

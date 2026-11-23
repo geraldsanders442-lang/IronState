@@ -152,6 +152,16 @@ export class WorldMap {
   }
 
   bindEvents() {
+    // Teclado: o mapa recebe foco; setas movem, + e − aproximam, 0 reinicia a vista.
+    this.el.tabIndex = 0; this.el.setAttribute('role', 'application'); this.el.setAttribute('aria-label', 'Mapa. Use as setas para mover, mais e menos para aproximar.');
+    this.el.addEventListener('keydown', e => {
+      const [x, y, w, h] = this.vb, st = w * 0.12;
+      if (e.key === 'ArrowLeft') this.setView([x - st, y, w, h]); else if (e.key === 'ArrowRight') this.setView([x + st, y, w, h]);
+      else if (e.key === 'ArrowUp') this.setView([x, y - st, w, h]); else if (e.key === 'ArrowDown') this.setView([x, y + st, w, h]);
+      else if (e.key === '+' || e.key === '=') this.zoomAt(1.3, x + w / 2, y + h / 2); else if (e.key === '-' || e.key === '_') this.zoomAt(0.77, x + w / 2, y + h / 2);
+      else if (e.key === '0') this.setView([0, 0, this.W, this.H]); else return;
+      e.preventDefault(); e.stopPropagation();
+    });
     const svg = this.svg, tip = this.el.querySelector('.wm-tip');
     let drag = null, moved = false, lastHover = null;
     svg.addEventListener('wheel', e => { e.preventDefault(); const p = this.toSvg(e); this.zoomAt(e.deltaY < 0 ? 1.25 : 0.8, p.x, p.y); }, { passive: false });

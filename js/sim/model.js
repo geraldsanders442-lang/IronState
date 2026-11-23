@@ -31,6 +31,8 @@ export function collectMods(s, data) {
     if (it.status === 'active') add(data.initById[id].effects, eff);
   }
   for (const m of s.longMods) add({ [m.k]: m.v }, m.d > 0 ? Math.min(1, m.left / Math.max(1, m.d * 0.3)) : 1);
+  if (s.tx?.mods) add(s.tx.mods); // impostos e tarifas (tariffs.js)
+  if (s.min?.mods) add(s.min.mods); // minorias e perseguição (minority.js)
   for (const id in s.orgs) { const o = data.wOrgById?.[id] || s.world?.blocs.find(b => b.id === id); if (o) add(o.mods || {}); }
   if (s.mobilized > 0) add({ troopsMult: 0.8, readiness: 10, laborSupply: -1.5, growth: -0.6, g_workers: -4, g_military: 4 });
   for (const k in M) {
@@ -154,7 +156,7 @@ export function computeTargets(s, data, M, sec, bud) {
   const need = { health: 2 + df * 1.4, education: 2 + df * 1.2, welfare: 1 + df * 1.9, security: 0.9 + df * 0.4, military: 0.8, admin: 1.4 + df * 0.8, infra: 1.1 + df * 0.6 };
   const U = {}; for (const k in need) U[k] = Math.max(0, need[k] - (b[k] ?? 0)) / need[k];
   s.d && (s.d.under = U);
-  T.health = 12 + 45 * sat(b.health, 4) - U.health * 18 + 18 * df + m('health') - st.hunger * 0.2 - st.pollution * 0.05;
+  T.health = 12 + 45 * sat(b.health, 4) - U.health * 18 + 18 * df + m('health') - st.hunger * 0.2 - st.pollution * 0.05 + (s.hlt ? (s.hlt.idx - s.hlt.idx0) * 0.3 : 0);
   T.education = 8 + 50 * sat(b.education, 4) + 18 * df + m('education') - U.education * 15;
   T.inequality = 42 - 18 * sat(b.welfare, 6) + (st.market - 50) * 0.2 + st.corruption * 0.12 + m('inequality') + (s.d?.regionSpread || 0) * 0.08;
   T.unemployment = 8 - (st.growth - 2) * 0.9 + (60 - st.education) * 0.05 + m('unemployment') + m('laborSupply') + (s.d?.otherShort || 0) * 10;
@@ -175,7 +177,7 @@ export function computeTargets(s, data, M, sec, bud) {
   T.efficiency = 30 - U.admin * 12 + 30 * sat(b.admin / size.admin, 3) + st.education * 0.2 - st.corruption * 0.25 + m('efficiency');
   T.taxCapacity = 38 + st.efficiency * 0.45 - st.corruption * 0.15 + st.control * 0.1 + m('taxCapacity');
   T.control = 30 - U.security * 10 + 30 * sat(b.security / size.admin, 2) + infra * 0.15 + size.control - st.separatism * 0.2 - st.protest * 0.12 + m('control') + repression * 0.1;
-  T.separatism = size.sep + (100 - (s.groups.regional)) * 0.2 + (s.d?.regionSpread || 0) * 0.15 - st.control * 0.1 + m('separatism') + (s.flags.occupied || 0) * 10;
+  T.separatism = size.sep * (s.nation.sepPrior ?? 1) + (100 - (s.groups.regional)) * 0.2 * (s.nation.sepPrior != null ? Math.max(0.35, s.nation.sepPrior) : 1) - Math.max(0, st.qol - 52) * 0.2 - Math.max(0, (s.d?.repression || 0) - 35) * 0.05 + (s.d?.regionSpread || 0) * 0.15 - st.control * 0.1 + m('separatism') + (s.flags.occupied || 0) * 10;
   T.legitimacy = 25 - (U.health + U.education + U.welfare) * 4 + support * 0.5 + st.qol * 0.15 + clamp(st.growth, -5, 6) * 1.5 - st.corruption * 0.15 + m('legitimacy') + (m('propaganda') * Math.max(0, 8 - st.political / 10));
   T.opposition = (100 - support) * 0.5 + st.political * 0.25 + st.civil * 0.1 + m('opposition') - repression * 0.15;
   T.stability = 0.35 * st.legitimacy + 0.25 * st.control + 0.2 * (100 - st.protest) + 0.1 * (100 - st.warWeariness) + 0.1 * (100 - st.revoRisk) + m('stability') - st.separatism * 0.1;
@@ -335,7 +337,7 @@ export function dailyModel(s, data) {
 
   const df = devF(s);
   const birth = 34 - df * 24 + (M.birth || 0);
-  const death = clamp(15 - s.st.health * 0.09 + s.st.hunger * 0.25 + (atWar(s) ? 1.5 : 0), 4, 40);
+  const death = clamp(15 - s.st.health * 0.09 + s.st.hunger * 0.25 + (atWar(s) ? 1.5 : 0) + (s.hlt ? clamp((s.hlt.wash - s.hlt.wash0) * 0.01, -1.5, 3) : 0), 4, 40);
   s.st.popGrowth = (birth - death + s.st.migration) / 10;
   e.pop *= 1 + s.st.popGrowth / 100 / 360;
 

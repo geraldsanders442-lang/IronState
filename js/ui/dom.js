@@ -78,10 +78,21 @@ export function initTips() {
 export function showTip(html, e) { tipEl.innerHTML = html; tipEl.hidden = false; tipEl.style.left = e.clientX + 14 + 'px'; tipEl.style.top = e.clientY + 14 + 'px'; }
 export function hideTip() { tipEl.hidden = true; }
 
+// Região aria-live: leitores de tela anunciam mensagens sem precisar de foco.
+export function announce(text, assertive = false) {
+  const el = document.getElementById('live'); if (!el) return;
+  el.setAttribute('aria-live', assertive ? 'assertive' : 'polite');
+  el.textContent = '';
+  const plain = String(text).replace(/<[^>]+>/g, '').replace(/&[a-z]+;/g, ' ');
+  setTimeout(() => { el.textContent = plain; }, 40);
+}
+
 export function toast(text, kind = 'info', onClick) {
   const el = document.createElement('div');
   el.className = 'toast ' + kind;
   el.innerHTML = text;
+  el.setAttribute('role', kind === 'bad' || kind === 'war' ? 'alert' : 'status');
+  announce(text, kind === 'bad' || kind === 'war');
   el.onclick = () => { onClick?.(); el.remove(); };
   $('#toasts').prepend(el);
   while ($('#toasts').children.length > 5) $('#toasts').lastChild.remove();
@@ -92,8 +103,24 @@ export function modal(html, { wide = false, onClose, locked = false } = {}) {
   const m = $('#modal');
   m.innerHTML = `<div class="box ${wide ? 'wide' : ''}">${html}</div>`;
   m.hidden = false;
-  const close = () => { m.hidden = true; m.innerHTML = ''; onClose?.(); };
+  // Diálogo acessível: papel, rótulo, foco inicial, Tab preso dentro, Esc fecha (menos nas janelas travadas) e o foco volta ao fim.
+  const prev = document.activeElement;
+  const box = m.firstChild, head = box.querySelector('h1, h2, h3');
+  m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true');
+  if (head) { head.id ||= 'modal-title'; m.setAttribute('aria-labelledby', head.id); } else m.removeAttribute('aria-labelledby');
+  const focusables = () => [...m.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter(x => !x.disabled && x.offsetParent !== null);
+  let closed = false;
+  const close = () => { if (closed) return; closed = true; m.hidden = true; m.innerHTML = ''; m.onkeydown = null; m.removeAttribute('role'); onClose?.(); try { prev?.focus?.({ preventScroll: true }); } catch {} };
   m.onclick = e => { if ((e.target === m && !locked) || e.target.closest('[data-close]')) close(); };
+  m.onkeydown = e => {
+    if (e.key === 'Escape' && !locked) { e.preventDefault(); close(); return; }
+    if (e.key !== 'Tab') return;
+    const f = focusables(); if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  };
+  setTimeout(() => { if (closed) return; const f = focusables(); (m.querySelector('[data-autofocus]') || f.find(x => x.matches('.primary')) || f[0] || box)?.focus?.({ preventScroll: true }); }, 30);
   return { el: m.firstChild, close };
 }
 

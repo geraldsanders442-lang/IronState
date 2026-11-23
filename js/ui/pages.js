@@ -20,11 +20,14 @@ import { economyHub } from './pages-economy.js';
 import { researchPage } from './diplomacy-plus.js';
 import { encyclopediaPage, editorPage } from './pages-extra.js';
 import { orderPage, propagandaPage, regionsPage, chiefPage } from './pages-depth.js';
+import { healthPage } from './pages-health.js';
+import { taxPage } from './pages-tax.js';
+import { ethnicPage } from './pages-minority.js';
 
 export const NAV = [
   ['Nação', [['overview', 'Visão geral'], ['issues', 'Questões'], ['stats', 'Estatísticas'], ['analysis', 'Gráficos e plano']]],
-  ['Governo', [['budget', 'Orçamento'], ['initiatives', 'Iniciativas'], ['economy', 'Economia'], ['laws', 'Leis e direitos'], ['rights', 'Minorias e direitos'], ['urban', 'Desenvolvimento urbano'], ['regions', 'Regiões e vocações'], ['research', 'Pesquisa']]],
-  ['Poder', [['politics', 'Política'], ['chief', 'Chefe de gabinete'], ['propaganda', 'Propaganda'], ['order', 'Ordem e êxodo'], ['society', 'Sociedade e gabinete'], ['diplomacy', 'Diplomacia'], ['military', 'Forças armadas'], ['map', 'Mapa-múndi'], ['rankings', 'Rankings']]],
+  ['Governo', [['budget', 'Orçamento'], ['initiatives', 'Iniciativas'], ['economy', 'Economia'], ['laws', 'Leis e direitos'], ['rights', 'Minorias e direitos'], ['urban', 'Desenvolvimento urbano'], ['health', 'Saúde e saneamento'], ['tax', 'Impostos e tarifas'], ['regions', 'Regiões e vocações'], ['research', 'Pesquisa']]],
+  ['Poder', [['politics', 'Política'], ['chief', 'Chefe de gabinete'], ['propaganda', 'Propaganda'], ['ethnic', 'Povos e minorias'], ['order', 'Ordem e êxodo'], ['society', 'Sociedade e gabinete'], ['diplomacy', 'Diplomacia'], ['military', 'Forças armadas'], ['map', 'Mapa-múndi'], ['rankings', 'Rankings']]],
   ['Arquivo', [['reports', 'Relatórios'], ['encyclopedia', 'Enciclopédia'], ['editor', 'Editor e mods'], ['options', 'Opções']]],
 ];
 
@@ -236,7 +239,7 @@ function reportsPage(el, game) {
 }
 
 export const PAGES = {
-  rights: rightsPage, chief: chiefPage, order: orderPage, propaganda: propagandaPage, regions: regionsPage,
+  rights: rightsPage, health: healthPage, tax: taxPage, ethnic: ethnicPage, chief: chiefPage, order: orderPage, propaganda: propagandaPage, regions: regionsPage,
   overview, issues: issuesPage, stats: statsPage, analysis: analysisPage, reports: reportsPage,
   budget: budgetPage, initiatives: initiativesPage, economy: economyHub, laws: lawsPage, urban: urbanPage,
   society: societyPage, politics: politicsPage, research: researchPage, encyclopedia: encyclopediaPage, editor: editorPage, diplomacy: diplomacyPage, military: militaryPage, map: mapPage, options: optionsPage, rankings: rankingsPage,
