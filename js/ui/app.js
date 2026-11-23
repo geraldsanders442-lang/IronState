@@ -88,7 +88,8 @@ function startGame() {
 export function restart() { game.newCampaign(); showSetup(); }
 const pageName = id => { for (const [, items] of NAV) { const f = items.find(x => x[0] === id); if (f) return f[1]; } return id; };
 export function go(p) { page = p; renderPage(); window.scrollTo(0, 0); const mn = $('#main'); if (mn) { mn.setAttribute('aria-label', pageName(p)); mn.focus?.({ preventScroll: true }); } announce(`Página: ${pageName(p)}.`); }
-onFlagsReady(() => { try { if (game?.s && !$('#app').hidden) rerender(); } catch {} });
+// As bandeiras pesadas chegam depois da primeira tela: redesenha a tela certa (o Observatório tem a sua própria; o modo clássico usa rerender).
+onFlagsReady(() => { try { if (!game?.s || $('#app').hidden) return; if (game.s.spectator) { obsInst?.refresh?.(); return; } rerender(); } catch {} });
 export function rerender() { renderTop(); renderNav(); renderPage(); }
 
 function renderAll() { renderTop(); renderNav(); renderPage(); renderTicker(); }
